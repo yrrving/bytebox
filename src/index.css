@@ -1,7 +1,19 @@
 @import "tailwindcss";
 
+@custom-variant dark (.dark &);
+@custom-variant hc (.hc &);
+
 body {
-  @apply bg-gray-950 text-gray-100 min-h-screen;
+  @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen;
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* High contrast: larger text, bolder, tighter layout */
+.hc {
+  font-size: 112.5%;
+}
+
+.hc body {
+  @apply bg-black text-white;
 }

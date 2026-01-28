@@ -1,12 +1,7 @@
 import type { Category } from '../data/tools'
+import { useLanguage } from '../context/LanguageContext'
 
-const tabs: { label: string; value: Category }[] = [
-  { label: 'Alla', value: 'alla' },
-  { label: 'Dator', value: 'dator' },
-  { label: 'Mobil', value: 'mobil' },
-  { label: 'Online', value: 'online' },
-  { label: 'Offline', value: 'offline' },
-]
+const tabKeys: Category[] = ['alla', 'dator', 'mobil', 'online', 'offline']
 
 interface TabNavigationProps {
   active: Category
@@ -14,19 +9,21 @@ interface TabNavigationProps {
 }
 
 export default function TabNavigation({ active, onChange }: TabNavigationProps) {
+  const { t } = useLanguage()
+
   return (
-    <nav className="flex gap-1 rounded-lg bg-gray-900 p-1">
-      {tabs.map((tab) => (
+    <nav className="flex gap-1 rounded-lg bg-gray-100 dark:bg-gray-900 hc:bg-black p-1">
+      {tabKeys.map((key) => (
         <button
-          key={tab.value}
-          onClick={() => onChange(tab.value)}
+          key={key}
+          onClick={() => onChange(key)}
           className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-            active === tab.value
-              ? 'bg-blue-600 text-white'
-              : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
+            active === key
+              ? 'bg-blue-600 text-white hc:bg-white hc:text-black hc:font-bold'
+              : 'text-gray-600 dark:text-gray-400 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 hc:hover:bg-gray-800'
           }`}
         >
-          {tab.label}
+          {t.tabs[key]}
         </button>
       ))}
     </nav>

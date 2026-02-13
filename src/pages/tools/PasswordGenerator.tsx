@@ -103,21 +103,21 @@ export default function PasswordGenerator() {
       </div>
 
       {/* Generated password */}
-      <div className="rounded-xl border border-gray-200 dark:border-gray-800 hc:border-white bg-gray-50 dark:bg-gray-900 hc:bg-black p-4">
+      <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4">
         <div className="flex items-center gap-2">
-          <code className="flex-1 overflow-x-auto whitespace-nowrap rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 px-4 py-3 font-mono text-lg text-gray-900 dark:text-white">
+          <code className="flex-1 overflow-x-auto whitespace-nowrap rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 px-4 py-3 font-mono text-lg text-gray-900 dark:text-white">
             {password}
           </code>
           <button
             onClick={copyToClipboard}
-            className="shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 hc:border hc:border-white p-3 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+            className="shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white p-3 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
             title="Kopiera"
           >
             {copied ? <Check className="h-5 w-5 text-green-500" /> : <Copy className="h-5 w-5" />}
           </button>
           <button
             onClick={regenerate}
-            className="shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 hc:border hc:border-white p-3 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+            className="shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white p-3 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
             title="Generera nytt"
           >
             <RefreshCw className="h-5 w-5" />
@@ -137,12 +137,12 @@ export default function PasswordGenerator() {
       </div>
 
       {/* Settings */}
-      <div className="space-y-4 rounded-xl border border-gray-200 dark:border-gray-800 hc:border-white bg-gray-50 dark:bg-gray-900 hc:bg-black p-4">
+      <div className="space-y-4 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4">
         {/* Length slider */}
         <div>
           <div className="flex items-center justify-between">
             <label className="text-sm font-medium text-gray-900 dark:text-white">Längd</label>
-            <span className="rounded bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 px-2 py-0.5 text-sm font-mono text-gray-900 dark:text-white">
+            <span className="rounded bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 px-2 py-0.5 text-sm font-mono text-gray-900 dark:text-white">
               {length}
             </span>
           </div>
@@ -169,7 +169,7 @@ export default function PasswordGenerator() {
               className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                 options[key as keyof typeof options]
                   ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                  : 'bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
               }`}
             >
               {label}

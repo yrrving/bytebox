@@ -37,7 +37,7 @@ export default function Header() {
   const ThemeIcon = themeIcon[theme]
 
   return (
-    <header className="border-b border-gray-200 dark:border-gray-800 hc:border-white bg-gray-50 dark:bg-gray-900 hc:bg-black">
+    <header className="border-b border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black">
       <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white no-underline">
           <Wrench className="h-6 w-6 text-blue-400 hc:text-white" />

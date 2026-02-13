@@ -4,7 +4,7 @@
 @custom-variant hc (.hc &);
 
 body {
-  @apply bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen;
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen;
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search } from 'lucide-react'
+import { Search, ArrowLeft } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, type Category, type ToolCategory } from '../data/tools'
@@ -18,6 +18,7 @@ const categoryIcons: Record<ToolCategory, string> = {
 export default function Home() {
   const [category, setCategory] = useState<Category>('alla')
   const [search, setSearch] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState<ToolCategory | null>(null)
   const { t } = useLanguage()
 
   const categoryNames = t.categories ?? {
@@ -29,6 +30,8 @@ export default function Home() {
     berakning: 'Beräkning & Konvertering',
     produktivitet: 'Produktivitet & Verktyg',
   }
+
+  const allCategoriesLabel = t.allCategories ?? 'Alla kategorier'
 
   const filtered = tools.filter((tool) => {
     const categoryMatch =
@@ -49,45 +52,88 @@ export default function Home() {
 
   const showCategories = category === 'alla' && !search.trim()
 
+  const handleTabChange = (tab: Category) => {
+    setCategory(tab)
+    setSelectedCategory(null)
+  }
+
   return (
     <div>
       <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t.toolsHeading}</h1>
-        <TabNavigation active={category} onChange={setCategory} />
+        <TabNavigation active={category} onChange={handleTabChange} />
       </div>
       <div className="relative mb-6">
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500 hc:text-white" />
         <input
           type="text"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value)
+            if (e.target.value.trim()) setSelectedCategory(null)
+          }}
           placeholder={t.searchPlaceholder}
           className="w-full rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black py-2 pl-10 pr-4 text-sm text-gray-900 dark:text-gray-100 hc:text-white placeholder-gray-400 dark:placeholder-gray-500 hc:placeholder-gray-300 outline-none transition-colors focus:border-blue-400 dark:focus:border-blue-500 hc:focus:border-white"
         />
       </div>
 
-      {showCategories ? (
-        <div className="space-y-8">
+      {showCategories && selectedCategory === null ? (
+        /* ── Category cards landing ── */
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categoryOrder.map((cat) => {
-            const catTools = filtered.filter((tool) => tool.category === cat)
-            if (catTools.length === 0) return null
+            const catTools = tools.filter((tool) => tool.category === cat)
+            const previewNames = catTools
+              .slice(0, 4)
+              .map((tool) => t.tools[tool.id]?.name ?? tool.id)
             return (
-              <section key={cat}>
-                <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
-                  <span>{categoryIcons[cat]}</span>
-                  {categoryNames[cat]}
-                  <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length})</span>
-                </h2>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {catTools.map((tool) => (
-                    <ToolCard key={tool.route} tool={tool} />
-                  ))}
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className="group flex flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-5 text-left transition-all hover:border-blue-400 dark:hover:border-blue-500 hc:hover:border-yellow-400 hover:shadow-md"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{categoryIcons[cat]}</span>
+                  <div>
+                    <h2 className="font-semibold text-gray-900 dark:text-white hc:text-white">
+                      {categoryNames[cat]}
+                    </h2>
+                    <span className="text-sm text-gray-400 dark:text-gray-500 hc:text-gray-300">
+                      {catTools.length} {catTools.length === 1 ? 'verktyg' : 'verktyg'}
+                    </span>
+                  </div>
                 </div>
-              </section>
+                <p className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 line-clamp-1">
+                  {previewNames.join(', ')}
+                  {catTools.length > 4 ? ' ...' : ''}
+                </p>
+              </button>
             )
           })}
         </div>
+      ) : showCategories && selectedCategory !== null ? (
+        /* ── Single category drill-down ── */
+        <div>
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className="mb-4 flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hc:text-yellow-400 hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {allCategoriesLabel}
+          </button>
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
+            <span>{categoryIcons[selectedCategory]}</span>
+            {categoryNames[selectedCategory]}
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {tools
+              .filter((tool) => tool.category === selectedCategory)
+              .map((tool) => (
+                <ToolCard key={tool.route} tool={tool} />
+              ))}
+          </div>
+        </div>
       ) : (
+        /* ── Flat grid (search results or tab filter) ── */
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((tool) => (
             <ToolCard key={tool.route} tool={tool} />

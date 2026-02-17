@@ -10,6 +10,53 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.10.0',
+    date: '2026-02-17',
+    title: {
+      sv: 'Kategorier & 31 nya verktygsplatser',
+      en: 'Categories & 31 new tool placeholders',
+      es: 'Categorías y 31 nuevas herramientas',
+      fr: 'Catégories et 31 nouveaux outils',
+      de: 'Kategorien & 31 neue Werkzeuge',
+      pt: 'Categorias e 31 novas ferramentas',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: '7 kategorier med sektionsrubriker: Bild & Media, Text & Dokument, Ljud & Tal, Kod & Data, Nätverk & Säkerhet, Beräkning & Konvertering, Produktivitet & Verktyg',
+          en: '7 categories with section headers: Image & Media, Text & Documents, Audio & Speech, Code & Data, Network & Security, Calculation & Conversion, Productivity & Tools',
+          es: '7 categorías con encabezados: Imagen y Medios, Texto y Documentos, Audio y Voz, Código y Datos, Red y Seguridad, Cálculo y Conversión, Productividad y Herramientas',
+          fr: '7 catégories avec en-têtes : Image et Médias, Texte et Documents, Audio et Parole, Code et Données, Réseau et Sécurité, Calcul et Conversion, Productivité et Outils',
+          de: '7 Kategorien mit Überschriften: Bild & Medien, Text & Dokumente, Audio & Sprache, Code & Daten, Netzwerk & Sicherheit, Berechnung & Umrechnung, Produktivität & Werkzeuge',
+          pt: '7 categorias com cabeçalhos: Imagem e Mídia, Texto e Documentos, Áudio e Fala, Código e Dados, Rede e Segurança, Cálculo e Conversão, Produtividade e Ferramentas',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: '31 nya verktygsplatser: Bildbeskärare, Bakgrundsborttagare, Favicon-generator, Bildkollage, Pixelräknare, ASCII-konst, Skärfilsgenerator, Diff-jämförare, Lorem Ipsum, CSV ↔ JSON, PDF-verktyg, OCR, Metronom, Tonhöjdsmätare, Vitt brus, Kodminifierare, CSS Gradient, Cron-tolkare, JWT-dekodare, DNS-uppslagning, SSL-kontroll, HTTP Headers, User Agent-info, Miniräknare, Procenträknare, Slumptalsgenerator, Pomodoro-timer, Nedräkningstimer, Stoppur, Anteckningsblock, Slumpmässigt val',
+          en: '31 new tool placeholders: Image Cropper, Background Remover, Favicon Generator, Image Collage, Pixel Counter, ASCII Art, Cut File Generator, Diff Compare, Lorem Ipsum, CSV ↔ JSON, PDF Tools, OCR, Metronome, Pitch Detector, White Noise, Code Minifier, CSS Gradient, Cron Parser, JWT Decoder, DNS Lookup, SSL Check, HTTP Headers, User Agent Info, Calculator, Percentage Calculator, Random Number Generator, Pomodoro Timer, Countdown Timer, Stopwatch, Notepad, Random Picker',
+          es: '31 nuevas herramientas: Recortador de imágenes, Eliminador de fondo, Generador de favicon, Collage, Contador de píxeles, Arte ASCII, Generador de corte, Comparador Diff, Lorem Ipsum, CSV ↔ JSON, Herramientas PDF, OCR, Metrónomo, Detector de tono, Ruido blanco, Minificador, Gradiente CSS, Intérprete Cron, Decodificador JWT, Búsqueda DNS, Verificación SSL, Cabeceras HTTP, User Agent, Calculadora, Porcentajes, Números aleatorios, Pomodoro, Cuenta regresiva, Cronómetro, Bloc de notas, Selector aleatorio',
+          fr: '31 nouveaux outils : Rogneur, Suppression d\'arrière-plan, Favicon, Collage, Compteur de pixels, Art ASCII, Fichier de découpe, Comparateur Diff, Lorem Ipsum, CSV ↔ JSON, Outils PDF, OCR, Métronome, Détecteur de tonalité, Bruit blanc, Minifieur, Dégradé CSS, Cron, JWT, DNS, SSL, En-têtes HTTP, User Agent, Calculatrice, Pourcentages, Nombres aléatoires, Pomodoro, Compte à rebours, Chronomètre, Bloc-notes, Sélecteur aléatoire',
+          de: '31 neue Werkzeuge: Bildzuschnitt, Hintergrundentferner, Favicon, Bildcollage, Pixelzähler, ASCII-Kunst, Schnittdatei, Diff-Vergleicher, Lorem Ipsum, CSV ↔ JSON, PDF-Werkzeuge, OCR, Metronom, Tonhöhenmesser, Weißes Rauschen, Code-Minifizierer, CSS-Gradient, Cron, JWT, DNS, SSL, HTTP-Header, User-Agent, Taschenrechner, Prozentrechner, Zufallszahlen, Pomodoro, Countdown, Stoppuhr, Notizblock, Zufallsauswahl',
+          pt: '31 novas ferramentas: Recortador, Removedor de fundo, Favicon, Colagem, Contador de pixels, Arte ASCII, Arquivo de corte, Comparador Diff, Lorem Ipsum, CSV ↔ JSON, Ferramentas PDF, OCR, Metrônomo, Detector de tom, Ruído branco, Minificador, Gradiente CSS, Cron, JWT, DNS, SSL, Cabeçalhos HTTP, User Agent, Calculadora, Porcentagem, Números aleatórios, Pomodoro, Contagem regressiva, Cronômetro, Bloco de notas, Seletor aleatório',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Översättningar för alla 31 nya verktyg i alla 6 språk',
+          en: 'Translations for all 31 new tools in all 6 languages',
+          es: 'Traducciones para las 31 nuevas herramientas en los 6 idiomas',
+          fr: 'Traductions pour les 31 nouveaux outils dans les 6 langues',
+          de: 'Übersetzungen für alle 31 neuen Werkzeuge in allen 6 Sprachen',
+          pt: 'Traduções para as 31 novas ferramentas nos 6 idiomas',
+        },
+      },
+    ],
+  },
+  {
     version: '0.9.0',
     date: '2026-02-16',
     title: {

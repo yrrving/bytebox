@@ -1,17 +1,20 @@
 import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
-import { Download, Square, Circle, Pencil, Undo2, Trash2, Upload } from 'lucide-react'
+import { Download, Square, Circle, Pencil, Undo2, Trash2, Upload, Hand } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 type Shape =
   | { type: 'rect'; x: number; y: number; w: number; h: number; rx: number }
   | { type: 'circle'; cx: number; cy: number; rx: number; ry: number }
   | { type: 'freehand'; points: { x: number; y: number }[] }
 
-type Tool = 'rect' | 'circle' | 'freehand'
+type Tool = 'rect' | 'circle' | 'freehand' | 'move'
 
 interface ImageRect { x: number; y: number; w: number; h: number }
 
 const CORNER_RADIUS = 20
+// CSS standard: 96px = 1 inch = 25.4mm
+const PX_PER_MM = 96 / 25.4
 
 const binarizeImage = (dataUrl: string): Promise<string> =>
   new Promise((resolve) => {
@@ -39,6 +42,23 @@ const binarizeImage = (dataUrl: string): Promise<string> =>
     img.src = dataUrl
   })
 
+const hitTest = (pos: { x: number; y: number }, shape: Shape): boolean => {
+  if (shape.type === 'rect') {
+    return pos.x >= shape.x && pos.x <= shape.x + shape.w &&
+           pos.y >= shape.y && pos.y <= shape.y + shape.h
+  } else if (shape.type === 'circle') {
+    const dx = (pos.x - shape.cx) / (shape.rx || 1)
+    const dy = (pos.y - shape.cy) / (shape.ry || 1)
+    return dx * dx + dy * dy <= 1
+  } else if (shape.type === 'freehand' && shape.points.length > 0) {
+    const xs = shape.points.map((p) => p.x)
+    const ys = shape.points.map((p) => p.y)
+    return pos.x >= Math.min(...xs) && pos.x <= Math.max(...xs) &&
+           pos.y >= Math.min(...ys) && pos.y <= Math.max(...ys)
+  }
+  return false
+}
+
 export default function CutFileGenerator() {
   const { t } = useLanguage()
   const translation = t.tools['skarfilsgenerator']
@@ -56,6 +76,9 @@ export default function CutFileGenerator() {
   const [drawStart, setDrawStart] = useState({ x: 0, y: 0 })
   const [currentShape, setCurrentShape] = useState<Shape | null>(null)
   const [includeBackground, setIncludeBackground] = useState(false)
+  // Move tool state — use refs to avoid stale closures during drag
+  const moveShapeIdxRef = useRef<number | null>(null)
+  const moveLastPosRef = useRef({ x: 0, y: 0 })
   const strokeWidth = 2
 
   const getCanvasCoords = useCallback((clientX: number, clientY: number) => {
@@ -157,6 +180,20 @@ export default function CutFileGenerator() {
   const handlePointerDown = (clientX: number, clientY: number) => {
     if (!image) return
     const pos = getCanvasCoords(clientX, clientY)
+
+    if (tool === 'move') {
+      // Find topmost shape under pointer
+      for (let i = shapes.length - 1; i >= 0; i--) {
+        if (hitTest(pos, shapes[i])) {
+          moveShapeIdxRef.current = i
+          moveLastPosRef.current = pos
+          setDrawing(true)
+          return
+        }
+      }
+      return
+    }
+
     setDrawing(true)
     setDrawStart(pos)
     if (tool === 'freehand') {
@@ -171,6 +208,22 @@ export default function CutFileGenerator() {
   const handlePointerMove = (clientX: number, clientY: number) => {
     if (!drawing || !image) return
     const pos = getCanvasCoords(clientX, clientY)
+
+    if (tool === 'move') {
+      const idx = moveShapeIdxRef.current
+      if (idx === null) return
+      const dx = pos.x - moveLastPosRef.current.x
+      const dy = pos.y - moveLastPosRef.current.y
+      moveLastPosRef.current = pos
+      setShapes((prev) => prev.map((shape, i) => {
+        if (i !== idx) return shape
+        if (shape.type === 'rect') return { ...shape, x: shape.x + dx, y: shape.y + dy }
+        if (shape.type === 'circle') return { ...shape, cx: shape.cx + dx, cy: shape.cy + dy }
+        return { ...shape, points: shape.points.map((p) => ({ x: p.x + dx, y: p.y + dy })) }
+      }))
+      return
+    }
+
     if (tool === 'freehand') {
       setCurrentShape((prev) => {
         if (!prev || prev.type !== 'freehand') return prev
@@ -199,6 +252,12 @@ export default function CutFileGenerator() {
   }
 
   const handlePointerUp = () => {
+    if (tool === 'move') {
+      moveShapeIdxRef.current = null
+      setDrawing(false)
+      return
+    }
+
     if (!drawing || !currentShape) {
       setDrawing(false)
       return
@@ -302,6 +361,10 @@ export default function CutFileGenerator() {
 
     const finalDataUrl = await binarizeImage(imageDataUrl)
 
+    // Convert pixel dimensions to mm (96dpi standard)
+    const widthMm = (w / PX_PER_MM).toFixed(2)
+    const heightMm = (h / PX_PER_MM).toFixed(2)
+
     const shapeSvg = shapes.map((shape) => {
       if (shape.type === 'rect') {
         return `    <rect x="${shape.x - ox}" y="${shape.y - oy}" width="${shape.w}" height="${shape.h}" rx="${shape.rx}" fill="none" stroke="red" stroke-width="${strokeWidth}"/>`
@@ -317,7 +380,9 @@ export default function CutFileGenerator() {
     const imgX = imageRect.x - ox
     const imgY = imageRect.y - oy
 
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    // width/height in mm so laser software gets correct physical dimensions
+    // viewBox keeps internal pixel coordinates intact
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${widthMm}mm" height="${heightMm}mm" viewBox="0 0 ${w} ${h}">
   <g>
     <image href="${finalDataUrl}" x="${imgX}" y="${imgY}" width="${imageRect.w}" height="${imageRect.h}"/>
 ${shapeSvg}
@@ -331,11 +396,16 @@ ${shapeSvg}
     a.click()
   }
 
-  const tools: { id: Tool; icon: typeof Square; label: string }[] = [
+  const toolList: { id: Tool; icon: typeof Square; label: string }[] = [
     { id: 'rect', icon: Square, label: ct?.rect || 'Rektangel' },
     { id: 'circle', icon: Circle, label: ct?.circle || 'Cirkel' },
     { id: 'freehand', icon: Pencil, label: ct?.freehand || 'Frihand' },
+    { id: 'move', icon: Hand, label: ct?.move || 'Flytta' },
   ]
+
+  const canvasCursor = tool === 'move'
+    ? (drawing ? 'cursor-grabbing' : 'cursor-grab')
+    : 'cursor-crosshair'
 
   return (
     <div className="mx-auto max-w-3xl space-y-6 py-10">
@@ -369,7 +439,7 @@ ${shapeSvg}
         <>
           {/* Toolbar */}
           <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-3">
-            {tools.map(({ id, icon: Icon, label }) => (
+            {toolList.map(({ id, icon: Icon, label }) => (
               <button
                 key={id}
                 onClick={() => setTool(id)}
@@ -408,7 +478,7 @@ ${shapeSvg}
           <div ref={containerRef} className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white">
             <canvas
               ref={canvasRef}
-              className="mx-auto block max-w-full cursor-crosshair"
+              className={`mx-auto block max-w-full ${canvasCursor}`}
               style={{ touchAction: 'none' }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}

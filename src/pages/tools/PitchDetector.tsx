@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { Mic, MicOff } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 

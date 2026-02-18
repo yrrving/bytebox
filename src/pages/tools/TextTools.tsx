@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Copy, Check, Trash2 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 type Transform =
   | 'uppercase'

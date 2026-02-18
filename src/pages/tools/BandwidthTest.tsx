@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 import { Play, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 interface TestResult {
   downloadMbps: number

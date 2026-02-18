@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 interface Point { x: number; y: number }
 

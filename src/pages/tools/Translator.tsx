@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ArrowRightLeft, Copy, Check, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const LANGUAGES = [
   { code: 'sv', label: 'Svenska' },

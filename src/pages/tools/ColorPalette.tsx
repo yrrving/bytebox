@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Copy, Check, Plus, Trash2, Shuffle } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function randomColor(): string {
   return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')

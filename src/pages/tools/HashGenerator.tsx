@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const ALGORITHMS = ['SHA-256', 'SHA-384', 'SHA-512', 'SHA-1'] as const
 type Algorithm = typeof ALGORITHMS[number]

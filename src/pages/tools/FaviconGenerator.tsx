@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const SIZES = [16, 32, 48, 64, 128, 180, 192, 512]
 

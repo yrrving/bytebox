@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 export default function BackgroundRemover() {
   const { t } = useLanguage()

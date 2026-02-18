@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const CHAR_RAMPS = {
   standard: ' .:-=+*#%@',

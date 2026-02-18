@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { Play, Square } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function createClick(ctx: AudioContext, time: number, accent: boolean) {
   const osc = ctx.createOscillator()

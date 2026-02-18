@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Shuffle } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 export default function RandomPicker() {
   const { t } = useLanguage()

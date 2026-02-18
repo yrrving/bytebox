@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Search, Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 export default function HttpHeaders() {
   const { t } = useLanguage()

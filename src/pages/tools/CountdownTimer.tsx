@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { Play, Pause, RotateCcw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function formatTime(ms: number): string {
   if (ms <= 0) return '00:00:00'

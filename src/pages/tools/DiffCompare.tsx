@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 interface DiffLine {
   type: 'same' | 'added' | 'removed'

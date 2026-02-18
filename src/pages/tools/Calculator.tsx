@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function calculate(expression: string): number {
   const tokens: (number | string)[] = []

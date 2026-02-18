@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 import { Play, Pause, RotateCcw, Flag } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function formatTime(ms: number): string {
   const minutes = Math.floor(ms / 60000)

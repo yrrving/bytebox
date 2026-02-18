@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Download } from 'lucide-react'
 import QRCode from 'qrcode'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 export default function QrCodeTool() {
   const { t } = useLanguage()

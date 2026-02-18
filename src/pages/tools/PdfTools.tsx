@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Download, Plus, X, GripVertical } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 interface PdfFile {
   name: string

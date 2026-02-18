@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Mic, Square, Copy, Check, Trash2 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const LANG_OPTIONS = [
   { code: 'sv-SE', label: 'Svenska' },

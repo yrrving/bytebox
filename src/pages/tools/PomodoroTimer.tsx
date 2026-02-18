@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { Play, Pause, RotateCcw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const WORK_DURATION = 25 * 60 * 1000
 const BREAK_DURATION = 5 * 60 * 1000

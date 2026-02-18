@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { Copy, Check, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 const CHARSETS = {
   uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',

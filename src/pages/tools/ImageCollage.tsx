@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Plus, Download, X } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 type Layout = '2x1' | '1x2' | '2x2' | '3x1' | '1x3'
 

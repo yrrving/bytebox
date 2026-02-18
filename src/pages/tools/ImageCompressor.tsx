@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Upload, Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + ' B'

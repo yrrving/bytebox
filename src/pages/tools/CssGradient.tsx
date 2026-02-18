@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Copy, Check, Plus, X } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 type GradientType = 'linear' | 'radial'
 

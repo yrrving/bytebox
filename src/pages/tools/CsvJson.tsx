@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Copy, Check, ArrowRightLeft } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function csvToJson(csv: string): string {
   const lines = csv.trim().split('\n')

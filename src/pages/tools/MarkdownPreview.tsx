@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { Copy, Check, Trash2, Eye, Edit3 } from 'lucide-react'
 import { marked } from 'marked'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 type ViewMode = 'split' | 'edit' | 'preview'
 

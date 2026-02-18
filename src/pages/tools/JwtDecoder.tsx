@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 function decodeJwt(token: string): { header: string; payload: string; signature: string } | null {
   const parts = token.trim().split('.')

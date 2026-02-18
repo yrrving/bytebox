@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 interface CropArea {
   x: number

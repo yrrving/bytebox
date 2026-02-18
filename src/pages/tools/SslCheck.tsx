@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ShieldCheck, ShieldAlert, Search } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import BackLink from '../../components/BackLink'
 
 interface SslInfo {
   subject: string

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Download, Square, Circle, Pencil, Undo2, Trash2, Upload } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
@@ -10,7 +10,7 @@ type Shape =
 
 type Tool = 'rect' | 'circle' | 'freehand'
 
-const CANVAS_PADDING = 60
+interface ImageRect { x: number; y: number; w: number; h: number }
 
 export default function CutFileGenerator() {
   const { t } = useLanguage()
@@ -18,9 +18,11 @@ export default function CutFileGenerator() {
   const ct = t.cutFileGenerator
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const [image, setImage] = useState<HTMLImageElement | null>(null)
   const [imageDataUrl, setImageDataUrl] = useState('')
+  const [imageRect, setImageRect] = useState<ImageRect>({ x: 0, y: 0, w: 0, h: 0 })
   const [tool, setTool] = useState<Tool>('rect')
   const [shapes, setShapes] = useState<Shape[]>([])
   const [drawing, setDrawing] = useState(false)
@@ -40,19 +42,32 @@ export default function CutFileGenerator() {
     }
   }, [])
 
-  const redrawCanvas = useCallback((img: HTMLImageElement, allShapes: Shape[], active: Shape | null, sw: number) => {
+  const fitImageToCanvas = useCallback((img: HTMLImageElement, canvasW: number, canvasH: number): ImageRect => {
+    // Scale image to fit ~55% of the canvas, centered
+    const maxW = canvasW * 0.55
+    const maxH = canvasH * 0.55
+    const scale = Math.min(maxW / img.width, maxH / img.height, 1)
+    const w = img.width * scale
+    const h = img.height * scale
+    return {
+      x: (canvasW - w) / 2,
+      y: (canvasH - h) / 2,
+      w,
+      h,
+    }
+  }, [])
+
+  const redrawCanvas = useCallback((img: HTMLImageElement, imgRect: ImageRect, allShapes: Shape[], active: Shape | null, sw: number) => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')!
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    // Draw margin background
+    // Background (drawing area)
     ctx.fillStyle = '#e5e7eb'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    // Draw image centered with padding
-    ctx.drawImage(img, CANVAS_PADDING, CANVAS_PADDING, img.width, img.height)
+    // Draw image at computed position
+    ctx.drawImage(img, imgRect.x, imgRect.y, imgRect.w, imgRect.h)
 
     const drawShape = (shape: Shape) => {
       ctx.strokeStyle = '#ff0000'
@@ -76,9 +91,25 @@ export default function CutFileGenerator() {
     if (active) drawShape(active)
   }, [])
 
+  const setupCanvas = useCallback((img: HTMLImageElement) => {
+    const canvas = canvasRef.current
+    const container = containerRef.current
+    if (!canvas || !container) return
+    const cw = container.clientWidth
+    const ch = Math.max(500, cw * 0.7)
+    canvas.width = cw
+    canvas.height = ch
+    const rect = fitImageToCanvas(img, cw, ch)
+    setImageRect(rect)
+  }, [fitImageToCanvas])
+
+  useLayoutEffect(() => {
+    if (image) setupCanvas(image)
+  }, [image, setupCanvas])
+
   useEffect(() => {
-    if (image) redrawCanvas(image, shapes, currentShape, strokeWidth)
-  }, [image, shapes, currentShape, strokeWidth, redrawCanvas])
+    if (image) redrawCanvas(image, imageRect, shapes, currentShape, strokeWidth)
+  }, [image, imageRect, shapes, currentShape, strokeWidth, redrawCanvas])
 
   const handleImage = (file: File) => {
     const reader = new FileReader()
@@ -90,11 +121,6 @@ export default function CutFileGenerator() {
         setImage(img)
         setShapes([])
         setCurrentShape(null)
-        const canvas = canvasRef.current
-        if (canvas) {
-          canvas.width = img.width + CANVAS_PADDING * 2
-          canvas.height = img.height + CANVAS_PADDING * 2
-        }
       }
       img.src = dataUrl
     }
@@ -182,8 +208,10 @@ export default function CutFileGenerator() {
 
   const exportSvg = () => {
     if (!image) return
-    const w = image.width + CANVAS_PADDING * 2
-    const h = image.height + CANVAS_PADDING * 2
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const w = canvas.width
+    const h = canvas.height
 
     const shapeSvg = shapes.map((shape) => {
       if (shape.type === 'rect') {
@@ -198,7 +226,7 @@ export default function CutFileGenerator() {
     }).filter(Boolean).join('\n')
 
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <image href="${imageDataUrl}" x="${CANVAS_PADDING}" y="${CANVAS_PADDING}" width="${image.width}" height="${image.height}"/>
+  <image href="${imageDataUrl}" x="${imageRect.x}" y="${imageRect.y}" width="${imageRect.w}" height="${imageRect.h}"/>
 ${shapeSvg}
 </svg>`
 
@@ -306,7 +334,7 @@ ${shapeSvg}
           </div>
 
           {/* Canvas */}
-          <div className="overflow-auto rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white">
+          <div ref={containerRef} className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white">
             <canvas
               ref={canvasRef}
               className="mx-auto block max-w-full cursor-crosshair"

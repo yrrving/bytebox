@@ -354,17 +354,24 @@ ${shapeSvg}
 
           {/* Export */}
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4 space-y-4">
-            <label
-              className="flex items-center justify-between cursor-pointer select-none"
+            <button
+              type="button"
               onClick={() => setIncludeBackground((v) => !v)}
+              className={`w-full flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition-colors border ${
+                includeBackground
+                  ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300'
+                  : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hc:text-white hc:bg-gray-900 hc:border-gray-500'
+              }`}
             >
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hc:text-white">
-                {ct?.includeBackground || 'Inkludera bakgrund'}
+              <span>{ct?.includeBackground || 'Inkludera bakgrund'}</span>
+              <span className={`inline-flex items-center justify-center h-5 w-5 rounded text-xs font-bold ${
+                includeBackground
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 dark:bg-gray-600 text-gray-400 dark:text-gray-500'
+              }`}>
+                {includeBackground ? '✓' : ''}
               </span>
-              <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${includeBackground ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'}`}>
-                <span className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${includeBackground ? 'translate-x-6' : 'translate-x-1'}`} />
-              </div>
-            </label>
+            </button>
             <button
               onClick={exportSvg}
               disabled={shapes.length === 0}

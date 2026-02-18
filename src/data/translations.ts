@@ -473,6 +473,7 @@ export interface Translation {
     strokeWidth: string
     exportSvg: string
     includeBackground: string
+    move: string
   }
   pdfTools?: {
     upload: string
@@ -933,6 +934,7 @@ export const translations: Record<string, Translation> = {
       strokeWidth: 'Linjebredd',
       exportSvg: 'Exportera SVG',
       includeBackground: 'Inkludera bakgrund',
+      move: 'Flytta',
     },
     pdfTools: {
       upload: 'Klicka eller dra hit PDF-filer',
@@ -1446,6 +1448,7 @@ export const translations: Record<string, Translation> = {
       strokeWidth: 'Stroke width',
       exportSvg: 'Export SVG',
       includeBackground: 'Include background',
+      move: 'Move',
     },
     pdfTools: {
       upload: 'Click or drag PDF files here',
@@ -1959,6 +1962,7 @@ export const translations: Record<string, Translation> = {
       strokeWidth: 'Grosor de línea',
       exportSvg: 'Exportar SVG',
       includeBackground: 'Incluir fondo',
+      move: 'Mover',
     },
     pdfTools: {
       upload: 'Haz clic o arrastra archivos PDF aquí',
@@ -2472,6 +2476,7 @@ export const translations: Record<string, Translation> = {
       strokeWidth: 'Épaisseur du trait',
       exportSvg: 'Exporter SVG',
       includeBackground: 'Inclure l\'arrière-plan',
+      move: 'Déplacer',
     },
     pdfTools: {
       upload: 'Cliquez ou glissez des fichiers PDF ici',
@@ -2985,6 +2990,7 @@ export const translations: Record<string, Translation> = {
       strokeWidth: 'Strichbreite',
       exportSvg: 'SVG exportieren',
       includeBackground: 'Hintergrund einbeziehen',
+      move: 'Verschieben',
     },
     pdfTools: {
       upload: 'Klicken oder PDF-Dateien hierher ziehen',
@@ -3498,6 +3504,7 @@ export const translations: Record<string, Translation> = {
       strokeWidth: 'Espessura do traço',
       exportSvg: 'Exportar SVG',
       includeBackground: 'Incluir fundo',
+      move: 'Mover',
     },
     pdfTools: {
       upload: 'Clique ou arraste arquivos PDF aqui',

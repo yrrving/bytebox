@@ -465,10 +465,13 @@ export interface Translation {
   }
   cutFileGenerator?: {
     upload: string
-    threshold: string
-    offset: string
-    generate: string
-    downloadSvg: string
+    rect: string
+    circle: string
+    freehand: string
+    undo: string
+    clearAll: string
+    strokeWidth: string
+    exportSvg: string
   }
   pdfTools?: {
     upload: string
@@ -921,10 +924,13 @@ export const translations: Record<string, Translation> = {
     },
     cutFileGenerator: {
       upload: 'Klicka eller dra hit en bild',
-      threshold: 'Tröskel',
-      offset: 'Offset (px)',
-      generate: 'Generera skärfil',
-      downloadSvg: 'Ladda ner SVG',
+      rect: 'Rektangel',
+      circle: 'Cirkel',
+      freehand: 'Frihand',
+      undo: 'Ångra',
+      clearAll: 'Rensa alla',
+      strokeWidth: 'Linjebredd',
+      exportSvg: 'Exportera SVG',
     },
     pdfTools: {
       upload: 'Klicka eller dra hit PDF-filer',
@@ -972,7 +978,7 @@ export const translations: Record<string, Translation> = {
       'bildkomprimering': { name: 'Bildkomprimering', description: 'Komprimera bilder utan att tappa kvalitet', hint: 'Minska filstorleken på bilder utan att tappa för mycket kvalitet. Välj komprimeringsnivå och max bredd — allt sker lokalt.' },
       'markdown-forhandsgranskning': { name: 'Markdown-förhandsgranskning', description: 'Förhandsgranska och redigera Markdown-text', hint: 'Skriv Markdown och se resultatet live. Perfekt för README-filer, dokumentation eller blogginlägg — med delad vy och HTML-export.' },
       'mediakonverterare': { name: 'Mediakonverterare', description: 'Konvertera mellan ljud- och videoformat — MP4, MP3, WAV, WebM, OGG och fler', hint: 'Konvertera ljud- och videofiler direkt i webbläsaren utan att ladda upp till någon server. Stöder WAV, WebM och ljudextraktion från video.' },
-      'brodyrkortsvisare': { name: 'Brodyrkortsvisare', description: 'Visa och förhandsgranska brodyrmönster från PES, DST, JEF och andra format', hint: 'Ladda in brodyrifiler och se mönstret renderat med trådfärger, stygnantal och dimensioner. Stöder PES- och DST-format.' },
+      'brodyrkortsvisare': { name: 'Brodyrkortsvisare', description: 'Visa och förhandsgranska brodyrmönster från PES, DST, JEF och andra format', hint: 'Ladda in brodyrifiler och se mönstret renderat med trådfärger, stygnantal och dimensioner. Stöder PES-, DST- och JEF-format.' },
       'bildbeskärare': { name: 'Bildbeskärare', description: 'Beskär bilder till önskad storlek och proportioner' },
       'bakgrundsborttagare': { name: 'Bakgrundsborttagare', description: 'Ta bort bakgrund från bilder automatiskt' },
       'favicon-generator': { name: 'Favicon-generator', description: 'Skapa favicons för webbplatser från valfri bild' },
@@ -1430,10 +1436,13 @@ export const translations: Record<string, Translation> = {
     },
     cutFileGenerator: {
       upload: 'Click or drag an image here',
-      threshold: 'Threshold',
-      offset: 'Offset (px)',
-      generate: 'Generate cut file',
-      downloadSvg: 'Download SVG',
+      rect: 'Rectangle',
+      circle: 'Circle',
+      freehand: 'Freehand',
+      undo: 'Undo',
+      clearAll: 'Clear all',
+      strokeWidth: 'Stroke width',
+      exportSvg: 'Export SVG',
     },
     pdfTools: {
       upload: 'Click or drag PDF files here',
@@ -1481,7 +1490,7 @@ export const translations: Record<string, Translation> = {
       'bildkomprimering': { name: 'Image Compression', description: 'Compress images without losing quality', hint: 'Reduce image file size without losing too much quality. Choose compression level and max width — everything happens locally.' },
       'markdown-forhandsgranskning': { name: 'Markdown Preview', description: 'Preview and edit Markdown text', hint: 'Write Markdown and see the result live. Perfect for README files, documentation or blog posts — with split view and HTML export.' },
       'mediakonverterare': { name: 'Media Converter', description: 'Convert between audio and video formats — MP4, MP3, WAV, WebM, OGG and more', hint: 'Convert audio and video files directly in your browser without uploading to any server. Supports WAV, WebM and audio extraction from video.' },
-      'brodyrkortsvisare': { name: 'Embroidery Viewer', description: 'View and preview embroidery patterns from PES, DST, JEF and other formats', hint: 'Load embroidery files and see the pattern rendered with thread colors, stitch count and dimensions. Supports PES and DST formats.' },
+      'brodyrkortsvisare': { name: 'Embroidery Viewer', description: 'View and preview embroidery patterns from PES, DST, JEF and other formats', hint: 'Load embroidery files and see the pattern rendered with thread colors, stitch count and dimensions. Supports PES, DST and JEF formats.' },
       'bildbeskärare': { name: 'Image Cropper', description: 'Crop images to desired size and aspect ratio' },
       'bakgrundsborttagare': { name: 'Background Remover', description: 'Automatically remove backgrounds from images' },
       'favicon-generator': { name: 'Favicon Generator', description: 'Create favicons for websites from any image' },
@@ -1939,10 +1948,13 @@ export const translations: Record<string, Translation> = {
     },
     cutFileGenerator: {
       upload: 'Haz clic o arrastra una imagen aquí',
-      threshold: 'Umbral',
-      offset: 'Desplazamiento (px)',
-      generate: 'Generar archivo de corte',
-      downloadSvg: 'Descargar SVG',
+      rect: 'Rectángulo',
+      circle: 'Círculo',
+      freehand: 'Mano alzada',
+      undo: 'Deshacer',
+      clearAll: 'Borrar todo',
+      strokeWidth: 'Grosor de línea',
+      exportSvg: 'Exportar SVG',
     },
     pdfTools: {
       upload: 'Haz clic o arrastra archivos PDF aquí',
@@ -2448,10 +2460,13 @@ export const translations: Record<string, Translation> = {
     },
     cutFileGenerator: {
       upload: 'Cliquez ou glissez une image ici',
-      threshold: 'Seuil',
-      offset: 'Décalage (px)',
-      generate: 'Générer fichier de découpe',
-      downloadSvg: 'Télécharger SVG',
+      rect: 'Rectangle',
+      circle: 'Cercle',
+      freehand: 'Main levée',
+      undo: 'Annuler',
+      clearAll: 'Tout effacer',
+      strokeWidth: 'Épaisseur du trait',
+      exportSvg: 'Exporter SVG',
     },
     pdfTools: {
       upload: 'Cliquez ou glissez des fichiers PDF ici',
@@ -2957,10 +2972,13 @@ export const translations: Record<string, Translation> = {
     },
     cutFileGenerator: {
       upload: 'Klicken oder Bild hierher ziehen',
-      threshold: 'Schwellenwert',
-      offset: 'Versatz (px)',
-      generate: 'Schnittdatei generieren',
-      downloadSvg: 'SVG herunterladen',
+      rect: 'Rechteck',
+      circle: 'Kreis',
+      freehand: 'Freihand',
+      undo: 'Rückgängig',
+      clearAll: 'Alle löschen',
+      strokeWidth: 'Strichbreite',
+      exportSvg: 'SVG exportieren',
     },
     pdfTools: {
       upload: 'Klicken oder PDF-Dateien hierher ziehen',
@@ -3466,10 +3484,13 @@ export const translations: Record<string, Translation> = {
     },
     cutFileGenerator: {
       upload: 'Clique ou arraste uma imagem aqui',
-      threshold: 'Limiar',
-      offset: 'Deslocamento (px)',
-      generate: 'Gerar arquivo de corte',
-      downloadSvg: 'Baixar SVG',
+      rect: 'Retângulo',
+      circle: 'Círculo',
+      freehand: 'Mão livre',
+      undo: 'Desfazer',
+      clearAll: 'Limpar tudo',
+      strokeWidth: 'Espessura do traço',
+      exportSvg: 'Exportar SVG',
     },
     pdfTools: {
       upload: 'Clique ou arraste arquivos PDF aqui',

@@ -232,10 +232,98 @@ function parseDst(buffer: ArrayBuffer): EmbroideryData | null {
   }
 }
 
+function parseJef(buffer: ArrayBuffer): EmbroideryData | null {
+  if (buffer.byteLength < 116) return null
+  const view = new DataView(buffer)
+  const bytes = new Uint8Array(buffer)
+
+  const stitchOffset = view.getInt32(0, true)
+  if (stitchOffset <= 0 || stitchOffset >= buffer.byteLength) return null
+
+  const numColors = view.getInt32(24, true)
+  if (numColors <= 0 || numColors > 100) return null
+
+  // Read color indices from header (starting at byte 116, each 4 bytes)
+  const colorIndices: number[] = []
+  for (let i = 0; i < numColors; i++) {
+    const idx = view.getInt32(116 + i * 4, true)
+    colorIndices.push(idx)
+  }
+
+  const colors = colorIndices.map((ci) => PES_THREAD_COLORS[Math.abs(ci) % PES_THREAD_COLORS.length])
+
+  // Parse stitch data
+  const stitches: Stitch[] = []
+  let x = 0
+  let y = 0
+  let colorIdx = 0
+  let pos = stitchOffset
+
+  while (pos + 1 < buffer.byteLength) {
+    const b0 = bytes[pos]
+    const b1 = bytes[pos + 1]
+
+    // End marker
+    if (b0 === 0x80 && b1 === 0x10) break
+
+    // Color change
+    if (b0 === 0x80 && b1 === 0x01) {
+      colorIdx++
+      pos += 2
+      continue
+    }
+
+    // Move (jump stitch)
+    if (b0 === 0x80 && b1 === 0x02) {
+      pos += 2
+      if (pos + 1 >= buffer.byteLength) break
+      const dx = bytes[pos] > 127 ? bytes[pos] - 256 : bytes[pos]
+      const dy = bytes[pos + 1] > 127 ? bytes[pos + 1] - 256 : bytes[pos + 1]
+      x += dx
+      y += dy
+      stitches.push({ x, y, type: 'move', colorIndex: Math.min(colorIdx, numColors - 1) })
+      pos += 2
+      continue
+    }
+
+    // Normal stitch: 2 bytes signed
+    const dx = b0 > 127 ? b0 - 256 : b0
+    const dy = b1 > 127 ? b1 - 256 : b1
+    x += dx
+    y += dy
+    stitches.push({ x, y, type: 'normal', colorIndex: Math.min(colorIdx, numColors - 1) })
+    pos += 2
+  }
+
+  if (stitches.length === 0) return null
+
+  const xs = stitches.map((s) => s.x)
+  const ys = stitches.map((s) => s.y)
+  const minX = Math.min(...xs)
+  const minY = Math.min(...ys)
+  const maxX = Math.max(...xs)
+  const maxY = Math.max(...ys)
+
+  stitches.forEach((s) => {
+    s.x -= minX
+    s.y -= minY
+  })
+
+  return {
+    stitches,
+    colors,
+    width: maxX - minX,
+    height: maxY - minY,
+    stitchCount: stitches.filter((s) => s.type === 'normal').length,
+    colorChanges: Math.max(0, colorIdx),
+  }
+}
+
 function parseEmbroidery(buffer: ArrayBuffer, fileName: string): EmbroideryData | null {
   const ext = fileName.toLowerCase().split('.').pop()
   if (ext === 'pes') return parsePes(buffer)
   if (ext === 'dst') return parseDst(buffer)
+  if (ext === 'jef') return parseJef(buffer)
   return null
 }
 
@@ -322,7 +410,7 @@ export default function EmbroideryViewer() {
       const result = parseEmbroidery(buffer, file.name)
 
       if (!result) {
-        setError('Kunde inte läsa filen. Kontrollera att det är en giltig PES- eller DST-fil.')
+        setError('Kunde inte läsa filen. Kontrollera att det är en giltig PES-, DST- eller JEF-fil.')
         setData(null)
         return
       }
@@ -362,7 +450,7 @@ export default function EmbroideryViewer() {
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
           Klicka eller dra hit en brodyrifil
         </p>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">PES, DST</p>
+        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">PES, DST, JEF</p>
         <input
           ref={fileRef}
           type="file"

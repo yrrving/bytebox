@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { RefreshCw, Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
@@ -21,27 +21,28 @@ export default function IpInfo() {
 
   const [data, setData] = useState<IpData | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [failed, setFailed] = useState(false)
   const [copied, setCopied] = useState(false)
+  const error = failed ? (ip?.error ?? 'Kunde inte hämta IP-information. Kontrollera din internetanslutning.') : ''
 
-  const fetchIp = async () => {
+  const fetchIp = useCallback(async () => {
     setLoading(true)
-    setError('')
+    setFailed(false)
     try {
       const res = await fetch('https://ipapi.co/json/')
       if (!res.ok) throw new Error('Failed to fetch')
       const json = await res.json()
       setData(json)
     } catch {
-      setError(ip?.error ?? 'Kunde inte hämta IP-information. Kontrollera din internetanslutning.')
+      setFailed(true)
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
   useEffect(() => {
     fetchIp()
-  }, [])
+  }, [fetchIp])
 
   const copyIp = async () => {
     if (!data?.ip) return

@@ -44,12 +44,10 @@ export default function CountdownTimer() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const endTimeRef = useRef(0)
 
-  const totalMs = () => {
-    return ((parseInt(hours) || 0) * 3600 + (parseInt(minutes) || 0) * 60 + (parseInt(seconds) || 0)) * 1000
-  }
+  const totalMs = ((parseInt(hours) || 0) * 3600 + (parseInt(minutes) || 0) * 60 + (parseInt(seconds) || 0)) * 1000
 
   const start = useCallback(() => {
-    const ms = remaining > 0 ? remaining : totalMs()
+    const ms = remaining > 0 ? remaining : totalMs
     if (ms <= 0) return
     endTimeRef.current = Date.now() + ms
     setDone(false)
@@ -67,7 +65,7 @@ export default function CountdownTimer() {
     }, 100)
     setRemaining(ms)
     setRunning(true)
-  }, [remaining, hours, minutes, seconds])
+  }, [remaining, totalMs])
 
   const pause = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
@@ -86,7 +84,7 @@ export default function CountdownTimer() {
   }, [])
 
   const isSetup = !running && remaining === 0 && !done
-  const progress = running || remaining > 0 ? remaining / totalMs() : 0
+  const progress = (running || remaining > 0) && totalMs > 0 ? remaining / totalMs : 0
 
   return (
     <div className="mx-auto max-w-xl space-y-6 py-10">
@@ -146,7 +144,7 @@ export default function CountdownTimer() {
           {!running && !done && (
             <button
               onClick={start}
-              disabled={isSetup && totalMs() <= 0}
+              disabled={isSetup && totalMs <= 0}
               className="flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700 hc:bg-white hc:text-black disabled:opacity-50"
             >
               <Play className="h-5 w-5" />

@@ -6,6 +6,13 @@ import BackLink from '../../components/BackLink'
 const ALGORITHMS = ['SHA-256', 'SHA-384', 'SHA-512', 'SHA-1'] as const
 type Algorithm = typeof ALGORITHMS[number]
 
+const EMPTY_HASHES: Record<Algorithm, string> = {
+  'SHA-256': '',
+  'SHA-384': '',
+  'SHA-512': '',
+  'SHA-1': '',
+}
+
 async function computeHash(text: string, algorithm: Algorithm): Promise<string> {
   const encoder = new TextEncoder()
   const data = encoder.encode(text)
@@ -20,19 +27,12 @@ export default function HashGenerator() {
   const h = t.hashGenerator
 
   const [input, setInput] = useState('')
-  const [hashes, setHashes] = useState<Record<Algorithm, string>>({
-    'SHA-256': '',
-    'SHA-384': '',
-    'SHA-512': '',
-    'SHA-1': '',
-  })
+  const [computedHashes, setComputedHashes] = useState<Record<Algorithm, string>>(EMPTY_HASHES)
   const [copiedAlg, setCopiedAlg] = useState<string | null>(null)
+  const hashes = input ? computedHashes : EMPTY_HASHES
 
   useEffect(() => {
-    if (!input) {
-      setHashes({ 'SHA-256': '', 'SHA-384': '', 'SHA-512': '', 'SHA-1': '' })
-      return
-    }
+    if (!input) return
     let cancelled = false
     Promise.all(
       ALGORITHMS.map(async (alg) => {
@@ -41,11 +41,7 @@ export default function HashGenerator() {
       })
     ).then((results) => {
       if (cancelled) return
-      const next = { ...hashes }
-      for (const [alg, hash] of results) {
-        next[alg] = hash
-      }
-      setHashes(next)
+      setComputedHashes(Object.fromEntries(results) as Record<Algorithm, string>)
     })
     return () => { cancelled = true }
   }, [input])

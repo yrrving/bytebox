@@ -39,7 +39,7 @@ export default function JwtDecoder() {
   }
 
   // Check for exp/iat/nbf timestamps in payload
-  let timestamps: { key: string; label: string; value: string }[] = []
+  const timestamps: { key: string; label: string; value: string }[] = []
   if (decoded) {
     try {
       const payload = JSON.parse(decoded.payload)

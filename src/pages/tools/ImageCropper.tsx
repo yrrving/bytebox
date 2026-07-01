@@ -60,7 +60,7 @@ export default function ImageCropper() {
     const rect = containerRef.current.getBoundingClientRect()
     const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100))
     const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100))
-    let w = x - dragStart.x
+    const w = x - dragStart.x
     let h = y - dragStart.y
     if (ratio > 0) {
       h = w / ratio

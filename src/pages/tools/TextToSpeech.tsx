@@ -21,9 +21,9 @@ export default function TextToSpeech() {
     const loadVoices = () => {
       const v = speechSynthesis.getVoices()
       setVoices(v)
-      if (v.length > 0 && !selectedVoice) {
+      if (v.length > 0) {
         const def = v.find((voice) => voice.default) || v[0]
-        setSelectedVoice(def.voiceURI)
+        setSelectedVoice((prev) => prev || def.voiceURI)
       }
     }
     loadVoices()

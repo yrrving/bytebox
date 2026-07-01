@@ -14,11 +14,11 @@ export default function QrCodeTool() {
   const [fgColor, setFgColor] = useState('#000000')
   const [bgColor, setBgColor] = useState('#ffffff')
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [hasQr, setHasQr] = useState(false)
+  const [qrFailed, setQrFailed] = useState(false)
+  const hasQr = input !== '' && !qrFailed
 
   useEffect(() => {
     if (!input || !canvasRef.current) {
-      setHasQr(false)
       const ctx = canvasRef.current?.getContext('2d')
       if (ctx) {
         ctx.clearRect(0, 0, size, size)
@@ -31,8 +31,8 @@ export default function QrCodeTool() {
       margin: 2,
       color: { dark: fgColor, light: bgColor },
     })
-      .then(() => setHasQr(true))
-      .catch(() => setHasQr(false))
+      .then(() => setQrFailed(false))
+      .catch(() => setQrFailed(true))
   }, [input, size, fgColor, bgColor])
 
   const downloadPng = () => {

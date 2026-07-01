@@ -49,6 +49,7 @@ export interface Translation {
     natverk: string
     berakning: string
     produktivitet: string
+    spelutveckling: string
   }
   textTools?: {
     characters: string
@@ -547,6 +548,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Nätverk & Säkerhet',
       berakning: 'Beräkning & Konvertering',
       produktivitet: 'Produktivitet & Verktyg',
+      spelutveckling: 'Spelutveckling',
     },
     textTools: {
       characters: 'Tecken',
@@ -995,6 +997,7 @@ export const translations: Record<string, Translation> = {
       'csv-json': { name: 'CSV ↔ JSON', description: 'Konvertera mellan CSV- och JSON-format' },
       'pdf-verktyg': { name: 'PDF-verktyg', description: 'Slå ihop, dela och hantera PDF-filer' },
       'ocr': { name: 'OCR — Textigenkänning', description: 'Extrahera text från bilder med optisk teckenigenkänning' },
+      'traincells': { name: 'TrainCells', description: 'Bygg ditt eget 2D-spel — rita brickor, bygg banor och testa direkt i webbläsaren' },
       'metronom': { name: 'Metronom', description: 'Håll takten med en digital metronom' },
       'tonhojdsmatare': { name: 'Tonhöjdsmätare', description: 'Mät tonhöjd och frekvens via mikrofonen' },
       'vit-brus': { name: 'Vitt brus', description: 'Spela upp vitt brus och andra bakgrundsljud för fokus' },
@@ -1061,6 +1064,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Network & Security',
       berakning: 'Calculation & Conversion',
       produktivitet: 'Productivity & Tools',
+      spelutveckling: 'Game Development',
     },
     textTools: {
       characters: 'Characters',
@@ -1509,6 +1513,7 @@ export const translations: Record<string, Translation> = {
       'csv-json': { name: 'CSV ↔ JSON', description: 'Convert between CSV and JSON formats' },
       'pdf-verktyg': { name: 'PDF Tools', description: 'Merge, split and manage PDF files' },
       'ocr': { name: 'OCR — Text Recognition', description: 'Extract text from images using optical character recognition' },
+      'traincells': { name: 'TrainCells', description: 'Build your own 2D game — draw tiles, design levels and play right in the browser' },
       'metronom': { name: 'Metronome', description: 'Keep the beat with a digital metronome' },
       'tonhojdsmatare': { name: 'Pitch Detector', description: 'Measure pitch and frequency via the microphone' },
       'vit-brus': { name: 'White Noise', description: 'Play white noise and other ambient sounds for focus' },
@@ -1575,6 +1580,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Red y Seguridad',
       berakning: 'Cálculo y Conversión',
       produktivitet: 'Productividad y Herramientas',
+      spelutveckling: 'Desarrollo de juegos',
     },
     textTools: {
       characters: 'Caracteres',
@@ -2023,6 +2029,7 @@ export const translations: Record<string, Translation> = {
       'csv-json': { name: 'CSV ↔ JSON', description: 'Convertir entre formatos CSV y JSON' },
       'pdf-verktyg': { name: 'Herramientas PDF', description: 'Fusionar, dividir y gestionar archivos PDF' },
       'ocr': { name: 'OCR — Reconocimiento de texto', description: 'Extraer texto de imágenes con reconocimiento óptico de caracteres' },
+      'traincells': { name: 'TrainCells', description: 'Crea tu propio juego 2D: dibuja fichas, diseña niveles y juega directamente en el navegador' },
       'metronom': { name: 'Metrónomo', description: 'Mantén el ritmo con un metrónomo digital' },
       'tonhojdsmatare': { name: 'Detector de tono', description: 'Medir tono y frecuencia a través del micrófono' },
       'vit-brus': { name: 'Ruido blanco', description: 'Reproducir ruido blanco y otros sonidos ambientales para concentrarse' },
@@ -2089,6 +2096,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Réseau et Sécurité',
       berakning: 'Calcul et Conversion',
       produktivitet: 'Productivité et Outils',
+      spelutveckling: 'Développement de jeux',
     },
     textTools: {
       characters: 'Caractères',
@@ -2537,6 +2545,7 @@ export const translations: Record<string, Translation> = {
       'csv-json': { name: 'CSV ↔ JSON', description: 'Convertir entre les formats CSV et JSON' },
       'pdf-verktyg': { name: 'Outils PDF', description: 'Fusionner, diviser et gérer des fichiers PDF' },
       'ocr': { name: 'OCR — Reconnaissance de texte', description: 'Extraire du texte des images par reconnaissance optique de caractères' },
+      'traincells': { name: 'TrainCells', description: 'Créez votre propre jeu 2D — dessinez des tuiles, concevez des niveaux et jouez directement dans le navigateur' },
       'metronom': { name: 'Métronome', description: 'Gardez le rythme avec un métronome numérique' },
       'tonhojdsmatare': { name: 'Détecteur de tonalité', description: 'Mesurer la tonalité et la fréquence via le microphone' },
       'vit-brus': { name: 'Bruit blanc', description: 'Jouer du bruit blanc et d\'autres sons ambiants pour la concentration' },
@@ -2603,6 +2612,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Netzwerk & Sicherheit',
       berakning: 'Berechnung & Umrechnung',
       produktivitet: 'Produktivität & Werkzeuge',
+      spelutveckling: 'Spieleentwicklung',
     },
     textTools: {
       characters: 'Zeichen',
@@ -3051,6 +3061,7 @@ export const translations: Record<string, Translation> = {
       'csv-json': { name: 'CSV ↔ JSON', description: 'Zwischen CSV- und JSON-Formaten konvertieren' },
       'pdf-verktyg': { name: 'PDF-Werkzeuge', description: 'PDF-Dateien zusammenführen, teilen und verwalten' },
       'ocr': { name: 'OCR — Texterkennung', description: 'Text aus Bildern mit optischer Zeichenerkennung extrahieren' },
+      'traincells': { name: 'TrainCells', description: 'Baue dein eigenes 2D-Spiel — zeichne Kacheln, gestalte Level und spiele direkt im Browser' },
       'metronom': { name: 'Metronom', description: 'Den Takt halten mit einem digitalen Metronom' },
       'tonhojdsmatare': { name: 'Tonhöhenmesser', description: 'Tonhöhe und Frequenz über das Mikrofon messen' },
       'vit-brus': { name: 'Weißes Rauschen', description: 'Weißes Rauschen und andere Hintergrundgeräusche zur Konzentration abspielen' },
@@ -3117,6 +3128,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Rede e Seguranca',
       berakning: 'Calculo e Conversao',
       produktivitet: 'Produtividade e Ferramentas',
+      spelutveckling: 'Desenvolvimento de jogos',
     },
     textTools: {
       characters: 'Caracteres',
@@ -3565,6 +3577,7 @@ export const translations: Record<string, Translation> = {
       'csv-json': { name: 'CSV ↔ JSON', description: 'Converter entre formatos CSV e JSON' },
       'pdf-verktyg': { name: 'Ferramentas PDF', description: 'Mesclar, dividir e gerenciar arquivos PDF' },
       'ocr': { name: 'OCR — Reconhecimento de texto', description: 'Extrair texto de imagens com reconhecimento óptico de caracteres' },
+      'traincells': { name: 'TrainCells', description: 'Crie seu próprio jogo 2D — desenhe blocos, monte fases e jogue direto no navegador' },
       'metronom': { name: 'Metrônomo', description: 'Mantenha o ritmo com um metrônomo digital' },
       'tonhojdsmatare': { name: 'Detector de tom', description: 'Medir tom e frequência pelo microfone' },
       'vit-brus': { name: 'Ruído branco', description: 'Reproduzir ruído branco e outros sons ambientes para foco' },

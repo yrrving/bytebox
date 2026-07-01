@@ -53,12 +53,13 @@ import {
   Watch,
   StickyNote,
   Shuffle,
+  Gamepad2,
   type LucideIcon,
 } from 'lucide-react'
 
 export type DeviceType = 'dator' | 'mobil' | 'båda'
 export type ConnectionType = 'online' | 'offline'
-export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet'
+export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet' | 'spelutveckling'
 export type Category = 'alla' | 'dator' | 'mobil' | 'online' | 'offline'
 
 export interface Tool {
@@ -78,6 +79,7 @@ export const categoryOrder: ToolCategory[] = [
   'natverk',
   'berakning',
   'produktivitet',
+  'spelutveckling',
 ]
 
 export const tools: Tool[] = [
@@ -525,5 +527,15 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Shuffle,
     category: 'produktivitet',
+  },
+
+  // ── Spelutveckling ────────────────────────────────────────
+  {
+    id: 'traincells',
+    route: '/traincells',
+    device: 'dator',
+    connection: 'offline',
+    icon: Gamepad2,
+    category: 'spelutveckling',
   },
 ]

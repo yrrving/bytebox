@@ -57,6 +57,7 @@ import CutFileGenerator from './pages/tools/CutFileGenerator'
 import PdfTools from './pages/tools/PdfTools'
 import OcrTool from './pages/tools/OcrTool'
 import BackgroundRemover from './pages/tools/BackgroundRemover'
+import Traincells from './pages/tools/Traincells'
 
 export default function App() {
   return (
@@ -118,6 +119,7 @@ export default function App() {
         <Route path="/pdf-verktyg" element={<PdfTools />} />
         <Route path="/ocr" element={<OcrTool />} />
         <Route path="/bakgrundsborttagare" element={<BackgroundRemover />} />
+        <Route path="/traincells" element={<Traincells />} />
         <Route path="/:slug" element={<Placeholder />} />
       </Route>
     </Routes>

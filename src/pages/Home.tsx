@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, type Category, type ToolCategory } from '../data/tools'
@@ -14,6 +14,7 @@ const categoryIcons: Record<ToolCategory, LucideIcon> = {
   natverk: Globe,
   berakning: Hash,
   produktivitet: Zap,
+  spelutveckling: Gamepad2,
 }
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
     natverk: 'Nätverk & Säkerhet',
     berakning: 'Beräkning & Konvertering',
     produktivitet: 'Produktivitet & Verktyg',
+    spelutveckling: 'Spelutveckling',
   }
 
   const allCategoriesLabel = t.allCategories ?? 'Alla kategorier'

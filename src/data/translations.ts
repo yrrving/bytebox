@@ -41,6 +41,7 @@ export interface Translation {
     fixed: string
   }
   allCategories?: string
+  installApp?: string
   categories?: {
     bild: string
     text: string
@@ -540,6 +541,7 @@ export const translations: Record<string, Translation> = {
       fixed: 'Fixat',
     },
     allCategories: 'Alla kategorier',
+    installApp: 'Installera app',
     categories: {
       bild: 'Bild & Media',
       text: 'Text & Dokument',
@@ -1056,6 +1058,7 @@ export const translations: Record<string, Translation> = {
       fixed: 'Fixed',
     },
     allCategories: 'All categories',
+    installApp: 'Install app',
     categories: {
       bild: 'Image & Media',
       text: 'Text & Documents',
@@ -1572,6 +1575,7 @@ export const translations: Record<string, Translation> = {
       fixed: 'Corregido',
     },
     allCategories: 'Todas las categorías',
+    installApp: 'Instalar app',
     categories: {
       bild: 'Imagen y Medios',
       text: 'Texto y Documentos',
@@ -2088,6 +2092,7 @@ export const translations: Record<string, Translation> = {
       fixed: 'Corrigé',
     },
     allCategories: 'Toutes les catégories',
+    installApp: 'Installer l\'app',
     categories: {
       bild: 'Image et Médias',
       text: 'Texte et Documents',
@@ -2604,6 +2609,7 @@ export const translations: Record<string, Translation> = {
       fixed: 'Behoben',
     },
     allCategories: 'Alle Kategorien',
+    installApp: 'App installieren',
     categories: {
       bild: 'Bild & Medien',
       text: 'Text & Dokumente',
@@ -3120,6 +3126,7 @@ export const translations: Record<string, Translation> = {
       fixed: 'Corrigido',
     },
     allCategories: 'Todas as categorias',
+    installApp: 'Instalar app',
     categories: {
       bild: 'Imagem e Midia',
       text: 'Texto e Documentos',

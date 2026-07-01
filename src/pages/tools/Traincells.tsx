@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Maximize2, ExternalLink } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { Maximize2, Minimize2, ExternalLink } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
@@ -11,7 +11,22 @@ const TRAINCELLS_URL = `${import.meta.env.BASE_URL}traincells/index.html`
 export default function Traincells() {
   const { t } = useLanguage()
   const translation = t.tools['traincells']
-  const [fullscreen, setFullscreen] = useState(false)
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(document.fullscreenElement === wrapperRef.current)
+    document.addEventListener('fullscreenchange', onChange)
+    return () => document.removeEventListener('fullscreenchange', onChange)
+  }, [])
+
+  const toggleFullscreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.()
+    } else {
+      wrapperRef.current?.requestFullscreen?.()
+    }
+  }
 
   return (
     <div>
@@ -19,11 +34,11 @@ export default function Traincells() {
         <BackLink />
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setFullscreen((v) => !v)}
+            onClick={toggleFullscreen}
             className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
           >
-            <Maximize2 className="h-4 w-4" />
-            {fullscreen ? 'Avsluta helskärm' : 'Helskärm'}
+            {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+            {isFullscreen ? 'Avsluta helskärm' : 'Helskärm'}
           </button>
           <a
             href={TRAINCELLS_URL}
@@ -47,18 +62,15 @@ export default function Traincells() {
       </div>
 
       <div
-        className={
-          fullscreen
-            ? 'fixed inset-0 z-50 bg-white dark:bg-gray-900'
-            : 'overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-900'
-        }
+        ref={wrapperRef}
+        className="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-900"
       >
-        {fullscreen && (
+        {isFullscreen && (
           <button
-            onClick={() => setFullscreen(false)}
+            onClick={toggleFullscreen}
             className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-lg bg-gray-900/80 px-3 py-1.5 text-sm text-white backdrop-blur transition-colors hover:bg-gray-900"
           >
-            <Maximize2 className="h-4 w-4" />
+            <Minimize2 className="h-4 w-4" />
             Avsluta helskärm
           </button>
         )}
@@ -66,7 +78,7 @@ export default function Traincells() {
           src={TRAINCELLS_URL}
           title={translation?.name ?? 'TrainCells'}
           allow="fullscreen"
-          className={fullscreen ? 'h-full w-full border-0' : 'h-[80vh] w-full border-0'}
+          className={isFullscreen ? 'h-screen w-full border-0' : 'h-[80vh] w-full border-0'}
         />
       </div>
     </div>

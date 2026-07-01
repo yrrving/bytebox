@@ -1,0 +1,25 @@
+{
+  "name": "Bytebox",
+  "short_name": "Bytebox",
+  "description": "Din digitala verktygslåda – många verktyg samlade på ett ställe.",
+  "start_url": "/bytebox/",
+  "scope": "/bytebox/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#111827",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "/bytebox/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/bytebox/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

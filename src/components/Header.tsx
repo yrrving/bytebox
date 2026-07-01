@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Wrench, Sun, Moon, Eye, Globe, BookOpen } from 'lucide-react'
 import { useTheme, type Theme } from '../context/ThemeContext'
 import { useLanguage, type Language } from '../context/LanguageContext'
+import InstallButton from './InstallButton'
 
 const languageOptions: { value: Language; label: string }[] = [
   { value: 'sv', label: 'Svenska' },
@@ -38,6 +39,7 @@ export default function Header() {
           Bytebox
         </Link>
         <div className="flex items-center gap-3">
+          <InstallButton />
           <Link
             to="/journal"
             className="flex items-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hc:text-white no-underline transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"

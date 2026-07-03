@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.11.0',
+    date: '2026-07-03',
+    title: {
+      sv: 'HEIC-konverterare',
+      en: 'HEIC converter',
+      es: 'Conversor HEIC',
+      fr: 'Convertisseur HEIC',
+      de: 'HEIC-Konverter',
+      pt: 'Conversor HEIC',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'HEIC till JPG: konvertera iPhone-bilder (HEIC/HEIF) till JPG eller PNG, flera samtidigt, med kvalitetsreglage. Allt sker lokalt — inget laddas upp.',
+          en: 'HEIC to JPG: convert iPhone photos (HEIC/HEIF) to JPG or PNG, multiple at once, with a quality slider. Everything runs locally — nothing is uploaded.',
+          es: 'HEIC a JPG: convierte fotos de iPhone (HEIC/HEIF) a JPG o PNG, varias a la vez, con control de calidad. Todo se ejecuta localmente — no se sube nada.',
+          fr: 'HEIC vers JPG : convertissez des photos iPhone (HEIC/HEIF) en JPG ou PNG, plusieurs à la fois, avec un curseur de qualité. Tout en local — rien n\'est envoyé.',
+          de: 'HEIC zu JPG: iPhone-Fotos (HEIC/HEIF) in JPG oder PNG umwandeln, mehrere gleichzeitig, mit Qualitätsregler. Alles läuft lokal — nichts wird hochgeladen.',
+          pt: 'HEIC para JPG: converta fotos de iPhone (HEIC/HEIF) para JPG ou PNG, várias ao mesmo tempo, com controlo de qualidade. Tudo funciona localmente — nada é enviado.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.10.1',
     date: '2026-02-18',
     title: {

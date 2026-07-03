@@ -59,6 +59,7 @@ const CutFileGenerator = lazy(() => import('./pages/tools/CutFileGenerator'))
 const PdfTools = lazy(() => import('./pages/tools/PdfTools'))
 const OcrTool = lazy(() => import('./pages/tools/OcrTool'))
 const BackgroundRemover = lazy(() => import('./pages/tools/BackgroundRemover'))
+const HeicConverter = lazy(() => import('./pages/tools/HeicConverter'))
 const Traincells = lazy(() => import('./pages/tools/Traincells'))
 
 function LoadingFallback() {
@@ -130,6 +131,7 @@ export default function App() {
           <Route path="/pdf-verktyg" element={<PdfTools />} />
           <Route path="/ocr" element={<OcrTool />} />
           <Route path="/bakgrundsborttagare" element={<BackgroundRemover />} />
+          <Route path="/heic-till-jpg" element={<HeicConverter />} />
           <Route path="/traincells" element={<Traincells />} />
           <Route path="/:slug" element={<Placeholder />} />
         </Route>

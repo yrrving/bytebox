@@ -54,6 +54,7 @@ import {
   StickyNote,
   Shuffle,
   Gamepad2,
+  FileImage,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -84,6 +85,14 @@ export const categoryOrder: ToolCategory[] = [
 
 export const tools: Tool[] = [
   // ── Bild & Media ──────────────────────────────────────────
+  {
+    id: 'heic-till-jpg',
+    route: '/heic-till-jpg',
+    device: 'båda',
+    connection: 'offline',
+    icon: FileImage,
+    category: 'bild',
+  },
   {
     id: 'png-till-svg',
     route: '/png-till-svg',

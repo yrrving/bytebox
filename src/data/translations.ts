@@ -445,6 +445,16 @@ export interface Translation {
     upload: string
     downloadIco: string
   }
+  heicConverter?: {
+    upload: string
+    format: string
+    quality: string
+    converting: string
+    downloadAll: string
+    privacy: string
+    noHeic: string
+    failed: string
+  }
   imageCropper?: {
     upload: string
     free: string
@@ -908,6 +918,16 @@ export const translations: Record<string, Translation> = {
       upload: 'Klicka eller dra hit en bild',
       downloadIco: 'Ladda ner favicon.ico',
     },
+    heicConverter: {
+      upload: 'Klicka eller dra hit HEIC-bilder (från iPhone)',
+      format: 'Format',
+      quality: 'Kvalitet',
+      converting: 'Konverterar…',
+      downloadAll: 'Ladda ner alla',
+      privacy: 'Allt sker lokalt i din webbläsare. Bilderna laddas aldrig upp någonstans.',
+      noHeic: 'Inga HEIC/HEIF-filer hittades. Välj bilder från en iPhone.',
+      failed: 'Något gick fel vid konverteringen. Filen kanske inte är en giltig HEIC-bild.',
+    },
     imageCropper: {
       upload: 'Klicka eller dra hit en bild',
       free: 'Fri',
@@ -989,6 +1009,7 @@ export const translations: Record<string, Translation> = {
       'brodyrkortsvisare': { name: 'Brodyrkortsvisare', description: 'Visa och förhandsgranska brodyrmönster från PES, DST, JEF och andra format', hint: 'Ladda in brodyrifiler och se mönstret renderat med trådfärger, stygnantal och dimensioner. Stöder PES-, DST- och JEF-format.' },
       'bildbeskärare': { name: 'Bildbeskärare', description: 'Beskär bilder till önskad storlek och proportioner' },
       'bakgrundsborttagare': { name: 'Bakgrundsborttagare', description: 'Ta bort bakgrund från bilder automatiskt' },
+      'heic-till-jpg': { name: 'HEIC till JPG', description: 'Konvertera iPhone-bilder (HEIC) till JPG eller PNG', hint: 'iPhone sparar foton som HEIC, som många datorer inte kan öppna. Konvertera till JPG eller PNG — allt sker lokalt, inget laddas upp.' },
       'favicon-generator': { name: 'Favicon-generator', description: 'Skapa favicons för webbplatser från valfri bild' },
       'bildkollage': { name: 'Bildkollage', description: 'Kombinera flera bilder till ett snyggt kollage' },
       'pixelraknare': { name: 'Pixelräknare', description: 'Räkna pixlar och mät avstånd i bilder' },
@@ -1425,6 +1446,16 @@ export const translations: Record<string, Translation> = {
       upload: 'Click or drag an image here',
       downloadIco: 'Download favicon.ico',
     },
+    heicConverter: {
+      upload: 'Click or drop HEIC images (from iPhone) here',
+      format: 'Format',
+      quality: 'Quality',
+      converting: 'Converting…',
+      downloadAll: 'Download all',
+      privacy: 'Everything runs locally in your browser. Your images are never uploaded anywhere.',
+      noHeic: 'No HEIC/HEIF files found. Pick photos from an iPhone.',
+      failed: 'Something went wrong during conversion. The file may not be a valid HEIC image.',
+    },
     imageCropper: {
       upload: 'Click or drag an image here',
       free: 'Free',
@@ -1506,6 +1537,7 @@ export const translations: Record<string, Translation> = {
       'brodyrkortsvisare': { name: 'Embroidery Viewer', description: 'View and preview embroidery patterns from PES, DST, JEF and other formats', hint: 'Load embroidery files and see the pattern rendered with thread colors, stitch count and dimensions. Supports PES, DST and JEF formats.' },
       'bildbeskärare': { name: 'Image Cropper', description: 'Crop images to desired size and aspect ratio' },
       'bakgrundsborttagare': { name: 'Background Remover', description: 'Automatically remove backgrounds from images' },
+      'heic-till-jpg': { name: 'HEIC to JPG', description: 'Convert iPhone photos (HEIC) to JPG or PNG', hint: 'iPhones save photos as HEIC, which many computers can\'t open. Convert to JPG or PNG — all locally, nothing uploaded.' },
       'favicon-generator': { name: 'Favicon Generator', description: 'Create favicons for websites from any image' },
       'bildkollage': { name: 'Image Collage', description: 'Combine multiple images into a collage' },
       'pixelraknare': { name: 'Pixel Counter', description: 'Count pixels and measure distances in images' },
@@ -1942,6 +1974,16 @@ export const translations: Record<string, Translation> = {
       upload: 'Haz clic o arrastra una imagen aquí',
       downloadIco: 'Descargar favicon.ico',
     },
+    heicConverter: {
+      upload: 'Haz clic o arrastra aquí imágenes HEIC (de iPhone)',
+      format: 'Formato',
+      quality: 'Calidad',
+      converting: 'Convirtiendo…',
+      downloadAll: 'Descargar todo',
+      privacy: 'Todo se ejecuta localmente en tu navegador. Tus imágenes nunca se suben a ningún sitio.',
+      noHeic: 'No se encontraron archivos HEIC/HEIF. Elige fotos de un iPhone.',
+      failed: 'Algo salió mal durante la conversión. Puede que el archivo no sea una imagen HEIC válida.',
+    },
     imageCropper: {
       upload: 'Haz clic o arrastra una imagen aquí',
       free: 'Libre',
@@ -2023,6 +2065,7 @@ export const translations: Record<string, Translation> = {
       'brodyrkortsvisare': { name: 'Visor de bordado', description: 'Ver y previsualizar patrones de bordado de formatos PES, DST, JEF y otros', hint: 'Carga archivos de bordado y ve el patrón renderizado con colores de hilo, conteo de puntadas y dimensiones.' },
       'bildbeskärare': { name: 'Recortador de imágenes', description: 'Recortar imágenes al tamaño y proporción deseados' },
       'bakgrundsborttagare': { name: 'Eliminador de fondo', description: 'Eliminar fondos de imágenes automáticamente' },
+      'heic-till-jpg': { name: 'HEIC a JPG', description: 'Convierte fotos de iPhone (HEIC) a JPG o PNG', hint: 'Los iPhone guardan las fotos como HEIC, que muchos ordenadores no pueden abrir. Conviértelas a JPG o PNG — todo localmente, sin subir nada.' },
       'favicon-generator': { name: 'Generador de favicon', description: 'Crear favicons para sitios web desde cualquier imagen' },
       'bildkollage': { name: 'Collage de imágenes', description: 'Combinar varias imágenes en un collage' },
       'pixelraknare': { name: 'Contador de píxeles', description: 'Contar píxeles y medir distancias en imágenes' },
@@ -2459,6 +2502,16 @@ export const translations: Record<string, Translation> = {
       upload: 'Cliquez ou glissez une image ici',
       downloadIco: 'Télécharger favicon.ico',
     },
+    heicConverter: {
+      upload: 'Cliquez ou déposez ici des images HEIC (d\'iPhone)',
+      format: 'Format',
+      quality: 'Qualité',
+      converting: 'Conversion…',
+      downloadAll: 'Tout télécharger',
+      privacy: 'Tout s\'exécute localement dans votre navigateur. Vos images ne sont jamais envoyées nulle part.',
+      noHeic: 'Aucun fichier HEIC/HEIF trouvé. Choisissez des photos d\'un iPhone.',
+      failed: 'Une erreur s\'est produite lors de la conversion. Le fichier n\'est peut-être pas une image HEIC valide.',
+    },
     imageCropper: {
       upload: 'Cliquez ou glissez une image ici',
       free: 'Libre',
@@ -2540,6 +2593,7 @@ export const translations: Record<string, Translation> = {
       'brodyrkortsvisare': { name: 'Visionneuse de broderie', description: 'Afficher et prévisualiser des motifs de broderie aux formats PES, DST, JEF et autres', hint: 'Chargez des fichiers de broderie et voyez le motif rendu avec les couleurs de fil, le nombre de points et les dimensions.' },
       'bildbeskärare': { name: 'Rogneur d\'images', description: 'Rogner des images à la taille et aux proportions souhaitées' },
       'bakgrundsborttagare': { name: 'Suppression d\'arrière-plan', description: 'Supprimer automatiquement l\'arrière-plan des images' },
+      'heic-till-jpg': { name: 'HEIC vers JPG', description: 'Convertir des photos iPhone (HEIC) en JPG ou PNG', hint: 'Les iPhone enregistrent les photos en HEIC, que beaucoup d\'ordinateurs ne peuvent pas ouvrir. Convertissez en JPG ou PNG — tout en local, rien n\'est envoyé.' },
       'favicon-generator': { name: 'Générateur de favicon', description: 'Créer des favicons pour sites web à partir de n\'importe quelle image' },
       'bildkollage': { name: 'Collage d\'images', description: 'Combiner plusieurs images en un collage' },
       'pixelraknare': { name: 'Compteur de pixels', description: 'Compter les pixels et mesurer les distances dans les images' },
@@ -2976,6 +3030,16 @@ export const translations: Record<string, Translation> = {
       upload: 'Klicken oder Bild hierher ziehen',
       downloadIco: 'Favicon.ico herunterladen',
     },
+    heicConverter: {
+      upload: 'HEIC-Bilder (vom iPhone) hier klicken oder ablegen',
+      format: 'Format',
+      quality: 'Qualität',
+      converting: 'Konvertiere…',
+      downloadAll: 'Alle herunterladen',
+      privacy: 'Alles läuft lokal in deinem Browser. Deine Bilder werden nirgendwo hochgeladen.',
+      noHeic: 'Keine HEIC/HEIF-Dateien gefunden. Wähle Fotos von einem iPhone.',
+      failed: 'Bei der Konvertierung ist etwas schiefgelaufen. Die Datei ist möglicherweise kein gültiges HEIC-Bild.',
+    },
     imageCropper: {
       upload: 'Klicken oder Bild hierher ziehen',
       free: 'Frei',
@@ -3057,6 +3121,7 @@ export const translations: Record<string, Translation> = {
       'brodyrkortsvisare': { name: 'Stickdatei-Betrachter', description: 'Stickmuster aus PES, DST, JEF und anderen Formaten anzeigen und vorab ansehen', hint: 'Laden Sie Stickdateien und sehen Sie das Muster mit Fadenfarben, Stichanzahl und Abmessungen gerendert.' },
       'bildbeskärare': { name: 'Bildzuschnitt', description: 'Bilder auf gewünschte Größe und Proportionen zuschneiden' },
       'bakgrundsborttagare': { name: 'Hintergrundentferner', description: 'Hintergründe automatisch aus Bildern entfernen' },
+      'heic-till-jpg': { name: 'HEIC zu JPG', description: 'iPhone-Fotos (HEIC) in JPG oder PNG umwandeln', hint: 'iPhones speichern Fotos als HEIC, das viele Computer nicht öffnen können. In JPG oder PNG umwandeln — alles lokal, nichts wird hochgeladen.' },
       'favicon-generator': { name: 'Favicon-Generator', description: 'Favicons für Websites aus beliebigen Bildern erstellen' },
       'bildkollage': { name: 'Bildcollage', description: 'Mehrere Bilder zu einer Collage kombinieren' },
       'pixelraknare': { name: 'Pixelzähler', description: 'Pixel zählen und Abstände in Bildern messen' },
@@ -3493,6 +3558,16 @@ export const translations: Record<string, Translation> = {
       upload: 'Clique ou arraste uma imagem aqui',
       downloadIco: 'Baixar favicon.ico',
     },
+    heicConverter: {
+      upload: 'Clique ou arraste imagens HEIC (do iPhone) para aqui',
+      format: 'Formato',
+      quality: 'Qualidade',
+      converting: 'A converter…',
+      downloadAll: 'Descarregar tudo',
+      privacy: 'Tudo funciona localmente no seu navegador. As suas imagens nunca são enviadas para lado nenhum.',
+      noHeic: 'Nenhum ficheiro HEIC/HEIF encontrado. Escolha fotos de um iPhone.',
+      failed: 'Algo correu mal durante a conversão. O ficheiro pode não ser uma imagem HEIC válida.',
+    },
     imageCropper: {
       upload: 'Clique ou arraste uma imagem aqui',
       free: 'Livre',
@@ -3574,6 +3649,7 @@ export const translations: Record<string, Translation> = {
       'brodyrkortsvisare': { name: 'Visualizador de bordado', description: 'Visualizar e pré-visualizar padrões de bordado em formatos PES, DST, JEF e outros', hint: 'Carregue arquivos de bordado e veja o padrão renderizado com cores de linha, contagem de pontos e dimensões.' },
       'bildbeskärare': { name: 'Recortador de imagens', description: 'Recortar imagens no tamanho e proporção desejados' },
       'bakgrundsborttagare': { name: 'Removedor de fundo', description: 'Remover fundos de imagens automaticamente' },
+      'heic-till-jpg': { name: 'HEIC para JPG', description: 'Converter fotos de iPhone (HEIC) para JPG ou PNG', hint: 'Os iPhones guardam fotos como HEIC, que muitos computadores não conseguem abrir. Converta para JPG ou PNG — tudo localmente, nada é enviado.' },
       'favicon-generator': { name: 'Gerador de favicon', description: 'Criar favicons para sites a partir de qualquer imagem' },
       'bildkollage': { name: 'Colagem de imagens', description: 'Combinar várias imagens em uma colagem' },
       'pixelraknare': { name: 'Contador de pixels', description: 'Contar pixels e medir distâncias em imagens' },

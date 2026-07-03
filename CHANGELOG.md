@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.11.0 — 2026-07-03 — HEIC-konverterare
+
+### Nytt
+
+- **HEIC till JPG** — konverterar iPhone-bilder (HEIC/HEIF) till JPG eller PNG direkt i webbläsaren. Stödjer flera filer samtidigt, kvalitetsreglage och nedladdning av alla på en gång. Allt sker lokalt — inga bilder laddas upp.
+
+### Teknik
+
+- Verktygssidorna koddelas nu (lazy-load via React.lazy), så tunga bibliotek som HEIC-avkodaren laddas först när verktyget öppnas — huvudbundeln hålls liten.
+
 ## 0.10.0 — 2026-02-17 — Kategorier & 31 nya verktygsplatser
 
 ### Nytt

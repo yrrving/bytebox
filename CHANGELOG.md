@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.18.1 — 2026-07-04 — Säkerhetsuppdatering av beroenden
+
+### Underhåll
+
+- Uppdaterade alla beroenden med kända sårbarheter (12 st → 0), inklusive react-router (7.13 → 7.18.1). Övriga var byggverktyg som inte ingår i den publicerade sidan. Inga funktionsändringar.
+
 ## 0.18.0 — 2026-07-04 — Ljudklipp, streckkod & PDF-signering
 
 ### Nytt

@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.18.1',
+    date: '2026-07-04',
+    title: {
+      sv: 'Säkerhetsuppdatering av beroenden',
+      en: 'Dependency security update',
+      es: 'Actualización de seguridad de dependencias',
+      fr: 'Mise à jour de sécurité des dépendances',
+      de: 'Sicherheitsupdate der Abhängigkeiten',
+      pt: 'Atualização de segurança de dependências',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Uppdaterade alla beroenden med kända sårbarheter (12 → 0), inklusive react-router. Inga funktionsändringar.',
+          en: 'Updated all dependencies with known vulnerabilities (12 → 0), including react-router. No functional changes.',
+          es: 'Se actualizaron todas las dependencias con vulnerabilidades conocidas (12 → 0), incluida react-router. Sin cambios funcionales.',
+          fr: 'Toutes les dépendances présentant des vulnérabilités connues ont été mises à jour (12 → 0), y compris react-router. Aucun changement fonctionnel.',
+          de: 'Alle Abhängigkeiten mit bekannten Schwachstellen aktualisiert (12 → 0), einschließlich react-router. Keine funktionalen Änderungen.',
+          pt: 'Todas as dependências com vulnerabilidades conhecidas foram atualizadas (12 → 0), incluindo react-router. Sem alterações funcionais.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.18.0',
     date: '2026-07-04',
     title: {

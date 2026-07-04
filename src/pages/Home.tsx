@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, type Category, type ToolCategory } from '../data/tools'
@@ -20,9 +20,12 @@ const categoryIcons: Record<ToolCategory, LucideIcon> = {
 export default function Home() {
   const [category, setCategory] = useState<Category>('alla')
   const [search, setSearch] = useState('')
+  const [showAllFlat, setShowAllFlat] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const selectedCategory = (searchParams.get('cat') as ToolCategory) || null
   const { t } = useLanguage()
+
+  const newTools = tools.filter((tool) => tool.isNew)
 
   const categoryNames = t.categories ?? {
     bild: 'Bild & Media',
@@ -54,17 +57,25 @@ export default function Home() {
     return toolT.name.toLowerCase().includes(q) || toolT.description.toLowerCase().includes(q)
   })
 
-  const showCategories = category === 'alla' && !search.trim()
+  const showCategories = category === 'alla' && !search.trim() && !showAllFlat
 
   const handleTabChange = (tab: Category) => {
     setCategory(tab)
+    setShowAllFlat(false)
     setSearchParams({})
   }
 
   return (
     <div>
-      <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t.toolsHeading}</h1>
+      <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t.toolsHeading}</h1>
+          {t.tagline && (
+            <p className="mt-1 max-w-xl text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+              {t.tagline}
+            </p>
+          )}
+        </div>
         <TabNavigation active={category} onChange={handleTabChange} />
       </div>
       <div className="relative mb-6">
@@ -83,7 +94,21 @@ export default function Home() {
 
       {showCategories && selectedCategory === null ? (
         /* ── Category cards landing ── */
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col gap-8">
+          {newTools.length > 0 && (
+            <div>
+              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
+                <Sparkles className="h-5 w-5 text-blue-500 dark:text-blue-400 hc:text-yellow-400" />
+                {t.newBadge ?? 'Nytt'}
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {newTools.map((tool) => (
+                  <ToolCard key={tool.route} tool={tool} />
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categoryOrder.map((cat) => {
             const catTools = tools.filter((tool) => tool.category === cat)
             const previewNames = catTools
@@ -114,6 +139,15 @@ export default function Home() {
               </button>
             )
           })}
+          </div>
+          <div className="flex justify-center">
+            <button
+              onClick={() => setShowAllFlat(true)}
+              className="rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hc:text-white transition-colors hover:border-blue-400 dark:hover:border-blue-500 hc:hover:border-yellow-400"
+            >
+              {t.showAll ?? 'Visa alla verktyg'} ({tools.length})
+            </button>
+          </div>
         </div>
       ) : showCategories && selectedCategory !== null ? (
         /* ── Single category drill-down ── */

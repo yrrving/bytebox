@@ -10,6 +10,64 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.13.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Tre nya verktyg & bättre upptäckbarhet',
+      en: 'Three new tools & better discoverability',
+      es: 'Tres herramientas nuevas y mejor visibilidad',
+      fr: 'Trois nouveaux outils et une meilleure visibilité',
+      de: 'Drei neue Werkzeuge & bessere Auffindbarkeit',
+      pt: 'Três novas ferramentas e melhor visibilidade',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Passfoto: skapa pass- och ID-foto i exakta mm-mått (Sverige, USA-visum, EU-körkort eller egen storlek), beskär, zooma och skriv ut flera kopior på ett ark i 300 DPI. Allt lokalt.',
+          en: 'Passport photo: create passport and ID photos at exact mm sizes (Sweden, US visa, EU licence or custom), crop, zoom and print multiple copies on one 300 DPI sheet. All local.',
+          es: 'Foto de pasaporte: crea fotos de pasaporte e identidad con medidas exactas en mm (Suecia, visado EE. UU., carné UE o personalizado), recorta, amplía e imprime varias copias en una hoja a 300 DPI. Todo local.',
+          fr: 'Photo d\'identité : créez des photos de passeport et d\'identité aux dimensions exactes en mm (Suède, visa US, permis UE ou personnalisé), recadrez, zoomez et imprimez plusieurs copies sur une feuille en 300 DPI. Tout en local.',
+          de: 'Passfoto: erstelle Pass- und Ausweisfotos in exakten mm-Maßen (Schweden, US-Visum, EU-Führerschein oder eigene Größe), zuschneiden, zoomen und mehrere Kopien auf einem Blatt in 300 DPI drucken. Alles lokal.',
+          pt: 'Foto de passaporte: crie fotos de passaporte e identificação com medidas exatas em mm (Suécia, visto EUA, carta UE ou personalizado), recorte, aproxime e imprima várias cópias numa folha a 300 DPI. Tudo local.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Etikettark: lägg ut flera kopior av en design på ett A4- eller Letter-ark för klistermärken och etiketter. Räknar ut hur många som får plats och exporterar utskriftsklar PNG i 300 DPI.',
+          en: 'Sticker sheet: lay out multiple copies of a design on an A4 or Letter sheet for stickers and labels. Calculates how many fit and exports a print-ready 300 DPI PNG.',
+          es: 'Hoja de pegatinas: coloca varias copias de un diseño en una hoja A4 o Letter para pegatinas y etiquetas. Calcula cuántas caben y exporta un PNG listo para imprimir a 300 DPI.',
+          fr: 'Planche d\'autocollants : disposez plusieurs copies d\'un design sur une feuille A4 ou Letter pour autocollants et étiquettes. Calcule combien tiennent et exporte un PNG prêt à imprimer en 300 DPI.',
+          de: 'Aufkleberbogen: ordne mehrere Kopien eines Designs auf einem A4- oder Letter-Blatt für Aufkleber und Etiketten an. Berechnet, wie viele passen, und exportiert ein druckfertiges PNG in 300 DPI.',
+          pt: 'Folha de autocolantes: disponha várias cópias de um design numa folha A4 ou Letter para autocolantes e etiquetas. Calcula quantas cabem e exporta um PNG pronto a imprimir em 300 DPI.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Batch-QR: skapa många QR-koder på en gång från en lista eller CSV-fil och ladda ner alla som PNG. Allt sker lokalt — inget laddas upp.',
+          en: 'Batch QR: generate many QR codes at once from a list or CSV file and download all as PNG. Everything runs locally — nothing is uploaded.',
+          es: 'QR por lotes: genera muchos códigos QR a la vez desde una lista o archivo CSV y descárgalos todos como PNG. Todo se ejecuta localmente — no se sube nada.',
+          fr: 'QR par lot : générez de nombreux codes QR à la fois depuis une liste ou un fichier CSV et téléchargez tout en PNG. Tout en local — rien n\'est envoyé.',
+          de: 'Batch-QR: erzeuge viele QR-Codes auf einmal aus einer Liste oder CSV-Datei und lade alle als PNG herunter. Alles läuft lokal — nichts wird hochgeladen.',
+          pt: 'QR em lote: crie muitos códigos QR de uma vez a partir de uma lista ou ficheiro CSV e descarregue todos como PNG. Tudo funciona localmente — nada é enviado.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Startsidan förklarar nu tydligt poängen med Bytebox och lyfter fram nya verktyg i en egen "Nytt"-sektion, med "Nytt"-etikett och en knapp för att visa alla verktyg på en gång.',
+          en: 'The home page now clearly explains the point of Bytebox and highlights new tools in a dedicated "New" section, with a "New" badge and a button to show all tools at once.',
+          es: 'La página de inicio ahora explica claramente el propósito de Bytebox y destaca las herramientas nuevas en una sección "Nuevo", con una etiqueta "Nuevo" y un botón para mostrar todas las herramientas a la vez.',
+          fr: 'La page d\'accueil explique désormais clairement l\'intérêt de Bytebox et met en avant les nouveaux outils dans une section « Nouveau » dédiée, avec un badge « Nouveau » et un bouton pour afficher tous les outils d\'un coup.',
+          de: 'Die Startseite erklärt jetzt klar den Sinn von Bytebox und hebt neue Werkzeuge in einem eigenen "Neu"-Bereich hervor, mit "Neu"-Etikett und einer Schaltfläche, um alle Werkzeuge auf einmal anzuzeigen.',
+          pt: 'A página inicial agora explica claramente o objetivo do Bytebox e destaca as novas ferramentas numa secção "Novo" dedicada, com uma etiqueta "Novo" e um botão para mostrar todas as ferramentas de uma vez.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.12.0',
     date: '2026-07-04',
     title: {

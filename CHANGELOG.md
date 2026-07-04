@@ -2,6 +2,20 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.13.0 — 2026-07-04 — Tre nya verktyg & bättre upptäckbarhet
+
+### Nytt
+
+- **Passfoto** — skapa pass- och ID-foto i exakta mm-mått (Passfoto Sverige, USA-visum, EU-körkort eller egen storlek). Beskär, zooma och skriv ut flera kopior på ett ark i 300 DPI. Allt sker lokalt — inget laddas upp.
+- **Etikettark** — lägg ut flera kopior av en design på ett A4- eller Letter-ark för klistermärken och etiketter. Räknar ut hur många som får plats och exporterar utskriftsklar PNG i 300 DPI.
+- **Batch-QR** — skapa många QR-koder på en gång från en lista eller CSV-fil och ladda ner alla som PNG. Allt sker lokalt.
+
+### Förbättrat
+
+- Startsidan har nu en tydlig undertext som förklarar poängen med Bytebox: gratis verktyg som körs direkt i webbläsaren — inget laddas upp, inget sparas.
+- Nya verktyg lyfts fram i en egen "Nytt"-sektion högst upp och markeras med en "Nytt"-etikett, så de är lättare att hitta.
+- Ny knapp "Visa alla verktyg" på startsidan så att man kan se hela listan utan att klicka in i varje kategori.
+
 ## 0.12.0 — 2026-07-04 — Metadata-tvätt
 
 ### Nytt

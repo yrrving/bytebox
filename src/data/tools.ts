@@ -56,6 +56,7 @@ import {
   Gamepad2,
   FileImage,
   ImageOff,
+  UserSquare,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -71,6 +72,7 @@ export interface Tool {
   connection: ConnectionType
   icon: LucideIcon
   category: ToolCategory
+  isNew?: boolean
 }
 
 export const categoryOrder: ToolCategory[] = [
@@ -93,6 +95,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileImage,
     category: 'bild',
+    isNew: true,
   },
   {
     id: 'metadata-tvatt',
@@ -101,6 +104,25 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: ImageOff,
     category: 'bild',
+    isNew: true,
+  },
+  {
+    id: 'passfoto',
+    route: '/passfoto',
+    device: 'båda',
+    connection: 'offline',
+    icon: UserSquare,
+    category: 'bild',
+    isNew: true,
+  },
+  {
+    id: 'etikett-ark',
+    route: '/etikett-ark',
+    device: 'dator',
+    connection: 'offline',
+    icon: Grid3X3,
+    category: 'bild',
+    isNew: true,
   },
   {
     id: 'png-till-svg',
@@ -481,6 +503,15 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: QrCode,
     category: 'produktivitet',
+  },
+  {
+    id: 'batch-qr',
+    route: '/batch-qr',
+    device: 'båda',
+    connection: 'offline',
+    icon: QrCode,
+    category: 'produktivitet',
+    isNew: true,
   },
   {
     id: 'filanalys',

@@ -51,7 +51,14 @@ export default function ToolCard({ tool }: ToolCardProps) {
         </div>
       </div>
       <div>
-        <h3 className="text-base font-semibold text-gray-900 dark:text-white">{translation?.name}</h3>
+        <h3 className="flex items-center gap-2 text-base font-semibold text-gray-900 dark:text-white">
+          {translation?.name}
+          {tool.isNew && (
+            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 hc:bg-white hc:text-black">
+              {t.newBadge ?? 'Nytt'}
+            </span>
+          )}
+        </h3>
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
       </div>
     </Link>

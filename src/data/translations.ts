@@ -6,6 +6,9 @@ export interface ToolTranslation {
 
 export interface Translation {
   toolsHeading: string
+  tagline?: string
+  newBadge?: string
+  showAll?: string
   searchPlaceholder: string
   emptyState: string
   comingSoon: string
@@ -530,6 +533,9 @@ export interface Translation {
 export const translations: Record<string, Translation> = {
   sv: {
     toolsHeading: 'Verktyg',
+    tagline: 'Gratis verktyg som körs direkt i din webbläsare — inget laddas upp, inget sparas.',
+    newBadge: 'Nytt',
+    showAll: 'Visa alla verktyg',
     searchPlaceholder: 'Sök verktyg...',
     emptyState: 'Inga verktyg matchar filtret.',
     comingSoon: 'Kommer snart',
@@ -1039,6 +1045,9 @@ export const translations: Record<string, Translation> = {
       'bakgrundsborttagare': { name: 'Bakgrundsborttagare', description: 'Ta bort bakgrund från bilder automatiskt' },
       'heic-till-jpg': { name: 'HEIC till JPG', description: 'Konvertera iPhone-bilder (HEIC) till JPG eller PNG', hint: 'iPhone sparar foton som HEIC, som många datorer inte kan öppna. Konvertera till JPG eller PNG — allt sker lokalt, inget laddas upp.' },
       'metadata-tvatt': { name: 'Metadata-tvätt', description: 'Se och ta bort dold metadata (GPS, datum, kamera) från bilder', hint: 'Foton innehåller ofta din exakta GPS-position. Se vad som gömmer sig i bilden och ta bort allt — lokalt, inget laddas upp.' },
+      'passfoto': { name: 'Passfoto', description: 'Skapa passfoto och ID-foto i rätt mm-mått', hint: 'Beskär, zooma och skriv ut flera kopior på ett ark — allt lokalt i webbläsaren, inget laddas upp.' },
+      'etikett-ark': { name: 'Etikettark', description: 'Lägg ut flera kopior av din design på ett A4- eller Letter-ark', hint: 'Räknar ut hur många som får plats och exporterar utskriftsklar PNG i 300 DPI. Allt sker lokalt.' },
+      'batch-qr': { name: 'Batch-QR', description: 'Skapa många QR-koder på en gång från en lista eller CSV-fil', hint: 'Ladda ner alla som PNG. Allt sker lokalt — inget laddas upp.' },
       'favicon-generator': { name: 'Favicon-generator', description: 'Skapa favicons för webbplatser från valfri bild' },
       'bildkollage': { name: 'Bildkollage', description: 'Kombinera flera bilder till ett snyggt kollage' },
       'pixelraknare': { name: 'Pixelräknare', description: 'Räkna pixlar och mät avstånd i bilder' },
@@ -1073,6 +1082,9 @@ export const translations: Record<string, Translation> = {
   },
   en: {
     toolsHeading: 'Tools',
+    tagline: 'Free tools that run right in your browser — nothing uploaded, nothing stored.',
+    newBadge: 'New',
+    showAll: 'Show all tools',
     searchPlaceholder: 'Search tools...',
     emptyState: 'No tools match the filter.',
     comingSoon: 'Coming soon',
@@ -1582,6 +1594,9 @@ export const translations: Record<string, Translation> = {
       'bakgrundsborttagare': { name: 'Background Remover', description: 'Automatically remove backgrounds from images' },
       'heic-till-jpg': { name: 'HEIC to JPG', description: 'Convert iPhone photos (HEIC) to JPG or PNG', hint: 'iPhones save photos as HEIC, which many computers can\'t open. Convert to JPG or PNG — all locally, nothing uploaded.' },
       'metadata-tvatt': { name: 'Metadata Cleaner', description: 'View and remove hidden metadata (GPS, date, camera) from images', hint: 'Photos often contain your exact GPS location. See what\'s hidden in the image and strip it — locally, nothing uploaded.' },
+      'passfoto': { name: 'Passport Photo', description: 'Create passport and ID photos at exact mm sizes', hint: 'Crop, zoom and print multiple copies on one sheet — all locally in your browser, nothing uploaded.' },
+      'etikett-ark': { name: 'Sticker Sheet', description: 'Lay out multiple copies of your design on an A4 or Letter sheet', hint: 'Calculates how many fit and exports a print-ready 300 DPI PNG. Everything runs locally.' },
+      'batch-qr': { name: 'Batch QR', description: 'Generate many QR codes at once from a list or CSV file', hint: 'Download all as PNG. Everything runs locally — nothing uploaded.' },
       'favicon-generator': { name: 'Favicon Generator', description: 'Create favicons for websites from any image' },
       'bildkollage': { name: 'Image Collage', description: 'Combine multiple images into a collage' },
       'pixelraknare': { name: 'Pixel Counter', description: 'Count pixels and measure distances in images' },
@@ -1616,6 +1631,9 @@ export const translations: Record<string, Translation> = {
   },
   es: {
     toolsHeading: 'Herramientas',
+    tagline: 'Herramientas gratuitas que funcionan directamente en tu navegador: nada se sube, nada se guarda.',
+    newBadge: 'Nuevo',
+    showAll: 'Mostrar todas las herramientas',
     searchPlaceholder: 'Buscar herramientas...',
     emptyState: 'Ninguna herramienta coincide con el filtro.',
     comingSoon: 'Próximamente',
@@ -2125,6 +2143,9 @@ export const translations: Record<string, Translation> = {
       'bakgrundsborttagare': { name: 'Eliminador de fondo', description: 'Eliminar fondos de imágenes automáticamente' },
       'heic-till-jpg': { name: 'HEIC a JPG', description: 'Convierte fotos de iPhone (HEIC) a JPG o PNG', hint: 'Los iPhone guardan las fotos como HEIC, que muchos ordenadores no pueden abrir. Conviértelas a JPG o PNG — todo localmente, sin subir nada.' },
       'metadata-tvatt': { name: 'Limpiador de metadatos', description: 'Ver y eliminar metadatos ocultos (GPS, fecha, cámara) de imágenes', hint: 'Las fotos suelen contener tu ubicación GPS exacta. Mira lo que se oculta en la imagen y elimínalo — localmente, sin subir nada.' },
+      'passfoto': { name: 'Foto de pasaporte', description: 'Crea fotos de pasaporte y de identidad con las medidas exactas en mm', hint: 'Recorta, amplía e imprime varias copias en una hoja — todo localmente en tu navegador, sin subir nada.' },
+      'etikett-ark': { name: 'Hoja de pegatinas', description: 'Coloca varias copias de tu diseño en una hoja A4 o Letter', hint: 'Calcula cuántas caben y exporta un PNG listo para imprimir a 300 DPI. Todo funciona localmente.' },
+      'batch-qr': { name: 'QR por lotes', description: 'Genera muchos códigos QR a la vez desde una lista o archivo CSV', hint: 'Descarga todos como PNG. Todo funciona localmente — nada se sube.' },
       'favicon-generator': { name: 'Generador de favicon', description: 'Crear favicons para sitios web desde cualquier imagen' },
       'bildkollage': { name: 'Collage de imágenes', description: 'Combinar varias imágenes en un collage' },
       'pixelraknare': { name: 'Contador de píxeles', description: 'Contar píxeles y medir distancias en imágenes' },
@@ -2159,6 +2180,9 @@ export const translations: Record<string, Translation> = {
   },
   fr: {
     toolsHeading: 'Outils',
+    tagline: 'Des outils gratuits qui fonctionnent directement dans votre navigateur — rien n’est envoyé, rien n’est enregistré.',
+    newBadge: 'Nouveau',
+    showAll: 'Afficher tous les outils',
     searchPlaceholder: 'Rechercher des outils...',
     emptyState: 'Aucun outil ne correspond au filtre.',
     comingSoon: 'Bientôt disponible',
@@ -2668,6 +2692,9 @@ export const translations: Record<string, Translation> = {
       'bakgrundsborttagare': { name: 'Suppression d\'arrière-plan', description: 'Supprimer automatiquement l\'arrière-plan des images' },
       'heic-till-jpg': { name: 'HEIC vers JPG', description: 'Convertir des photos iPhone (HEIC) en JPG ou PNG', hint: 'Les iPhone enregistrent les photos en HEIC, que beaucoup d\'ordinateurs ne peuvent pas ouvrir. Convertissez en JPG ou PNG — tout en local, rien n\'est envoyé.' },
       'metadata-tvatt': { name: 'Nettoyeur de métadonnées', description: 'Voir et supprimer les métadonnées cachées (GPS, date, appareil) des images', hint: 'Les photos contiennent souvent votre position GPS exacte. Voyez ce qui est caché dans l\'image et supprimez-le — en local, rien n\'est envoyé.' },
+      'passfoto': { name: 'Photo d\'identité', description: 'Créez des photos de passeport et d\'identité aux dimensions exactes en mm', hint: 'Recadrez, zoomez et imprimez plusieurs copies sur une feuille — tout en local dans votre navigateur, rien n\'est envoyé.' },
+      'etikett-ark': { name: 'Planche d\'autocollants', description: 'Disposez plusieurs copies de votre design sur une feuille A4 ou Letter', hint: 'Calcule combien tiennent et exporte un PNG prêt à imprimer en 300 DPI. Tout fonctionne en local.' },
+      'batch-qr': { name: 'QR par lot', description: 'Générez de nombreux codes QR à la fois depuis une liste ou un fichier CSV', hint: 'Téléchargez tout en PNG. Tout fonctionne en local — rien n\'est envoyé.' },
       'favicon-generator': { name: 'Générateur de favicon', description: 'Créer des favicons pour sites web à partir de n\'importe quelle image' },
       'bildkollage': { name: 'Collage d\'images', description: 'Combiner plusieurs images en un collage' },
       'pixelraknare': { name: 'Compteur de pixels', description: 'Compter les pixels et mesurer les distances dans les images' },
@@ -2702,6 +2729,9 @@ export const translations: Record<string, Translation> = {
   },
   de: {
     toolsHeading: 'Werkzeuge',
+    tagline: 'Kostenlose Werkzeuge, die direkt in deinem Browser laufen — nichts wird hochgeladen, nichts gespeichert.',
+    newBadge: 'Neu',
+    showAll: 'Alle Werkzeuge anzeigen',
     searchPlaceholder: 'Werkzeuge suchen...',
     emptyState: 'Keine Werkzeuge entsprechen dem Filter.',
     comingSoon: 'Demnächst verfügbar',
@@ -3211,6 +3241,9 @@ export const translations: Record<string, Translation> = {
       'bakgrundsborttagare': { name: 'Hintergrundentferner', description: 'Hintergründe automatisch aus Bildern entfernen' },
       'heic-till-jpg': { name: 'HEIC zu JPG', description: 'iPhone-Fotos (HEIC) in JPG oder PNG umwandeln', hint: 'iPhones speichern Fotos als HEIC, das viele Computer nicht öffnen können. In JPG oder PNG umwandeln — alles lokal, nichts wird hochgeladen.' },
       'metadata-tvatt': { name: 'Metadaten-Reiniger', description: 'Versteckte Metadaten (GPS, Datum, Kamera) aus Bildern anzeigen und entfernen', hint: 'Fotos enthalten oft deinen genauen GPS-Standort. Sieh, was im Bild versteckt ist, und entferne es — lokal, nichts wird hochgeladen.' },
+      'passfoto': { name: 'Passfoto', description: 'Erstelle Pass- und Ausweisfotos in exakten mm-Maßen', hint: 'Zuschneiden, zoomen und mehrere Kopien auf einem Blatt drucken — alles lokal im Browser, nichts wird hochgeladen.' },
+      'etikett-ark': { name: 'Aufkleberbogen', description: 'Ordne mehrere Kopien deines Designs auf einem A4- oder Letter-Blatt an', hint: 'Berechnet, wie viele passen, und exportiert ein druckfertiges PNG in 300 DPI. Alles läuft lokal.' },
+      'batch-qr': { name: 'Batch-QR', description: 'Erzeuge viele QR-Codes auf einmal aus einer Liste oder CSV-Datei', hint: 'Lade alle als PNG herunter. Alles läuft lokal — nichts wird hochgeladen.' },
       'favicon-generator': { name: 'Favicon-Generator', description: 'Favicons für Websites aus beliebigen Bildern erstellen' },
       'bildkollage': { name: 'Bildcollage', description: 'Mehrere Bilder zu einer Collage kombinieren' },
       'pixelraknare': { name: 'Pixelzähler', description: 'Pixel zählen und Abstände in Bildern messen' },
@@ -3245,6 +3278,9 @@ export const translations: Record<string, Translation> = {
   },
   pt: {
     toolsHeading: 'Ferramentas',
+    tagline: 'Ferramentas gratuitas que funcionam diretamente no seu navegador — nada é enviado, nada é guardado.',
+    newBadge: 'Novo',
+    showAll: 'Mostrar todas as ferramentas',
     searchPlaceholder: 'Pesquisar ferramentas...',
     emptyState: 'Nenhuma ferramenta corresponde ao filtro.',
     comingSoon: 'Em breve',
@@ -3754,6 +3790,9 @@ export const translations: Record<string, Translation> = {
       'bakgrundsborttagare': { name: 'Removedor de fundo', description: 'Remover fundos de imagens automaticamente' },
       'heic-till-jpg': { name: 'HEIC para JPG', description: 'Converter fotos de iPhone (HEIC) para JPG ou PNG', hint: 'Os iPhones guardam fotos como HEIC, que muitos computadores não conseguem abrir. Converta para JPG ou PNG — tudo localmente, nada é enviado.' },
       'metadata-tvatt': { name: 'Limpador de metadados', description: 'Ver e remover metadados ocultos (GPS, data, câmara) de imagens', hint: 'As fotos contêm frequentemente a sua localização GPS exata. Veja o que está oculto na imagem e remova tudo — localmente, nada é enviado.' },
+      'passfoto': { name: 'Foto de passaporte', description: 'Crie fotos de passaporte e de identificação com as medidas exatas em mm', hint: 'Recorte, aproxime e imprima várias cópias numa folha — tudo localmente no seu navegador, nada é enviado.' },
+      'etikett-ark': { name: 'Folha de autocolantes', description: 'Disponha várias cópias do seu design numa folha A4 ou Letter', hint: 'Calcula quantas cabem e exporta um PNG pronto a imprimir em 300 DPI. Tudo funciona localmente.' },
+      'batch-qr': { name: 'QR em lote', description: 'Crie muitos códigos QR de uma vez a partir de uma lista ou ficheiro CSV', hint: 'Descarregue todos como PNG. Tudo funciona localmente — nada é enviado.' },
       'favicon-generator': { name: 'Gerador de favicon', description: 'Criar favicons para sites a partir de qualquer imagem' },
       'bildkollage': { name: 'Colagem de imagens', description: 'Combinar várias imagens em uma colagem' },
       'pixelraknare': { name: 'Contador de pixels', description: 'Contar pixels e medir distâncias em imagens' },

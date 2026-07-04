@@ -39,15 +39,8 @@ export interface Translation {
   backToTools: string
   tabs: {
     alla: string
-    dator: string
-    mobil: string
     online: string
     offline: string
-  }
-  device: {
-    dator: string
-    mobil: string
-    båda: string
   }
   connection: {
     online: string
@@ -589,15 +582,8 @@ export const translations: Record<string, Translation> = {
     backToTools: 'Tillbaka till alla verktyg',
     tabs: {
       alla: 'Alla',
-      dator: 'Dator',
-      mobil: 'Mobil',
       online: 'Online',
       offline: 'Offline',
-    },
-    device: {
-      dator: 'Bäst på dator',
-      mobil: 'Bäst på mobil',
-      båda: 'Alla enheter',
     },
     connection: {
       online: 'Kräver internet',
@@ -1171,15 +1157,8 @@ export const translations: Record<string, Translation> = {
     backToTools: 'Back to all tools',
     tabs: {
       alla: 'All',
-      dator: 'Desktop',
-      mobil: 'Mobile',
       online: 'Online',
       offline: 'Offline',
-    },
-    device: {
-      dator: 'Best on desktop',
-      mobil: 'Best on mobile',
-      båda: 'All devices',
     },
     connection: {
       online: 'Requires internet',
@@ -1753,15 +1732,8 @@ export const translations: Record<string, Translation> = {
     backToTools: 'Volver a todas las herramientas',
     tabs: {
       alla: 'Todas',
-      dator: 'Escritorio',
-      mobil: 'Móvil',
       online: 'En línea',
       offline: 'Sin conexión',
-    },
-    device: {
-      dator: 'Mejor en escritorio',
-      mobil: 'Mejor en móvil',
-      båda: 'Todos los dispositivos',
     },
     connection: {
       online: 'Requiere internet',
@@ -2335,15 +2307,8 @@ export const translations: Record<string, Translation> = {
     backToTools: 'Retour à tous les outils',
     tabs: {
       alla: 'Tous',
-      dator: 'Bureau',
-      mobil: 'Mobile',
       online: 'En ligne',
       offline: 'Hors ligne',
-    },
-    device: {
-      dator: 'Optimal sur ordi',
-      mobil: 'Optimal sur mobile',
-      båda: 'Tous les appareils',
     },
     connection: {
       online: 'Internet requis',
@@ -2917,15 +2882,8 @@ export const translations: Record<string, Translation> = {
     backToTools: 'Zurück zu allen Werkzeugen',
     tabs: {
       alla: 'Alle',
-      dator: 'Desktop',
-      mobil: 'Mobil',
       online: 'Online',
       offline: 'Offline',
-    },
-    device: {
-      dator: 'Am besten am Desktop',
-      mobil: 'Am besten am Handy',
-      båda: 'Alle Geräte',
     },
     connection: {
       online: 'Internet nötig',
@@ -3499,15 +3457,8 @@ export const translations: Record<string, Translation> = {
     backToTools: 'Voltar para todas as ferramentas',
     tabs: {
       alla: 'Todas',
-      dator: 'Desktop',
-      mobil: 'Móvel',
       online: 'Online',
       offline: 'Offline',
-    },
-    device: {
-      dator: 'Melhor no desktop',
-      mobil: 'Melhor no celular',
-      båda: 'Todos os dispositivos',
     },
     connection: {
       online: 'Requer internet',

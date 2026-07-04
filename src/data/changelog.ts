@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.19.1',
+    date: '2026-07-04',
+    title: {
+      sv: 'Städning & optimering',
+      en: 'Cleanup & optimization',
+      es: 'Limpieza y optimización',
+      fr: 'Nettoyage et optimisation',
+      de: 'Aufräumen & Optimierung',
+      pt: 'Limpeza e otimização',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Journalsidan laddas nu först när den öppnas, så startsidan blir lättare. Rensade bort död kod och verifierade att alla verktyg, rutter och översättningar är korrekta. Inga synliga ändringar.',
+          en: 'The journal page now loads only when opened, making the home page lighter. Removed dead code and verified all tools, routes and translations are correct. No visible changes.',
+          es: 'La página del diario ahora se carga solo al abrirla, aligerando la página de inicio. Se eliminó código muerto y se verificó que todas las herramientas, rutas y traducciones son correctas. Sin cambios visibles.',
+          fr: 'La page du journal ne se charge désormais qu’à son ouverture, allégeant la page d’accueil. Code mort supprimé et vérification que tous les outils, routes et traductions sont corrects. Aucun changement visible.',
+          de: 'Die Journalseite lädt jetzt erst beim Öffnen, wodurch die Startseite leichter wird. Toten Code entfernt und geprüft, dass alle Werkzeuge, Routen und Übersetzungen korrekt sind. Keine sichtbaren Änderungen.',
+          pt: 'A página do diário agora carrega apenas quando aberta, tornando a página inicial mais leve. Removido código morto e verificado que todas as ferramentas, rotas e traduções estão corretas. Sem alterações visíveis.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.19.0',
     date: '2026-07-04',
     title: {

@@ -2,8 +2,9 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Journal from './pages/Journal'
 import Placeholder from './pages/Placeholder'
+
+const Journal = lazy(() => import('./pages/Journal'))
 
 const PasswordGenerator = lazy(() => import('./pages/tools/PasswordGenerator'))
 const TextTools = lazy(() => import('./pages/tools/TextTools'))

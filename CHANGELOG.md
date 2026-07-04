@@ -2,6 +2,14 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.19.1 — 2026-07-04 — Städning & optimering
+
+### Underhåll
+
+- Journalsidan (med hela versionshistoriken) laddas nu först när den öppnas, så startsidan blir lättare att ladda. Inga synliga ändringar.
+- Tog bort död kod: oanvända översättningsfält (gamla enhets-/flik-etiketter) som blev över efter enhetsomklassningen.
+- Verifierade att alla 70 verktyg har korrekta rutter och översättningar på alla 6 språk, samt att typkontroll, lint och säkerhetsgranskning är helt rena.
+
 ## 0.19.0 — 2026-07-04 — Video till GIF
 
 ### Nytt

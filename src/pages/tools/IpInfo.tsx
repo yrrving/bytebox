@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { RefreshCw, Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ExternalNotice from '../../components/ExternalNotice'
 
 interface IpData {
   ip: string
@@ -72,6 +73,8 @@ export default function IpInfo() {
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
         )}
       </div>
+
+      <ExternalNotice service="ipapi.co" />
 
       {loading && (
         <div className="flex items-center justify-center py-12">

@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Mic, Square, Copy, Check, Trash2 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ExternalNotice from '../../components/ExternalNotice'
 
 const LANG_OPTIONS = [
   { code: 'sv-SE', label: 'Svenska' },
@@ -98,6 +99,11 @@ export default function SpeechToText() {
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
         )}
       </div>
+
+      <ExternalNotice
+        service={t.privacy?.speechService ?? 'webbläsarens taltjänst'}
+        warning={t.privacy?.speechNote}
+      />
 
       {!supported && (
         <div className="rounded-xl border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 text-sm text-red-700 dark:text-red-400">

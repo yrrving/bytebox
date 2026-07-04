@@ -10,6 +10,78 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.15.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Mobilanpassning',
+      en: 'Mobile-friendly',
+      es: 'Adaptación móvil',
+      fr: 'Adapté au mobile',
+      de: 'Mobil-Anpassung',
+      pt: 'Adaptação móvel',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Menyn är nu responsiv: på mobil samlas språk, tema, journal och installera-knappen bakom en hamburgermeny. Flikarna fyller bredden och får plats på små skärmar.',
+          en: 'The menu is now responsive: on mobile, language, theme, journal and the install button collapse into a hamburger menu. The tabs fill the width and fit on small screens.',
+          es: 'El menú ahora es adaptable: en móvil, el idioma, el tema, el diario y el botón de instalar se agrupan en un menú hamburguesa. Las pestañas ocupan el ancho y caben en pantallas pequeñas.',
+          fr: 'Le menu est désormais responsive : sur mobile, la langue, le thème, le journal et le bouton d’installation se regroupent dans un menu hamburger. Les onglets occupent toute la largeur et tiennent sur les petits écrans.',
+          de: 'Das Menü ist jetzt responsiv: auf dem Handy werden Sprache, Thema, Journal und die Installieren-Schaltfläche in einem Hamburger-Menü zusammengefasst. Die Tabs füllen die Breite und passen auf kleine Bildschirme.',
+          pt: 'O menu agora é responsivo: no telemóvel, o idioma, o tema, o diário e o botão de instalar juntam-se num menu de hambúrguer. Os separadores ocupam a largura e cabem em ecrãs pequenos.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Verktyg som inte passar på en telefon visar nu ett tydligt meddelande om att de kräver minst en surfplatta i skärmstorlek, med en väg tillbaka till listan.',
+          en: 'Tools that do not suit a phone now show a clear message that they need at least a tablet-sized screen, with a way back to the list.',
+          es: 'Las herramientas que no son aptas para un teléfono ahora muestran un mensaje claro de que necesitan al menos una pantalla del tamaño de una tableta, con una vuelta a la lista.',
+          fr: 'Les outils qui ne conviennent pas à un téléphone affichent désormais un message clair indiquant qu’ils nécessitent au moins un écran de la taille d’une tablette, avec un retour vers la liste.',
+          de: 'Werkzeuge, die nicht für ein Handy geeignet sind, zeigen jetzt eine klare Meldung, dass sie mindestens einen tabletgroßen Bildschirm benötigen, mit einem Weg zurück zur Liste.',
+          pt: 'As ferramentas que não são adequadas para um telemóvel mostram agora uma mensagem clara de que precisam de pelo menos um ecrã do tamanho de um tablet, com um caminho de volta à lista.',
+        },
+      },
+    ],
+  },
+  {
+    version: '0.14.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Tydlig integritet (GDPR-genomgång)',
+      en: 'Clear privacy (GDPR review)',
+      es: 'Privacidad clara (revisión RGPD)',
+      fr: 'Confidentialité claire (revue RGPD)',
+      de: 'Klare Privatsphäre (DSGVO-Prüfung)',
+      pt: 'Privacidade clara (revisão RGPD)',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Verktyg som kommunicerar med en extern tjänst visar nu en tydlig notis om exakt vart data skickas. Bytebox lagrar aldrig något själv.',
+          en: 'Tools that communicate with an external service now show a clear notice about exactly where data is sent. Bytebox itself never stores anything.',
+          es: 'Las herramientas que se comunican con un servicio externo ahora muestran un aviso claro sobre a dónde se envían exactamente los datos. Bytebox nunca guarda nada.',
+          fr: 'Les outils qui communiquent avec un service externe affichent désormais un avis clair indiquant exactement où les données sont envoyées. Bytebox ne stocke jamais rien lui-même.',
+          de: 'Werkzeuge, die mit einem externen Dienst kommunizieren, zeigen jetzt einen klaren Hinweis, wohin genau Daten gesendet werden. Bytebox selbst speichert nie etwas.',
+          pt: 'As ferramentas que comunicam com um serviço externo mostram agora um aviso claro sobre para onde os dados são enviados. O Bytebox nunca guarda nada.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Översättaren varnar särskilt för att texten kan sparas i MyMemorys publika översättningsminne — klistra inte in känsliga personuppgifter.',
+          en: 'The translator specifically warns that text may be stored in MyMemory\'s public translation memory — do not paste sensitive personal data.',
+          es: 'El traductor advierte específicamente de que el texto puede guardarse en la memoria de traducción pública de MyMemory — no pegues datos personales sensibles.',
+          fr: 'Le traducteur avertit spécifiquement que le texte peut être stocké dans la mémoire de traduction publique de MyMemory — ne collez pas de données personnelles sensibles.',
+          de: 'Der Übersetzer warnt ausdrücklich, dass der Text im öffentlichen Übersetzungsspeicher von MyMemory gespeichert werden kann — füge keine sensiblen personenbezogenen Daten ein.',
+          pt: 'O tradutor avisa especificamente que o texto pode ser guardado na memória de tradução pública do MyMemory — não cole dados pessoais sensíveis.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.13.0',
     date: '2026-07-04',
     title: {

@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Wrench, Sun, Moon, Eye, Globe, BookOpen } from 'lucide-react'
+import { Wrench, Sun, Moon, Eye, Globe, BookOpen, Menu, X } from 'lucide-react'
 import { useTheme, type Theme } from '../context/ThemeContext'
 import { useLanguage, type Language } from '../context/LanguageContext'
 import InstallButton from './InstallButton'
@@ -22,6 +23,7 @@ const themeIcon: Record<Theme, typeof Sun> = {
 export default function Header() {
   const { theme, setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const themeOptions: { value: Theme; label: string }[] = [
     { value: 'light', label: t.theme.light },
@@ -31,52 +33,95 @@ export default function Header() {
 
   const ThemeIcon = themeIcon[theme]
 
+  const journalLink = (
+    <Link
+      to="/journal"
+      onClick={() => setMenuOpen(false)}
+      className="flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hc:text-white no-underline transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"
+    >
+      <BookOpen className="h-4 w-4" />
+      {t.journal.heading}
+    </Link>
+  )
+
+  const languageSelect = (
+    <div className="relative flex items-center">
+      <Globe className="pointer-events-none absolute left-2.5 h-4 w-4 text-gray-600 dark:text-gray-400 hc:text-white" />
+      <select
+        value={language}
+        onChange={(e) => setLanguage(e.target.value as Language)}
+        aria-label="Language"
+        className="w-full appearance-none rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black py-1.5 pl-8 pr-8 text-sm text-gray-900 dark:text-gray-100 hc:text-white outline-none transition-colors hover:border-gray-400 dark:hover:border-gray-600"
+      >
+        {languageOptions.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  )
+
+  const themeSelect = (
+    <div className="relative flex items-center">
+      <ThemeIcon className="pointer-events-none absolute left-2.5 h-4 w-4 text-gray-600 dark:text-gray-400 hc:text-white" />
+      <select
+        value={theme}
+        onChange={(e) => setTheme(e.target.value as Theme)}
+        aria-label="Theme"
+        className="w-full appearance-none rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black py-1.5 pl-8 pr-8 text-sm text-gray-900 dark:text-gray-100 hc:text-white outline-none transition-colors hover:border-gray-400 dark:hover:border-gray-600"
+      >
+        {themeOptions.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  )
+
   return (
     <header className="border-b border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white no-underline">
+      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-2">
+        <Link
+          to="/"
+          onClick={() => setMenuOpen(false)}
+          className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white no-underline"
+        >
           <Wrench className="h-6 w-6 text-blue-400 hc:text-white" />
           Bytebox
         </Link>
-        <div className="flex items-center gap-3">
+
+        {/* Desktop controls */}
+        <div className="hidden md:flex items-center gap-3">
           <InstallButton />
-          <Link
-            to="/journal"
-            className="flex items-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hc:text-white no-underline transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"
-          >
-            <BookOpen className="h-4 w-4" />
-            {t.journal.heading}
-          </Link>
-          <div className="relative flex items-center">
-            <Globe className="pointer-events-none absolute left-2.5 h-4 w-4 text-gray-600 dark:text-gray-400 hc:text-white" />
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value as Language)}
-              className="appearance-none rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black py-1.5 pl-8 pr-8 text-sm text-gray-900 dark:text-gray-100 hc:text-white outline-none transition-colors hover:border-gray-400 dark:hover:border-gray-600"
-            >
-              {languageOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="relative flex items-center">
-            <ThemeIcon className="pointer-events-none absolute left-2.5 h-4 w-4 text-gray-600 dark:text-gray-400 hc:text-white" />
-            <select
-              value={theme}
-              onChange={(e) => setTheme(e.target.value as Theme)}
-              className="appearance-none rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black py-1.5 pl-8 pr-8 text-sm text-gray-900 dark:text-gray-100 hc:text-white outline-none transition-colors hover:border-gray-400 dark:hover:border-gray-600"
-            >
-              {themeOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
+          {journalLink}
+          {languageSelect}
+          {themeSelect}
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={t.menu ?? 'Menu'}
+          aria-expanded={menuOpen}
+          className="md:hidden flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-2 text-gray-700 dark:text-gray-200 hc:text-white transition-colors hover:border-gray-400 dark:hover:border-gray-600"
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {/* Mobile menu panel */}
+      {menuOpen && (
+        <div className="md:hidden border-t border-gray-200 dark:border-gray-700 hc:border-white px-4 py-4">
+          <div className="flex flex-col gap-3 [&>*]:w-full">
+            <InstallButton />
+            {journalLink}
+            {languageSelect}
+            {themeSelect}
           </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }

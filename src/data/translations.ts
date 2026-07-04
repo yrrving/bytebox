@@ -9,6 +9,19 @@ export interface Translation {
   tagline?: string
   newBadge?: string
   showAll?: string
+  privacy?: {
+    externalIntro: string
+    externalOutro: string
+    translatorWarning: string
+    speechService: string
+    speechNote: string
+  }
+  tabletRequired?: {
+    title: string
+    body: string
+    back: string
+  }
+  menu?: string
   searchPlaceholder: string
   emptyState: string
   comingSoon: string
@@ -533,9 +546,22 @@ export interface Translation {
 export const translations: Record<string, Translation> = {
   sv: {
     toolsHeading: 'Verktyg',
-    tagline: 'Gratis verktyg som körs direkt i din webbläsare — inget laddas upp, inget sparas.',
+    tagline: 'Gratis verktyg som körs direkt i din webbläsare — de flesta helt lokalt, inget laddas upp. Verktyg som behöver internet är tydligt märkta.',
     newBadge: 'Nytt',
     showAll: 'Visa alla verktyg',
+    privacy: {
+      externalIntro: 'Det här verktyget kommunicerar med en extern tjänst:',
+      externalOutro: 'Bytebox sparar ingenting själv. Undvik att skicka känsliga personuppgifter.',
+      translatorWarning: 'Texten skickas till MyMemory, som kan spara och återanvända den i ett publikt översättningsminne. Klistra inte in namn, personnummer eller annan känslig information.',
+      speechService: 'webbläsarens taltjänst',
+      speechNote: 'Ljudet från din mikrofon skickas till din webbläsares taltjänst (i Chrome: Google) för att tolkas. Bytebox sparar ingenting själv.',
+    },
+    tabletRequired: {
+      title: 'Kräver större skärm',
+      body: 'Det här verktyget behöver minst en surfplatta i skärmstorlek för att fungera bra. Öppna det på en surfplatta eller dator.',
+      back: 'Tillbaka till verktygen',
+    },
+    menu: 'Meny',
     searchPlaceholder: 'Sök verktyg...',
     emptyState: 'Inga verktyg matchar filtret.',
     comingSoon: 'Kommer snart',
@@ -1082,9 +1108,22 @@ export const translations: Record<string, Translation> = {
   },
   en: {
     toolsHeading: 'Tools',
-    tagline: 'Free tools that run right in your browser — nothing uploaded, nothing stored.',
+    tagline: 'Free tools that run right in your browser — most fully local, nothing uploaded. Tools that need the internet are clearly marked.',
     newBadge: 'New',
     showAll: 'Show all tools',
+    privacy: {
+      externalIntro: 'This tool communicates with an external service:',
+      externalOutro: 'Bytebox itself stores nothing. Avoid sending sensitive personal data.',
+      translatorWarning: 'The text is sent to MyMemory, which may store and reuse it in a public translation memory. Do not paste names, ID numbers or other sensitive information.',
+      speechService: 'your browser\'s speech service',
+      speechNote: 'Audio from your microphone is sent to your browser\'s speech service (in Chrome: Google) to be transcribed. Bytebox itself stores nothing.',
+    },
+    tabletRequired: {
+      title: 'Needs a bigger screen',
+      body: 'This tool needs at least a tablet-sized screen to work well. Open it on a tablet or computer.',
+      back: 'Back to the tools',
+    },
+    menu: 'Menu',
     searchPlaceholder: 'Search tools...',
     emptyState: 'No tools match the filter.',
     comingSoon: 'Coming soon',
@@ -1631,9 +1670,22 @@ export const translations: Record<string, Translation> = {
   },
   es: {
     toolsHeading: 'Herramientas',
-    tagline: 'Herramientas gratuitas que funcionan directamente en tu navegador: nada se sube, nada se guarda.',
+    tagline: 'Herramientas gratuitas que funcionan directamente en tu navegador: la mayoría totalmente locales, sin subir nada. Las que necesitan internet están claramente marcadas.',
     newBadge: 'Nuevo',
     showAll: 'Mostrar todas las herramientas',
+    privacy: {
+      externalIntro: 'Esta herramienta se comunica con un servicio externo:',
+      externalOutro: 'Bytebox no guarda nada. Evita enviar datos personales sensibles.',
+      translatorWarning: 'El texto se envía a MyMemory, que puede guardarlo y reutilizarlo en una memoria de traducción pública. No pegues nombres, números de identificación ni otra información sensible.',
+      speechService: 'el servicio de voz de tu navegador',
+      speechNote: 'El audio de tu micrófono se envía al servicio de voz de tu navegador (en Chrome: Google) para transcribirlo. Bytebox no guarda nada.',
+    },
+    tabletRequired: {
+      title: 'Requiere una pantalla más grande',
+      body: 'Esta herramienta necesita al menos una pantalla del tamaño de una tableta para funcionar bien. Ábrela en una tableta o un ordenador.',
+      back: 'Volver a las herramientas',
+    },
+    menu: 'Menú',
     searchPlaceholder: 'Buscar herramientas...',
     emptyState: 'Ninguna herramienta coincide con el filtro.',
     comingSoon: 'Próximamente',
@@ -2180,9 +2232,22 @@ export const translations: Record<string, Translation> = {
   },
   fr: {
     toolsHeading: 'Outils',
-    tagline: 'Des outils gratuits qui fonctionnent directement dans votre navigateur — rien n’est envoyé, rien n’est enregistré.',
+    tagline: 'Des outils gratuits qui fonctionnent directement dans votre navigateur — la plupart entièrement en local, rien n’est envoyé. Les outils qui nécessitent internet sont clairement indiqués.',
     newBadge: 'Nouveau',
     showAll: 'Afficher tous les outils',
+    privacy: {
+      externalIntro: 'Cet outil communique avec un service externe :',
+      externalOutro: 'Bytebox ne stocke rien lui-même. Évitez d’envoyer des données personnelles sensibles.',
+      translatorWarning: 'Le texte est envoyé à MyMemory, qui peut le stocker et le réutiliser dans une mémoire de traduction publique. Ne collez pas de noms, de numéros d’identité ou d’autres informations sensibles.',
+      speechService: 'le service vocal de votre navigateur',
+      speechNote: 'L’audio de votre microphone est envoyé au service vocal de votre navigateur (dans Chrome : Google) pour être transcrit. Bytebox ne stocke rien lui-même.',
+    },
+    tabletRequired: {
+      title: 'Nécessite un écran plus grand',
+      body: 'Cet outil nécessite au moins un écran de la taille d’une tablette pour bien fonctionner. Ouvrez-le sur une tablette ou un ordinateur.',
+      back: 'Retour aux outils',
+    },
+    menu: 'Menu',
     searchPlaceholder: 'Rechercher des outils...',
     emptyState: 'Aucun outil ne correspond au filtre.',
     comingSoon: 'Bientôt disponible',
@@ -2729,9 +2794,22 @@ export const translations: Record<string, Translation> = {
   },
   de: {
     toolsHeading: 'Werkzeuge',
-    tagline: 'Kostenlose Werkzeuge, die direkt in deinem Browser laufen — nichts wird hochgeladen, nichts gespeichert.',
+    tagline: 'Kostenlose Werkzeuge, die direkt in deinem Browser laufen — die meisten vollständig lokal, nichts wird hochgeladen. Werkzeuge, die das Internet brauchen, sind klar gekennzeichnet.',
     newBadge: 'Neu',
     showAll: 'Alle Werkzeuge anzeigen',
+    privacy: {
+      externalIntro: 'Dieses Werkzeug kommuniziert mit einem externen Dienst:',
+      externalOutro: 'Bytebox selbst speichert nichts. Sende keine sensiblen personenbezogenen Daten.',
+      translatorWarning: 'Der Text wird an MyMemory gesendet, das ihn in einem öffentlichen Übersetzungsspeicher speichern und wiederverwenden kann. Füge keine Namen, Ausweisnummern oder andere sensible Informationen ein.',
+      speechService: 'der Sprachdienst deines Browsers',
+      speechNote: 'Das Audio deines Mikrofons wird an den Sprachdienst deines Browsers (in Chrome: Google) gesendet, um transkribiert zu werden. Bytebox selbst speichert nichts.',
+    },
+    tabletRequired: {
+      title: 'Benötigt einen größeren Bildschirm',
+      body: 'Dieses Werkzeug benötigt mindestens einen tabletgroßen Bildschirm, um gut zu funktionieren. Öffne es auf einem Tablet oder Computer.',
+      back: 'Zurück zu den Werkzeugen',
+    },
+    menu: 'Menü',
     searchPlaceholder: 'Werkzeuge suchen...',
     emptyState: 'Keine Werkzeuge entsprechen dem Filter.',
     comingSoon: 'Demnächst verfügbar',
@@ -3278,9 +3356,22 @@ export const translations: Record<string, Translation> = {
   },
   pt: {
     toolsHeading: 'Ferramentas',
-    tagline: 'Ferramentas gratuitas que funcionam diretamente no seu navegador — nada é enviado, nada é guardado.',
+    tagline: 'Ferramentas gratuitas que funcionam diretamente no seu navegador — a maioria totalmente local, nada é enviado. As que precisam de internet estão claramente assinaladas.',
     newBadge: 'Novo',
     showAll: 'Mostrar todas as ferramentas',
+    privacy: {
+      externalIntro: 'Esta ferramenta comunica com um serviço externo:',
+      externalOutro: 'O Bytebox não guarda nada. Evite enviar dados pessoais sensíveis.',
+      translatorWarning: 'O texto é enviado para o MyMemory, que pode guardá-lo e reutilizá-lo numa memória de tradução pública. Não cole nomes, números de identificação ou outras informações sensíveis.',
+      speechService: 'o serviço de voz do seu navegador',
+      speechNote: 'O áudio do seu microfone é enviado para o serviço de voz do seu navegador (no Chrome: Google) para ser transcrito. O Bytebox não guarda nada.',
+    },
+    tabletRequired: {
+      title: 'Requer um ecrã maior',
+      body: 'Esta ferramenta precisa de pelo menos um ecrã do tamanho de um tablet para funcionar bem. Abra-a num tablet ou computador.',
+      back: 'Voltar às ferramentas',
+    },
+    menu: 'Menu',
     searchPlaceholder: 'Pesquisar ferramentas...',
     emptyState: 'Nenhuma ferramenta corresponde ao filtro.',
     comingSoon: 'Em breve',

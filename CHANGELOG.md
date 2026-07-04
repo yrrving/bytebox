@@ -2,6 +2,25 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.15.0 — 2026-07-04 — Mobilanpassning
+
+### Förbättrat
+
+- Menyn är nu responsiv: på mobil samlas språk, tema, journal och installera-knappen bakom en hamburgermeny i stället för att tryckas ihop på en rad.
+- Flikarna (Alla / Dator / Mobil / Online / Offline) fyller nu bredden och får plats på små skärmar.
+
+### Nytt
+
+- Verktyg som inte passar på en telefon (desktop-verktyg) visar nu ett tydligt meddelande om att de kräver minst en surfplatta i skärmstorlek, med en väg tillbaka till verktygslistan. Verktygen syns fortfarande i listan (märkta "dator").
+
+## 0.14.0 — 2026-07-04 — Tydlig integritet (GDPR-genomgång)
+
+### Förbättrat
+
+- Alla verktyg som kommunicerar med en extern tjänst visar nu en tydlig integritetsnotis som talar om exakt vart data skickas (Översättare → MyMemory, IP-info → ipapi.co, HTTP-headers → AllOrigins, SSL-koll → ssl-checker.io, DNS-uppslagning → Google DNS, Bandbreddstest → Cloudflare, Tal-till-text → webbläsarens taltjänst). Bytebox lagrar aldrig något själv.
+- Översättaren varnar särskilt för att inmatad text kan sparas i MyMemorys publika översättningsminne — klistra inte in känsliga personuppgifter.
+- Startsidans undertext är ärligare: de flesta verktyg körs helt lokalt, och de som behöver internet är tydligt märkta.
+
 ## 0.13.0 — 2026-07-04 — Tre nya verktyg & bättre upptäckbarhet
 
 ### Nytt

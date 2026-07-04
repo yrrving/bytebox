@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowRightLeft, Copy, Check, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ExternalNotice from '../../components/ExternalNotice'
 
 const LANGUAGES = [
   { code: 'sv', label: 'Svenska' },
@@ -94,6 +95,8 @@ export default function Translator() {
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
         )}
       </div>
+
+      <ExternalNotice service="MyMemory" warning={t.privacy?.translatorWarning} />
 
       {/* Language selection */}
       <div className="flex items-center gap-2">

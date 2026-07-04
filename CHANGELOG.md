@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.20.1 — 2026-07-04 — "Kategorier"-rubrik
+
+### Ändrat
+
+- Kategorierna på startsidan har nu en egen rubrik "Kategorier" (med ikon), i samma stil som "Nytt", så gränsen mellan sektionerna blir tydlig.
+
 ## 0.20.0 — 2026-07-04 — Tydligare startsida
 
 ### Ändrat

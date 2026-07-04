@@ -8,6 +8,7 @@ export interface Translation {
   toolsHeading: string
   tagline?: string
   newBadge?: string
+  categoriesHeading?: string
   showAll?: string
   privacy?: {
     externalIntro: string
@@ -550,6 +551,7 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Verktyg',
     tagline: 'Bytebox är gratis webbverktyg för bild, text, ljud, kod och mer — de flesta körs helt lokalt i din webbläsare, inget laddas upp. Verktyg som kräver internet är tydligt märkta.',
     newBadge: 'Nytt',
+    categoriesHeading: 'Kategorier',
     showAll: 'Visa alla verktyg',
     privacy: {
       externalIntro: 'Det här verktyget kommunicerar med en extern tjänst:',
@@ -1124,6 +1126,7 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Tools',
     tagline: 'Bytebox is free web tools for images, text, audio, code and more — most run fully locally in your browser, nothing uploaded. Tools that need the internet are clearly marked.',
     newBadge: 'New',
+    categoriesHeading: 'Categories',
     showAll: 'Show all tools',
     privacy: {
       externalIntro: 'This tool communicates with an external service:',
@@ -1698,6 +1701,7 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Herramientas',
     tagline: 'Bytebox son herramientas web gratuitas para imágenes, texto, audio, código y más — la mayoría funcionan totalmente en local en tu navegador, sin subir nada. Las que necesitan internet están claramente marcadas.',
     newBadge: 'Nuevo',
+    categoriesHeading: 'Categorías',
     showAll: 'Mostrar todas las herramientas',
     privacy: {
       externalIntro: 'Esta herramienta se comunica con un servicio externo:',
@@ -2272,6 +2276,7 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Outils',
     tagline: 'Bytebox, ce sont des outils web gratuits pour les images, le texte, l’audio, le code et plus — la plupart fonctionnent entièrement en local dans votre navigateur, rien n’est envoyé. Les outils qui nécessitent internet sont clairement indiqués.',
     newBadge: 'Nouveau',
+    categoriesHeading: 'Catégories',
     showAll: 'Afficher tous les outils',
     privacy: {
       externalIntro: 'Cet outil communique avec un service externe :',
@@ -2846,6 +2851,7 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Werkzeuge',
     tagline: 'Bytebox sind kostenlose Web-Werkzeuge für Bilder, Text, Audio, Code und mehr — die meisten laufen vollständig lokal in deinem Browser, nichts wird hochgeladen. Werkzeuge, die das Internet brauchen, sind klar gekennzeichnet.',
     newBadge: 'Neu',
+    categoriesHeading: 'Kategorien',
     showAll: 'Alle Werkzeuge anzeigen',
     privacy: {
       externalIntro: 'Dieses Werkzeug kommuniziert mit einem externen Dienst:',
@@ -3420,6 +3426,7 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Ferramentas',
     tagline: 'O Bytebox são ferramentas web gratuitas para imagens, texto, áudio, código e mais — a maioria funciona totalmente local no seu navegador, nada é enviado. As que precisam de internet estão claramente assinaladas.',
     newBadge: 'Novo',
+    categoriesHeading: 'Categorias',
     showAll: 'Mostrar todas as ferramentas',
     privacy: {
       externalIntro: 'Esta ferramenta comunica com um serviço externo:',

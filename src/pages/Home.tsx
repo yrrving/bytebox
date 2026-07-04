@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, runsOn, latestToolIds, type Category, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
@@ -173,7 +173,12 @@ export default function Home() {
             </div>
           )}
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
+              <LayoutGrid className="h-5 w-5 text-blue-500 dark:text-blue-400 hc:text-yellow-400" />
+              {t.categoriesHeading ?? 'Kategorier'}
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categoryOrder.map((cat) => {
               const catTools = tools.filter((tool) => tool.category === cat)
               const previewNames = catTools
@@ -204,6 +209,7 @@ export default function Home() {
                 </button>
               )
             })}
+            </div>
           </div>
 
           <div className="flex justify-center">

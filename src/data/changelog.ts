@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.20.1',
+    date: '2026-07-04',
+    title: {
+      sv: '"Kategorier"-rubrik',
+      en: '"Categories" heading',
+      es: 'Encabezado "Categorías"',
+      fr: 'Titre « Catégories »',
+      de: 'Überschrift „Kategorien“',
+      pt: 'Cabeçalho "Categorias"',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Kategorierna på startsidan har nu en egen rubrik "Kategorier", i samma stil som "Nytt", så gränsen mellan sektionerna blir tydlig.',
+          en: 'The categories on the home page now have their own "Categories" heading, in the same style as "New", so the boundary between sections is clear.',
+          es: 'Las categorías de la página de inicio ahora tienen su propio encabezado "Categorías", con el mismo estilo que "Nuevo", para que el límite entre secciones sea claro.',
+          fr: 'Les catégories de la page d’accueil ont désormais leur propre titre « Catégories », dans le même style que « Nouveau », pour que la limite entre les sections soit claire.',
+          de: 'Die Kategorien auf der Startseite haben jetzt eine eigene Überschrift „Kategorien“, im selben Stil wie „Neu“, sodass die Grenze zwischen den Abschnitten klar ist.',
+          pt: 'As categorias na página inicial têm agora um cabeçalho próprio "Categorias", no mesmo estilo que "Novo", para que o limite entre as secções seja claro.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.20.0',
     date: '2026-07-04',
     title: {

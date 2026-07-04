@@ -2,6 +2,17 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.17.0 — 2026-07-04 — Sex nya verktyg
+
+### Nytt
+
+- **SVG-optimerare** — krymp och städa SVG-filer (ta bort metadata, kommentarer, onödig kod). Allt lokalt.
+- **SRT-redigerare** — redigera undertexter: ändra text, justera tider och förskjut hela filen. Allt lokalt.
+- **Namnbrickor** — skapa utskrivbara namnbrickor på ett A4-ark, ett namn per rad. 300 DPI PNG.
+- **UUID-generator** — skapa slumpmässiga UUID:er (v4), en eller många på en gång.
+- **Epoch-omvandlare** — omvandla mellan Unix-tidsstämpel och datum/tid åt båda hållen (sekunder & millisekunder).
+- **Bas-omvandlare** — omvandla heltal mellan binärt, oktalt, decimalt och hexadecimalt live.
+
 ## 0.16.0 — 2026-07-04 — "Vad kan du göra på din enhet?"
 
 ### Nytt

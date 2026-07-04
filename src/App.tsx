@@ -64,6 +64,12 @@ const MetadataCleaner = lazy(() => import('./pages/tools/MetadataCleaner'))
 const PassportPhoto = lazy(() => import('./pages/tools/PassportPhoto'))
 const StickerSheet = lazy(() => import('./pages/tools/StickerSheet'))
 const BatchQr = lazy(() => import('./pages/tools/BatchQr'))
+const SvgOptimizer = lazy(() => import('./pages/tools/SvgOptimizer'))
+const SrtEditor = lazy(() => import('./pages/tools/SrtEditor'))
+const UuidGenerator = lazy(() => import('./pages/tools/UuidGenerator'))
+const EpochConverter = lazy(() => import('./pages/tools/EpochConverter'))
+const BaseConverter = lazy(() => import('./pages/tools/BaseConverter'))
+const BadgeGenerator = lazy(() => import('./pages/tools/BadgeGenerator'))
 const Traincells = lazy(() => import('./pages/tools/Traincells'))
 
 function LoadingFallback() {
@@ -140,6 +146,12 @@ export default function App() {
           <Route path="/passfoto" element={<PassportPhoto />} />
           <Route path="/etikett-ark" element={<StickerSheet />} />
           <Route path="/batch-qr" element={<BatchQr />} />
+          <Route path="/svg-optimering" element={<SvgOptimizer />} />
+          <Route path="/srt-redigerare" element={<SrtEditor />} />
+          <Route path="/uuid-generator" element={<UuidGenerator />} />
+          <Route path="/epoch-omvandlare" element={<EpochConverter />} />
+          <Route path="/bas-omvandlare" element={<BaseConverter />} />
+          <Route path="/namnbricka" element={<BadgeGenerator />} />
           <Route path="/traincells" element={<Traincells />} />
           <Route path="/:slug" element={<Placeholder />} />
         </Route>

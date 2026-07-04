@@ -57,6 +57,10 @@ import {
   FileImage,
   ImageOff,
   UserSquare,
+  FileCode2,
+  Captions,
+  Fingerprint,
+  IdCard,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -223,6 +227,15 @@ export const tools: Tool[] = [
     icon: Crosshair,
     category: 'bild',
   },
+  {
+    id: 'svg-optimering',
+    route: '/svg-optimering',
+    minScreen: 'surfplatta',
+    connection: 'offline',
+    icon: FileCode2,
+    category: 'bild',
+    isNew: true,
+  },
 
   // ── Text & Dokument ───────────────────────────────────────
   {
@@ -288,6 +301,15 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Scan,
     category: 'text',
+  },
+  {
+    id: 'srt-redigerare',
+    route: '/srt-redigerare',
+    minScreen: 'surfplatta',
+    connection: 'offline',
+    icon: Captions,
+    category: 'text',
+    isNew: true,
   },
 
   // ── Ljud & Tal ────────────────────────────────────────────
@@ -396,6 +418,33 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: KeyRound,
     category: 'kod',
+  },
+  {
+    id: 'uuid-generator',
+    route: '/uuid-generator',
+    minScreen: 'mobil',
+    connection: 'offline',
+    icon: Fingerprint,
+    category: 'kod',
+    isNew: true,
+  },
+  {
+    id: 'epoch-omvandlare',
+    route: '/epoch-omvandlare',
+    minScreen: 'mobil',
+    connection: 'offline',
+    icon: Clock,
+    category: 'kod',
+    isNew: true,
+  },
+  {
+    id: 'bas-omvandlare',
+    route: '/bas-omvandlare',
+    minScreen: 'mobil',
+    connection: 'offline',
+    icon: Binary,
+    category: 'kod',
+    isNew: true,
   },
 
   // ── Nätverk & Säkerhet ────────────────────────────────────
@@ -513,6 +562,15 @@ export const tools: Tool[] = [
     minScreen: 'mobil',
     connection: 'offline',
     icon: QrCode,
+    category: 'produktivitet',
+    isNew: true,
+  },
+  {
+    id: 'namnbricka',
+    route: '/namnbricka',
+    minScreen: 'surfplatta',
+    connection: 'offline',
+    icon: IdCard,
     category: 'produktivitet',
     isNew: true,
   },

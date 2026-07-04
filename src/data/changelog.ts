@@ -10,6 +10,53 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.17.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Sex nya verktyg',
+      en: 'Six new tools',
+      es: 'Seis herramientas nuevas',
+      fr: 'Six nouveaux outils',
+      de: 'Sechs neue Werkzeuge',
+      pt: 'Seis novas ferramentas',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'SVG-optimerare och SRT-redigerare: krymp/städa SVG-filer respektive redigera undertexter (text, tider, förskjutning) — allt lokalt.',
+          en: 'SVG optimizer and SRT editor: shrink/clean SVG files and edit subtitles (text, timings, shift) — all local.',
+          es: 'Optimizador SVG y editor de SRT: reduce/limpia archivos SVG y edita subtítulos (texto, tiempos, desplazamiento) — todo local.',
+          fr: 'Optimiseur SVG et éditeur SRT : réduisez/nettoyez les fichiers SVG et modifiez les sous-titres (texte, temps, décalage) — tout en local.',
+          de: 'SVG-Optimierer und SRT-Editor: SVG-Dateien verkleinern/bereinigen und Untertitel bearbeiten (Text, Zeiten, Verschiebung) — alles lokal.',
+          pt: 'Otimizador SVG e editor de SRT: reduza/limpe ficheiros SVG e edite legendas (texto, tempos, deslocamento) — tudo local.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Namnbrickor: skapa utskrivbara namnbrickor på ett A4-ark, ett namn per rad, i 300 DPI.',
+          en: 'Name badges: create printable name badges on an A4 sheet, one name per line, at 300 DPI.',
+          es: 'Tarjetas de nombre: crea tarjetas imprimibles en una hoja A4, un nombre por línea, a 300 DPI.',
+          fr: 'Badges nominatifs : créez des badges imprimables sur une feuille A4, un nom par ligne, en 300 DPI.',
+          de: 'Namensschilder: erstelle druckbare Namensschilder auf einem A4-Blatt, ein Name pro Zeile, in 300 DPI.',
+          pt: 'Crachás de nome: crie crachás imprimíveis numa folha A4, um nome por linha, a 300 DPI.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Utvecklarverktyg: UUID-generator (v4), Epoch-omvandlare (Unix-tid ↔ datum) och Bas-omvandlare (binärt/oktalt/decimalt/hex).',
+          en: 'Developer tools: UUID generator (v4), Epoch converter (Unix time ↔ date) and Base converter (binary/octal/decimal/hex).',
+          es: 'Herramientas para desarrolladores: generador de UUID (v4), conversor de epoch (tiempo Unix ↔ fecha) y conversor de bases (binario/octal/decimal/hex).',
+          fr: 'Outils pour développeurs : générateur d’UUID (v4), convertisseur epoch (temps Unix ↔ date) et convertisseur de bases (binaire/octal/décimal/hex).',
+          de: 'Entwicklerwerkzeuge: UUID-Generator (v4), Epoch-Umrechner (Unix-Zeit ↔ Datum) und Basis-Umrechner (binär/oktal/dezimal/hex).',
+          pt: 'Ferramentas para programadores: gerador de UUID (v4), conversor de epoch (tempo Unix ↔ data) e conversor de bases (binário/octal/decimal/hex).',
+        },
+      },
+    ],
+  },
+  {
     version: '0.16.0',
     date: '2026-07-04',
     title: {

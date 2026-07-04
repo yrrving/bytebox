@@ -64,6 +64,7 @@ import {
   AudioLines,
   Barcode,
   FileSignature,
+  Film,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -236,6 +237,15 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: FileCode2,
+    category: 'bild',
+    isNew: true,
+  },
+  {
+    id: 'video-till-gif',
+    route: '/video-till-gif',
+    minScreen: 'surfplatta',
+    connection: 'offline',
+    icon: Film,
     category: 'bild',
     isNew: true,
   },

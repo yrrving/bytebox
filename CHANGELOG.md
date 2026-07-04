@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.19.0 — 2026-07-04 — Video till GIF
+
+### Nytt
+
+- **Video till GIF** — gör en animerad GIF av ett videoklipp direkt i webbläsaren: välj start, slut, bildrutor/sekund och storlek, förhandsgranska och ladda ner. Använder en lätt GIF-kodare (gifenc, ~8 kB) i stället för tunga bibliotek, och videon laddas aldrig upp.
+
+### Teknik
+
+- Bildrutor plockas från videon via canvas och kodas med gifenc, som laddas först när verktyget öppnas (dynamisk import) — huvudbundeln påverkas inte.
+
 ## 0.18.1 — 2026-07-04 — Säkerhetsuppdatering av beroenden
 
 ### Underhåll

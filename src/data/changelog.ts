@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.19.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Video till GIF',
+      en: 'Video to GIF',
+      es: 'Vídeo a GIF',
+      fr: 'Vidéo en GIF',
+      de: 'Video zu GIF',
+      pt: 'Vídeo para GIF',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Video till GIF: gör en animerad GIF av ett videoklipp (välj start, slut, bildrutor och storlek). Lätt GIF-kodare, videon laddas aldrig upp.',
+          en: 'Video to GIF: turn a video clip into an animated GIF (choose start, end, frame rate and size). Lightweight GIF encoder, the video is never uploaded.',
+          es: 'Vídeo a GIF: convierte un clip de vídeo en un GIF animado (elige inicio, fin, fotogramas y tamaño). Codificador GIF ligero, el vídeo nunca se sube.',
+          fr: 'Vidéo en GIF : transformez un clip vidéo en GIF animé (choisissez début, fin, images par seconde et taille). Encodeur GIF léger, la vidéo n’est jamais envoyée.',
+          de: 'Video zu GIF: verwandle einen Videoclip in ein animiertes GIF (Anfang, Ende, Bildrate und Größe wählen). Leichter GIF-Encoder, das Video wird nie hochgeladen.',
+          pt: 'Vídeo para GIF: transforme um clipe de vídeo num GIF animado (escolha início, fim, fotogramas e tamanho). Codificador GIF leve, o vídeo nunca é enviado.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.18.1',
     date: '2026-07-04',
     title: {

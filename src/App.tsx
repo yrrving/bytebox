@@ -73,6 +73,7 @@ const BadgeGenerator = lazy(() => import('./pages/tools/BadgeGenerator'))
 const AudioTrimmer = lazy(() => import('./pages/tools/AudioTrimmer'))
 const BarcodeGenerator = lazy(() => import('./pages/tools/BarcodeGenerator'))
 const PdfSign = lazy(() => import('./pages/tools/PdfSign'))
+const VideoToGif = lazy(() => import('./pages/tools/VideoToGif'))
 const Traincells = lazy(() => import('./pages/tools/Traincells'))
 
 function LoadingFallback() {
@@ -158,6 +159,7 @@ export default function App() {
           <Route path="/ljudklipp" element={<AudioTrimmer />} />
           <Route path="/streckkod" element={<BarcodeGenerator />} />
           <Route path="/pdf-signering" element={<PdfSign />} />
+          <Route path="/video-till-gif" element={<VideoToGif />} />
           <Route path="/traincells" element={<Traincells />} />
           <Route path="/:slug" element={<Placeholder />} />
         </Route>

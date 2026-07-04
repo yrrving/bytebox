@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.12.0 — 2026-07-04 — Metadata-tvätt
+
+### Nytt
+
+- **Metadata-tvätt** — visar dold metadata i bilder (särskilt GPS-position, men även datum och kameramodell) och tar bort allt med ett klick. Perfekt att köra på foton innan man delar dem. Allt sker lokalt — bilden laddas aldrig upp.
+
 ## 0.11.0 — 2026-07-03 — HEIC-konverterare
 
 ### Nytt

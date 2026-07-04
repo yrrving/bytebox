@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.12.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Metadata-tvätt',
+      en: 'Metadata cleaner',
+      es: 'Limpiador de metadatos',
+      fr: 'Nettoyeur de métadonnées',
+      de: 'Metadaten-Reiniger',
+      pt: 'Limpador de metadados',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Metadata-tvätt: se dold metadata i bilder (GPS-position, datum, kamera) och ta bort allt med ett klick innan du delar. Allt sker lokalt — inget laddas upp.',
+          en: 'Metadata cleaner: see hidden metadata in images (GPS location, date, camera) and strip it all with one click before sharing. Everything runs locally — nothing is uploaded.',
+          es: 'Limpiador de metadatos: ve los metadatos ocultos en las imágenes (ubicación GPS, fecha, cámara) y elimínalos con un clic antes de compartir. Todo se ejecuta localmente — no se sube nada.',
+          fr: 'Nettoyeur de métadonnées : voyez les métadonnées cachées dans les images (position GPS, date, appareil) et supprimez tout en un clic avant de partager. Tout en local — rien n\'est envoyé.',
+          de: 'Metadaten-Reiniger: sieh versteckte Metadaten in Bildern (GPS-Standort, Datum, Kamera) und entferne alles mit einem Klick vor dem Teilen. Alles läuft lokal — nichts wird hochgeladen.',
+          pt: 'Limpador de metadados: veja metadados ocultos nas imagens (localização GPS, data, câmara) e remova tudo com um clique antes de partilhar. Tudo funciona localmente — nada é enviado.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.11.0',
     date: '2026-07-03',
     title: {

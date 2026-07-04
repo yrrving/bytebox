@@ -55,6 +55,7 @@ import {
   Shuffle,
   Gamepad2,
   FileImage,
+  ImageOff,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -91,6 +92,14 @@ export const tools: Tool[] = [
     device: 'båda',
     connection: 'offline',
     icon: FileImage,
+    category: 'bild',
+  },
+  {
+    id: 'metadata-tvatt',
+    route: '/metadata-tvatt',
+    device: 'båda',
+    connection: 'offline',
+    icon: ImageOff,
     category: 'bild',
   },
   {

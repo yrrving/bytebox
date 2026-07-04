@@ -455,6 +455,20 @@ export interface Translation {
     noHeic: string
     failed: string
   }
+  metadataCleaner?: {
+    upload: string
+    privacy: string
+    reading: string
+    found: string
+    location: string
+    date: string
+    camera: string
+    tags: string
+    none: string
+    clean: string
+    cleaned: string
+    download: string
+  }
   imageCropper?: {
     upload: string
     free: string
@@ -928,6 +942,20 @@ export const translations: Record<string, Translation> = {
       noHeic: 'Inga HEIC/HEIF-filer hittades. Välj bilder från en iPhone.',
       failed: 'Något gick fel vid konverteringen. Filen kanske inte är en giltig HEIC-bild.',
     },
+    metadataCleaner: {
+      upload: 'Klicka eller dra hit en bild (t.ex. ett foto)',
+      privacy: 'Allt sker lokalt i din webbläsare. Bilden laddas aldrig upp någonstans.',
+      reading: 'Läser metadata…',
+      found: 'Den här bilden innehåller dold metadata:',
+      location: 'Exakt plats (GPS)',
+      date: 'Datum',
+      camera: 'Kamera',
+      tags: 'metadatafält totalt',
+      none: 'Ingen metadata hittades i den här bilden — den är redan ren.',
+      clean: 'Rensa metadata',
+      cleaned: 'Metadata borttagen — ladda ner den rena bilden.',
+      download: 'Ladda ner ren bild',
+    },
     imageCropper: {
       upload: 'Klicka eller dra hit en bild',
       free: 'Fri',
@@ -1010,6 +1038,7 @@ export const translations: Record<string, Translation> = {
       'bildbeskärare': { name: 'Bildbeskärare', description: 'Beskär bilder till önskad storlek och proportioner' },
       'bakgrundsborttagare': { name: 'Bakgrundsborttagare', description: 'Ta bort bakgrund från bilder automatiskt' },
       'heic-till-jpg': { name: 'HEIC till JPG', description: 'Konvertera iPhone-bilder (HEIC) till JPG eller PNG', hint: 'iPhone sparar foton som HEIC, som många datorer inte kan öppna. Konvertera till JPG eller PNG — allt sker lokalt, inget laddas upp.' },
+      'metadata-tvatt': { name: 'Metadata-tvätt', description: 'Se och ta bort dold metadata (GPS, datum, kamera) från bilder', hint: 'Foton innehåller ofta din exakta GPS-position. Se vad som gömmer sig i bilden och ta bort allt — lokalt, inget laddas upp.' },
       'favicon-generator': { name: 'Favicon-generator', description: 'Skapa favicons för webbplatser från valfri bild' },
       'bildkollage': { name: 'Bildkollage', description: 'Kombinera flera bilder till ett snyggt kollage' },
       'pixelraknare': { name: 'Pixelräknare', description: 'Räkna pixlar och mät avstånd i bilder' },
@@ -1456,6 +1485,20 @@ export const translations: Record<string, Translation> = {
       noHeic: 'No HEIC/HEIF files found. Pick photos from an iPhone.',
       failed: 'Something went wrong during conversion. The file may not be a valid HEIC image.',
     },
+    metadataCleaner: {
+      upload: 'Click or drop an image (e.g. a photo) here',
+      privacy: 'Everything runs locally in your browser. Your image is never uploaded anywhere.',
+      reading: 'Reading metadata…',
+      found: 'This image contains hidden metadata:',
+      location: 'Exact location (GPS)',
+      date: 'Date',
+      camera: 'Camera',
+      tags: 'metadata fields total',
+      none: 'No metadata found in this image — it\'s already clean.',
+      clean: 'Remove metadata',
+      cleaned: 'Metadata removed — download the clean image.',
+      download: 'Download clean image',
+    },
     imageCropper: {
       upload: 'Click or drag an image here',
       free: 'Free',
@@ -1538,6 +1581,7 @@ export const translations: Record<string, Translation> = {
       'bildbeskärare': { name: 'Image Cropper', description: 'Crop images to desired size and aspect ratio' },
       'bakgrundsborttagare': { name: 'Background Remover', description: 'Automatically remove backgrounds from images' },
       'heic-till-jpg': { name: 'HEIC to JPG', description: 'Convert iPhone photos (HEIC) to JPG or PNG', hint: 'iPhones save photos as HEIC, which many computers can\'t open. Convert to JPG or PNG — all locally, nothing uploaded.' },
+      'metadata-tvatt': { name: 'Metadata Cleaner', description: 'View and remove hidden metadata (GPS, date, camera) from images', hint: 'Photos often contain your exact GPS location. See what\'s hidden in the image and strip it — locally, nothing uploaded.' },
       'favicon-generator': { name: 'Favicon Generator', description: 'Create favicons for websites from any image' },
       'bildkollage': { name: 'Image Collage', description: 'Combine multiple images into a collage' },
       'pixelraknare': { name: 'Pixel Counter', description: 'Count pixels and measure distances in images' },
@@ -1984,6 +2028,20 @@ export const translations: Record<string, Translation> = {
       noHeic: 'No se encontraron archivos HEIC/HEIF. Elige fotos de un iPhone.',
       failed: 'Algo salió mal durante la conversión. Puede que el archivo no sea una imagen HEIC válida.',
     },
+    metadataCleaner: {
+      upload: 'Haz clic o arrastra una imagen (p. ej. una foto) aquí',
+      privacy: 'Todo se ejecuta localmente en tu navegador. Tu imagen nunca se sube a ningún sitio.',
+      reading: 'Leyendo metadatos…',
+      found: 'Esta imagen contiene metadatos ocultos:',
+      location: 'Ubicación exacta (GPS)',
+      date: 'Fecha',
+      camera: 'Cámara',
+      tags: 'campos de metadatos en total',
+      none: 'No se encontraron metadatos en esta imagen — ya está limpia.',
+      clean: 'Eliminar metadatos',
+      cleaned: 'Metadatos eliminados — descarga la imagen limpia.',
+      download: 'Descargar imagen limpia',
+    },
     imageCropper: {
       upload: 'Haz clic o arrastra una imagen aquí',
       free: 'Libre',
@@ -2066,6 +2124,7 @@ export const translations: Record<string, Translation> = {
       'bildbeskärare': { name: 'Recortador de imágenes', description: 'Recortar imágenes al tamaño y proporción deseados' },
       'bakgrundsborttagare': { name: 'Eliminador de fondo', description: 'Eliminar fondos de imágenes automáticamente' },
       'heic-till-jpg': { name: 'HEIC a JPG', description: 'Convierte fotos de iPhone (HEIC) a JPG o PNG', hint: 'Los iPhone guardan las fotos como HEIC, que muchos ordenadores no pueden abrir. Conviértelas a JPG o PNG — todo localmente, sin subir nada.' },
+      'metadata-tvatt': { name: 'Limpiador de metadatos', description: 'Ver y eliminar metadatos ocultos (GPS, fecha, cámara) de imágenes', hint: 'Las fotos suelen contener tu ubicación GPS exacta. Mira lo que se oculta en la imagen y elimínalo — localmente, sin subir nada.' },
       'favicon-generator': { name: 'Generador de favicon', description: 'Crear favicons para sitios web desde cualquier imagen' },
       'bildkollage': { name: 'Collage de imágenes', description: 'Combinar varias imágenes en un collage' },
       'pixelraknare': { name: 'Contador de píxeles', description: 'Contar píxeles y medir distancias en imágenes' },
@@ -2512,6 +2571,20 @@ export const translations: Record<string, Translation> = {
       noHeic: 'Aucun fichier HEIC/HEIF trouvé. Choisissez des photos d\'un iPhone.',
       failed: 'Une erreur s\'est produite lors de la conversion. Le fichier n\'est peut-être pas une image HEIC valide.',
     },
+    metadataCleaner: {
+      upload: 'Cliquez ou déposez une image (p. ex. une photo) ici',
+      privacy: 'Tout s\'exécute localement dans votre navigateur. Votre image n\'est jamais envoyée nulle part.',
+      reading: 'Lecture des métadonnées…',
+      found: 'Cette image contient des métadonnées cachées :',
+      location: 'Position exacte (GPS)',
+      date: 'Date',
+      camera: 'Appareil photo',
+      tags: 'champs de métadonnées au total',
+      none: 'Aucune métadonnée trouvée dans cette image — elle est déjà propre.',
+      clean: 'Supprimer les métadonnées',
+      cleaned: 'Métadonnées supprimées — téléchargez l\'image propre.',
+      download: 'Télécharger l\'image propre',
+    },
     imageCropper: {
       upload: 'Cliquez ou glissez une image ici',
       free: 'Libre',
@@ -2594,6 +2667,7 @@ export const translations: Record<string, Translation> = {
       'bildbeskärare': { name: 'Rogneur d\'images', description: 'Rogner des images à la taille et aux proportions souhaitées' },
       'bakgrundsborttagare': { name: 'Suppression d\'arrière-plan', description: 'Supprimer automatiquement l\'arrière-plan des images' },
       'heic-till-jpg': { name: 'HEIC vers JPG', description: 'Convertir des photos iPhone (HEIC) en JPG ou PNG', hint: 'Les iPhone enregistrent les photos en HEIC, que beaucoup d\'ordinateurs ne peuvent pas ouvrir. Convertissez en JPG ou PNG — tout en local, rien n\'est envoyé.' },
+      'metadata-tvatt': { name: 'Nettoyeur de métadonnées', description: 'Voir et supprimer les métadonnées cachées (GPS, date, appareil) des images', hint: 'Les photos contiennent souvent votre position GPS exacte. Voyez ce qui est caché dans l\'image et supprimez-le — en local, rien n\'est envoyé.' },
       'favicon-generator': { name: 'Générateur de favicon', description: 'Créer des favicons pour sites web à partir de n\'importe quelle image' },
       'bildkollage': { name: 'Collage d\'images', description: 'Combiner plusieurs images en un collage' },
       'pixelraknare': { name: 'Compteur de pixels', description: 'Compter les pixels et mesurer les distances dans les images' },
@@ -3040,6 +3114,20 @@ export const translations: Record<string, Translation> = {
       noHeic: 'Keine HEIC/HEIF-Dateien gefunden. Wähle Fotos von einem iPhone.',
       failed: 'Bei der Konvertierung ist etwas schiefgelaufen. Die Datei ist möglicherweise kein gültiges HEIC-Bild.',
     },
+    metadataCleaner: {
+      upload: 'Bild (z. B. ein Foto) hier klicken oder ablegen',
+      privacy: 'Alles läuft lokal in deinem Browser. Dein Bild wird nirgendwo hochgeladen.',
+      reading: 'Metadaten werden gelesen…',
+      found: 'Dieses Bild enthält versteckte Metadaten:',
+      location: 'Genauer Standort (GPS)',
+      date: 'Datum',
+      camera: 'Kamera',
+      tags: 'Metadatenfelder insgesamt',
+      none: 'Keine Metadaten in diesem Bild gefunden — es ist bereits sauber.',
+      clean: 'Metadaten entfernen',
+      cleaned: 'Metadaten entfernt — lade das saubere Bild herunter.',
+      download: 'Sauberes Bild herunterladen',
+    },
     imageCropper: {
       upload: 'Klicken oder Bild hierher ziehen',
       free: 'Frei',
@@ -3122,6 +3210,7 @@ export const translations: Record<string, Translation> = {
       'bildbeskärare': { name: 'Bildzuschnitt', description: 'Bilder auf gewünschte Größe und Proportionen zuschneiden' },
       'bakgrundsborttagare': { name: 'Hintergrundentferner', description: 'Hintergründe automatisch aus Bildern entfernen' },
       'heic-till-jpg': { name: 'HEIC zu JPG', description: 'iPhone-Fotos (HEIC) in JPG oder PNG umwandeln', hint: 'iPhones speichern Fotos als HEIC, das viele Computer nicht öffnen können. In JPG oder PNG umwandeln — alles lokal, nichts wird hochgeladen.' },
+      'metadata-tvatt': { name: 'Metadaten-Reiniger', description: 'Versteckte Metadaten (GPS, Datum, Kamera) aus Bildern anzeigen und entfernen', hint: 'Fotos enthalten oft deinen genauen GPS-Standort. Sieh, was im Bild versteckt ist, und entferne es — lokal, nichts wird hochgeladen.' },
       'favicon-generator': { name: 'Favicon-Generator', description: 'Favicons für Websites aus beliebigen Bildern erstellen' },
       'bildkollage': { name: 'Bildcollage', description: 'Mehrere Bilder zu einer Collage kombinieren' },
       'pixelraknare': { name: 'Pixelzähler', description: 'Pixel zählen und Abstände in Bildern messen' },
@@ -3568,6 +3657,20 @@ export const translations: Record<string, Translation> = {
       noHeic: 'Nenhum ficheiro HEIC/HEIF encontrado. Escolha fotos de um iPhone.',
       failed: 'Algo correu mal durante a conversão. O ficheiro pode não ser uma imagem HEIC válida.',
     },
+    metadataCleaner: {
+      upload: 'Clique ou arraste uma imagem (p. ex. uma foto) para aqui',
+      privacy: 'Tudo funciona localmente no seu navegador. A sua imagem nunca é enviada para lado nenhum.',
+      reading: 'A ler metadados…',
+      found: 'Esta imagem contém metadados ocultos:',
+      location: 'Localização exata (GPS)',
+      date: 'Data',
+      camera: 'Câmara',
+      tags: 'campos de metadados no total',
+      none: 'Nenhum metadado encontrado nesta imagem — já está limpa.',
+      clean: 'Remover metadados',
+      cleaned: 'Metadados removidos — descarregue a imagem limpa.',
+      download: 'Descarregar imagem limpa',
+    },
     imageCropper: {
       upload: 'Clique ou arraste uma imagem aqui',
       free: 'Livre',
@@ -3650,6 +3753,7 @@ export const translations: Record<string, Translation> = {
       'bildbeskärare': { name: 'Recortador de imagens', description: 'Recortar imagens no tamanho e proporção desejados' },
       'bakgrundsborttagare': { name: 'Removedor de fundo', description: 'Remover fundos de imagens automaticamente' },
       'heic-till-jpg': { name: 'HEIC para JPG', description: 'Converter fotos de iPhone (HEIC) para JPG ou PNG', hint: 'Os iPhones guardam fotos como HEIC, que muitos computadores não conseguem abrir. Converta para JPG ou PNG — tudo localmente, nada é enviado.' },
+      'metadata-tvatt': { name: 'Limpador de metadados', description: 'Ver e remover metadados ocultos (GPS, data, câmara) de imagens', hint: 'As fotos contêm frequentemente a sua localização GPS exata. Veja o que está oculto na imagem e remova tudo — localmente, nada é enviado.' },
       'favicon-generator': { name: 'Gerador de favicon', description: 'Criar favicons para sites a partir de qualquer imagem' },
       'bildkollage': { name: 'Colagem de imagens', description: 'Combinar várias imagens em uma colagem' },
       'pixelraknare': { name: 'Contador de pixels', description: 'Contar pixels e medir distâncias em imagens' },

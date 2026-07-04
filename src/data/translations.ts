@@ -25,7 +25,6 @@ export interface Translation {
     back: string
   }
   menu?: string
-  siteSummary?: string
   devicePrompt?: string
   minScreenLabel?: {
     mobil: string
@@ -549,7 +548,7 @@ export interface Translation {
 export const translations: Record<string, Translation> = {
   sv: {
     toolsHeading: 'Verktyg',
-    tagline: 'Gratis verktyg som körs direkt i din webbläsare — de flesta helt lokalt, inget laddas upp. Verktyg som behöver internet är tydligt märkta.',
+    tagline: 'Bytebox är gratis webbverktyg för bild, text, ljud, kod och mer — de flesta körs helt lokalt i din webbläsare, inget laddas upp. Verktyg som kräver internet är tydligt märkta.',
     newBadge: 'Nytt',
     showAll: 'Visa alla verktyg',
     privacy: {
@@ -568,7 +567,6 @@ export const translations: Record<string, Translation> = {
       back: 'Tillbaka till verktygen',
     },
     menu: 'Meny',
-    siteSummary: 'Bytebox samlar små gratisverktyg för bild, text, ljud, kod, nätverk och beräkning — allt körs direkt i webbläsaren.',
     devicePrompt: 'Vad kan du göra på din enhet?',
     minScreenLabel: {
       mobil: 'Mobil',
@@ -1124,7 +1122,7 @@ export const translations: Record<string, Translation> = {
   },
   en: {
     toolsHeading: 'Tools',
-    tagline: 'Free tools that run right in your browser — most fully local, nothing uploaded. Tools that need the internet are clearly marked.',
+    tagline: 'Bytebox is free web tools for images, text, audio, code and more — most run fully locally in your browser, nothing uploaded. Tools that need the internet are clearly marked.',
     newBadge: 'New',
     showAll: 'Show all tools',
     privacy: {
@@ -1143,7 +1141,6 @@ export const translations: Record<string, Translation> = {
       back: 'Back to the tools',
     },
     menu: 'Menu',
-    siteSummary: 'Bytebox is a collection of small free tools for images, text, audio, code, networking and calculation — all running right in your browser.',
     devicePrompt: 'What can you do on your device?',
     minScreenLabel: {
       mobil: 'Phone',
@@ -1699,7 +1696,7 @@ export const translations: Record<string, Translation> = {
   },
   es: {
     toolsHeading: 'Herramientas',
-    tagline: 'Herramientas gratuitas que funcionan directamente en tu navegador: la mayoría totalmente locales, sin subir nada. Las que necesitan internet están claramente marcadas.',
+    tagline: 'Bytebox son herramientas web gratuitas para imágenes, texto, audio, código y más — la mayoría funcionan totalmente en local en tu navegador, sin subir nada. Las que necesitan internet están claramente marcadas.',
     newBadge: 'Nuevo',
     showAll: 'Mostrar todas las herramientas',
     privacy: {
@@ -1718,7 +1715,6 @@ export const translations: Record<string, Translation> = {
       back: 'Volver a las herramientas',
     },
     menu: 'Menú',
-    siteSummary: 'Bytebox es una colección de pequeñas herramientas gratuitas para imágenes, texto, audio, código, redes y cálculo — todo funciona directamente en tu navegador.',
     devicePrompt: '¿Qué puedes hacer en tu dispositivo?',
     minScreenLabel: {
       mobil: 'Móvil',
@@ -2274,7 +2270,7 @@ export const translations: Record<string, Translation> = {
   },
   fr: {
     toolsHeading: 'Outils',
-    tagline: 'Des outils gratuits qui fonctionnent directement dans votre navigateur — la plupart entièrement en local, rien n’est envoyé. Les outils qui nécessitent internet sont clairement indiqués.',
+    tagline: 'Bytebox, ce sont des outils web gratuits pour les images, le texte, l’audio, le code et plus — la plupart fonctionnent entièrement en local dans votre navigateur, rien n’est envoyé. Les outils qui nécessitent internet sont clairement indiqués.',
     newBadge: 'Nouveau',
     showAll: 'Afficher tous les outils',
     privacy: {
@@ -2293,7 +2289,6 @@ export const translations: Record<string, Translation> = {
       back: 'Retour aux outils',
     },
     menu: 'Menu',
-    siteSummary: 'Bytebox est une collection de petits outils gratuits pour les images, le texte, l’audio, le code, le réseau et le calcul — tout fonctionne directement dans votre navigateur.',
     devicePrompt: 'Que pouvez-vous faire sur votre appareil ?',
     minScreenLabel: {
       mobil: 'Mobile',
@@ -2849,7 +2844,7 @@ export const translations: Record<string, Translation> = {
   },
   de: {
     toolsHeading: 'Werkzeuge',
-    tagline: 'Kostenlose Werkzeuge, die direkt in deinem Browser laufen — die meisten vollständig lokal, nichts wird hochgeladen. Werkzeuge, die das Internet brauchen, sind klar gekennzeichnet.',
+    tagline: 'Bytebox sind kostenlose Web-Werkzeuge für Bilder, Text, Audio, Code und mehr — die meisten laufen vollständig lokal in deinem Browser, nichts wird hochgeladen. Werkzeuge, die das Internet brauchen, sind klar gekennzeichnet.',
     newBadge: 'Neu',
     showAll: 'Alle Werkzeuge anzeigen',
     privacy: {
@@ -2868,7 +2863,6 @@ export const translations: Record<string, Translation> = {
       back: 'Zurück zu den Werkzeugen',
     },
     menu: 'Menü',
-    siteSummary: 'Bytebox ist eine Sammlung kleiner kostenloser Werkzeuge für Bilder, Text, Audio, Code, Netzwerk und Berechnung — alles läuft direkt im Browser.',
     devicePrompt: 'Was kannst du auf deinem Gerät machen?',
     minScreenLabel: {
       mobil: 'Handy',
@@ -3424,7 +3418,7 @@ export const translations: Record<string, Translation> = {
   },
   pt: {
     toolsHeading: 'Ferramentas',
-    tagline: 'Ferramentas gratuitas que funcionam diretamente no seu navegador — a maioria totalmente local, nada é enviado. As que precisam de internet estão claramente assinaladas.',
+    tagline: 'O Bytebox são ferramentas web gratuitas para imagens, texto, áudio, código e mais — a maioria funciona totalmente local no seu navegador, nada é enviado. As que precisam de internet estão claramente assinaladas.',
     newBadge: 'Novo',
     showAll: 'Mostrar todas as ferramentas',
     privacy: {
@@ -3443,7 +3437,6 @@ export const translations: Record<string, Translation> = {
       back: 'Voltar às ferramentas',
     },
     menu: 'Menu',
-    siteSummary: 'O Bytebox é uma coleção de pequenas ferramentas gratuitas para imagens, texto, áudio, código, rede e cálculo — tudo funciona diretamente no seu navegador.',
     devicePrompt: 'O que pode fazer no seu dispositivo?',
     minScreenLabel: {
       mobil: 'Telemóvel',

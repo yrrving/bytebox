@@ -83,7 +83,25 @@ export interface Tool {
   connection: ConnectionType
   icon: LucideIcon
   category: ToolCategory
-  isNew?: boolean
+}
+
+/**
+ * De senaste nya verktygen, nyast först. Styr både "Nytt"-sektionen på
+ * startsidan och "Nytt"-etiketten på verktygskorten. Lägg nya verktyg
+ * längst fram och håll listan till sex stycken.
+ */
+export const latestToolIds: string[] = [
+  'video-till-gif',
+  'pdf-signering',
+  'streckkod',
+  'ljudklipp',
+  'namnbricka',
+  'svg-optimering',
+]
+
+/** Är verktyget ett av de senaste (visas med "Nytt"-etikett)? */
+export function isNewTool(id: string): boolean {
+  return latestToolIds.includes(id)
 }
 
 export const categoryOrder: ToolCategory[] = [
@@ -106,7 +124,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileImage,
     category: 'bild',
-    isNew: true,
   },
   {
     id: 'metadata-tvatt',
@@ -115,7 +132,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: ImageOff,
     category: 'bild',
-    isNew: true,
   },
   {
     id: 'passfoto',
@@ -124,7 +140,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: UserSquare,
     category: 'bild',
-    isNew: true,
   },
   {
     id: 'etikett-ark',
@@ -133,7 +148,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Grid3X3,
     category: 'bild',
-    isNew: true,
   },
   {
     id: 'png-till-svg',
@@ -238,7 +252,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileCode2,
     category: 'bild',
-    isNew: true,
   },
   {
     id: 'video-till-gif',
@@ -247,7 +260,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Film,
     category: 'bild',
-    isNew: true,
   },
 
   // ── Text & Dokument ───────────────────────────────────────
@@ -322,7 +334,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Captions,
     category: 'text',
-    isNew: true,
   },
   {
     id: 'pdf-signering',
@@ -331,7 +342,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileSignature,
     category: 'text',
-    isNew: true,
   },
 
   // ── Ljud & Tal ────────────────────────────────────────────
@@ -382,7 +392,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: AudioLines,
     category: 'ljud',
-    isNew: true,
   },
 
   // ── Kod & Data ────────────────────────────────────────────
@@ -457,7 +466,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Fingerprint,
     category: 'kod',
-    isNew: true,
   },
   {
     id: 'epoch-omvandlare',
@@ -466,7 +474,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Clock,
     category: 'kod',
-    isNew: true,
   },
   {
     id: 'bas-omvandlare',
@@ -475,7 +482,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Binary,
     category: 'kod',
-    isNew: true,
   },
 
   // ── Nätverk & Säkerhet ────────────────────────────────────
@@ -594,7 +600,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: QrCode,
     category: 'produktivitet',
-    isNew: true,
   },
   {
     id: 'namnbricka',
@@ -603,7 +608,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: IdCard,
     category: 'produktivitet',
-    isNew: true,
   },
   {
     id: 'streckkod',
@@ -612,7 +616,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Barcode,
     category: 'produktivitet',
-    isNew: true,
   },
   {
     id: 'filanalys',

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Wifi, WifiOff, Monitor, Smartphone, Tablet } from 'lucide-react'
-import type { Tool, MinScreen } from '../data/tools'
+import { isNewTool, type Tool, type MinScreen } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
 const screenIcons: Record<MinScreen, typeof Monitor> = {
@@ -54,7 +54,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
       <div>
         <h3 className="flex items-center gap-2 text-base font-semibold text-gray-900 dark:text-white">
           {translation?.name}
-          {tool.isNew && (
+          {isNewTool(tool.id) && (
             <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 hc:bg-white hc:text-black">
               {t.newBadge ?? 'Nytt'}
             </span>

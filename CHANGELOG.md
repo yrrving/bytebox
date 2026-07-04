@@ -2,6 +2,14 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.20.0 — 2026-07-04 — Tydligare startsida
+
+### Ändrat
+
+- "Nytt"-sektionen på startsidan visar nu bara de **sex senaste** verktygen (nyast först) i stället för alla nya. Styrs från en enda lista (`latestToolIds`).
+- Startsidan har nu **en** informationstext om vad Bytebox är, placerad ovanför sökrutan (den andra förklaringen under sökrutan är borttagen).
+- Bredvid Bytebox-logotypen uppe till vänster visas nu **hur många verktyg** som finns just nu ({antal} verktyg). Siffran uppdateras automatiskt när nya verktyg läggs till.
+
 ## 0.19.1 — 2026-07-04 — Städning & optimering
 
 ### Underhåll

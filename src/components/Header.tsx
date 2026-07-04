@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Wrench, Sun, Moon, Eye, Globe, BookOpen, Menu, X } from 'lucide-react'
 import { useTheme, type Theme } from '../context/ThemeContext'
 import { useLanguage, type Language } from '../context/LanguageContext'
+import { tools } from '../data/tools'
 import InstallButton from './InstallButton'
 
 const languageOptions: { value: Language; label: string }[] = [
@@ -83,14 +84,19 @@ export default function Header() {
   return (
     <header className="border-b border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black">
       <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-2">
-        <Link
-          to="/"
-          onClick={() => setMenuOpen(false)}
-          className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white no-underline"
-        >
-          <Wrench className="h-6 w-6 text-blue-400 hc:text-white" />
-          Bytebox
-        </Link>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white no-underline"
+          >
+            <Wrench className="h-6 w-6 text-blue-400 hc:text-white" />
+            Bytebox
+          </Link>
+          <span className="rounded-full bg-blue-100 dark:bg-blue-900/40 hc:bg-white hc:text-black px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300">
+            {tools.length} {t.toolsHeading.toLowerCase()}
+          </span>
+        </div>
 
         {/* Desktop controls */}
         <div className="hidden md:flex items-center gap-3">

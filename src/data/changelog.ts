@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.20.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Tydligare startsida',
+      en: 'Clearer home page',
+      es: 'Página de inicio más clara',
+      fr: 'Page d’accueil plus claire',
+      de: 'Übersichtlichere Startseite',
+      pt: 'Página inicial mais clara',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: '"Nytt"-sektionen visar nu bara de sex senaste verktygen, och startsidan har en enda informationstext ovanför sökrutan.',
+          en: 'The "New" section now shows only the six latest tools, and the home page has a single info text above the search box.',
+          es: 'La sección "Nuevo" ahora muestra solo las seis herramientas más recientes, y la página de inicio tiene un único texto informativo sobre el buscador.',
+          fr: 'La section « Nouveau » n’affiche désormais que les six derniers outils, et la page d’accueil a un seul texte d’information au-dessus de la barre de recherche.',
+          de: 'Der Bereich „Neu“ zeigt jetzt nur die sechs neuesten Werkzeuge, und die Startseite hat einen einzigen Infotext über dem Suchfeld.',
+          pt: 'A secção "Novo" mostra agora apenas as seis ferramentas mais recentes, e a página inicial tem um único texto informativo acima da caixa de pesquisa.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Bredvid Bytebox-logotypen visas nu hur många verktyg som finns just nu — siffran uppdateras automatiskt.',
+          en: 'Next to the Bytebox logo you now see how many tools exist right now — the number updates automatically.',
+          es: 'Junto al logotipo de Bytebox ahora se ve cuántas herramientas hay en este momento; el número se actualiza automáticamente.',
+          fr: 'À côté du logo Bytebox, vous voyez maintenant combien d’outils existent — le nombre se met à jour automatiquement.',
+          de: 'Neben dem Bytebox-Logo siehst du jetzt, wie viele Werkzeuge es gerade gibt — die Zahl aktualisiert sich automatisch.',
+          pt: 'Ao lado do logótipo do Bytebox vê agora quantas ferramentas existem — o número atualiza-se automaticamente.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.19.1',
     date: '2026-07-04',
     title: {

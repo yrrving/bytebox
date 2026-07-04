@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
-import { tools, categoryOrder, runsOn, type Category, type ToolCategory, type MinScreen } from '../data/tools'
+import { tools, categoryOrder, runsOn, latestToolIds, type Category, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
 const categoryIcons: Record<ToolCategory, LucideIcon> = {
@@ -34,7 +34,10 @@ export default function Home() {
   const selectedCategory = (searchParams.get('cat') as ToolCategory) || null
   const { t } = useLanguage()
 
-  const newTools = tools.filter((tool) => tool.isNew)
+  // De senaste sex nya verktygen, nyast först (från latestToolIds).
+  const newTools = latestToolIds
+    .map((id) => tools.find((tool) => tool.id === id))
+    .filter((tool): tool is Tool => Boolean(tool))
 
   const categoryNames = t.categories ?? {
     bild: 'Bild & Media',
@@ -122,12 +125,8 @@ export default function Home() {
       </div>
 
       {showLanding ? (
-        /* ── Landing: summary, new, device questions, categories ── */
+        /* ── Landing: new, device questions, categories ── */
         <div className="flex flex-col gap-8">
-          {t.siteSummary && (
-            <p className="max-w-2xl text-gray-600 dark:text-gray-300 hc:text-gray-200">{t.siteSummary}</p>
-          )}
-
           {/* Device question buttons */}
           <div>
             <h2 className="mb-3 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">

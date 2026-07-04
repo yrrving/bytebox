@@ -2,6 +2,18 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.18.0 — 2026-07-04 — Ljudklipp, streckkod & PDF-signering
+
+### Nytt
+
+- **Ljudklippare** — klipp och trimma ljudfiler (välj start/slut på vågformen, förlyssna och ladda ner en WAV). Allt lokalt, inga beroenden.
+- **Streckkodsgenerator** — skapa streckkoder (CODE128, EAN, UPC, ITF14 m.fl.) och ladda ner som PNG eller SVG.
+- **PDF-signering** — signera PDF-dokument genom att rita din namnteckning och placera den på valfri sida. Filen laddas aldrig upp.
+
+### Teknik
+
+- Streckkods- (jsbarcode) och PDF-biblioteken (pdf-lib) laddas först när verktyget öppnas (dynamisk import), så huvudbundeln hålls liten.
+
 ## 0.17.0 — 2026-07-04 — Sex nya verktyg
 
 ### Nytt

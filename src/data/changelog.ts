@@ -10,6 +10,53 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.18.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Ljudklipp, streckkod & PDF-signering',
+      en: 'Audio trim, barcodes & PDF signing',
+      es: 'Recorte de audio, códigos de barras y firma de PDF',
+      fr: 'Découpe audio, codes-barres et signature PDF',
+      de: 'Audioschnitt, Barcodes & PDF-Signatur',
+      pt: 'Corte de áudio, códigos de barras e assinatura de PDF',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Ljudklippare: klipp och trimma ljudfiler (välj start/slut på vågformen, förlyssna, ladda ner WAV). Allt lokalt.',
+          en: 'Audio trimmer: cut and trim audio files (pick start/end on the waveform, preview, download WAV). All local.',
+          es: 'Recortador de audio: corta y recorta archivos de audio (elige inicio/fin en la forma de onda, previsualiza, descarga WAV). Todo local.',
+          fr: 'Découpe audio : coupez et rognez des fichiers audio (choisissez début/fin sur la forme d’onde, écoutez, téléchargez un WAV). Tout en local.',
+          de: 'Audio-Schneider: schneide und kürze Audiodateien (Anfang/Ende auf der Wellenform wählen, vorhören, WAV herunterladen). Alles lokal.',
+          pt: 'Cortador de áudio: corte e apare ficheiros de áudio (escolha início/fim na forma de onda, pré-ouça, descarregue WAV). Tudo local.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Streckkodsgenerator: skapa streckkoder (CODE128, EAN, UPC, ITF14 m.fl.) och ladda ner som PNG eller SVG.',
+          en: 'Barcode generator: create barcodes (CODE128, EAN, UPC, ITF14 and more) and download as PNG or SVG.',
+          es: 'Generador de códigos de barras: crea códigos (CODE128, EAN, UPC, ITF14 y más) y descárgalos como PNG o SVG.',
+          fr: 'Générateur de codes-barres : créez des codes-barres (CODE128, EAN, UPC, ITF14 et plus) et téléchargez-les en PNG ou SVG.',
+          de: 'Barcode-Generator: erstelle Barcodes (CODE128, EAN, UPC, ITF14 u. a.) und lade sie als PNG oder SVG herunter.',
+          pt: 'Gerador de códigos de barras: crie códigos (CODE128, EAN, UPC, ITF14 e outros) e descarregue como PNG ou SVG.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'PDF-signering: rita din namnteckning och placera den på valfri sida i ett PDF-dokument. Filen laddas aldrig upp.',
+          en: 'PDF signing: draw your signature and place it on any page of a PDF document. Your file is never uploaded.',
+          es: 'Firma de PDF: dibuja tu firma y colócala en cualquier página de un PDF. Tu archivo nunca se sube.',
+          fr: 'Signature PDF : dessinez votre signature et placez-la sur n’importe quelle page d’un PDF. Votre fichier n’est jamais envoyé.',
+          de: 'PDF-Signatur: zeichne deine Unterschrift und platziere sie auf jeder Seite eines PDF-Dokuments. Deine Datei wird nie hochgeladen.',
+          pt: 'Assinatura de PDF: desenhe a sua assinatura e coloque-a em qualquer página de um PDF. O seu ficheiro nunca é enviado.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.17.0',
     date: '2026-07-04',
     title: {

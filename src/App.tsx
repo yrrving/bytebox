@@ -70,6 +70,9 @@ const UuidGenerator = lazy(() => import('./pages/tools/UuidGenerator'))
 const EpochConverter = lazy(() => import('./pages/tools/EpochConverter'))
 const BaseConverter = lazy(() => import('./pages/tools/BaseConverter'))
 const BadgeGenerator = lazy(() => import('./pages/tools/BadgeGenerator'))
+const AudioTrimmer = lazy(() => import('./pages/tools/AudioTrimmer'))
+const BarcodeGenerator = lazy(() => import('./pages/tools/BarcodeGenerator'))
+const PdfSign = lazy(() => import('./pages/tools/PdfSign'))
 const Traincells = lazy(() => import('./pages/tools/Traincells'))
 
 function LoadingFallback() {
@@ -152,6 +155,9 @@ export default function App() {
           <Route path="/epoch-omvandlare" element={<EpochConverter />} />
           <Route path="/bas-omvandlare" element={<BaseConverter />} />
           <Route path="/namnbricka" element={<BadgeGenerator />} />
+          <Route path="/ljudklipp" element={<AudioTrimmer />} />
+          <Route path="/streckkod" element={<BarcodeGenerator />} />
+          <Route path="/pdf-signering" element={<PdfSign />} />
           <Route path="/traincells" element={<Traincells />} />
           <Route path="/:slug" element={<Placeholder />} />
         </Route>

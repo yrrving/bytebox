@@ -61,6 +61,9 @@ import {
   Captions,
   Fingerprint,
   IdCard,
+  AudioLines,
+  Barcode,
+  FileSignature,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -311,6 +314,15 @@ export const tools: Tool[] = [
     category: 'text',
     isNew: true,
   },
+  {
+    id: 'pdf-signering',
+    route: '/pdf-signering',
+    minScreen: 'surfplatta',
+    connection: 'offline',
+    icon: FileSignature,
+    category: 'text',
+    isNew: true,
+  },
 
   // ── Ljud & Tal ────────────────────────────────────────────
   {
@@ -352,6 +364,15 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Waves,
     category: 'ljud',
+  },
+  {
+    id: 'ljudklipp',
+    route: '/ljudklipp',
+    minScreen: 'surfplatta',
+    connection: 'offline',
+    icon: AudioLines,
+    category: 'ljud',
+    isNew: true,
   },
 
   // ── Kod & Data ────────────────────────────────────────────
@@ -571,6 +592,15 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: IdCard,
+    category: 'produktivitet',
+    isNew: true,
+  },
+  {
+    id: 'streckkod',
+    route: '/streckkod',
+    minScreen: 'mobil',
+    connection: 'offline',
+    icon: Barcode,
     category: 'produktivitet',
     isNew: true,
   },

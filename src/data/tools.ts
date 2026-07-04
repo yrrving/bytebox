@@ -60,15 +60,18 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-export type DeviceType = 'dator' | 'mobil' | 'båda'
+// Minsta skärm som verktyget behöver för att fungera bra.
+// mobil = funkar på telefon, surfplatta = kräver minst en surfplatta,
+// dator = fungerar bäst på (och rekommenderas för) en dator.
+export type MinScreen = 'mobil' | 'surfplatta' | 'dator'
 export type ConnectionType = 'online' | 'offline'
 export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet' | 'spelutveckling'
-export type Category = 'alla' | 'dator' | 'mobil' | 'online' | 'offline'
+export type Category = 'alla' | 'online' | 'offline'
 
 export interface Tool {
   id: string
   route: string
-  device: DeviceType
+  minScreen: MinScreen
   connection: ConnectionType
   icon: LucideIcon
   category: ToolCategory
@@ -91,7 +94,7 @@ export const tools: Tool[] = [
   {
     id: 'heic-till-jpg',
     route: '/heic-till-jpg',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: FileImage,
     category: 'bild',
@@ -100,7 +103,7 @@ export const tools: Tool[] = [
   {
     id: 'metadata-tvatt',
     route: '/metadata-tvatt',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: ImageOff,
     category: 'bild',
@@ -109,7 +112,7 @@ export const tools: Tool[] = [
   {
     id: 'passfoto',
     route: '/passfoto',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: UserSquare,
     category: 'bild',
@@ -118,7 +121,7 @@ export const tools: Tool[] = [
   {
     id: 'etikett-ark',
     route: '/etikett-ark',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Grid3X3,
     category: 'bild',
@@ -127,7 +130,7 @@ export const tools: Tool[] = [
   {
     id: 'png-till-svg',
     route: '/png-till-svg',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Image,
     category: 'bild',
@@ -135,7 +138,7 @@ export const tools: Tool[] = [
   {
     id: 'bildkomprimering',
     route: '/bildkomprimering',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: ImageDown,
     category: 'bild',
@@ -143,7 +146,7 @@ export const tools: Tool[] = [
   {
     id: 'fargpalett',
     route: '/fargpalett',
-    device: 'dator',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Palette,
     category: 'bild',
@@ -151,7 +154,7 @@ export const tools: Tool[] = [
   {
     id: 'mediakonverterare',
     route: '/mediakonverterare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: FileVideo,
     category: 'bild',
@@ -159,7 +162,7 @@ export const tools: Tool[] = [
   {
     id: 'brodyrkortsvisare',
     route: '/brodyrkortsvisare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Scissors,
     category: 'bild',
@@ -167,7 +170,7 @@ export const tools: Tool[] = [
   {
     id: 'bildbeskärare',
     route: '/bildbeskärare',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Crop,
     category: 'bild',
@@ -175,7 +178,7 @@ export const tools: Tool[] = [
   {
     id: 'bakgrundsborttagare',
     route: '/bakgrundsborttagare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Eraser,
     category: 'bild',
@@ -183,7 +186,7 @@ export const tools: Tool[] = [
   {
     id: 'favicon-generator',
     route: '/favicon-generator',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: AppWindow,
     category: 'bild',
@@ -191,7 +194,7 @@ export const tools: Tool[] = [
   {
     id: 'bildkollage',
     route: '/bildkollage',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: LayoutGrid,
     category: 'bild',
@@ -199,7 +202,7 @@ export const tools: Tool[] = [
   {
     id: 'pixelraknare',
     route: '/pixelraknare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Grid3X3,
     category: 'bild',
@@ -207,7 +210,7 @@ export const tools: Tool[] = [
   {
     id: 'ascii-konst',
     route: '/ascii-konst',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Terminal,
     category: 'bild',
@@ -215,7 +218,7 @@ export const tools: Tool[] = [
   {
     id: 'skarfilsgenerator',
     route: '/skarfilsgenerator',
-    device: 'dator',
+    minScreen: 'dator',
     connection: 'offline',
     icon: Crosshair,
     category: 'bild',
@@ -225,7 +228,7 @@ export const tools: Tool[] = [
   {
     id: 'textverktyg',
     route: '/textverktyg',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: FileText,
     category: 'text',
@@ -233,7 +236,7 @@ export const tools: Tool[] = [
   {
     id: 'markdown-forhandsgranskning',
     route: '/markdown-forhandsgranskning',
-    device: 'båda',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Eye,
     category: 'text',
@@ -241,7 +244,7 @@ export const tools: Tool[] = [
   {
     id: 'oversattare',
     route: '/oversattare',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'online',
     icon: Languages,
     category: 'text',
@@ -249,7 +252,7 @@ export const tools: Tool[] = [
   {
     id: 'diff-jamforare',
     route: '/diff-jamforare',
-    device: 'dator',
+    minScreen: 'dator',
     connection: 'offline',
     icon: GitCompare,
     category: 'text',
@@ -257,7 +260,7 @@ export const tools: Tool[] = [
   {
     id: 'lorem-ipsum',
     route: '/lorem-ipsum',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Type,
     category: 'text',
@@ -265,7 +268,7 @@ export const tools: Tool[] = [
   {
     id: 'csv-json',
     route: '/csv-json',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Table,
     category: 'text',
@@ -273,7 +276,7 @@ export const tools: Tool[] = [
   {
     id: 'pdf-verktyg',
     route: '/pdf-verktyg',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Files,
     category: 'text',
@@ -281,7 +284,7 @@ export const tools: Tool[] = [
   {
     id: 'ocr',
     route: '/ocr',
-    device: 'dator',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Scan,
     category: 'text',
@@ -291,7 +294,7 @@ export const tools: Tool[] = [
   {
     id: 'text-till-tal',
     route: '/text-till-tal',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'online',
     icon: Speech,
     category: 'ljud',
@@ -299,7 +302,7 @@ export const tools: Tool[] = [
   {
     id: 'tal-till-text',
     route: '/tal-till-text',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'online',
     icon: Mic,
     category: 'ljud',
@@ -307,7 +310,7 @@ export const tools: Tool[] = [
   {
     id: 'metronom',
     route: '/metronom',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Activity,
     category: 'ljud',
@@ -315,7 +318,7 @@ export const tools: Tool[] = [
   {
     id: 'tonhojdsmatare',
     route: '/tonhojdsmatare',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Music,
     category: 'ljud',
@@ -323,7 +326,7 @@ export const tools: Tool[] = [
   {
     id: 'vit-brus',
     route: '/vit-brus',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Waves,
     category: 'ljud',
@@ -333,7 +336,7 @@ export const tools: Tool[] = [
   {
     id: 'json-formaterare',
     route: '/json-formaterare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: FileJson,
     category: 'kod',
@@ -341,7 +344,7 @@ export const tools: Tool[] = [
   {
     id: 'base64-kodare',
     route: '/base64-kodare',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Binary,
     category: 'kod',
@@ -349,7 +352,7 @@ export const tools: Tool[] = [
   {
     id: 'hash-generator',
     route: '/hash-generator',
-    device: 'dator',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Hash,
     category: 'kod',
@@ -357,7 +360,7 @@ export const tools: Tool[] = [
   {
     id: 'regex-testare',
     route: '/regex-testare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Regex,
     category: 'kod',
@@ -365,7 +368,7 @@ export const tools: Tool[] = [
   {
     id: 'kodminifierare',
     route: '/kodminifierare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Code2,
     category: 'kod',
@@ -373,7 +376,7 @@ export const tools: Tool[] = [
   {
     id: 'css-gradient',
     route: '/css-gradient',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: Paintbrush,
     category: 'kod',
@@ -381,7 +384,7 @@ export const tools: Tool[] = [
   {
     id: 'cron-tolkare',
     route: '/cron-tolkare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: CalendarClock,
     category: 'kod',
@@ -389,7 +392,7 @@ export const tools: Tool[] = [
   {
     id: 'jwt-dekodare',
     route: '/jwt-dekodare',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: KeyRound,
     category: 'kod',
@@ -399,7 +402,7 @@ export const tools: Tool[] = [
   {
     id: 'ip-info',
     route: '/ip-info',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'online',
     icon: Globe,
     category: 'natverk',
@@ -407,7 +410,7 @@ export const tools: Tool[] = [
   {
     id: 'bandbreddstest',
     route: '/bandbreddstest',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'online',
     icon: Gauge,
     category: 'natverk',
@@ -415,7 +418,7 @@ export const tools: Tool[] = [
   {
     id: 'losenordsgenerator',
     route: '/losenordsgenerator',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Lock,
     category: 'natverk',
@@ -423,7 +426,7 @@ export const tools: Tool[] = [
   {
     id: 'dns-uppslagning',
     route: '/dns-uppslagning',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'online',
     icon: Search,
     category: 'natverk',
@@ -431,7 +434,7 @@ export const tools: Tool[] = [
   {
     id: 'ssl-kontroll',
     route: '/ssl-kontroll',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'online',
     icon: ShieldCheck,
     category: 'natverk',
@@ -439,7 +442,7 @@ export const tools: Tool[] = [
   {
     id: 'http-headers',
     route: '/http-headers',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'online',
     icon: Network,
     category: 'natverk',
@@ -447,7 +450,7 @@ export const tools: Tool[] = [
   {
     id: 'useragent-info',
     route: '/useragent-info',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: MonitorSmartphone,
     category: 'natverk',
@@ -457,7 +460,7 @@ export const tools: Tool[] = [
   {
     id: 'enhetsomvandlare',
     route: '/enhetsomvandlare',
-    device: 'mobil',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: ArrowLeftRight,
     category: 'berakning',
@@ -465,7 +468,7 @@ export const tools: Tool[] = [
   {
     id: 'tidszoner',
     route: '/tidszoner',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Clock,
     category: 'berakning',
@@ -473,7 +476,7 @@ export const tools: Tool[] = [
   {
     id: 'miniraknare',
     route: '/miniraknare',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Calculator,
     category: 'berakning',
@@ -481,7 +484,7 @@ export const tools: Tool[] = [
   {
     id: 'procent-raknare',
     route: '/procent-raknare',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Percent,
     category: 'berakning',
@@ -489,7 +492,7 @@ export const tools: Tool[] = [
   {
     id: 'slumptalsgenerator',
     route: '/slumptalsgenerator',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Dices,
     category: 'berakning',
@@ -499,7 +502,7 @@ export const tools: Tool[] = [
   {
     id: 'qr-kod',
     route: '/qr-kod',
-    device: 'mobil',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: QrCode,
     category: 'produktivitet',
@@ -507,7 +510,7 @@ export const tools: Tool[] = [
   {
     id: 'batch-qr',
     route: '/batch-qr',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: QrCode,
     category: 'produktivitet',
@@ -516,7 +519,7 @@ export const tools: Tool[] = [
   {
     id: 'filanalys',
     route: '/filanalys',
-    device: 'dator',
+    minScreen: 'surfplatta',
     connection: 'offline',
     icon: FileSearch,
     category: 'produktivitet',
@@ -524,7 +527,7 @@ export const tools: Tool[] = [
   {
     id: 'tangentbordstest',
     route: '/tangentbordstest',
-    device: 'dator',
+    minScreen: 'dator',
     connection: 'offline',
     icon: Keyboard,
     category: 'produktivitet',
@@ -532,7 +535,7 @@ export const tools: Tool[] = [
   {
     id: 'linjal',
     route: '/linjal',
-    device: 'mobil',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Ruler,
     category: 'produktivitet',
@@ -540,7 +543,7 @@ export const tools: Tool[] = [
   {
     id: 'pomodoro-timer',
     route: '/pomodoro-timer',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Timer,
     category: 'produktivitet',
@@ -548,7 +551,7 @@ export const tools: Tool[] = [
   {
     id: 'nedrakningstimer',
     route: '/nedrakningstimer',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Hourglass,
     category: 'produktivitet',
@@ -556,7 +559,7 @@ export const tools: Tool[] = [
   {
     id: 'stoppur',
     route: '/stoppur',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Watch,
     category: 'produktivitet',
@@ -564,7 +567,7 @@ export const tools: Tool[] = [
   {
     id: 'anteckningsblock',
     route: '/anteckningsblock',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: StickyNote,
     category: 'produktivitet',
@@ -572,7 +575,7 @@ export const tools: Tool[] = [
   {
     id: 'slumpmassigt-val',
     route: '/slumpmassigt-val',
-    device: 'båda',
+    minScreen: 'mobil',
     connection: 'offline',
     icon: Shuffle,
     category: 'produktivitet',
@@ -582,9 +585,22 @@ export const tools: Tool[] = [
   {
     id: 'traincells',
     route: '/traincells',
-    device: 'dator',
+    minScreen: 'dator',
     connection: 'offline',
     icon: Gamepad2,
     category: 'spelutveckling',
   },
 ]
+
+/** Ordning: mobil < surfplatta < dator. Ett verktyg funkar på enheten om dess
+ *  minScreen är samma eller mindre än enhetens nivå (dator kör allt). */
+export const screenRank: Record<MinScreen, number> = {
+  mobil: 0,
+  surfplatta: 1,
+  dator: 2,
+}
+
+/** Kan ett verktyg köras på en enhet av given nivå? */
+export function runsOn(tool: Tool, device: MinScreen): boolean {
+  return screenRank[tool.minScreen] <= screenRank[device]
+}

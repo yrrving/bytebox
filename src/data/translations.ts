@@ -19,9 +19,19 @@ export interface Translation {
   tabletRequired?: {
     title: string
     body: string
+    computerTitle: string
+    computerBody: string
+    recommend: string
     back: string
   }
   menu?: string
+  siteSummary?: string
+  devicePrompt?: string
+  minScreenLabel?: {
+    mobil: string
+    surfplatta: string
+    dator: string
+  }
   searchPlaceholder: string
   emptyState: string
   comingSoon: string
@@ -559,9 +569,19 @@ export const translations: Record<string, Translation> = {
     tabletRequired: {
       title: 'Kräver större skärm',
       body: 'Det här verktyget behöver minst en surfplatta i skärmstorlek för att fungera bra. Öppna det på en surfplatta eller dator.',
+      computerTitle: 'Fungerar bäst på dator',
+      computerBody: 'Det här verktyget är gjort för en dator. Öppna det på en dator för att kunna använda det.',
+      recommend: 'Det här verktyget fungerar bäst på en dator — på mindre skärm kan det bli trångt.',
       back: 'Tillbaka till verktygen',
     },
     menu: 'Meny',
+    siteSummary: 'Bytebox samlar små gratisverktyg för bild, text, ljud, kod, nätverk och beräkning — allt körs direkt i webbläsaren.',
+    devicePrompt: 'Vad kan du göra på din enhet?',
+    minScreenLabel: {
+      mobil: 'Mobil',
+      surfplatta: 'Surfplatta',
+      dator: 'Dator',
+    },
     searchPlaceholder: 'Sök verktyg...',
     emptyState: 'Inga verktyg matchar filtret.',
     comingSoon: 'Kommer snart',
@@ -1121,9 +1141,19 @@ export const translations: Record<string, Translation> = {
     tabletRequired: {
       title: 'Needs a bigger screen',
       body: 'This tool needs at least a tablet-sized screen to work well. Open it on a tablet or computer.',
+      computerTitle: 'Works best on a computer',
+      computerBody: 'This tool is made for a computer. Open it on a computer to use it.',
+      recommend: 'This tool works best on a computer — it may feel cramped on a smaller screen.',
       back: 'Back to the tools',
     },
     menu: 'Menu',
+    siteSummary: 'Bytebox is a collection of small free tools for images, text, audio, code, networking and calculation — all running right in your browser.',
+    devicePrompt: 'What can you do on your device?',
+    minScreenLabel: {
+      mobil: 'Phone',
+      surfplatta: 'Tablet',
+      dator: 'Computer',
+    },
     searchPlaceholder: 'Search tools...',
     emptyState: 'No tools match the filter.',
     comingSoon: 'Coming soon',
@@ -1683,9 +1713,19 @@ export const translations: Record<string, Translation> = {
     tabletRequired: {
       title: 'Requiere una pantalla más grande',
       body: 'Esta herramienta necesita al menos una pantalla del tamaño de una tableta para funcionar bien. Ábrela en una tableta o un ordenador.',
+      computerTitle: 'Funciona mejor en un ordenador',
+      computerBody: 'Esta herramienta está pensada para un ordenador. Ábrela en un ordenador para usarla.',
+      recommend: 'Esta herramienta funciona mejor en un ordenador — en una pantalla más pequeña puede quedar apretada.',
       back: 'Volver a las herramientas',
     },
     menu: 'Menú',
+    siteSummary: 'Bytebox es una colección de pequeñas herramientas gratuitas para imágenes, texto, audio, código, redes y cálculo — todo funciona directamente en tu navegador.',
+    devicePrompt: '¿Qué puedes hacer en tu dispositivo?',
+    minScreenLabel: {
+      mobil: 'Móvil',
+      surfplatta: 'Tableta',
+      dator: 'Ordenador',
+    },
     searchPlaceholder: 'Buscar herramientas...',
     emptyState: 'Ninguna herramienta coincide con el filtro.',
     comingSoon: 'Próximamente',
@@ -2245,9 +2285,19 @@ export const translations: Record<string, Translation> = {
     tabletRequired: {
       title: 'Nécessite un écran plus grand',
       body: 'Cet outil nécessite au moins un écran de la taille d’une tablette pour bien fonctionner. Ouvrez-le sur une tablette ou un ordinateur.',
+      computerTitle: 'Fonctionne mieux sur un ordinateur',
+      computerBody: 'Cet outil est conçu pour un ordinateur. Ouvrez-le sur un ordinateur pour l’utiliser.',
+      recommend: 'Cet outil fonctionne mieux sur un ordinateur — il peut être à l’étroit sur un écran plus petit.',
       back: 'Retour aux outils',
     },
     menu: 'Menu',
+    siteSummary: 'Bytebox est une collection de petits outils gratuits pour les images, le texte, l’audio, le code, le réseau et le calcul — tout fonctionne directement dans votre navigateur.',
+    devicePrompt: 'Que pouvez-vous faire sur votre appareil ?',
+    minScreenLabel: {
+      mobil: 'Mobile',
+      surfplatta: 'Tablette',
+      dator: 'Ordinateur',
+    },
     searchPlaceholder: 'Rechercher des outils...',
     emptyState: 'Aucun outil ne correspond au filtre.',
     comingSoon: 'Bientôt disponible',
@@ -2807,9 +2857,19 @@ export const translations: Record<string, Translation> = {
     tabletRequired: {
       title: 'Benötigt einen größeren Bildschirm',
       body: 'Dieses Werkzeug benötigt mindestens einen tabletgroßen Bildschirm, um gut zu funktionieren. Öffne es auf einem Tablet oder Computer.',
+      computerTitle: 'Funktioniert am besten am Computer',
+      computerBody: 'Dieses Werkzeug ist für einen Computer gemacht. Öffne es an einem Computer, um es zu verwenden.',
+      recommend: 'Dieses Werkzeug funktioniert am besten am Computer — auf einem kleineren Bildschirm kann es eng werden.',
       back: 'Zurück zu den Werkzeugen',
     },
     menu: 'Menü',
+    siteSummary: 'Bytebox ist eine Sammlung kleiner kostenloser Werkzeuge für Bilder, Text, Audio, Code, Netzwerk und Berechnung — alles läuft direkt im Browser.',
+    devicePrompt: 'Was kannst du auf deinem Gerät machen?',
+    minScreenLabel: {
+      mobil: 'Handy',
+      surfplatta: 'Tablet',
+      dator: 'Computer',
+    },
     searchPlaceholder: 'Werkzeuge suchen...',
     emptyState: 'Keine Werkzeuge entsprechen dem Filter.',
     comingSoon: 'Demnächst verfügbar',
@@ -3369,9 +3429,19 @@ export const translations: Record<string, Translation> = {
     tabletRequired: {
       title: 'Requer um ecrã maior',
       body: 'Esta ferramenta precisa de pelo menos um ecrã do tamanho de um tablet para funcionar bem. Abra-a num tablet ou computador.',
+      computerTitle: 'Funciona melhor num computador',
+      computerBody: 'Esta ferramenta foi feita para um computador. Abra-a num computador para a utilizar.',
+      recommend: 'Esta ferramenta funciona melhor num computador — num ecrã mais pequeno pode ficar apertada.',
       back: 'Voltar às ferramentas',
     },
     menu: 'Menu',
+    siteSummary: 'O Bytebox é uma coleção de pequenas ferramentas gratuitas para imagens, texto, áudio, código, rede e cálculo — tudo funciona diretamente no seu navegador.',
+    devicePrompt: 'O que pode fazer no seu dispositivo?',
+    minScreenLabel: {
+      mobil: 'Telemóvel',
+      surfplatta: 'Tablet',
+      dator: 'Computador',
+    },
     searchPlaceholder: 'Pesquisar ferramentas...',
     emptyState: 'Nenhuma ferramenta corresponde ao filtro.',
     comingSoon: 'Em breve',

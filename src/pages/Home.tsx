@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
-import { tools, categoryOrder, type Category, type ToolCategory } from '../data/tools'
+import { tools, categoryOrder, runsOn, type Category, type ToolCategory, type MinScreen } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
 const categoryIcons: Record<ToolCategory, LucideIcon> = {
@@ -17,10 +17,19 @@ const categoryIcons: Record<ToolCategory, LucideIcon> = {
   spelutveckling: Gamepad2,
 }
 
+const deviceIcons: Record<MinScreen, LucideIcon> = {
+  mobil: Smartphone,
+  surfplatta: Tablet,
+  dator: Monitor,
+}
+
+const deviceOrder: MinScreen[] = ['mobil', 'surfplatta', 'dator']
+
 export default function Home() {
   const [category, setCategory] = useState<Category>('alla')
   const [search, setSearch] = useState('')
   const [showAllFlat, setShowAllFlat] = useState(false)
+  const [deviceFilter, setDeviceFilter] = useState<MinScreen | null>(null)
   const [searchParams, setSearchParams] = useSearchParams()
   const selectedCategory = (searchParams.get('cat') as ToolCategory) || null
   const { t } = useLanguage()
@@ -41,27 +50,43 @@ export default function Home() {
   const allCategoriesLabel = t.allCategories ?? 'Alla kategorier'
 
   const filtered = tools.filter((tool) => {
-    const categoryMatch =
-      category === 'alla' ||
-      (category === 'dator' && (tool.device === 'dator' || tool.device === 'båda')) ||
-      (category === 'mobil' && (tool.device === 'mobil' || tool.device === 'båda')) ||
-      (category === 'online' && tool.connection === 'online') ||
-      (category === 'offline' && tool.connection === 'offline')
+    if (category === 'online' && tool.connection !== 'online') return false
+    if (category === 'offline' && tool.connection !== 'offline') return false
+    if (deviceFilter && !runsOn(tool, deviceFilter)) return false
 
-    if (!categoryMatch) return false
     if (!search.trim()) return true
-
     const toolT = t.tools[tool.id]
     if (!toolT) return true
     const q = search.toLowerCase()
     return toolT.name.toLowerCase().includes(q) || toolT.description.toLowerCase().includes(q)
   })
 
-  const showCategories = category === 'alla' && !search.trim() && !showAllFlat
+  const showLanding =
+    category === 'alla' && !search.trim() && !showAllFlat && !deviceFilter && selectedCategory === null
+
+  const showCategoryDrilldown =
+    category === 'alla' && !search.trim() && !showAllFlat && !deviceFilter && selectedCategory !== null
 
   const handleTabChange = (tab: Category) => {
     setCategory(tab)
     setShowAllFlat(false)
+    setDeviceFilter(null)
+    setSearchParams({})
+  }
+
+  const pickDevice = (device: MinScreen) => {
+    setDeviceFilter(device)
+    setCategory('alla')
+    setShowAllFlat(false)
+    setSearch('')
+    setSearchParams({})
+  }
+
+  const resetToLanding = () => {
+    setDeviceFilter(null)
+    setShowAllFlat(false)
+    setCategory('alla')
+    setSearch('')
     setSearchParams({})
   }
 
@@ -85,16 +110,56 @@ export default function Home() {
           value={search}
           onChange={(e) => {
             setSearch(e.target.value)
-            if (e.target.value.trim()) setSearchParams({})
+            if (e.target.value.trim()) {
+              setDeviceFilter(null)
+              setShowAllFlat(false)
+              setSearchParams({})
+            }
           }}
           placeholder={t.searchPlaceholder}
           className="w-full rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black py-2 pl-10 pr-4 text-sm text-gray-900 dark:text-gray-100 hc:text-white placeholder-gray-400 dark:placeholder-gray-500 hc:placeholder-gray-300 outline-none transition-colors focus:border-blue-400 dark:focus:border-blue-500 hc:focus:border-white"
         />
       </div>
 
-      {showCategories && selectedCategory === null ? (
-        /* ── Category cards landing ── */
+      {showLanding ? (
+        /* ── Landing: summary, new, device questions, categories ── */
         <div className="flex flex-col gap-8">
+          {t.siteSummary && (
+            <p className="max-w-2xl text-gray-600 dark:text-gray-300 hc:text-gray-200">{t.siteSummary}</p>
+          )}
+
+          {/* Device question buttons */}
+          <div>
+            <h2 className="mb-3 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
+              {t.devicePrompt ?? 'Vad kan du göra på din enhet?'}
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {deviceOrder.map((device) => {
+                const DeviceIcon = deviceIcons[device]
+                const count = tools.filter((tool) => runsOn(tool, device)).length
+                return (
+                  <button
+                    key={device}
+                    onClick={() => pickDevice(device)}
+                    className="group flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-4 text-left transition-all hover:border-blue-400 dark:hover:border-blue-500 hc:hover:border-yellow-400 hover:shadow-md"
+                  >
+                    <div className="rounded-lg bg-blue-100 p-2.5 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300 hc:bg-gray-900 hc:text-white">
+                      <DeviceIcon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white hc:text-white">
+                        {t.minScreenLabel?.[device] ?? device}
+                      </div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+                        {count} {t.toolsHeading.toLowerCase()}
+                      </div>
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
           {newTools.length > 0 && (
             <div>
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
@@ -108,38 +173,40 @@ export default function Home() {
               </div>
             </div>
           )}
+
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categoryOrder.map((cat) => {
-            const catTools = tools.filter((tool) => tool.category === cat)
-            const previewNames = catTools
-              .slice(0, 4)
-              .map((tool) => t.tools[tool.id]?.name ?? tool.id)
-            const CatIcon = categoryIcons[cat]
-            return (
-              <button
-                key={cat}
-                onClick={() => setSearchParams({ cat })}
-                className="group flex flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-5 text-left transition-all hover:border-blue-400 dark:hover:border-blue-500 hc:hover:border-yellow-400 hover:shadow-md"
-              >
-                <div className="flex items-center gap-3">
-                  <CatIcon className="h-6 w-6 text-gray-500 dark:text-gray-400 hc:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors" />
-                  <div>
-                    <h2 className="font-semibold text-gray-900 dark:text-white hc:text-white">
-                      {categoryNames[cat]}
-                    </h2>
-                    <span className="text-sm text-gray-400 dark:text-gray-500 hc:text-gray-300">
-                      {catTools.length} {catTools.length === 1 ? 'verktyg' : 'verktyg'}
-                    </span>
+            {categoryOrder.map((cat) => {
+              const catTools = tools.filter((tool) => tool.category === cat)
+              const previewNames = catTools
+                .slice(0, 4)
+                .map((tool) => t.tools[tool.id]?.name ?? tool.id)
+              const CatIcon = categoryIcons[cat]
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSearchParams({ cat })}
+                  className="group flex flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-5 text-left transition-all hover:border-blue-400 dark:hover:border-blue-500 hc:hover:border-yellow-400 hover:shadow-md"
+                >
+                  <div className="flex items-center gap-3">
+                    <CatIcon className="h-6 w-6 text-gray-500 dark:text-gray-400 hc:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors" />
+                    <div>
+                      <h2 className="font-semibold text-gray-900 dark:text-white hc:text-white">
+                        {categoryNames[cat]}
+                      </h2>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 hc:text-gray-300">
+                        {catTools.length} {t.toolsHeading.toLowerCase()}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 line-clamp-1">
-                  {previewNames.join(', ')}
-                  {catTools.length > 4 ? ' ...' : ''}
-                </p>
-              </button>
-            )
-          })}
+                  <p className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 line-clamp-1">
+                    {previewNames.join(', ')}
+                    {catTools.length > 4 ? ' ...' : ''}
+                  </p>
+                </button>
+              )
+            })}
           </div>
+
           <div className="flex justify-center">
             <button
               onClick={() => setShowAllFlat(true)}
@@ -149,7 +216,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      ) : showCategories && selectedCategory !== null ? (
+      ) : showCategoryDrilldown ? (
         /* ── Single category drill-down ── */
         <div>
           <button
@@ -160,8 +227,8 @@ export default function Home() {
             {allCategoriesLabel}
           </button>
           <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
-            {(() => { const CatIcon = categoryIcons[selectedCategory]; return <CatIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 hc:text-white" /> })()}
-            {categoryNames[selectedCategory]}
+            {(() => { const CatIcon = categoryIcons[selectedCategory as ToolCategory]; return <CatIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 hc:text-white" /> })()}
+            {categoryNames[selectedCategory as ToolCategory]}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {tools
@@ -172,15 +239,32 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        /* ── Flat grid (search results or tab filter) ── */
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((tool) => (
-            <ToolCard key={tool.route} tool={tool} />
-          ))}
+        /* ── Flat grid (device filter, search results, tab filter, show-all) ── */
+        <div>
+          {deviceFilter && (
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <button
+                onClick={resetToLanding}
+                className="flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hc:text-yellow-400 hover:underline"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                {allCategoriesLabel}
+              </button>
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
+                {(() => { const DeviceIcon = deviceIcons[deviceFilter]; return <DeviceIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 hc:text-white" /> })()}
+                {t.minScreenLabel?.[deviceFilter] ?? deviceFilter}
+              </h2>
+            </div>
+          )}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((tool) => (
+              <ToolCard key={tool.route} tool={tool} />
+            ))}
+          </div>
         </div>
       )}
 
-      {filtered.length === 0 && (
+      {filtered.length === 0 && !showLanding && !showCategoryDrilldown && (
         <p className="mt-8 text-center text-gray-500 hc:text-gray-300">{t.emptyState}</p>
       )}
     </div>

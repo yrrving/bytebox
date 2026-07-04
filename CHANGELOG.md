@@ -2,6 +2,19 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.16.0 — 2026-07-04 — "Vad kan du göra på din enhet?"
+
+### Nytt
+
+- Tre snabbknappar på startsidan — **Mobil / Surfplatta / Dator** — som visar exakt vilka verktyg som fungerar på just din typ av skärm (datorn kör allt).
+- Kort sammanfattning högst upp av vad Bytebox är och vad man kan göra här.
+
+### Förbättrat
+
+- Alla verktyg är omklassade efter minsta skärm de faktiskt behöver. Verktyg som fungerar bra på en telefon (t.ex. metadata-tvätt, passfoto, OCR, bildkomprimering, QR, IP-info) är nu fullt användbara på mobilen i stället för att blockeras.
+- Verktyg som kräver mer yta visar antingen "kräver minst en surfplatta" (på telefon) eller en mjuk rekommendation om att de fungerar bäst på en dator (på surfplatta) — i stället för en hård spärr.
+- Verktygskorten visar nu minsta enhet (mobil/surfplatta/dator) med tydlig ikon.
+
 ## 0.15.0 — 2026-07-04 — Mobilanpassning
 
 ### Förbättrat

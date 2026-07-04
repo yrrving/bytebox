@@ -1,7 +1,7 @@
 import type { Category } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
-const tabKeys: Category[] = ['alla', 'dator', 'mobil', 'online', 'offline']
+const tabKeys: Category[] = ['alla', 'online', 'offline']
 
 interface TabNavigationProps {
   active: Category

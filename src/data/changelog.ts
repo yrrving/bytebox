@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.16.0',
+    date: '2026-07-04',
+    title: {
+      sv: 'Vad kan du göra på din enhet?',
+      en: 'What can you do on your device?',
+      es: '¿Qué puedes hacer en tu dispositivo?',
+      fr: 'Que pouvez-vous faire sur votre appareil ?',
+      de: 'Was kannst du auf deinem Gerät machen?',
+      pt: 'O que pode fazer no seu dispositivo?',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Tre snabbknappar på startsidan — Mobil / Surfplatta / Dator — som visar vilka verktyg som fungerar på just din skärm. Plus en kort sammanfattning av vad Bytebox är.',
+          en: 'Three quick buttons on the home page — Phone / Tablet / Computer — showing which tools work on your screen. Plus a short summary of what Bytebox is.',
+          es: 'Tres botones rápidos en la página de inicio — Móvil / Tableta / Ordenador — que muestran qué herramientas funcionan en tu pantalla. Además de un breve resumen de qué es Bytebox.',
+          fr: 'Trois boutons rapides sur la page d’accueil — Mobile / Tablette / Ordinateur — indiquant quels outils fonctionnent sur votre écran. Ainsi qu’un bref résumé de ce qu’est Bytebox.',
+          de: 'Drei Schnellschaltflächen auf der Startseite — Handy / Tablet / Computer — die zeigen, welche Werkzeuge auf deinem Bildschirm funktionieren. Plus eine kurze Zusammenfassung, was Bytebox ist.',
+          pt: 'Três botões rápidos na página inicial — Telemóvel / Tablet / Computador — que mostram quais ferramentas funcionam no seu ecrã. Mais um breve resumo do que é o Bytebox.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Alla verktyg är omklassade efter minsta skärm de faktiskt behöver. Telefonvänliga verktyg är nu fullt användbara på mobilen; större verktyg rekommenderar en surfplatta eller dator i stället för att bara blockeras.',
+          en: 'Every tool is reclassified by the smallest screen it actually needs. Phone-friendly tools are now fully usable on mobile; bigger tools recommend a tablet or computer instead of just being blocked.',
+          es: 'Todas las herramientas se han reclasificado según la pantalla más pequeña que realmente necesitan. Las herramientas aptas para el móvil ahora son totalmente utilizables; las más grandes recomiendan una tableta u ordenador en lugar de bloquearse.',
+          fr: 'Chaque outil est reclassé selon le plus petit écran dont il a réellement besoin. Les outils adaptés au mobile sont désormais pleinement utilisables ; les plus grands recommandent une tablette ou un ordinateur au lieu d’être simplement bloqués.',
+          de: 'Jedes Werkzeug ist nach dem kleinsten Bildschirm neu eingestuft, den es wirklich braucht. Handytaugliche Werkzeuge sind jetzt voll nutzbar; größere empfehlen ein Tablet oder einen Computer, statt einfach blockiert zu werden.',
+          pt: 'Todas as ferramentas foram reclassificadas pelo menor ecrã de que realmente precisam. As ferramentas adequadas ao telemóvel são agora totalmente utilizáveis; as maiores recomendam um tablet ou computador em vez de serem simplesmente bloqueadas.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.15.0',
     date: '2026-07-04',
     title: {

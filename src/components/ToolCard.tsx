@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Wifi, WifiOff, Monitor, Smartphone, MonitorSmartphone } from 'lucide-react'
-import type { Tool } from '../data/tools'
+import { Wifi, WifiOff, Monitor, Smartphone, Tablet } from 'lucide-react'
+import type { Tool, MinScreen } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
-const deviceIcons = {
-  dator: Monitor,
+const screenIcons: Record<MinScreen, typeof Monitor> = {
   mobil: Smartphone,
-  båda: MonitorSmartphone,
+  surfplatta: Tablet,
+  dator: Monitor,
 }
 
 interface ToolCardProps {
@@ -17,7 +17,8 @@ export default function ToolCard({ tool }: ToolCardProps) {
   const { t } = useLanguage()
   const Icon = tool.icon
   const translation = t.tools[tool.id]
-  const DeviceIcon = deviceIcons[tool.device]
+  const ScreenIcon = screenIcons[tool.minScreen]
+  const screenLabel = t.minScreenLabel?.[tool.minScreen] ?? tool.minScreen
 
   return (
     <Link
@@ -45,8 +46,8 @@ export default function ToolCard({ tool }: ToolCardProps) {
           <span
             className="flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-2 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-300 hc:text-white"
           >
-            <DeviceIcon className="h-3 w-3" />
-            {t.device[tool.device]}
+            <ScreenIcon className="h-3 w-3" />
+            {screenLabel}
           </span>
         </div>
       </div>

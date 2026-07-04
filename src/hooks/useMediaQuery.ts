@@ -24,3 +24,8 @@ export function useMediaQuery(query: string): boolean {
 export function useIsAtLeastTablet(): boolean {
   return useMediaQuery('(min-width: 768px)')
 }
+
+/** True when the viewport is at least desktop width (Tailwind `lg`, 1024px). */
+export function useIsAtLeastDesktop(): boolean {
+  return useMediaQuery('(min-width: 1024px)')
+}

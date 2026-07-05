@@ -2,6 +2,13 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.20.2 — 2026-07-05 — Tydligare beskrivningar & integritet
+
+### Ändrat
+
+- Påbörjade en genomgång av alla verktygsbeskrivningar så de blir begripliga även för den som inte kan facktermerna. Först ut: kod-verktygen (UUID, JWT, cron, epoch, Base64, hash, regex) — beskrivningen säger nu *vad man använder verktyget till* i klartext, inte bara termen.
+- **Text-till-tal** har nu en tydlig integritetsnotis: uppläsningen görs av webbläsarens röstmotor, och i vissa webbläsare kan din text skickas till en molntjänst för vissa röster. Bytebox sparar ingenting själv.
+
 ## 0.20.1 — 2026-07-04 — "Kategorier"-rubrik
 
 ### Ändrat

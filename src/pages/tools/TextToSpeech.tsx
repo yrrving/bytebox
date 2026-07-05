@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Play, Square, Pause } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ExternalNotice from '../../components/ExternalNotice'
 
 export default function TextToSpeech() {
   const { t } = useLanguage()
@@ -77,6 +78,11 @@ export default function TextToSpeech() {
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
         )}
       </div>
+
+      <ExternalNotice
+        service={t.privacy?.speechService ?? 'webbläsarens taltjänst'}
+        warning={t.privacy?.ttsNote}
+      />
 
       {/* Text input */}
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4">

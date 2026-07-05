@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.20.2',
+    date: '2026-07-05',
+    title: {
+      sv: 'Tydligare beskrivningar & integritet',
+      en: 'Clearer descriptions & privacy',
+      es: 'Descripciones más claras y privacidad',
+      fr: 'Descriptions plus claires et confidentialité',
+      de: 'Klarere Beschreibungen & Privatsphäre',
+      pt: 'Descrições mais claras e privacidade',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Började skriva om verktygsbeskrivningarna så de blir begripliga även utan facktermer — först ut är kod-verktygen (UUID, JWT, cron m.fl.), som nu säger vad man använder dem till i klartext.',
+          en: 'Started rewriting the tool descriptions to be understandable without jargon — first up are the code tools (UUID, JWT, cron and more), which now say what you use them for in plain words.',
+          es: 'Empezamos a reescribir las descripciones de las herramientas para que se entiendan sin tecnicismos — primero las herramientas de código (UUID, JWT, cron y más), que ahora dicen para qué sirven en lenguaje claro.',
+          fr: 'Nous avons commencé à réécrire les descriptions des outils pour qu’elles soient compréhensibles sans jargon — d’abord les outils de code (UUID, JWT, cron, etc.), qui disent maintenant à quoi ils servent en langage clair.',
+          de: 'Wir haben begonnen, die Werkzeugbeschreibungen ohne Fachjargon verständlich zu machen — zuerst die Code-Werkzeuge (UUID, JWT, cron u. a.), die jetzt in Klartext sagen, wofür man sie nutzt.',
+          pt: 'Começámos a reescrever as descrições das ferramentas para serem compreensíveis sem jargão — primeiro as ferramentas de código (UUID, JWT, cron e outras), que agora dizem para que servem em linguagem clara.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Text-till-tal har nu en tydlig integritetsnotis — i vissa webbläsare kan din text skickas till en molntjänst för vissa röster. Bytebox sparar ingenting själv.',
+          en: 'Text-to-speech now has a clear privacy notice — in some browsers your text may be sent to a cloud service for certain voices. Bytebox itself stores nothing.',
+          es: 'La conversión de texto a voz ahora tiene un aviso de privacidad claro — en algunos navegadores tu texto puede enviarse a un servicio en la nube para ciertas voces. Bytebox no guarda nada.',
+          fr: 'La synthèse vocale a désormais un avis de confidentialité clair — dans certains navigateurs, votre texte peut être envoyé à un service cloud pour certaines voix. Bytebox ne stocke rien lui-même.',
+          de: 'Die Sprachausgabe hat jetzt einen klaren Datenschutzhinweis — in manchen Browsern kann dein Text für bestimmte Stimmen an einen Cloud-Dienst gesendet werden. Bytebox selbst speichert nichts.',
+          pt: 'A conversão de texto em voz tem agora um aviso de privacidade claro — em alguns navegadores o seu texto pode ser enviado para um serviço na nuvem para certas vozes. O Bytebox não guarda nada.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.20.1',
     date: '2026-07-04',
     title: {

@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.20.3 — 2026-07-06 — Fler begripliga beskrivningar
+
+### Ändrat
+
+- Fortsatte klarspråksgenomgången av verktygsbeskrivningarna: JSON, CSV, DNS, SSL, HTTP-headers, favicon, OCR, Markdown, ASCII, bas-omvandlare, CSS-gradient, kodminifierare m.fl. Varje beskrivning säger nu vad man använder verktyget till i klartext — facktermen står kvar inom parentes för den som känner igen den.
+
 ## 0.20.2 — 2026-07-05 — Tydligare beskrivningar & integritet
 
 ### Ändrat

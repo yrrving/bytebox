@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.20.3',
+    date: '2026-07-06',
+    title: {
+      sv: 'Fler begripliga beskrivningar',
+      en: 'More understandable descriptions',
+      es: 'Más descripciones comprensibles',
+      fr: 'Plus de descriptions compréhensibles',
+      de: 'Mehr verständliche Beschreibungen',
+      pt: 'Mais descrições compreensíveis',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Fortsatte genomgången av verktygsbeskrivningarna i klarspråk: JSON, CSV, DNS, SSL, HTTP-headers, favicon, OCR, Markdown, ASCII, bas-omvandlare m.fl. Varje beskrivning förklarar nu vad man använder verktyget till — facktermen står kvar inom parentes för den som känner igen den.',
+          en: 'Continued the plain-language pass over the tool descriptions: JSON, CSV, DNS, SSL, HTTP headers, favicon, OCR, Markdown, ASCII, base converter and more. Each description now explains what you use the tool for — the technical term stays in parentheses for those who recognise it.',
+          es: 'Continuamos la revisión en lenguaje claro de las descripciones: JSON, CSV, DNS, SSL, cabeceras HTTP, favicon, OCR, Markdown, ASCII, conversor de bases y más. Cada descripción explica ahora para qué sirve la herramienta — el término técnico queda entre paréntesis para quien lo reconozca.',
+          fr: 'Nous avons poursuivi la relecture en langage clair des descriptions : JSON, CSV, DNS, SSL, en-têtes HTTP, favicon, OCR, Markdown, ASCII, convertisseur de bases, etc. Chaque description explique désormais à quoi sert l’outil — le terme technique reste entre parenthèses pour ceux qui le connaissent.',
+          de: 'Wir haben die Beschreibungen weiter in Klartext überarbeitet: JSON, CSV, DNS, SSL, HTTP-Header, Favicon, OCR, Markdown, ASCII, Basis-Umrechner u. a. Jede Beschreibung erklärt jetzt, wofür man das Werkzeug nutzt — der Fachbegriff bleibt in Klammern für alle, die ihn kennen.',
+          pt: 'Continuámos a revisão em linguagem clara das descrições: JSON, CSV, DNS, SSL, cabeçalhos HTTP, favicon, OCR, Markdown, ASCII, conversor de bases e mais. Cada descrição explica agora para que serve a ferramenta — o termo técnico fica entre parênteses para quem o reconhece.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.20.2',
     date: '2026-07-05',
     title: {

@@ -2,6 +2,20 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.21.0 — 2026-07-06 — Mötestranskribering (helt lokal)
+
+### Nytt
+
+- **Mötestranskribering** — spela in ett möte eller ladda upp en ljudfil och få det nedskrivet som text. Allt sker på din enhet med en Whisper-språkmodell som laddas ner en gång och sedan sparas i webbläsaren — ljudet lämnar aldrig datorn. Välj kvalitet (snabb/bättre) och språk, och exportera som .txt eller .srt (undertexter med tidkoder).
+
+### Ändrat
+
+- **Tal-till-text är borttaget** och ersätts av Mötestranskribering. Det gamla verktyget använde webbläsarens inbyggda taligenkänning, som i praktiken (särskilt i Chrome) skickade mikrofonljudet till en molntjänst hos Google för att tolkas — omöjligt att lova var ljudet tog vägen, och olämpligt för känsliga möten. Den nya lösningen kör hela taligenkänningen lokalt, så inget ljud skickas någonstans.
+
+### Teknik
+
+- Taligenkänningen körs med Whisper via transformers.js (ONNX Runtime Web). Både worker-koden och WASM-runtimen serveras lokalt under `/bytebox/`; endast modellvikterna hämtas från Hugging Faces CDN första gången och cachas sedan. Transkriberingen sker i en Web Worker så gränssnittet inte fryser, och transformers.js laddas som en egen chunk (huvudbundeln påverkas inte). Verktyget är klassat som "dator" eftersom långa körningar och bakgrundsflikar stryps på mobil.
+
 ## 0.20.3 — 2026-07-06 — Fler begripliga beskrivningar
 
 ### Ändrat

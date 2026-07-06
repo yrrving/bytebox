@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.21.0',
+    date: '2026-07-06',
+    title: {
+      sv: 'Mötestranskribering — helt lokal, ersätter Tal-till-text',
+      en: 'Meeting Transcriber — fully local, replaces Speech-to-Text',
+      es: 'Transcriptor de reuniones — totalmente local, sustituye Voz a texto',
+      fr: 'Transcripteur de réunions — entièrement local, remplace Parole en texte',
+      de: 'Besprechungs-Transkription — komplett lokal, ersetzt Sprache-zu-Text',
+      pt: 'Transcritor de reuniões — totalmente local, substitui Fala para texto',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Nytt verktyg: Mötestranskribering. Spela in ett möte (eller ladda upp en ljudfil) och få det nedskrivet som text. Allt sker på din enhet med en Whisper-språkmodell som laddas ner en gång och sedan sparas i webbläsaren — ljudet lämnar aldrig datorn. Exportera som .txt eller .srt (undertexter med tidkoder).',
+          en: 'New tool: Meeting Transcriber. Record a meeting (or upload an audio file) and get it written down as text. Everything happens on your device using a Whisper language model that is downloaded once and then cached in the browser — the audio never leaves your machine. Export as .txt or .srt (subtitles with timecodes).',
+          es: 'Nueva herramienta: Transcriptor de reuniones. Graba una reunión (o sube un archivo de audio) y obtenla por escrito. Todo ocurre en tu dispositivo con un modelo de lenguaje Whisper que se descarga una vez y se guarda en el navegador — el audio nunca sale de tu equipo. Exporta como .txt o .srt (subtítulos con códigos de tiempo).',
+          fr: 'Nouvel outil : Transcripteur de réunions. Enregistrez une réunion (ou importez un fichier audio) et obtenez-la à l’écrit. Tout se passe sur votre appareil grâce à un modèle Whisper téléchargé une seule fois puis mis en cache dans le navigateur — l’audio ne quitte jamais votre machine. Exportez en .txt ou .srt (sous-titres avec codes temporels).',
+          de: 'Neues Werkzeug: Besprechungs-Transkription. Nimm eine Besprechung auf (oder lade eine Audiodatei hoch) und erhalte sie als Text. Alles läuft auf deinem Gerät mit einem Whisper-Sprachmodell, das einmal heruntergeladen und dann im Browser zwischengespeichert wird — das Audio verlässt dein Gerät nie. Exportiere als .txt oder .srt (Untertitel mit Zeitcodes).',
+          pt: 'Nova ferramenta: Transcritor de reuniões. Grave uma reunião (ou carregue um ficheiro de áudio) e receba-a por escrito. Tudo acontece no seu dispositivo com um modelo Whisper que é descarregado uma vez e depois guardado no navegador — o áudio nunca sai da sua máquina. Exporte como .txt ou .srt (legendas com códigos de tempo).',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Tal-till-text tas bort och ersätts av Mötestranskribering. Varför: det gamla verktyget använde webbläsarens inbyggda taligenkänning, som i praktiken (särskilt i Chrome) skickade ljudet från din mikrofon till en molntjänst hos Google för att tolkas. Det var svårt att lova var ljudet tog vägen — olämpligt för känsliga möten. Den nya lösningen kör hela taligenkänningen lokalt på din enhet, så inget ljud skickas någonstans.',
+          en: 'Speech-to-Text has been removed and replaced by Meeting Transcriber. Why: the old tool used the browser’s built-in speech recognition, which in practice (especially in Chrome) sent the audio from your microphone to a Google cloud service to be transcribed. There was no way to promise where the audio ended up — unsuitable for sensitive meetings. The new solution runs the entire speech recognition locally on your device, so no audio is sent anywhere.',
+          es: 'Voz a texto se ha eliminado y sustituido por el Transcriptor de reuniones. Por qué: la herramienta antigua usaba el reconocimiento de voz integrado del navegador, que en la práctica (sobre todo en Chrome) enviaba el audio de tu micrófono a un servicio en la nube de Google para transcribirlo. No se podía garantizar dónde acababa ese audio — inadecuado para reuniones sensibles. La nueva solución ejecuta todo el reconocimiento de voz localmente en tu dispositivo, así que no se envía ningún audio.',
+          fr: 'Parole en texte a été supprimé et remplacé par le Transcripteur de réunions. Pourquoi : l’ancien outil utilisait la reconnaissance vocale intégrée du navigateur, qui en pratique (surtout dans Chrome) envoyait l’audio de votre microphone à un service cloud de Google pour être transcrit. Impossible de garantir où finissait cet audio — inadapté aux réunions sensibles. La nouvelle solution effectue toute la reconnaissance vocale localement sur votre appareil, donc aucun audio n’est envoyé.',
+          de: 'Sprache-zu-Text wurde entfernt und durch die Besprechungs-Transkription ersetzt. Warum: Das alte Werkzeug nutzte die eingebaute Spracherkennung des Browsers, die in der Praxis (besonders in Chrome) das Audio deines Mikrofons zur Verarbeitung an einen Google-Cloud-Dienst schickte. Es ließ sich nicht zusichern, wo das Audio landete — ungeeignet für vertrauliche Besprechungen. Die neue Lösung führt die gesamte Spracherkennung lokal auf deinem Gerät aus, es wird also kein Audio irgendwohin gesendet.',
+          pt: 'Fala para texto foi removido e substituído pelo Transcritor de reuniões. Porquê: a ferramenta antiga usava o reconhecimento de voz integrado do navegador, que na prática (sobretudo no Chrome) enviava o áudio do seu microfone para um serviço na nuvem da Google para ser transcrito. Não era possível garantir onde o áudio acabava — inadequado para reuniões sensíveis. A nova solução executa todo o reconhecimento de voz localmente no seu dispositivo, por isso nenhum áudio é enviado.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.20.3',
     date: '2026-07-06',
     title: {

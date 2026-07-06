@@ -22,7 +22,7 @@ const TimeZones = lazy(() => import('./pages/tools/TimeZones'))
 const FileAnalyzer = lazy(() => import('./pages/tools/FileAnalyzer'))
 const IpInfo = lazy(() => import('./pages/tools/IpInfo'))
 const TextToSpeech = lazy(() => import('./pages/tools/TextToSpeech'))
-const SpeechToText = lazy(() => import('./pages/tools/SpeechToText'))
+const MeetingTranscriber = lazy(() => import('./pages/tools/MeetingTranscriber'))
 const PngToSvg = lazy(() => import('./pages/tools/PngToSvg'))
 const RulerTool = lazy(() => import('./pages/tools/RulerTool'))
 const Translator = lazy(() => import('./pages/tools/Translator'))
@@ -108,7 +108,7 @@ export default function App() {
           <Route path="/filanalys" element={<FileAnalyzer />} />
           <Route path="/ip-info" element={<IpInfo />} />
           <Route path="/text-till-tal" element={<TextToSpeech />} />
-          <Route path="/tal-till-text" element={<SpeechToText />} />
+          <Route path="/motestranskribering" element={<MeetingTranscriber />} />
           <Route path="/png-till-svg" element={<PngToSvg />} />
           <Route path="/linjal" element={<RulerTool />} />
           <Route path="/oversattare" element={<Translator />} />

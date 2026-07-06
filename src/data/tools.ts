@@ -91,12 +91,12 @@ export interface Tool {
  * längst fram och håll listan till sex stycken.
  */
 export const latestToolIds: string[] = [
+  'motestranskribering',
   'video-till-gif',
   'pdf-signering',
   'streckkod',
   'ljudklipp',
   'namnbricka',
-  'svg-optimering',
 ]
 
 /** Är verktyget ett av de senaste (visas med "Nytt"-etikett)? */
@@ -354,9 +354,9 @@ export const tools: Tool[] = [
     category: 'ljud',
   },
   {
-    id: 'tal-till-text',
-    route: '/tal-till-text',
-    minScreen: 'mobil',
+    id: 'motestranskribering',
+    route: '/motestranskribering',
+    minScreen: 'dator',
     connection: 'online',
     icon: Mic,
     category: 'ljud',

@@ -225,16 +225,26 @@ export interface Translation {
     resume: string
     stop: string
   }
-  speechToText?: {
-    language: string
-    start: string
+  meetingTranscriber?: {
+    localTitle: string
+    localBody: string
+    modelLabel: string
+    modelFast: string
+    modelBetter: string
+    languageLabel: string
+    languageAuto: string
+    record: string
     stop: string
+    upload: string
+    downloading: string
+    transcribing: string
     transcript: string
     copy: string
     copied: string
     clear: string
     empty: string
-    notSupported: string
+    error: string
+    micDenied: string
   }
   calculator?: {
     error: string
@@ -1069,7 +1079,7 @@ export const translations: Record<string, Translation> = {
       'tangentbordstest': { name: 'Tangentbordstest', description: 'Testa tangentbordets knappar och funktioner', hint: 'Kontrollera att alla tangenter fungerar. Visar key, code och position — perfekt vid felsökning eller test av nya tangentbord.' },
       'json-formaterare': { name: 'JSON-formaterare', description: 'Städa upp och kontrollera JSON — dataformatet som appar och webbtjänster utbyter information i', hint: 'API:er och konfigurationsfiler använder JSON. Klistra in rörig JSON här för att göra den läsbar, eller minifiera den för att spara plats.' },
       'text-till-tal': { name: 'Text till tal', description: 'Omvandla skriven text till talat ljud' },
-      'tal-till-text': { name: 'Tal till text', description: 'Omvandla talat ljud till skriven text' },
+      'motestranskribering': { name: 'Mötestranskribering', description: 'Spela in eller ladda upp ett möte och få det nedskrivet som text — helt på din enhet', hint: 'Perfekt för mötesanteckningar, intervjuer och föreläsningar. Ljudet laddas aldrig upp.' },
       'regex-testare': { name: 'Regex-testare', description: 'Testa sökmönster (regex) som hittar och matchar text — se träffarna markeras direkt', hint: 'Skriv ett regex-mönster och se matchningar markeras live i din text. Visar fångstgrupper och index — perfekt för att bygga och felsöka mönster.' },
       'bildkomprimering': { name: 'Bildkomprimering', description: 'Komprimera bilder utan att tappa kvalitet', hint: 'Minska filstorleken på bilder utan att tappa för mycket kvalitet. Välj komprimeringsnivå och max bredd — allt sker lokalt.' },
       'markdown-forhandsgranskning': { name: 'Markdown-förhandsgranskning', description: 'Skriv text med Markdown (enkel formatering med tecken som * och #) och se den färdiga sidan direkt', hint: 'Skriv Markdown och se resultatet live. Perfekt för README-filer, dokumentation eller blogginlägg — med delad vy och HTML-export.' },
@@ -1645,7 +1655,7 @@ export const translations: Record<string, Translation> = {
       'tangentbordstest': { name: 'Keyboard Test', description: 'Test keyboard keys and functions', hint: 'Check that all keys work. Shows key, code and position — perfect for troubleshooting or testing new keyboards.' },
       'json-formaterare': { name: 'JSON Formatter', description: 'Tidy up and check JSON — the data format apps and web services use to exchange information', hint: 'APIs and config files use JSON. Paste messy JSON here to make it readable, or minify it to save space.' },
       'text-till-tal': { name: 'Text to Speech', description: 'Convert written text to spoken audio' },
-      'tal-till-text': { name: 'Speech to Text', description: 'Convert spoken audio to written text' },
+      'motestranskribering': { name: 'Meeting Transcriber', description: 'Record or upload a meeting and get it written down as text — entirely on your device', hint: 'Great for meeting notes, interviews and lectures. The audio is never uploaded.' },
       'regex-testare': { name: 'Regex Tester', description: 'Test search patterns (regex) that find and match text — see the matches highlighted live', hint: 'Write a regex pattern and see matches highlighted live in your text. Shows capture groups and index — perfect for building and debugging patterns.' },
       'bildkomprimering': { name: 'Image Compression', description: 'Compress images without losing quality', hint: 'Reduce image file size without losing too much quality. Choose compression level and max width — everything happens locally.' },
       'markdown-forhandsgranskning': { name: 'Markdown Preview', description: 'Write text with Markdown (simple formatting using symbols like * and #) and see the finished page instantly', hint: 'Write Markdown and see the result live. Perfect for README files, documentation or blog posts — with split view and HTML export.' },
@@ -2221,7 +2231,7 @@ export const translations: Record<string, Translation> = {
       'tangentbordstest': { name: 'Test de teclado', description: 'Probar las teclas y funciones del teclado', hint: 'Comprueba que todas las teclas funcionan. Muestra key, code y posición — perfecto para diagnosticar o probar teclados nuevos.' },
       'json-formaterare': { name: 'Formateador JSON', description: 'Ordena y comprueba JSON — el formato de datos que apps y servicios web usan para intercambiar información', hint: 'Las APIs y archivos de configuración usan JSON. Pega JSON desordenado aquí para hacerlo legible, o minifícalo para ahorrar espacio.' },
       'text-till-tal': { name: 'Texto a voz', description: 'Convertir texto escrito en audio hablado' },
-      'tal-till-text': { name: 'Voz a texto', description: 'Convertir audio hablado en texto escrito' },
+      'motestranskribering': { name: 'Transcriptor de reuniones', description: 'Graba o sube una reunión y obtenla por escrito — todo en tu dispositivo', hint: 'Ideal para actas de reuniones, entrevistas y clases. El audio nunca se sube.' },
       'regex-testare': { name: 'Probador de regex', description: 'Prueba patrones de búsqueda (regex) que encuentran y coinciden con texto — ve las coincidencias resaltadas al instante', hint: 'Escribe un patrón regex y ve las coincidencias resaltadas en vivo en tu texto. Muestra grupos de captura e índice — perfecto para construir y depurar patrones.' },
       'bildkomprimering': { name: 'Compresión de imágenes', description: 'Comprimir imágenes sin perder calidad', hint: 'Reduce el tamaño de archivo de imágenes sin perder demasiada calidad. Elige nivel de compresión y ancho máximo — todo ocurre localmente.' },
       'markdown-forhandsgranskning': { name: 'Vista previa de Markdown', description: 'Escribe texto con Markdown (formato simple con símbolos como * y #) y ve la página terminada al instante', hint: 'Escribe Markdown y ve el resultado en vivo. Perfecto para archivos README, documentación o publicaciones de blog — con vista dividida y exportación HTML.' },
@@ -2797,7 +2807,7 @@ export const translations: Record<string, Translation> = {
       'tangentbordstest': { name: 'Test de clavier', description: 'Tester les touches et les fonctions du clavier', hint: 'Vérifiez que toutes les touches fonctionnent. Affiche key, code et position — parfait pour le dépannage ou le test de nouveaux claviers.' },
       'json-formaterare': { name: 'Formateur JSON', description: 'Mettez de l\'ordre et vérifiez du JSON — le format de données que les applis et services web utilisent pour échanger des informations', hint: 'Les APIs et fichiers de configuration utilisent JSON. Collez du JSON brouillon ici pour le rendre lisible, ou minifiez-le pour gagner de la place.' },
       'text-till-tal': { name: 'Texte en parole', description: 'Convertir du texte écrit en audio parlé' },
-      'tal-till-text': { name: 'Parole en texte', description: 'Convertir l\'audio parlé en texte écrit' },
+      'motestranskribering': { name: 'Transcripteur de réunions', description: 'Enregistrez ou importez une réunion et obtenez-la à l\'écrit — entièrement sur votre appareil', hint: 'Parfait pour les comptes rendus, entretiens et cours. L\'audio n\'est jamais envoyé.' },
       'regex-testare': { name: 'Testeur de regex', description: 'Testez des motifs de recherche (regex) qui trouvent et correspondent au texte — voyez les correspondances surlignées en direct', hint: 'Écrivez un motif regex et voyez les correspondances surlignées en direct dans votre texte. Affiche les groupes de capture et l\'index — parfait pour construire et déboguer des motifs.' },
       'bildkomprimering': { name: "Compression d'images", description: 'Compresser des images sans perte de qualité', hint: 'Réduisez la taille des fichiers image sans perdre trop de qualité. Choisissez le niveau de compression et la largeur max — tout se passe localement.' },
       'markdown-forhandsgranskning': { name: 'Aperçu Markdown', description: 'Écrivez du texte avec Markdown (mise en forme simple avec des symboles comme * et #) et voyez la page finie aussitôt', hint: 'Écrivez du Markdown et voyez le résultat en direct. Parfait pour les fichiers README, la documentation ou les articles de blog — avec vue partagée et export HTML.' },
@@ -3373,7 +3383,7 @@ export const translations: Record<string, Translation> = {
       'tangentbordstest': { name: 'Tastaturtest', description: 'Tastaturtasten und Funktionen testen', hint: 'Prüfen Sie, ob alle Tasten funktionieren. Zeigt Key, Code und Position — perfekt zur Fehlersuche oder zum Testen neuer Tastaturen.' },
       'json-formaterare': { name: 'JSON-Formatierer', description: 'Räume JSON auf und prüfe es — das Datenformat, mit dem Apps und Webdienste Informationen austauschen', hint: 'APIs und Konfigurationsdateien verwenden JSON. Fügen Sie unordentliches JSON ein, um es lesbar zu machen, oder minifizieren Sie es, um Platz zu sparen.' },
       'text-till-tal': { name: 'Text zu Sprache', description: 'Geschriebenen Text in gesprochenes Audio umwandeln' },
-      'tal-till-text': { name: 'Sprache zu Text', description: 'Gesprochenes Audio in geschriebenen Text umwandeln' },
+      'motestranskribering': { name: 'Besprechungs-Transkription', description: 'Nimm eine Besprechung auf oder lade sie hoch und erhalte sie als Text — komplett auf deinem Gerät', hint: 'Ideal für Protokolle, Interviews und Vorlesungen. Das Audio wird nie hochgeladen.' },
       'regex-testare': { name: 'Regex-Tester', description: 'Teste Suchmuster (Regex), die Text finden und abgleichen — sieh die Treffer live hervorgehoben', hint: 'Schreiben Sie ein Regex-Muster und sehen Sie Treffer live in Ihrem Text hervorgehoben. Zeigt Erfassungsgruppen und Index — perfekt zum Erstellen und Debuggen von Mustern.' },
       'bildkomprimering': { name: 'Bildkomprimierung', description: 'Bilder ohne Qualitätsverlust komprimieren', hint: 'Reduzieren Sie die Dateigröße von Bildern ohne zu viel Qualitätsverlust. Wählen Sie Komprimierungsstufe und maximale Breite — alles geschieht lokal.' },
       'markdown-forhandsgranskning': { name: 'Markdown-Vorschau', description: 'Schreibe Text mit Markdown (einfache Formatierung mit Zeichen wie * und #) und sieh die fertige Seite sofort', hint: 'Schreiben Sie Markdown und sehen Sie das Ergebnis live. Perfekt für README-Dateien, Dokumentation oder Blog-Posts — mit geteilter Ansicht und HTML-Export.' },
@@ -3949,7 +3959,7 @@ export const translations: Record<string, Translation> = {
       'tangentbordstest': { name: 'Teste de teclado', description: 'Testar teclas e funções do teclado', hint: 'Verifique se todas as teclas funcionam. Mostra key, code e posição — perfeito para diagnóstico ou teste de novos teclados.' },
       'json-formaterare': { name: 'Formatador JSON', description: 'Organize e verifique JSON — o formato de dados que apps e serviços web usam para trocar informação', hint: 'APIs e arquivos de configuração usam JSON. Cole JSON bagunçado aqui para torná-lo legível, ou minifique para economizar espaço.' },
       'text-till-tal': { name: 'Texto para fala', description: 'Converter texto escrito em áudio falado' },
-      'tal-till-text': { name: 'Fala para texto', description: 'Converter áudio falado em texto escrito' },
+      'motestranskribering': { name: 'Transcritor de reuniões', description: 'Grave ou carregue uma reunião e receba-a por escrito — tudo no seu dispositivo', hint: 'Ótimo para atas, entrevistas e aulas. O áudio nunca é enviado.' },
       'regex-testare': { name: 'Testador de regex', description: 'Teste padrões de busca (regex) que encontram e correspondem a texto — veja as correspondências destacadas ao vivo', hint: 'Escreva um padrão regex e veja as correspondências destacadas ao vivo no seu texto. Mostra grupos de captura e índice — perfeito para construir e depurar padrões.' },
       'bildkomprimering': { name: 'Compressão de imagens', description: 'Comprimir imagens sem perder qualidade', hint: 'Reduza o tamanho de arquivos de imagem sem perder muita qualidade. Escolha nível de compressão e largura máxima — tudo acontece localmente.' },
       'markdown-forhandsgranskning': { name: 'Pré-visualização Markdown', description: 'Escreva texto com Markdown (formatação simples com símbolos como * e #) e veja a página final na hora', hint: 'Escreva Markdown e veja o resultado ao vivo. Perfeito para arquivos README, documentação ou posts de blog — com vista dividida e exportação HTML.' },

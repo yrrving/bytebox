@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.21.1 — 2026-07-06 — Mötestranskribering på alla språk
+
+### Ändrat
+
+- Alla knappar och texter i Mötestranskriberingen (kvalitet, språk, "Nytt möte", integritetsnotisen, felmeddelanden m.m.) är nu fullt översatta i alla 6 språk i stället för att falla tillbaka på svenska.
+
 ## 0.21.0 — 2026-07-06 — Mötestranskribering (helt lokal)
 
 ### Nytt

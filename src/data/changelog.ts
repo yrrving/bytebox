@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.21.1',
+    date: '2026-07-06',
+    title: {
+      sv: 'Mötestranskribering på alla språk',
+      en: 'Meeting Transcriber in every language',
+      es: 'Transcriptor de reuniones en todos los idiomas',
+      fr: 'Transcripteur de réunions dans toutes les langues',
+      de: 'Besprechungs-Transkription in allen Sprachen',
+      pt: 'Transcritor de reuniões em todos os idiomas',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Alla knappar och texter i Mötestranskriberingen (kvalitet, språk, "Nytt möte", integritetsnotisen och felmeddelanden) är nu fullt översatta i alla 6 språk i stället för att falla tillbaka på svenska.',
+          en: 'All buttons and texts in the Meeting Transcriber (quality, language, "New meeting", the privacy notice and error messages) are now fully translated in all 6 languages instead of falling back to Swedish.',
+          es: 'Todos los botones y textos del Transcriptor de reuniones (calidad, idioma, "Nueva reunión", el aviso de privacidad y los mensajes de error) están ahora totalmente traducidos en los 6 idiomas en lugar de recurrir al sueco.',
+          fr: 'Tous les boutons et textes du Transcripteur de réunions (qualité, langue, « Nouvelle réunion », l’avis de confidentialité et les messages d’erreur) sont désormais entièrement traduits dans les 6 langues au lieu de revenir au suédois.',
+          de: 'Alle Schaltflächen und Texte in der Besprechungs-Transkription (Qualität, Sprache, „Neue Besprechung“, der Datenschutzhinweis und Fehlermeldungen) sind jetzt vollständig in allen 6 Sprachen übersetzt, statt auf Schwedisch zurückzufallen.',
+          pt: 'Todos os botões e textos do Transcritor de reuniões (qualidade, idioma, "Nova reunião", o aviso de privacidade e as mensagens de erro) estão agora totalmente traduzidos nos 6 idiomas em vez de recorrer ao sueco.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.21.0',
     date: '2026-07-06',
     title: {

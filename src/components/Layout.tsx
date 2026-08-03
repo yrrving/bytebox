@@ -16,7 +16,7 @@ function DeviceGate() {
 
   // On a phone, tools that need at least a tablet are blocked with a clear message.
   if (!isTablet && (minScreen === 'surfplatta' || minScreen === 'dator')) {
-    return <TabletRequired variant={minScreen} />
+    return <TabletRequired variant={minScreen} reason={tool ? t.tools[tool.id]?.screenReason : undefined} />
   }
 
   // On a tablet, desktop tools still work but show a soft recommendation.

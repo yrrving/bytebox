@@ -5,9 +5,11 @@ import { useLanguage } from '../context/LanguageContext'
 interface TabletRequiredProps {
   /** 'surfplatta' = needs a tablet, 'dator' = needs a computer. */
   variant?: 'surfplatta' | 'dator'
+  /** Tool-specific explanation of why a bigger device is needed. */
+  reason?: string
 }
 
-export default function TabletRequired({ variant = 'surfplatta' }: TabletRequiredProps) {
+export default function TabletRequired({ variant = 'surfplatta', reason }: TabletRequiredProps) {
   const { t } = useLanguage()
   const tr = t.tabletRequired
   const isComputer = variant === 'dator'
@@ -27,6 +29,9 @@ export default function TabletRequired({ variant = 'surfplatta' }: TabletRequire
       <p className="text-gray-600 dark:text-gray-400 hc:text-gray-200">
         {body ?? 'Det här verktyget behöver en större skärm.'}
       </p>
+      {reason && (
+        <p className="text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300">{reason}</p>
+      )}
       <Link
         to="/"
         className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white no-underline transition-colors hover:bg-blue-700"

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Mic, Square, Upload, Copy, Check, Trash2, Download, ShieldCheck, Loader2 } from 'lucide-react'
+import { Mic, Square, Upload, Copy, Check, Trash2, Download, ShieldCheck, Loader2, MonitorSpeaker } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
@@ -218,6 +218,17 @@ export default function MeetingTranscriber() {
           <p className="font-medium">{mt?.localTitle ?? 'Allt sker på din enhet'}</p>
           <p className="mt-1 text-green-700 dark:text-green-300 hc:text-gray-200">
             {mt?.localBody ?? 'Ljudet lämnar aldrig din enhet. Första gången laddas en språkmodell ner (ca 40–150 MB beroende på val) och sparas i webbläsaren — sen fungerar transkriberingen även utan internet.'}
+          </p>
+        </div>
+      </div>
+
+      {/* Recording captures the microphone only — digital meetings need the upload flow. */}
+      <div className="flex items-start gap-2.5 rounded-xl border border-blue-300 dark:border-blue-800/60 hc:border-white bg-blue-50 dark:bg-blue-900/20 hc:bg-black p-4 text-sm text-blue-800 dark:text-blue-200 hc:text-white">
+        <MonitorSpeaker className="mt-0.5 h-5 w-5 shrink-0" />
+        <div>
+          <p className="font-medium">{mt?.micOnlyTitle ?? 'Digitalt möte via Zoom eller Teams?'}</p>
+          <p className="mt-1 text-blue-700 dark:text-blue-300 hc:text-gray-200">
+            {mt?.micOnlyBody ?? 'Inspelningsknappen använder mikrofonen och hör bara det som sägs i rummet — inte ljudet från deltagarna i datorn. För digitala möten: använd mötestjänstens egen inspelning och ladda upp filen här efteråt. Berätta alltid för deltagarna att mötet spelas in.'}
           </p>
         </div>
       </div>

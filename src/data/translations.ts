@@ -230,6 +230,8 @@ export interface Translation {
   meetingTranscriber?: {
     localTitle: string
     localBody: string
+    micOnlyTitle?: string
+    micOnlyBody?: string
     modelLabel: string
     modelFast: string
     modelBetter: string
@@ -569,6 +571,8 @@ export const translations: Record<string, Translation> = {
     meetingTranscriber: {
       localTitle: 'Allt sker på din enhet',
       localBody: 'Ljudet lämnar aldrig din enhet. Första gången laddas en språkmodell ner (ca 40–150 MB beroende på val) och sparas i webbläsaren — sen fungerar transkriberingen även utan internet.',
+      micOnlyTitle: 'Digitalt möte via Zoom eller Teams?',
+      micOnlyBody: 'Inspelningsknappen använder mikrofonen och hör bara det som sägs i rummet — inte ljudet från deltagarna i datorn. För digitala möten: använd mötestjänstens egen inspelning och ladda upp filen här efteråt. Berätta alltid för deltagarna att mötet spelas in.',
       modelLabel: 'Kvalitet',
       modelFast: 'Snabb — mindre nedladdning',
       modelBetter: 'Bättre — större nedladdning',
@@ -1166,6 +1170,8 @@ export const translations: Record<string, Translation> = {
     meetingTranscriber: {
       localTitle: 'Everything happens on your device',
       localBody: 'The audio never leaves your device. The first time, a language model is downloaded (about 40–150 MB depending on your choice) and stored in your browser — after that transcription works even without internet.',
+      micOnlyTitle: 'Digital meeting via Zoom or Teams?',
+      micOnlyBody: 'The record button uses your microphone and only hears what is said in the room — not the audio from participants on your computer. For digital meetings: use the meeting service\'s own recording and upload the file here afterwards. Always tell participants that the meeting is being recorded.',
       modelLabel: 'Quality',
       modelFast: 'Fast — smaller download',
       modelBetter: 'Better — larger download',
@@ -1763,6 +1769,8 @@ export const translations: Record<string, Translation> = {
     meetingTranscriber: {
       localTitle: 'Todo ocurre en tu dispositivo',
       localBody: 'El audio nunca sale de tu dispositivo. La primera vez se descarga un modelo de lenguaje (unos 40–150 MB según la opción) y se guarda en el navegador — después la transcripción funciona incluso sin internet.',
+      micOnlyTitle: '¿Reunión digital por Zoom o Teams?',
+      micOnlyBody: 'El botón de grabación usa el micrófono y solo capta lo que se dice en la sala — no el audio de los participantes en tu ordenador. Para reuniones digitales: usa la grabación propia del servicio de reuniones y sube el archivo aquí después. Avisa siempre a los participantes de que la reunión se está grabando.',
       modelLabel: 'Calidad',
       modelFast: 'Rápido — descarga menor',
       modelBetter: 'Mejor — descarga mayor',
@@ -2360,6 +2368,8 @@ export const translations: Record<string, Translation> = {
     meetingTranscriber: {
       localTitle: 'Tout se passe sur votre appareil',
       localBody: 'L\'audio ne quitte jamais votre appareil. La première fois, un modèle de langue est téléchargé (environ 40 à 150 Mo selon le choix) et stocké dans votre navigateur — ensuite la transcription fonctionne même sans internet.',
+      micOnlyTitle: 'Réunion en ligne via Zoom ou Teams ?',
+      micOnlyBody: 'Le bouton d\'enregistrement utilise le micro et ne capte que ce qui se dit dans la pièce — pas le son des participants sur votre ordinateur. Pour les réunions en ligne : utilisez l\'enregistrement intégré du service de réunion, puis importez le fichier ici. Informez toujours les participants que la réunion est enregistrée.',
       modelLabel: 'Qualité',
       modelFast: 'Rapide — téléchargement plus léger',
       modelBetter: 'Meilleur — téléchargement plus lourd',
@@ -2957,6 +2967,8 @@ export const translations: Record<string, Translation> = {
     meetingTranscriber: {
       localTitle: 'Alles geschieht auf deinem Gerät',
       localBody: 'Das Audio verlässt dein Gerät nie. Beim ersten Mal wird ein Sprachmodell heruntergeladen (je nach Auswahl ca. 40–150 MB) und im Browser gespeichert — danach funktioniert die Transkription auch ohne Internet.',
+      micOnlyTitle: 'Digitales Meeting über Zoom oder Teams?',
+      micOnlyBody: 'Die Aufnahmetaste nutzt das Mikrofon und hört nur, was im Raum gesagt wird — nicht den Ton der Teilnehmer am Computer. Für digitale Meetings: Nutze die eigene Aufnahmefunktion des Meeting-Dienstes und lade die Datei danach hier hoch. Informiere die Teilnehmer immer darüber, dass das Meeting aufgezeichnet wird.',
       modelLabel: 'Qualität',
       modelFast: 'Schnell — kleinerer Download',
       modelBetter: 'Besser — größerer Download',
@@ -3554,6 +3566,8 @@ export const translations: Record<string, Translation> = {
     meetingTranscriber: {
       localTitle: 'Tudo acontece no seu dispositivo',
       localBody: 'O áudio nunca sai do seu dispositivo. Na primeira vez, é descarregado um modelo de linguagem (cerca de 40–150 MB conforme a opção) e guardado no navegador — depois a transcrição funciona mesmo sem internet.',
+      micOnlyTitle: 'Reunião digital via Zoom ou Teams?',
+      micOnlyBody: 'O botão de gravação usa o microfone e só capta o que é dito na sala — não o áudio dos participantes no computador. Para reuniões digitais: use a gravação do próprio serviço de reuniões e carregue o arquivo aqui depois. Avise sempre os participantes de que a reunião está sendo gravada.',
       modelLabel: 'Qualidade',
       modelFast: 'Rápido — descarga menor',
       modelBetter: 'Melhor — descarga maior',

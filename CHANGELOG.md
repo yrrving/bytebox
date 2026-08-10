@@ -2,6 +2,13 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.21.2 — 2026-08-03 — Förklaring vid skärmspärr + tips om telefoninspelning
+
+### Ändrat
+
+- Spärrvyn som visas när ett verktyg kräver större skärm (t.ex. Mötestranskribering på mobil) kan nu visa en kort, verktygsspecifik förklaring till *varför* — inte bara att en större skärm krävs. Ny valfri `screenReason`-nyckel per verktyg i alla 6 språk.
+- Mötestranskriberingens hjälptext tipsar nu om att spela in mötet med telefonens röstmemo-app och ladda upp filen på en dator, eftersom verktyget kräver dator för själva transkriberingen.
+
 ## 0.21.1 — 2026-07-06 — Mötestranskribering på alla språk
 
 ### Ändrat

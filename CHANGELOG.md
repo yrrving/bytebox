@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.21.4 — 2026-08-10 — Markdown-förhandsgranskning: rättad styling + formateringsverktygsrad
+
+### Fixat
+
+- Rubriker, listor, citat och tabeller i Markdown-förhandsgranskningens förhandsvisning renderades som helt ostylad text — `@tailwindcss/typography`-pluginet som `prose`-klasserna förutsatte hade aldrig installerats. Installerat och registrerat i `index.css`.
+
+### Nytt
+
+- Formateringsverktygsrad i editorn med tio knappar: Fet, Kursiv, Genomstruken, Rubrik, Citat, Kod, Länk, Punktlista, Numrerad lista och Tabell. Omsluter/prefixar markerad text med rätt markdown-syntax. Kortkommandon ⌘B/⌘I/⌘K. Text i alla 6 språk.
+
 ## 0.21.3 — 2026-08-06 — Tydliggör att inspelningen bara hör mikrofonen
 
 ### Ändrat

@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.21.3 — 2026-08-06 — Tydliggör att inspelningen bara hör mikrofonen
+
+### Ändrat
+
+- Mötestranskriberingen visar nu en infomruta om att inspelningsknappen använder mikrofonen och därför bara hör det som sägs i rummet — inte ljudet från deltagare i digitala möten (Zoom/Teams m.fl.). Föreslår att man använder mötestjänstens egen inspelning och laddar upp filen efteråt. Text i alla 6 språk.
+
 ## 0.21.2 — 2026-08-03 — Förklaring vid skärmspärr + tips om telefoninspelning
 
 ### Ändrat

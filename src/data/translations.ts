@@ -170,6 +170,16 @@ export interface Translation {
     copied: string
     clear: string
     placeholder: string
+    bold?: string
+    italic?: string
+    strikethrough?: string
+    heading?: string
+    quote?: string
+    code?: string
+    link?: string
+    bulletList?: string
+    numberedList?: string
+    table?: string
   }
   imageCompressor?: {
     upload: string
@@ -749,6 +759,16 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopierat!',
       clear: 'Rensa',
       placeholder: 'Skriv Markdown här...',
+      bold: 'Fet',
+      italic: 'Kursiv',
+      strikethrough: 'Genomstruken',
+      heading: 'Rubrik',
+      quote: 'Citat',
+      code: 'Kod',
+      link: 'Länk',
+      bulletList: 'Punktlista',
+      numberedList: 'Numrerad lista',
+      table: 'Tabell',
     },
     imageCompressor: {
       upload: 'Klicka eller dra hit en bild',
@@ -1348,6 +1368,16 @@ export const translations: Record<string, Translation> = {
       copied: 'Copied!',
       clear: 'Clear',
       placeholder: 'Write Markdown here...',
+      bold: 'Bold',
+      italic: 'Italic',
+      strikethrough: 'Strikethrough',
+      heading: 'Heading',
+      quote: 'Quote',
+      code: 'Code',
+      link: 'Link',
+      bulletList: 'Bullet list',
+      numberedList: 'Numbered list',
+      table: 'Table',
     },
     imageCompressor: {
       upload: 'Click or drag an image here',
@@ -1947,6 +1977,16 @@ export const translations: Record<string, Translation> = {
       copied: '¡Copiado!',
       clear: 'Limpiar',
       placeholder: 'Escribe Markdown aquí...',
+      bold: 'Negrita',
+      italic: 'Cursiva',
+      strikethrough: 'Tachado',
+      heading: 'Encabezado',
+      quote: 'Cita',
+      code: 'Código',
+      link: 'Enlace',
+      bulletList: 'Lista con viñetas',
+      numberedList: 'Lista numerada',
+      table: 'Tabla',
     },
     imageCompressor: {
       upload: 'Haz clic o arrastra una imagen aquí',
@@ -2546,6 +2586,16 @@ export const translations: Record<string, Translation> = {
       copied: 'Copié !',
       clear: 'Effacer',
       placeholder: 'Écrivez du Markdown ici...',
+      bold: 'Gras',
+      italic: 'Italique',
+      strikethrough: 'Barré',
+      heading: 'Titre',
+      quote: 'Citation',
+      code: 'Code',
+      link: 'Lien',
+      bulletList: 'Liste à puces',
+      numberedList: 'Liste numérotée',
+      table: 'Tableau',
     },
     imageCompressor: {
       upload: 'Cliquez ou glissez une image ici',
@@ -3145,6 +3195,16 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopiert!',
       clear: 'Löschen',
       placeholder: 'Markdown hier schreiben...',
+      bold: 'Fett',
+      italic: 'Kursiv',
+      strikethrough: 'Durchgestrichen',
+      heading: 'Überschrift',
+      quote: 'Zitat',
+      code: 'Code',
+      link: 'Link',
+      bulletList: 'Aufzählung',
+      numberedList: 'Nummerierte Liste',
+      table: 'Tabelle',
     },
     imageCompressor: {
       upload: 'Klicken oder Bild hierher ziehen',
@@ -3744,6 +3804,16 @@ export const translations: Record<string, Translation> = {
       copied: 'Copiado!',
       clear: 'Limpar',
       placeholder: 'Escreva Markdown aqui...',
+      bold: 'Negrito',
+      italic: 'Itálico',
+      strikethrough: 'Tachado',
+      heading: 'Título',
+      quote: 'Citação',
+      code: 'Código',
+      link: 'Link',
+      bulletList: 'Lista com marcadores',
+      numberedList: 'Lista numerada',
+      table: 'Tabela',
     },
     imageCompressor: {
       upload: 'Clique ou arraste uma imagem aqui',

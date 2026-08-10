@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { Copy, Check, Trash2, Eye, Edit3 } from 'lucide-react'
+import { useState, useMemo, useRef } from 'react'
+import { Copy, Check, Trash2, Eye, Edit3, Bold, Italic, Strikethrough, Heading2, Quote, Code, Link2, List, ListOrdered, Table2 } from 'lucide-react'
 import { marked } from 'marked'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
@@ -36,6 +36,73 @@ export default function MarkdownPreview() {
   const [input, setInput] = useState(SAMPLE)
   const [viewMode, setViewMode] = useState<ViewMode>('split')
   const [copied, setCopied] = useState(false)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  // Replace [start, end] with text and restore focus + a sensible selection.
+  const replaceRange = (start: number, end: number, text: string, selectFrom: number, selectTo: number) => {
+    const ta = textareaRef.current
+    if (!ta) return
+    setInput(input.slice(0, start) + text + input.slice(end))
+    requestAnimationFrame(() => {
+      ta.focus()
+      ta.setSelectionRange(selectFrom, selectTo)
+    })
+  }
+
+  // Wrap the selection (or a placeholder) in prefix/suffix, e.g. **text**.
+  const wrapSelection = (prefix: string, suffix: string, placeholder: string) => {
+    const ta = textareaRef.current
+    if (!ta) return
+    const { selectionStart: start, selectionEnd: end } = ta
+    const selected = input.slice(start, end) || placeholder
+    replaceRange(start, end, prefix + selected + suffix, start + prefix.length, start + prefix.length + selected.length)
+  }
+
+  // Prefix every line touched by the selection, e.g. "> " or "- ".
+  const prefixLines = (prefix: string | ((i: number) => string)) => {
+    const ta = textareaRef.current
+    if (!ta) return
+    const { selectionStart: start, selectionEnd: end } = ta
+    const lineStart = input.lastIndexOf('\n', start - 1) + 1
+    const segment = input.slice(lineStart, end)
+    const prefixed = segment
+      .split('\n')
+      .map((line, i) => (typeof prefix === 'string' ? prefix : prefix(i)) + line)
+      .join('\n')
+    replaceRange(lineStart, end, prefixed, lineStart, lineStart + prefixed.length)
+  }
+
+  // Insert a standalone block at the cursor, padded with blank lines.
+  const insertBlock = (block: string) => {
+    const ta = textareaRef.current
+    if (!ta) return
+    const { selectionStart: start, selectionEnd: end } = ta
+    const before = input.slice(0, start)
+    const pad = before === '' || before.endsWith('\n\n') ? '' : before.endsWith('\n') ? '\n' : '\n\n'
+    const text = pad + block + '\n'
+    replaceRange(start, end, text, start + text.length, start + text.length)
+  }
+
+  const onEditorKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!(e.metaKey || e.ctrlKey)) return
+    const key = e.key.toLowerCase()
+    if (key === 'b') { e.preventDefault(); wrapSelection('**', '**', 'text') }
+    else if (key === 'i') { e.preventDefault(); wrapSelection('*', '*', 'text') }
+    else if (key === 'k') { e.preventDefault(); wrapSelection('[', '](https://)', 'text') }
+  }
+
+  const formatButtons = [
+    { icon: Bold, title: (md?.bold ?? 'Fet') + ' (⌘B)', action: () => wrapSelection('**', '**', 'text') },
+    { icon: Italic, title: (md?.italic ?? 'Kursiv') + ' (⌘I)', action: () => wrapSelection('*', '*', 'text') },
+    { icon: Strikethrough, title: md?.strikethrough ?? 'Genomstruken', action: () => wrapSelection('~~', '~~', 'text') },
+    { icon: Heading2, title: md?.heading ?? 'Rubrik', action: () => prefixLines('## ') },
+    { icon: Quote, title: md?.quote ?? 'Citat', action: () => prefixLines('> ') },
+    { icon: Code, title: md?.code ?? 'Kod', action: () => wrapSelection('`', '`', 'code') },
+    { icon: Link2, title: (md?.link ?? 'Länk') + ' (⌘K)', action: () => wrapSelection('[', '](https://)', 'text') },
+    { icon: List, title: md?.bulletList ?? 'Punktlista', action: () => prefixLines('- ') },
+    { icon: ListOrdered, title: md?.numberedList ?? 'Numrerad lista', action: () => prefixLines((i) => `${i + 1}. `) },
+    { icon: Table2, title: md?.table ?? 'Tabell', action: () => insertBlock('| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |') },
+  ]
 
   const html = useMemo(() => {
     try {
@@ -116,9 +183,24 @@ export default function MarkdownPreview() {
             <label className="mb-2 block text-xs font-medium text-gray-500 dark:text-gray-400">
               Markdown
             </label>
+            <div className="mb-2 flex flex-wrap gap-1">
+              {formatButtons.map(({ icon: Icon, title, action }) => (
+                <button
+                  key={title}
+                  onClick={action}
+                  title={title}
+                  aria-label={title}
+                  className="rounded-md border border-gray-200 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 p-2 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white"
+                >
+                  <Icon className="h-4 w-4" />
+                </button>
+              ))}
+            </div>
             <textarea
+              ref={textareaRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={onEditorKeyDown}
               placeholder={md?.placeholder ?? 'Skriv Markdown här...'}
               spellCheck={false}
               className="w-full resize-y rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-4 py-3 font-mono text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"

@@ -10,6 +10,103 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.21.4',
+    date: '2026-08-10',
+    title: {
+      sv: 'Markdown-förhandsgranskning: rättad styling + formateringsverktygsrad',
+      en: 'Markdown Preview: fixed styling + formatting toolbar',
+      es: 'Vista previa de Markdown: estilo corregido + barra de formato',
+      fr: 'Aperçu Markdown : mise en forme corrigée + barre d\'outils',
+      de: 'Markdown-Vorschau: korrigiertes Styling + Formatierungsleiste',
+      pt: 'Pré-visualização Markdown: estilo corrigido + barra de formatação',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Rubriker, listor, citat och tabeller i förhandsgranskningen visades tidigare som helt ostylad text — ett saknat CSS-plugin gjorde att formateringen aldrig laddades in. Nu renderas de som de ska.',
+          en: 'Headings, lists, quotes and tables in the preview pane used to render as completely unstyled text — a missing CSS plugin meant the formatting was never loaded. They now render correctly.',
+          es: 'Los encabezados, listas, citas y tablas en la vista previa se mostraban antes como texto sin estilo — faltaba un plugin de CSS que nunca se cargó. Ahora se muestran correctamente.',
+          fr: 'Les titres, listes, citations et tableaux dans l\'aperçu s\'affichaient auparavant comme du texte brut sans mise en forme — un plugin CSS manquant n\'était jamais chargé. Ils s\'affichent désormais correctement.',
+          de: 'Überschriften, Listen, Zitate und Tabellen in der Vorschau wurden früher als völlig unformatierter Text angezeigt — ein fehlendes CSS-Plugin sorgte dafür, dass die Formatierung nie geladen wurde. Jetzt werden sie korrekt dargestellt.',
+          pt: 'Títulos, listas, citações e tabelas na pré-visualização eram exibidos como texto sem estilo — um plugin CSS em falta significava que a formatação nunca era carregada. Agora são exibidos corretamente.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Ny formateringsverktygsrad i editorn: fet, kursiv, genomstruken, rubrik, citat, kod, länk, punktlista, numrerad lista och tabell. Markera text och klicka en knapp, eller använd kortkommandon (⌘B, ⌘I, ⌘K).',
+          en: 'New formatting toolbar in the editor: bold, italic, strikethrough, heading, quote, code, link, bullet list, numbered list and table. Select text and click a button, or use keyboard shortcuts (⌘B, ⌘I, ⌘K).',
+          es: 'Nueva barra de formato en el editor: negrita, cursiva, tachado, encabezado, cita, código, enlace, lista con viñetas, lista numerada y tabla. Selecciona texto y pulsa un botón, o usa atajos de teclado (⌘B, ⌘I, ⌘K).',
+          fr: 'Nouvelle barre d\'outils de mise en forme dans l\'éditeur : gras, italique, barré, titre, citation, code, lien, liste à puces, liste numérotée et tableau. Sélectionnez du texte et cliquez sur un bouton, ou utilisez les raccourcis clavier (⌘B, ⌘I, ⌘K).',
+          de: 'Neue Formatierungsleiste im Editor: fett, kursiv, durchgestrichen, Überschrift, Zitat, Code, Link, Aufzählung, nummerierte Liste und Tabelle. Text markieren und auf eine Schaltfläche klicken, oder Tastenkürzel nutzen (⌘B, ⌘I, ⌘K).',
+          pt: 'Nova barra de formatação no editor: negrito, itálico, tachado, título, citação, código, link, lista com marcadores, lista numerada e tabela. Selecione o texto e clique num botão, ou use atalhos de teclado (⌘B, ⌘I, ⌘K).',
+        },
+      },
+    ],
+  },
+  {
+    version: '0.21.3',
+    date: '2026-08-06',
+    title: {
+      sv: 'Tydliggör att inspelningen bara hör mikrofonen',
+      en: 'Clarifies that recording only hears the microphone',
+      es: 'Aclara que la grabación solo capta el micrófono',
+      fr: 'Précise que l\'enregistrement ne capte que le micro',
+      de: 'Klarstellung: Aufnahme erfasst nur das Mikrofon',
+      pt: 'Esclarece que a gravação só capta o microfone',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Mötestranskriberingen visar nu en tydlig notis om att inspelningsknappen använder mikrofonen och därför bara hör det som sägs i rummet — inte ljudet från deltagare i digitala möten (Zoom, Teams m.fl.). För digitala möten: använd mötestjänstens egen inspelning och ladda upp filen efteråt.',
+          en: 'The Meeting Transcriber now shows a clear notice that the record button uses the microphone and therefore only hears what is said in the room — not the audio from participants in digital meetings (Zoom, Teams, etc.). For digital meetings: use the meeting service\'s own recording and upload the file afterwards.',
+          es: 'El Transcriptor de reuniones ahora muestra un aviso claro de que el botón de grabación usa el micrófono y por tanto solo capta lo que se dice en la sala — no el audio de los participantes en reuniones digitales (Zoom, Teams, etc.). Para reuniones digitales: usa la grabación propia del servicio y sube el archivo después.',
+          fr: 'Le Transcripteur de réunions affiche désormais un avis clair indiquant que le bouton d\'enregistrement utilise le micro et ne capte donc que ce qui se dit dans la pièce — pas le son des participants aux réunions en ligne (Zoom, Teams, etc.). Pour les réunions en ligne : utilisez l\'enregistrement intégré du service, puis importez le fichier ensuite.',
+          de: 'Die Besprechungs-Transkription zeigt jetzt einen deutlichen Hinweis, dass die Aufnahmetaste das Mikrofon nutzt und daher nur erfasst, was im Raum gesagt wird — nicht den Ton der Teilnehmer in digitalen Meetings (Zoom, Teams usw.). Für digitale Meetings: die eigene Aufnahmefunktion des Meeting-Dienstes nutzen und die Datei danach hochladen.',
+          pt: 'O Transcritor de reuniões agora mostra um aviso claro de que o botão de gravação usa o microfone e por isso só capta o que é dito na sala — não o áudio dos participantes em reuniões digitais (Zoom, Teams, etc.). Para reuniões digitais: use a gravação do próprio serviço e carregue o ficheiro depois.',
+        },
+      },
+    ],
+  },
+  {
+    version: '0.21.2',
+    date: '2026-08-03',
+    title: {
+      sv: 'Förklaring vid skärmspärr + tips om telefoninspelning',
+      en: 'Explanation on the screen-size block + phone recording tip',
+      es: 'Explicación en el bloqueo de tamaño de pantalla + consejo de grabación con el móvil',
+      fr: 'Explication du blocage d\'écran + astuce d\'enregistrement au téléphone',
+      de: 'Erklärung bei der Bildschirmgrößen-Sperre + Tipp zur Handy-Aufnahme',
+      pt: 'Explicação no bloqueio por tamanho de ecrã + dica de gravação no telemóvel',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Sidan som visas när ett verktyg kräver större skärm (t.ex. Mötestranskribering på mobil) kan nu visa en kort förklaring till varför — inte bara att en större skärm krävs.',
+          en: 'The page shown when a tool requires a bigger screen (e.g. Meeting Transcriber on mobile) can now show a short explanation of why — not just that a bigger screen is required.',
+          es: 'La página que se muestra cuando una herramienta requiere una pantalla más grande (p. ej. el Transcriptor de reuniones en el móvil) ahora puede mostrar una breve explicación de por qué — no solo que se requiere una pantalla más grande.',
+          fr: 'La page affichée lorsqu\'un outil nécessite un écran plus grand (par ex. le Transcripteur de réunions sur mobile) peut désormais afficher une brève explication du pourquoi — pas seulement qu\'un écran plus grand est nécessaire.',
+          de: 'Die Seite, die angezeigt wird, wenn ein Werkzeug einen größeren Bildschirm benötigt (z. B. die Besprechungs-Transkription auf dem Handy), kann jetzt eine kurze Erklärung zeigen, warum — nicht nur, dass ein größerer Bildschirm nötig ist.',
+          pt: 'A página exibida quando uma ferramenta requer um ecrã maior (por exemplo, o Transcritor de reuniões no telemóvel) agora pode mostrar uma breve explicação do motivo — não apenas que é necessário um ecrã maior.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Mötestranskriberingens hjälptext tipsar nu om att spela in mötet med telefonens röstmemo-app och ladda upp filen på en dator, eftersom verktyget kräver dator för själva transkriberingen.',
+          en: 'The Meeting Transcriber\'s hint text now suggests recording the meeting with your phone\'s voice memo app and uploading the file on a computer, since the tool requires a computer for the transcription itself.',
+          es: 'El texto de ayuda del Transcriptor de reuniones ahora sugiere grabar la reunión con la app de notas de voz del móvil y subir el archivo en un ordenador, ya que la herramienta requiere un ordenador para la transcripción en sí.',
+          fr: 'Le texte d\'aide du Transcripteur de réunions suggère désormais d\'enregistrer la réunion avec l\'application dictaphone du téléphone et d\'importer le fichier sur un ordinateur, l\'outil nécessitant un ordinateur pour la transcription elle-même.',
+          de: 'Der Hilfetext der Besprechungs-Transkription schlägt jetzt vor, die Besprechung mit der Sprachmemo-App des Handys aufzunehmen und die Datei auf einem Computer hochzuladen, da das Werkzeug für die eigentliche Transkription einen Computer benötigt.',
+          pt: 'O texto de ajuda do Transcritor de reuniões agora sugere gravar a reunião com a app de notas de voz do telemóvel e carregar o ficheiro num computador, já que a ferramenta requer um computador para a transcrição em si.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.21.1',
     date: '2026-07-06',
     title: {

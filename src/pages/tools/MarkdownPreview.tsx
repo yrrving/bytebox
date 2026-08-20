@@ -1,10 +1,11 @@
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo, useRef, useCallback } from 'react'
 import { Copy, Check, Trash2, Eye, Edit3, Bold, Italic, Strikethrough, Heading2, Quote, Code, Link2, List, ListOrdered, Table2 } from 'lucide-react'
 import { marked } from 'marked'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
 type ViewMode = 'split' | 'edit' | 'preview'
+type FormatCommand = 'bold' | 'italic' | 'strike' | 'heading' | 'quote' | 'code' | 'link' | 'bulletList' | 'numberedList' | 'table'
 
 const SAMPLE = `# Hello World
 
@@ -39,69 +40,86 @@ export default function MarkdownPreview() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   // Replace [start, end] with text and restore focus + a sensible selection.
-  const replaceRange = (start: number, end: number, text: string, selectFrom: number, selectTo: number) => {
+  const replaceRange = useCallback((start: number, end: number, text: string, selectFrom: number, selectTo: number) => {
     const ta = textareaRef.current
     if (!ta) return
-    setInput(input.slice(0, start) + text + input.slice(end))
+    setInput((current) => current.slice(0, start) + text + current.slice(end))
     requestAnimationFrame(() => {
       ta.focus()
       ta.setSelectionRange(selectFrom, selectTo)
     })
-  }
+  }, [])
 
   // Wrap the selection (or a placeholder) in prefix/suffix, e.g. **text**.
-  const wrapSelection = (prefix: string, suffix: string, placeholder: string) => {
+  const wrapSelection = useCallback((prefix: string, suffix: string, placeholder: string) => {
     const ta = textareaRef.current
     if (!ta) return
     const { selectionStart: start, selectionEnd: end } = ta
-    const selected = input.slice(start, end) || placeholder
+    const selected = ta.value.slice(start, end) || placeholder
     replaceRange(start, end, prefix + selected + suffix, start + prefix.length, start + prefix.length + selected.length)
-  }
+  }, [replaceRange])
 
   // Prefix every line touched by the selection, e.g. "> " or "- ".
-  const prefixLines = (prefix: string | ((i: number) => string)) => {
+  const prefixLines = useCallback((prefix: string | ((i: number) => string)) => {
     const ta = textareaRef.current
     if (!ta) return
     const { selectionStart: start, selectionEnd: end } = ta
-    const lineStart = input.lastIndexOf('\n', start - 1) + 1
-    const segment = input.slice(lineStart, end)
+    const lineStart = ta.value.lastIndexOf('\n', start - 1) + 1
+    const segment = ta.value.slice(lineStart, end)
     const prefixed = segment
       .split('\n')
       .map((line, i) => (typeof prefix === 'string' ? prefix : prefix(i)) + line)
       .join('\n')
     replaceRange(lineStart, end, prefixed, lineStart, lineStart + prefixed.length)
-  }
+  }, [replaceRange])
 
   // Insert a standalone block at the cursor, padded with blank lines.
-  const insertBlock = (block: string) => {
+  const insertBlock = useCallback((block: string) => {
     const ta = textareaRef.current
     if (!ta) return
     const { selectionStart: start, selectionEnd: end } = ta
-    const before = input.slice(0, start)
+    const before = ta.value.slice(0, start)
     const pad = before === '' || before.endsWith('\n\n') ? '' : before.endsWith('\n') ? '\n' : '\n\n'
     const text = pad + block + '\n'
     replaceRange(start, end, text, start + text.length, start + text.length)
-  }
+  }, [replaceRange])
+
+  // A single stable dispatcher (rather than per-button closures) keeps the
+  // ref access out of values that get built and stored during render.
+  const runFormatCommand = useCallback((cmd: FormatCommand) => {
+    switch (cmd) {
+      case 'bold': wrapSelection('**', '**', 'text'); break
+      case 'italic': wrapSelection('*', '*', 'text'); break
+      case 'strike': wrapSelection('~~', '~~', 'text'); break
+      case 'heading': prefixLines('## '); break
+      case 'quote': prefixLines('> '); break
+      case 'code': wrapSelection('`', '`', 'code'); break
+      case 'link': wrapSelection('[', '](https://)', 'text'); break
+      case 'bulletList': prefixLines('- '); break
+      case 'numberedList': prefixLines((i) => `${i + 1}. `); break
+      case 'table': insertBlock('| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |'); break
+    }
+  }, [wrapSelection, prefixLines, insertBlock])
 
   const onEditorKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (!(e.metaKey || e.ctrlKey)) return
     const key = e.key.toLowerCase()
-    if (key === 'b') { e.preventDefault(); wrapSelection('**', '**', 'text') }
-    else if (key === 'i') { e.preventDefault(); wrapSelection('*', '*', 'text') }
-    else if (key === 'k') { e.preventDefault(); wrapSelection('[', '](https://)', 'text') }
+    if (key === 'b') { e.preventDefault(); runFormatCommand('bold') }
+    else if (key === 'i') { e.preventDefault(); runFormatCommand('italic') }
+    else if (key === 'k') { e.preventDefault(); runFormatCommand('link') }
   }
 
-  const formatButtons = [
-    { icon: Bold, title: (md?.bold ?? 'Fet') + ' (⌘B)', action: () => wrapSelection('**', '**', 'text') },
-    { icon: Italic, title: (md?.italic ?? 'Kursiv') + ' (⌘I)', action: () => wrapSelection('*', '*', 'text') },
-    { icon: Strikethrough, title: md?.strikethrough ?? 'Genomstruken', action: () => wrapSelection('~~', '~~', 'text') },
-    { icon: Heading2, title: md?.heading ?? 'Rubrik', action: () => prefixLines('## ') },
-    { icon: Quote, title: md?.quote ?? 'Citat', action: () => prefixLines('> ') },
-    { icon: Code, title: md?.code ?? 'Kod', action: () => wrapSelection('`', '`', 'code') },
-    { icon: Link2, title: (md?.link ?? 'Länk') + ' (⌘K)', action: () => wrapSelection('[', '](https://)', 'text') },
-    { icon: List, title: md?.bulletList ?? 'Punktlista', action: () => prefixLines('- ') },
-    { icon: ListOrdered, title: md?.numberedList ?? 'Numrerad lista', action: () => prefixLines((i) => `${i + 1}. `) },
-    { icon: Table2, title: md?.table ?? 'Tabell', action: () => insertBlock('| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |') },
+  const formatButtons: { icon: typeof Bold; title: string; cmd: FormatCommand }[] = [
+    { icon: Bold, title: (md?.bold ?? 'Fet') + ' (⌘B)', cmd: 'bold' },
+    { icon: Italic, title: (md?.italic ?? 'Kursiv') + ' (⌘I)', cmd: 'italic' },
+    { icon: Strikethrough, title: md?.strikethrough ?? 'Genomstruken', cmd: 'strike' },
+    { icon: Heading2, title: md?.heading ?? 'Rubrik', cmd: 'heading' },
+    { icon: Quote, title: md?.quote ?? 'Citat', cmd: 'quote' },
+    { icon: Code, title: md?.code ?? 'Kod', cmd: 'code' },
+    { icon: Link2, title: (md?.link ?? 'Länk') + ' (⌘K)', cmd: 'link' },
+    { icon: List, title: md?.bulletList ?? 'Punktlista', cmd: 'bulletList' },
+    { icon: ListOrdered, title: md?.numberedList ?? 'Numrerad lista', cmd: 'numberedList' },
+    { icon: Table2, title: md?.table ?? 'Tabell', cmd: 'table' },
   ]
 
   const html = useMemo(() => {
@@ -184,10 +202,10 @@ export default function MarkdownPreview() {
               Markdown
             </label>
             <div className="mb-2 flex flex-wrap gap-1">
-              {formatButtons.map(({ icon: Icon, title, action }) => (
+              {formatButtons.map(({ icon: Icon, title, cmd }) => (
                 <button
                   key={title}
-                  onClick={action}
+                  onClick={() => runFormatCommand(cmd)}
                   title={title}
                   aria-label={title}
                   className="rounded-md border border-gray-200 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 p-2 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white"

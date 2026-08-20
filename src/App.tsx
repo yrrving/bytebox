@@ -35,7 +35,6 @@ const RandomNumber = lazy(() => import('./pages/tools/RandomNumber'))
 const Stopwatch = lazy(() => import('./pages/tools/Stopwatch'))
 const CountdownTimer = lazy(() => import('./pages/tools/CountdownTimer'))
 const PomodoroTimer = lazy(() => import('./pages/tools/PomodoroTimer'))
-const Notepad = lazy(() => import('./pages/tools/Notepad'))
 const RandomPicker = lazy(() => import('./pages/tools/RandomPicker'))
 const LoremIpsum = lazy(() => import('./pages/tools/LoremIpsum'))
 const Metronome = lazy(() => import('./pages/tools/Metronome'))
@@ -68,6 +67,7 @@ const BatchQr = lazy(() => import('./pages/tools/BatchQr'))
 const SvgOptimizer = lazy(() => import('./pages/tools/SvgOptimizer'))
 const SrtEditor = lazy(() => import('./pages/tools/SrtEditor'))
 const UuidGenerator = lazy(() => import('./pages/tools/UuidGenerator'))
+const WordProcessor = lazy(() => import('./pages/tools/WordProcessor'))
 const EpochConverter = lazy(() => import('./pages/tools/EpochConverter'))
 const BaseConverter = lazy(() => import('./pages/tools/BaseConverter'))
 const BadgeGenerator = lazy(() => import('./pages/tools/BadgeGenerator'))
@@ -121,7 +121,6 @@ export default function App() {
           <Route path="/stoppur" element={<Stopwatch />} />
           <Route path="/nedrakningstimer" element={<CountdownTimer />} />
           <Route path="/pomodoro-timer" element={<PomodoroTimer />} />
-          <Route path="/anteckningsblock" element={<Notepad />} />
           <Route path="/slumpmassigt-val" element={<RandomPicker />} />
           <Route path="/lorem-ipsum" element={<LoremIpsum />} />
           <Route path="/metronom" element={<Metronome />} />
@@ -162,6 +161,7 @@ export default function App() {
           <Route path="/pdf-signering" element={<PdfSign />} />
           <Route path="/video-till-gif" element={<VideoToGif />} />
           <Route path="/traincells" element={<Traincells />} />
+          <Route path="/ordbehandlare" element={<WordProcessor />} />
           <Route path="/:slug" element={<Placeholder />} />
         </Route>
       </Routes>

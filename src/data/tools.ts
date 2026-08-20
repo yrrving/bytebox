@@ -51,7 +51,6 @@ import {
   Timer,
   Hourglass,
   Watch,
-  StickyNote,
   Shuffle,
   Gamepad2,
   FileImage,
@@ -65,6 +64,7 @@ import {
   Barcode,
   FileSignature,
   Film,
+  FileEdit,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -73,7 +73,7 @@ import {
 // dator = fungerar bäst på (och rekommenderas för) en dator.
 export type MinScreen = 'mobil' | 'surfplatta' | 'dator'
 export type ConnectionType = 'online' | 'offline'
-export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet' | 'spelutveckling'
+export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet' | 'skola' | 'spelutveckling'
 export type Category = 'alla' | 'online' | 'offline'
 
 export interface Tool {
@@ -91,12 +91,12 @@ export interface Tool {
  * längst fram och håll listan till sex stycken.
  */
 export const latestToolIds: string[] = [
+  'ordbehandlare',
   'motestranskribering',
   'video-till-gif',
   'pdf-signering',
   'streckkod',
   'ljudklipp',
-  'namnbricka',
 ]
 
 /** Är verktyget ett av de senaste (visas med "Nytt"-etikett)? */
@@ -112,6 +112,7 @@ export const categoryOrder: ToolCategory[] = [
   'natverk',
   'berakning',
   'produktivitet',
+  'skola',
   'spelutveckling',
 ]
 
@@ -666,14 +667,6 @@ export const tools: Tool[] = [
     category: 'produktivitet',
   },
   {
-    id: 'anteckningsblock',
-    route: '/anteckningsblock',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: StickyNote,
-    category: 'produktivitet',
-  },
-  {
     id: 'slumpmassigt-val',
     route: '/slumpmassigt-val',
     minScreen: 'mobil',
@@ -690,6 +683,15 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Gamepad2,
     category: 'spelutveckling',
+  },
+  // ── Skola ─────────────────────────────────────────────────
+  {
+    id: 'ordbehandlare',
+    route: '/ordbehandlare',
+    minScreen: 'dator',
+    connection: 'offline',
+    icon: FileEdit,
+    category: 'skola',
   },
 ]
 

@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.22.0',
+    date: '2026-08-20',
+    title: {
+      sv: 'Ny kategori "Skola" + Ordbehandlare',
+      en: 'New "School" category + Word Processor',
+      es: 'Nueva categoría "Escuela" + Procesador de textos',
+      fr: 'Nouvelle catégorie « École » + Traitement de texte',
+      de: 'Neue Kategorie „Schule" + Textverarbeitung',
+      pt: 'Nova categoria "Escola" + Processador de texto',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Ny kategori: Skola. Första verktyget ute är Ordbehandlare — ett riktigt skrivverktyg med formatering (fet, kursiv, understruken, genomstruken, rubriker, listor, citat, länkar), autospara i webbläsaren, och export till PDF eller en riktig Word-fil (.docx). Kräver dator.',
+          en: 'New category: School. The first tool out is Word Processor — a real writing tool with formatting (bold, italic, underline, strikethrough, headings, lists, quotes, links), browser autosave, and export to PDF or a real Word file (.docx). Requires a computer.',
+          es: 'Nueva categoría: Escuela. La primera herramienta es Procesador de textos — una herramienta de escritura real con formato (negrita, cursiva, subrayado, tachado, encabezados, listas, citas, enlaces), autoguardado en el navegador, y exportación a PDF o a un archivo Word real (.docx). Requiere un ordenador.',
+          fr: 'Nouvelle catégorie : École. Le premier outil disponible est Traitement de texte — un vrai outil d\'écriture avec mise en forme (gras, italique, souligné, barré, titres, listes, citations, liens), sauvegarde automatique dans le navigateur, et export en PDF ou en vrai fichier Word (.docx). Nécessite un ordinateur.',
+          de: 'Neue Kategorie: Schule. Das erste Werkzeug ist die Textverarbeitung — ein echtes Schreibwerkzeug mit Formatierung (fett, kursiv, unterstrichen, durchgestrichen, Überschriften, Listen, Zitate, Links), automatischem Speichern im Browser und Export als PDF oder echte Word-Datei (.docx). Benötigt einen Computer.',
+          pt: 'Nova categoria: Escola. A primeira ferramenta é o Processador de texto — uma ferramenta de escrita real com formatação (negrito, itálico, sublinhado, tachado, títulos, listas, citações, links), salvamento automático no navegador, e exportação para PDF ou um arquivo Word real (.docx). Requer um computador.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Anteckningsblock är borttaget. Testare tyckte det var för begränsat (ren textruta utan formatering) för att vara användbart. Ordbehandlaren ersätter det med ett verktyg man faktiskt kan skriva riktiga dokument i.',
+          en: 'Notepad has been removed. Testers found it too limited (a plain text box with no formatting) to be useful. The Word Processor replaces it with a tool you can actually write real documents in.',
+          es: 'Se ha eliminado el Bloc de notas. Los testers lo encontraron demasiado limitado (un simple cuadro de texto sin formato) para ser útil. El Procesador de textos lo sustituye por una herramienta en la que realmente se pueden escribir documentos.',
+          fr: 'Le Bloc-notes a été supprimé. Les testeurs l\'ont trouvé trop limité (une simple zone de texte sans mise en forme) pour être utile. Le Traitement de texte le remplace par un outil permettant d\'écrire de vrais documents.',
+          de: 'Der Notizblock wurde entfernt. Testern war er zu eingeschränkt (ein einfaches Textfeld ohne Formatierung), um nützlich zu sein. Die Textverarbeitung ersetzt ihn durch ein Werkzeug, mit dem sich tatsächlich richtige Dokumente schreiben lassen.',
+          pt: 'O Bloco de notas foi removido. Os testadores acharam-no demasiado limitado (uma simples caixa de texto sem formatação) para ser útil. O Processador de texto substitui-o por uma ferramenta em que se pode realmente escrever documentos.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.21.4',
     date: '2026-08-10',
     title: {

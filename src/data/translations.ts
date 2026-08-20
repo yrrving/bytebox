@@ -72,6 +72,7 @@ export interface Translation {
     natverk: string
     berakning: string
     produktivitet: string
+    skola: string
     spelutveckling: string
   }
   textTools?: {
@@ -307,12 +308,27 @@ export interface Translation {
     reset: string
     sessions: string
   }
-  notepad?: {
-    placeholder: string
+  wordProcessor?: {
+    bold: string
+    italic: string
+    underline: string
+    strikethrough: string
+    heading1: string
+    heading2: string
+    heading3: string
+    bulletList: string
+    numberedList: string
+    quote: string
+    link: string
+    undo: string
+    redo: string
     words: string
     characters: string
     clear: string
     autoSaved: string
+    print: string
+    downloadWord: string
+    placeholder: string
   }
   randomPicker?: {
     listMode: string
@@ -661,6 +677,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Nätverk & Säkerhet',
       berakning: 'Beräkning & Konvertering',
       produktivitet: 'Produktivitet & Verktyg',
+      skola: 'Skola',
       spelutveckling: 'Spelutveckling',
     },
     textTools: {
@@ -847,12 +864,27 @@ export const translations: Record<string, Translation> = {
       reset: 'Nollställ',
       sessions: 'Sessioner',
     },
-    notepad: {
-      placeholder: 'Skriv dina anteckningar här...',
+    wordProcessor: {
+      bold: 'Fet',
+      italic: 'Kursiv',
+      underline: 'Understruken',
+      strikethrough: 'Genomstruken',
+      heading1: 'Rubrik 1',
+      heading2: 'Rubrik 2',
+      heading3: 'Rubrik 3',
+      bulletList: 'Punktlista',
+      numberedList: 'Numrerad lista',
+      quote: 'Citat',
+      link: 'Länk',
+      undo: 'Ångra',
+      redo: 'Gör om',
       words: 'Ord',
       characters: 'Tecken',
       clear: 'Rensa',
       autoSaved: 'Sparas automatiskt i webbläsaren',
+      print: 'Skriv ut / Spara som PDF',
+      downloadWord: 'Ladda ner Word (.docx)',
+      placeholder: 'Börja skriva ditt dokument här...',
     },
     randomPicker: {
       listMode: 'Lista',
@@ -1177,7 +1209,7 @@ export const translations: Record<string, Translation> = {
       'pomodoro-timer': { name: 'Pomodoro-timer', description: 'Fokusera med Pomodoro-tekniken — 25 min arbete, 5 min paus' },
       'nedrakningstimer': { name: 'Nedräkningstimer', description: 'Ställ in en nedräkning till valfri tid' },
       'stoppur': { name: 'Stoppur', description: 'Mät tid med varv och mellantider' },
-      'anteckningsblock': { name: 'Anteckningsblock', description: 'Snabba anteckningar som sparas i webbläsaren' },
+      'ordbehandlare': { name: 'Ordbehandlare', description: 'Skriv och formatera dokument direkt i webbläsaren — rubriker, listor, länkar och mer, exportera till PDF eller Word', hint: 'Ett skrivverktyg för uppsatser, rapporter och läxor. Dokumentet sparas automatiskt i webbläsaren och lämnar aldrig din dator. Exportera som PDF (utskrift) eller riktig Word-fil (.docx).', screenReason: 'Att skriva och formatera längre dokument kräver tangentbord och gott om skärmyta för verktygsraden — det fungerar inte bra på en liten mobilskärm.' },
       'slumpmassigt-val': { name: 'Slumpmässigt val', description: 'Låt slumpen välja — listor, hjul eller mynt' },
     },
   },
@@ -1270,6 +1302,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Network & Security',
       berakning: 'Calculation & Conversion',
       produktivitet: 'Productivity & Tools',
+      skola: 'School',
       spelutveckling: 'Game Development',
     },
     textTools: {
@@ -1456,12 +1489,27 @@ export const translations: Record<string, Translation> = {
       reset: 'Reset',
       sessions: 'Sessions',
     },
-    notepad: {
-      placeholder: 'Write your notes here...',
+    wordProcessor: {
+      bold: 'Bold',
+      italic: 'Italic',
+      underline: 'Underline',
+      strikethrough: 'Strikethrough',
+      heading1: 'Heading 1',
+      heading2: 'Heading 2',
+      heading3: 'Heading 3',
+      bulletList: 'Bullet list',
+      numberedList: 'Numbered list',
+      quote: 'Quote',
+      link: 'Link',
+      undo: 'Undo',
+      redo: 'Redo',
       words: 'Words',
       characters: 'Characters',
       clear: 'Clear',
       autoSaved: 'Auto-saved in your browser',
+      print: 'Print / Save as PDF',
+      downloadWord: 'Download Word (.docx)',
+      placeholder: 'Start writing your document here...',
     },
     randomPicker: {
       listMode: 'List',
@@ -1786,7 +1834,7 @@ export const translations: Record<string, Translation> = {
       'pomodoro-timer': { name: 'Pomodoro Timer', description: 'Focus with the Pomodoro technique — 25 min work, 5 min break' },
       'nedrakningstimer': { name: 'Countdown Timer', description: 'Set a countdown to any time' },
       'stoppur': { name: 'Stopwatch', description: 'Measure time with laps and split times' },
-      'anteckningsblock': { name: 'Notepad', description: 'Quick notes saved in your browser' },
+      'ordbehandlare': { name: 'Word Processor', description: 'Write and format documents right in your browser — headings, lists, links and more, export to PDF or Word', hint: 'A writing tool for essays, reports and homework. Your document is auto-saved in the browser and never leaves your computer. Export as PDF (print) or a real Word file (.docx).', screenReason: 'Writing and formatting longer documents needs a keyboard and enough screen space for the toolbar — it doesn\'t work well on a small phone screen.' },
       'slumpmassigt-val': { name: 'Random Picker', description: 'Let chance decide — lists, wheels or coin flips' },
     },
   },
@@ -1879,6 +1927,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Red y Seguridad',
       berakning: 'Cálculo y Conversión',
       produktivitet: 'Productividad y Herramientas',
+      skola: 'Escuela',
       spelutveckling: 'Desarrollo de juegos',
     },
     textTools: {
@@ -2065,12 +2114,27 @@ export const translations: Record<string, Translation> = {
       reset: 'Reiniciar',
       sessions: 'Sesiones',
     },
-    notepad: {
-      placeholder: 'Escribe tus notas aquí...',
+    wordProcessor: {
+      bold: 'Negrita',
+      italic: 'Cursiva',
+      underline: 'Subrayado',
+      strikethrough: 'Tachado',
+      heading1: 'Encabezado 1',
+      heading2: 'Encabezado 2',
+      heading3: 'Encabezado 3',
+      bulletList: 'Lista con viñetas',
+      numberedList: 'Lista numerada',
+      quote: 'Cita',
+      link: 'Enlace',
+      undo: 'Deshacer',
+      redo: 'Rehacer',
       words: 'Palabras',
       characters: 'Caracteres',
       clear: 'Limpiar',
       autoSaved: 'Se guarda automáticamente en el navegador',
+      print: 'Imprimir / Guardar como PDF',
+      downloadWord: 'Descargar Word (.docx)',
+      placeholder: 'Empieza a escribir tu documento aquí...',
     },
     randomPicker: {
       listMode: 'Lista',
@@ -2395,7 +2459,7 @@ export const translations: Record<string, Translation> = {
       'pomodoro-timer': { name: 'Temporizador Pomodoro', description: 'Concentrarse con la técnica Pomodoro — 25 min trabajo, 5 min descanso' },
       'nedrakningstimer': { name: 'Temporizador de cuenta regresiva', description: 'Establecer una cuenta regresiva a cualquier hora' },
       'stoppur': { name: 'Cronómetro', description: 'Medir tiempo con vueltas y parciales' },
-      'anteckningsblock': { name: 'Bloc de notas', description: 'Notas rápidas guardadas en tu navegador' },
+      'ordbehandlare': { name: 'Procesador de textos', description: 'Escribe y da formato a documentos directamente en el navegador — encabezados, listas, enlaces y más, exporta a PDF o Word', hint: 'Una herramienta de escritura para ensayos, informes y deberes. Tu documento se guarda automáticamente en el navegador y nunca sale de tu ordenador. Exporta como PDF (impresión) o un archivo Word real (.docx).', screenReason: 'Escribir y dar formato a documentos más largos requiere teclado y suficiente espacio en pantalla para la barra de herramientas — no funciona bien en una pantalla de móvil pequeña.' },
       'slumpmassigt-val': { name: 'Selector aleatorio', description: 'Deja que el azar decida — listas, ruletas o monedas' },
     },
   },
@@ -2488,6 +2552,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Réseau et Sécurité',
       berakning: 'Calcul et Conversion',
       produktivitet: 'Productivité et Outils',
+      skola: 'École',
       spelutveckling: 'Développement de jeux',
     },
     textTools: {
@@ -2674,12 +2739,27 @@ export const translations: Record<string, Translation> = {
       reset: 'Réinitialiser',
       sessions: 'Sessions',
     },
-    notepad: {
-      placeholder: 'Écrivez vos notes ici...',
+    wordProcessor: {
+      bold: 'Gras',
+      italic: 'Italique',
+      underline: 'Souligné',
+      strikethrough: 'Barré',
+      heading1: 'Titre 1',
+      heading2: 'Titre 2',
+      heading3: 'Titre 3',
+      bulletList: 'Liste à puces',
+      numberedList: 'Liste numérotée',
+      quote: 'Citation',
+      link: 'Lien',
+      undo: 'Annuler',
+      redo: 'Rétablir',
       words: 'Mots',
       characters: 'Caractères',
       clear: 'Effacer',
       autoSaved: 'Sauvegardé automatiquement dans le navigateur',
+      print: 'Imprimer / Enregistrer en PDF',
+      downloadWord: 'Télécharger Word (.docx)',
+      placeholder: 'Commencez à écrire votre document ici...',
     },
     randomPicker: {
       listMode: 'Liste',
@@ -3004,7 +3084,7 @@ export const translations: Record<string, Translation> = {
       'pomodoro-timer': { name: 'Minuteur Pomodoro', description: 'Concentrez-vous avec la technique Pomodoro — 25 min de travail, 5 min de pause' },
       'nedrakningstimer': { name: 'Compte à rebours', description: 'Définir un compte à rebours jusqu\'à n\'importe quelle heure' },
       'stoppur': { name: 'Chronomètre', description: 'Mesurer le temps avec des tours et des temps intermédiaires' },
-      'anteckningsblock': { name: 'Bloc-notes', description: 'Notes rapides sauvegardées dans votre navigateur' },
+      'ordbehandlare': { name: 'Traitement de texte', description: 'Écrivez et mettez en forme des documents directement dans le navigateur — titres, listes, liens et plus, exportez en PDF ou Word', hint: 'Un outil d\'écriture pour dissertations, rapports et devoirs. Votre document est sauvegardé automatiquement dans le navigateur et ne quitte jamais votre ordinateur. Exportez en PDF (impression) ou en vrai fichier Word (.docx).', screenReason: 'Écrire et mettre en forme des documents plus longs nécessite un clavier et assez d\'espace à l\'écran pour la barre d\'outils — cela ne fonctionne pas bien sur un petit écran de téléphone.' },
       'slumpmassigt-val': { name: 'Sélecteur aléatoire', description: 'Laissez le hasard décider — listes, roues ou pile ou face' },
     },
   },
@@ -3097,6 +3177,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Netzwerk & Sicherheit',
       berakning: 'Berechnung & Umrechnung',
       produktivitet: 'Produktivität & Werkzeuge',
+      skola: 'Schule',
       spelutveckling: 'Spieleentwicklung',
     },
     textTools: {
@@ -3283,12 +3364,27 @@ export const translations: Record<string, Translation> = {
       reset: 'Zurücksetzen',
       sessions: 'Sitzungen',
     },
-    notepad: {
-      placeholder: 'Schreiben Sie Ihre Notizen hier...',
+    wordProcessor: {
+      bold: 'Fett',
+      italic: 'Kursiv',
+      underline: 'Unterstrichen',
+      strikethrough: 'Durchgestrichen',
+      heading1: 'Überschrift 1',
+      heading2: 'Überschrift 2',
+      heading3: 'Überschrift 3',
+      bulletList: 'Aufzählung',
+      numberedList: 'Nummerierte Liste',
+      quote: 'Zitat',
+      link: 'Link',
+      undo: 'Rückgängig',
+      redo: 'Wiederholen',
       words: 'Wörter',
       characters: 'Zeichen',
       clear: 'Löschen',
       autoSaved: 'Automatisch im Browser gespeichert',
+      print: 'Drucken / Als PDF speichern',
+      downloadWord: 'Word herunterladen (.docx)',
+      placeholder: 'Beginne hier mit deinem Dokument...',
     },
     randomPicker: {
       listMode: 'Liste',
@@ -3613,7 +3709,7 @@ export const translations: Record<string, Translation> = {
       'pomodoro-timer': { name: 'Pomodoro-Timer', description: 'Fokussieren mit der Pomodoro-Technik — 25 Min Arbeit, 5 Min Pause' },
       'nedrakningstimer': { name: 'Countdown-Timer', description: 'Einen Countdown auf beliebige Zeit einstellen' },
       'stoppur': { name: 'Stoppuhr', description: 'Zeit mit Runden und Zwischenzeiten messen' },
-      'anteckningsblock': { name: 'Notizblock', description: 'Schnelle Notizen im Browser gespeichert' },
+      'ordbehandlare': { name: 'Textverarbeitung', description: 'Schreibe und formatiere Dokumente direkt im Browser — Überschriften, Listen, Links und mehr, exportiere als PDF oder Word', hint: 'Ein Schreibwerkzeug für Aufsätze, Berichte und Hausaufgaben. Dein Dokument wird automatisch im Browser gespeichert und verlässt nie deinen Computer. Exportiere als PDF (Druck) oder echte Word-Datei (.docx).', screenReason: 'Das Schreiben und Formatieren längerer Dokumente braucht eine Tastatur und genug Bildschirmplatz für die Werkzeugleiste — auf einem kleinen Handybildschirm funktioniert das nicht gut.' },
       'slumpmassigt-val': { name: 'Zufallsauswahl', description: 'Lassen Sie den Zufall entscheiden — Listen, Räder oder Münzwurf' },
     },
   },
@@ -3706,6 +3802,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Rede e Seguranca',
       berakning: 'Calculo e Conversao',
       produktivitet: 'Produtividade e Ferramentas',
+      skola: 'Escola',
       spelutveckling: 'Desenvolvimento de jogos',
     },
     textTools: {
@@ -3892,12 +3989,27 @@ export const translations: Record<string, Translation> = {
       reset: 'Reiniciar',
       sessions: 'Sessões',
     },
-    notepad: {
-      placeholder: 'Escreva suas notas aqui...',
+    wordProcessor: {
+      bold: 'Negrito',
+      italic: 'Itálico',
+      underline: 'Sublinhado',
+      strikethrough: 'Tachado',
+      heading1: 'Título 1',
+      heading2: 'Título 2',
+      heading3: 'Título 3',
+      bulletList: 'Lista com marcadores',
+      numberedList: 'Lista numerada',
+      quote: 'Citação',
+      link: 'Link',
+      undo: 'Desfazer',
+      redo: 'Refazer',
       words: 'Palavras',
       characters: 'Caracteres',
       clear: 'Limpar',
       autoSaved: 'Salvo automaticamente no navegador',
+      print: 'Imprimir / Salvar como PDF',
+      downloadWord: 'Baixar Word (.docx)',
+      placeholder: 'Comece a escrever seu documento aqui...',
     },
     randomPicker: {
       listMode: 'Lista',
@@ -4222,7 +4334,7 @@ export const translations: Record<string, Translation> = {
       'pomodoro-timer': { name: 'Temporizador Pomodoro', description: 'Concentre-se com a técnica Pomodoro — 25 min trabalho, 5 min pausa' },
       'nedrakningstimer': { name: 'Temporizador regressivo', description: 'Definir uma contagem regressiva para qualquer hora' },
       'stoppur': { name: 'Cronômetro', description: 'Medir tempo com voltas e parciais' },
-      'anteckningsblock': { name: 'Bloco de notas', description: 'Notas rápidas salvas no seu navegador' },
+      'ordbehandlare': { name: 'Processador de texto', description: 'Escreva e formate documentos direto no navegador — títulos, listas, links e mais, exporte para PDF ou Word', hint: 'Uma ferramenta de escrita para redações, relatórios e lições de casa. Seu documento é salvo automaticamente no navegador e nunca sai do seu computador. Exporte como PDF (impressão) ou um arquivo Word real (.docx).', screenReason: 'Escrever e formatar documentos mais longos exige teclado e espaço suficiente na tela para a barra de ferramentas — não funciona bem numa tela pequena de celular.' },
       'slumpmassigt-val': { name: 'Seletor aleatório', description: 'Deixe o acaso decidir — listas, roletas ou cara ou coroa' },
     },
   },

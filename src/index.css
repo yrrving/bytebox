@@ -18,3 +18,17 @@ body {
 .hc body {
   @apply bg-black text-white;
 }
+
+/* Printed documents (e.g. the Word processor) should always look like
+   paper: white background and black text, regardless of dark/hc theme. */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  .print-area,
+  .print-area * {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #ddd !important;
+  }
+}

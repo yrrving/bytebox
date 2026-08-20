@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, GraduationCap, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, runsOn, latestToolIds, type Category, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
@@ -14,6 +14,7 @@ const categoryIcons: Record<ToolCategory, LucideIcon> = {
   natverk: Globe,
   berakning: Hash,
   produktivitet: Zap,
+  skola: GraduationCap,
   spelutveckling: Gamepad2,
 }
 
@@ -47,6 +48,7 @@ export default function Home() {
     natverk: 'Nätverk & Säkerhet',
     berakning: 'Beräkning & Konvertering',
     produktivitet: 'Produktivitet & Verktyg',
+    skola: 'Skola',
     spelutveckling: 'Spelutveckling',
   }
 

@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.22.0 — 2026-08-20 — Ny kategori "Skola" + Ordbehandlare
+
+### Nytt
+
+- **Ny kategori: Skola.** Första verktyget ute är **Ordbehandlare** — ett riktigt skrivverktyg med formatering (fet, kursiv, understruken, genomstruken, tre rubriknivåer, punkt-/numrerad lista, citat, länkar, ångra/gör om), autospara i webbläsaren, samt export till PDF (via utskrift) och en riktig Word-fil (.docx). Kräver dator — verktyget är inte anpassat för mobilskärm.
+
+### Borttaget
+
+- **Anteckningsblock är borttaget.** Testare tyckte det var för begränsat (ren textruta utan formatering) för att vara användbart. Ordbehandlaren i den nya Skola-kategorin ersätter det med ett verktyg som faktiskt går att skriva riktiga dokument i.
+
 ## 0.21.4 — 2026-08-10 — Markdown-förhandsgranskning: rättad styling + formateringsverktygsrad
 
 ### Fixat

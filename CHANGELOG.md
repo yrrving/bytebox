@@ -2,6 +2,18 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.22.1 — 2026-08-24 — Mötestranskribering: städar upprepningar, tydligare scenarier
+
+### Fixat
+
+- **Upprepningsloopar i transkriptionen.** Whisper (särskilt "Snabb"-modellen) kunde på tysta eller svårhörbara partier fastna och upprepa samma ord, fras eller tecken hundratals gånger — mest märkbart vid mikrofoninspelning av digitala möten, där mikrofonen bara hör din egen röst och resten av inspelningen blir tyst. Lade till `no_repeat_ngram_size` i transkriberingsanropet och en efterstädning som upptäcker och tar bort kvarvarande upprepningar. En notis visas när städning skett.
+
+### Ändrat
+
+- **Tydligare vägledning i verktyget.** Rutan som förklarar mikrofonbegränsningen är omskriven till tre tydliga scenarier: alla i samma rum (bäst, spela in direkt), digitalt möte (spela in i mötestjänsten och ladda upp), redan inspelat (ladda upp direkt).
+- **Samtyckespåminnelse.** En diskret påminnelse om att alltid berätta för alla inblandade — i rummet eller mötet — att det spelas in, visas nu direkt ovanför inspelnings-/uppladdningsknapparna.
+- Förtydligade i integritetstexten att själva ljudinspelningen aldrig sparas på disk — den finns bara i minnet medan sidan är öppen.
+
 ## 0.22.0 — 2026-08-20 — Ny kategori "Skola" + Ordbehandlare
 
 ### Nytt

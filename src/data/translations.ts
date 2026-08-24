@@ -241,8 +241,15 @@ export interface Translation {
   meetingTranscriber?: {
     localTitle: string
     localBody: string
-    micOnlyTitle?: string
-    micOnlyBody?: string
+    scenariosTitle?: string
+    scenarioRoomLabel?: string
+    scenarioRoomText?: string
+    scenarioDigitalLabel?: string
+    scenarioDigitalText?: string
+    scenarioUploadLabel?: string
+    scenarioUploadText?: string
+    consentReminder?: string
+    repetitionCleaned?: string
     modelLabel: string
     modelFast: string
     modelBetter: string
@@ -596,9 +603,16 @@ export const translations: Record<string, Translation> = {
     showAll: 'Visa alla verktyg',
     meetingTranscriber: {
       localTitle: 'Allt sker på din enhet',
-      localBody: 'Ljudet lämnar aldrig din enhet. Första gången laddas en språkmodell ner (ca 40–150 MB beroende på val) och sparas i webbläsaren — sen fungerar transkriberingen även utan internet.',
-      micOnlyTitle: 'Digitalt möte via Zoom eller Teams?',
-      micOnlyBody: 'Inspelningsknappen använder mikrofonen och hör bara det som sägs i rummet — inte ljudet från deltagarna i datorn. För digitala möten: använd mötestjänstens egen inspelning och ladda upp filen här efteråt. Berätta alltid för deltagarna att mötet spelas in.',
+      localBody: 'Ljudet lämnar aldrig din enhet. Första gången laddas en språkmodell ner (ca 40–150 MB beroende på val) och sparas i webbläsaren — sen fungerar transkriberingen även utan internet. Själva inspelningen sparas aldrig på disken — den finns bara i minnet medan sidan är öppen och försvinner när du lämnar sidan eller stänger fliken.',
+      scenariosTitle: 'Tre sätt att spela in',
+      scenarioRoomLabel: 'Alla i samma rum (bäst)',
+      scenarioRoomText: 'Klicka på "Nytt möte" nedan — enhetens mikrofon hör alla som pratar i rummet.',
+      scenarioDigitalLabel: 'Digitalt möte (Teams, Zoom m.fl.)',
+      scenarioDigitalText: 'Mikrofonen hör bara dig, inte de andra deltagarna. Spela in mötet i mötestjänsten istället och ladda upp filen här efteråt.',
+      scenarioUploadLabel: 'Redan inspelat, t.ex. i telefonen',
+      scenarioUploadText: 'Ladda upp ljudfilen direkt — funkar lika bra som att spela in här.',
+      consentReminder: 'Berätta alltid för alla som är med — i rummet eller i mötet — att det spelas in.',
+      repetitionCleaned: 'Vi upptäckte och tog bort upprepade textblock i transkriptionen. Det händer oftast vid tysta eller svårhörbara partier — till exempel om ett digitalt möte spelades in via mikrofonen och bara fångade din egen röst.',
       modelLabel: 'Kvalitet',
       modelFast: 'Snabb — mindre nedladdning',
       modelBetter: 'Bättre — större nedladdning',
@@ -1221,9 +1235,16 @@ export const translations: Record<string, Translation> = {
     showAll: 'Show all tools',
     meetingTranscriber: {
       localTitle: 'Everything happens on your device',
-      localBody: 'The audio never leaves your device. The first time, a language model is downloaded (about 40–150 MB depending on your choice) and stored in your browser — after that transcription works even without internet.',
-      micOnlyTitle: 'Digital meeting via Zoom or Teams?',
-      micOnlyBody: 'The record button uses your microphone and only hears what is said in the room — not the audio from participants on your computer. For digital meetings: use the meeting service\'s own recording and upload the file here afterwards. Always tell participants that the meeting is being recorded.',
+      localBody: 'The audio never leaves your device. The first time, a language model is downloaded (about 40–150 MB depending on your choice) and stored in your browser — after that transcription works even without internet. The recording itself is never saved to disk — it only exists in memory while the page is open, and disappears when you leave the page or close the tab.',
+      scenariosTitle: 'Three ways to record',
+      scenarioRoomLabel: 'Everyone in the same room (best)',
+      scenarioRoomText: 'Click "New meeting" below — the device\'s microphone hears everyone talking in the room.',
+      scenarioDigitalLabel: 'Digital meeting (Teams, Zoom, etc.)',
+      scenarioDigitalText: 'The microphone only hears you, not the other participants. Record the meeting in the meeting service instead and upload the file here afterwards.',
+      scenarioUploadLabel: 'Already recorded, e.g. on your phone',
+      scenarioUploadText: 'Upload the audio file directly — works just as well as recording here.',
+      consentReminder: 'Always tell everyone involved — in the room or in the meeting — that it\'s being recorded.',
+      repetitionCleaned: 'We detected and removed repeated blocks of text in the transcription. This usually happens during quiet or hard-to-hear stretches — for example if a digital meeting was recorded via the microphone and only picked up your own voice.',
       modelLabel: 'Quality',
       modelFast: 'Fast — smaller download',
       modelBetter: 'Better — larger download',
@@ -1846,9 +1867,16 @@ export const translations: Record<string, Translation> = {
     showAll: 'Mostrar todas las herramientas',
     meetingTranscriber: {
       localTitle: 'Todo ocurre en tu dispositivo',
-      localBody: 'El audio nunca sale de tu dispositivo. La primera vez se descarga un modelo de lenguaje (unos 40–150 MB según la opción) y se guarda en el navegador — después la transcripción funciona incluso sin internet.',
-      micOnlyTitle: '¿Reunión digital por Zoom o Teams?',
-      micOnlyBody: 'El botón de grabación usa el micrófono y solo capta lo que se dice en la sala — no el audio de los participantes en tu ordenador. Para reuniones digitales: usa la grabación propia del servicio de reuniones y sube el archivo aquí después. Avisa siempre a los participantes de que la reunión se está grabando.',
+      localBody: 'El audio nunca sale de tu dispositivo. La primera vez se descarga un modelo de lenguaje (unos 40–150 MB según la opción) y se guarda en el navegador — después la transcripción funciona incluso sin internet. La grabación en sí nunca se guarda en el disco — solo existe en memoria mientras la página está abierta y desaparece al salir de la página o cerrar la pestaña.',
+      scenariosTitle: 'Tres formas de grabar',
+      scenarioRoomLabel: 'Todos en la misma sala (lo mejor)',
+      scenarioRoomText: 'Haz clic en "Nueva reunión" abajo — el micrófono del dispositivo capta a todos los que hablan en la sala.',
+      scenarioDigitalLabel: 'Reunión digital (Teams, Zoom, etc.)',
+      scenarioDigitalText: 'El micrófono solo te capta a ti, no a los demás participantes. Graba la reunión en el propio servicio y sube el archivo aquí después.',
+      scenarioUploadLabel: 'Ya grabado, por ejemplo en el móvil',
+      scenarioUploadText: 'Sube el archivo de audio directamente — funciona igual de bien que grabar aquí.',
+      consentReminder: 'Avisa siempre a todos los presentes — en la sala o en la reunión — de que se está grabando.',
+      repetitionCleaned: 'Detectamos y eliminamos bloques de texto repetidos en la transcripción. Esto suele ocurrir en tramos silenciosos o difíciles de oír — por ejemplo, si una reunión digital se grabó con el micrófono y solo captó tu propia voz.',
       modelLabel: 'Calidad',
       modelFast: 'Rápido — descarga menor',
       modelBetter: 'Mejor — descarga mayor',
@@ -2471,9 +2499,16 @@ export const translations: Record<string, Translation> = {
     showAll: 'Afficher tous les outils',
     meetingTranscriber: {
       localTitle: 'Tout se passe sur votre appareil',
-      localBody: 'L\'audio ne quitte jamais votre appareil. La première fois, un modèle de langue est téléchargé (environ 40 à 150 Mo selon le choix) et stocké dans votre navigateur — ensuite la transcription fonctionne même sans internet.',
-      micOnlyTitle: 'Réunion en ligne via Zoom ou Teams ?',
-      micOnlyBody: 'Le bouton d\'enregistrement utilise le micro et ne capte que ce qui se dit dans la pièce — pas le son des participants sur votre ordinateur. Pour les réunions en ligne : utilisez l\'enregistrement intégré du service de réunion, puis importez le fichier ici. Informez toujours les participants que la réunion est enregistrée.',
+      localBody: 'L\'audio ne quitte jamais votre appareil. La première fois, un modèle de langue est téléchargé (environ 40 à 150 Mo selon le choix) et stocké dans votre navigateur — ensuite la transcription fonctionne même sans internet. L\'enregistrement lui-même n\'est jamais sauvegardé sur le disque — il n\'existe qu\'en mémoire tant que la page est ouverte, et disparaît quand vous quittez la page ou fermez l\'onglet.',
+      scenariosTitle: 'Trois façons d\'enregistrer',
+      scenarioRoomLabel: 'Tout le monde dans la même pièce (idéal)',
+      scenarioRoomText: 'Cliquez sur « Nouvelle réunion » ci-dessous — le micro de l\'appareil capte tout le monde dans la pièce.',
+      scenarioDigitalLabel: 'Réunion en ligne (Teams, Zoom, etc.)',
+      scenarioDigitalText: 'Le micro ne capte que vous, pas les autres participants. Enregistrez plutôt la réunion dans le service de réunion, puis importez le fichier ici.',
+      scenarioUploadLabel: 'Déjà enregistré, par ex. sur votre téléphone',
+      scenarioUploadText: 'Importez le fichier audio directement — ça fonctionne aussi bien qu\'enregistrer ici.',
+      consentReminder: 'Informez toujours toutes les personnes concernées — dans la pièce ou en réunion — que ça enregistre.',
+      repetitionCleaned: 'Nous avons détecté et supprimé des blocs de texte répétés dans la transcription. Cela arrive surtout sur des passages silencieux ou difficiles à entendre — par exemple si une réunion en ligne a été enregistrée via le micro et n\'a capté que votre propre voix.',
       modelLabel: 'Qualité',
       modelFast: 'Rapide — téléchargement plus léger',
       modelBetter: 'Meilleur — téléchargement plus lourd',
@@ -3096,9 +3131,16 @@ export const translations: Record<string, Translation> = {
     showAll: 'Alle Werkzeuge anzeigen',
     meetingTranscriber: {
       localTitle: 'Alles geschieht auf deinem Gerät',
-      localBody: 'Das Audio verlässt dein Gerät nie. Beim ersten Mal wird ein Sprachmodell heruntergeladen (je nach Auswahl ca. 40–150 MB) und im Browser gespeichert — danach funktioniert die Transkription auch ohne Internet.',
-      micOnlyTitle: 'Digitales Meeting über Zoom oder Teams?',
-      micOnlyBody: 'Die Aufnahmetaste nutzt das Mikrofon und hört nur, was im Raum gesagt wird — nicht den Ton der Teilnehmer am Computer. Für digitale Meetings: Nutze die eigene Aufnahmefunktion des Meeting-Dienstes und lade die Datei danach hier hoch. Informiere die Teilnehmer immer darüber, dass das Meeting aufgezeichnet wird.',
+      localBody: 'Das Audio verlässt dein Gerät nie. Beim ersten Mal wird ein Sprachmodell heruntergeladen (je nach Auswahl ca. 40–150 MB) und im Browser gespeichert — danach funktioniert die Transkription auch ohne Internet. Die Aufnahme selbst wird nie auf der Festplatte gespeichert — sie existiert nur im Arbeitsspeicher, solange die Seite geöffnet ist, und verschwindet, wenn du die Seite verlässt oder den Tab schließt.',
+      scenariosTitle: 'Drei Wege zum Aufnehmen',
+      scenarioRoomLabel: 'Alle im selben Raum (am besten)',
+      scenarioRoomText: 'Klicke unten auf „Neue Besprechung" — das Mikrofon des Geräts hört alle, die im Raum sprechen.',
+      scenarioDigitalLabel: 'Digitales Meeting (Teams, Zoom usw.)',
+      scenarioDigitalText: 'Das Mikrofon hört nur dich, nicht die anderen Teilnehmer. Nimm die Besprechung stattdessen im Meeting-Dienst auf und lade die Datei danach hier hoch.',
+      scenarioUploadLabel: 'Schon aufgenommen, z. B. auf dem Handy',
+      scenarioUploadText: 'Lade die Audiodatei direkt hoch — funktioniert genauso gut wie hier aufzunehmen.',
+      consentReminder: 'Informiere immer alle Beteiligten — im Raum oder im Meeting —, dass aufgenommen wird.',
+      repetitionCleaned: 'Wir haben wiederholte Textblöcke in der Transkription erkannt und entfernt. Das passiert meist bei leisen oder schwer verständlichen Abschnitten — zum Beispiel, wenn ein digitales Meeting über das Mikrofon aufgenommen wurde und nur deine eigene Stimme erfasst hat.',
       modelLabel: 'Qualität',
       modelFast: 'Schnell — kleinerer Download',
       modelBetter: 'Besser — größerer Download',
@@ -3721,9 +3763,16 @@ export const translations: Record<string, Translation> = {
     showAll: 'Mostrar todas as ferramentas',
     meetingTranscriber: {
       localTitle: 'Tudo acontece no seu dispositivo',
-      localBody: 'O áudio nunca sai do seu dispositivo. Na primeira vez, é descarregado um modelo de linguagem (cerca de 40–150 MB conforme a opção) e guardado no navegador — depois a transcrição funciona mesmo sem internet.',
-      micOnlyTitle: 'Reunião digital via Zoom ou Teams?',
-      micOnlyBody: 'O botão de gravação usa o microfone e só capta o que é dito na sala — não o áudio dos participantes no computador. Para reuniões digitais: use a gravação do próprio serviço de reuniões e carregue o arquivo aqui depois. Avise sempre os participantes de que a reunião está sendo gravada.',
+      localBody: 'O áudio nunca sai do seu dispositivo. Na primeira vez, é descarregado um modelo de linguagem (cerca de 40–150 MB conforme a opção) e guardado no navegador — depois a transcrição funciona mesmo sem internet. A gravação em si nunca é guardada no disco — só existe na memória enquanto a página está aberta, e desaparece quando sai da página ou fecha o separador.',
+      scenariosTitle: 'Três formas de gravar',
+      scenarioRoomLabel: 'Todos na mesma sala (o ideal)',
+      scenarioRoomText: 'Clique em "Nova reunião" abaixo — o microfone do dispositivo ouve todos que falam na sala.',
+      scenarioDigitalLabel: 'Reunião digital (Teams, Zoom, etc.)',
+      scenarioDigitalText: 'O microfone só capta você, não os outros participantes. Grave a reunião no próprio serviço de reuniões e carregue o arquivo aqui depois.',
+      scenarioUploadLabel: 'Já gravado, por exemplo no celular',
+      scenarioUploadText: 'Carregue o arquivo de áudio diretamente — funciona tão bem quanto gravar aqui.',
+      consentReminder: 'Avise sempre todos os envolvidos — na sala ou na reunião — de que está sendo gravado.',
+      repetitionCleaned: 'Detectámos e removemos blocos de texto repetidos na transcrição. Isto costuma acontecer em trechos silenciosos ou difíceis de ouvir — por exemplo, se uma reunião digital foi gravada através do microfone e só captou a sua própria voz.',
       modelLabel: 'Qualidade',
       modelFast: 'Rápido — descarga menor',
       modelBetter: 'Melhor — descarga maior',

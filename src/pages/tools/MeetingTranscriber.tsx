@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Mic, Square, Upload, Copy, Check, Trash2, Download, ShieldCheck, Loader2, MonitorSpeaker } from 'lucide-react'
+import { Mic, Square, Upload, Copy, Check, Trash2, Download, ShieldCheck, Loader2, Users, MessageCircleWarning } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
@@ -93,6 +93,7 @@ export default function MeetingTranscriber() {
   const [recSeconds, setRecSeconds] = useState(0)
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  const [cleaned, setCleaned] = useState(false)
 
   const workerRef = useRef<Worker | null>(null)
   const recorderRef = useRef<MediaRecorder | null>(null)
@@ -122,6 +123,7 @@ export default function MeetingTranscriber() {
         } else if (msg.type === 'result') {
           setTranscript(msg.text)
           setChunks(msg.chunks)
+          setCleaned(Boolean(msg.cleaned))
           setPhase('done')
         } else if (msg.type === 'error') {
           setError(msg.message || 'error')
@@ -136,6 +138,7 @@ export default function MeetingTranscriber() {
     setError('')
     setTranscript('')
     setChunks([])
+    setCleaned(false)
     setPhase('loading')
     setDownloadPct(null)
     try {
@@ -193,6 +196,7 @@ export default function MeetingTranscriber() {
   function reset() {
     setTranscript('')
     setChunks([])
+    setCleaned(false)
     setError('')
     setPhase('idle')
   }
@@ -222,14 +226,30 @@ export default function MeetingTranscriber() {
         </div>
       </div>
 
-      {/* Recording captures the microphone only — digital meetings need the upload flow. */}
+      {/* Recording captures the device microphone only — walks through which
+          of the three usage scenarios that suits, before the settings/buttons. */}
       <div className="flex items-start gap-2.5 rounded-xl border border-blue-300 dark:border-blue-800/60 hc:border-white bg-blue-50 dark:bg-blue-900/20 hc:bg-black p-4 text-sm text-blue-800 dark:text-blue-200 hc:text-white">
-        <MonitorSpeaker className="mt-0.5 h-5 w-5 shrink-0" />
-        <div>
-          <p className="font-medium">{mt?.micOnlyTitle ?? 'Digitalt möte via Zoom eller Teams?'}</p>
-          <p className="mt-1 text-blue-700 dark:text-blue-300 hc:text-gray-200">
-            {mt?.micOnlyBody ?? 'Inspelningsknappen använder mikrofonen och hör bara det som sägs i rummet — inte ljudet från deltagarna i datorn. För digitala möten: använd mötestjänstens egen inspelning och ladda upp filen här efteråt. Berätta alltid för deltagarna att mötet spelas in.'}
-          </p>
+        <Users className="mt-0.5 h-5 w-5 shrink-0" />
+        <div className="space-y-2.5">
+          <p className="font-medium">{mt?.scenariosTitle ?? 'Tre sätt att spela in'}</p>
+          <div>
+            <p className="font-medium">{mt?.scenarioRoomLabel ?? 'Alla i samma rum (bäst)'}</p>
+            <p className="text-blue-700 dark:text-blue-300 hc:text-gray-200">
+              {mt?.scenarioRoomText ?? 'Klicka på "Nytt möte" nedan — enhetens mikrofon hör alla som pratar i rummet.'}
+            </p>
+          </div>
+          <div>
+            <p className="font-medium">{mt?.scenarioDigitalLabel ?? 'Digitalt möte (Teams, Zoom m.fl.)'}</p>
+            <p className="text-blue-700 dark:text-blue-300 hc:text-gray-200">
+              {mt?.scenarioDigitalText ?? 'Mikrofonen hör bara dig, inte de andra deltagarna. Spela in mötet i mötestjänsten istället och ladda upp filen här efteråt.'}
+            </p>
+          </div>
+          <div>
+            <p className="font-medium">{mt?.scenarioUploadLabel ?? 'Redan inspelat, t.ex. i telefonen'}</p>
+            <p className="text-blue-700 dark:text-blue-300 hc:text-gray-200">
+              {mt?.scenarioUploadText ?? 'Ladda upp ljudfilen direkt — funkar lika bra som att spela in här.'}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -261,6 +281,13 @@ export default function MeetingTranscriber() {
           </select>
         </div>
       </div>
+
+      {phase !== 'recording' && (
+        <p className="flex items-center justify-center gap-1.5 text-center text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+          <MessageCircleWarning className="h-3.5 w-3.5 shrink-0" />
+          {mt?.consentReminder ?? 'Berätta alltid för alla som är med — i rummet eller i mötet — att det spelas in.'}
+        </p>
+      )}
 
       {/* Actions */}
       <div className="flex flex-wrap items-center justify-center gap-3">
@@ -311,6 +338,12 @@ export default function MeetingTranscriber() {
       {error && (
         <div className="rounded-xl border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 text-sm text-red-700 dark:text-red-400">
           {error}
+        </div>
+      )}
+
+      {cleaned && phase === 'done' && (
+        <div className="rounded-xl border border-amber-300 dark:border-amber-700/60 hc:border-white bg-amber-50 dark:bg-amber-900/20 hc:bg-black p-4 text-sm text-amber-800 dark:text-amber-200 hc:text-white">
+          {mt?.repetitionCleaned ?? 'Vi upptäckte och tog bort upprepade textblock i transkriptionen. Det händer oftast vid tysta eller svårhörbara partier — till exempel om ett digitalt möte spelades in via mikrofonen och bara fångade din egen röst.'}
         </div>
       )}
 

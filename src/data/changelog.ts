@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.22.1',
+    date: '2026-08-24',
+    title: {
+      sv: 'Mötestranskribering: städar upprepningar, tydligare scenarier',
+      en: 'Meeting Transcriber: cleans up repetition, clearer scenarios',
+      es: 'Transcriptor de reuniones: limpia repeticiones, escenarios más claros',
+      fr: 'Transcripteur de réunions : nettoie les répétitions, scénarios plus clairs',
+      de: 'Besprechungs-Transkription: bereinigt Wiederholungen, klarere Szenarien',
+      pt: 'Transcritor de reuniões: limpa repetições, cenários mais claros',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Whisper kunde på tysta eller svårhörbara partier fastna och upprepa samma ord eller fras hundratals gånger — vanligast vid mikrofoninspelning av digitala möten, där mikrofonen bara hör din egen röst. Lade till skydd i transkriberingsanropet plus en efterstädning som upptäcker och tar bort kvarvarande upprepningar, med en notis när det händer.',
+          en: 'Whisper could get stuck on quiet or hard-to-hear stretches and repeat the same word or phrase hundreds of times — most common when recording a digital meeting via the microphone, which only hears your own voice. Added a safeguard to the transcription call plus a cleanup pass that detects and removes remaining repetition, with a notice when it happens.',
+          es: 'Whisper podía quedarse atascado en tramos silenciosos o difíciles de oír y repetir la misma palabra o frase cientos de veces — lo más común al grabar una reunión digital con el micrófono, que solo capta tu propia voz. Se añadió una protección en la llamada de transcripción y una limpieza que detecta y elimina las repeticiones restantes, con un aviso cuando ocurre.',
+          fr: 'Whisper pouvait se bloquer sur des passages silencieux ou difficiles à entendre et répéter le même mot ou la même phrase des centaines de fois — surtout lors de l\'enregistrement d\'une réunion en ligne via le micro, qui ne capte que votre propre voix. Ajout d\'une protection dans l\'appel de transcription et d\'un nettoyage qui détecte et supprime les répétitions restantes, avec un avis quand cela se produit.',
+          de: 'Whisper konnte bei leisen oder schwer verständlichen Abschnitten hängen bleiben und dasselbe Wort oder denselben Satz hunderte Male wiederholen — am häufigsten bei Mikrofonaufnahmen digitaler Meetings, bei denen das Mikrofon nur die eigene Stimme hört. Eine Absicherung im Transkriptionsaufruf sowie eine Bereinigung, die verbleibende Wiederholungen erkennt und entfernt, wurden hinzugefügt, mit einem Hinweis, wenn das passiert.',
+          pt: 'O Whisper podia ficar preso em trechos silenciosos ou difíceis de ouvir e repetir a mesma palavra ou frase centenas de vezes — mais comum ao gravar uma reunião digital pelo microfone, que só capta a sua própria voz. Foi adicionada uma proteção na chamada de transcrição e uma limpeza que deteta e remove repetições remanescentes, com um aviso quando isso acontece.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Rutan som förklarar mikrofonbegränsningen är omskriven till tre tydliga scenarier (alla i samma rum, digitalt möte, redan inspelat), och en diskret samtyckespåminnelse visas nu ovanför inspelnings-/uppladdningsknapparna. Förtydligade också att själva ljudinspelningen aldrig sparas på disk.',
+          en: 'The box explaining the microphone limitation has been rewritten into three clear scenarios (same room, digital meeting, already recorded), and a discreet consent reminder now appears above the record/upload buttons. Also clarified that the audio recording itself is never saved to disk.',
+          es: 'El cuadro que explica la limitación del micrófono se ha reescrito en tres escenarios claros (misma sala, reunión digital, ya grabado), y ahora aparece un discreto recordatorio de consentimiento encima de los botones de grabar/subir. También se aclaró que la grabación de audio en sí nunca se guarda en el disco.',
+          fr: 'L\'encadré expliquant la limitation du micro a été réécrit en trois scénarios clairs (même pièce, réunion en ligne, déjà enregistré), et un rappel discret sur le consentement apparaît désormais au-dessus des boutons d\'enregistrement/import. Précisé aussi que l\'enregistrement audio lui-même n\'est jamais sauvegardé sur le disque.',
+          de: 'Der Kasten zur Erklärung der Mikrofon-Einschränkung wurde in drei klare Szenarien umgeschrieben (gleicher Raum, digitales Meeting, bereits aufgenommen), und ein dezenter Einwilligungshinweis erscheint jetzt über den Aufnahme-/Upload-Schaltflächen. Außerdem klargestellt, dass die Audioaufnahme selbst nie auf der Festplatte gespeichert wird.',
+          pt: 'A caixa que explica a limitação do microfone foi reescrita em três cenários claros (mesma sala, reunião digital, já gravado), e agora aparece um discreto lembrete de consentimento acima dos botões de gravar/carregar. Também foi esclarecido que a gravação de áudio em si nunca é guardada no disco.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.22.0',
     date: '2026-08-20',
     title: {

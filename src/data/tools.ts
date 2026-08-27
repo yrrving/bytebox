@@ -65,6 +65,7 @@ import {
   FileSignature,
   Film,
   FileEdit,
+  PenLine,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -91,12 +92,12 @@ export interface Tool {
  * längst fram och håll listan till sex stycken.
  */
 export const latestToolIds: string[] = [
+  'fyll-i-pdf',
   'ordbehandlare',
   'motestranskribering',
   'video-till-gif',
   'pdf-signering',
   'streckkod',
-  'ljudklipp',
 ]
 
 /** Är verktyget ett av de senaste (visas med "Nytt"-etikett)? */
@@ -342,6 +343,14 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: FileSignature,
+    category: 'text',
+  },
+  {
+    id: 'fyll-i-pdf',
+    route: '/fyll-i-pdf',
+    minScreen: 'dator',
+    connection: 'offline',
+    icon: PenLine,
     category: 'text',
   },
 

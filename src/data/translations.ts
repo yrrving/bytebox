@@ -337,6 +337,28 @@ export interface Translation {
     downloadWord: string
     placeholder: string
   }
+  fillPdf?: {
+    upload: string
+    loading: string
+    changeFile: string
+    privacyNote: string
+    hintClick: string
+    pageLabel: string
+    zoomIn: string
+    zoomOut: string
+    textPlaceholder: string
+    drag: string
+    smaller: string
+    bigger: string
+    boldToggle: string
+    deleteText: string
+    save: string
+    saving: string
+    savedDone: string
+    errorType: string
+    errorLoad: string
+    errorSave: string
+  }
   randomPicker?: {
     listMode: string
     coinFlip: string
@@ -900,6 +922,28 @@ export const translations: Record<string, Translation> = {
       downloadWord: 'Ladda ner Word (.docx)',
       placeholder: 'Börja skriva ditt dokument här...',
     },
+    fillPdf: {
+      upload: 'Klicka eller dra hit en PDF',
+      loading: 'Öppnar PDF…',
+      changeFile: 'byt fil',
+      privacyNote: 'Din PDF behandlas helt lokalt i webbläsaren och laddas aldrig upp någonstans. Originalfilen skrivs aldrig över — du laddar ner en ny, ifylld fil.',
+      hintClick: 'Klicka var som helst på sidan för att lägga till text.',
+      pageLabel: 'Sida {n} av {m}',
+      zoomIn: 'Zooma in',
+      zoomOut: 'Zooma ut',
+      textPlaceholder: 'Skriv…',
+      drag: 'Flytta',
+      smaller: 'Mindre text',
+      bigger: 'Större text',
+      boldToggle: 'Fet stil',
+      deleteText: 'Ta bort',
+      save: 'Spara PDF',
+      saving: 'Sparar…',
+      savedDone: 'Klart! Den ifyllda PDF:en har laddats ner.',
+      errorType: 'Välj en PDF-fil.',
+      errorLoad: 'Kunde inte läsa PDF:en. Den kan vara skadad eller lösenordsskyddad.',
+      errorSave: 'Något gick fel när PDF:en sparades. Prova igen.',
+    },
     randomPicker: {
       listMode: 'Lista',
       coinFlip: 'Myntkast',
@@ -1195,6 +1239,7 @@ export const translations: Record<string, Translation> = {
       'ljudklipp': { name: 'Ljudklippare', description: 'Klipp och trimma ljudfiler direkt i webbläsaren – välj start och slut och ladda ner en WAV', hint: 'Perfekt för att korta ner en inspelning eller plocka ut ett klipp. Inget laddas upp.' },
       'streckkod': { name: 'Streckkodsgenerator', description: 'Skapa streckkoder (CODE128, EAN, UPC m.fl.) och ladda ner som PNG eller SVG', hint: 'Allt sker lokalt i webbläsaren – inget laddas upp.' },
       'pdf-signering': { name: 'PDF-signering', description: 'Signera PDF-dokument direkt i webbläsaren – rita din namnteckning och placera den på valfri sida', hint: 'Allt sker lokalt, filen laddas aldrig upp.' },
+      'fyll-i-pdf': { name: 'Fyll i PDF', description: 'Fyll i en PDF-blankett med text direkt i webbläsaren — klicka där du vill skriva', hint: 'Perfekt för ansökningar och formulär som saknar ifyllnadsbara fält. Klicka på dokumentet, skriv, flytta texten dit den ska — spara sedan som en ny PDF. Originalfilen ändras aldrig.', screenReason: 'Att klicka exakt och flytta text kräver mus/pekplatta och gott om skärmyta — det fungerar inte bra på en liten mobilskärm.' },
       'favicon-generator': { name: 'Favicon-generator', description: 'Skapa den lilla ikonen som visas i webbläsarens flik (favicon) från valfri bild' },
       'bildkollage': { name: 'Bildkollage', description: 'Kombinera flera bilder till ett snyggt kollage' },
       'pixelraknare': { name: 'Pixelräknare', description: 'Räkna pixlar och mät avstånd i bilder' },
@@ -1532,6 +1577,28 @@ export const translations: Record<string, Translation> = {
       downloadWord: 'Download Word (.docx)',
       placeholder: 'Start writing your document here...',
     },
+    fillPdf: {
+      upload: 'Click or drop a PDF here',
+      loading: 'Opening PDF…',
+      changeFile: 'change file',
+      privacyNote: 'Your PDF is processed entirely locally in your browser and is never uploaded anywhere. The original file is never overwritten — you download a new, filled-in file.',
+      hintClick: 'Click anywhere on the page to add text.',
+      pageLabel: 'Page {n} of {m}',
+      zoomIn: 'Zoom in',
+      zoomOut: 'Zoom out',
+      textPlaceholder: 'Type…',
+      drag: 'Move',
+      smaller: 'Smaller text',
+      bigger: 'Bigger text',
+      boldToggle: 'Bold',
+      deleteText: 'Delete',
+      save: 'Save PDF',
+      saving: 'Saving…',
+      savedDone: 'Done! The filled-in PDF has been downloaded.',
+      errorType: 'Please choose a PDF file.',
+      errorLoad: 'Could not read the PDF. It may be damaged or password-protected.',
+      errorSave: 'Something went wrong while saving the PDF. Please try again.',
+    },
     randomPicker: {
       listMode: 'List',
       coinFlip: 'Coin flip',
@@ -1827,6 +1894,7 @@ export const translations: Record<string, Translation> = {
       'ljudklipp': { name: 'Audio Trimmer', description: 'Cut and trim audio files right in your browser – pick a start and end and download a WAV', hint: 'Great for shortening a recording or grabbing a clip. Nothing is uploaded.' },
       'streckkod': { name: 'Barcode Generator', description: 'Create barcodes (CODE128, EAN, UPC and more) and download them as PNG or SVG', hint: 'Everything runs locally in your browser — nothing is uploaded.' },
       'pdf-signering': { name: 'PDF Signing', description: 'Sign PDF documents right in your browser — draw your signature and place it on any page', hint: 'Everything runs locally; your file is never uploaded.' },
+      'fyll-i-pdf': { name: 'Fill in PDF', description: 'Fill in a PDF form with text right in your browser — click wherever you want to write', hint: 'Perfect for applications and forms without fillable fields. Click on the document, type, drag the text where it belongs — then save as a new PDF. The original file is never changed.', screenReason: 'Clicking precisely and dragging text needs a mouse or trackpad and plenty of screen space — it doesn\'t work well on a small phone screen.' },
       'favicon-generator': { name: 'Favicon Generator', description: 'Create the little icon shown in a browser tab (favicon) from any image' },
       'bildkollage': { name: 'Image Collage', description: 'Combine multiple images into a collage' },
       'pixelraknare': { name: 'Pixel Counter', description: 'Count pixels and measure distances in images' },
@@ -2164,6 +2232,28 @@ export const translations: Record<string, Translation> = {
       downloadWord: 'Descargar Word (.docx)',
       placeholder: 'Empieza a escribir tu documento aquí...',
     },
+    fillPdf: {
+      upload: 'Haz clic o arrastra un PDF aquí',
+      loading: 'Abriendo PDF…',
+      changeFile: 'cambiar archivo',
+      privacyNote: 'Tu PDF se procesa totalmente en local en tu navegador y nunca se sube a ningún sitio. El archivo original nunca se sobrescribe — descargas un archivo nuevo y rellenado.',
+      hintClick: 'Haz clic en cualquier parte de la página para añadir texto.',
+      pageLabel: 'Página {n} de {m}',
+      zoomIn: 'Acercar',
+      zoomOut: 'Alejar',
+      textPlaceholder: 'Escribe…',
+      drag: 'Mover',
+      smaller: 'Texto más pequeño',
+      bigger: 'Texto más grande',
+      boldToggle: 'Negrita',
+      deleteText: 'Eliminar',
+      save: 'Guardar PDF',
+      saving: 'Guardando…',
+      savedDone: '¡Listo! El PDF rellenado se ha descargado.',
+      errorType: 'Elige un archivo PDF.',
+      errorLoad: 'No se pudo leer el PDF. Puede estar dañado o protegido con contraseña.',
+      errorSave: 'Algo salió mal al guardar el PDF. Inténtalo de nuevo.',
+    },
     randomPicker: {
       listMode: 'Lista',
       coinFlip: 'Lanzar moneda',
@@ -2459,6 +2549,7 @@ export const translations: Record<string, Translation> = {
       'ljudklipp': { name: 'Recortador de audio', description: 'Corta y recorta archivos de audio directamente en tu navegador: elige inicio y fin y descarga un WAV', hint: 'Ideal para acortar una grabación o extraer un fragmento. No se sube nada.' },
       'streckkod': { name: 'Generador de códigos de barras', description: 'Crea códigos de barras (CODE128, EAN, UPC y más) y descárgalos como PNG o SVG', hint: 'Todo funciona localmente en tu navegador — no se sube nada.' },
       'pdf-signering': { name: 'Firmar PDF', description: 'Firma documentos PDF directamente en tu navegador: dibuja tu firma y colócala en cualquier página', hint: 'Todo funciona localmente; tu archivo nunca se sube.' },
+      'fyll-i-pdf': { name: 'Rellenar PDF', description: 'Rellena un formulario PDF con texto directamente en el navegador — haz clic donde quieras escribir', hint: 'Perfecto para solicitudes y formularios sin campos rellenables. Haz clic en el documento, escribe, arrastra el texto a su sitio — luego guarda como un PDF nuevo. El archivo original nunca cambia.', screenReason: 'Hacer clic con precisión y arrastrar texto requiere ratón o trackpad y suficiente espacio en pantalla — no funciona bien en una pantalla de móvil pequeña.' },
       'favicon-generator': { name: 'Generador de favicon', description: 'Crea el pequeño icono que aparece en la pestaña del navegador (favicon) desde cualquier imagen' },
       'bildkollage': { name: 'Collage de imágenes', description: 'Combinar varias imágenes en un collage' },
       'pixelraknare': { name: 'Contador de píxeles', description: 'Contar píxeles y medir distancias en imágenes' },
@@ -2796,6 +2887,28 @@ export const translations: Record<string, Translation> = {
       downloadWord: 'Télécharger Word (.docx)',
       placeholder: 'Commencez à écrire votre document ici...',
     },
+    fillPdf: {
+      upload: 'Cliquez ou déposez un PDF ici',
+      loading: 'Ouverture du PDF…',
+      changeFile: 'changer de fichier',
+      privacyNote: 'Votre PDF est traité entièrement en local dans votre navigateur et n\'est jamais envoyé nulle part. Le fichier original n\'est jamais écrasé — vous téléchargez un nouveau fichier rempli.',
+      hintClick: 'Cliquez n\'importe où sur la page pour ajouter du texte.',
+      pageLabel: 'Page {n} sur {m}',
+      zoomIn: 'Zoomer',
+      zoomOut: 'Dézoomer',
+      textPlaceholder: 'Écrivez…',
+      drag: 'Déplacer',
+      smaller: 'Texte plus petit',
+      bigger: 'Texte plus grand',
+      boldToggle: 'Gras',
+      deleteText: 'Supprimer',
+      save: 'Enregistrer le PDF',
+      saving: 'Enregistrement…',
+      savedDone: 'Terminé ! Le PDF rempli a été téléchargé.',
+      errorType: 'Choisissez un fichier PDF.',
+      errorLoad: 'Impossible de lire le PDF. Il est peut-être endommagé ou protégé par mot de passe.',
+      errorSave: 'Une erreur est survenue lors de l\'enregistrement du PDF. Réessayez.',
+    },
     randomPicker: {
       listMode: 'Liste',
       coinFlip: 'Pile ou face',
@@ -3091,6 +3204,7 @@ export const translations: Record<string, Translation> = {
       'ljudklipp': { name: 'Découpe audio', description: 'Coupez et rognez des fichiers audio directement dans votre navigateur : choisissez le début et la fin et téléchargez un WAV', hint: 'Parfait pour raccourcir un enregistrement ou extraire un extrait. Rien n\'est envoyé.' },
       'streckkod': { name: 'Générateur de codes-barres', description: 'Créez des codes-barres (CODE128, EAN, UPC et plus) et téléchargez-les en PNG ou SVG', hint: 'Tout fonctionne en local dans votre navigateur — rien n\'est envoyé.' },
       'pdf-signering': { name: 'Signer un PDF', description: 'Signez des documents PDF directement dans votre navigateur : dessinez votre signature et placez-la sur n\'importe quelle page', hint: 'Tout fonctionne en local ; votre fichier n\'est jamais envoyé.' },
+      'fyll-i-pdf': { name: 'Remplir un PDF', description: 'Remplissez un formulaire PDF avec du texte directement dans le navigateur — cliquez où vous voulez écrire', hint: 'Parfait pour les demandes et formulaires sans champs remplissables. Cliquez sur le document, tapez, déplacez le texte à sa place — puis enregistrez comme un nouveau PDF. Le fichier original n\'est jamais modifié.', screenReason: 'Cliquer précisément et déplacer du texte nécessite une souris ou un trackpad et assez d\'espace à l\'écran — cela ne fonctionne pas bien sur un petit écran de téléphone.' },
       'favicon-generator': { name: 'Générateur de favicon', description: 'Créez la petite icône affichée dans l\'onglet du navigateur (favicon) à partir de n\'importe quelle image' },
       'bildkollage': { name: 'Collage d\'images', description: 'Combiner plusieurs images en un collage' },
       'pixelraknare': { name: 'Compteur de pixels', description: 'Compter les pixels et mesurer les distances dans les images' },
@@ -3428,6 +3542,28 @@ export const translations: Record<string, Translation> = {
       downloadWord: 'Word herunterladen (.docx)',
       placeholder: 'Beginne hier mit deinem Dokument...',
     },
+    fillPdf: {
+      upload: 'Klicke oder ziehe eine PDF hierher',
+      loading: 'PDF wird geöffnet…',
+      changeFile: 'Datei wechseln',
+      privacyNote: 'Deine PDF wird komplett lokal in deinem Browser verarbeitet und nie irgendwohin hochgeladen. Die Originaldatei wird nie überschrieben — du lädst eine neue, ausgefüllte Datei herunter.',
+      hintClick: 'Klicke irgendwo auf die Seite, um Text hinzuzufügen.',
+      pageLabel: 'Seite {n} von {m}',
+      zoomIn: 'Vergrößern',
+      zoomOut: 'Verkleinern',
+      textPlaceholder: 'Schreiben…',
+      drag: 'Verschieben',
+      smaller: 'Kleinerer Text',
+      bigger: 'Größerer Text',
+      boldToggle: 'Fett',
+      deleteText: 'Löschen',
+      save: 'PDF speichern',
+      saving: 'Wird gespeichert…',
+      savedDone: 'Fertig! Die ausgefüllte PDF wurde heruntergeladen.',
+      errorType: 'Bitte wähle eine PDF-Datei.',
+      errorLoad: 'Die PDF konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder passwortgeschützt.',
+      errorSave: 'Beim Speichern der PDF ist etwas schiefgelaufen. Versuche es erneut.',
+    },
     randomPicker: {
       listMode: 'Liste',
       coinFlip: 'Münzwurf',
@@ -3723,6 +3859,7 @@ export const translations: Record<string, Translation> = {
       'ljudklipp': { name: 'Audio-Schneider', description: 'Schneide und kürze Audiodateien direkt im Browser – wähle Anfang und Ende und lade eine WAV herunter', hint: 'Perfekt, um eine Aufnahme zu kürzen oder einen Ausschnitt herauszunehmen. Nichts wird hochgeladen.' },
       'streckkod': { name: 'Barcode-Generator', description: 'Erstelle Barcodes (CODE128, EAN, UPC u. a.) und lade sie als PNG oder SVG herunter', hint: 'Alles läuft lokal im Browser — nichts wird hochgeladen.' },
       'pdf-signering': { name: 'PDF signieren', description: 'Signiere PDF-Dokumente direkt im Browser – zeichne deine Unterschrift und platziere sie auf jeder Seite', hint: 'Alles läuft lokal; deine Datei wird nie hochgeladen.' },
+      'fyll-i-pdf': { name: 'PDF ausfüllen', description: 'Fülle ein PDF-Formular mit Text direkt im Browser aus — klicke, wo du schreiben möchtest', hint: 'Perfekt für Anträge und Formulare ohne ausfüllbare Felder. Klicke auf das Dokument, tippe, ziehe den Text an die richtige Stelle — speichere dann als neue PDF. Die Originaldatei wird nie verändert.', screenReason: 'Präzises Klicken und Ziehen von Text braucht eine Maus oder ein Trackpad und genug Bildschirmplatz — auf einem kleinen Handybildschirm funktioniert das nicht gut.' },
       'favicon-generator': { name: 'Favicon-Generator', description: 'Erstelle das kleine Symbol im Browser-Tab (Favicon) aus einem beliebigen Bild' },
       'bildkollage': { name: 'Bildcollage', description: 'Mehrere Bilder zu einer Collage kombinieren' },
       'pixelraknare': { name: 'Pixelzähler', description: 'Pixel zählen und Abstände in Bildern messen' },
@@ -4060,6 +4197,28 @@ export const translations: Record<string, Translation> = {
       downloadWord: 'Baixar Word (.docx)',
       placeholder: 'Comece a escrever seu documento aqui...',
     },
+    fillPdf: {
+      upload: 'Clique ou arraste um PDF aqui',
+      loading: 'Abrindo PDF…',
+      changeFile: 'trocar arquivo',
+      privacyNote: 'O seu PDF é processado totalmente em local no seu navegador e nunca é enviado para lugar nenhum. O ficheiro original nunca é substituído — você baixa um novo ficheiro preenchido.',
+      hintClick: 'Clique em qualquer lugar da página para adicionar texto.',
+      pageLabel: 'Página {n} de {m}',
+      zoomIn: 'Aumentar zoom',
+      zoomOut: 'Diminuir zoom',
+      textPlaceholder: 'Escreva…',
+      drag: 'Mover',
+      smaller: 'Texto menor',
+      bigger: 'Texto maior',
+      boldToggle: 'Negrito',
+      deleteText: 'Excluir',
+      save: 'Salvar PDF',
+      saving: 'Salvando…',
+      savedDone: 'Pronto! O PDF preenchido foi baixado.',
+      errorType: 'Escolha um arquivo PDF.',
+      errorLoad: 'Não foi possível ler o PDF. Ele pode estar danificado ou protegido por senha.',
+      errorSave: 'Algo deu errado ao salvar o PDF. Tente novamente.',
+    },
     randomPicker: {
       listMode: 'Lista',
       coinFlip: 'Cara ou coroa',
@@ -4355,6 +4514,7 @@ export const translations: Record<string, Translation> = {
       'ljudklipp': { name: 'Cortador de áudio', description: 'Corte e apare ficheiros de áudio diretamente no navegador – escolha o início e o fim e descarregue um WAV', hint: 'Ideal para encurtar uma gravação ou extrair um excerto. Nada é enviado.' },
       'streckkod': { name: 'Gerador de códigos de barras', description: 'Crie códigos de barras (CODE128, EAN, UPC e outros) e descarregue como PNG ou SVG', hint: 'Tudo funciona localmente no navegador — nada é enviado.' },
       'pdf-signering': { name: 'Assinar PDF', description: 'Assine documentos PDF diretamente no navegador – desenhe a sua assinatura e coloque-a em qualquer página', hint: 'Tudo funciona localmente; o seu ficheiro nunca é enviado.' },
+      'fyll-i-pdf': { name: 'Preencher PDF', description: 'Preencha um formulário PDF com texto diretamente no navegador — clique onde quiser escrever', hint: 'Perfeito para candidaturas e formulários sem campos preenchíveis. Clique no documento, escreva, arraste o texto até ao lugar certo — depois guarde como um novo PDF. O ficheiro original nunca é alterado.', screenReason: 'Clicar com precisão e arrastar texto requer rato ou trackpad e bastante espaço no ecrã — não funciona bem num ecrã pequeno de telemóvel.' },
       'favicon-generator': { name: 'Gerador de favicon', description: 'Crie o pequeno ícone que aparece no separador do navegador (favicon) a partir de qualquer imagem' },
       'bildkollage': { name: 'Colagem de imagens', description: 'Combinar várias imagens em uma colagem' },
       'pixelraknare': { name: 'Contador de pixels', description: 'Contar pixels e medir distâncias em imagens' },

@@ -68,6 +68,7 @@ const SvgOptimizer = lazy(() => import('./pages/tools/SvgOptimizer'))
 const SrtEditor = lazy(() => import('./pages/tools/SrtEditor'))
 const UuidGenerator = lazy(() => import('./pages/tools/UuidGenerator'))
 const WordProcessor = lazy(() => import('./pages/tools/WordProcessor'))
+const FillPdf = lazy(() => import('./pages/tools/FillPdf'))
 const EpochConverter = lazy(() => import('./pages/tools/EpochConverter'))
 const BaseConverter = lazy(() => import('./pages/tools/BaseConverter'))
 const BadgeGenerator = lazy(() => import('./pages/tools/BadgeGenerator'))
@@ -162,6 +163,7 @@ export default function App() {
           <Route path="/video-till-gif" element={<VideoToGif />} />
           <Route path="/traincells" element={<Traincells />} />
           <Route path="/ordbehandlare" element={<WordProcessor />} />
+          <Route path="/fyll-i-pdf" element={<FillPdf />} />
           <Route path="/:slug" element={<Placeholder />} />
         </Route>
       </Routes>

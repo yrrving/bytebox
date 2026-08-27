@@ -1,7 +1,7 @@
 {
   "name": "bytebox",
   "private": true,
-  "version": "0.22.1",
+  "version": "0.23.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,6 +24,7 @@
     "lucide-react": "^0.563.0",
     "marked": "^17.0.2",
     "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.2.108",
     "qrcode": "^1.5.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

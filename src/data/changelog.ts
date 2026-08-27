@@ -10,6 +10,56 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.23.1',
+    date: '2026-08-27',
+    title: {
+      sv: 'Fyll i PDF: kräver ett extra klick innan ny skrivruta',
+      en: 'Fill in PDF: requires an extra click before a new text box',
+      es: 'Rellenar PDF: requiere un clic adicional antes de un cuadro nuevo',
+      fr: 'Remplir un PDF : un clic supplémentaire est requis avant une nouvelle zone',
+      de: 'PDF ausfüllen: erfordert einen zusätzlichen Klick vor einem neuen Feld',
+      pt: 'Preencher PDF: exige um clique extra antes de uma nova caixa',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Att klicka utanför en aktiv skrivruta skapade direkt en ny ruta på den platsen, vilket kändes för känsligt. Nu avmarkerar/committar det första klicket utanför bara den aktiva rutan — ett andra klick, med inget valt, placerar nästa ruta.',
+          en: 'Clicking outside an active text box immediately created a new box at that spot, which felt too sensitive. Now the first click outside just deselects/commits the active box — a second click, with nothing selected, places the next box.',
+          es: 'Hacer clic fuera de un cuadro de texto activo creaba de inmediato uno nuevo en ese lugar, lo cual resultaba demasiado sensible. Ahora el primer clic fuera solo deselecciona/confirma el cuadro activo — un segundo clic, sin nada seleccionado, coloca el siguiente cuadro.',
+          fr: 'Cliquer en dehors d\'une zone de texte active créait immédiatement une nouvelle zone à cet endroit, ce qui était trop sensible. Désormais, le premier clic à l\'extérieur ne fait que désélectionner/valider la zone active — un second clic, sans rien de sélectionné, place la zone suivante.',
+          de: 'Ein Klick außerhalb eines aktiven Textfelds erstellte sofort ein neues Feld an dieser Stelle, was zu empfindlich wirkte. Jetzt hebt der erste Klick außerhalb nur die Auswahl des aktiven Felds auf/bestätigt es — ein zweiter Klick, wenn nichts ausgewählt ist, platziert das nächste Feld.',
+          pt: 'Clicar fora de uma caixa de texto ativa criava imediatamente uma nova caixa nesse local, o que parecia demasiado sensível. Agora o primeiro clique fora apenas desmarca/confirma a caixa ativa — um segundo clique, sem nada selecionado, coloca a próxima caixa.',
+        },
+      },
+    ],
+  },
+  {
+    version: '0.23.0',
+    date: '2026-08-27',
+    title: {
+      sv: 'Nytt verktyg: Fyll i PDF',
+      en: 'New tool: Fill in PDF',
+      es: 'Nueva herramienta: Rellenar PDF',
+      fr: 'Nouvel outil : Remplir un PDF',
+      de: 'Neues Werkzeug: PDF ausfüllen',
+      pt: 'Nova ferramenta: Preencher PDF',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'För PDF-blanketter som saknar ifyllnadsbara fält — klicka var som helst på dokumentet för att lägga till en textruta, dra den dit texten ska, justera storlek och fet stil, och spara som en ny PDF. Sidorna renderas med pdf.js direkt i webbläsaren; allt sker lokalt och originalfilen skrivs aldrig över. Kräver dator (exakt klickning och dragning).',
+          en: 'For PDF forms without fillable fields — click anywhere on the document to add a text box, drag it where the text belongs, adjust size and boldness, then save as a new PDF. Pages are rendered with pdf.js right in the browser; everything happens locally and the original file is never overwritten. Requires a computer (needs precise clicking and dragging).',
+          es: 'Para formularios PDF sin campos rellenables — haz clic en cualquier parte del documento para añadir un cuadro de texto, arrástralo hasta donde debe ir, ajusta el tamaño y la negrita, y guarda como un PDF nuevo. Las páginas se renderizan con pdf.js directamente en el navegador; todo ocurre localmente y el archivo original nunca se sobrescribe. Requiere un ordenador (clics y arrastres precisos).',
+          fr: 'Pour les formulaires PDF sans champs remplissables — cliquez n\'importe où sur le document pour ajouter une zone de texte, faites-la glisser à l\'endroit voulu, ajustez la taille et le gras, puis enregistrez comme un nouveau PDF. Les pages sont rendues avec pdf.js directement dans le navigateur ; tout se passe en local et le fichier original n\'est jamais écrasé. Nécessite un ordinateur (clics et glissés précis).',
+          de: 'Für PDF-Formulare ohne ausfüllbare Felder — klicke irgendwo auf das Dokument, um ein Textfeld hinzuzufügen, ziehe es an die richtige Stelle, passe Größe und Fettdruck an und speichere als neue PDF. Die Seiten werden mit pdf.js direkt im Browser gerendert; alles geschieht lokal, die Originaldatei wird nie überschrieben. Erfordert einen Computer (präzises Klicken und Ziehen).',
+          pt: 'Para formulários PDF sem campos preenchíveis — clique em qualquer lugar do documento para adicionar uma caixa de texto, arraste-a até ao lugar certo, ajuste o tamanho e o negrito, e guarde como um novo PDF. As páginas são renderizadas com pdf.js diretamente no navegador; tudo acontece localmente e o ficheiro original nunca é substituído. Requer um computador (é necessário clicar e arrastar com precisão).',
+        },
+      },
+    ],
+  },
+  {
     version: '0.22.1',
     date: '2026-08-24',
     title: {

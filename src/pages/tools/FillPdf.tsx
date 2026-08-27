@@ -152,6 +152,15 @@ export default function FillPdf() {
 
   const addItemAt = (pageIndex: number, e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target !== e.currentTarget) return
+    if (selectedId !== null) {
+      // A box is currently active — the first click outside it just commits/
+      // deselects that one (blur it explicitly: Safari doesn't move focus off
+      // a focused input just because you clicked a plain, non-focusable div).
+      // A second click, now that nothing is selected, places the next box.
+      ;(document.activeElement as HTMLElement | null)?.blur?.()
+      setSelectedId(null)
+      return
+    }
     const box = pageBoxRefs.current[pageIndex]
     if (!box) return
     const rect = box.getBoundingClientRect()

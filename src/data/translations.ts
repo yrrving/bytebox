@@ -250,6 +250,11 @@ export interface Translation {
     scenarioUploadText?: string
     consentReminder?: string
     repetitionCleaned?: string
+    silenceTrimmed?: string
+    qualityHint?: string
+    uploadHint?: string
+    queueStatus?: string
+    recordingName?: string
     modelLabel: string
     modelFast: string
     modelBetter: string
@@ -635,6 +640,11 @@ export const translations: Record<string, Translation> = {
       scenarioUploadText: 'Ladda upp ljudfilen direkt — funkar lika bra som att spela in här.',
       consentReminder: 'Berätta alltid för alla som är med — i rummet eller i mötet — att det spelas in.',
       repetitionCleaned: 'Vi upptäckte och tog bort upprepade textblock i transkriptionen. Det händer oftast vid tysta eller svårhörbara partier — till exempel om ett digitalt möte spelades in via mikrofonen och bara fångade din egen röst.',
+      silenceTrimmed: 'Vi klippte bort långa tysta partier ur ljudet innan transkribering — det är den vanligaste orsaken till att modellen gissar fel språk eller hittar på text.',
+      qualityHint: 'Längre eller otydliga inspelningar: välj Bättre och ange språket direkt istället för Upptäck automatiskt — mycket säkrare på både språk och innehåll.',
+      uploadHint: 'Du kan välja flera filer på en gång — de transkriberas efter varandra och läggs i samma transkription.',
+      queueStatus: 'Fil {n} av {m}: {name}',
+      recordingName: 'Inspelning',
       modelLabel: 'Kvalitet',
       modelFast: 'Snabb — mindre nedladdning',
       modelBetter: 'Bättre — större nedladdning',
@@ -1290,6 +1300,11 @@ export const translations: Record<string, Translation> = {
       scenarioUploadText: 'Upload the audio file directly — works just as well as recording here.',
       consentReminder: 'Always tell everyone involved — in the room or in the meeting — that it\'s being recorded.',
       repetitionCleaned: 'We detected and removed repeated blocks of text in the transcription. This usually happens during quiet or hard-to-hear stretches — for example if a digital meeting was recorded via the microphone and only picked up your own voice.',
+      silenceTrimmed: 'We trimmed long silent stretches from the audio before transcribing — the most common reason the model guesses the wrong language or invents text.',
+      qualityHint: 'Longer or unclear recordings: choose Better and set the language directly instead of Auto-detect — much more reliable on both language and content.',
+      uploadHint: 'You can pick several files at once — they\'re transcribed one after another and added to the same transcript.',
+      queueStatus: 'File {n} of {m}: {name}',
+      recordingName: 'Recording',
       modelLabel: 'Quality',
       modelFast: 'Fast — smaller download',
       modelBetter: 'Better — larger download',
@@ -1945,6 +1960,11 @@ export const translations: Record<string, Translation> = {
       scenarioUploadText: 'Sube el archivo de audio directamente — funciona igual de bien que grabar aquí.',
       consentReminder: 'Avisa siempre a todos los presentes — en la sala o en la reunión — de que se está grabando.',
       repetitionCleaned: 'Detectamos y eliminamos bloques de texto repetidos en la transcripción. Esto suele ocurrir en tramos silenciosos o difíciles de oír — por ejemplo, si una reunión digital se grabó con el micrófono y solo captó tu propia voz.',
+      silenceTrimmed: 'Recortamos largos tramos de silencio del audio antes de transcribir — la causa más común de que el modelo adivine mal el idioma o invente texto.',
+      qualityHint: 'Grabaciones largas o poco claras: elige Mejor e indica el idioma directamente en vez de Detección automática — mucho más fiable tanto en idioma como en contenido.',
+      uploadHint: 'Puedes elegir varios archivos a la vez — se transcriben uno tras otro y se añaden a la misma transcripción.',
+      queueStatus: 'Archivo {n} de {m}: {name}',
+      recordingName: 'Grabación',
       modelLabel: 'Calidad',
       modelFast: 'Rápido — descarga menor',
       modelBetter: 'Mejor — descarga mayor',
@@ -2600,6 +2620,11 @@ export const translations: Record<string, Translation> = {
       scenarioUploadText: 'Importez le fichier audio directement — ça fonctionne aussi bien qu\'enregistrer ici.',
       consentReminder: 'Informez toujours toutes les personnes concernées — dans la pièce ou en réunion — que ça enregistre.',
       repetitionCleaned: 'Nous avons détecté et supprimé des blocs de texte répétés dans la transcription. Cela arrive surtout sur des passages silencieux ou difficiles à entendre — par exemple si une réunion en ligne a été enregistrée via le micro et n\'a capté que votre propre voix.',
+      silenceTrimmed: 'Nous avons retiré les longs passages silencieux de l\'audio avant la transcription — la cause la plus fréquente d\'une mauvaise détection de langue ou d\'un texte inventé par le modèle.',
+      qualityHint: 'Enregistrements longs ou peu clairs : choisissez Meilleure et indiquez la langue directement plutôt que Détection automatique — bien plus fiable, tant pour la langue que pour le contenu.',
+      uploadHint: 'Vous pouvez choisir plusieurs fichiers à la fois — ils sont transcrits les uns après les autres et ajoutés à la même transcription.',
+      queueStatus: 'Fichier {n} sur {m} : {name}',
+      recordingName: 'Enregistrement',
       modelLabel: 'Qualité',
       modelFast: 'Rapide — téléchargement plus léger',
       modelBetter: 'Meilleur — téléchargement plus lourd',
@@ -3255,6 +3280,11 @@ export const translations: Record<string, Translation> = {
       scenarioUploadText: 'Lade die Audiodatei direkt hoch — funktioniert genauso gut wie hier aufzunehmen.',
       consentReminder: 'Informiere immer alle Beteiligten — im Raum oder im Meeting —, dass aufgenommen wird.',
       repetitionCleaned: 'Wir haben wiederholte Textblöcke in der Transkription erkannt und entfernt. Das passiert meist bei leisen oder schwer verständlichen Abschnitten — zum Beispiel, wenn ein digitales Meeting über das Mikrofon aufgenommen wurde und nur deine eigene Stimme erfasst hat.',
+      silenceTrimmed: 'Wir haben lange stille Abschnitte aus der Audiodatei vor der Transkription entfernt — der häufigste Grund dafür, dass das Modell die falsche Sprache errät oder Text erfindet.',
+      qualityHint: 'Längere oder unklare Aufnahmen: wähle Besser und gib die Sprache direkt an statt Automatisch erkennen — deutlich zuverlässiger bei Sprache und Inhalt.',
+      uploadHint: 'Du kannst mehrere Dateien auf einmal auswählen — sie werden nacheinander transkribiert und der gleichen Transkription hinzugefügt.',
+      queueStatus: 'Datei {n} von {m}: {name}',
+      recordingName: 'Aufnahme',
       modelLabel: 'Qualität',
       modelFast: 'Schnell — kleinerer Download',
       modelBetter: 'Besser — größerer Download',
@@ -3910,6 +3940,11 @@ export const translations: Record<string, Translation> = {
       scenarioUploadText: 'Carregue o arquivo de áudio diretamente — funciona tão bem quanto gravar aqui.',
       consentReminder: 'Avise sempre todos os envolvidos — na sala ou na reunião — de que está sendo gravado.',
       repetitionCleaned: 'Detectámos e removemos blocos de texto repetidos na transcrição. Isto costuma acontecer em trechos silenciosos ou difíceis de ouvir — por exemplo, se uma reunião digital foi gravada através do microfone e só captou a sua própria voz.',
+      silenceTrimmed: 'Cortámos longos trechos de silêncio do áudio antes de transcrever — a causa mais comum de o modelo adivinhar o idioma errado ou inventar texto.',
+      qualityHint: 'Gravações longas ou pouco claras: escolha Melhor e indique o idioma diretamente em vez de Deteção automática — muito mais fiável tanto no idioma como no conteúdo.',
+      uploadHint: 'Pode escolher vários ficheiros de uma vez — são transcritos um a seguir ao outro e adicionados à mesma transcrição.',
+      queueStatus: 'Ficheiro {n} de {m}: {name}',
+      recordingName: 'Gravação',
       modelLabel: 'Qualidade',
       modelFast: 'Rápido — descarga menor',
       modelBetter: 'Melhor — descarga maior',

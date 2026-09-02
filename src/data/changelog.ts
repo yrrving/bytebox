@@ -10,6 +10,53 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.24.0',
+    date: '2026-09-02',
+    title: {
+      sv: 'Mötestranskribering: mindre hallucination, flera filer på en gång',
+      en: 'Meeting Transcriber: less hallucination, batch file upload',
+      es: 'Transcriptor de reuniones: menos alucinaciones, varios archivos a la vez',
+      fr: 'Transcripteur de réunions : moins d\'hallucinations, plusieurs fichiers à la fois',
+      de: 'Besprechungs-Transkription: weniger Halluzination, mehrere Dateien auf einmal',
+      pt: 'Transcritor de reuniões: menos alucinações, vários ficheiros de uma vez',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Långa tysta partier i ljudet — vanligt vid mikrofoninspelning av digitala möten, eller bara tomgång i början/slutet av en inspelning — kunde få Whisper att både gissa fel språk och hitta på text som inte sades. Lade till en enkel tystnadstrimning som klipper bort sådana partier innan transkribering, med en notis när det händer.',
+          en: 'Long silent stretches in the audio — common when a digital meeting is recorded via the microphone, or just dead air at the start/end of a recording — could make Whisper both guess the wrong language and invent text that was never said. Added a simple silence-trimming pass that cuts those stretches before transcribing, with a notice when it happens.',
+          es: 'Los tramos largos de silencio en el audio — habituales al grabar una reunión digital con el micrófono, o simplemente aire muerto al principio/final de una grabación — podían hacer que Whisper adivinara mal el idioma e inventara texto que nunca se dijo. Se añadió un recorte de silencio sencillo que elimina esos tramos antes de transcribir, con un aviso cuando ocurre.',
+          fr: 'De longs passages silencieux dans l\'audio — courants lorsqu\'une réunion en ligne est enregistrée via le micro, ou simplement un silence en début/fin d\'enregistrement — pouvaient amener Whisper à la fois à mal deviner la langue et à inventer du texte jamais prononcé. Ajout d\'un simple nettoyage des silences qui coupe ces passages avant la transcription, avec un avis quand cela se produit.',
+          de: 'Lange stille Abschnitte im Audio — häufig bei Mikrofonaufnahmen digitaler Meetings oder einfach Totstille am Anfang/Ende einer Aufnahme — konnten dazu führen, dass Whisper sowohl die falsche Sprache erriet als auch nie gesagten Text erfand. Ein einfacher Stille-Trimm-Durchlauf wurde hinzugefügt, der solche Abschnitte vor der Transkription entfernt, mit einem Hinweis, wenn das passiert.',
+          pt: 'Longos trechos de silêncio no áudio — comuns ao gravar uma reunião digital pelo microfone, ou apenas silêncio morto no início/fim de uma gravação — podiam fazer o Whisper adivinhar o idioma errado e inventar texto que nunca foi dito. Foi adicionado um corte simples de silêncio que remove esses trechos antes da transcrição, com um aviso quando isso acontece.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Språkvalet stod tidigare på "Upptäck automatiskt" som standard — det känner bara av språket en gång, från en kort ljudbit i början, och gissar det fel blir hela transkriptionen fel. Standardvärdet är nu sidans eget språk (fortfarande valbart till Auto), och en ny hint rekommenderar att ange språket direkt och välja Bättre-modellen för längre eller otydliga inspelningar.',
+          en: 'The language picker used to default to "Auto-detect" — it only samples the language once, from a short stretch of audio at the start, and getting that guess wrong sends the whole transcript off in the wrong language. It now defaults to the site\'s own language (Auto is still selectable), and a new hint recommends setting the language directly and choosing the Better model for longer or unclear recordings.',
+          es: 'El selector de idioma tenía como valor predeterminado "Detección automática" — solo detecta el idioma una vez, a partir de un breve tramo de audio al principio, y si acierta mal, toda la transcripción sale en el idioma equivocado. Ahora usa por defecto el idioma del propio sitio (Automático sigue siendo seleccionable), y una nueva sugerencia recomienda indicar el idioma directamente y elegir el modelo Mejor para grabaciones largas o poco claras.',
+          fr: 'Le sélecteur de langue avait par défaut "Détection automatique" — il ne détecte la langue qu\'une fois, à partir d\'un court passage audio au début, et une erreur à ce moment-là fait basculer toute la transcription dans la mauvaise langue. Il utilise désormais par défaut la langue du site (Automatique reste sélectionnable), et une nouvelle astuce recommande d\'indiquer la langue directement et de choisir le modèle Meilleure pour les enregistrements longs ou peu clairs.',
+          de: 'Die Sprachauswahl war standardmäßig auf "Automatisch erkennen" gesetzt — sie erkennt die Sprache nur einmal, anhand eines kurzen Audioausschnitts am Anfang, und ein Fehlgriff dabei schickt die gesamte Transkription in die falsche Sprache. Sie verwendet jetzt standardmäßig die Sprache der Seite selbst (Automatisch bleibt wählbar), und ein neuer Hinweis empfiehlt, die Sprache direkt anzugeben und für längere oder unklare Aufnahmen das Modell Besser zu wählen.',
+          pt: 'O seletor de idioma tinha como padrão "Deteção automática" — só deteta o idioma uma vez, a partir de um breve trecho de áudio no início, e se essa suposição estiver errada, toda a transcrição sai no idioma errado. Agora usa por padrão o idioma do próprio site (Automático continua selecionável), e uma nova dica recomenda indicar o idioma diretamente e escolher o modelo Melhor para gravações longas ou pouco claras.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Går nu att välja flera ljudfiler i samma uppladdning — de köas och transkriberas en i taget, och läggs efter varandra i samma transkription (med filnamn som rubrik när det är fler än en fil).',
+          en: 'You can now select several audio files in one upload — they\'re queued and transcribed one at a time, appended one after another into the same transcript (with the filename as a heading when there\'s more than one file).',
+          es: 'Ahora puedes seleccionar varios archivos de audio en una sola subida — se ponen en cola y se transcriben uno a uno, añadiéndose uno tras otro en la misma transcripción (con el nombre del archivo como título cuando hay más de uno).',
+          fr: 'Vous pouvez désormais sélectionner plusieurs fichiers audio en un seul import — ils sont mis en file d\'attente et transcrits un par un, ajoutés les uns après les autres dans la même transcription (avec le nom du fichier en titre s\'il y en a plusieurs).',
+          de: 'Es lassen sich jetzt mehrere Audiodateien in einem Upload auswählen — sie werden nacheinander in eine Warteschlange gestellt und transkribiert und der gleichen Transkription hinzugefügt (mit dem Dateinamen als Überschrift, wenn es mehr als eine Datei gibt).',
+          pt: 'Agora é possível selecionar vários ficheiros de áudio num único carregamento — são colocados em fila e transcritos um de cada vez, adicionados um a seguir ao outro na mesma transcrição (com o nome do ficheiro como título quando há mais do que um).',
+        },
+      },
+    ],
+  },
+  {
     version: '0.23.1',
     date: '2026-08-27',
     title: {

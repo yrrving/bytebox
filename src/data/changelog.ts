@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.25.0',
+    date: '2026-09-02',
+    title: {
+      sv: 'Mötestranskribering: tog bort Snabb-modellen (för dålig kvalitet)',
+      en: 'Meeting Transcriber: removed the Fast model tier (quality too poor)',
+      es: 'Transcriptor de reuniones: se eliminó el nivel Rápido (calidad insuficiente)',
+      fr: 'Transcripteur de réunions : suppression du niveau Rapide (qualité insuffisante)',
+      de: 'Besprechungs-Transkription: Stufe „Schnell" entfernt (zu schlechte Qualität)',
+      pt: 'Transcritor de reuniões: nível Rápido removido (qualidade insuficiente)',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'whisper-tiny ("Snabb") gav ofta text som lät flytande men inte stämde med vad som sades — inte bara fel, utan rena påhitt. Tog bort den nivån helt. "Standard" (tidigare "Bättre", whisper-base) är nu golvet, och ett nytt "Stor"-alternativ (whisper-small, större nedladdning men klart bättre kvalitet) finns för svårare inspelningar.',
+          en: 'whisper-tiny ("Fast") often produced fluent-sounding text that didn\'t match what was actually said — not just wrong, but invented. Removed that tier entirely. "Standard" (previously "Better", whisper-base) is now the floor, and a new "Large" option (whisper-small, bigger download but noticeably better quality) is available for harder recordings.',
+          es: 'whisper-tiny ("Rápido") a menudo generaba texto que sonaba fluido pero no coincidía con lo dicho — no solo errores, sino invenciones. Se eliminó ese nivel por completo. "Estándar" (antes "Mejor", whisper-base) es ahora el mínimo, y hay una nueva opción "Grande" (whisper-small, descarga mayor pero calidad notablemente mejor) para grabaciones difíciles.',
+          fr: 'whisper-tiny (« Rapide ») produisait souvent un texte à l\'apparence fluide mais qui ne correspondait pas à ce qui avait été dit — pas seulement des erreurs, mais de véritables inventions. Ce niveau a été entièrement supprimé. « Standard » (anciennement « Meilleure », whisper-base) est désormais le minimum, et une nouvelle option « Grand » (whisper-small, téléchargement plus lourd mais qualité nettement meilleure) est disponible pour les enregistrements difficiles.',
+          de: 'whisper-tiny („Schnell") lieferte oft flüssig klingenden Text, der nicht dem Gesagten entsprach — nicht nur Fehler, sondern reine Erfindungen. Diese Stufe wurde komplett entfernt. „Standard" (vorher „Besser", whisper-base) ist jetzt die Untergrenze, und eine neue Option „Groß" (whisper-small, größerer Download, aber deutlich bessere Qualität) steht für schwierigere Aufnahmen zur Verfügung.',
+          pt: 'O whisper-tiny ("Rápido") muitas vezes produzia texto que soava fluido mas não correspondia ao que foi dito — não só erros, mas invenções. Esse nível foi removido por completo. "Padrão" (antes "Melhor", whisper-base) é agora o mínimo, e uma nova opção "Grande" (whisper-small, download maior mas qualidade claramente melhor) está disponível para gravações difíceis.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.24.0',
     date: '2026-09-02',
     title: {

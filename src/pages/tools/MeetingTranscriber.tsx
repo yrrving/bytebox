@@ -7,9 +7,15 @@ type Phase = 'idle' | 'recording' | 'loading' | 'transcribing' | 'done'
 
 type Chunk = { timestamp: [number, number]; text: string }
 
+// whisper-tiny used to be the default "fast" tier here but its output quality
+// is too unreliable to ship — on anything but very clean audio it doesn't
+// just make transcription errors, it hallucinates fluent-sounding sentences
+// that were never said (and can't reliably guess the language either). Base
+// is now the floor; small is offered as an explicit, better-quality option
+// for recordings that need it.
 const MODELS = {
-  fast: 'Xenova/whisper-tiny',
-  better: 'Xenova/whisper-base',
+  standard: 'Xenova/whisper-base',
+  large: 'Xenova/whisper-small',
 } as const
 
 // Whisper wants full English language names (or undefined = auto-detect).
@@ -168,7 +174,7 @@ export default function MeetingTranscriber() {
   const mt = t.meetingTranscriber
 
   const [phase, setPhase] = useState<Phase>('idle')
-  const [model, setModel] = useState<'fast' | 'better'>('fast')
+  const [model, setModel] = useState<'standard' | 'large'>('standard')
   // Default to the site's own language rather than "auto-detect" — auto only
   // samples a short stretch of audio once at the start, and getting that
   // guess wrong (easy to do on quiet/noisy audio) sends the whole transcript
@@ -398,12 +404,12 @@ export default function MeetingTranscriber() {
           <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">{mt?.modelLabel ?? 'Kvalitet'}</label>
           <select
             value={model}
-            onChange={(e) => setModel(e.target.value as 'fast' | 'better')}
+            onChange={(e) => setModel(e.target.value as 'standard' | 'large')}
             disabled={busy || phase === 'recording'}
             className="w-full rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white disabled:opacity-50"
           >
-            <option value="fast">{mt?.modelFast ?? 'Snabb — mindre nedladdning'}</option>
-            <option value="better">{mt?.modelBetter ?? 'Bättre — större nedladdning'}</option>
+            <option value="standard">{mt?.modelStandard ?? 'Standard — bra balans mellan snabbhet och kvalitet'}</option>
+            <option value="large">{mt?.modelLarge ?? 'Stor — bäst kvalitet, större nedladdning och långsammare'}</option>
           </select>
         </div>
         <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4">
@@ -422,7 +428,7 @@ export default function MeetingTranscriber() {
       </div>
 
       <p className="text-center text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
-        {mt?.qualityHint ?? 'Längre eller otydliga inspelningar: välj Bättre och ange språket direkt istället för Upptäck automatiskt — mycket säkrare på både språk och innehåll.'}
+        {mt?.qualityHint ?? 'Längre eller otydliga inspelningar: välj Stor och ange språket direkt istället för Upptäck automatiskt — mycket säkrare på både språk och innehåll.'}
       </p>
 
       {phase !== 'recording' && (

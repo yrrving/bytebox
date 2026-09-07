@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.26.0',
+    date: '2026-09-07',
+    title: {
+      sv: 'TrainCells: nybörjarläge med steg-för-steg-guidning',
+      en: 'TrainCells: beginner mode with step-by-step guidance',
+      es: 'TrainCells: modo principiante con guía paso a paso',
+      fr: 'TrainCells : mode débutant avec guidage pas à pas',
+      de: 'TrainCells: Anfängermodus mit Schritt-für-Schritt-Anleitung',
+      pt: 'TrainCells: modo iniciante com orientação passo a passo',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Efter feedback om att TrainCells var svårt att komma igång med som nybörjare finns nu tre tydliga lägen att välja mellan på startsidan. "Blankt läge" (det gamla enda läget) för den som vill bygga helt fritt. "Handlett läge" (nytt) börjar i ett färdigt, spelbart exempelspel — testa det direkt, sen guidas du genom att ändra figurens färg, byta en bricka och lägga till en stjärna på banan, med tydliga pilar som visar exakt vad du ska klicka på och en knapp som visar var du testar din ändring. "Super handlett läge" (nytt) guidar dig genom att bygga ett helt spel från grunden, steg för steg: rita din figur, bygg golvet, välj att lägga till mynt eller en fiende (eller båda) — aldrig utan vägledning, men i din egen takt.',
+          en: 'After feedback that TrainCells was hard to get started with as a beginner, the home screen now offers three clear modes. "Blank mode" (the old single mode) for building completely freely. "Guided mode" (new) starts you in a finished, playable example game — try it right away, then get guided through changing the character\'s color, changing a tile, and adding a star to the level, with clear arrows showing exactly what to click and a button showing where to test your change. "Super guided mode" (new) walks you through building an entire game from scratch, step by step: draw your character, build the floor, choose to add coins or an enemy (or both) — never without guidance, but at your own pace.',
+          es: 'Tras recibir comentarios de que era difícil empezar con TrainCells siendo principiante, la pantalla de inicio ofrece ahora tres modos claros. "Modo en blanco" (el único modo anterior) para construir con total libertad. "Modo guiado" (nuevo) te sitúa en un juego de ejemplo ya terminado y jugable — pruébalo enseguida y luego te guían para cambiar el color del personaje, cambiar una ficha y añadir una estrella al nivel, con flechas claras que muestran exactamente dónde hacer clic y un botón que indica dónde probar tu cambio. "Modo súper guiado" (nuevo) te acompaña para construir un juego completo desde cero, paso a paso: dibuja tu personaje, construye el suelo, elige añadir monedas o un enemigo (o ambos) — nunca sin guía, pero a tu propio ritmo.',
+          fr: 'Suite à des retours indiquant qu\'il était difficile de démarrer avec TrainCells en tant que débutant, l\'écran d\'accueil propose désormais trois modes clairs. Le « mode vierge » (l\'ancien mode unique) pour construire en toute liberté. Le « mode guidé » (nouveau) vous place dans un jeu d\'exemple déjà terminé et jouable — testez-le immédiatement, puis on vous guide pour changer la couleur du personnage, modifier une tuile et ajouter une étoile au niveau, avec des flèches claires montrant exactement où cliquer et un bouton indiquant où tester votre changement. Le « mode super guidé » (nouveau) vous accompagne pour construire un jeu entier depuis zéro, étape par étape : dessinez votre personnage, construisez le sol, choisissez d\'ajouter des pièces ou un ennemi (ou les deux) — jamais sans guidage, mais à votre propre rythme.',
+          de: 'Nach Feedback, dass der Einstieg in TrainCells für Anfänger schwierig war, bietet der Startbildschirm jetzt drei klare Modi. „Leerer Modus" (der bisherige einzige Modus) zum völlig freien Bauen. „Angeleiteter Modus" (neu) startet in einem fertigen, spielbaren Beispielspiel — sofort ausprobieren, dann wirst du angeleitet, die Farbe der Figur zu ändern, eine Kachel zu ändern und einen Stern zur Bahn hinzuzufügen, mit klaren Pfeilen, die genau zeigen, worauf zu klicken ist, und einem Button, der zeigt, wo die Änderung getestet wird. „Super angeleiteter Modus" (neu) führt dich Schritt für Schritt durch den Bau eines ganzen Spiels von Grund auf: zeichne deine Figur, baue den Boden, entscheide dich für Münzen oder einen Gegner (oder beides) — nie ohne Anleitung, aber in deinem eigenen Tempo.',
+          pt: 'Após feedback de que era difícil começar a usar o TrainCells como iniciante, o ecrã inicial oferece agora três modos claros. "Modo em branco" (o antigo modo único) para construir com total liberdade. "Modo guiado" (novo) coloca-te num jogo de exemplo já terminado e jogável — testa-o de imediato, depois és guiado para mudar a cor da personagem, mudar uma peça e adicionar uma estrela ao nível, com setas claras a mostrar exatamente onde clicar e um botão que mostra onde testar a tua alteração. "Modo super guiado" (novo) acompanha-te a construir um jogo completo do zero, passo a passo: desenha a tua personagem, constrói o chão, escolhe adicionar moedas ou um inimigo (ou ambos) — nunca sem orientação, mas ao teu próprio ritmo.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Sparade spel går nu att döpa om (✏️) direkt i listan, utöver att radera dem. Ett spel sparas heller aldrig längre i tysthet — du blir tillfrågad om du vill spara (och får döpa det) om du lämnar med osparade ändringar.',
+          en: 'Saved games can now be renamed (✏️) right in the list, in addition to deleting them. A game is also never saved silently anymore — you\'re asked whether to save (and get to name it) if you leave with unsaved changes.',
+          es: 'Ahora los juegos guardados se pueden renombrar (✏️) directamente en la lista, además de eliminarse. Tampoco se guarda nunca un juego en silencio — se te pregunta si quieres guardarlo (y puedes ponerle nombre) si sales con cambios sin guardar.',
+          fr: 'Les jeux enregistrés peuvent désormais être renommés (✏️) directement dans la liste, en plus d\'être supprimés. Un jeu n\'est également plus jamais enregistré silencieusement — on vous demande si vous voulez l\'enregistrer (et vous pouvez le nommer) si vous quittez avec des modifications non enregistrées.',
+          de: 'Gespeicherte Spiele lassen sich jetzt direkt in der Liste umbenennen (✏️), zusätzlich zum Löschen. Ein Spiel wird außerdem nie mehr stillschweigend gespeichert — du wirst gefragt, ob du speichern möchtest (und kannst es benennen), wenn du mit ungespeicherten Änderungen die Seite verlässt.',
+          pt: 'Os jogos guardados agora podem ser renomeados (✏️) diretamente na lista, além de serem eliminados. Um jogo também nunca mais é guardado silenciosamente — é-te perguntado se queres guardar (e podes dar-lhe um nome) se saíres com alterações não guardadas.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.25.0',
     date: '2026-09-02',
     title: {

@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.26.2',
+    date: '2026-09-11',
+    title: {
+      sv: 'TrainCells: rättat mynt/fiender som visades fel',
+      en: 'TrainCells: fixed coins/enemies rendering wrong',
+      es: 'TrainCells: corregido el renderizado de monedas/enemigos',
+      fr: 'TrainCells : correction de l\'affichage des pièces/ennemis',
+      de: 'TrainCells: Darstellung von Münzen/Gegnern korrigiert',
+      pt: 'TrainCells: corrigida a renderização de moedas/inimigos',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Ritade man t.ex. ett runt mynt visades det ändå som en fyrkantig ruta i spelet — en bakgrund som bara var tänkt för ritverktyget läckte in i själva spelandet. Fiender hade dessutom ett eget problem: de ritade aldrig med besökarens egen bild, utan visade alltid en generisk lila figur som inte ens rörde sig från samma plats som brickan man ritat, och det var bara den generiska figuren (inte den ritade brickan) som räknades vid skada. Båda är nu åtgärdade: mynt och fiender visar sin riktiga ritade bild, transparenta pixlar är transparenta, och skadan träffar rätt.',
+          en: 'A round coin you drew would still show up as a square box in-game — a background meant only for the drawing tool was leaking into actual gameplay. Enemies had their own separate problem: they never used the besökare\'s own art, always showing a generic purple shape that didn\'t even move from the same spot as the tile you drew, and only that generic shape (not your drawn tile) counted for damage. Both are now fixed: coins and enemies show their real drawn art, transparent pixels stay transparent, and damage hits correctly.',
+          es: 'Una moneda redonda que dibujabas seguía apareciendo como una caja cuadrada en el juego — un fondo pensado solo para la herramienta de dibujo se filtraba al juego real. Los enemigos tenían su propio problema: nunca usaban el dibujo del propio usuario, siempre mostraban una forma púrpura genérica que ni siquiera se movía desde el mismo sitio que la ficha dibujada, y solo esa forma genérica (no la ficha dibujada) contaba para el daño. Ambos están arreglados: monedas y enemigos muestran su dibujo real, los píxeles transparentes se quedan transparentes, y el daño acierta correctamente.',
+          fr: 'Une pièce ronde dessinée s\'affichait quand même comme une boîte carrée dans le jeu — un fond prévu uniquement pour l\'outil de dessin s\'infiltrait dans le jeu réel. Les ennemis avaient leur propre problème : ils n\'utilisaient jamais le dessin de l\'utilisateur, affichant toujours une forme violette générique qui ne bougeait même pas du même endroit que la tuile dessinée, et seule cette forme générique (pas la tuile dessinée) comptait pour les dégâts. Les deux sont corrigés : les pièces et les ennemis affichent leur vrai dessin, les pixels transparents restent transparents, et les dégâts touchent correctement.',
+          de: 'Eine rund gezeichnete Münze wurde im Spiel trotzdem als quadratischer Kasten angezeigt — ein Hintergrund, der nur für das Zeichenwerkzeug gedacht war, sickerte ins eigentliche Spiel durch. Gegner hatten ihr eigenes Problem: Sie zeigten nie die eigene Zeichnung, sondern immer eine generische violette Form, die sich nicht einmal von derselben Stelle wie die gezeichnete Kachel wegbewegte, und nur diese generische Form (nicht die gezeichnete Kachel) zählte für Schaden. Beides ist jetzt behoben: Münzen und Gegner zeigen ihre echte Zeichnung, transparente Pixel bleiben transparent, und Schaden trifft korrekt.',
+          pt: 'Uma moeda redonda que desenhavas continuava a aparecer como uma caixa quadrada no jogo — um fundo pensado apenas para a ferramenta de desenho estava a filtrar-se para o jogo real. Os inimigos tinham o seu próprio problema: nunca usavam o desenho do próprio utilizador, mostrando sempre uma forma roxa genérica que nem sequer se movia do mesmo sítio da peça desenhada, e só essa forma genérica (não a peça desenhada) contava para dano. Ambos estão corrigidos: moedas e inimigos mostram o seu desenho real, os pixels transparentes ficam transparentes, e o dano acerta corretamente.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.26.1',
     date: '2026-09-08',
     title: {

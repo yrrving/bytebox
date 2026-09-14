@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.27.0',
+    date: '2026-09-14',
+    title: {
+      sv: 'TrainCells: tydligare Super handlett läge + möjlighet att dela sitt spel',
+      en: 'TrainCells: clearer Super Guided Mode + a way to share your game',
+      es: 'TrainCells: modo súper guiado más claro + una forma de compartir tu juego',
+      fr: 'TrainCells : mode super guidé plus clair + un moyen de partager son jeu',
+      de: 'TrainCells: klarerer Super-geführter Modus + eine Möglichkeit, das eigene Spiel zu teilen',
+      pt: 'TrainCells: modo super guiado mais claro + uma forma de partilhar o teu jogo',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Ny knapp "🚀 Dela mitt spel" på Spela-skärmen. Öppnar en guide med två vägar: ladda ner spelet (som spelbar fil eller som projektfil för att fortsätta redigera senare) till sin egen enhet, eller gå vidare till learn.trainstation.se och lägga upp det i sin portfolio där.',
+          en: 'New "🚀 Share my game" button on the Play screen. Opens a guide with two paths: download the game (as a playable file, or as a project file to keep editing later) to your own device, or head to learn.trainstation.se to add it to your portfolio there.',
+          es: 'Nuevo botón "🚀 Compartir mi juego" en la pantalla de Jugar. Abre una guía con dos caminos: descargar el juego (como archivo jugable, o como archivo de proyecto para seguir editando después) a tu propio dispositivo, o ir a learn.trainstation.se para añadirlo a tu portafolio allí.',
+          fr: 'Nouveau bouton « 🚀 Partager mon jeu » sur l\'écran Jouer. Ouvre un guide avec deux options : télécharger le jeu (en fichier jouable, ou en fichier de projet pour continuer à l\'éditer plus tard) sur son propre appareil, ou se rendre sur learn.trainstation.se pour l\'ajouter à son portfolio.',
+          de: 'Neuer Button „🚀 Mein Spiel teilen" auf dem Spielen-Bildschirm. Öffnet eine Anleitung mit zwei Wegen: das Spiel (als spielbare Datei oder als Projektdatei zum späteren Weiterbearbeiten) auf das eigene Gerät herunterladen, oder zu learn.trainstation.se gehen und es dort im eigenen Portfolio hochladen.',
+          pt: 'Novo botão "🚀 Partilhar o meu jogo" no ecrã de Jogar. Abre um guia com dois caminhos: descarregar o jogo (como ficheiro jogável, ou como ficheiro de projeto para continuar a editar mais tarde) para o teu próprio dispositivo, ou ir a learn.trainstation.se para o adicionares ao teu portefólio lá.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Super handlett läge är tydligare att följa. Knappar och paneler som inte hör till det aktuella steget tonas ner, medan pilar och instruktionstext nu flyter ovanpå gränssnittet istället för att klämmas in som egna rader — så det alltid syns exakt vad man ska trycka på härnäst.',
+          en: 'Super Guided Mode is easier to follow. Buttons and panels that aren\'t part of the current step are greyed out, while arrows and instructions now float on top of the interface instead of being squeezed in as their own rows — so it\'s always clear exactly what to press next.',
+          es: 'El modo súper guiado es más fácil de seguir. Los botones y paneles que no forman parte del paso actual se atenúan, mientras que las flechas y las instrucciones ahora flotan sobre la interfaz en lugar de aparecer como filas propias — así siempre queda claro qué pulsar a continuación.',
+          fr: 'Le mode super guidé est plus facile à suivre. Les boutons et panneaux qui ne font pas partie de l\'étape en cours sont grisés, tandis que les flèches et les instructions flottent désormais au-dessus de l\'interface au lieu d\'être coincées dans leur propre ligne — on voit donc toujours exactement sur quoi appuyer ensuite.',
+          de: 'Der Super-geführte Modus ist leichter zu befolgen. Schaltflächen und Bereiche, die nicht zum aktuellen Schritt gehören, werden ausgegraut, während Pfeile und Anweisungen jetzt über der Oberfläche schweben, statt als eigene Zeile eingequetscht zu sein — so ist immer klar, worauf als Nächstes zu drücken ist.',
+          pt: 'O modo super guiado é mais fácil de seguir. Botões e painéis que não fazem parte do passo atual ficam esbatidos, enquanto setas e instruções agora flutuam sobre a interface em vez de serem espremidas nas suas próprias linhas — assim fica sempre claro exatamente onde tocar a seguir.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.26.2',
     date: '2026-09-11',
     title: {

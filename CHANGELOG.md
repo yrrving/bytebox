@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.27.0 — 2026-09-14 — TrainCells: tydligare Super handlett läge + dela sitt spel
+
+### Nytt
+
+- **"🚀 Dela mitt spel"-knapp på Spela-skärmen.** Öppnar en guide med två vägar: ladda ner spelet (som spelbar fil eller som projektfil för att fortsätta redigera senare) till sin egen enhet, eller gå vidare till learn.trainstation.se och lägga upp det i sin portfolio där.
+
+### Ändrat
+
+- **Super handlett läge är tydligare att följa.** Knappar och paneler som inte hör till det aktuella steget tonas ner (grey out), medan pilar och instruktionstext nu flyter ovanpå gränssnittet som stora, tydliga overlays istället för att klämmas in som egna rader — så det alltid syns exakt vad man ska trycka på härnäst. Löste även en bugg där en pekpil kunde täcka hela "+"-knappen för att skapa en ny bricka.
+
 ## 0.22.1 — 2026-08-24 — Mötestranskribering: städar upprepningar, tydligare scenarier
 
 ### Fixat

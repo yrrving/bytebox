@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.27.1 — 2026-09-14 — TrainCells: bort med gamla ClaudeBloxels-spår i sparfiler
+
+### Fixat
+
+- **Nedladdade projektfiler hade av misstag kvar filändelsen från verktygets gamla arbetsnamn** (.bloxels.json) — bytt till .traincells.json. Gamla sparade spel påverkas inte: import bryr sig aldrig om filändelsen, bara innehållet. Samma städning gjord i två interna localStorage-nycklar som aldrig syns för användaren.
+
 ## 0.27.0 — 2026-09-14 — TrainCells: tydligare Super handlett läge + dela sitt spel
 
 ### Nytt

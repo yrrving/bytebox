@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.27.1',
+    date: '2026-09-14',
+    title: {
+      sv: 'TrainCells: bort med gamla ClaudeBloxels-spår i sparfiler',
+      en: 'TrainCells: removed old ClaudeBloxels traces from save files',
+      es: 'TrainCells: eliminados rastros del antiguo ClaudeBloxels en los archivos guardados',
+      fr: 'TrainCells : suppression des traces de l\'ancien ClaudeBloxels dans les fichiers de sauvegarde',
+      de: 'TrainCells: alte ClaudeBloxels-Spuren aus Speicherdateien entfernt',
+      pt: 'TrainCells: removidos vestígios do antigo ClaudeBloxels dos ficheiros guardados',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Nedladdade projektfiler hade av misstag kvar filändelsen från verktygets gamla arbetsnamn (.bloxels.json) — bytt till .traincells.json. Gamla sparade spel påverkas inte: import bryr sig aldrig om filändelsen, bara innehållet.',
+          en: 'Downloaded project files still carried the file extension from the tool\'s old working name (.bloxels.json) by mistake — changed to .traincells.json. Existing saved games aren\'t affected: import never cares about the file extension, only the content.',
+          es: 'Los archivos de proyecto descargados todavía llevaban por error la extensión del antiguo nombre de trabajo de la herramienta (.bloxels.json) — cambiada a .traincells.json. Los juegos guardados existentes no se ven afectados: la importación nunca se fija en la extensión del archivo, solo en el contenido.',
+          fr: 'Les fichiers de projet téléchargés portaient encore par erreur l\'extension de l\'ancien nom de travail de l\'outil (.bloxels.json) — changée en .traincells.json. Les jeux déjà enregistrés ne sont pas affectés : l\'import ne tient jamais compte de l\'extension du fichier, seulement de son contenu.',
+          de: 'Heruntergeladene Projektdateien trugen versehentlich noch die Dateiendung des alten Arbeitsnamens des Werkzeugs (.bloxels.json) — geändert zu .traincells.json. Bereits gespeicherte Spiele sind nicht betroffen: Der Import achtet nie auf die Dateiendung, nur auf den Inhalt.',
+          pt: 'Os ficheiros de projeto descarregados ainda tinham por engano a extensão do antigo nome de trabalho da ferramenta (.bloxels.json) — alterada para .traincells.json. Os jogos já guardados não são afetados: a importação nunca olha para a extensão do ficheiro, apenas para o conteúdo.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.27.0',
     date: '2026-09-14',
     title: {

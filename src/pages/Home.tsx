@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, GraduationCap, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, FileText, Volume2, Code2, Globe, Hash, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, runsOn, latestToolIds, type Category, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
@@ -14,7 +14,6 @@ const categoryIcons: Record<ToolCategory, LucideIcon> = {
   natverk: Globe,
   berakning: Hash,
   produktivitet: Zap,
-  skola: GraduationCap,
   spelutveckling: Gamepad2,
 }
 
@@ -35,10 +34,14 @@ export default function Home() {
   const selectedCategory = (searchParams.get('cat') as ToolCategory) || null
   const { t } = useLanguage()
 
-  // De senaste sex nya verktygen, nyast först (från latestToolIds).
+  // De tre senaste nya verktygen, nyast först, för startsidans "Nytt"-sektion.
+  // latestToolIds själv styr även "Nytt"-etiketten på verktygskorten (se
+  // isNewTool i data/tools.ts) och hålls längre än så — bara visningen här
+  // är begränsad till tre.
   const newTools = latestToolIds
     .map((id) => tools.find((tool) => tool.id === id))
     .filter((tool): tool is Tool => Boolean(tool))
+    .slice(0, 3)
 
   const categoryNames = t.categories ?? {
     bild: 'Bild & Media',
@@ -48,7 +51,6 @@ export default function Home() {
     natverk: 'Nätverk & Säkerhet',
     berakning: 'Beräkning & Konvertering',
     produktivitet: 'Produktivitet & Verktyg',
-    skola: 'Skola',
     spelutveckling: 'Spelutveckling',
   }
 

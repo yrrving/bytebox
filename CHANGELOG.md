@@ -2,6 +2,19 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.28.0 — 2026-09-15 — Stor städning av verktygslistan + nytt musikverktyg PadGrid
+
+### Nytt
+
+- **🎛️ PadGrid** — ny prototyp under Ljud & Tal: ett rutnätsbaserat musikverktyg inspirerat av clip-launcher-appar, med en guidad genomgång.
+
+### Ändrat
+
+- **PDF-verktyg, PDF-signering och Fyll i PDF är nu ETT verktyg** (PDF-verktyg) med tre flikar: Slå ihop, Signera och Fyll i. Samma funktioner som förut, bara samlade på ett ställe.
+- **Textverktyg är borttaget**, kategorin "Skola" är borttagen, och Ordbehandlare (som redan gjorde samma sak och mer) finns nu under Text & Dokument.
+- **13 verktyg med lågt användningsvärde borttagna:** Etikettark, Bildkollage, Lorem Ipsum, Lösenordsgenerator, Tidszoner, Miniräknare, Slumptalsgenerator, Namnbrickor, Tangentbordstest, Pomodoro-timer, Nedräkningstimer, Stoppur och Slumpmässigt val — de flesta finns redan inbyggda i telefonen eller datorn.
+- Startsidans "Nytt"-sektion visar nu de tre senaste verktygen istället för sex.
+
 ## 0.27.1 — 2026-09-14 — TrainCells: bort med gamla ClaudeBloxels-spår i sparfiler
 
 ### Fixat

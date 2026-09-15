@@ -10,6 +10,75 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.28.0',
+    date: '2026-09-15',
+    title: {
+      sv: 'Stor städning av verktygslistan + nytt musikverktyg PadGrid',
+      en: 'Big toolbox cleanup + new music tool PadGrid',
+      es: 'Gran limpieza de la caja de herramientas + nueva herramienta musical PadGrid',
+      fr: 'Grand nettoyage de la boîte à outils + nouvel outil musical PadGrid',
+      de: 'Große Aufräumaktion + neues Musik-Werkzeug PadGrid',
+      pt: 'Grande limpeza da caixa de ferramentas + nova ferramenta musical PadGrid',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: '🎛️ PadGrid — ny prototyp under Ljud & Tal: ett rutnätsbaserat musikverktyg inspirerat av clip-launcher-appar, med en guidad genomgång som visar hur det funkar.',
+          en: '🎛️ PadGrid — new prototype under Audio & Speech: a grid-based music tool inspired by clip-launcher apps, with a guided walkthrough of how it works.',
+          es: '🎛️ PadGrid — nuevo prototipo en Audio y Voz: una herramienta musical en cuadrícula inspirada en apps de tipo clip-launcher, con una guía paso a paso de su funcionamiento.',
+          fr: '🎛️ PadGrid — nouveau prototype dans Audio et Voix : un outil musical en grille inspiré des applications de type clip-launcher, avec une visite guidée de son fonctionnement.',
+          de: '🎛️ PadGrid — neuer Prototyp unter Audio & Sprache: ein rasterbasiertes Musik-Werkzeug nach dem Vorbild von Clip-Launcher-Apps, mit einer geführten Tour durch die Funktionsweise.',
+          pt: '🎛️ PadGrid — novo protótipo em Áudio e Voz: uma ferramenta musical em grelha inspirada em apps do tipo clip-launcher, com uma visita guiada de como funciona.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'PDF-verktyg, PDF-signering och Fyll i PDF är nu ETT verktyg (PDF-verktyg) med tre flikar: Slå ihop, Signera och Fyll i. Samma funktioner som förut, bara samlade på ett ställe istället för utspridda på tre verktygskort.',
+          en: 'PDF Tools, PDF Signing and Fill in PDF are now ONE tool (PDF Tools) with three tabs: Merge, Sign and Fill in. Same features as before, just gathered in one place instead of spread across three tool cards.',
+          es: 'Herramientas PDF, Firmar PDF y Rellenar PDF son ahora UNA sola herramienta (Herramientas PDF) con tres pestañas: Fusionar, Firmar y Rellenar. Las mismas funciones de antes, ahora reunidas en un solo lugar.',
+          fr: 'Outils PDF, Signature PDF et Remplir un PDF ne forment désormais plus qu\'UN seul outil (Outils PDF) avec trois onglets : Fusionner, Signer et Remplir. Les mêmes fonctionnalités qu\'avant, simplement réunies au même endroit.',
+          de: 'PDF-Werkzeuge, PDF-Signierung und PDF ausfüllen sind jetzt EIN Werkzeug (PDF-Werkzeuge) mit drei Tabs: Zusammenführen, Signieren und Ausfüllen. Dieselben Funktionen wie zuvor, nur an einem Ort statt auf drei Kacheln verteilt.',
+          pt: 'Ferramentas PDF, Assinar PDF e Preencher PDF são agora UMA ferramenta (Ferramentas PDF) com três separadores: Mesclar, Assinar e Preencher. As mesmas funcionalidades de sempre, só que reunidas num só lugar.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Textverktyg och Ordbehandlare gjorde i praktiken samma sak (Ordbehandlaren visar redan ord- och teckenantal, plus mycket mer). Textverktyg är borttaget, kategorin "Skola" är borttagen, och Ordbehandlare finns nu under Text & Dokument.',
+          en: 'Text Tools and Word Processor did essentially the same thing (Word Processor already shows word and character counts, plus much more). Text Tools has been removed, the "School" category has been removed, and Word Processor now lives under Text & Documents.',
+          es: 'Herramientas de texto y Procesador de textos hacían básicamente lo mismo (el Procesador de textos ya muestra recuento de palabras y caracteres, y mucho más). Herramientas de texto se ha eliminado, la categoría "Escuela" se ha eliminado, y el Procesador de textos ahora está en Texto y Documentos.',
+          fr: 'Outils texte et Traitement de texte faisaient essentiellement la même chose (le Traitement de texte affiche déjà le nombre de mots et de caractères, et bien plus encore). Outils texte a été supprimé, la catégorie « École » a été supprimée, et le Traitement de texte se trouve désormais dans Texte et Documents.',
+          de: 'Textwerkzeuge und Textverarbeitung machten im Grunde dasselbe (die Textverarbeitung zeigt bereits Wort- und Zeichenzahl an, und noch viel mehr). Textwerkzeuge wurde entfernt, die Kategorie „Schule" wurde entfernt, und die Textverarbeitung befindet sich jetzt unter Text & Dokumente.',
+          pt: 'Ferramentas de texto e Processador de texto faziam basicamente a mesma coisa (o Processador de texto já mostra contagem de palavras e caracteres, e muito mais). Ferramentas de texto foi removida, a categoria "Escola" foi removida, e o Processador de texto está agora em Texto e Documentos.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: '13 verktyg med lågt användningsvärde borttagna: Etikettark, Bildkollage, Lorem Ipsum, Lösenordsgenerator, Tidszoner, Miniräknare, Slumptalsgenerator, Namnbrickor, Tangentbordstest, Pomodoro-timer, Nedräkningstimer, Stoppur och Slumpmässigt val. De flesta av dem finns redan inbyggda i telefonen eller datorn — en enklare, mer fokuserad verktygslåda för de verktyg som faktiskt saknar bra alternativ.',
+          en: '13 low-value tools removed: Sticker Sheet, Photo Collage, Lorem Ipsum, Password Generator, Time Zones, Calculator, Random Number Generator, Name Badges, Keyboard Tester, Pomodoro Timer, Countdown Timer, Stopwatch and Random Picker. Most of these already exist built into your phone or computer — a simpler, more focused toolbox for the tools that actually lack a good alternative.',
+          es: 'Se han eliminado 13 herramientas de bajo valor: Hojas de etiquetas, Collage de fotos, Lorem Ipsum, Generador de contraseñas, Zonas horarias, Calculadora, Generador de números aleatorios, Tarjetas de nombre, Probador de teclado, Temporizador Pomodoro, Temporizador de cuenta atrás, Cronómetro y Selector aleatorio. La mayoría ya existen integradas en tu teléfono u ordenador — una caja de herramientas más simple y enfocada en lo que realmente carece de una buena alternativa.',
+          fr: '13 outils à faible valeur ajoutée supprimés : Planche d\'étiquettes, Collage photo, Lorem Ipsum, Générateur de mots de passe, Fuseaux horaires, Calculatrice, Générateur de nombres aléatoires, Badges nominatifs, Testeur de clavier, Minuteur Pomodoro, Compte à rebours, Chronomètre et Sélecteur aléatoire. La plupart existent déjà intégrés dans votre téléphone ou ordinateur — une boîte à outils plus simple, centrée sur ce qui manque vraiment de bonne alternative.',
+          de: '13 wenig genutzte Werkzeuge entfernt: Etikettenbogen, Fotocollage, Lorem Ipsum, Passwort-Generator, Zeitzonen, Taschenrechner, Zufallszahlengenerator, Namensschilder, Tastatur-Tester, Pomodoro-Timer, Countdown-Timer, Stoppuhr und Zufallsauswahl. Die meisten davon gibt es bereits eingebaut im Telefon oder Computer — eine einfachere, fokussiertere Werkzeugkiste für die Werkzeuge, denen tatsächlich eine gute Alternative fehlt.',
+          pt: '13 ferramentas de baixo valor removidas: Folha de etiquetas, Colagem de fotos, Lorem Ipsum, Gerador de palavras-passe, Fusos horários, Calculadora, Gerador de números aleatórios, Crachás, Testador de teclado, Temporizador Pomodoro, Temporizador de contagem decrescente, Cronómetro e Seleção aleatória. A maioria já existe incorporada no telemóvel ou computador — uma caixa de ferramentas mais simples e focada no que realmente não tem uma boa alternativa.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Startsidans "Nytt"-sektion visar nu de tre senaste verktygen istället för sex — mindre rörigt vid första besöket.',
+          en: 'The homepage\'s "New" section now shows the three latest tools instead of six — less cluttered on a first visit.',
+          es: 'La sección "Nuevo" de la página de inicio ahora muestra las tres herramientas más recientes en lugar de seis — menos desordenado en una primera visita.',
+          fr: 'La section « Nouveau » de la page d\'accueil affiche désormais les trois derniers outils au lieu de six — moins chargé lors d\'une première visite.',
+          de: 'Der Bereich „Neu" auf der Startseite zeigt jetzt die drei neuesten Werkzeuge statt sechs — weniger überladen beim ersten Besuch.',
+          pt: 'A secção "Novo" da página inicial mostra agora as três ferramentas mais recentes em vez de seis — menos confuso numa primeira visita.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.27.1',
     date: '2026-09-14',
     title: {

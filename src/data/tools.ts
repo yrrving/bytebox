@@ -7,12 +7,9 @@ import {
   ArrowLeftRight,
   Clock,
   Hash,
-  Lock,
-  FileText,
   Languages,
   Globe,
   Gauge,
-  Keyboard,
   FileJson,
   Speech,
   Mic,
@@ -25,12 +22,10 @@ import {
   Crop,
   Eraser,
   AppWindow,
-  LayoutGrid,
   Grid3X3,
   Terminal,
   Crosshair,
   GitCompare,
-  Type,
   Table,
   Files,
   Scan,
@@ -45,13 +40,7 @@ import {
   ShieldCheck,
   Network,
   MonitorSmartphone,
-  Calculator,
   Percent,
-  Dices,
-  Timer,
-  Hourglass,
-  Watch,
-  Shuffle,
   Gamepad2,
   FileImage,
   ImageOff,
@@ -59,13 +48,10 @@ import {
   FileCode2,
   Captions,
   Fingerprint,
-  IdCard,
   AudioLines,
   Barcode,
-  FileSignature,
   Film,
   FileEdit,
-  PenLine,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -74,7 +60,7 @@ import {
 // dator = fungerar bäst på (och rekommenderas för) en dator.
 export type MinScreen = 'mobil' | 'surfplatta' | 'dator'
 export type ConnectionType = 'online' | 'offline'
-export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet' | 'skola' | 'spelutveckling'
+export type ToolCategory = 'bild' | 'text' | 'ljud' | 'kod' | 'natverk' | 'berakning' | 'produktivitet' | 'spelutveckling'
 export type Category = 'alla' | 'online' | 'offline'
 
 export interface Tool {
@@ -87,16 +73,16 @@ export interface Tool {
 }
 
 /**
- * De senaste nya verktygen, nyast först. Styr både "Nytt"-sektionen på
- * startsidan och "Nytt"-etiketten på verktygskorten. Lägg nya verktyg
- * längst fram och håll listan till sex stycken.
+ * De senaste nya/ändrade verktygen, nyast först. Styr "Nytt"-etiketten på
+ * verktygskorten (håll listan till sex stycken) — startsidans "Nytt"-sektion
+ * visar bara de tre första (se Home.tsx). Lägg nya verktyg längst fram.
  */
 export const latestToolIds: string[] = [
-  'fyll-i-pdf',
+  'padgrid',
+  'pdf-verktyg',
   'ordbehandlare',
   'motestranskribering',
   'video-till-gif',
-  'pdf-signering',
   'streckkod',
 ]
 
@@ -113,7 +99,6 @@ export const categoryOrder: ToolCategory[] = [
   'natverk',
   'berakning',
   'produktivitet',
-  'skola',
   'spelutveckling',
 ]
 
@@ -141,14 +126,6 @@ export const tools: Tool[] = [
     minScreen: 'mobil',
     connection: 'offline',
     icon: UserSquare,
-    category: 'bild',
-  },
-  {
-    id: 'etikett-ark',
-    route: '/etikett-ark',
-    minScreen: 'surfplatta',
-    connection: 'offline',
-    icon: Grid3X3,
     category: 'bild',
   },
   {
@@ -216,14 +193,6 @@ export const tools: Tool[] = [
     category: 'bild',
   },
   {
-    id: 'bildkollage',
-    route: '/bildkollage',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: LayoutGrid,
-    category: 'bild',
-  },
-  {
     id: 'pixelraknare',
     route: '/pixelraknare',
     minScreen: 'surfplatta',
@@ -266,11 +235,11 @@ export const tools: Tool[] = [
 
   // ── Text & Dokument ───────────────────────────────────────
   {
-    id: 'textverktyg',
-    route: '/textverktyg',
-    minScreen: 'mobil',
+    id: 'ordbehandlare',
+    route: '/ordbehandlare',
+    minScreen: 'dator',
     connection: 'offline',
-    icon: FileText,
+    icon: FileEdit,
     category: 'text',
   },
   {
@@ -295,14 +264,6 @@ export const tools: Tool[] = [
     minScreen: 'dator',
     connection: 'offline',
     icon: GitCompare,
-    category: 'text',
-  },
-  {
-    id: 'lorem-ipsum',
-    route: '/lorem-ipsum',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Type,
     category: 'text',
   },
   {
@@ -335,22 +296,6 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: Captions,
-    category: 'text',
-  },
-  {
-    id: 'pdf-signering',
-    route: '/pdf-signering',
-    minScreen: 'surfplatta',
-    connection: 'offline',
-    icon: FileSignature,
-    category: 'text',
-  },
-  {
-    id: 'fyll-i-pdf',
-    route: '/fyll-i-pdf',
-    minScreen: 'dator',
-    connection: 'offline',
-    icon: PenLine,
     category: 'text',
   },
 
@@ -401,6 +346,14 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: AudioLines,
+    category: 'ljud',
+  },
+  {
+    id: 'padgrid',
+    route: '/padgrid',
+    minScreen: 'dator',
+    connection: 'offline',
+    icon: Grid3X3,
     category: 'ljud',
   },
 
@@ -512,14 +465,6 @@ export const tools: Tool[] = [
     category: 'natverk',
   },
   {
-    id: 'losenordsgenerator',
-    route: '/losenordsgenerator',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Lock,
-    category: 'natverk',
-  },
-  {
     id: 'dns-uppslagning',
     route: '/dns-uppslagning',
     minScreen: 'surfplatta',
@@ -562,35 +507,11 @@ export const tools: Tool[] = [
     category: 'berakning',
   },
   {
-    id: 'tidszoner',
-    route: '/tidszoner',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Clock,
-    category: 'berakning',
-  },
-  {
-    id: 'miniraknare',
-    route: '/miniraknare',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Calculator,
-    category: 'berakning',
-  },
-  {
     id: 'procent-raknare',
     route: '/procent-raknare',
     minScreen: 'mobil',
     connection: 'offline',
     icon: Percent,
-    category: 'berakning',
-  },
-  {
-    id: 'slumptalsgenerator',
-    route: '/slumptalsgenerator',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Dices,
     category: 'berakning',
   },
 
@@ -612,14 +533,6 @@ export const tools: Tool[] = [
     category: 'produktivitet',
   },
   {
-    id: 'namnbricka',
-    route: '/namnbricka',
-    minScreen: 'surfplatta',
-    connection: 'offline',
-    icon: IdCard,
-    category: 'produktivitet',
-  },
-  {
     id: 'streckkod',
     route: '/streckkod',
     minScreen: 'mobil',
@@ -636,51 +549,11 @@ export const tools: Tool[] = [
     category: 'produktivitet',
   },
   {
-    id: 'tangentbordstest',
-    route: '/tangentbordstest',
-    minScreen: 'dator',
-    connection: 'offline',
-    icon: Keyboard,
-    category: 'produktivitet',
-  },
-  {
     id: 'linjal',
     route: '/linjal',
     minScreen: 'mobil',
     connection: 'offline',
     icon: Ruler,
-    category: 'produktivitet',
-  },
-  {
-    id: 'pomodoro-timer',
-    route: '/pomodoro-timer',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Timer,
-    category: 'produktivitet',
-  },
-  {
-    id: 'nedrakningstimer',
-    route: '/nedrakningstimer',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Hourglass,
-    category: 'produktivitet',
-  },
-  {
-    id: 'stoppur',
-    route: '/stoppur',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Watch,
-    category: 'produktivitet',
-  },
-  {
-    id: 'slumpmassigt-val',
-    route: '/slumpmassigt-val',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: Shuffle,
     category: 'produktivitet',
   },
 
@@ -692,15 +565,6 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Gamepad2,
     category: 'spelutveckling',
-  },
-  // ── Skola ─────────────────────────────────────────────────
-  {
-    id: 'ordbehandlare',
-    route: '/ordbehandlare',
-    minScreen: 'dator',
-    connection: 'offline',
-    icon: FileEdit,
-    category: 'skola',
   },
 ]
 

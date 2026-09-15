@@ -72,19 +72,7 @@ export interface Translation {
     natverk: string
     berakning: string
     produktivitet: string
-    skola: string
     spelutveckling: string
-  }
-  textTools?: {
-    characters: string
-    charactersNoSpaces: string
-    words: string
-    lines: string
-    placeholder: string
-    copy: string
-    copied: string
-    clear: string
-    transform: string
   }
   hashGenerator?: {
     input: string
@@ -139,17 +127,6 @@ export interface Translation {
     output: string
     download: string
   }
-  keyboardTester?: {
-    pressAnyKey: string
-    lastKey: string
-    location: string
-    standard: string
-    left: string
-    right: string
-    numpad: string
-    history: string
-    clear: string
-  }
   unitConverter?: {
     length: string
     weight: string
@@ -193,12 +170,6 @@ export interface Translation {
     compress: string
     processing: string
     download: string
-  }
-  timeZones?: {
-    yourTime: string
-    addZone: string
-    selectZone: string
-    cancel: string
   }
   fileAnalyzer?: {
     upload: string
@@ -273,9 +244,6 @@ export interface Translation {
     error: string
     micDenied: string
   }
-  calculator?: {
-    error: string
-  }
   percentCalc?: {
     modeOf: string
     modeIs: string
@@ -286,39 +254,6 @@ export interface Translation {
     from: string
     to: string
     result: string
-  }
-  randomNumber?: {
-    min: string
-    max: string
-    count: string
-    generate: string
-    copy: string
-    copied: string
-  }
-  stopwatch?: {
-    start: string
-    stop: string
-    reset: string
-    lap: string
-    laps: string
-  }
-  countdown?: {
-    hours: string
-    minutes: string
-    seconds: string
-    start: string
-    pause: string
-    resume: string
-    reset: string
-    finished: string
-  }
-  pomodoro?: {
-    work: string
-    break: string
-    start: string
-    pause: string
-    reset: string
-    sessions: string
   }
   wordProcessor?: {
     bold: string
@@ -363,24 +298,6 @@ export interface Translation {
     errorType: string
     errorLoad: string
     errorSave: string
-  }
-  randomPicker?: {
-    listMode: string
-    coinFlip: string
-    placeholder: string
-    choose: string
-    flip: string
-    heads: string
-    tails: string
-  }
-  loremIpsum?: {
-    paragraphs: string
-    sentences: string
-    words: string
-    count: string
-    generate: string
-    copy: string
-    copied: string
   }
   metronome?: {
     start: string
@@ -570,12 +487,6 @@ export interface Translation {
     newImage: string
     download: string
   }
-  imageCollage?: {
-    gap: string
-    images: string
-    generate: string
-    download: string
-  }
   pixelCounter?: {
     upload: string
     dimensions: string
@@ -596,6 +507,10 @@ export interface Translation {
     move: string
   }
   pdfTools?: {
+    tabMerge: string
+    tabSign: string
+    tabFill: string
+    privacyNote: string
     upload: string
     files: string
     merge: string
@@ -723,19 +638,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Nätverk & Säkerhet',
       berakning: 'Beräkning & Konvertering',
       produktivitet: 'Produktivitet & Verktyg',
-      skola: 'Skola',
       spelutveckling: 'Spelutveckling',
-    },
-    textTools: {
-      characters: 'Tecken',
-      charactersNoSpaces: 'Utan mellanslag',
-      words: 'Ord',
-      lines: 'Rader',
-      placeholder: 'Skriv eller klistra in text här...',
-      copy: 'Kopiera',
-      copied: 'Kopierat!',
-      clear: 'Rensa',
-      transform: 'Transformera',
     },
     hashGenerator: {
       input: 'Text',
@@ -790,17 +693,6 @@ export const translations: Record<string, Translation> = {
       output: 'QR-kod',
       download: 'Ladda ner PNG',
     },
-    keyboardTester: {
-      pressAnyKey: 'Tryck på valfri tangent...',
-      lastKey: 'Senaste tangent',
-      location: 'plats',
-      standard: 'Standard',
-      left: 'Vänster',
-      right: 'Höger',
-      numpad: 'Numpad',
-      history: 'Historik',
-      clear: 'Rensa',
-    },
     unitConverter: {
       length: 'Längd',
       weight: 'Vikt',
@@ -845,12 +737,6 @@ export const translations: Record<string, Translation> = {
       processing: 'Komprimerar...',
       download: 'Ladda ner',
     },
-    timeZones: {
-      yourTime: 'Din tid',
-      addZone: 'Lägg till tidszon',
-      selectZone: 'Välj tidszon',
-      cancel: 'Avbryt',
-    },
     fileAnalyzer: {
       upload: 'Klicka eller dra hit en fil',
       anyFile: 'Alla filtyper stöds',
@@ -863,9 +749,6 @@ export const translations: Record<string, Translation> = {
       preview: 'Förhandsgranskning',
       contentPreview: 'Innehåll (förhandsgranskning)',
     },
-    calculator: {
-      error: 'Fel',
-    },
     percentCalc: {
       modeOf: 'X% av Y',
       modeIs: 'X är ?% av Y',
@@ -876,39 +759,6 @@ export const translations: Record<string, Translation> = {
       from: 'Från',
       to: 'Till',
       result: 'Resultat',
-    },
-    randomNumber: {
-      min: 'Min',
-      max: 'Max',
-      count: 'Antal',
-      generate: 'Generera',
-      copy: 'Kopiera',
-      copied: 'Kopierat!',
-    },
-    stopwatch: {
-      start: 'Start',
-      stop: 'Stopp',
-      reset: 'Nollställ',
-      lap: 'Varv',
-      laps: 'Varv',
-    },
-    countdown: {
-      hours: 'Tim',
-      minutes: 'Min',
-      seconds: 'Sek',
-      start: 'Starta',
-      pause: 'Paus',
-      resume: 'Fortsätt',
-      reset: 'Nollställ',
-      finished: 'Tiden är ute!',
-    },
-    pomodoro: {
-      work: 'Arbete',
-      break: 'Paus',
-      start: 'Starta',
-      pause: 'Paus',
-      reset: 'Nollställ',
-      sessions: 'Sessioner',
     },
     wordProcessor: {
       bold: 'Fet',
@@ -953,24 +803,6 @@ export const translations: Record<string, Translation> = {
       errorType: 'Välj en PDF-fil.',
       errorLoad: 'Kunde inte läsa PDF:en. Den kan vara skadad eller lösenordsskyddad.',
       errorSave: 'Något gick fel när PDF:en sparades. Prova igen.',
-    },
-    randomPicker: {
-      listMode: 'Lista',
-      coinFlip: 'Myntkast',
-      placeholder: 'Skriv ett alternativ per rad...',
-      choose: 'Välj',
-      flip: 'Kasta',
-      heads: 'Krona',
-      tails: 'Klave',
-    },
-    loremIpsum: {
-      paragraphs: 'Stycken',
-      sentences: 'Meningar',
-      words: 'Ord',
-      count: 'Antal',
-      generate: 'Generera',
-      copy: 'Kopiera',
-      copied: 'Kopierat!',
     },
     metronome: {
       start: 'Starta',
@@ -1160,12 +992,6 @@ export const translations: Record<string, Translation> = {
       newImage: 'Ny bild',
       download: 'Ladda ner',
     },
-    imageCollage: {
-      gap: 'Mellanrum',
-      images: 'bilder',
-      generate: 'Skapa kollage',
-      download: 'Ladda ner',
-    },
     pixelCounter: {
       upload: 'Klicka eller dra hit en bild',
       dimensions: 'Dimensioner',
@@ -1186,6 +1012,10 @@ export const translations: Record<string, Translation> = {
       move: 'Flytta',
     },
     pdfTools: {
+      tabMerge: 'Slå ihop',
+      tabSign: 'Signera',
+      tabFill: 'Fyll i',
+      privacyNote: 'Allt sker lokalt i din webbläsare. Dokumentet laddas aldrig upp någonstans.',
       upload: 'Klicka eller dra hit PDF-filer',
       files: 'filer',
       merge: 'Sammanfoga PDF-filer',
@@ -1216,14 +1046,10 @@ export const translations: Record<string, Translation> = {
       'base64-kodare': { name: 'Base64-kodare', description: 'Koda om text och data till Base64 och tillbaka — ett textformat för att skicka data i länkar, e-post och kod', hint: 'Base64 används för att bädda in data i URL:er, e-post och API-anrop. Smidigt när du felsöker eller behöver skicka binärdata som text.' },
       'linjal': { name: 'Linjal', description: 'Mät avstånd på skärmen', hint: 'Mät avstånd direkt på skärmen i cm eller tum. Kalibrera med ett kreditkort för exakta mått. Klicka och dra för att mäta.' },
       'enhetsomvandlare': { name: 'Enhetsomvandlare', description: 'Konvertera mellan olika måttenheter', hint: 'Konvertera snabbt mellan metriska och imperiala enheter — längd, vikt, temperatur, hastighet och datastorlek.' },
-      'tidszoner': { name: 'Tidszoner', description: 'Jämför tid i olika tidszoner', hint: 'Se aktuell tid i flera städer samtidigt med live-uppdatering. Perfekt för att planera möten över tidszoner.' },
       'hash-generator': { name: 'Hash-generator', description: 'Skapa ett digitalt fingeravtryck (hash) av text eller data — för att kontrollera att inget ändrats', hint: 'Hash-värden används för att verifiera att filer inte ändrats, kontrollera dataintegritet och inom kryptografi. Klistra in valfri text och se dess hash direkt.' },
-      'losenordsgenerator': { name: 'Lösenordsgenerator', description: 'Skapa starka och säkra lösenord', hint: 'Återanvända lösenord är en av de vanligaste säkerhetsriskerna. Generera unika, starka lösenord för varje tjänst — direkt i webbläsaren utan att skicka data någonstans.' },
-      'textverktyg': { name: 'Textverktyg', description: 'Räkna ord, tecken och transformera text', hint: 'Perfekt när du behöver räkna ord i en uppsats, rensa bort dubbletter i en lista, eller snabbt göra om text till versaler — utan att öppna ett tungt program.' },
       'oversattare': { name: 'Översättare', description: 'Översätt text mellan olika språk', hint: 'Översätt text mellan 19 språk direkt i webbläsaren. Byt snabbt språkriktning med en knapptryckning. Drivs av MyMemory Translation API.' },
       'ip-info': { name: 'IP-info', description: 'Visa din IP-adress och nätverksinformation' },
       'bandbreddstest': { name: 'Bandbreddstest', description: 'Testa din internetanslutningshastighet', hint: 'Mät din nedladdningshastighet och latens med en enkel knapptryckning. Resultat visas i Mbps med en visuell mätare och historik.' },
-      'tangentbordstest': { name: 'Tangentbordstest', description: 'Testa tangentbordets knappar och funktioner', hint: 'Kontrollera att alla tangenter fungerar. Visar key, code och position — perfekt vid felsökning eller test av nya tangentbord.' },
       'json-formaterare': { name: 'JSON-formaterare', description: 'Städa upp och kontrollera JSON — dataformatet som appar och webbtjänster utbyter information i', hint: 'API:er och konfigurationsfiler använder JSON. Klistra in rörig JSON här för att göra den läsbar, eller minifiera den för att spara plats.' },
       'text-till-tal': { name: 'Text till tal', description: 'Omvandla skriven text till talat ljud' },
       'motestranskribering': { name: 'Mötestranskribering', description: 'Spela in eller ladda upp ett möte och få det nedskrivet som text — helt på din enhet', hint: 'Perfekt för mötesanteckningar, intervjuer och föreläsningar. Ljudet laddas aldrig upp. Tips: spela in mötet med telefonens röstmemo-app och ladda upp filen här på datorn.', screenReason: 'Transkriberingen körs helt lokalt i webbläsaren och kräver mycket minne och processorkraft — mer än en mobil klarar av. Mobiler pausar dessutom arbetet när skärmen släcks.' },
@@ -1237,7 +1063,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC till JPG', description: 'Konvertera iPhone-bilder (HEIC) till JPG eller PNG', hint: 'iPhone sparar foton som HEIC, som många datorer inte kan öppna. Konvertera till JPG eller PNG — allt sker lokalt, inget laddas upp.' },
       'metadata-tvatt': { name: 'Metadata-tvätt', description: 'Se och ta bort dold metadata (GPS, datum, kamera) från bilder', hint: 'Foton innehåller ofta din exakta GPS-position. Se vad som gömmer sig i bilden och ta bort allt — lokalt, inget laddas upp.' },
       'passfoto': { name: 'Passfoto', description: 'Skapa passfoto och ID-foto i rätt mm-mått', hint: 'Beskär, zooma och skriv ut flera kopior på ett ark — allt lokalt i webbläsaren, inget laddas upp.' },
-      'etikett-ark': { name: 'Etikettark', description: 'Lägg ut flera kopior av din design på ett A4- eller Letter-ark', hint: 'Räknar ut hur många som får plats och exporterar utskriftsklar PNG i 300 DPI. Allt sker lokalt.' },
       'batch-qr': { name: 'Batch-QR', description: 'Skapa många QR-koder på en gång från en lista eller CSV-fil', hint: 'Ladda ner alla som PNG. Allt sker lokalt — inget laddas upp.' },
       'svg-optimering': { name: 'SVG-optimerare', description: 'Krymp och städa SVG-filer direkt i webbläsaren – ta bort metadata, kommentarer och onödig kod', hint: 'Klistra in eller ladda upp en SVG och ladda ner en mindre version. Allt sker lokalt.' },
       'video-till-gif': { name: 'Video till GIF', description: 'Gör en animerad GIF av ett videoklipp – välj start, slut, bildrutor och storlek', hint: 'Allt sker lokalt i webbläsaren – videon laddas aldrig upp.' },
@@ -1245,20 +1070,16 @@ export const translations: Record<string, Translation> = {
       'uuid-generator': { name: 'UUID-generator', description: 'Skapa unika ID-koder (UUID) som aldrig krockar — praktiskt för att märka poster, filer och saker i program', hint: 'Kopiera en eller alla på en gång.' },
       'epoch-omvandlare': { name: 'Epoch-omvandlare', description: 'Översätt mellan vanligt datum/tid och Unix-tidsstämpel (sekunderna datorer räknar tid i), åt båda hållen', hint: 'Stödjer både sekunder och millisekunder.' },
       'bas-omvandlare': { name: 'Bas-omvandlare', description: 'Omvandla tal mellan olika talsystem — binärt, oktalt, decimalt (vanliga tal) och hexadecimalt', hint: 'Skriv i valfritt fält så uppdateras de andra direkt.' },
-      'namnbricka': { name: 'Namnbrickor', description: 'Skapa utskrivbara namnbrickor på ett A4-ark', hint: 'Klistra in namn, ett per rad – få ett färdigt A4-ark att skriva ut och klippa. Allt sker lokalt.' },
       'ljudklipp': { name: 'Ljudklippare', description: 'Klipp och trimma ljudfiler direkt i webbläsaren – välj start och slut och ladda ner en WAV', hint: 'Perfekt för att korta ner en inspelning eller plocka ut ett klipp. Inget laddas upp.' },
+      'padgrid': { name: 'PadGrid', description: 'Musikprototyp med rutnät — klicka pads för att spela loopar och lager ihop ljud', hint: 'En clip-launcher-inspirerad prototyp: klicka på en ruta för att spela en loop, klicka på en annan i samma kolumn för att byta, eller lägg till en helt annan kolumn för att bygga upp ett lager. Har en guidad genomgång som visar hur det funkar.' },
       'streckkod': { name: 'Streckkodsgenerator', description: 'Skapa streckkoder (CODE128, EAN, UPC m.fl.) och ladda ner som PNG eller SVG', hint: 'Allt sker lokalt i webbläsaren – inget laddas upp.' },
-      'pdf-signering': { name: 'PDF-signering', description: 'Signera PDF-dokument direkt i webbläsaren – rita din namnteckning och placera den på valfri sida', hint: 'Allt sker lokalt, filen laddas aldrig upp.' },
-      'fyll-i-pdf': { name: 'Fyll i PDF', description: 'Fyll i en PDF-blankett med text direkt i webbläsaren — klicka där du vill skriva', hint: 'Perfekt för ansökningar och formulär som saknar ifyllnadsbara fält. Klicka på dokumentet, skriv, flytta texten dit den ska — spara sedan som en ny PDF. Originalfilen ändras aldrig.', screenReason: 'Att klicka exakt och flytta text kräver mus/pekplatta och gott om skärmyta — det fungerar inte bra på en liten mobilskärm.' },
       'favicon-generator': { name: 'Favicon-generator', description: 'Skapa den lilla ikonen som visas i webbläsarens flik (favicon) från valfri bild' },
-      'bildkollage': { name: 'Bildkollage', description: 'Kombinera flera bilder till ett snyggt kollage' },
       'pixelraknare': { name: 'Pixelräknare', description: 'Räkna pixlar och mät avstånd i bilder' },
       'ascii-konst': { name: 'ASCII-konst', description: 'Gör om en bild till en bild byggd av bokstäver och tecken (ASCII-konst)' },
       'skarfilsgenerator': { name: 'Skärfilsgenerator', description: 'Skapa skärfiler för lasergravering — rita skärlinjer runt bilder och exportera som SVG' },
       'diff-jamforare': { name: 'Diff-jämförare', description: 'Jämför två texter och se skillnaderna markerade' },
-      'lorem-ipsum': { name: 'Lorem Ipsum', description: 'Skapa slumpmässig fyllnadstext (Lorem Ipsum) för att testa hur en layout ser ut' },
       'csv-json': { name: 'CSV ↔ JSON', description: 'Omvandla mellan CSV (tabeller/kalkylark) och JSON (dataformat för appar) åt båda hållen' },
-      'pdf-verktyg': { name: 'PDF-verktyg', description: 'Slå ihop, dela och hantera PDF-filer' },
+      'pdf-verktyg': { name: 'PDF-verktyg', description: 'Slå ihop, signera och fyll i PDF-filer', hint: 'Tre vanliga PDF-uppgifter på ett ställe: slå ihop flera filer till en, rita din signatur direkt på dokumentet, eller klicka dig fram och skriv text i en blankett. Allt sker lokalt i webbläsaren.' },
       'ocr': { name: 'OCR — Textigenkänning', description: 'Läs av text ur en bild eller skärmdump så du kan kopiera och redigera den (OCR)' },
       'traincells': { name: 'TrainCells', description: 'Bygg ditt eget 2D-spel — rita brickor, bygg banor och testa direkt i webbläsaren' },
       'metronom': { name: 'Metronom', description: 'Håll takten med en digital metronom' },
@@ -1272,14 +1093,8 @@ export const translations: Record<string, Translation> = {
       'ssl-kontroll': { name: 'SSL-kontroll', description: 'Kontrollera en webbplats säkerhetscertifikat (SSL) — om det är giltigt och när det går ut' },
       'http-headers': { name: 'HTTP Headers', description: 'Se de dolda svarshuvudena (HTTP headers) en webbplats skickar tillbaka — teknisk info bakom en sida' },
       'useragent-info': { name: 'User Agent-info', description: 'Visa information om din webbläsare och enhet' },
-      'miniraknare': { name: 'Miniräknare', description: 'En enkel kalkylator för snabba beräkningar' },
       'procent-raknare': { name: 'Procenträknare', description: 'Beräkna procent, ökning, minskning och andelar' },
-      'slumptalsgenerator': { name: 'Slumptalsgenerator', description: 'Generera slumpmässiga tal inom valfritt intervall' },
-      'pomodoro-timer': { name: 'Pomodoro-timer', description: 'Fokusera med Pomodoro-tekniken — 25 min arbete, 5 min paus' },
-      'nedrakningstimer': { name: 'Nedräkningstimer', description: 'Ställ in en nedräkning till valfri tid' },
-      'stoppur': { name: 'Stoppur', description: 'Mät tid med varv och mellantider' },
       'ordbehandlare': { name: 'Ordbehandlare', description: 'Skriv och formatera dokument direkt i webbläsaren — rubriker, listor, länkar och mer, exportera till PDF eller Word', hint: 'Ett skrivverktyg för uppsatser, rapporter och läxor. Dokumentet sparas automatiskt i webbläsaren och lämnar aldrig din dator. Exportera som PDF (utskrift) eller riktig Word-fil (.docx).', screenReason: 'Att skriva och formatera längre dokument kräver tangentbord och gott om skärmyta för verktygsraden — det fungerar inte bra på en liten mobilskärm.' },
-      'slumpmassigt-val': { name: 'Slumpmässigt val', description: 'Låt slumpen välja — listor, hjul eller mynt' },
     },
   },
   en: {
@@ -1383,19 +1198,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Network & Security',
       berakning: 'Calculation & Conversion',
       produktivitet: 'Productivity & Tools',
-      skola: 'School',
       spelutveckling: 'Game Development',
-    },
-    textTools: {
-      characters: 'Characters',
-      charactersNoSpaces: 'No spaces',
-      words: 'Words',
-      lines: 'Lines',
-      placeholder: 'Type or paste text here...',
-      copy: 'Copy',
-      copied: 'Copied!',
-      clear: 'Clear',
-      transform: 'Transform',
     },
     hashGenerator: {
       input: 'Text',
@@ -1450,17 +1253,6 @@ export const translations: Record<string, Translation> = {
       output: 'QR Code',
       download: 'Download PNG',
     },
-    keyboardTester: {
-      pressAnyKey: 'Press any key...',
-      lastKey: 'Last key',
-      location: 'location',
-      standard: 'Standard',
-      left: 'Left',
-      right: 'Right',
-      numpad: 'Numpad',
-      history: 'History',
-      clear: 'Clear',
-    },
     unitConverter: {
       length: 'Length',
       weight: 'Weight',
@@ -1505,12 +1297,6 @@ export const translations: Record<string, Translation> = {
       processing: 'Compressing...',
       download: 'Download',
     },
-    timeZones: {
-      yourTime: 'Your time',
-      addZone: 'Add time zone',
-      selectZone: 'Select time zone',
-      cancel: 'Cancel',
-    },
     fileAnalyzer: {
       upload: 'Click or drag a file here',
       anyFile: 'All file types supported',
@@ -1523,9 +1309,6 @@ export const translations: Record<string, Translation> = {
       preview: 'Preview',
       contentPreview: 'Content (preview)',
     },
-    calculator: {
-      error: 'Error',
-    },
     percentCalc: {
       modeOf: 'X% of Y',
       modeIs: 'X is ?% of Y',
@@ -1536,39 +1319,6 @@ export const translations: Record<string, Translation> = {
       from: 'From',
       to: 'To',
       result: 'Result',
-    },
-    randomNumber: {
-      min: 'Min',
-      max: 'Max',
-      count: 'Count',
-      generate: 'Generate',
-      copy: 'Copy',
-      copied: 'Copied!',
-    },
-    stopwatch: {
-      start: 'Start',
-      stop: 'Stop',
-      reset: 'Reset',
-      lap: 'Lap',
-      laps: 'Laps',
-    },
-    countdown: {
-      hours: 'Hours',
-      minutes: 'Min',
-      seconds: 'Sec',
-      start: 'Start',
-      pause: 'Pause',
-      resume: 'Resume',
-      reset: 'Reset',
-      finished: 'Time\'s up!',
-    },
-    pomodoro: {
-      work: 'Work',
-      break: 'Break',
-      start: 'Start',
-      pause: 'Pause',
-      reset: 'Reset',
-      sessions: 'Sessions',
     },
     wordProcessor: {
       bold: 'Bold',
@@ -1613,24 +1363,6 @@ export const translations: Record<string, Translation> = {
       errorType: 'Please choose a PDF file.',
       errorLoad: 'Could not read the PDF. It may be damaged or password-protected.',
       errorSave: 'Something went wrong while saving the PDF. Please try again.',
-    },
-    randomPicker: {
-      listMode: 'List',
-      coinFlip: 'Coin flip',
-      placeholder: 'Write one option per line...',
-      choose: 'Choose',
-      flip: 'Flip',
-      heads: 'Heads',
-      tails: 'Tails',
-    },
-    loremIpsum: {
-      paragraphs: 'Paragraphs',
-      sentences: 'Sentences',
-      words: 'Words',
-      count: 'Count',
-      generate: 'Generate',
-      copy: 'Copy',
-      copied: 'Copied!',
     },
     metronome: {
       start: 'Start',
@@ -1820,12 +1552,6 @@ export const translations: Record<string, Translation> = {
       newImage: 'New image',
       download: 'Download',
     },
-    imageCollage: {
-      gap: 'Gap',
-      images: 'images',
-      generate: 'Create collage',
-      download: 'Download',
-    },
     pixelCounter: {
       upload: 'Click or drag an image here',
       dimensions: 'Dimensions',
@@ -1846,6 +1572,10 @@ export const translations: Record<string, Translation> = {
       move: 'Move',
     },
     pdfTools: {
+      tabMerge: 'Merge',
+      tabSign: 'Sign',
+      tabFill: 'Fill in',
+      privacyNote: 'Everything happens locally in your browser. The document is never uploaded anywhere.',
       upload: 'Click or drag PDF files here',
       files: 'files',
       merge: 'Merge PDF files',
@@ -1876,14 +1606,10 @@ export const translations: Record<string, Translation> = {
       'base64-kodare': { name: 'Base64 Encoder', description: 'Encode text and data to Base64 and back — a text format for sending data in links, email and code', hint: 'Base64 is used to embed data in URLs, emails and API calls. Handy when debugging or when you need to send binary data as text.' },
       'linjal': { name: 'Ruler', description: 'Measure distances on screen', hint: 'Measure distances directly on your screen in cm or inches. Calibrate with a credit card for accurate measurements. Click and drag to measure.' },
       'enhetsomvandlare': { name: 'Unit Converter', description: 'Convert between different units of measurement', hint: 'Quickly convert between metric and imperial units — length, weight, temperature, speed and data size.' },
-      'tidszoner': { name: 'Time Zones', description: 'Compare time across different time zones', hint: 'See current time in multiple cities simultaneously with live updates. Perfect for planning meetings across time zones.' },
       'hash-generator': { name: 'Hash Generator', description: 'Create a digital fingerprint (hash) of text or data — to check that nothing has been changed', hint: 'Hash values are used to verify files haven\'t been altered, check data integrity and in cryptography. Paste any text and see its hash instantly.' },
-      'losenordsgenerator': { name: 'Password Generator', description: 'Create strong and secure passwords', hint: 'Reusing passwords is one of the most common security risks. Generate unique, strong passwords for every service — right in your browser without sending data anywhere.' },
-      'textverktyg': { name: 'Text Tools', description: 'Count words, characters and transform text', hint: 'Perfect when you need to count words in an essay, remove duplicates from a list, or quickly convert text to uppercase — without opening a heavy application.' },
       'oversattare': { name: 'Translator', description: 'Translate text between different languages', hint: 'Translate text between 19 languages directly in your browser. Quickly swap language direction with one click. Powered by MyMemory Translation API.' },
       'ip-info': { name: 'IP Info', description: 'Show your IP address and network information' },
       'bandbreddstest': { name: 'Bandwidth Test', description: 'Test your internet connection speed', hint: 'Measure your download speed and latency with a single click. Results shown in Mbps with a visual gauge and history.' },
-      'tangentbordstest': { name: 'Keyboard Test', description: 'Test keyboard keys and functions', hint: 'Check that all keys work. Shows key, code and position — perfect for troubleshooting or testing new keyboards.' },
       'json-formaterare': { name: 'JSON Formatter', description: 'Tidy up and check JSON — the data format apps and web services use to exchange information', hint: 'APIs and config files use JSON. Paste messy JSON here to make it readable, or minify it to save space.' },
       'text-till-tal': { name: 'Text to Speech', description: 'Convert written text to spoken audio' },
       'motestranskribering': { name: 'Meeting Transcriber', description: 'Record or upload a meeting and get it written down as text — entirely on your device', hint: 'Great for meeting notes, interviews and lectures. The audio is never uploaded. Tip: record the meeting with your phone\'s voice memo app and upload the file here on your computer.', screenReason: 'Transcription runs entirely locally in your browser and needs more memory and processing power than a phone can handle. Phones also pause the work when the screen turns off.' },
@@ -1897,7 +1623,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC to JPG', description: 'Convert iPhone photos (HEIC) to JPG or PNG', hint: 'iPhones save photos as HEIC, which many computers can\'t open. Convert to JPG or PNG — all locally, nothing uploaded.' },
       'metadata-tvatt': { name: 'Metadata Cleaner', description: 'View and remove hidden metadata (GPS, date, camera) from images', hint: 'Photos often contain your exact GPS location. See what\'s hidden in the image and strip it — locally, nothing uploaded.' },
       'passfoto': { name: 'Passport Photo', description: 'Create passport and ID photos at exact mm sizes', hint: 'Crop, zoom and print multiple copies on one sheet — all locally in your browser, nothing uploaded.' },
-      'etikett-ark': { name: 'Sticker Sheet', description: 'Lay out multiple copies of your design on an A4 or Letter sheet', hint: 'Calculates how many fit and exports a print-ready 300 DPI PNG. Everything runs locally.' },
       'batch-qr': { name: 'Batch QR', description: 'Generate many QR codes at once from a list or CSV file', hint: 'Download all as PNG. Everything runs locally — nothing uploaded.' },
       'svg-optimering': { name: 'SVG Optimizer', description: 'Shrink and clean up SVG files right in your browser – strip metadata, comments and redundant code', hint: 'Paste or upload an SVG and download a smaller version. Everything runs locally.' },
       'video-till-gif': { name: 'Video to GIF', description: 'Turn a video clip into an animated GIF – choose start, end, frame rate and size', hint: 'Everything runs locally in your browser — the video is never uploaded.' },
@@ -1905,20 +1630,16 @@ export const translations: Record<string, Translation> = {
       'uuid-generator': { name: 'UUID Generator', description: 'Create unique ID codes (UUIDs) that never clash — handy for labelling records, files and things in software', hint: 'Copy one or all at once.' },
       'epoch-omvandlare': { name: 'Epoch Converter', description: 'Convert between a normal date/time and a Unix timestamp (the seconds computers count time in), both ways', hint: 'Supports both seconds and milliseconds.' },
       'bas-omvandlare': { name: 'Base Converter', description: 'Convert numbers between number systems — binary, octal, decimal (ordinary numbers) and hexadecimal', hint: 'Type in any field and the others update live.' },
-      'namnbricka': { name: 'Name Badges', description: 'Create printable name badges on an A4 sheet', hint: 'Paste names, one per line – get a ready A4 sheet to print and cut out. Everything runs locally.' },
       'ljudklipp': { name: 'Audio Trimmer', description: 'Cut and trim audio files right in your browser – pick a start and end and download a WAV', hint: 'Great for shortening a recording or grabbing a clip. Nothing is uploaded.' },
+      'padgrid': { name: 'PadGrid', description: 'A grid-based music prototype — click pads to trigger loops and layer sounds together', hint: 'A clip-launcher-inspired prototype: click a pad to play a loop, click another in the same column to switch it, or add a completely different column to build up a layer. Includes a guided walkthrough of how it works.' },
       'streckkod': { name: 'Barcode Generator', description: 'Create barcodes (CODE128, EAN, UPC and more) and download them as PNG or SVG', hint: 'Everything runs locally in your browser — nothing is uploaded.' },
-      'pdf-signering': { name: 'PDF Signing', description: 'Sign PDF documents right in your browser — draw your signature and place it on any page', hint: 'Everything runs locally; your file is never uploaded.' },
-      'fyll-i-pdf': { name: 'Fill in PDF', description: 'Fill in a PDF form with text right in your browser — click wherever you want to write', hint: 'Perfect for applications and forms without fillable fields. Click on the document, type, drag the text where it belongs — then save as a new PDF. The original file is never changed.', screenReason: 'Clicking precisely and dragging text needs a mouse or trackpad and plenty of screen space — it doesn\'t work well on a small phone screen.' },
       'favicon-generator': { name: 'Favicon Generator', description: 'Create the little icon shown in a browser tab (favicon) from any image' },
-      'bildkollage': { name: 'Image Collage', description: 'Combine multiple images into a collage' },
       'pixelraknare': { name: 'Pixel Counter', description: 'Count pixels and measure distances in images' },
       'ascii-konst': { name: 'ASCII Art', description: 'Turn a picture into an image built from letters and characters (ASCII art)' },
       'skarfilsgenerator': { name: 'Cut File Generator', description: 'Create cut files for laser engraving — draw cut lines around images and export as SVG' },
       'diff-jamforare': { name: 'Diff Compare', description: 'Compare two texts and see the differences highlighted' },
-      'lorem-ipsum': { name: 'Lorem Ipsum', description: 'Generate random filler text (Lorem Ipsum) to test how a layout looks' },
       'csv-json': { name: 'CSV ↔ JSON', description: 'Convert between CSV (spreadsheet tables) and JSON (data format for apps) both ways' },
-      'pdf-verktyg': { name: 'PDF Tools', description: 'Merge, split and manage PDF files' },
+      'pdf-verktyg': { name: 'PDF Tools', description: 'Merge, sign and fill in PDF files', hint: 'Three common PDF tasks in one place: combine multiple files into one, draw your signature directly onto the document, or click around and type text into a form. Everything happens locally in your browser.' },
       'ocr': { name: 'OCR — Text Recognition', description: 'Read text out of a picture or screenshot so you can copy and edit it (OCR)' },
       'traincells': { name: 'TrainCells', description: 'Build your own 2D game — draw tiles, design levels and play right in the browser' },
       'metronom': { name: 'Metronome', description: 'Keep the beat with a digital metronome' },
@@ -1932,14 +1653,8 @@ export const translations: Record<string, Translation> = {
       'ssl-kontroll': { name: 'SSL Check', description: 'Check a website\'s security certificate (SSL) — whether it\'s valid and when it expires' },
       'http-headers': { name: 'HTTP Headers', description: 'See the hidden response headers (HTTP headers) a website sends back — the technical info behind a page' },
       'useragent-info': { name: 'User Agent Info', description: 'View information about your browser and device' },
-      'miniraknare': { name: 'Calculator', description: 'A simple calculator for quick calculations' },
       'procent-raknare': { name: 'Percentage Calculator', description: 'Calculate percentages, increases, decreases and ratios' },
-      'slumptalsgenerator': { name: 'Random Number Generator', description: 'Generate random numbers within any range' },
-      'pomodoro-timer': { name: 'Pomodoro Timer', description: 'Focus with the Pomodoro technique — 25 min work, 5 min break' },
-      'nedrakningstimer': { name: 'Countdown Timer', description: 'Set a countdown to any time' },
-      'stoppur': { name: 'Stopwatch', description: 'Measure time with laps and split times' },
       'ordbehandlare': { name: 'Word Processor', description: 'Write and format documents right in your browser — headings, lists, links and more, export to PDF or Word', hint: 'A writing tool for essays, reports and homework. Your document is auto-saved in the browser and never leaves your computer. Export as PDF (print) or a real Word file (.docx).', screenReason: 'Writing and formatting longer documents needs a keyboard and enough screen space for the toolbar — it doesn\'t work well on a small phone screen.' },
-      'slumpmassigt-val': { name: 'Random Picker', description: 'Let chance decide — lists, wheels or coin flips' },
     },
   },
   es: {
@@ -2043,19 +1758,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Red y Seguridad',
       berakning: 'Cálculo y Conversión',
       produktivitet: 'Productividad y Herramientas',
-      skola: 'Escuela',
       spelutveckling: 'Desarrollo de juegos',
-    },
-    textTools: {
-      characters: 'Caracteres',
-      charactersNoSpaces: 'Sin espacios',
-      words: 'Palabras',
-      lines: 'Líneas',
-      placeholder: 'Escribe o pega texto aquí...',
-      copy: 'Copiar',
-      copied: '¡Copiado!',
-      clear: 'Limpiar',
-      transform: 'Transformar',
     },
     hashGenerator: {
       input: 'Texto',
@@ -2110,17 +1813,6 @@ export const translations: Record<string, Translation> = {
       output: 'Código QR',
       download: 'Descargar PNG',
     },
-    keyboardTester: {
-      pressAnyKey: 'Pulsa cualquier tecla...',
-      lastKey: 'Última tecla',
-      location: 'ubicación',
-      standard: 'Estándar',
-      left: 'Izquierda',
-      right: 'Derecha',
-      numpad: 'Numpad',
-      history: 'Historial',
-      clear: 'Limpiar',
-    },
     unitConverter: {
       length: 'Longitud',
       weight: 'Peso',
@@ -2165,12 +1857,6 @@ export const translations: Record<string, Translation> = {
       processing: 'Comprimiendo...',
       download: 'Descargar',
     },
-    timeZones: {
-      yourTime: 'Tu hora',
-      addZone: 'Añadir zona horaria',
-      selectZone: 'Seleccionar zona horaria',
-      cancel: 'Cancelar',
-    },
     fileAnalyzer: {
       upload: 'Haz clic o arrastra un archivo aquí',
       anyFile: 'Todos los tipos de archivo soportados',
@@ -2183,9 +1869,6 @@ export const translations: Record<string, Translation> = {
       preview: 'Vista previa',
       contentPreview: 'Contenido (vista previa)',
     },
-    calculator: {
-      error: 'Error',
-    },
     percentCalc: {
       modeOf: 'X% de Y',
       modeIs: 'X es ?% de Y',
@@ -2196,39 +1879,6 @@ export const translations: Record<string, Translation> = {
       from: 'De',
       to: 'A',
       result: 'Resultado',
-    },
-    randomNumber: {
-      min: 'Min',
-      max: 'Max',
-      count: 'Cantidad',
-      generate: 'Generar',
-      copy: 'Copiar',
-      copied: '¡Copiado!',
-    },
-    stopwatch: {
-      start: 'Iniciar',
-      stop: 'Parar',
-      reset: 'Reiniciar',
-      lap: 'Vuelta',
-      laps: 'Vueltas',
-    },
-    countdown: {
-      hours: 'Horas',
-      minutes: 'Min',
-      seconds: 'Seg',
-      start: 'Iniciar',
-      pause: 'Pausa',
-      resume: 'Continuar',
-      reset: 'Reiniciar',
-      finished: '¡Se acabó el tiempo!',
-    },
-    pomodoro: {
-      work: 'Trabajo',
-      break: 'Descanso',
-      start: 'Iniciar',
-      pause: 'Pausa',
-      reset: 'Reiniciar',
-      sessions: 'Sesiones',
     },
     wordProcessor: {
       bold: 'Negrita',
@@ -2273,24 +1923,6 @@ export const translations: Record<string, Translation> = {
       errorType: 'Elige un archivo PDF.',
       errorLoad: 'No se pudo leer el PDF. Puede estar dañado o protegido con contraseña.',
       errorSave: 'Algo salió mal al guardar el PDF. Inténtalo de nuevo.',
-    },
-    randomPicker: {
-      listMode: 'Lista',
-      coinFlip: 'Lanzar moneda',
-      placeholder: 'Escribe una opción por línea...',
-      choose: 'Elegir',
-      flip: 'Lanzar',
-      heads: 'Cara',
-      tails: 'Cruz',
-    },
-    loremIpsum: {
-      paragraphs: 'Párrafos',
-      sentences: 'Oraciones',
-      words: 'Palabras',
-      count: 'Cantidad',
-      generate: 'Generar',
-      copy: 'Copiar',
-      copied: '¡Copiado!',
     },
     metronome: {
       start: 'Iniciar',
@@ -2480,12 +2112,6 @@ export const translations: Record<string, Translation> = {
       newImage: 'Nueva imagen',
       download: 'Descargar',
     },
-    imageCollage: {
-      gap: 'Espacio',
-      images: 'imágenes',
-      generate: 'Crear collage',
-      download: 'Descargar',
-    },
     pixelCounter: {
       upload: 'Haz clic o arrastra una imagen aquí',
       dimensions: 'Dimensiones',
@@ -2506,6 +2132,10 @@ export const translations: Record<string, Translation> = {
       move: 'Mover',
     },
     pdfTools: {
+      tabMerge: 'Fusionar',
+      tabSign: 'Firmar',
+      tabFill: 'Rellenar',
+      privacyNote: 'Todo ocurre localmente en tu navegador. El documento nunca se sube a ningún sitio.',
       upload: 'Haz clic o arrastra archivos PDF aquí',
       files: 'archivos',
       merge: 'Fusionar archivos PDF',
@@ -2536,14 +2166,10 @@ export const translations: Record<string, Translation> = {
       'base64-kodare': { name: 'Codificador Base64', description: 'Codifica texto y datos a Base64 y de vuelta — un formato de texto para enviar datos en enlaces, correos y código', hint: 'Base64 se usa para incrustar datos en URLs, correos y llamadas API. Útil para depurar o enviar datos binarios como texto.' },
       'linjal': { name: 'Regla', description: 'Medir distancias en la pantalla', hint: 'Mide distancias directamente en tu pantalla en cm o pulgadas. Calibra con una tarjeta de crédito para medidas exactas.' },
       'enhetsomvandlare': { name: 'Conversor de unidades', description: 'Convertir entre diferentes unidades de medida', hint: 'Convierte rápidamente entre unidades métricas e imperiales — longitud, peso, temperatura, velocidad y tamaño de datos.' },
-      'tidszoner': { name: 'Zonas horarias', description: 'Comparar la hora en diferentes zonas horarias', hint: 'Ve la hora actual en múltiples ciudades simultáneamente con actualizaciones en vivo. Perfecto para planificar reuniones entre zonas horarias.' },
       'hash-generator': { name: 'Generador de hash', description: 'Crea una huella digital (hash) de un texto o datos — para comprobar que nada ha cambiado', hint: 'Los valores hash se usan para verificar que los archivos no han sido alterados y en criptografía. Pega cualquier texto y ve su hash al instante.' },
-      'losenordsgenerator': { name: 'Generador de contraseñas', description: 'Crear contraseñas fuertes y seguras', hint: 'Reutilizar contraseñas es uno de los riesgos de seguridad más comunes. Genera contraseñas únicas y fuertes para cada servicio — directamente en tu navegador.' },
-      'textverktyg': { name: 'Herramientas de texto', description: 'Contar palabras, caracteres y transformar texto', hint: 'Perfecto para contar palabras en un ensayo, eliminar duplicados de una lista o convertir texto a mayúsculas rápidamente.' },
       'oversattare': { name: 'Traductor', description: 'Traducir texto entre diferentes idiomas', hint: 'Traduce texto entre 19 idiomas directamente en tu navegador. Cambia la dirección del idioma con un clic.' },
       'ip-info': { name: 'Info IP', description: 'Mostrar tu dirección IP e información de red' },
       'bandbreddstest': { name: 'Test de ancho de banda', description: 'Probar la velocidad de tu conexión a Internet', hint: 'Mide tu velocidad de descarga y latencia con un solo clic. Resultados en Mbps con indicador visual e historial.' },
-      'tangentbordstest': { name: 'Test de teclado', description: 'Probar las teclas y funciones del teclado', hint: 'Comprueba que todas las teclas funcionan. Muestra key, code y posición — perfecto para diagnosticar o probar teclados nuevos.' },
       'json-formaterare': { name: 'Formateador JSON', description: 'Ordena y comprueba JSON — el formato de datos que apps y servicios web usan para intercambiar información', hint: 'Las APIs y archivos de configuración usan JSON. Pega JSON desordenado aquí para hacerlo legible, o minifícalo para ahorrar espacio.' },
       'text-till-tal': { name: 'Texto a voz', description: 'Convertir texto escrito en audio hablado' },
       'motestranskribering': { name: 'Transcriptor de reuniones', description: 'Graba o sube una reunión y obtenla por escrito — todo en tu dispositivo', hint: 'Ideal para actas de reuniones, entrevistas y clases. El audio nunca se sube. Consejo: graba la reunión con la app de notas de voz del móvil y sube el archivo aquí en el ordenador.', screenReason: 'La transcripción se ejecuta totalmente en local en tu navegador y necesita más memoria y potencia de las que un móvil puede ofrecer. Además, los móviles pausan el trabajo cuando se apaga la pantalla.' },
@@ -2557,7 +2183,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC a JPG', description: 'Convierte fotos de iPhone (HEIC) a JPG o PNG', hint: 'Los iPhone guardan las fotos como HEIC, que muchos ordenadores no pueden abrir. Conviértelas a JPG o PNG — todo localmente, sin subir nada.' },
       'metadata-tvatt': { name: 'Limpiador de metadatos', description: 'Ver y eliminar metadatos ocultos (GPS, fecha, cámara) de imágenes', hint: 'Las fotos suelen contener tu ubicación GPS exacta. Mira lo que se oculta en la imagen y elimínalo — localmente, sin subir nada.' },
       'passfoto': { name: 'Foto de pasaporte', description: 'Crea fotos de pasaporte y de identidad con las medidas exactas en mm', hint: 'Recorta, amplía e imprime varias copias en una hoja — todo localmente en tu navegador, sin subir nada.' },
-      'etikett-ark': { name: 'Hoja de pegatinas', description: 'Coloca varias copias de tu diseño en una hoja A4 o Letter', hint: 'Calcula cuántas caben y exporta un PNG listo para imprimir a 300 DPI. Todo funciona localmente.' },
       'batch-qr': { name: 'QR por lotes', description: 'Genera muchos códigos QR a la vez desde una lista o archivo CSV', hint: 'Descarga todos como PNG. Todo funciona localmente — nada se sube.' },
       'svg-optimering': { name: 'Optimizador SVG', description: 'Reduce y limpia archivos SVG directamente en tu navegador: elimina metadatos, comentarios y código redundante', hint: 'Pega o sube un SVG y descarga una versión más pequeña. Todo funciona localmente.' },
       'video-till-gif': { name: 'Vídeo a GIF', description: 'Convierte un clip de vídeo en un GIF animado: elige inicio, fin, fotogramas y tamaño', hint: 'Todo funciona localmente en tu navegador — el vídeo nunca se sube.' },
@@ -2565,20 +2190,16 @@ export const translations: Record<string, Translation> = {
       'uuid-generator': { name: 'Generador de UUID', description: 'Crea códigos de identificación únicos (UUID) que nunca se repiten — útiles para etiquetar registros y archivos', hint: 'Copia uno o todos a la vez.' },
       'epoch-omvandlare': { name: 'Conversor de epoch', description: 'Convierte entre una fecha/hora normal y una marca de tiempo Unix (los segundos con que los ordenadores miden el tiempo)', hint: 'Admite segundos y milisegundos.' },
       'bas-omvandlare': { name: 'Conversor de bases', description: 'Convierte números entre sistemas numéricos — binario, octal, decimal (números normales) y hexadecimal', hint: 'Escribe en cualquier campo y los demás se actualizan al instante.' },
-      'namnbricka': { name: 'Tarjetas de nombre', description: 'Crea tarjetas de identificación imprimibles en una hoja A4', hint: 'Pega los nombres, uno por línea, y obtén una hoja A4 lista para imprimir y recortar. Todo funciona localmente.' },
       'ljudklipp': { name: 'Recortador de audio', description: 'Corta y recorta archivos de audio directamente en tu navegador: elige inicio y fin y descarga un WAV', hint: 'Ideal para acortar una grabación o extraer un fragmento. No se sube nada.' },
+      'padgrid': { name: 'PadGrid', description: 'Un prototipo musical en cuadrícula — pulsa pads para reproducir bucles y capas de sonido', hint: 'Un prototipo inspirado en lanzadores de clips: pulsa un pad para reproducir un bucle, pulsa otro en la misma columna para cambiarlo, o añade una columna completamente distinta para crear una capa. Incluye una guía paso a paso de cómo funciona.' },
       'streckkod': { name: 'Generador de códigos de barras', description: 'Crea códigos de barras (CODE128, EAN, UPC y más) y descárgalos como PNG o SVG', hint: 'Todo funciona localmente en tu navegador — no se sube nada.' },
-      'pdf-signering': { name: 'Firmar PDF', description: 'Firma documentos PDF directamente en tu navegador: dibuja tu firma y colócala en cualquier página', hint: 'Todo funciona localmente; tu archivo nunca se sube.' },
-      'fyll-i-pdf': { name: 'Rellenar PDF', description: 'Rellena un formulario PDF con texto directamente en el navegador — haz clic donde quieras escribir', hint: 'Perfecto para solicitudes y formularios sin campos rellenables. Haz clic en el documento, escribe, arrastra el texto a su sitio — luego guarda como un PDF nuevo. El archivo original nunca cambia.', screenReason: 'Hacer clic con precisión y arrastrar texto requiere ratón o trackpad y suficiente espacio en pantalla — no funciona bien en una pantalla de móvil pequeña.' },
       'favicon-generator': { name: 'Generador de favicon', description: 'Crea el pequeño icono que aparece en la pestaña del navegador (favicon) desde cualquier imagen' },
-      'bildkollage': { name: 'Collage de imágenes', description: 'Combinar varias imágenes en un collage' },
       'pixelraknare': { name: 'Contador de píxeles', description: 'Contar píxeles y medir distancias en imágenes' },
       'ascii-konst': { name: 'Arte ASCII', description: 'Convierte una imagen en un dibujo hecho de letras y caracteres (arte ASCII)' },
       'skarfilsgenerator': { name: 'Generador de archivos de corte', description: 'Crear archivos de corte para grabado láser — dibujar líneas de corte alrededor de imágenes y exportar como SVG' },
       'diff-jamforare': { name: 'Comparador Diff', description: 'Comparar dos textos y ver las diferencias resaltadas' },
-      'lorem-ipsum': { name: 'Lorem Ipsum', description: 'Genera texto de relleno aleatorio (Lorem Ipsum) para probar cómo queda un diseño' },
       'csv-json': { name: 'CSV ↔ JSON', description: 'Convierte entre CSV (tablas de hoja de cálculo) y JSON (formato de datos para apps) en ambos sentidos' },
-      'pdf-verktyg': { name: 'Herramientas PDF', description: 'Fusionar, dividir y gestionar archivos PDF' },
+      'pdf-verktyg': { name: 'Herramientas PDF', description: 'Fusiona, firma y rellena archivos PDF', hint: 'Tres tareas habituales de PDF en un solo lugar: combina varios archivos en uno, dibuja tu firma directamente en el documento, o haz clic y escribe texto en un formulario. Todo ocurre localmente en tu navegador.' },
       'ocr': { name: 'OCR — Reconocimiento de texto', description: 'Extrae el texto de una imagen o captura para poder copiarlo y editarlo (OCR)' },
       'traincells': { name: 'TrainCells', description: 'Crea tu propio juego 2D: dibuja fichas, diseña niveles y juega directamente en el navegador' },
       'metronom': { name: 'Metrónomo', description: 'Mantén el ritmo con un metrónomo digital' },
@@ -2592,14 +2213,8 @@ export const translations: Record<string, Translation> = {
       'ssl-kontroll': { name: 'Verificación SSL', description: 'Comprueba el certificado de seguridad (SSL) de un sitio web — si es válido y cuándo caduca' },
       'http-headers': { name: 'Cabeceras HTTP', description: 'Ve las cabeceras de respuesta ocultas (HTTP headers) que envía un sitio web — la información técnica detrás de una página' },
       'useragent-info': { name: 'Info de User Agent', description: 'Ver información sobre tu navegador y dispositivo' },
-      'miniraknare': { name: 'Calculadora', description: 'Una calculadora simple para cálculos rápidos' },
       'procent-raknare': { name: 'Calculadora de porcentajes', description: 'Calcular porcentajes, aumentos, disminuciones y proporciones' },
-      'slumptalsgenerator': { name: 'Generador de números aleatorios', description: 'Generar números aleatorios dentro de cualquier rango' },
-      'pomodoro-timer': { name: 'Temporizador Pomodoro', description: 'Concentrarse con la técnica Pomodoro — 25 min trabajo, 5 min descanso' },
-      'nedrakningstimer': { name: 'Temporizador de cuenta regresiva', description: 'Establecer una cuenta regresiva a cualquier hora' },
-      'stoppur': { name: 'Cronómetro', description: 'Medir tiempo con vueltas y parciales' },
       'ordbehandlare': { name: 'Procesador de textos', description: 'Escribe y da formato a documentos directamente en el navegador — encabezados, listas, enlaces y más, exporta a PDF o Word', hint: 'Una herramienta de escritura para ensayos, informes y deberes. Tu documento se guarda automáticamente en el navegador y nunca sale de tu ordenador. Exporta como PDF (impresión) o un archivo Word real (.docx).', screenReason: 'Escribir y dar formato a documentos más largos requiere teclado y suficiente espacio en pantalla para la barra de herramientas — no funciona bien en una pantalla de móvil pequeña.' },
-      'slumpmassigt-val': { name: 'Selector aleatorio', description: 'Deja que el azar decida — listas, ruletas o monedas' },
     },
   },
   fr: {
@@ -2703,19 +2318,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Réseau et Sécurité',
       berakning: 'Calcul et Conversion',
       produktivitet: 'Productivité et Outils',
-      skola: 'École',
       spelutveckling: 'Développement de jeux',
-    },
-    textTools: {
-      characters: 'Caractères',
-      charactersNoSpaces: 'Sans espaces',
-      words: 'Mots',
-      lines: 'Lignes',
-      placeholder: 'Tapez ou collez du texte ici...',
-      copy: 'Copier',
-      copied: 'Copié !',
-      clear: 'Effacer',
-      transform: 'Transformer',
     },
     hashGenerator: {
       input: 'Texte',
@@ -2770,17 +2373,6 @@ export const translations: Record<string, Translation> = {
       output: 'Code QR',
       download: 'Télécharger PNG',
     },
-    keyboardTester: {
-      pressAnyKey: 'Appuyez sur une touche...',
-      lastKey: 'Dernière touche',
-      location: 'emplacement',
-      standard: 'Standard',
-      left: 'Gauche',
-      right: 'Droite',
-      numpad: 'Pavé numérique',
-      history: 'Historique',
-      clear: 'Effacer',
-    },
     unitConverter: {
       length: 'Longueur',
       weight: 'Poids',
@@ -2825,12 +2417,6 @@ export const translations: Record<string, Translation> = {
       processing: 'Compression...',
       download: 'Télécharger',
     },
-    timeZones: {
-      yourTime: 'Votre heure',
-      addZone: 'Ajouter un fuseau horaire',
-      selectZone: 'Sélectionner un fuseau horaire',
-      cancel: 'Annuler',
-    },
     fileAnalyzer: {
       upload: 'Cliquez ou glissez un fichier ici',
       anyFile: 'Tous les types de fichiers supportés',
@@ -2843,9 +2429,6 @@ export const translations: Record<string, Translation> = {
       preview: 'Aperçu',
       contentPreview: 'Contenu (aperçu)',
     },
-    calculator: {
-      error: 'Erreur',
-    },
     percentCalc: {
       modeOf: 'X% de Y',
       modeIs: 'X est ?% de Y',
@@ -2856,39 +2439,6 @@ export const translations: Record<string, Translation> = {
       from: 'De',
       to: 'À',
       result: 'Résultat',
-    },
-    randomNumber: {
-      min: 'Min',
-      max: 'Max',
-      count: 'Nombre',
-      generate: 'Générer',
-      copy: 'Copier',
-      copied: 'Copié !',
-    },
-    stopwatch: {
-      start: 'Démarrer',
-      stop: 'Arrêter',
-      reset: 'Réinitialiser',
-      lap: 'Tour',
-      laps: 'Tours',
-    },
-    countdown: {
-      hours: 'Heures',
-      minutes: 'Min',
-      seconds: 'Sec',
-      start: 'Démarrer',
-      pause: 'Pause',
-      resume: 'Reprendre',
-      reset: 'Réinitialiser',
-      finished: 'Le temps est écoulé !',
-    },
-    pomodoro: {
-      work: 'Travail',
-      break: 'Pause',
-      start: 'Démarrer',
-      pause: 'Pause',
-      reset: 'Réinitialiser',
-      sessions: 'Sessions',
     },
     wordProcessor: {
       bold: 'Gras',
@@ -2933,24 +2483,6 @@ export const translations: Record<string, Translation> = {
       errorType: 'Choisissez un fichier PDF.',
       errorLoad: 'Impossible de lire le PDF. Il est peut-être endommagé ou protégé par mot de passe.',
       errorSave: 'Une erreur est survenue lors de l\'enregistrement du PDF. Réessayez.',
-    },
-    randomPicker: {
-      listMode: 'Liste',
-      coinFlip: 'Pile ou face',
-      placeholder: 'Écrivez une option par ligne...',
-      choose: 'Choisir',
-      flip: 'Lancer',
-      heads: 'Face',
-      tails: 'Pile',
-    },
-    loremIpsum: {
-      paragraphs: 'Paragraphes',
-      sentences: 'Phrases',
-      words: 'Mots',
-      count: 'Nombre',
-      generate: 'Générer',
-      copy: 'Copier',
-      copied: 'Copié !',
     },
     metronome: {
       start: 'Démarrer',
@@ -3140,12 +2672,6 @@ export const translations: Record<string, Translation> = {
       newImage: 'Nouvelle image',
       download: 'Télécharger',
     },
-    imageCollage: {
-      gap: 'Espacement',
-      images: 'images',
-      generate: 'Créer collage',
-      download: 'Télécharger',
-    },
     pixelCounter: {
       upload: 'Cliquez ou glissez une image ici',
       dimensions: 'Dimensions',
@@ -3166,6 +2692,10 @@ export const translations: Record<string, Translation> = {
       move: 'Déplacer',
     },
     pdfTools: {
+      tabMerge: 'Fusionner',
+      tabSign: 'Signer',
+      tabFill: 'Remplir',
+      privacyNote: 'Tout se passe localement dans votre navigateur. Le document n\'est jamais téléchargé nulle part.',
       upload: 'Cliquez ou glissez des fichiers PDF ici',
       files: 'fichiers',
       merge: 'Fusionner les fichiers PDF',
@@ -3196,14 +2726,10 @@ export const translations: Record<string, Translation> = {
       'base64-kodare': { name: 'Encodeur Base64', description: 'Encodez du texte et des données en Base64 et inversement — un format texte pour envoyer des données dans les liens, e-mails et le code', hint: 'Base64 est utilisé pour intégrer des données dans les URLs, e-mails et appels API. Pratique pour le débogage ou l\'envoi de données binaires sous forme de texte.' },
       'linjal': { name: 'Règle', description: "Mesurer les distances à l'écran", hint: "Mesurez les distances directement sur votre écran en cm ou pouces. Calibrez avec une carte bancaire pour des mesures précises." },
       'enhetsomvandlare': { name: 'Convertisseur d\'unités', description: 'Convertir entre différentes unités de mesure', hint: 'Convertissez rapidement entre unités métriques et impériales — longueur, poids, température, vitesse et taille des données.' },
-      'tidszoner': { name: 'Fuseaux horaires', description: "Comparer l'heure dans différents fuseaux horaires", hint: 'Voyez l\'heure actuelle dans plusieurs villes simultanément avec mise à jour en direct. Parfait pour planifier des réunions entre fuseaux horaires.' },
       'hash-generator': { name: 'Générateur de hash', description: 'Créez une empreinte numérique (hash) d\'un texte ou de données — pour vérifier que rien n\'a été modifié', hint: 'Vérifiez l\'intégrité des fichiers ou comparez des checksums. Les hash sont utilisés partout dans la sécurité, Git et la validation de téléchargements.' },
-      'losenordsgenerator': { name: 'Générateur de mots de passe', description: 'Créer des mots de passe forts et sécurisés', hint: 'Réutiliser des mots de passe est l\'un des risques de sécurité les plus courants. Générez des mots de passe uniques et forts pour chaque service — directement dans votre navigateur.' },
-      'textverktyg': { name: 'Outils de texte', description: 'Compter les mots, les caractères et transformer le texte', hint: 'Parfait pour compter les mots d\'un essai, supprimer les doublons d\'une liste ou convertir rapidement du texte en majuscules.' },
       'oversattare': { name: 'Traducteur', description: 'Traduire du texte entre différentes langues', hint: 'Traduisez du texte entre 19 langues directement dans votre navigateur. Changez la direction de la langue en un clic.' },
       'ip-info': { name: 'Info IP', description: 'Afficher votre adresse IP et les informations réseau' },
       'bandbreddstest': { name: 'Test de bande passante', description: 'Tester la vitesse de votre connexion Internet', hint: 'Mesurez votre vitesse de téléchargement et latence en un clic. Résultats en Mbps avec jauge visuelle et historique.' },
-      'tangentbordstest': { name: 'Test de clavier', description: 'Tester les touches et les fonctions du clavier', hint: 'Vérifiez que toutes les touches fonctionnent. Affiche key, code et position — parfait pour le dépannage ou le test de nouveaux claviers.' },
       'json-formaterare': { name: 'Formateur JSON', description: 'Mettez de l\'ordre et vérifiez du JSON — le format de données que les applis et services web utilisent pour échanger des informations', hint: 'Les APIs et fichiers de configuration utilisent JSON. Collez du JSON brouillon ici pour le rendre lisible, ou minifiez-le pour gagner de la place.' },
       'text-till-tal': { name: 'Texte en parole', description: 'Convertir du texte écrit en audio parlé' },
       'motestranskribering': { name: 'Transcripteur de réunions', description: 'Enregistrez ou importez une réunion et obtenez-la à l\'écrit — entièrement sur votre appareil', hint: 'Parfait pour les comptes rendus, entretiens et cours. L\'audio n\'est jamais envoyé. Astuce : enregistrez la réunion avec l\'app dictaphone de votre téléphone et importez le fichier ici sur votre ordinateur.', screenReason: 'La transcription s\'exécute entièrement en local dans votre navigateur et demande plus de mémoire et de puissance qu\'un téléphone ne peut fournir. De plus, les téléphones mettent le travail en pause quand l\'écran s\'éteint.' },
@@ -3217,7 +2743,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC vers JPG', description: 'Convertir des photos iPhone (HEIC) en JPG ou PNG', hint: 'Les iPhone enregistrent les photos en HEIC, que beaucoup d\'ordinateurs ne peuvent pas ouvrir. Convertissez en JPG ou PNG — tout en local, rien n\'est envoyé.' },
       'metadata-tvatt': { name: 'Nettoyeur de métadonnées', description: 'Voir et supprimer les métadonnées cachées (GPS, date, appareil) des images', hint: 'Les photos contiennent souvent votre position GPS exacte. Voyez ce qui est caché dans l\'image et supprimez-le — en local, rien n\'est envoyé.' },
       'passfoto': { name: 'Photo d\'identité', description: 'Créez des photos de passeport et d\'identité aux dimensions exactes en mm', hint: 'Recadrez, zoomez et imprimez plusieurs copies sur une feuille — tout en local dans votre navigateur, rien n\'est envoyé.' },
-      'etikett-ark': { name: 'Planche d\'autocollants', description: 'Disposez plusieurs copies de votre design sur une feuille A4 ou Letter', hint: 'Calcule combien tiennent et exporte un PNG prêt à imprimer en 300 DPI. Tout fonctionne en local.' },
       'batch-qr': { name: 'QR par lot', description: 'Générez de nombreux codes QR à la fois depuis une liste ou un fichier CSV', hint: 'Téléchargez tout en PNG. Tout fonctionne en local — rien n\'est envoyé.' },
       'svg-optimering': { name: 'Optimiseur SVG', description: 'Réduisez et nettoyez les fichiers SVG directement dans votre navigateur : supprimez métadonnées, commentaires et code inutile', hint: 'Collez ou importez un SVG et téléchargez une version plus petite. Tout fonctionne en local.' },
       'video-till-gif': { name: 'Vidéo en GIF', description: 'Transformez un clip vidéo en GIF animé : choisissez début, fin, images par seconde et taille', hint: 'Tout fonctionne en local dans votre navigateur — la vidéo n\'est jamais envoyée.' },
@@ -3225,20 +2750,16 @@ export const translations: Record<string, Translation> = {
       'uuid-generator': { name: 'Générateur d\'UUID', description: 'Créez des codes d\'identification uniques (UUID) qui ne se répètent jamais — pratique pour étiqueter enregistrements et fichiers', hint: 'Copiez-en un ou tous à la fois.' },
       'epoch-omvandlare': { name: 'Convertisseur epoch', description: 'Convertissez entre une date/heure normale et un horodatage Unix (les secondes avec lesquelles les ordinateurs comptent le temps)', hint: 'Prend en charge les secondes et les millisecondes.' },
       'bas-omvandlare': { name: 'Convertisseur de bases', description: 'Convertissez des nombres entre systèmes de numération — binaire, octal, décimal (nombres ordinaires) et hexadécimal', hint: 'Saisissez dans un champ et les autres se mettent à jour en direct.' },
-      'namnbricka': { name: 'Badges nominatifs', description: 'Créez des badges nominatifs imprimables sur une feuille A4', hint: 'Collez les noms, un par ligne, et obtenez une feuille A4 prête à imprimer et découper. Tout fonctionne en local.' },
       'ljudklipp': { name: 'Découpe audio', description: 'Coupez et rognez des fichiers audio directement dans votre navigateur : choisissez le début et la fin et téléchargez un WAV', hint: 'Parfait pour raccourcir un enregistrement ou extraire un extrait. Rien n\'est envoyé.' },
+      'padgrid': { name: 'PadGrid', description: 'Un prototype musical en grille — cliquez sur les pads pour déclencher des boucles et superposer des sons', hint: 'Un prototype inspiré des lanceurs de clips : cliquez sur un pad pour jouer une boucle, sur un autre dans la même colonne pour la remplacer, ou ajoutez une colonne différente pour superposer une couche. Comprend une visite guidée de son fonctionnement.' },
       'streckkod': { name: 'Générateur de codes-barres', description: 'Créez des codes-barres (CODE128, EAN, UPC et plus) et téléchargez-les en PNG ou SVG', hint: 'Tout fonctionne en local dans votre navigateur — rien n\'est envoyé.' },
-      'pdf-signering': { name: 'Signer un PDF', description: 'Signez des documents PDF directement dans votre navigateur : dessinez votre signature et placez-la sur n\'importe quelle page', hint: 'Tout fonctionne en local ; votre fichier n\'est jamais envoyé.' },
-      'fyll-i-pdf': { name: 'Remplir un PDF', description: 'Remplissez un formulaire PDF avec du texte directement dans le navigateur — cliquez où vous voulez écrire', hint: 'Parfait pour les demandes et formulaires sans champs remplissables. Cliquez sur le document, tapez, déplacez le texte à sa place — puis enregistrez comme un nouveau PDF. Le fichier original n\'est jamais modifié.', screenReason: 'Cliquer précisément et déplacer du texte nécessite une souris ou un trackpad et assez d\'espace à l\'écran — cela ne fonctionne pas bien sur un petit écran de téléphone.' },
       'favicon-generator': { name: 'Générateur de favicon', description: 'Créez la petite icône affichée dans l\'onglet du navigateur (favicon) à partir de n\'importe quelle image' },
-      'bildkollage': { name: 'Collage d\'images', description: 'Combiner plusieurs images en un collage' },
       'pixelraknare': { name: 'Compteur de pixels', description: 'Compter les pixels et mesurer les distances dans les images' },
       'ascii-konst': { name: 'Art ASCII', description: 'Transformez une image en dessin composé de lettres et de caractères (art ASCII)' },
       'skarfilsgenerator': { name: 'Générateur de fichiers de découpe', description: 'Créer des fichiers de découpe pour la gravure laser — dessiner des lignes de découpe autour des images et exporter en SVG' },
       'diff-jamforare': { name: 'Comparateur Diff', description: 'Comparer deux textes et voir les différences surlignées' },
-      'lorem-ipsum': { name: 'Lorem Ipsum', description: 'Générez du faux texte de remplissage (Lorem Ipsum) pour tester le rendu d\'une mise en page' },
       'csv-json': { name: 'CSV ↔ JSON', description: 'Convertissez entre CSV (tableaux de tableur) et JSON (format de données pour applis) dans les deux sens' },
-      'pdf-verktyg': { name: 'Outils PDF', description: 'Fusionner, diviser et gérer des fichiers PDF' },
+      'pdf-verktyg': { name: 'Outils PDF', description: 'Fusionnez, signez et remplissez des fichiers PDF', hint: 'Trois tâches PDF courantes réunies : combinez plusieurs fichiers en un seul, dessinez votre signature directement sur le document, ou cliquez pour écrire du texte dans un formulaire. Tout se passe localement dans votre navigateur.' },
       'ocr': { name: 'OCR — Reconnaissance de texte', description: 'Extrayez le texte d\'une image ou capture d\'écran pour le copier et le modifier (OCR)' },
       'traincells': { name: 'TrainCells', description: 'Créez votre propre jeu 2D — dessinez des tuiles, concevez des niveaux et jouez directement dans le navigateur' },
       'metronom': { name: 'Métronome', description: 'Gardez le rythme avec un métronome numérique' },
@@ -3252,14 +2773,8 @@ export const translations: Record<string, Translation> = {
       'ssl-kontroll': { name: 'Vérification SSL', description: 'Vérifiez le certificat de sécurité (SSL) d\'un site web — s\'il est valide et quand il expire' },
       'http-headers': { name: 'En-têtes HTTP', description: 'Voyez les en-têtes de réponse cachés (HTTP headers) qu\'un site web renvoie — les infos techniques derrière une page' },
       'useragent-info': { name: 'Info User Agent', description: 'Afficher des informations sur votre navigateur et appareil' },
-      'miniraknare': { name: 'Calculatrice', description: 'Une calculatrice simple pour des calculs rapides' },
       'procent-raknare': { name: 'Calculatrice de pourcentages', description: 'Calculer des pourcentages, augmentations, diminutions et proportions' },
-      'slumptalsgenerator': { name: 'Générateur de nombres aléatoires', description: 'Générer des nombres aléatoires dans n\'importe quel intervalle' },
-      'pomodoro-timer': { name: 'Minuteur Pomodoro', description: 'Concentrez-vous avec la technique Pomodoro — 25 min de travail, 5 min de pause' },
-      'nedrakningstimer': { name: 'Compte à rebours', description: 'Définir un compte à rebours jusqu\'à n\'importe quelle heure' },
-      'stoppur': { name: 'Chronomètre', description: 'Mesurer le temps avec des tours et des temps intermédiaires' },
       'ordbehandlare': { name: 'Traitement de texte', description: 'Écrivez et mettez en forme des documents directement dans le navigateur — titres, listes, liens et plus, exportez en PDF ou Word', hint: 'Un outil d\'écriture pour dissertations, rapports et devoirs. Votre document est sauvegardé automatiquement dans le navigateur et ne quitte jamais votre ordinateur. Exportez en PDF (impression) ou en vrai fichier Word (.docx).', screenReason: 'Écrire et mettre en forme des documents plus longs nécessite un clavier et assez d\'espace à l\'écran pour la barre d\'outils — cela ne fonctionne pas bien sur un petit écran de téléphone.' },
-      'slumpmassigt-val': { name: 'Sélecteur aléatoire', description: 'Laissez le hasard décider — listes, roues ou pile ou face' },
     },
   },
   de: {
@@ -3363,19 +2878,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Netzwerk & Sicherheit',
       berakning: 'Berechnung & Umrechnung',
       produktivitet: 'Produktivität & Werkzeuge',
-      skola: 'Schule',
       spelutveckling: 'Spieleentwicklung',
-    },
-    textTools: {
-      characters: 'Zeichen',
-      charactersNoSpaces: 'Ohne Leerzeichen',
-      words: 'Wörter',
-      lines: 'Zeilen',
-      placeholder: 'Text hier eingeben oder einfügen...',
-      copy: 'Kopieren',
-      copied: 'Kopiert!',
-      clear: 'Löschen',
-      transform: 'Transformieren',
     },
     hashGenerator: {
       input: 'Text',
@@ -3430,17 +2933,6 @@ export const translations: Record<string, Translation> = {
       output: 'QR-Code',
       download: 'PNG herunterladen',
     },
-    keyboardTester: {
-      pressAnyKey: 'Beliebige Taste drücken...',
-      lastKey: 'Letzte Taste',
-      location: 'Position',
-      standard: 'Standard',
-      left: 'Links',
-      right: 'Rechts',
-      numpad: 'Ziffernblock',
-      history: 'Verlauf',
-      clear: 'Löschen',
-    },
     unitConverter: {
       length: 'Länge',
       weight: 'Gewicht',
@@ -3485,12 +2977,6 @@ export const translations: Record<string, Translation> = {
       processing: 'Komprimiere...',
       download: 'Herunterladen',
     },
-    timeZones: {
-      yourTime: 'Ihre Zeit',
-      addZone: 'Zeitzone hinzufügen',
-      selectZone: 'Zeitzone auswählen',
-      cancel: 'Abbrechen',
-    },
     fileAnalyzer: {
       upload: 'Klicken oder Datei hierher ziehen',
       anyFile: 'Alle Dateitypen unterstützt',
@@ -3503,9 +2989,6 @@ export const translations: Record<string, Translation> = {
       preview: 'Vorschau',
       contentPreview: 'Inhalt (Vorschau)',
     },
-    calculator: {
-      error: 'Fehler',
-    },
     percentCalc: {
       modeOf: 'X% von Y',
       modeIs: 'X ist ?% von Y',
@@ -3516,39 +2999,6 @@ export const translations: Record<string, Translation> = {
       from: 'Von',
       to: 'Bis',
       result: 'Ergebnis',
-    },
-    randomNumber: {
-      min: 'Min',
-      max: 'Max',
-      count: 'Anzahl',
-      generate: 'Generieren',
-      copy: 'Kopieren',
-      copied: 'Kopiert!',
-    },
-    stopwatch: {
-      start: 'Start',
-      stop: 'Stopp',
-      reset: 'Zurücksetzen',
-      lap: 'Runde',
-      laps: 'Runden',
-    },
-    countdown: {
-      hours: 'Std',
-      minutes: 'Min',
-      seconds: 'Sek',
-      start: 'Starten',
-      pause: 'Pause',
-      resume: 'Fortsetzen',
-      reset: 'Zurücksetzen',
-      finished: 'Die Zeit ist um!',
-    },
-    pomodoro: {
-      work: 'Arbeit',
-      break: 'Pause',
-      start: 'Starten',
-      pause: 'Pause',
-      reset: 'Zurücksetzen',
-      sessions: 'Sitzungen',
     },
     wordProcessor: {
       bold: 'Fett',
@@ -3593,24 +3043,6 @@ export const translations: Record<string, Translation> = {
       errorType: 'Bitte wähle eine PDF-Datei.',
       errorLoad: 'Die PDF konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder passwortgeschützt.',
       errorSave: 'Beim Speichern der PDF ist etwas schiefgelaufen. Versuche es erneut.',
-    },
-    randomPicker: {
-      listMode: 'Liste',
-      coinFlip: 'Münzwurf',
-      placeholder: 'Schreiben Sie eine Option pro Zeile...',
-      choose: 'Wählen',
-      flip: 'Werfen',
-      heads: 'Kopf',
-      tails: 'Zahl',
-    },
-    loremIpsum: {
-      paragraphs: 'Absätze',
-      sentences: 'Sätze',
-      words: 'Wörter',
-      count: 'Anzahl',
-      generate: 'Generieren',
-      copy: 'Kopieren',
-      copied: 'Kopiert!',
     },
     metronome: {
       start: 'Starten',
@@ -3800,12 +3232,6 @@ export const translations: Record<string, Translation> = {
       newImage: 'Neues Bild',
       download: 'Herunterladen',
     },
-    imageCollage: {
-      gap: 'Abstand',
-      images: 'Bilder',
-      generate: 'Collage erstellen',
-      download: 'Herunterladen',
-    },
     pixelCounter: {
       upload: 'Klicken oder Bild hierher ziehen',
       dimensions: 'Abmessungen',
@@ -3826,6 +3252,10 @@ export const translations: Record<string, Translation> = {
       move: 'Verschieben',
     },
     pdfTools: {
+      tabMerge: 'Zusammenführen',
+      tabSign: 'Signieren',
+      tabFill: 'Ausfüllen',
+      privacyNote: 'Alles geschieht lokal in Ihrem Browser. Das Dokument wird nirgendwo hochgeladen.',
       upload: 'Klicken oder PDF-Dateien hierher ziehen',
       files: 'Dateien',
       merge: 'PDF-Dateien zusammenführen',
@@ -3856,14 +3286,10 @@ export const translations: Record<string, Translation> = {
       'base64-kodare': { name: 'Base64-Kodierer', description: 'Kodiere Text und Daten in Base64 und zurück — ein Textformat, um Daten in Links, E-Mails und Code zu senden', hint: 'Base64 wird verwendet, um Daten in URLs, E-Mails und API-Aufrufen einzubetten. Praktisch beim Debuggen oder wenn Binärdaten als Text gesendet werden müssen.' },
       'linjal': { name: 'Lineal', description: 'Abstände auf dem Bildschirm messen', hint: 'Messen Sie Abstände direkt auf Ihrem Bildschirm in cm oder Zoll. Kalibrieren Sie mit einer Kreditkarte für genaue Messungen.' },
       'enhetsomvandlare': { name: 'Einheitenumrechner', description: 'Zwischen verschiedenen Maßeinheiten umrechnen', hint: 'Schnell zwischen metrischen und imperialen Einheiten umrechnen — Länge, Gewicht, Temperatur, Geschwindigkeit und Datengröße.' },
-      'tidszoner': { name: 'Zeitzonen', description: 'Zeit in verschiedenen Zeitzonen vergleichen', hint: 'Sehen Sie die aktuelle Uhrzeit in mehreren Städten gleichzeitig mit Live-Updates. Perfekt für die Planung von Meetings über Zeitzonen hinweg.' },
       'hash-generator': { name: 'Hash-Generator', description: 'Erzeuge einen digitalen Fingerabdruck (Hash) von Text oder Daten — um zu prüfen, dass nichts verändert wurde', hint: 'Überprüfen Sie die Dateiintegrität oder vergleichen Sie Checksummen. Hashes werden überall in der Sicherheit, Git und bei der Download-Validierung verwendet.' },
-      'losenordsgenerator': { name: 'Passwort-Generator', description: 'Starke und sichere Passwörter erstellen', hint: 'Passwörter wiederzuverwenden ist eines der häufigsten Sicherheitsrisiken. Generieren Sie einzigartige, starke Passwörter für jeden Dienst — direkt im Browser ohne Daten zu senden.' },
-      'textverktyg': { name: 'Textwerkzeuge', description: 'Wörter, Zeichen zählen und Text transformieren', hint: 'Perfekt um Wörter in einem Aufsatz zu zählen, Duplikate aus einer Liste zu entfernen oder Text schnell in Großbuchstaben umzuwandeln.' },
       'oversattare': { name: 'Übersetzer', description: 'Text zwischen verschiedenen Sprachen übersetzen', hint: 'Übersetzen Sie Text zwischen 19 Sprachen direkt im Browser. Wechseln Sie die Sprachrichtung mit einem Klick.' },
       'ip-info': { name: 'IP-Info', description: 'Ihre IP-Adresse und Netzwerkinformationen anzeigen' },
       'bandbreddstest': { name: 'Bandbreitentest', description: 'Ihre Internetverbindungsgeschwindigkeit testen', hint: 'Messen Sie Ihre Download-Geschwindigkeit und Latenz mit einem Klick. Ergebnisse in Mbps mit visueller Anzeige und Verlauf.' },
-      'tangentbordstest': { name: 'Tastaturtest', description: 'Tastaturtasten und Funktionen testen', hint: 'Prüfen Sie, ob alle Tasten funktionieren. Zeigt Key, Code und Position — perfekt zur Fehlersuche oder zum Testen neuer Tastaturen.' },
       'json-formaterare': { name: 'JSON-Formatierer', description: 'Räume JSON auf und prüfe es — das Datenformat, mit dem Apps und Webdienste Informationen austauschen', hint: 'APIs und Konfigurationsdateien verwenden JSON. Fügen Sie unordentliches JSON ein, um es lesbar zu machen, oder minifizieren Sie es, um Platz zu sparen.' },
       'text-till-tal': { name: 'Text zu Sprache', description: 'Geschriebenen Text in gesprochenes Audio umwandeln' },
       'motestranskribering': { name: 'Besprechungs-Transkription', description: 'Nimm eine Besprechung auf oder lade sie hoch und erhalte sie als Text — komplett auf deinem Gerät', hint: 'Ideal für Protokolle, Interviews und Vorlesungen. Das Audio wird nie hochgeladen. Tipp: Nimm die Besprechung mit der Sprachmemo-App deines Handys auf und lade die Datei hier am Computer hoch.', screenReason: 'Die Transkription läuft komplett lokal im Browser und braucht mehr Speicher und Rechenleistung, als ein Handy leisten kann. Handys pausieren die Arbeit außerdem, wenn der Bildschirm ausgeht.' },
@@ -3877,7 +3303,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC zu JPG', description: 'iPhone-Fotos (HEIC) in JPG oder PNG umwandeln', hint: 'iPhones speichern Fotos als HEIC, das viele Computer nicht öffnen können. In JPG oder PNG umwandeln — alles lokal, nichts wird hochgeladen.' },
       'metadata-tvatt': { name: 'Metadaten-Reiniger', description: 'Versteckte Metadaten (GPS, Datum, Kamera) aus Bildern anzeigen und entfernen', hint: 'Fotos enthalten oft deinen genauen GPS-Standort. Sieh, was im Bild versteckt ist, und entferne es — lokal, nichts wird hochgeladen.' },
       'passfoto': { name: 'Passfoto', description: 'Erstelle Pass- und Ausweisfotos in exakten mm-Maßen', hint: 'Zuschneiden, zoomen und mehrere Kopien auf einem Blatt drucken — alles lokal im Browser, nichts wird hochgeladen.' },
-      'etikett-ark': { name: 'Aufkleberbogen', description: 'Ordne mehrere Kopien deines Designs auf einem A4- oder Letter-Blatt an', hint: 'Berechnet, wie viele passen, und exportiert ein druckfertiges PNG in 300 DPI. Alles läuft lokal.' },
       'batch-qr': { name: 'Batch-QR', description: 'Erzeuge viele QR-Codes auf einmal aus einer Liste oder CSV-Datei', hint: 'Lade alle als PNG herunter. Alles läuft lokal — nichts wird hochgeladen.' },
       'svg-optimering': { name: 'SVG-Optimierer', description: 'Verkleinere und bereinige SVG-Dateien direkt im Browser – entferne Metadaten, Kommentare und überflüssigen Code', hint: 'Füge ein SVG ein oder lade es hoch und lade eine kleinere Version herunter. Alles läuft lokal.' },
       'video-till-gif': { name: 'Video zu GIF', description: 'Verwandle ein Videoclip in ein animiertes GIF – wähle Anfang, Ende, Bildrate und Größe', hint: 'Alles läuft lokal im Browser — das Video wird nie hochgeladen.' },
@@ -3885,20 +3310,16 @@ export const translations: Record<string, Translation> = {
       'uuid-generator': { name: 'UUID-Generator', description: 'Erzeuge eindeutige ID-Codes (UUIDs), die sich nie überschneiden — praktisch zum Kennzeichnen von Einträgen und Dateien', hint: 'Kopiere eine oder alle auf einmal.' },
       'epoch-omvandlare': { name: 'Epoch-Umrechner', description: 'Rechne zwischen normalem Datum/Uhrzeit und Unix-Zeitstempel (den Sekunden, in denen Computer die Zeit zählen) um', hint: 'Unterstützt Sekunden und Millisekunden.' },
       'bas-omvandlare': { name: 'Basis-Umrechner', description: 'Rechne Zahlen zwischen Zahlensystemen um — binär, oktal, dezimal (gewöhnliche Zahlen) und hexadezimal', hint: 'Tippe in ein beliebiges Feld und die anderen aktualisieren sich sofort.' },
-      'namnbricka': { name: 'Namensschilder', description: 'Erstelle druckbare Namensschilder auf einem A4-Blatt', hint: 'Füge Namen ein, einen pro Zeile – erhalte ein fertiges A4-Blatt zum Drucken und Ausschneiden. Alles läuft lokal.' },
       'ljudklipp': { name: 'Audio-Schneider', description: 'Schneide und kürze Audiodateien direkt im Browser – wähle Anfang und Ende und lade eine WAV herunter', hint: 'Perfekt, um eine Aufnahme zu kürzen oder einen Ausschnitt herauszunehmen. Nichts wird hochgeladen.' },
+      'padgrid': { name: 'PadGrid', description: 'Ein rasterbasierter Musik-Prototyp — Pads antippen, um Loops abzuspielen und Klangebenen zu schichten', hint: 'Ein von Clip-Launchern inspirierter Prototyp: Ein Pad antippen, um einen Loop abzuspielen, ein anderes in derselben Spalte für einen Wechsel, oder eine ganz andere Spalte hinzufügen, um eine Ebene aufzubauen. Enthält eine geführte Tour durch die Funktionsweise.' },
       'streckkod': { name: 'Barcode-Generator', description: 'Erstelle Barcodes (CODE128, EAN, UPC u. a.) und lade sie als PNG oder SVG herunter', hint: 'Alles läuft lokal im Browser — nichts wird hochgeladen.' },
-      'pdf-signering': { name: 'PDF signieren', description: 'Signiere PDF-Dokumente direkt im Browser – zeichne deine Unterschrift und platziere sie auf jeder Seite', hint: 'Alles läuft lokal; deine Datei wird nie hochgeladen.' },
-      'fyll-i-pdf': { name: 'PDF ausfüllen', description: 'Fülle ein PDF-Formular mit Text direkt im Browser aus — klicke, wo du schreiben möchtest', hint: 'Perfekt für Anträge und Formulare ohne ausfüllbare Felder. Klicke auf das Dokument, tippe, ziehe den Text an die richtige Stelle — speichere dann als neue PDF. Die Originaldatei wird nie verändert.', screenReason: 'Präzises Klicken und Ziehen von Text braucht eine Maus oder ein Trackpad und genug Bildschirmplatz — auf einem kleinen Handybildschirm funktioniert das nicht gut.' },
       'favicon-generator': { name: 'Favicon-Generator', description: 'Erstelle das kleine Symbol im Browser-Tab (Favicon) aus einem beliebigen Bild' },
-      'bildkollage': { name: 'Bildcollage', description: 'Mehrere Bilder zu einer Collage kombinieren' },
       'pixelraknare': { name: 'Pixelzähler', description: 'Pixel zählen und Abstände in Bildern messen' },
       'ascii-konst': { name: 'ASCII-Kunst', description: 'Verwandle ein Bild in ein aus Buchstaben und Zeichen gebautes Bild (ASCII-Kunst)' },
       'skarfilsgenerator': { name: 'Schnittdatei-Generator', description: 'Schnittdateien für Lasergravur erstellen — Schnittlinien um Bilder zeichnen und als SVG exportieren' },
       'diff-jamforare': { name: 'Diff-Vergleicher', description: 'Zwei Texte vergleichen und Unterschiede hervorgehoben sehen' },
-      'lorem-ipsum': { name: 'Lorem Ipsum', description: 'Erzeuge zufälligen Blindtext (Lorem Ipsum), um zu testen, wie ein Layout aussieht' },
       'csv-json': { name: 'CSV ↔ JSON', description: 'Wandle zwischen CSV (Tabellen aus Tabellenkalkulationen) und JSON (Datenformat für Apps) in beide Richtungen um' },
-      'pdf-verktyg': { name: 'PDF-Werkzeuge', description: 'PDF-Dateien zusammenführen, teilen und verwalten' },
+      'pdf-verktyg': { name: 'PDF-Werkzeuge', description: 'PDF-Dateien zusammenführen, signieren und ausfüllen', hint: 'Drei gängige PDF-Aufgaben an einem Ort: mehrere Dateien zu einer zusammenführen, Ihre Unterschrift direkt auf das Dokument zeichnen, oder Text per Klick in ein Formular eintragen. Alles geschieht lokal in Ihrem Browser.' },
       'ocr': { name: 'OCR — Texterkennung', description: 'Lies Text aus einem Bild oder Screenshot heraus, damit du ihn kopieren und bearbeiten kannst (OCR)' },
       'traincells': { name: 'TrainCells', description: 'Baue dein eigenes 2D-Spiel — zeichne Kacheln, gestalte Level und spiele direkt im Browser' },
       'metronom': { name: 'Metronom', description: 'Den Takt halten mit einem digitalen Metronom' },
@@ -3912,14 +3333,8 @@ export const translations: Record<string, Translation> = {
       'ssl-kontroll': { name: 'SSL-Prüfung', description: 'Prüfe das Sicherheitszertifikat (SSL) einer Website — ob es gültig ist und wann es abläuft' },
       'http-headers': { name: 'HTTP-Header', description: 'Sieh die verborgenen Antwort-Header (HTTP-Header), die eine Website zurücksendet — die technischen Infos hinter einer Seite' },
       'useragent-info': { name: 'User-Agent-Info', description: 'Informationen über Ihren Browser und Ihr Gerät anzeigen' },
-      'miniraknare': { name: 'Taschenrechner', description: 'Ein einfacher Taschenrechner für schnelle Berechnungen' },
       'procent-raknare': { name: 'Prozentrechner', description: 'Prozentsätze, Zunahmen, Abnahmen und Verhältnisse berechnen' },
-      'slumptalsgenerator': { name: 'Zufallszahlengenerator', description: 'Zufallszahlen in beliebigem Bereich generieren' },
-      'pomodoro-timer': { name: 'Pomodoro-Timer', description: 'Fokussieren mit der Pomodoro-Technik — 25 Min Arbeit, 5 Min Pause' },
-      'nedrakningstimer': { name: 'Countdown-Timer', description: 'Einen Countdown auf beliebige Zeit einstellen' },
-      'stoppur': { name: 'Stoppuhr', description: 'Zeit mit Runden und Zwischenzeiten messen' },
       'ordbehandlare': { name: 'Textverarbeitung', description: 'Schreibe und formatiere Dokumente direkt im Browser — Überschriften, Listen, Links und mehr, exportiere als PDF oder Word', hint: 'Ein Schreibwerkzeug für Aufsätze, Berichte und Hausaufgaben. Dein Dokument wird automatisch im Browser gespeichert und verlässt nie deinen Computer. Exportiere als PDF (Druck) oder echte Word-Datei (.docx).', screenReason: 'Das Schreiben und Formatieren längerer Dokumente braucht eine Tastatur und genug Bildschirmplatz für die Werkzeugleiste — auf einem kleinen Handybildschirm funktioniert das nicht gut.' },
-      'slumpmassigt-val': { name: 'Zufallsauswahl', description: 'Lassen Sie den Zufall entscheiden — Listen, Räder oder Münzwurf' },
     },
   },
   pt: {
@@ -4023,19 +3438,7 @@ export const translations: Record<string, Translation> = {
       natverk: 'Rede e Seguranca',
       berakning: 'Calculo e Conversao',
       produktivitet: 'Produtividade e Ferramentas',
-      skola: 'Escola',
       spelutveckling: 'Desenvolvimento de jogos',
-    },
-    textTools: {
-      characters: 'Caracteres',
-      charactersNoSpaces: 'Sem espaços',
-      words: 'Palavras',
-      lines: 'Linhas',
-      placeholder: 'Digite ou cole texto aqui...',
-      copy: 'Copiar',
-      copied: 'Copiado!',
-      clear: 'Limpar',
-      transform: 'Transformar',
     },
     hashGenerator: {
       input: 'Texto',
@@ -4090,17 +3493,6 @@ export const translations: Record<string, Translation> = {
       output: 'Código QR',
       download: 'Baixar PNG',
     },
-    keyboardTester: {
-      pressAnyKey: 'Pressione qualquer tecla...',
-      lastKey: 'Última tecla',
-      location: 'localização',
-      standard: 'Padrão',
-      left: 'Esquerda',
-      right: 'Direita',
-      numpad: 'Teclado numérico',
-      history: 'Histórico',
-      clear: 'Limpar',
-    },
     unitConverter: {
       length: 'Comprimento',
       weight: 'Peso',
@@ -4145,12 +3537,6 @@ export const translations: Record<string, Translation> = {
       processing: 'Comprimindo...',
       download: 'Baixar',
     },
-    timeZones: {
-      yourTime: 'Sua hora',
-      addZone: 'Adicionar fuso horário',
-      selectZone: 'Selecionar fuso horário',
-      cancel: 'Cancelar',
-    },
     fileAnalyzer: {
       upload: 'Clique ou arraste um arquivo aqui',
       anyFile: 'Todos os tipos de arquivo suportados',
@@ -4163,9 +3549,6 @@ export const translations: Record<string, Translation> = {
       preview: 'Pré-visualização',
       contentPreview: 'Conteúdo (pré-visualização)',
     },
-    calculator: {
-      error: 'Erro',
-    },
     percentCalc: {
       modeOf: 'X% de Y',
       modeIs: 'X é ?% de Y',
@@ -4176,39 +3559,6 @@ export const translations: Record<string, Translation> = {
       from: 'De',
       to: 'Para',
       result: 'Resultado',
-    },
-    randomNumber: {
-      min: 'Min',
-      max: 'Max',
-      count: 'Quantidade',
-      generate: 'Gerar',
-      copy: 'Copiar',
-      copied: 'Copiado!',
-    },
-    stopwatch: {
-      start: 'Iniciar',
-      stop: 'Parar',
-      reset: 'Reiniciar',
-      lap: 'Volta',
-      laps: 'Voltas',
-    },
-    countdown: {
-      hours: 'Horas',
-      minutes: 'Min',
-      seconds: 'Seg',
-      start: 'Iniciar',
-      pause: 'Pausa',
-      resume: 'Continuar',
-      reset: 'Reiniciar',
-      finished: 'O tempo acabou!',
-    },
-    pomodoro: {
-      work: 'Trabalho',
-      break: 'Pausa',
-      start: 'Iniciar',
-      pause: 'Pausa',
-      reset: 'Reiniciar',
-      sessions: 'Sessões',
     },
     wordProcessor: {
       bold: 'Negrito',
@@ -4253,24 +3603,6 @@ export const translations: Record<string, Translation> = {
       errorType: 'Escolha um arquivo PDF.',
       errorLoad: 'Não foi possível ler o PDF. Ele pode estar danificado ou protegido por senha.',
       errorSave: 'Algo deu errado ao salvar o PDF. Tente novamente.',
-    },
-    randomPicker: {
-      listMode: 'Lista',
-      coinFlip: 'Cara ou coroa',
-      placeholder: 'Escreva uma opção por linha...',
-      choose: 'Escolher',
-      flip: 'Lançar',
-      heads: 'Cara',
-      tails: 'Coroa',
-    },
-    loremIpsum: {
-      paragraphs: 'Parágrafos',
-      sentences: 'Frases',
-      words: 'Palavras',
-      count: 'Quantidade',
-      generate: 'Gerar',
-      copy: 'Copiar',
-      copied: 'Copiado!',
     },
     metronome: {
       start: 'Iniciar',
@@ -4460,12 +3792,6 @@ export const translations: Record<string, Translation> = {
       newImage: 'Nova imagem',
       download: 'Baixar',
     },
-    imageCollage: {
-      gap: 'Espaçamento',
-      images: 'imagens',
-      generate: 'Criar colagem',
-      download: 'Baixar',
-    },
     pixelCounter: {
       upload: 'Clique ou arraste uma imagem aqui',
       dimensions: 'Dimensões',
@@ -4486,6 +3812,10 @@ export const translations: Record<string, Translation> = {
       move: 'Mover',
     },
     pdfTools: {
+      tabMerge: 'Mesclar',
+      tabSign: 'Assinar',
+      tabFill: 'Preencher',
+      privacyNote: 'Tudo acontece localmente no seu navegador. O documento nunca é enviado para lugar nenhum.',
       upload: 'Clique ou arraste arquivos PDF aqui',
       files: 'arquivos',
       merge: 'Mesclar arquivos PDF',
@@ -4516,14 +3846,10 @@ export const translations: Record<string, Translation> = {
       'base64-kodare': { name: 'Codificador Base64', description: 'Codifique texto e dados para Base64 e de volta — um formato de texto para enviar dados em links, e-mails e código', hint: 'Base64 é usado para incorporar dados em URLs, e-mails e chamadas de API. Útil para depuração ou quando você precisa enviar dados binários como texto.' },
       'linjal': { name: 'Régua', description: 'Medir distâncias na tela', hint: 'Meça distâncias diretamente na sua tela em cm ou polegadas. Calibre com um cartão de crédito para medidas exatas.' },
       'enhetsomvandlare': { name: 'Conversor de unidades', description: 'Converter entre diferentes unidades de medida', hint: 'Converta rapidamente entre unidades métricas e imperiais — comprimento, peso, temperatura, velocidade e tamanho de dados.' },
-      'tidszoner': { name: 'Fusos horários', description: 'Comparar horários em diferentes fusos horários', hint: 'Veja a hora atual em múltiplas cidades simultaneamente com atualizações ao vivo. Perfeito para planejar reuniões entre fusos horários.' },
       'hash-generator': { name: 'Gerador de hash', description: 'Crie uma impressão digital (hash) de um texto ou dados — para verificar que nada foi alterado', hint: 'Verifique a integridade de arquivos ou compare checksums. Hashes são usados em segurança, Git e validação de downloads.' },
-      'losenordsgenerator': { name: 'Gerador de senhas', description: 'Criar senhas fortes e seguras', hint: 'Reutilizar senhas é um dos riscos de segurança mais comuns. Gere senhas únicas e fortes para cada serviço — diretamente no navegador sem enviar dados a lugar nenhum.' },
-      'textverktyg': { name: 'Ferramentas de texto', description: 'Contar palavras, caracteres e transformar texto', hint: 'Perfeito para contar palavras em uma redação, remover duplicatas de uma lista ou converter texto rapidamente para maiúsculas.' },
       'oversattare': { name: 'Tradutor', description: 'Traduzir texto entre diferentes idiomas', hint: 'Traduza texto entre 19 idiomas diretamente no seu navegador. Troque a direção do idioma com um clique.' },
       'ip-info': { name: 'Info IP', description: 'Mostrar seu endereço IP e informações de rede' },
       'bandbreddstest': { name: 'Teste de largura de banda', description: 'Testar a velocidade da sua conexão com a Internet', hint: 'Meça sua velocidade de download e latência com um clique. Resultados em Mbps com indicador visual e histórico.' },
-      'tangentbordstest': { name: 'Teste de teclado', description: 'Testar teclas e funções do teclado', hint: 'Verifique se todas as teclas funcionam. Mostra key, code e posição — perfeito para diagnóstico ou teste de novos teclados.' },
       'json-formaterare': { name: 'Formatador JSON', description: 'Organize e verifique JSON — o formato de dados que apps e serviços web usam para trocar informação', hint: 'APIs e arquivos de configuração usam JSON. Cole JSON bagunçado aqui para torná-lo legível, ou minifique para economizar espaço.' },
       'text-till-tal': { name: 'Texto para fala', description: 'Converter texto escrito em áudio falado' },
       'motestranskribering': { name: 'Transcritor de reuniões', description: 'Grave ou carregue uma reunião e receba-a por escrito — tudo no seu dispositivo', hint: 'Ótimo para atas, entrevistas e aulas. O áudio nunca é enviado. Dica: grave a reunião com o app de notas de voz do celular e carregue o arquivo aqui no computador.', screenReason: 'A transcrição é executada totalmente no seu navegador e exige mais memória e capacidade de processamento do que um celular consegue oferecer. Além disso, os celulares pausam o trabalho quando a tela se apaga.' },
@@ -4537,7 +3863,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC para JPG', description: 'Converter fotos de iPhone (HEIC) para JPG ou PNG', hint: 'Os iPhones guardam fotos como HEIC, que muitos computadores não conseguem abrir. Converta para JPG ou PNG — tudo localmente, nada é enviado.' },
       'metadata-tvatt': { name: 'Limpador de metadados', description: 'Ver e remover metadados ocultos (GPS, data, câmara) de imagens', hint: 'As fotos contêm frequentemente a sua localização GPS exata. Veja o que está oculto na imagem e remova tudo — localmente, nada é enviado.' },
       'passfoto': { name: 'Foto de passaporte', description: 'Crie fotos de passaporte e de identificação com as medidas exatas em mm', hint: 'Recorte, aproxime e imprima várias cópias numa folha — tudo localmente no seu navegador, nada é enviado.' },
-      'etikett-ark': { name: 'Folha de autocolantes', description: 'Disponha várias cópias do seu design numa folha A4 ou Letter', hint: 'Calcula quantas cabem e exporta um PNG pronto a imprimir em 300 DPI. Tudo funciona localmente.' },
       'batch-qr': { name: 'QR em lote', description: 'Crie muitos códigos QR de uma vez a partir de uma lista ou ficheiro CSV', hint: 'Descarregue todos como PNG. Tudo funciona localmente — nada é enviado.' },
       'svg-optimering': { name: 'Otimizador SVG', description: 'Reduza e limpe ficheiros SVG diretamente no navegador – remova metadados, comentários e código desnecessário', hint: 'Cole ou carregue um SVG e descarregue uma versão mais pequena. Tudo funciona localmente.' },
       'video-till-gif': { name: 'Vídeo para GIF', description: 'Transforme um clipe de vídeo num GIF animado – escolha início, fim, fotogramas e tamanho', hint: 'Tudo funciona localmente no navegador — o vídeo nunca é enviado.' },
@@ -4545,20 +3870,16 @@ export const translations: Record<string, Translation> = {
       'uuid-generator': { name: 'Gerador de UUID', description: 'Crie códigos de identificação únicos (UUID) que nunca se repetem — úteis para etiquetar registos e ficheiros', hint: 'Copie um ou todos de uma vez.' },
       'epoch-omvandlare': { name: 'Conversor de epoch', description: 'Converta entre uma data/hora normal e uma marca de tempo Unix (os segundos com que os computadores contam o tempo)', hint: 'Suporta segundos e milissegundos.' },
       'bas-omvandlare': { name: 'Conversor de bases', description: 'Converta números entre sistemas numéricos — binário, octal, decimal (números normais) e hexadecimal', hint: 'Escreva em qualquer campo e os outros atualizam-se ao instante.' },
-      'namnbricka': { name: 'Crachás de nome', description: 'Crie crachás de nome imprimíveis numa folha A4', hint: 'Cole os nomes, um por linha – obtenha uma folha A4 pronta a imprimir e recortar. Tudo funciona localmente.' },
       'ljudklipp': { name: 'Cortador de áudio', description: 'Corte e apare ficheiros de áudio diretamente no navegador – escolha o início e o fim e descarregue um WAV', hint: 'Ideal para encurtar uma gravação ou extrair um excerto. Nada é enviado.' },
+      'padgrid': { name: 'PadGrid', description: 'Um protótipo musical em grelha — clica nos pads para tocar loops e sobrepor sons', hint: 'Um protótipo inspirado em lançadores de clips: clica num pad para tocar um loop, noutro na mesma coluna para o trocar, ou adiciona uma coluna totalmente diferente para construir uma camada. Inclui uma visita guiada de como funciona.' },
       'streckkod': { name: 'Gerador de códigos de barras', description: 'Crie códigos de barras (CODE128, EAN, UPC e outros) e descarregue como PNG ou SVG', hint: 'Tudo funciona localmente no navegador — nada é enviado.' },
-      'pdf-signering': { name: 'Assinar PDF', description: 'Assine documentos PDF diretamente no navegador – desenhe a sua assinatura e coloque-a em qualquer página', hint: 'Tudo funciona localmente; o seu ficheiro nunca é enviado.' },
-      'fyll-i-pdf': { name: 'Preencher PDF', description: 'Preencha um formulário PDF com texto diretamente no navegador — clique onde quiser escrever', hint: 'Perfeito para candidaturas e formulários sem campos preenchíveis. Clique no documento, escreva, arraste o texto até ao lugar certo — depois guarde como um novo PDF. O ficheiro original nunca é alterado.', screenReason: 'Clicar com precisão e arrastar texto requer rato ou trackpad e bastante espaço no ecrã — não funciona bem num ecrã pequeno de telemóvel.' },
       'favicon-generator': { name: 'Gerador de favicon', description: 'Crie o pequeno ícone que aparece no separador do navegador (favicon) a partir de qualquer imagem' },
-      'bildkollage': { name: 'Colagem de imagens', description: 'Combinar várias imagens em uma colagem' },
       'pixelraknare': { name: 'Contador de pixels', description: 'Contar pixels e medir distâncias em imagens' },
       'ascii-konst': { name: 'Arte ASCII', description: 'Transforme uma imagem num desenho feito de letras e caracteres (arte ASCII)' },
       'skarfilsgenerator': { name: 'Gerador de arquivo de corte', description: 'Criar arquivos de corte para gravação a laser — desenhar linhas de corte ao redor de imagens e exportar como SVG' },
       'diff-jamforare': { name: 'Comparador Diff', description: 'Comparar dois textos e ver as diferenças destacadas' },
-      'lorem-ipsum': { name: 'Lorem Ipsum', description: 'Gere texto de preenchimento aleatório (Lorem Ipsum) para testar como fica um layout' },
       'csv-json': { name: 'CSV ↔ JSON', description: 'Converta entre CSV (tabelas de folha de cálculo) e JSON (formato de dados para apps) nos dois sentidos' },
-      'pdf-verktyg': { name: 'Ferramentas PDF', description: 'Mesclar, dividir e gerenciar arquivos PDF' },
+      'pdf-verktyg': { name: 'Ferramentas PDF', description: 'Mescle, assine e preencha arquivos PDF', hint: 'Três tarefas comuns de PDF num só lugar: combine vários arquivos num só, desenhe a sua assinatura diretamente no documento, ou clique para escrever texto num formulário. Tudo acontece localmente no seu navegador.' },
       'ocr': { name: 'OCR — Reconhecimento de texto', description: 'Extraia o texto de uma imagem ou captura de ecrã para o poder copiar e editar (OCR)' },
       'traincells': { name: 'TrainCells', description: 'Crie seu próprio jogo 2D — desenhe blocos, monte fases e jogue direto no navegador' },
       'metronom': { name: 'Metrônomo', description: 'Mantenha o ritmo com um metrônomo digital' },
@@ -4572,14 +3893,8 @@ export const translations: Record<string, Translation> = {
       'ssl-kontroll': { name: 'Verificação SSL', description: 'Verifique o certificado de segurança (SSL) de um site — se é válido e quando expira' },
       'http-headers': { name: 'Cabeçalhos HTTP', description: 'Veja os cabeçalhos de resposta ocultos (HTTP headers) que um site devolve — a informação técnica por trás de uma página' },
       'useragent-info': { name: 'Info User Agent', description: 'Ver informações sobre seu navegador e dispositivo' },
-      'miniraknare': { name: 'Calculadora', description: 'Uma calculadora simples para cálculos rápidos' },
       'procent-raknare': { name: 'Calculadora de porcentagem', description: 'Calcular porcentagens, aumentos, diminuições e proporções' },
-      'slumptalsgenerator': { name: 'Gerador de números aleatórios', description: 'Gerar números aleatórios em qualquer intervalo' },
-      'pomodoro-timer': { name: 'Temporizador Pomodoro', description: 'Concentre-se com a técnica Pomodoro — 25 min trabalho, 5 min pausa' },
-      'nedrakningstimer': { name: 'Temporizador regressivo', description: 'Definir uma contagem regressiva para qualquer hora' },
-      'stoppur': { name: 'Cronômetro', description: 'Medir tempo com voltas e parciais' },
       'ordbehandlare': { name: 'Processador de texto', description: 'Escreva e formate documentos direto no navegador — títulos, listas, links e mais, exporte para PDF ou Word', hint: 'Uma ferramenta de escrita para redações, relatórios e lições de casa. Seu documento é salvo automaticamente no navegador e nunca sai do seu computador. Exporte como PDF (impressão) ou um arquivo Word real (.docx).', screenReason: 'Escrever e formatar documentos mais longos exige teclado e espaço suficiente na tela para a barra de ferramentas — não funciona bem numa tela pequena de celular.' },
-      'slumpmassigt-val': { name: 'Seletor aleatório', description: 'Deixe o acaso decidir — listas, roletas ou cara ou coroa' },
     },
   },
 }

@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.28.1',
+    date: '2026-09-15',
+    title: {
+      sv: 'Tydligare Kod & Data-verktyg + mobilanpassning för PadGrid',
+      en: 'Clearer Code & Data tools + mobile fix for PadGrid',
+      es: 'Herramientas de Código y Datos más claras + arreglo móvil para PadGrid',
+      fr: 'Outils Code et Données plus clairs + correctif mobile pour PadGrid',
+      de: 'Klarere Code & Daten-Werkzeuge + Mobil-Fix für PadGrid',
+      pt: 'Ferramentas de Código e Dados mais claras + correção móvel para o PadGrid',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Kod & Data-verktygen (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Bas-omvandlare, Kodminifierare, CSS Gradient) har nu tydligare förklaringar direkt i verktyget — konkreta exempel på vad t.ex. en hash eller ett UUID faktiskt är och när man skulle använda det, inte bara vad verktyget heter.',
+          en: 'Code & Data tools (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Base Converter, Code Minifier, CSS Gradient) now have clearer explanations right inside the tool — concrete examples of what a hash or a UUID actually is and when you\'d use one, not just the tool\'s name.',
+          es: 'Las herramientas de Código y Datos (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Conversor de bases, Minificador de código, Gradiente CSS) ahora tienen explicaciones más claras dentro de la propia herramienta — ejemplos concretos de qué es realmente un hash o un UUID y cuándo usarlo, no solo el nombre de la herramienta.',
+          fr: 'Les outils Code et Données (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Convertisseur de bases, Minifieur de code, Dégradé CSS) ont maintenant des explications plus claires directement dans l\'outil — des exemples concrets de ce qu\'est réellement un hash ou un UUID et quand l\'utiliser, pas seulement le nom de l\'outil.',
+          de: 'Die Code & Daten-Werkzeuge (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Basis-Umrechner, Code-Minifizierer, CSS-Gradient) haben jetzt klarere Erklärungen direkt im Werkzeug — konkrete Beispiele, was ein Hash oder eine UUID eigentlich ist und wann man sie braucht, nicht nur den Namen des Werkzeugs.',
+          pt: 'As ferramentas de Código e Dados (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Conversor de bases, Minificador de código, Gradiente CSS) têm agora explicações mais claras diretamente na ferramenta — exemplos concretos do que é realmente um hash ou um UUID e quando usá-lo, não apenas o nome da ferramenta.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'PadGrid: pekpilarna i den guidade genomgången kunde peka fel på smala mobilskärmar. PadGrid visar nu en tydlig "behöver mer plats"-vy under 700px bredd och föreslår att vrida telefonen till liggande läge.',
+          en: 'PadGrid: the guided walkthrough\'s pointer arrows could point at the wrong thing on narrow phone screens. PadGrid now shows a clear "needs more room" screen below 700px width and suggests rotating the phone to landscape.',
+          es: 'PadGrid: las flechas de la guía podían señalar algo incorrecto en pantallas de móvil estrechas. PadGrid ahora muestra una pantalla clara de "necesita más espacio" por debajo de 700px de ancho y sugiere girar el teléfono a horizontal.',
+          fr: 'PadGrid : les flèches de la visite guidée pouvaient pointer sur la mauvaise chose sur les écrans de téléphone étroits. PadGrid affiche désormais un écran « a besoin de plus de place » clair en dessous de 700px de large et suggère de faire pivoter le téléphone en mode paysage.',
+          de: 'PadGrid: Die Pfeile der geführten Tour konnten auf schmalen Handybildschirmen auf das Falsche zeigen. PadGrid zeigt jetzt unter 700px Breite einen klaren „braucht mehr Platz"-Bildschirm und schlägt vor, das Handy ins Querformat zu drehen.',
+          pt: 'PadGrid: as setas da visita guiada podiam apontar para a coisa errada em ecrãs de telemóvel estreitos. O PadGrid mostra agora um ecrã claro de "precisa de mais espaço" abaixo dos 700px de largura e sugere rodar o telemóvel para horizontal.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.28.0',
     date: '2026-09-15',
     title: {

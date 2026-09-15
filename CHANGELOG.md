@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.28.1 — 2026-09-15 — Tydligare Kod & Data-verktyg + mobilanpassning för PadGrid
+
+### Ändrat
+
+- **Kod & Data-verktygen har nu tydligare förklaringar direkt i verktyget** (JSON, Base64, Hash, Regex, Cron, JWT, UUID, Epoch, Bas-omvandlare, Kodminifierare, CSS Gradient) — konkreta exempel på vad t.ex. en hash eller ett UUID faktiskt är och när man skulle använda det.
+
+### Fixat
+
+- **PadGrid: pekpilarna i den guidade genomgången kunde peka fel på smala mobilskärmar.** Visar nu en tydlig "behöver mer plats"-vy under 700px bredd och föreslår att vrida telefonen till liggande läge.
+
 ## 0.28.0 — 2026-09-15 — Stor städning av verktygslistan + nytt musikverktyg PadGrid
 
 ### Nytt

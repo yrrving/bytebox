@@ -51,7 +51,7 @@ export default function Layout() {
             href="https://github.com/yrrving/bytebox"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white no-underline"
+            className="flex min-h-6 items-center gap-1.5 py-0.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white no-underline"
           >
             <Github className="h-4 w-4" />
             GitHub

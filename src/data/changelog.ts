@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.32.0',
+    date: '2026-09-23',
+    title: {
+      sv: 'Nya kategorier och läsbar text i TrainCells',
+      en: 'New categories and readable text in TrainCells',
+      es: 'Nuevas categorías y texto legible en TrainCells',
+      fr: 'Nouvelles catégories et texte lisible dans TrainCells',
+      de: 'Neue Kategorien und lesbarer Text in TrainCells',
+      pt: 'Novas categorias e texto legível no TrainCells',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Kategorierna är omgjorda efter vad man gör, inte efter filtyp. Tidigare låg tolv verktyg under Bild & Media och ett enda under Produktivitet. Nu: Bild & foto, Form & tillverkning, Text & dokument, Ljud & musik och Spel. "Nytt"-etiketten är nollställd — efter städningen är inget verktyg nyare än något annat.',
+          en: 'The categories are reorganised by what you do, not by file type. Twelve tools used to sit under Images & Media and a single one under Productivity. Now: Images & photos, Design & making, Text & documents, Audio & music, and Games. The "New" badge is cleared — after the cleanup no tool is newer than another.',
+          es: 'Las categorías se han reorganizado por lo que haces, no por tipo de archivo. Antes doce herramientas estaban en Imagen y Medios y solo una en Productividad. Ahora: Imágenes y fotos, Diseño y fabricación, Texto y documentos, Audio y música, y Juegos. La etiqueta "Nuevo" se ha vaciado — tras la limpieza ninguna herramienta es más nueva que otra.',
+          fr: 'Les catégories sont réorganisées selon ce que l’on fait, pas selon le type de fichier. Douze outils se trouvaient auparavant dans Image et Médias et un seul dans Productivité. Désormais : Images et photos, Design et fabrication, Texte et documents, Audio et musique, et Jeux. Le badge « Nouveau » est vidé — après le nettoyage, aucun outil n’est plus récent qu’un autre.',
+          de: 'Die Kategorien sind danach geordnet, was man tut, nicht nach Dateityp. Zuvor lagen zwölf Werkzeuge unter Bild & Medien und ein einziges unter Produktivität. Jetzt: Bilder & Fotos, Form & Herstellung, Text & Dokumente, Audio & Musik und Spiele. Das „Neu"-Abzeichen ist geleert — nach dem Aufräumen ist kein Werkzeug neuer als ein anderes.',
+          pt: 'As categorias foram reorganizadas pelo que se faz, não por tipo de ficheiro. Antes, doze ferramentas estavam em Imagem e Multimédia e apenas uma em Produtividade. Agora: Imagens e fotografias, Design e fabrico, Texto e documentos, Áudio e música, e Jogos. O selo "Novo" foi esvaziado — depois da limpeza, nenhuma ferramenta é mais recente do que outra.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'TrainCells stegvisning gick knappt att läsa. Stegen man inte nått än — Karaktär, Brickor, Bana, Spela — var nedtonade till 1,78:1 i kontrast, i praktiken osynliga. De ligger nu på 4,76:1 och är fortfarande tydligt dämpade. Knappfärgerna i TrainCells och PadGrid nådde inte heller kontrastkravet med vit text och är mörkade ett steg. GitHub-länken i sidfoten var för liten att träffa på telefon.',
+          en: 'The step navigation in TrainCells was barely readable. Steps you had not reached yet — Character, Tiles, Level, Play — were dimmed to a contrast of 1.78:1, effectively invisible. They now sit at 4.76:1 and are still clearly muted. The button colours in TrainCells and PadGrid also fell short with white text and have been darkened a shade. The GitHub link in the footer was too small to hit on a phone.',
+          es: 'La navegación por pasos de TrainCells apenas se leía. Los pasos no alcanzados — Personaje, Fichas, Nivel, Jugar — estaban atenuados a un contraste de 1,78:1, invisibles en la práctica. Ahora están en 4,76:1 y siguen claramente atenuados. Los colores de botón de TrainCells y PadGrid tampoco cumplían con texto blanco y se han oscurecido un tono. El enlace de GitHub del pie era demasiado pequeño para pulsarlo en el móvil.',
+          fr: 'La navigation par étapes de TrainCells était à peine lisible. Les étapes non atteintes — Personnage, Tuiles, Niveau, Jouer — étaient atténuées à un contraste de 1,78:1, invisibles en pratique. Elles sont désormais à 4,76:1 tout en restant nettement atténuées. Les couleurs de bouton de TrainCells et PadGrid ne passaient pas non plus avec du texte blanc et ont été assombries d’un ton. Le lien GitHub en pied de page était trop petit pour être touché sur un téléphone.',
+          de: 'Die Schrittanzeige in TrainCells war kaum lesbar. Noch nicht erreichte Schritte — Figur, Kacheln, Level, Spielen — waren auf einen Kontrast von 1,78:1 abgedunkelt, praktisch unsichtbar. Sie liegen jetzt bei 4,76:1 und sind weiterhin deutlich gedämpft. Auch die Button-Farben in TrainCells und PadGrid erreichten mit weißem Text die Anforderung nicht und wurden eine Stufe abgedunkelt. Der GitHub-Link in der Fußzeile war auf dem Telefon zu klein zum Treffen.',
+          pt: 'A navegação por passos do TrainCells mal se lia. Os passos ainda não alcançados — Personagem, Peças, Nível, Jogar — estavam esbatidos para um contraste de 1,78:1, invisíveis na prática. Estão agora em 4,76:1 e continuam claramente esbatidos. As cores dos botões do TrainCells e do PadGrid também não cumpriam com texto branco e foram escurecidas um tom. A ligação do GitHub no rodapé era pequena demais para acertar no telemóvel.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.31.0',
     date: '2026-09-23',
     title: {

@@ -28,7 +28,7 @@ import {
 // dator = fungerar bäst på (och rekommenderas för) en dator.
 export type MinScreen = 'mobil' | 'surfplatta' | 'dator'
 export type ConnectionType = 'online' | 'offline'
-export type ToolCategory = 'bild' | 'text' | 'ljud' | 'produktivitet' | 'spelutveckling'
+export type ToolCategory = 'bild' | 'form' | 'text' | 'ljud' | 'spel'
 export type Category = 'alla' | 'online' | 'offline'
 
 export interface Tool {
@@ -41,16 +41,14 @@ export interface Tool {
 }
 
 /**
- * De senaste nya/ändrade verktygen, nyast först. Styr "Nytt"-etiketten på
- * verktygskorten (håll listan till sex stycken) — startsidans "Nytt"-sektion
- * visar bara de tre första (se Home.tsx). Lägg nya verktyg längst fram.
+ * De senaste nya verktygen, nyast först. Styr "Nytt"-etiketten på korten och
+ * startsidans "Nytt"-sektion, som döljs helt när listan är tom.
+ *
+ * Tom sedan 0.31.0: efter städningen och omskrivningen är inget verktyg nyare
+ * än något annat. Lägg in id:t här när något faktiskt tillkommer, nyast först,
+ * och håll listan kort.
  */
-export const latestToolIds: string[] = [
-  'padgrid',
-  'pdf-verktyg',
-  'ordbehandlare',
-  'video-till-gif',
-]
+export const latestToolIds: string[] = []
 
 /** Är verktyget ett av de senaste (visas med "Nytt"-etikett)? */
 export function isNewTool(id: string): boolean {
@@ -59,10 +57,10 @@ export function isNewTool(id: string): boolean {
 
 export const categoryOrder: ToolCategory[] = [
   'bild',
+  'form',
   'text',
   'ljud',
-  'produktivitet',
-  'spelutveckling',
+  'spel',
 ]
 
 export const tools: Tool[] = [
@@ -89,7 +87,7 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: Image,
-    category: 'bild',
+    category: 'form',
   },
   {
     id: 'bildkomprimering',
@@ -105,7 +103,7 @@ export const tools: Tool[] = [
     minScreen: 'mobil',
     connection: 'offline',
     icon: Palette,
-    category: 'bild',
+    category: 'form',
   },
   {
     id: 'mediakonverterare',
@@ -113,7 +111,7 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: FileVideo,
-    category: 'bild',
+    category: 'ljud',
   },
   {
     id: 'brodyrkortsvisare',
@@ -121,7 +119,7 @@ export const tools: Tool[] = [
     minScreen: 'surfplatta',
     connection: 'offline',
     icon: Scissors,
-    category: 'bild',
+    category: 'form',
   },
   {
     id: 'bildbeskärare',
@@ -153,7 +151,7 @@ export const tools: Tool[] = [
     minScreen: 'dator',
     connection: 'offline',
     icon: Crosshair,
-    category: 'bild',
+    category: 'form',
   },
   {
     id: 'video-till-gif',
@@ -237,7 +235,7 @@ export const tools: Tool[] = [
     minScreen: 'mobil',
     connection: 'offline',
     icon: QrCode,
-    category: 'produktivitet',
+    category: 'form',
   },
 
   // ── Spelutveckling ────────────────────────────────────────
@@ -247,7 +245,7 @@ export const tools: Tool[] = [
     minScreen: 'dator',
     connection: 'offline',
     icon: Gamepad2,
-    category: 'spelutveckling',
+    category: 'spel',
   },
 ]
 

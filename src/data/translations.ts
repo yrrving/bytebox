@@ -68,10 +68,10 @@ export interface Translation {
   installApp?: string
   categories?: {
     bild: string
+    form: string
     text: string
     ljud: string
-    produktivitet: string
-    spelutveckling: string
+    spel: string
   }
   qrCode?: {
     tabSingle: string
@@ -306,11 +306,11 @@ export const translations: Record<string, Translation> = {
     allCategories: 'Alla kategorier',
     installApp: 'Installera app',
     categories: {
-      bild: 'Bild & Media',
-      text: 'Text & Dokument',
-      ljud: 'Ljud & Tal',
-      produktivitet: 'Produktivitet & Verktyg',
-      spelutveckling: 'Spelutveckling',
+      bild: 'Bild & foto',
+      form: 'Form & tillverkning',
+      text: 'Text & dokument',
+      ljud: 'Ljud & musik',
+      spel: 'Spel',
     },
     qrCode: {
       tabSingle: 'En kod',
@@ -554,11 +554,11 @@ export const translations: Record<string, Translation> = {
     allCategories: 'All categories',
     installApp: 'Install app',
     categories: {
-      bild: 'Image & Media',
-      text: 'Text & Documents',
-      ljud: 'Audio & Speech',
-      produktivitet: 'Productivity & Tools',
-      spelutveckling: 'Game Development',
+      bild: 'Images & photos',
+      form: 'Design & making',
+      text: 'Text & documents',
+      ljud: 'Audio & music',
+      spel: 'Games',
     },
     qrCode: {
       tabSingle: 'One code',
@@ -802,11 +802,11 @@ export const translations: Record<string, Translation> = {
     allCategories: 'Todas las categorías',
     installApp: 'Instalar app',
     categories: {
-      bild: 'Imagen y Medios',
-      text: 'Texto y Documentos',
-      ljud: 'Audio y Voz',
-      produktivitet: 'Productividad y Herramientas',
-      spelutveckling: 'Desarrollo de juegos',
+      bild: 'Imágenes y fotos',
+      form: 'Diseño y fabricación',
+      text: 'Texto y documentos',
+      ljud: 'Audio y música',
+      spel: 'Juegos',
     },
     qrCode: {
       tabSingle: 'Un código',
@@ -1050,11 +1050,11 @@ export const translations: Record<string, Translation> = {
     allCategories: 'Toutes les catégories',
     installApp: 'Installer l\'app',
     categories: {
-      bild: 'Image et Médias',
-      text: 'Texte et Documents',
-      ljud: 'Audio et Parole',
-      produktivitet: 'Productivité et Outils',
-      spelutveckling: 'Développement de jeux',
+      bild: 'Images et photos',
+      form: 'Design et fabrication',
+      text: 'Texte et documents',
+      ljud: 'Audio et musique',
+      spel: 'Jeux',
     },
     qrCode: {
       tabSingle: 'Un code',
@@ -1298,11 +1298,11 @@ export const translations: Record<string, Translation> = {
     allCategories: 'Alle Kategorien',
     installApp: 'App installieren',
     categories: {
-      bild: 'Bild & Medien',
+      bild: 'Bilder & Fotos',
+      form: 'Form & Herstellung',
       text: 'Text & Dokumente',
-      ljud: 'Audio & Sprache',
-      produktivitet: 'Produktivität & Werkzeuge',
-      spelutveckling: 'Spieleentwicklung',
+      ljud: 'Audio & Musik',
+      spel: 'Spiele',
     },
     qrCode: {
       tabSingle: 'Ein Code',
@@ -1546,11 +1546,11 @@ export const translations: Record<string, Translation> = {
     allCategories: 'Todas as categorias',
     installApp: 'Instalar app',
     categories: {
-      bild: 'Imagem e Midia',
-      text: 'Texto e Documentos',
-      ljud: 'Audio e Fala',
-      produktivitet: 'Produtividade e Ferramentas',
-      spelutveckling: 'Desenvolvimento de jogos',
+      bild: 'Imagens e fotografias',
+      form: 'Design e fabrico',
+      text: 'Texto e documentos',
+      ljud: 'Áudio e música',
+      spel: 'Jogos',
     },
     qrCode: {
       tabSingle: 'Um código',

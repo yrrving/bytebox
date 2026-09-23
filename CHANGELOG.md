@@ -2,6 +2,23 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.32.0 — 2026-09-23 — Nya kategorier och läsbar text i TrainCells
+
+### Ändrat
+
+- **Kategorierna är omgjorda efter vad man gör, inte efter filtyp.** Tidigare låg tolv verktyg under Bild & Media och ett enda under Produktivitet. Nu: Bild & foto (7), Form & tillverkning (5), Text & dokument (4), Ljud & musik (4) och Spel (1). Färgpalett, vektorverktyget, brodyrmönster, skärfiler och QR-koder hör ihop — de handlar alla om att göra något som ska tillverkas.
+- **"Nytt"-etiketten är nollställd.** Efter städningen och omskrivningen är inget verktyg nyare än något annat. Sektionen visas igen när något faktiskt tillkommer.
+
+### Fixat
+
+- **TrainCells stegvisning gick knappt att läsa.** Stegen man inte nått än — Karaktär, Brickor, Bana, Spela — var nedtonade till en kontrast på 1,78:1, i praktiken osynliga. De ligger nu på 4,76:1 och är fortfarande tydligt dämpade.
+- **Knappfärgerna i TrainCells och PadGrid nådde inte kontrastkravet** med vit text. Båda är mörkade ett steg med samma färgton behållen.
+- **GitHub-länken i sidfoten var för liten att träffa på telefon** — 20 pixlar hög mot kravet 24.
+
+### Nytt
+
+- **Verktygen som säger att de fungerar på telefon testas nu på telefonmått.** Ingen sida går utanför skärmen, och alla träffytor når 24 pixlar. Det ersätter inte att prova på en riktig telefon, men fångar de två vanligaste felen.
+
 ## 0.31.0 — 2026-09-23 — Verktygen förklarar sig själva, och nytt utseende
 
 ### Ändrat

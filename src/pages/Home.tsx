@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, ArrowLeft, Image, FileText, Volume2, Zap, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
+import { Search, ArrowLeft, Image, Shapes, FileText, Volume2, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
 import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
 import { tools, categoryOrder, runsOn, latestToolIds, type Category, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
@@ -8,10 +8,10 @@ import { useLanguage } from '../context/LanguageContext'
 
 const categoryIcons: Record<ToolCategory, LucideIcon> = {
   bild: Image,
+  form: Shapes,
   text: FileText,
   ljud: Volume2,
-  produktivitet: Zap,
-  spelutveckling: Gamepad2,
+  spel: Gamepad2,
 }
 
 const deviceIcons: Record<MinScreen, LucideIcon> = {
@@ -31,24 +31,19 @@ export default function Home() {
   const selectedCategory = (searchParams.get('cat') as ToolCategory) || null
   const { t } = useLanguage()
 
-  // De tre senaste nya verktygen, nyast först, för startsidans "Nytt"-sektion.
-  // latestToolIds själv styr även "Nytt"-etiketten på verktygskorten (se
-  // isNewTool i data/tools.ts) och hålls längre än så — bara visningen här
-  // är begränsad till tre.
+  // Startsidans "Nytt"-sektion, högst tre verktyg. Är latestToolIds tom visas
+  // sektionen inte alls — se kommentaren vid listan i data/tools.ts.
   const newTools = latestToolIds
     .map((id) => tools.find((tool) => tool.id === id))
     .filter((tool): tool is Tool => Boolean(tool))
     .slice(0, 3)
 
-  const categoryNames = t.categories ?? {
-    bild: 'Bild & Media',
-    text: 'Text & Dokument',
-    ljud: 'Ljud & Tal',
-    kod: 'Kod & Data',
-    natverk: 'Nätverk & Säkerhet',
-    berakning: 'Beräkning & Konvertering',
-    produktivitet: 'Produktivitet & Verktyg',
-    spelutveckling: 'Spelutveckling',
+  const categoryNames: Record<ToolCategory, string> = t.categories ?? {
+    bild: 'Bild & foto',
+    form: 'Form & tillverkning',
+    text: 'Text & dokument',
+    ljud: 'Ljud & musik',
+    spel: 'Spel',
   }
 
   const allCategoriesLabel = t.allCategories ?? 'Alla kategorier'

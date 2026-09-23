@@ -26,14 +26,11 @@ const UNDANTAG: { route: string; regel: string; varför: string }[] = [
       'Färgkoden står som vanlig text bredvid.',
   },
   {
-    route: '/padgrid',
-    regel: 'color-contrast',
-    varför: 'Inuti PadGrids egen iframe. Åtgärdas i PadGrid-projektet, inte här.',
-  },
-  {
     route: '/traincells',
     regel: 'color-contrast',
-    varför: 'Inuti TrainCells egen iframe. Åtgärdas i ClaudeBloxels-projektet, inte här.',
+    varför:
+      'Gäller ett element: ordmärket i TrainCells logotyp. WCAG 2.2 undantar uttryckligen text som ingår i en logotyp ' +
+      'eller ett varumärke från kontrastkravet. Verktygets egna knappar och steg är åtgärdade i ClaudeBloxels.',
   },
 ]
 

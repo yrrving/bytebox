@@ -43,7 +43,7 @@ export default function Journal() {
           >
             <div className="mb-4 flex items-baseline justify-between">
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-                {entry.version} — {entry.title[language] ?? entry.title.en}
+                {entry.version}. {entry.title[language] ?? entry.title.en}
               </h2>
               <time className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{entry.date}</time>
             </div>

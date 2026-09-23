@@ -156,7 +156,7 @@ export default function MetadataCleaner() {
               </div>
             ) : (
               <p className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 text-sm text-gray-600 dark:text-gray-300">
-                {m?.none ?? 'Ingen metadata hittades i den här bilden — den är redan ren.'}
+                {m?.none ?? 'Ingen metadata hittades i den här bilden, den är redan ren.'}
               </p>
             )}
 
@@ -171,7 +171,7 @@ export default function MetadataCleaner() {
             ) : (
               <div className="space-y-2">
                 <p className="flex items-center gap-2 text-sm font-medium text-green-700 dark:text-green-400">
-                  <ShieldCheck className="h-4 w-4" />{m?.cleaned ?? 'Metadata borttagen — ladda ner den rena bilden.'}
+                  <ShieldCheck className="h-4 w-4" />{m?.cleaned ?? 'Metadata borttagen. Ladda ner den rena bilden.'}
                 </p>
                 <button
                   onClick={download}

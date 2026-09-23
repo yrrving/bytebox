@@ -8,7 +8,7 @@ export interface QrRow {
 
 /**
  * En rad per QR-kod. Innehåller raden ett kommatecken tolkas det som
- * `innehåll, etikett` — etiketten används som filnamn och bildtext.
+ * `innehåll, etikett`. Etiketten används som filnamn och bildtext.
  * Tomma rader och rader utan innehåll hoppas över.
  */
 export function parseLines(text: string): QrRow[] {

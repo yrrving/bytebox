@@ -8,6 +8,7 @@ import { parseEmbroidery, type EmbroideryData } from '../../utils/embroidery'
 export default function EmbroideryViewer() {
   const { t } = useLanguage()
   const translation = t.tools['brodyrkortsvisare']
+  const ev = t.embroideryViewer
 
   const fileRef = useRef<HTMLInputElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -122,7 +123,9 @@ export default function EmbroideryViewer() {
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           Klicka eller dra hit en brodyrifil
         </p>
-        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">PES, DST, JEF</p>
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">
+          {ev?.formats ?? 'PES (Brother, Babylock, Bernina) · DST (Tajima, och de flesta industrimaskiner) · JEF (Janome, Elna)'}
+        </p>
         <input
           ref={fileRef}
           type="file"

@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef } from 'react'
  * och städas automatiskt när verktyget lämnas.
  *
  * Returnerar en `createUrl` som ersätter `URL.createObjectURL` rakt av, plus en
- * `releaseUrls` för att släppa allt i förtid — t.ex. när användaren laddar upp
+ * `releaseUrls` för att släppa allt i förtid. T.ex. när användaren laddar upp
  * en ny fil och de gamla förhandsvisningarna inte behövs längre.
  *
  * För nedladdningar, använd `downloadBlob`. För att läsa in en bild, använd

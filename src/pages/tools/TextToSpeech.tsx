@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
-import { Play, Square, Pause } from 'lucide-react'
+import { Play, Square, Pause, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
-import ExternalNotice from '../../components/ExternalNotice'
+import ErrorNotice from '../../components/ErrorNotice'
 
 export default function TextToSpeech() {
   const { t } = useLanguage()
@@ -20,7 +20,11 @@ export default function TextToSpeech() {
 
   useEffect(() => {
     const loadVoices = () => {
-      const v = speechSynthesis.getVoices()
+      // Bara röster som körs på enheten. Chrome och Edge erbjuder även
+      // moln-röster, och väljer man en sådan skickas texten till Google eller
+      // Microsoft för att läsas upp. Genom att sortera bort dem stannar allt
+      // på datorn, och verktyget behöver ingen varning.
+      const v = speechSynthesis.getVoices().filter((voice) => voice.localService)
       setVoices(v)
       if (v.length > 0) {
         const def = v.find((voice) => voice.default) || v[0]
@@ -79,10 +83,14 @@ export default function TextToSpeech() {
         )}
       </div>
 
-      <ExternalNotice
-        service={t.privacy?.speechService ?? 'webbläsarens taltjänst'}
-        warning={t.privacy?.ttsNote ?? 'Uppläsningen görs av din webbläsares röstmotor. I vissa webbläsare kan din text skickas till en molntjänst för vissa röster. Bytebox sparar ingenting själv.'}
-      />
+      <div className="flex items-start gap-2 rounded-lg border border-green-200 dark:border-green-900 hc:border-white bg-green-50 dark:bg-green-950/30 hc:bg-black p-3 text-sm text-green-800 dark:text-green-300 hc:text-white">
+        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
+        <span>{tts?.localOnly ?? 'Bara röster som finns i din dator visas här. Texten läses upp på enheten och skickas aldrig någonstans.'}</span>
+      </div>
+
+      {voices.length === 0 && (
+        <ErrorNotice message={tts?.noVoices ?? 'Din enhet verkar sakna inbyggda röster. I Windows och macOS läggs de till under systeminställningarna för tillgänglighet eller språk.'} />
+      )}
 
       {/* Text input */}
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4">

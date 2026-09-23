@@ -1,5 +1,5 @@
 // Parsrar för broderiformaten PES, DST och JEF.
-// Rena funktioner utan DOM-beroenden — se embroidery.test.ts.
+// Rena funktioner utan DOM-beroenden. Se embroidery.test.ts.
 
 export interface Stitch {
   x: number

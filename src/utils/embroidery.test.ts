@@ -4,7 +4,7 @@ import { parseEmbroidery } from './embroidery'
 /**
  * Karaktäriseringstester: de låser fast hur parsrarna beter sig i dag, så att
  * en framtida ändring inte tyst flyttar stygn. De är INTE en validering mot
- * formatspecifikationerna — det kräver riktiga broderifiler att jämföra mot.
+ * formatspecifikationerna, det kräver riktiga broderifiler att jämföra mot.
  */
 
 /** Bygger en DST-fil: 512 byte header + treByte-poster + slutmarkör. */
@@ -20,7 +20,7 @@ function dst(records: number[][]): ArrayBuffer {
 const NORMAL = 0x03 // nettoförflyttning 0 från byte 3
 const COLOR_CHANGE = 0xc3
 
-describe('parseEmbroidery — routing', () => {
+describe('parseEmbroidery, routing', () => {
   it('väljer parser på filändelse, skiftlägesokänsligt', () => {
     const file = dst([[0x01, 0x00, NORMAL]])
     expect(parseEmbroidery(file, 'design.dst')).not.toBeNull()
@@ -53,7 +53,7 @@ describe('DST', () => {
       ]),
       'x.dst',
     )!
-    // Ackumulerat: 1, 10, 13, 40 — sedan normaliserat mot minsta värdet (1).
+    // Ackumulerat: 1, 10, 13, 40. Sedan normaliserat mot minsta värdet (1).
     expect(d.stitches.map((s) => s.x)).toEqual([0, 9, 12, 39])
   })
 

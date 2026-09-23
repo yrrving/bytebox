@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Wifi, WifiOff, Monitor, Smartphone, Tablet } from 'lucide-react'
+import { Monitor, Smartphone, Tablet } from 'lucide-react'
 import { isNewTool, type Tool, type MinScreen } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -30,19 +30,6 @@ export default function ToolCard({ tool }: ToolCardProps) {
           <Icon className="h-5 w-5" />
         </div>
         <div className="flex gap-1.5">
-          <span
-            className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${
-              tool.connection === 'online'
-                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 hc:bg-white hc:text-black'
-                : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 hc:bg-gray-900 hc:text-white hc:border hc:border-white'
-            }`}
-          >
-            {tool.connection === 'online'
-              ? <Wifi className="h-3 w-3" />
-              : <WifiOff className="h-3 w-3" />
-            }
-            {t.connection[tool.connection]}
-          </span>
           <span
             className="flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-2 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-300 hc:text-white"
           >

@@ -201,7 +201,7 @@ export const tools: Tool[] = [
     id: 'text-till-tal',
     route: '/text-till-tal',
     minScreen: 'mobil',
-    connection: 'online',
+    connection: 'offline',
     icon: Speech,
     category: 'ljud',
   },

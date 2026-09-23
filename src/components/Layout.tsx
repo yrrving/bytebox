@@ -46,7 +46,7 @@ export default function Layout() {
       </main>
       <footer className="border-t border-gray-200 dark:border-gray-700 hc:border-white print:hidden">
         <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300 hc:text-white">
-          <span>Bytebox v{__APP_VERSION__} — by yrrving</span>
+          <span>Bytebox v{__APP_VERSION__}. By yrrving</span>
           <a
             href="https://github.com/yrrving/bytebox"
             target="_blank"

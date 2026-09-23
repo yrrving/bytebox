@@ -4,7 +4,7 @@ import { tools } from './tools'
 
 /**
  * Alla nycklar i Translation är optional, så en översättning som saknas i fem
- * språk syns inte — sidan renderar bara den svenska fallbacken. De här testerna
+ * språk syns inte. Sidan renderar bara den svenska fallbacken. De här testerna
  * gör glidningen synlig i stället för tyst.
  */
 

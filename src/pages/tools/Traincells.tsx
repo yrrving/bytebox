@@ -42,7 +42,7 @@ export default function Traincells() {
           </button>
           <a
             href={TRAINCELLS_URL}
-            title="Lämnar ByteBox helt och visar bara TrainCells på sin egen adress — bra att peka en iPad i skärmlåst kioskläge mot."
+            title="Lämnar ByteBox helt och visar bara TrainCells på sin egen adress. Bra att peka en iPad i skärmlåst kioskläge mot."
             className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-300 hc:text-white transition-colors hover:text-blue-700 dark:hover:text-blue-300"
           >
             <Expand className="h-4 w-4" />

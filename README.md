@@ -7,20 +7,20 @@ Gratis verktyg för digitalt skapande, som körs direkt i webbläsaren.
 ## Varför
 
 Mycket av det man behöver för att skapa något digitalt går att bygga själv, med
-tillräcklig kunskap. Men den som inte har den kunskapen får betala någon annan —
-en prenumeration för att slå ihop två PDF-filer, en uppladdning till en okänd
+tillräcklig kunskap. Men den som inte har den kunskapen får betala någon annan.
+En prenumeration för att slå ihop två PDF-filer, en uppladdning till en okänd
 server för att ta bort en bakgrund, ett konto för att göra om en bild.
 
 ByteBox finns för att den kunskapen ska vara omsatt i något användbart, och
-gratis. Verktygen här löser vanliga problem i eget skapande — bilder, ljud,
-video, text, spel — utan att kosta något, kräva inloggning eller begära något i
-utbyte.
+gratis. Verktygen här löser vanliga problem i eget skapande med bilder, ljud,
+video, text och spel, utan att kosta något, kräva inloggning eller begära något
+i utbyte.
 
 ## Hur det fungerar
 
 **Allt körs på din enhet.** Bilden du beskär, ljudet du klipper och dokumentet du
-skriver lämnar aldrig datorn. Det är inte ett löfte om hur vi hanterar dina filer
-— de skickas helt enkelt aldrig någonstans.
+skriver lämnar aldrig datorn. Det är inte ett löfte om hur vi hanterar dina
+filer, de skickas helt enkelt aldrig någonstans.
 
 **Ingen spårning.** Inga analysverktyg, inga kakor för besöksmätning, ingen
 statistik om vad du gör här.
@@ -65,6 +65,6 @@ Tillgänglighet granskas automatiskt mot WCAG 2.2 AA i `npm run e2e`.
 
 ## Licens
 
-[MIT](LICENSE) — använd, ändra och bygg vidare fritt, för vad du vill. Det enda
+[MIT](LICENSE). Använd, ändra och bygg vidare fritt, för vad du vill. Det enda
 som krävs är att upphovsrättsraden följer med. Det finns ingen garanti och inget
 supportåtagande.

@@ -241,7 +241,7 @@ export default function VideoToGif() {
 
             <p className={`text-xs ${tooManyFrames ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-300'}`}>
               {frameCount} bildrutor · {width}×{outHeight} px
-              {tooManyFrames && ` — för många (max ${MAX_FRAMES})`}
+              {tooManyFrames && `, för många (max ${MAX_FRAMES})`}
             </p>
 
             <div className="flex flex-wrap gap-2">

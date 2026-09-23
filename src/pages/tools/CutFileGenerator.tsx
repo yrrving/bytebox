@@ -77,7 +77,7 @@ export default function CutFileGenerator() {
   const [drawStart, setDrawStart] = useState({ x: 0, y: 0 })
   const [currentShape, setCurrentShape] = useState<Shape | null>(null)
   const [includeBackground, setIncludeBackground] = useState(false)
-  // Move tool state — use refs to avoid stale closures during drag
+  // Move tool state. Use refs to avoid stale closures during drag
   const moveShapeIdxRef = useRef<number | null>(null)
   const moveLastPosRef = useRef({ x: 0, y: 0 })
   const strokeWidth = 2

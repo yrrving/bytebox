@@ -12,13 +12,18 @@ interface CropArea {
   h: number
 }
 
+// Mallar döpta efter vad man ska använda bilden till, inte efter siffrorna.
+// Förhållandet står kvar som underrubrik för den som redan vet vad det betyder.
+// value = bredd delat med höjd; 0 betyder ingen låsning.
 const RATIOS = [
-  { label: 'Fri', value: 0 },
-  { label: '1:1', value: 1 },
-  { label: '4:3', value: 4 / 3 },
-  { label: '16:9', value: 16 / 9 },
-  { label: '3:2', value: 3 / 2 },
-]
+  { id: 'free', ratio: '', value: 0 },
+  { id: 'square', ratio: '1:1', value: 1 },
+  { id: 'post', ratio: '4:5', value: 4 / 5 },
+  { id: 'story', ratio: '9:16', value: 9 / 16 },
+  { id: 'wide', ratio: '16:9', value: 16 / 9 },
+  { id: 'photo', ratio: '3:2', value: 3 / 2 },
+  { id: 'screen', ratio: '4:3', value: 4 / 3 },
+] as const
 
 export default function ImageCropper() {
   const { t } = useLanguage()
@@ -135,7 +140,7 @@ export default function ImageCropper() {
             <div className="flex gap-2 flex-wrap">
               {RATIOS.map((r) => (
                 <button
-                  key={r.label}
+                  key={r.id}
                   onClick={() => setRatio(r.value)}
                   className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                     ratio === r.value
@@ -143,7 +148,10 @@ export default function ImageCropper() {
                       : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
                   }`}
                 >
-                  {r.label === 'Fri' ? (ct?.free || 'Fri') : r.label}
+                  {ct?.formats?.[r.id] ?? r.id}
+                  {r.ratio && (
+                    <span className="ml-1.5 opacity-70">{r.ratio}</span>
+                  )}
                 </button>
               ))}
             </div>

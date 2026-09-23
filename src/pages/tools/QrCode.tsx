@@ -5,8 +5,8 @@ import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import BatchQrView from './BatchQr'
 
-// Enkel och batch var två separata verktyg med godtyckligt olika funktioner —
-// enkelläget hade färgval men kunde bara en åt gången, batchläget kunde många
+// Enkel och batch var två separata verktyg med godtyckligt olika funktioner.
+// Enkelläget hade färgval men kunde bara en åt gången, batchläget kunde många
 // men bara i svartvitt. Nu en tool med två flikar och gemensamma inställningar.
 type Tab = 'single' | 'batch'
 

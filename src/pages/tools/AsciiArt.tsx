@@ -89,6 +89,9 @@ export default function AsciiArt() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
         <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
+        {translation?.hint && (
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
+        )}
       </div>
 
       <canvas ref={canvasRef} className="hidden" />

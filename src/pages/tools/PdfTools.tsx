@@ -11,7 +11,7 @@ import type { PDFDocumentProxy } from 'pdfjs-dist'
 import type { Translation } from '../../data/translations'
 
 // Three PDF operations that used to be three separate tools (pdf-verktyg,
-// pdf-signering, fyll-i-pdf) — merged into one tool with a tab switcher,
+// pdf-signering, fyll-i-pdf). Merged into one tool with a tab switcher,
 // since they're all "do something to a PDF, locally, then download it" and
 // splitting them made the tool list longer without adding real clarity.
 // All three tabs stay mounted (hidden via CSS, not unmounted) so switching
@@ -259,7 +259,7 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
             </div>
           ))}
           <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
-            {files.length} {pt?.files || 'filer'} — {formatSize(totalSize)}
+            {files.length} {pt?.files || 'filer'}. {formatSize(totalSize)}
           </div>
         </div>
       )}
@@ -686,7 +686,7 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
         if (!ctx) continue
         const task = page.render({ canvasContext: ctx, viewport, canvas })
         tasks.push(task)
-        try { await task.promise } catch { /* cancelled renders reject — safe to ignore */ }
+        try { await task.promise } catch { /* cancelled renders reject. Safe to ignore */ }
       }
     })()
     return () => { cancelled = true; tasks.forEach((task) => task.cancel()) }

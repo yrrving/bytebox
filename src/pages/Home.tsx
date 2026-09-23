@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Search, ArrowLeft, Image, Shapes, FileText, Volume2, Gamepad2, Sparkles, Smartphone, Tablet, Monitor, LayoutGrid, type LucideIcon } from 'lucide-react'
-import TabNavigation from '../components/TabNavigation'
 import ToolCard from '../components/ToolCard'
-import { tools, categoryOrder, runsOn, latestToolIds, type Category, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
+import { tools, categoryOrder, runsOn, latestToolIds, type ToolCategory, type MinScreen, type Tool } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
 
 const categoryIcons: Record<ToolCategory, LucideIcon> = {
@@ -23,7 +22,6 @@ const deviceIcons: Record<MinScreen, LucideIcon> = {
 const deviceOrder: MinScreen[] = ['mobil', 'surfplatta', 'dator']
 
 export default function Home() {
-  const [category, setCategory] = useState<Category>('alla')
   const [search, setSearch] = useState('')
   const [showAllFlat, setShowAllFlat] = useState(false)
   const [deviceFilter, setDeviceFilter] = useState<MinScreen | null>(null)
@@ -32,7 +30,7 @@ export default function Home() {
   const { t } = useLanguage()
 
   // Startsidans "Nytt"-sektion, högst tre verktyg. Är latestToolIds tom visas
-  // sektionen inte alls — se kommentaren vid listan i data/tools.ts.
+  // sektionen inte alls. Se kommentaren vid listan i data/tools.ts.
   const newTools = latestToolIds
     .map((id) => tools.find((tool) => tool.id === id))
     .filter((tool): tool is Tool => Boolean(tool))
@@ -49,8 +47,6 @@ export default function Home() {
   const allCategoriesLabel = t.allCategories ?? 'Alla kategorier'
 
   const filtered = tools.filter((tool) => {
-    if (category === 'online' && tool.connection !== 'online') return false
-    if (category === 'offline' && tool.connection !== 'offline') return false
     if (deviceFilter && !runsOn(tool, deviceFilter)) return false
 
     if (!search.trim()) return true
@@ -61,21 +57,14 @@ export default function Home() {
   })
 
   const showLanding =
-    category === 'alla' && !search.trim() && !showAllFlat && !deviceFilter && selectedCategory === null
+    !search.trim() && !showAllFlat && !deviceFilter && selectedCategory === null
 
   const showCategoryDrilldown =
-    category === 'alla' && !search.trim() && !showAllFlat && !deviceFilter && selectedCategory !== null
+    !search.trim() && !showAllFlat && !deviceFilter && selectedCategory !== null
 
-  const handleTabChange = (tab: Category) => {
-    setCategory(tab)
-    setShowAllFlat(false)
-    setDeviceFilter(null)
-    setSearchParams({})
-  }
 
   const pickDevice = (device: MinScreen) => {
     setDeviceFilter(device)
-    setCategory('alla')
     setShowAllFlat(false)
     setSearch('')
     setSearchParams({})
@@ -84,7 +73,6 @@ export default function Home() {
   const resetToLanding = () => {
     setDeviceFilter(null)
     setShowAllFlat(false)
-    setCategory('alla')
     setSearch('')
     setSearchParams({})
   }
@@ -100,7 +88,6 @@ export default function Home() {
             </p>
           )}
         </div>
-        <TabNavigation active={category} onChange={handleTabChange} />
       </div>
       <div className="relative mb-6">
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-600 dark:text-gray-300 hc:text-white" />

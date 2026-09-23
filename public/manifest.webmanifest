@@ -1,25 +1,37 @@
 {
   "name": "Bytebox",
   "short_name": "Bytebox",
-  "description": "Gratis verktyg för digitalt skapande. Körs på din enhet — inget konto, ingen spårning.",
+  "description": "Gratis verktyg för digitalt skapande. Allt körs på din enhet. Inget konto, ingen spårning.",
   "start_url": "/bytebox/",
   "scope": "/bytebox/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#111827",
-  "theme_color": "#111827",
+  "theme_color": "#23749f",
   "icons": [
+    {
+      "src": "/bytebox/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/bytebox/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/bytebox/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "/bytebox/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "/bytebox/icon-maskable.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "maskable"
     }
   ]
 }

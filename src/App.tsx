@@ -58,7 +58,7 @@ export default function App() {
           <Route path="/bakgrundsborttagare" element={<BackgroundRemover />} />
           <Route path="/heic-till-jpg" element={<HeicConverter />} />
           <Route path="/metadata-tvatt" element={<MetadataCleaner />} />
-          {/* Batch-QR är numera en flik i QR-verktyget — gamla länkar ska inte dö */}
+          {/* Batch-QR är numera en flik i QR-verktyget. Gamla länkar ska inte dö */}
           <Route path="/batch-qr" element={<Navigate to="/qr-kod" replace />} />
           <Route path="/srt-redigerare" element={<SrtEditor />} />
           <Route path="/ljudklipp" element={<AudioTrimmer />} />

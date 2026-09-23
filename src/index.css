@@ -5,7 +5,7 @@
 @custom-variant hc (.hc &);
 
 /* Ubuntu ligger lokalt i src/assets/fonts och hämtas aldrig från en extern
-   server — se e2e/no-external-requests.spec.ts. Bara vikt 400 och 700 finns,
+   server, se e2e/no-external-requests.spec.ts. Bara vikt 400 och 700 finns,
    så undvik font-medium och font-semibold: de renderas ändå som 400. */
 @font-face {
   font-family: 'Ubuntu';
@@ -49,7 +49,7 @@
 }
 
 /* Blått är ByteBox enda accentfärg. Skalan är byggd kring hsl(201, 64%, 46%)
-   så att den delar färgton med plattformen — igenkänning utan att ByteBox blir
+   så att den delar färgton med plattformen, för igenkänning utan att ByteBox blir
    en kopia. Plattformens exakta accent ligger på steg 500; steg 600 är ett
    snäpp mörkare eftersom vit text annars bara når 3,74:1 mot kravet 4,5:1.
    Att skriva om skalan här byter färg överallt på en gång; ändra aldrig

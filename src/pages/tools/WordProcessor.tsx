@@ -9,7 +9,7 @@ import {
 } from 'docx'
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough, Heading1, Heading2, Heading3,
-  List, ListOrdered, Quote, Link2, Undo2, Redo2, Printer, FileDown, Trash2,
+  List, ListOrdered, Quote, Link2, Undo2, Redo2, Printer, FileDown, Trash2, AlertTriangle,
 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
@@ -56,7 +56,7 @@ function buildInline(nodes: JSONContent[] = []): ParagraphChild[] {
 
 // Walks Tiptap's document JSON and flattens it into docx Paragraphs.
 // Ordered lists are rendered as plain "1. " text prefixes rather than a real
-// docx numbering definition — keeps the exporter dependency-free and is
+// docx numbering definition. Keeps the exporter dependency-free and is
 // visually identical for the single-level lists this editor produces.
 function buildBlocks(nodes: JSONContent[] = [], indent = 0): Paragraph[] {
   const paragraphs: Paragraph[] = []
@@ -220,6 +220,11 @@ export default function WordProcessor() {
         {translation?.hint && (
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
+      </div>
+
+      <div className="flex items-start gap-2.5 rounded-lg border border-amber-300 dark:border-amber-700/60 hc:border-white bg-amber-50 dark:bg-amber-900/20 hc:bg-black p-3 text-sm text-amber-800 dark:text-amber-200 hc:text-white">
+        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+        <p>{wp?.storageWarning ?? 'Texten sparas medan du skriver, men bara i den här webbläsaren på den här enheten. Den följer inte med till en annan dator och försvinner om du rensar webbläsarens data. På iPhone och iPad tar Safari dessutom bort den efter ungefär en vecka utan besök. Spara ner dokumentet som PDF eller Word när du är klar.'}</p>
       </div>
 
       {/* Toolbar */}

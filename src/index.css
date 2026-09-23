@@ -4,10 +4,74 @@
 @custom-variant dark (.dark &);
 @custom-variant hc (.hc &);
 
+/* Ubuntu ligger lokalt i src/assets/fonts och hämtas aldrig från en extern
+   server — se e2e/no-external-requests.spec.ts. Bara vikt 400 och 700 finns,
+   så undvik font-medium och font-semibold: de renderas ändå som 400. */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/ubuntu-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/ubuntu-latin-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/ubuntu-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/ubuntu-latin-ext-700.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Blått är ByteBox enda accentfärg. Skalan är byggd kring hsl(201, 64%, 46%)
+   så att den delar färgton med plattformen — igenkänning utan att ByteBox blir
+   en kopia. Plattformens exakta accent ligger på steg 500; steg 600 är ett
+   snäpp mörkare eftersom vit text annars bara når 3,74:1 mot kravet 4,5:1.
+   Att skriva om skalan här byter färg överallt på en gång; ändra aldrig
+   enskilda blue-klasser ute i komponenterna. */
+@theme {
+  --color-blue-50: #eef7fb;
+  --color-blue-100: #d9ecf7;
+  --color-blue-200: #b4daee;
+  --color-blue-300: #82c1e3;
+  --color-blue-400: #47a4d7;
+  --color-blue-500: #2a8cc0;
+  --color-blue-600: #23749f;
+  --color-blue-700: #1d6186;
+  --color-blue-800: #184f6d;
+  --color-blue-900: #134058;
+  --color-blue-950: #0d2b3b;
+}
+
 body {
   @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen;
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
 }
 
 /* High contrast: larger text, bolder, tighter layout */

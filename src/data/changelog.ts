@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.31.0',
+    date: '2026-09-23',
+    title: {
+      sv: 'Verktygen förklarar sig själva, och nytt utseende',
+      en: 'The tools explain themselves, and a new look',
+      es: 'Las herramientas se explican solas, y nuevo aspecto',
+      fr: 'Les outils s’expliquent, et une nouvelle apparence',
+      de: 'Die Werkzeuge erklären sich selbst, und ein neues Aussehen',
+      pt: 'As ferramentas explicam-se, e um novo aspeto',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Alla 21 verktyg har fått nya namn och beskrivningar. De gamla texterna förklarade vad verktyget tekniskt gör — "Omvandla en vanlig pixelbild (PNG) till skalbar vektorgrafik (SVG)". De nya säger vilket problem du har: "Gör en bild så att den kan förstoras hur mycket som helst utan att bli suddig". Namn som bara var filformat — SVG, SRT, OCR, metadata — är borta, eftersom de inte betyder något för den som inte redan vet. HEIC och PDF är kvar, dem söker man faktiskt på. Formaten finns kvar i hjälptexten.',
+          en: 'All 21 tools have new names and descriptions. The old texts explained what the tool technically does — "Convert a raster image (PNG) to scalable vector graphics (SVG)". The new ones state the problem you have: "Turn an image into something you can enlarge as much as you like without it going blurry". Names that were just file formats — SVG, SRT, OCR, metadata — are gone, because they mean nothing to someone who does not already know. HEIC and PDF stay; people do search for those. The formats remain in the help text.',
+          es: 'Las 21 herramientas tienen nombres y descripciones nuevos. Los textos antiguos explicaban lo que la herramienta hace técnicamente — "Convertir una imagen de píxeles (PNG) en gráficos vectoriales (SVG)". Los nuevos dicen qué problema tienes: "Convierte una imagen para poder ampliarla todo lo que quieras sin que se vuelva borrosa". Los nombres que eran solo formatos — SVG, SRT, OCR, metadatos — han desaparecido, porque no significan nada para quien no lo sabe ya. HEIC y PDF se quedan; esos sí se buscan. Los formatos siguen en el texto de ayuda.',
+          fr: 'Les 21 outils ont de nouveaux noms et descriptions. Les anciens textes expliquaient ce que l’outil fait techniquement — « Convertir une image matricielle (PNG) en graphiques vectoriels (SVG) ». Les nouveaux énoncent le problème : « Transformez une image pour pouvoir l’agrandir autant que vous voulez sans qu’elle devienne floue ». Les noms qui n’étaient que des formats — SVG, SRT, OCR, métadonnées — ont disparu, car ils ne disent rien à qui ne sait pas déjà. HEIC et PDF restent : on les cherche vraiment. Les formats demeurent dans l’aide.',
+          de: 'Alle 21 Werkzeuge haben neue Namen und Beschreibungen. Die alten Texte erklärten, was das Werkzeug technisch tut — „Ein Pixelbild (PNG) in skalierbare Vektorgrafik (SVG) umwandeln". Die neuen benennen das Problem: „Machen Sie aus einem Bild etwas, das Sie beliebig vergrößern können, ohne dass es unscharf wird". Namen, die nur Dateiformate waren — SVG, SRT, OCR, Metadaten — sind weg, denn sie sagen niemandem etwas, der es nicht ohnehin weiß. HEIC und PDF bleiben, danach wird tatsächlich gesucht. Die Formate stehen weiterhin im Hilfetext.',
+          pt: 'As 21 ferramentas têm nomes e descrições novos. Os textos antigos explicavam o que a ferramenta faz tecnicamente — "Converter uma imagem de píxeis (PNG) em gráficos vetoriais (SVG)". Os novos dizem que problema tem: "Transforme uma imagem para a poder ampliar à vontade sem ficar desfocada". Os nomes que eram apenas formatos — SVG, SRT, OCR, metadados — desapareceram, porque nada dizem a quem ainda não sabe. HEIC e PDF ficam; esses procuram-se mesmo. Os formatos continuam no texto de ajuda.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Nytt utseende: typsnittet Ubuntu och en kallare, blåare accentfärg. Typsnittet ligger lokalt i appen och hämtas aldrig från Google eller någon annan. Färgen är ett snäpp mörkare än den vi utgick från, eftersom vit text annars bara når 3,74:1 i kontrast mot kravet 4,5:1 — igenkänning får inte gå före läsbarhet.',
+          en: 'A new look: the Ubuntu typeface and a cooler, bluer accent colour. The font lives inside the app and is never fetched from Google or anyone else. The colour is a shade darker than the one we started from, because white text on it otherwise reaches only 3.74:1 against the required 4.5:1 — recognition must not come before readability.',
+          es: 'Nuevo aspecto: la tipografía Ubuntu y un color de acento más frío y azul. La fuente está dentro de la app y nunca se descarga de Google ni de nadie. El color es un tono más oscuro que el de partida, porque si no el texto blanco solo alcanza 3,74:1 de contraste frente al 4,5:1 exigido — el reconocimiento no puede ir por delante de la legibilidad.',
+          fr: 'Nouvelle apparence : la police Ubuntu et une couleur d’accent plus froide et plus bleue. La police est intégrée à l’application et n’est jamais téléchargée depuis Google ni ailleurs. La couleur est un ton plus sombre que celle de départ, car le texte blanc n’y atteint sinon que 3,74:1 de contraste contre les 4,5:1 requis — la reconnaissance ne doit pas passer avant la lisibilité.',
+          de: 'Neues Aussehen: die Schrift Ubuntu und eine kühlere, blauere Akzentfarbe. Die Schrift liegt in der App selbst und wird nie von Google oder anderen geladen. Die Farbe ist eine Spur dunkler als die Ausgangsfarbe, weil weißer Text darauf sonst nur 3,74:1 Kontrast erreicht statt der geforderten 4,5:1 — Wiedererkennung darf nicht vor Lesbarkeit gehen.',
+          pt: 'Novo aspeto: o tipo de letra Ubuntu e uma cor de destaque mais fria e azul. O tipo de letra está dentro da aplicação e nunca é obtido da Google nem de mais ninguém. A cor é um tom mais escura do que a de partida, porque de outro modo o texto branco só atinge 3,74:1 de contraste face aos 4,5:1 exigidos — o reconhecimento não pode vir antes da legibilidade.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.30.0',
     date: '2026-09-23',
     title: {

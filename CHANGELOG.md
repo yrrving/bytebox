@@ -2,6 +2,15 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.31.0 — 2026-09-23 — Verktygen förklarar sig själva, och nytt utseende
+
+### Ändrat
+
+- **Alla 21 verktyg har fått nya namn och beskrivningar.** De gamla texterna förklarade vad verktyget tekniskt gör — "Omvandla en vanlig pixelbild (PNG) till skalbar vektorgrafik (SVG)". De nya säger vilket problem du har: "Gör en bild så att den kan förstoras hur mycket som helst utan att bli suddig". Filformaten finns kvar i hjälptexten, så de går fortfarande att söka på. Omskrivet i alla sex språk.
+- **Namn som bara var filformat är borta.** SVG, SRT, OCR och "metadata" betydde ingenting för den som inte redan visste. HEIC och PDF är kvar — dem söker man faktiskt på.
+- **Nytt typsnitt: Ubuntu.** Samma som på plattformen, för igenkänning. Det ligger lokalt i appen och hämtas aldrig från Google eller någon annan.
+- **Ny accentfärg.** Blått med samma färgton som plattformen, i stället för det tidigare indigoblå. Skalan är ett snäpp mörkare än plattformens exakta färg, eftersom vit text annars bara når 3,74:1 i kontrast mot kravet 4,5:1 — igenkänning får inte gå före läsbarhet.
+
 ## 0.30.0 — 2026-09-23 — 33 verktyg bort. ByteBox gör inga nätverksanrop alls.
 
 Den största förändringen sedan starten. Verktygslådan hade vuxit till 54 verktyg

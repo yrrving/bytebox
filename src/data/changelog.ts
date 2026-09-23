@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.1.0',
+    date: '2026-09-23',
+    title: {
+      sv: 'Under huven',
+      en: 'Under the hood',
+      es: 'Bajo el capó',
+      fr: 'Sous le capot',
+      de: 'Unter der Haube',
+      pt: 'Sob o capô',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'En ny sida beskriver hur ByteBox är byggt, för den som vill veta mer än vad verktygen gör. Vad det tekniskt är, en webbsida utan server, utan databas och utan konton. Vad det är byggt med, varför ingenting skickas någonstans, hur det fungerar utan nät, hur tillgängligheten mäts, och vad som kontrolleras innan en ändring får publiceras. Sidan nås från menyn.',
+          en: 'A new page describes how ByteBox is built, for anyone who wants to know more than what the tools do. What it technically is, a website with no server, no database and no accounts. What it is built with, why nothing is sent anywhere, how it works without a connection, how accessibility is measured, and what is checked before a change may be published. The page is reached from the menu.',
+          es: 'Una página nueva describe cómo está construido ByteBox, para quien quiera saber más que lo que hacen las herramientas. Qué es técnicamente, un sitio web sin servidor, sin base de datos y sin cuentas. Con qué está construido, por qué no se envía nada a ninguna parte, cómo funciona sin conexión, cómo se mide la accesibilidad y qué se comprueba antes de que un cambio pueda publicarse. Se accede desde el menú.',
+          fr: 'Une nouvelle page décrit comment ByteBox est construit, pour qui veut en savoir plus que ce que font les outils. Ce que c’est techniquement, un site web sans serveur, sans base de données et sans comptes. Avec quoi il est construit, pourquoi rien n’est envoyé nulle part, comment il fonctionne sans connexion, comment l’accessibilité est mesurée, et ce qui est vérifié avant qu’une modification puisse être publiée. La page est accessible depuis le menu.',
+          de: 'Eine neue Seite beschreibt, wie ByteBox gebaut ist, für alle, die mehr wissen wollen als das, was die Werkzeuge tun. Was es technisch ist, eine Website ohne Server, ohne Datenbank und ohne Konten. Womit es gebaut ist, warum nichts irgendwohin gesendet wird, wie es ohne Verbindung funktioniert, wie Barrierefreiheit gemessen wird und was geprüft wird, bevor eine Änderung veröffentlicht werden darf. Die Seite ist über das Menü erreichbar.',
+          pt: 'Uma nova página descreve como o ByteBox foi construído, para quem quiser saber mais do que aquilo que as ferramentas fazem. O que é tecnicamente, um site sem servidor, sem base de dados e sem contas. Com o que foi construído, porque nada é enviado para lado nenhum, como funciona sem ligação, como se mede a acessibilidade, e o que é verificado antes de uma alteração poder ser publicada. A página é acessível a partir do menu.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.0.1',
     date: '2026-09-23',
     title: {

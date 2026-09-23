@@ -18,5 +18,5 @@ export function toolRoutes(): string[] {
 
 /** Verktygens rutter plus startsidan och journalen. */
 export function allRoutes(): string[] {
-  return ['/', '/journal', ...toolRoutes()]
+  return ['/', '/journal', '/under-huven', ...toolRoutes()]
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Wrench, Sun, Moon, Eye, Globe, BookOpen, Menu, X } from 'lucide-react'
+import { Wrench, Sun, Moon, Eye, Globe, BookOpen, Cpu, Menu, X } from 'lucide-react'
 import { useTheme, type Theme } from '../context/ThemeContext'
 import { useLanguage, type Language } from '../context/LanguageContext'
 import { tools } from '../data/tools'
@@ -33,6 +33,17 @@ export default function Header() {
   ]
 
   const ThemeIcon = themeIcon[theme]
+
+  const hoodLink = (
+    <Link
+      to="/under-huven"
+      onClick={() => setMenuOpen(false)}
+      className="flex items-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hc:text-white no-underline transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"
+    >
+      <Cpu className="h-4 w-4" />
+      {t.underTheHood?.heading ?? 'Under huven'}
+    </Link>
+  )
 
   const journalLink = (
     <Link
@@ -101,6 +112,7 @@ export default function Header() {
         {/* Desktop controls */}
         <div className="hidden md:flex items-center gap-3">
           <InstallButton />
+          {hoodLink}
           {journalLink}
           {languageSelect}
           {themeSelect}
@@ -122,6 +134,7 @@ export default function Header() {
         <div className="md:hidden border-t border-gray-200 dark:border-gray-700 hc:border-white px-4 py-4">
           <div className="flex flex-col gap-3 [&>*]:w-full">
             <InstallButton />
+            {hoodLink}
             {journalLink}
             {languageSelect}
             {themeSelect}

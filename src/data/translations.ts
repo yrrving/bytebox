@@ -195,6 +195,34 @@ export interface Translation {
     cleaned: string
     download: string
   }
+  underTheHood?: {
+    heading: string
+    lead: string
+    factTools: string
+    factLanguages: string
+    factRequests: string
+    builtHeading: string
+    builtBody: string
+    whatHeading: string
+    whatBody: string
+    localHeading: string
+    localBody: string
+    offlineHeading: string
+    offlineBody: string
+    a11yHeading: string
+    a11yBody: string
+    checksHeading: string
+    checksBody: string
+    check1: string
+    check2: string
+    check3: string
+    check4: string
+    check5: string
+    check6: string
+    codeHeading: string
+    codeBody: string
+    codeLink: string
+  }
   embroideryViewer?: {
     formats: string
   }
@@ -446,6 +474,34 @@ export const translations: Record<string, Translation> = {
       clean: 'Rensa metadata',
       cleaned: 'Metadata borttagen. Ladda ner den rena bilden.',
       download: 'Ladda ner ren bild',
+    },
+    underTheHood: {
+      heading: 'Under huven',
+      lead: 'ByteBox är en webbsida utan server. Allt du ser och gör händer i din egen webbläsare. Här står hur det är byggt, för den som vill veta.',
+      factTools: 'Verktyg',
+      factLanguages: 'Språk',
+      factRequests: 'Nätverksanrop',
+      builtHeading: 'Byggt med',
+      builtBody: 'Koden är skriven i TypeScript rakt igenom, vilket gör att en stor del av felen fångas innan något publiceras. Sidan byggs till statiska filer och ligger på GitHub Pages.',
+      whatHeading: 'Vad det faktiskt är',
+      whatBody: 'Det finns ingen baksida. Ingen databas, inga konton, ingen inloggning och ingen server som tar emot något. ByteBox är en samling filer som laddas ner till din webbläsare en gång och sedan körs där. Stänger du av nätet efter att sidan laddat märks ingen skillnad.',
+      localHeading: 'Varför ingenting skickas',
+      localBody: 'Det är inte en policy utan en egenskap hos bygget. Det finns inte ett enda nätverksanrop i koden. Sidans säkerhetspolicy tillåter ingen extern domän alls, och ett test underkänner varje sida som kontaktar en server. Skulle någon lägga till ett sådant beroende stoppas det innan det når dig.',
+      offlineHeading: 'Fungerar utan nät',
+      offlineBody: 'En service worker sparar appen i webbläsaren efter första besöket. Därefter startar ByteBox även utan uppkoppling, och kan läggas till på hemskärmen på telefon och surfplatta eller installeras som program på datorn.',
+      a11yHeading: 'Tillgänglighet mäts',
+      a11yBody: 'Varje sida granskas automatiskt mot WCAG 2.2 AA i alla tre teman, vid varje ändring: kontraster, namn på knappar och fält, rubrikstruktur och tangentbordsnavigering. De få undantag som finns är motiverade i testkoden, så att man kan läsa skälet och invända mot det.',
+      checksHeading: 'Vad som kontrolleras före publicering',
+      checksBody: 'Ingen ändring når sidan utan att först ha passerat allt det här. Går något av det fel publiceras ingenting.',
+      check1: 'Typkontroll av all kod',
+      check2: 'Kodgranskning mot gemensamma regler',
+      check3: 'Enhetstester av filparsrar och logik',
+      check4: 'Webbläsartester som öppnar varje verktyg och läser av konsolen',
+      check5: 'Kontroll att ingen sida kontaktar en extern server',
+      check6: 'Kontroll att alla sex språk har samma texter',
+      codeHeading: 'Koden är öppen',
+      codeBody: 'Allt ligger på GitHub under MIT-licens. Använd, ändra och bygg vidare fritt. Det enda som krävs är att upphovsrättsraden följer med.',
+      codeLink: 'Läs koden på GitHub',
     },
     embroideryViewer: {
       formats: 'PES (Brother, Babylock, Bernina) · DST (Tajima och de flesta industrimaskiner) · JEF (Janome, Elna)',
@@ -719,6 +775,34 @@ export const translations: Record<string, Translation> = {
       cleaned: 'Metadata removed. Download the clean image.',
       download: 'Download clean image',
     },
+    underTheHood: {
+      heading: 'Under the hood',
+      lead: 'ByteBox is a website with no server. Everything you see and do happens in your own browser. Here is how it is built, for anyone who wants to know.',
+      factTools: 'Tools',
+      factLanguages: 'Languages',
+      factRequests: 'Network requests',
+      builtHeading: 'Built with',
+      builtBody: 'The code is written in TypeScript throughout, which catches a large share of mistakes before anything is published. The site builds to static files and is hosted on GitHub Pages.',
+      whatHeading: 'What it actually is',
+      whatBody: 'There is no back end. No database, no accounts, no login and no server receiving anything. ByteBox is a set of files downloaded to your browser once and then run there. Turn off the network after the page has loaded and nothing changes.',
+      localHeading: 'Why nothing is sent',
+      localBody: 'This is not a policy but a property of the build. There is not a single network request in the code. The page security policy permits no external domain at all, and a test fails any page that contacts a server. If someone added such a dependency, it would be stopped before it reached you.',
+      offlineHeading: 'Works without a connection',
+      offlineBody: 'A service worker stores the app in your browser after the first visit. ByteBox then starts even with no connection, and can be added to the home screen on a phone or tablet, or installed as a program on a computer.',
+      a11yHeading: 'Accessibility is measured',
+      a11yBody: 'Every page is checked automatically against WCAG 2.2 AA in all three themes, on every change: contrast, names on buttons and fields, heading structure and keyboard navigation. The few exceptions are justified in the test code, so the reasoning can be read and argued with.',
+      checksHeading: 'What is checked before publishing',
+      checksBody: 'No change reaches the site without passing all of this first. If any of it fails, nothing is published.',
+      check1: 'Type checking of all code',
+      check2: 'Code review against shared rules',
+      check3: 'Unit tests of file parsers and logic',
+      check4: 'Browser tests that open every tool and read the console',
+      check5: 'A check that no page contacts an external server',
+      check6: 'A check that all six languages carry the same texts',
+      codeHeading: 'The code is open',
+      codeBody: 'Everything is on GitHub under the MIT licence. Use it, change it and build on it freely. The only requirement is that the copyright line comes along.',
+      codeLink: 'Read the code on GitHub',
+    },
     embroideryViewer: {
       formats: 'PES (Brother, Babylock, Bernina) · DST (Tajima and most industrial machines) · JEF (Janome, Elna)',
     },
@@ -990,6 +1074,34 @@ export const translations: Record<string, Translation> = {
       clean: 'Eliminar metadatos',
       cleaned: 'Metadatos eliminados. Descarga la imagen limpia.',
       download: 'Descargar imagen limpia',
+    },
+    underTheHood: {
+      heading: 'Bajo el capó',
+      lead: 'ByteBox es un sitio web sin servidor. Todo lo que ves y haces ocurre en tu propio navegador. Aquí se explica cómo está construido, para quien quiera saberlo.',
+      factTools: 'Herramientas',
+      factLanguages: 'Idiomas',
+      factRequests: 'Peticiones de red',
+      builtHeading: 'Construido con',
+      builtBody: 'El código está escrito íntegramente en TypeScript, lo que detecta buena parte de los errores antes de publicar nada. El sitio se compila a archivos estáticos y se aloja en GitHub Pages.',
+      whatHeading: 'Qué es en realidad',
+      whatBody: 'No hay parte servidora. Ni base de datos, ni cuentas, ni inicio de sesión, ni servidor que reciba nada. ByteBox es un conjunto de archivos que se descargan una vez a tu navegador y luego se ejecutan allí. Apaga la red tras cargar la página y no notarás diferencia.',
+      localHeading: 'Por qué no se envía nada',
+      localBody: 'No es una política, es una propiedad de la construcción. No hay ni una sola petición de red en el código. La política de seguridad de la página no permite ningún dominio externo, y una prueba suspende cualquier página que contacte con un servidor. Si alguien añadiera esa dependencia, se detendría antes de llegar a ti.',
+      offlineHeading: 'Funciona sin conexión',
+      offlineBody: 'Un service worker guarda la aplicación en el navegador tras la primera visita. ByteBox arranca después incluso sin conexión, y puede añadirse a la pantalla de inicio en móvil o tableta, o instalarse como programa en el ordenador.',
+      a11yHeading: 'La accesibilidad se mide',
+      a11yBody: 'Cada página se revisa automáticamente contra WCAG 2.2 AA en los tres temas, en cada cambio: contraste, nombres de botones y campos, estructura de encabezados y navegación con teclado. Las pocas excepciones están justificadas en el código de pruebas, para poder leer el motivo y rebatirlo.',
+      checksHeading: 'Qué se comprueba antes de publicar',
+      checksBody: 'Ningún cambio llega al sitio sin pasar antes por todo esto. Si algo falla, no se publica nada.',
+      check1: 'Comprobación de tipos de todo el código',
+      check2: 'Revisión de código con reglas comunes',
+      check3: 'Pruebas unitarias de los analizadores de archivos y la lógica',
+      check4: 'Pruebas en navegador que abren cada herramienta y leen la consola',
+      check5: 'Comprobación de que ninguna página contacta con un servidor externo',
+      check6: 'Comprobación de que los seis idiomas tienen los mismos textos',
+      codeHeading: 'El código es abierto',
+      codeBody: 'Todo está en GitHub con licencia MIT. Úsalo, modifícalo y construye sobre él libremente. Lo único que se exige es mantener la línea de copyright.',
+      codeLink: 'Lee el código en GitHub',
     },
     embroideryViewer: {
       formats: 'PES (Brother, Babylock, Bernina) · DST (Tajima y la mayoría de máquinas industriales) · JEF (Janome, Elna)',
@@ -1263,6 +1375,34 @@ export const translations: Record<string, Translation> = {
       cleaned: 'Métadonnées supprimées. Téléchargez l\'image propre.',
       download: 'Télécharger l\'image propre',
     },
+    underTheHood: {
+      heading: 'Sous le capot',
+      lead: 'ByteBox est un site web sans serveur. Tout ce que vous voyez et faites se passe dans votre propre navigateur. Voici comment il est construit, pour qui veut savoir.',
+      factTools: 'Outils',
+      factLanguages: 'Langues',
+      factRequests: 'Requêtes réseau',
+      builtHeading: 'Construit avec',
+      builtBody: 'Le code est écrit intégralement en TypeScript, ce qui permet d’attraper une grande part des erreurs avant toute publication. Le site est compilé en fichiers statiques et hébergé sur GitHub Pages.',
+      whatHeading: 'Ce que c’est réellement',
+      whatBody: 'Il n’y a pas de back end. Ni base de données, ni comptes, ni connexion, ni serveur qui reçoive quoi que ce soit. ByteBox est un ensemble de fichiers téléchargés une fois dans votre navigateur puis exécutés là. Coupez le réseau après le chargement de la page et rien ne change.',
+      localHeading: 'Pourquoi rien n’est envoyé',
+      localBody: 'Ce n’est pas une politique mais une propriété de la construction. Il n’y a pas une seule requête réseau dans le code. La politique de sécurité de la page n’autorise aucun domaine externe, et un test rejette toute page qui contacte un serveur. Si quelqu’un ajoutait une telle dépendance, elle serait bloquée avant de vous atteindre.',
+      offlineHeading: 'Fonctionne sans connexion',
+      offlineBody: 'Un service worker conserve l’application dans le navigateur après la première visite. ByteBox démarre ensuite même sans connexion, et peut être ajouté à l’écran d’accueil sur téléphone ou tablette, ou installé comme programme sur ordinateur.',
+      a11yHeading: 'L’accessibilité se mesure',
+      a11yBody: 'Chaque page est vérifiée automatiquement selon WCAG 2.2 AA dans les trois thèmes, à chaque modification : contrastes, noms des boutons et des champs, structure des titres et navigation au clavier. Les rares exceptions sont justifiées dans le code de test, afin que le raisonnement puisse être lu et contesté.',
+      checksHeading: 'Ce qui est vérifié avant publication',
+      checksBody: 'Aucune modification n’atteint le site sans avoir passé tout ceci. Si l’un de ces points échoue, rien n’est publié.',
+      check1: 'Vérification des types de tout le code',
+      check2: 'Revue de code selon des règles communes',
+      check3: 'Tests unitaires des analyseurs de fichiers et de la logique',
+      check4: 'Tests en navigateur qui ouvrent chaque outil et lisent la console',
+      check5: 'Vérification qu’aucune page ne contacte un serveur externe',
+      check6: 'Vérification que les six langues portent les mêmes textes',
+      codeHeading: 'Le code est ouvert',
+      codeBody: 'Tout est sur GitHub sous licence MIT. Utilisez-le, modifiez-le et construisez dessus librement. La seule exigence est de conserver la ligne de copyright.',
+      codeLink: 'Lire le code sur GitHub',
+    },
     embroideryViewer: {
       formats: 'PES (Brother, Babylock, Bernina) · DST (Tajima et la plupart des machines industrielles) · JEF (Janome, Elna)',
     },
@@ -1535,6 +1675,34 @@ export const translations: Record<string, Translation> = {
       cleaned: 'Metadaten entfernt. Lade das saubere Bild herunter.',
       download: 'Sauberes Bild herunterladen',
     },
+    underTheHood: {
+      heading: 'Unter der Haube',
+      lead: 'ByteBox ist eine Website ohne Server. Alles, was Sie sehen und tun, geschieht in Ihrem eigenen Browser. Hier steht, wie es gebaut ist, für alle, die es wissen möchten.',
+      factTools: 'Werkzeuge',
+      factLanguages: 'Sprachen',
+      factRequests: 'Netzwerkanfragen',
+      builtHeading: 'Gebaut mit',
+      builtBody: 'Der Code ist durchgehend in TypeScript geschrieben, wodurch ein großer Teil der Fehler auffällt, bevor etwas veröffentlicht wird. Die Seite wird zu statischen Dateien gebaut und liegt auf GitHub Pages.',
+      whatHeading: 'Was es tatsächlich ist',
+      whatBody: 'Es gibt kein Backend. Keine Datenbank, keine Konten, keine Anmeldung und keinen Server, der etwas entgegennimmt. ByteBox ist eine Sammlung von Dateien, die einmal in Ihren Browser geladen und dort ausgeführt werden. Schalten Sie das Netz nach dem Laden ab, ändert sich nichts.',
+      localHeading: 'Warum nichts gesendet wird',
+      localBody: 'Das ist keine Richtlinie, sondern eine Eigenschaft des Baus. Es gibt keine einzige Netzwerkanfrage im Code. Die Sicherheitsrichtlinie der Seite erlaubt keinerlei externe Domain, und ein Test lässt jede Seite durchfallen, die einen Server kontaktiert. Würde jemand eine solche Abhängigkeit hinzufügen, würde sie gestoppt, bevor sie Sie erreicht.',
+      offlineHeading: 'Funktioniert ohne Verbindung',
+      offlineBody: 'Ein Service Worker legt die App nach dem ersten Besuch im Browser ab. ByteBox startet danach auch ohne Verbindung und lässt sich auf Telefon und Tablet zum Home-Bildschirm hinzufügen oder auf dem Computer als Programm installieren.',
+      a11yHeading: 'Barrierefreiheit wird gemessen',
+      a11yBody: 'Jede Seite wird bei jeder Änderung automatisch gegen WCAG 2.2 AA in allen drei Themen geprüft: Kontraste, Namen von Schaltflächen und Feldern, Überschriftenstruktur und Tastaturbedienung. Die wenigen Ausnahmen sind im Testcode begründet, sodass man die Begründung lesen und ihr widersprechen kann.',
+      checksHeading: 'Was vor der Veröffentlichung geprüft wird',
+      checksBody: 'Keine Änderung erreicht die Seite, ohne das alles zuvor bestanden zu haben. Schlägt einer dieser Punkte fehl, wird nichts veröffentlicht.',
+      check1: 'Typprüfung des gesamten Codes',
+      check2: 'Code-Prüfung nach gemeinsamen Regeln',
+      check3: 'Unit-Tests der Datei-Parser und der Logik',
+      check4: 'Browsertests, die jedes Werkzeug öffnen und die Konsole auslesen',
+      check5: 'Prüfung, dass keine Seite einen externen Server kontaktiert',
+      check6: 'Prüfung, dass alle sechs Sprachen dieselben Texte enthalten',
+      codeHeading: 'Der Code ist offen',
+      codeBody: 'Alles liegt auf GitHub unter der MIT-Lizenz. Nutzen, ändern und darauf aufbauen ist frei. Einzige Bedingung ist, dass die Copyright-Zeile mitgeht.',
+      codeLink: 'Den Code auf GitHub lesen',
+    },
     embroideryViewer: {
       formats: 'PES (Brother, Babylock, Bernina) · DST (Tajima und die meisten Industriemaschinen) · JEF (Janome, Elna)',
     },
@@ -1806,6 +1974,34 @@ export const translations: Record<string, Translation> = {
       clean: 'Remover metadados',
       cleaned: 'Metadados removidos. Descarregue a imagem limpa.',
       download: 'Descarregar imagem limpa',
+    },
+    underTheHood: {
+      heading: 'Sob o capô',
+      lead: 'O ByteBox é um site sem servidor. Tudo o que vê e faz acontece no seu próprio navegador. Aqui está como foi construído, para quem quiser saber.',
+      factTools: 'Ferramentas',
+      factLanguages: 'Idiomas',
+      factRequests: 'Pedidos de rede',
+      builtHeading: 'Construído com',
+      builtBody: 'O código está escrito integralmente em TypeScript, o que apanha boa parte dos erros antes de se publicar seja o que for. O site é compilado para ficheiros estáticos e está alojado no GitHub Pages.',
+      whatHeading: 'O que é na realidade',
+      whatBody: 'Não existe back end. Nem base de dados, nem contas, nem início de sessão, nem servidor que receba o que quer que seja. O ByteBox é um conjunto de ficheiros descarregados uma vez para o seu navegador e depois executados aí. Desligue a rede depois de a página carregar e não notará diferença.',
+      localHeading: 'Porque nada é enviado',
+      localBody: 'Não é uma política, é uma propriedade da construção. Não há um único pedido de rede no código. A política de segurança da página não permite qualquer domínio externo, e um teste reprova qualquer página que contacte um servidor. Se alguém acrescentasse essa dependência, seria travada antes de chegar a si.',
+      offlineHeading: 'Funciona sem ligação',
+      offlineBody: 'Um service worker guarda a aplicação no navegador após a primeira visita. O ByteBox arranca depois mesmo sem ligação e pode ser adicionado ao ecrã principal no telemóvel ou tablet, ou instalado como programa no computador.',
+      a11yHeading: 'A acessibilidade é medida',
+      a11yBody: 'Cada página é verificada automaticamente segundo a WCAG 2.2 AA nos três temas, a cada alteração: contrastes, nomes de botões e campos, estrutura de títulos e navegação por teclado. As poucas exceções estão justificadas no código de testes, para que o motivo possa ser lido e contestado.',
+      checksHeading: 'O que é verificado antes de publicar',
+      checksBody: 'Nenhuma alteração chega ao site sem passar primeiro por tudo isto. Se algum destes pontos falhar, nada é publicado.',
+      check1: 'Verificação de tipos de todo o código',
+      check2: 'Revisão de código segundo regras comuns',
+      check3: 'Testes unitários dos analisadores de ficheiros e da lógica',
+      check4: 'Testes em navegador que abrem cada ferramenta e leem a consola',
+      check5: 'Verificação de que nenhuma página contacta um servidor externo',
+      check6: 'Verificação de que os seis idiomas têm os mesmos textos',
+      codeHeading: 'O código é aberto',
+      codeBody: 'Está tudo no GitHub sob licença MIT. Use, altere e construa em cima livremente. O único requisito é que a linha de direitos de autor siga junto.',
+      codeLink: 'Ler o código no GitHub',
     },
     embroideryViewer: {
       formats: 'PES (Brother, Babylock, Bernina) · DST (Tajima e a maioria das máquinas industriais) · JEF (Janome, Elna)',

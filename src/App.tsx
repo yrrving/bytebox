@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Placeholder from './pages/Placeholder'
 
 const Journal = lazy(() => import('./pages/Journal'))
+const UnderTheHood = lazy(() => import('./pages/UnderTheHood'))
 
 const QrCodeTool = lazy(() => import('./pages/tools/QrCode'))
 const ColorPalette = lazy(() => import('./pages/tools/ColorPalette'))
@@ -43,6 +44,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/journal" element={<Journal />} />
+          <Route path="/under-huven" element={<UnderTheHood />} />
           <Route path="/qr-kod" element={<QrCodeTool />} />
           <Route path="/fargpalett" element={<ColorPalette />} />
           <Route path="/bildkomprimering" element={<ImageCompressor />} />

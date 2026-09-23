@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 1.1.0 (2026-09-23). Under huven
+
+### Nytt
+
+- **En ny sida som beskriver hur ByteBox är byggt**, för den som vill veta mer än vad verktygen gör. Vad det tekniskt är (en webbsida utan server, utan databas och utan konton), vad det är byggt med, varför ingenting skickas någonstans, hur det fungerar utan nät, hur tillgängligheten mäts, och vad som kontrolleras innan en ändring får publiceras. Nås från menyn.
+
 ## 1.0.1 (2026-09-23). Menyn på telefon ligger rakt
 
 ### Fixat

@@ -2,9 +2,12 @@ import { useState, useRef } from 'react'
 import { Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ErrorNotice from '../../components/ErrorNotice'
+import { loadImageFromFile } from '../../utils/image'
 
 export default function OcrTool() {
   const { t } = useLanguage()
+  const [imageError, setImageError] = useState('')
   const translation = t.tools['ocr']
   const ot = t.ocrTool
 
@@ -15,13 +18,17 @@ export default function OcrTool() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleImage = (file: File) => {
-    const img = new Image()
-    img.onload = () => {
-      setImage(img)
-      setText('')
+  const handleImage = async (file: File) => {
+    setImageError('')
+    let img: HTMLImageElement
+    try {
+      img = await loadImageFromFile(file)
+    } catch {
+      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+      return
     }
-    img.src = URL.createObjectURL(file)
+    setImage(img)
+    setText('')
   }
 
   const extractText = () => {
@@ -116,6 +123,8 @@ export default function OcrTool() {
   return (
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
+
+      <ErrorNotice message={imageError} />
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>

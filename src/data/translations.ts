@@ -12,8 +12,18 @@ export interface Translation {
   newBadge?: string
   categoriesHeading?: string
   showAll?: string
+  common?: {
+    imageLoadError: string
+  }
   privacy?: {
     externalIntro: string
+    sendsLabel: string
+    sendsIp: string
+    sendsSsl: string
+    sendsDns: string
+    sendsHeaders: string
+    sendsBandwidth: string
+    headersWarning: string
     externalOutro: string
     translatorWarning: string
     speechService: string
@@ -58,6 +68,7 @@ export interface Translation {
     heading: string
     description: string
     mission: string
+    direction: string
     added: string
     changed: string
     fixed: string
@@ -119,6 +130,9 @@ export interface Translation {
     copied: string
   }
   qrCode?: {
+    tabSingle: string
+    tabBatch: string
+    privacyNote: string
     input: string
     placeholder: string
     size: string
@@ -208,41 +222,6 @@ export interface Translation {
     pause: string
     resume: string
     stop: string
-  }
-  meetingTranscriber?: {
-    localTitle: string
-    localBody: string
-    scenariosTitle?: string
-    scenarioRoomLabel?: string
-    scenarioRoomText?: string
-    scenarioDigitalLabel?: string
-    scenarioDigitalText?: string
-    scenarioUploadLabel?: string
-    scenarioUploadText?: string
-    consentReminder?: string
-    repetitionCleaned?: string
-    silenceTrimmed?: string
-    qualityHint?: string
-    uploadHint?: string
-    queueStatus?: string
-    recordingName?: string
-    modelLabel: string
-    modelStandard: string
-    modelLarge: string
-    languageLabel: string
-    languageAuto: string
-    record: string
-    stop: string
-    upload: string
-    downloading: string
-    transcribing: string
-    transcript: string
-    copy: string
-    copied: string
-    clear: string
-    empty: string
-    error: string
-    micDenied: string
   }
   percentCalc?: {
     modeOf: string
@@ -424,22 +403,22 @@ export interface Translation {
     loading: string
   }
   sslCheck?: {
-    domainLabel: string
     check: string
-    checking: string
     valid: string
-    invalid: string
+    expired: string
+    revoked: string
     issuer: string
-    expires: string
     error: string
+    notFound: string
+    rateLimited: string
     placeholder: string
     loading: string
-    unknownIssuer: string
     daysLeft: string
     subject: string
     validFrom: string
     validTo: string
-    protocol: string
+    covers: string
+    ctNote: string
   }
   httpHeaders?: {
     urlLabel: string
@@ -514,6 +493,7 @@ export interface Translation {
     upload: string
     files: string
     merge: string
+    mergeError: string
     merging: string
     download: string
   }
@@ -543,43 +523,18 @@ export const translations: Record<string, Translation> = {
     newBadge: 'Nytt',
     categoriesHeading: 'Kategorier',
     showAll: 'Visa alla verktyg',
-    meetingTranscriber: {
-      localTitle: 'Allt sker på din enhet',
-      localBody: 'Ljudet lämnar aldrig din enhet. Första gången laddas en språkmodell ner (ca 150–500 MB beroende på val) och sparas i webbläsaren — sen fungerar transkriberingen även utan internet. Själva inspelningen sparas aldrig på disken — den finns bara i minnet medan sidan är öppen och försvinner när du lämnar sidan eller stänger fliken.',
-      scenariosTitle: 'Tre sätt att spela in',
-      scenarioRoomLabel: 'Alla i samma rum (bäst)',
-      scenarioRoomText: 'Klicka på "Nytt möte" nedan — enhetens mikrofon hör alla som pratar i rummet.',
-      scenarioDigitalLabel: 'Digitalt möte (Teams, Zoom m.fl.)',
-      scenarioDigitalText: 'Mikrofonen hör bara dig, inte de andra deltagarna. Spela in mötet i mötestjänsten istället och ladda upp filen här efteråt.',
-      scenarioUploadLabel: 'Redan inspelat, t.ex. i telefonen',
-      scenarioUploadText: 'Ladda upp ljudfilen direkt — funkar lika bra som att spela in här.',
-      consentReminder: 'Berätta alltid för alla som är med — i rummet eller i mötet — att det spelas in.',
-      repetitionCleaned: 'Vi upptäckte och tog bort upprepade textblock i transkriptionen. Det händer oftast vid tysta eller svårhörbara partier — till exempel om ett digitalt möte spelades in via mikrofonen och bara fångade din egen röst.',
-      silenceTrimmed: 'Vi klippte bort långa tysta partier ur ljudet innan transkribering — det är den vanligaste orsaken till att modellen gissar fel språk eller hittar på text.',
-      qualityHint: 'Längre eller otydliga inspelningar: välj Stor och ange språket direkt istället för Upptäck automatiskt — mycket säkrare på både språk och innehåll.',
-      uploadHint: 'Du kan välja flera filer på en gång — de transkriberas efter varandra och läggs i samma transkription.',
-      queueStatus: 'Fil {n} av {m}: {name}',
-      recordingName: 'Inspelning',
-      modelLabel: 'Kvalitet',
-      modelStandard: 'Standard — bra balans mellan snabbhet och kvalitet',
-      modelLarge: 'Stor — bäst kvalitet, större nedladdning och långsammare',
-      languageLabel: 'Språk',
-      languageAuto: 'Upptäck automatiskt',
-      record: 'Nytt möte',
-      stop: 'Stoppa',
-      upload: 'Ladda upp ljudfil',
-      downloading: 'Laddar ner språkmodell',
-      transcribing: 'Transkriberar…',
-      transcript: 'Transkription',
-      copy: 'Kopiera',
-      copied: 'Kopierat!',
-      clear: 'Rensa',
-      empty: 'Transkriptionen visas här…',
-      error: 'Något gick fel. Prova igen eller välj en mindre modell.',
-      micDenied: 'Kunde inte komma åt mikrofonen. Ge webbläsaren tillåtelse och försök igen.',
+    common: {
+      imageLoadError: 'Kunde inte läsa bildfilen. Den kan vara skadad eller i ett format webbläsaren inte stöder.',
     },
     privacy: {
       externalIntro: 'Det här verktyget kommunicerar med en extern tjänst:',
+      sendsLabel: 'Det som skickas:',
+      sendsIp: 'Din IP-adress. Den är i sig en personuppgift — verktyget kan inte visa den utan att fråga tjänsten. Ingen text du skriver skickas.',
+      sendsSsl: 'Bara domännamnet du skriver in. Certifikatuppgifterna som visas är redan offentliga.',
+      sendsDns: 'Bara domännamnet du slår upp.',
+      sendsHeaders: 'Hela adressen du klistrar in — inklusive allt efter frågetecknet.',
+      sendsBandwidth: 'Ingen text. Testet laddar bara ner och upp testdata.',
+      headersWarning: 'Adressen passerar en öppen gratisproxy (AllOrigins) som vi inte har något avtal med. Klistra aldrig in länkar som innehåller inloggningstokens, nycklar eller engångslänkar — de blir läsbara för den som driver proxyn.',
       externalOutro: 'Bytebox sparar ingenting själv. Undvik att skicka känsliga personuppgifter.',
       translatorWarning: 'Texten skickas till MyMemory, som kan spara och återanvända den i ett publikt översättningsminne. Klistra inte in namn, personnummer eller annan känslig information.',
       speechService: 'webbläsarens taltjänst',
@@ -624,6 +579,7 @@ export const translations: Record<string, Translation> = {
       heading: 'Journal',
       description: 'Vad vi byggt och uppdaterat i varje version.',
       mission: 'Vi tror att datorer kan göra fantastiska saker — och att alla ska ha tillgång till dem. Teknik ska inte vara något man betalar för bara för att få tillgång till det andra redan byggt. Därför skapar vi dessa verktyg, fria och öppna, för alla.',
+      direction: 'Just nu smalnar vi av. ByteBox har vuxit till ett stort antal verktyg, och flera av dem löser problem som redan är lösta på tusen andra ställen. Vi går därför igenom verktyg för verktyg och behåller det som hör hemma i digitalt skapande — och som går att förstå utan förkunskaper. Målet är färre verktyg, tydligare förklarade, och användbara för alla: med skärmläsare, med enbart tangentbord, på flera språk. Säkerhet och integritet är inget vi lägger till efteråt, utan ett krav vi ställer på varje verktyg innan det får finnas här.',
       added: 'Nytt',
       changed: 'Ändrat',
       fixed: 'Fixat',
@@ -685,6 +641,9 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopierat!',
     },
     qrCode: {
+      tabSingle: 'En kod',
+      tabBatch: 'Flera koder',
+      privacyNote: 'Allt sker lokalt i din webbläsare. Ingen text laddas upp någonstans.',
       input: 'Text eller URL',
       placeholder: 'Skriv text eller klistra in en URL...',
       size: 'Storlek',
@@ -929,22 +888,22 @@ export const translations: Record<string, Translation> = {
       loading: 'Söker...',
     },
     sslCheck: {
-      domainLabel: 'Domännamn',
       check: 'Kontrollera',
-      checking: 'Kontrollerar...',
       valid: 'SSL-certifikatet är giltigt',
-      invalid: 'SSL-certifikatet är ogiltigt',
+      expired: 'Certifikatet har gått ut',
+      revoked: 'Certifikatet är återkallat',
       issuer: 'Utfärdare',
-      expires: 'Utgår',
-      error: 'Kunde inte kontrollera SSL',
+      error: 'Kunde inte kontrollera certifikatet. Kontrollera domännamnet.',
+      notFound: 'Hittade inget certifikat utfÃ¤rdat fÃ¶r exakt det namnet. Prova huvuddomÃ¤nen (t.ex. example.com i stÃ¤llet fÃ¶r www.example.com) — wildcard-certifikat listas pÃ¥ huvuddomÃ¤nen.',
+      rateLimited: 'För många förfrågningar just nu. Vänta en stund och försök igen.',
       placeholder: 'example.com',
       loading: 'Kontrollerar...',
-      unknownIssuer: 'Okänd (CORS-begränsning)',
       daysLeft: 'dagar kvar',
       subject: 'Domän',
       validFrom: 'Giltig från',
       validTo: 'Giltig till',
-      protocol: 'Protokoll',
+      covers: 'Täcker antal domäner',
+      ctNote: 'Uppgifterna kommer från offentliga Certificate Transparency-loggar och visar det senast utfärdade certifikatet för domänen. Det är nästan alltid det servern använder, men i sällsynta fall kan servern köra ett annat.',
     },
     httpHeaders: {
       urlLabel: 'URL',
@@ -1019,6 +978,7 @@ export const translations: Record<string, Translation> = {
       upload: 'Klicka eller dra hit PDF-filer',
       files: 'filer',
       merge: 'Sammanfoga PDF-filer',
+      mergeError: 'Kunde inte slÃ¥ ihop filerna. NÃ¥gon av dem kan vara skadad eller lÃ¶senordsskyddad.',
       merging: 'Sammanfogar...',
       download: 'Ladda ner sammanslagen PDF',
     },
@@ -1042,7 +1002,7 @@ export const translations: Record<string, Translation> = {
       'png-till-svg': { name: 'PNG till SVG', description: 'Omvandla en vanlig pixelbild (PNG) till skalbar vektorgrafik (SVG) som kan förstoras utan att bli suddig', hint: 'Konvertera pixelbilder till skalbar vektorgrafik. Välj svartvitt eller färgläge, justera tröskel och upplösning — allt sker lokalt i webbläsaren.' },
       'fargpalett': { name: 'Färgpalett', description: 'Skapa och hantera färgpaletter', hint: 'Skapa färgpaletter för dina projekt. Välj färger med en color picker, se HEX/RGB/HSL-värden och kopiera dem direkt.' },
       'filanalys': { name: 'Filanalys', description: 'Analysera filinnehåll och metadata', hint: 'Dra in valfri fil och se namn, storlek, MIME-typ, filändelse och senast ändrad. Bilder visar dimensioner, textfiler visar innehållet.' },
-      'qr-kod': { name: 'QR-kod', description: 'Generera och skanna QR-koder', hint: 'Skapa QR-koder för URL:er, Wi-Fi-lösenord eller valfri text. Välj färger och storlek, ladda ner som PNG — allt sker lokalt i webbläsaren.' },
+      'qr-kod': { name: 'QR-kod', description: 'Skapa QR-koder — en i taget eller många på en gång', hint: 'Skapa QR-koder för URL:er, Wi-Fi-lösenord eller valfri text. Välj färger och storlek. Fliken \'Flera koder\' gör en hel lista på en gång, från inklistrad text eller en .txt/.csv-fil. Allt sker lokalt i webbläsaren.' },
       'base64-kodare': { name: 'Base64-kodare', description: 'Koda om text och data till Base64 och tillbaka — ett textformat för att skicka data i länkar, e-post och kod', hint: 'Base64 gör om vilken data som helst (bilder, filer, text) till en lång sträng av bokstäver och siffror, typ "SGVqIQ==" — inget hemligt, bara ett sätt att skicka data där bara text går fram. Om någon skickat dig en sådan sträng och du vill se vad den betyder, klistra in den och välj "Avkoda".' },
       'linjal': { name: 'Linjal', description: 'Mät avstånd på skärmen', hint: 'Mät avstånd direkt på skärmen i cm eller tum. Kalibrera med ett kreditkort för exakta mått. Klicka och dra för att mäta.' },
       'enhetsomvandlare': { name: 'Enhetsomvandlare', description: 'Konvertera mellan olika måttenheter', hint: 'Konvertera snabbt mellan metriska och imperiala enheter — längd, vikt, temperatur, hastighet och datastorlek.' },
@@ -1052,7 +1012,6 @@ export const translations: Record<string, Translation> = {
       'bandbreddstest': { name: 'Bandbreddstest', description: 'Testa din internetanslutningshastighet', hint: 'Mät din nedladdningshastighet och latens med en enkel knapptryckning. Resultat visas i Mbps med en visuell mätare och historik.' },
       'json-formaterare': { name: 'JSON-formaterare', description: 'Städa upp och kontrollera JSON — dataformatet som appar och webbtjänster utbyter information i', hint: 'JSON är ett sätt att strukturera information med krullparenteser och kolon — typ {"namn": "Anna", "ålder": 28}. Om du fått en hög hopklumpad JSON (t.ex. från en utvecklare eller en export) och vill se den snyggt uppradad, klistra in den här.' },
       'text-till-tal': { name: 'Text till tal', description: 'Omvandla skriven text till talat ljud' },
-      'motestranskribering': { name: 'Mötestranskribering', description: 'Spela in eller ladda upp ett möte och få det nedskrivet som text — helt på din enhet', hint: 'Perfekt för mötesanteckningar, intervjuer och föreläsningar. Ljudet laddas aldrig upp. Tips: spela in mötet med telefonens röstmemo-app och ladda upp filen här på datorn.', screenReason: 'Transkriberingen körs helt lokalt i webbläsaren och kräver mycket minne och processorkraft — mer än en mobil klarar av. Mobiler pausar dessutom arbetet när skärmen släcks.' },
       'regex-testare': { name: 'Regex-testare', description: 'Testa sökmönster (regex) som hittar och matchar text — se träffarna markeras direkt', hint: 'Ett regex-mönster (kort för "reguljärt uttryck") beskriver hur en text ska se ut, för att hitta eller kontrollera den — t.ex. "är det här en giltig e-postadress?". Används mest av utvecklare. Skriv ett mönster och se matchningar markeras live i din text, med fångstgrupper och index.' },
       'bildkomprimering': { name: 'Bildkomprimering', description: 'Komprimera bilder utan att tappa kvalitet', hint: 'Minska filstorleken på bilder utan att tappa för mycket kvalitet. Välj komprimeringsnivå och max bredd — allt sker lokalt.' },
       'markdown-forhandsgranskning': { name: 'Markdown-förhandsgranskning', description: 'Skriv text med Markdown (enkel formatering med tecken som * och #) och se den färdiga sidan direkt', hint: 'Skriv Markdown och se resultatet live. Perfekt för README-filer, dokumentation eller blogginlägg — med delad vy och HTML-export.' },
@@ -1063,7 +1022,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC till JPG', description: 'Konvertera iPhone-bilder (HEIC) till JPG eller PNG', hint: 'iPhone sparar foton som HEIC, som många datorer inte kan öppna. Konvertera till JPG eller PNG — allt sker lokalt, inget laddas upp.' },
       'metadata-tvatt': { name: 'Metadata-tvätt', description: 'Se och ta bort dold metadata (GPS, datum, kamera) från bilder', hint: 'Foton innehåller ofta din exakta GPS-position. Se vad som gömmer sig i bilden och ta bort allt — lokalt, inget laddas upp.' },
       'passfoto': { name: 'Passfoto', description: 'Skapa passfoto och ID-foto i rätt mm-mått', hint: 'Beskär, zooma och skriv ut flera kopior på ett ark — allt lokalt i webbläsaren, inget laddas upp.' },
-      'batch-qr': { name: 'Batch-QR', description: 'Skapa många QR-koder på en gång från en lista eller CSV-fil', hint: 'Ladda ner alla som PNG. Allt sker lokalt — inget laddas upp.' },
       'svg-optimering': { name: 'SVG-optimerare', description: 'Krymp och städa SVG-filer direkt i webbläsaren – ta bort metadata, kommentarer och onödig kod', hint: 'Klistra in eller ladda upp en SVG och ladda ner en mindre version. Allt sker lokalt.' },
       'video-till-gif': { name: 'Video till GIF', description: 'Gör en animerad GIF av ett videoklipp – välj start, slut, bildrutor och storlek', hint: 'Allt sker lokalt i webbläsaren – videon laddas aldrig upp.' },
       'srt-redigerare': { name: 'SRT-redigerare', description: 'Redigera undertexter i SRT-format – ändra text, justera tider och förskjut hela filen', hint: 'Ladda upp eller klistra in en .srt-fil. Allt sker lokalt i webbläsaren.' },
@@ -1103,43 +1061,18 @@ export const translations: Record<string, Translation> = {
     newBadge: 'New',
     categoriesHeading: 'Categories',
     showAll: 'Show all tools',
-    meetingTranscriber: {
-      localTitle: 'Everything happens on your device',
-      localBody: 'The audio never leaves your device. The first time, a language model is downloaded (about 150–500 MB depending on your choice) and stored in your browser — after that transcription works even without internet. The recording itself is never saved to disk — it only exists in memory while the page is open, and disappears when you leave the page or close the tab.',
-      scenariosTitle: 'Three ways to record',
-      scenarioRoomLabel: 'Everyone in the same room (best)',
-      scenarioRoomText: 'Click "New meeting" below — the device\'s microphone hears everyone talking in the room.',
-      scenarioDigitalLabel: 'Digital meeting (Teams, Zoom, etc.)',
-      scenarioDigitalText: 'The microphone only hears you, not the other participants. Record the meeting in the meeting service instead and upload the file here afterwards.',
-      scenarioUploadLabel: 'Already recorded, e.g. on your phone',
-      scenarioUploadText: 'Upload the audio file directly — works just as well as recording here.',
-      consentReminder: 'Always tell everyone involved — in the room or in the meeting — that it\'s being recorded.',
-      repetitionCleaned: 'We detected and removed repeated blocks of text in the transcription. This usually happens during quiet or hard-to-hear stretches — for example if a digital meeting was recorded via the microphone and only picked up your own voice.',
-      silenceTrimmed: 'We trimmed long silent stretches from the audio before transcribing — the most common reason the model guesses the wrong language or invents text.',
-      qualityHint: 'Longer or unclear recordings: choose Large and set the language directly instead of Auto-detect — much more reliable on both language and content.',
-      uploadHint: 'You can pick several files at once — they\'re transcribed one after another and added to the same transcript.',
-      queueStatus: 'File {n} of {m}: {name}',
-      recordingName: 'Recording',
-      modelLabel: 'Quality',
-      modelStandard: 'Standard — good balance of speed and quality',
-      modelLarge: 'Large — best quality, bigger download and slower',
-      languageLabel: 'Language',
-      languageAuto: 'Detect automatically',
-      record: 'New meeting',
-      stop: 'Stop',
-      upload: 'Upload audio file',
-      downloading: 'Downloading language model',
-      transcribing: 'Transcribing…',
-      transcript: 'Transcript',
-      copy: 'Copy',
-      copied: 'Copied!',
-      clear: 'Clear',
-      empty: 'The transcript will appear here…',
-      error: 'Something went wrong. Try again or choose a smaller model.',
-      micDenied: 'Could not access the microphone. Give the browser permission and try again.',
+    common: {
+      imageLoadError: 'Could not read the image file. It may be damaged or in a format the browser does not support.',
     },
     privacy: {
       externalIntro: 'This tool communicates with an external service:',
+      sendsLabel: 'What gets sent:',
+      sendsIp: 'Your IP address. That is personal data in itself — the tool cannot show it without asking the service. Nothing you type is sent.',
+      sendsSsl: 'Only the domain name you enter. The certificate details shown are already public.',
+      sendsDns: 'Only the domain name you look up.',
+      sendsHeaders: 'The full address you paste — including everything after the question mark.',
+      sendsBandwidth: 'No text. The test only downloads and uploads test data.',
+      headersWarning: 'The address passes through an open free proxy (AllOrigins) we have no agreement with. Never paste links containing login tokens, keys or one-time links — whoever runs the proxy can read them.',
       externalOutro: 'Bytebox itself stores nothing. Avoid sending sensitive personal data.',
       translatorWarning: 'The text is sent to MyMemory, which may store and reuse it in a public translation memory. Do not paste names, ID numbers or other sensitive information.',
       speechService: 'your browser\'s speech service',
@@ -1184,6 +1117,7 @@ export const translations: Record<string, Translation> = {
       heading: 'Journal',
       description: 'What we built and updated in each version.',
       mission: 'We believe computers can do amazing things — and that everyone should have access to them. Technology shouldn\'t be something you pay for just because someone else built it. That\'s why we create these tools, free and open, for everyone.',
+      direction: 'Right now we are narrowing down. ByteBox has grown to a large number of tools, and several of them solve problems already solved in a thousand other places. So we are going through them one by one, keeping what belongs to digital creativity — and what can be understood without prior knowledge. The goal is fewer tools, explained more clearly, and usable by everyone: with a screen reader, with the keyboard alone, in several languages. Security and privacy are not added afterwards but a requirement every tool must meet before it belongs here.',
       added: 'Added',
       changed: 'Changed',
       fixed: 'Fixed',
@@ -1245,6 +1179,9 @@ export const translations: Record<string, Translation> = {
       copied: 'Copied!',
     },
     qrCode: {
+      tabSingle: 'One code',
+      tabBatch: 'Several codes',
+      privacyNote: 'Everything happens locally in your browser. No text is uploaded anywhere.',
       input: 'Text or URL',
       placeholder: 'Type text or paste a URL...',
       size: 'Size',
@@ -1489,22 +1426,22 @@ export const translations: Record<string, Translation> = {
       loading: 'Looking up...',
     },
     sslCheck: {
-      domainLabel: 'Domain name',
       check: 'Check',
-      checking: 'Checking...',
       valid: 'SSL certificate is valid',
-      invalid: 'SSL certificate is invalid',
+      expired: 'The certificate has expired',
+      revoked: 'The certificate has been revoked',
       issuer: 'Issuer',
-      expires: 'Expires',
-      error: 'Could not check SSL',
+      error: 'Could not check the certificate. Check the domain name.',
+      notFound: 'No certificate was issued for that exact name. Try the main domain (e.g. example.com instead of www.example.com) — wildcard certificates are listed under the main domain.',
+      rateLimited: 'Too many requests right now. Wait a moment and try again.',
       placeholder: 'example.com',
       loading: 'Checking...',
-      unknownIssuer: 'Unknown (CORS restriction)',
       daysLeft: 'days left',
       subject: 'Domain',
       validFrom: 'Valid from',
       validTo: 'Valid to',
-      protocol: 'Protocol',
+      covers: 'Domains covered',
+      ctNote: 'This data comes from public Certificate Transparency logs and shows the most recently issued certificate for the domain. That is almost always the one the server uses, but in rare cases the server may serve a different one.',
     },
     httpHeaders: {
       urlLabel: 'URL',
@@ -1579,6 +1516,7 @@ export const translations: Record<string, Translation> = {
       upload: 'Click or drag PDF files here',
       files: 'files',
       merge: 'Merge PDF files',
+      mergeError: 'Could not merge the files. One of them may be damaged or password protected.',
       merging: 'Merging...',
       download: 'Download merged PDF',
     },
@@ -1602,7 +1540,7 @@ export const translations: Record<string, Translation> = {
       'png-till-svg': { name: 'PNG to SVG', description: 'Turn an ordinary pixel image (PNG) into scalable vector graphics (SVG) that enlarge without going blurry', hint: 'Convert pixel images to scalable vector graphics. Choose black & white or color mode, adjust threshold and resolution — everything happens locally in your browser.' },
       'fargpalett': { name: 'Color Palette', description: 'Create and manage color palettes', hint: 'Create color palettes for your projects. Pick colors with a color picker, see HEX/RGB/HSL values and copy them directly.' },
       'filanalys': { name: 'File Analysis', description: 'Analyze file content and metadata', hint: 'Drop any file and see name, size, MIME type, extension and last modified. Images show dimensions, text files show content.' },
-      'qr-kod': { name: 'QR Code', description: 'Generate and scan QR codes', hint: 'Create QR codes for URLs, Wi-Fi passwords or any text. Choose colors and size, download as PNG — everything happens locally in your browser.' },
+      'qr-kod': { name: 'QR Code', description: 'Create QR codes — one at a time or many at once', hint: 'Create QR codes for URLs, Wi-Fi passwords or any text. Choose colors and size. The \'Several codes\' tab makes a whole list at once, from pasted text or a .txt/.csv file. Everything happens locally in your browser.' },
       'base64-kodare': { name: 'Base64 Encoder', description: 'Encode text and data to Base64 and back — a text format for sending data in links, email and code', hint: 'Base64 turns any data (images, files, text) into a long string of letters and numbers, like "SGVqIQ==" — nothing secret, just a way to send data through places where only plain text gets through. If someone sent you a Base64 string and you want to see what it actually says, paste it in and choose "Decode".' },
       'linjal': { name: 'Ruler', description: 'Measure distances on screen', hint: 'Measure distances directly on your screen in cm or inches. Calibrate with a credit card for accurate measurements. Click and drag to measure.' },
       'enhetsomvandlare': { name: 'Unit Converter', description: 'Convert between different units of measurement', hint: 'Quickly convert between metric and imperial units — length, weight, temperature, speed and data size.' },
@@ -1612,7 +1550,6 @@ export const translations: Record<string, Translation> = {
       'bandbreddstest': { name: 'Bandwidth Test', description: 'Test your internet connection speed', hint: 'Measure your download speed and latency with a single click. Results shown in Mbps with a visual gauge and history.' },
       'json-formaterare': { name: 'JSON Formatter', description: 'Tidy up and check JSON — the data format apps and web services use to exchange information', hint: 'JSON is a way to structure information with curly braces and colons — like {"name": "Anna", "age": 28}. If you\'ve been handed a wall of squished-together JSON (say, from a developer or an export) and want to see it laid out nicely, paste it here.' },
       'text-till-tal': { name: 'Text to Speech', description: 'Convert written text to spoken audio' },
-      'motestranskribering': { name: 'Meeting Transcriber', description: 'Record or upload a meeting and get it written down as text — entirely on your device', hint: 'Great for meeting notes, interviews and lectures. The audio is never uploaded. Tip: record the meeting with your phone\'s voice memo app and upload the file here on your computer.', screenReason: 'Transcription runs entirely locally in your browser and needs more memory and processing power than a phone can handle. Phones also pause the work when the screen turns off.' },
       'regex-testare': { name: 'Regex Tester', description: 'Test search patterns (regex) that find and match text — see the matches highlighted live', hint: 'A regex pattern (short for "regular expression") describes what a piece of text should look like, so you can find or check it — e.g. "is this a valid email address?". Mostly used by developers. Write a pattern and watch matches get highlighted live in your text, with capture groups and index.' },
       'bildkomprimering': { name: 'Image Compression', description: 'Compress images without losing quality', hint: 'Reduce image file size without losing too much quality. Choose compression level and max width — everything happens locally.' },
       'markdown-forhandsgranskning': { name: 'Markdown Preview', description: 'Write text with Markdown (simple formatting using symbols like * and #) and see the finished page instantly', hint: 'Write Markdown and see the result live. Perfect for README files, documentation or blog posts — with split view and HTML export.' },
@@ -1623,7 +1560,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC to JPG', description: 'Convert iPhone photos (HEIC) to JPG or PNG', hint: 'iPhones save photos as HEIC, which many computers can\'t open. Convert to JPG or PNG — all locally, nothing uploaded.' },
       'metadata-tvatt': { name: 'Metadata Cleaner', description: 'View and remove hidden metadata (GPS, date, camera) from images', hint: 'Photos often contain your exact GPS location. See what\'s hidden in the image and strip it — locally, nothing uploaded.' },
       'passfoto': { name: 'Passport Photo', description: 'Create passport and ID photos at exact mm sizes', hint: 'Crop, zoom and print multiple copies on one sheet — all locally in your browser, nothing uploaded.' },
-      'batch-qr': { name: 'Batch QR', description: 'Generate many QR codes at once from a list or CSV file', hint: 'Download all as PNG. Everything runs locally — nothing uploaded.' },
       'svg-optimering': { name: 'SVG Optimizer', description: 'Shrink and clean up SVG files right in your browser – strip metadata, comments and redundant code', hint: 'Paste or upload an SVG and download a smaller version. Everything runs locally.' },
       'video-till-gif': { name: 'Video to GIF', description: 'Turn a video clip into an animated GIF – choose start, end, frame rate and size', hint: 'Everything runs locally in your browser — the video is never uploaded.' },
       'srt-redigerare': { name: 'SRT Editor', description: 'Edit SRT subtitles – change text, adjust timings and shift the whole file at once', hint: 'Upload or paste a .srt file. Everything runs locally in your browser.' },
@@ -1663,43 +1599,18 @@ export const translations: Record<string, Translation> = {
     newBadge: 'Nuevo',
     categoriesHeading: 'Categorías',
     showAll: 'Mostrar todas las herramientas',
-    meetingTranscriber: {
-      localTitle: 'Todo ocurre en tu dispositivo',
-      localBody: 'El audio nunca sale de tu dispositivo. La primera vez se descarga un modelo de lenguaje (unos 150–500 MB según la opción) y se guarda en el navegador — después la transcripción funciona incluso sin internet. La grabación en sí nunca se guarda en el disco — solo existe en memoria mientras la página está abierta y desaparece al salir de la página o cerrar la pestaña.',
-      scenariosTitle: 'Tres formas de grabar',
-      scenarioRoomLabel: 'Todos en la misma sala (lo mejor)',
-      scenarioRoomText: 'Haz clic en "Nueva reunión" abajo — el micrófono del dispositivo capta a todos los que hablan en la sala.',
-      scenarioDigitalLabel: 'Reunión digital (Teams, Zoom, etc.)',
-      scenarioDigitalText: 'El micrófono solo te capta a ti, no a los demás participantes. Graba la reunión en el propio servicio y sube el archivo aquí después.',
-      scenarioUploadLabel: 'Ya grabado, por ejemplo en el móvil',
-      scenarioUploadText: 'Sube el archivo de audio directamente — funciona igual de bien que grabar aquí.',
-      consentReminder: 'Avisa siempre a todos los presentes — en la sala o en la reunión — de que se está grabando.',
-      repetitionCleaned: 'Detectamos y eliminamos bloques de texto repetidos en la transcripción. Esto suele ocurrir en tramos silenciosos o difíciles de oír — por ejemplo, si una reunión digital se grabó con el micrófono y solo captó tu propia voz.',
-      silenceTrimmed: 'Recortamos largos tramos de silencio del audio antes de transcribir — la causa más común de que el modelo adivine mal el idioma o invente texto.',
-      qualityHint: 'Grabaciones largas o poco claras: elige Grande e indica el idioma directamente en vez de Detección automática — mucho más fiable tanto en idioma como en contenido.',
-      uploadHint: 'Puedes elegir varios archivos a la vez — se transcriben uno tras otro y se añaden a la misma transcripción.',
-      queueStatus: 'Archivo {n} de {m}: {name}',
-      recordingName: 'Grabación',
-      modelLabel: 'Calidad',
-      modelStandard: 'Estándar — buen equilibrio entre velocidad y calidad',
-      modelLarge: 'Grande — mejor calidad, descarga mayor y más lento',
-      languageLabel: 'Idioma',
-      languageAuto: 'Detectar automáticamente',
-      record: 'Nueva reunión',
-      stop: 'Detener',
-      upload: 'Subir archivo de audio',
-      downloading: 'Descargando modelo de lenguaje',
-      transcribing: 'Transcribiendo…',
-      transcript: 'Transcripción',
-      copy: 'Copiar',
-      copied: '¡Copiado!',
-      clear: 'Borrar',
-      empty: 'La transcripción aparecerá aquí…',
-      error: 'Algo salió mal. Inténtalo de nuevo o elige un modelo más pequeño.',
-      micDenied: 'No se pudo acceder al micrófono. Da permiso al navegador e inténtalo de nuevo.',
+    common: {
+      imageLoadError: 'No se pudo leer el archivo de imagen. Puede estar dañado o en un formato que el navegador no admite.',
     },
     privacy: {
       externalIntro: 'Esta herramienta se comunica con un servicio externo:',
+      sendsLabel: 'Lo que se envía:',
+      sendsIp: 'Tu dirección IP. Es un dato personal en sí mismo — la herramienta no puede mostrarla sin preguntar al servicio. No se envía nada de lo que escribas.',
+      sendsSsl: 'Solo el nombre de dominio que introduces. Los datos del certificado ya son públicos.',
+      sendsDns: 'Solo el nombre de dominio que consultas.',
+      sendsHeaders: 'La dirección completa que pegas, incluido todo lo que va después del signo de interrogación.',
+      sendsBandwidth: 'Ningún texto. La prueba solo descarga y sube datos de prueba.',
+      headersWarning: 'La dirección pasa por un proxy gratuito abierto (AllOrigins) con el que no tenemos ningún acuerdo. Nunca pegues enlaces que contengan tokens de sesión, claves o enlaces de un solo uso — quien gestione el proxy puede leerlos.',
       externalOutro: 'Bytebox no guarda nada. Evita enviar datos personales sensibles.',
       translatorWarning: 'El texto se envía a MyMemory, que puede guardarlo y reutilizarlo en una memoria de traducción pública. No pegues nombres, números de identificación ni otra información sensible.',
       speechService: 'el servicio de voz de tu navegador',
@@ -1744,6 +1655,7 @@ export const translations: Record<string, Translation> = {
       heading: 'Diario',
       description: 'Lo que hemos construido y actualizado en cada versión.',
       mission: 'Creemos que las computadoras pueden hacer cosas increíbles — y que todos deberían tener acceso a ellas. La tecnología no debería ser algo por lo que se pague solo porque alguien más la construyó. Por eso creamos estas herramientas, libres y abiertas, para todos.',
+      direction: 'Ahora mismo estamos reduciendo. ByteBox ha crecido hasta un gran número de herramientas, y varias resuelven problemas ya resueltos en otros mil sitios. Por eso las revisamos una a una y conservamos lo que pertenece a la creación digital — y lo que se entiende sin conocimientos previos. El objetivo es menos herramientas, mejor explicadas y utilizables por todos: con lector de pantalla, solo con el teclado, en varios idiomas. La seguridad y la privacidad no se añaden después, sino que son un requisito que cada herramienta debe cumplir antes de estar aquí.',
       added: 'Añadido',
       changed: 'Cambiado',
       fixed: 'Corregido',
@@ -1805,6 +1717,9 @@ export const translations: Record<string, Translation> = {
       copied: '¡Copiado!',
     },
     qrCode: {
+      tabSingle: 'Un código',
+      tabBatch: 'Varios códigos',
+      privacyNote: 'Todo ocurre localmente en tu navegador. No se sube ningún texto.',
       input: 'Texto o URL',
       placeholder: 'Escribe texto o pega una URL...',
       size: 'Tamaño',
@@ -2049,22 +1964,22 @@ export const translations: Record<string, Translation> = {
       loading: 'Buscando...',
     },
     sslCheck: {
-      domainLabel: 'Nombre de dominio',
       check: 'Verificar',
-      checking: 'Verificando...',
       valid: 'El certificado SSL es válido',
-      invalid: 'El certificado SSL no es válido',
+      expired: 'El certificado ha caducado',
+      revoked: 'El certificado ha sido revocado',
       issuer: 'Emisor',
-      expires: 'Expira',
-      error: 'No se pudo verificar SSL',
+      error: 'No se pudo verificar el certificado. Comprueba el nombre de dominio.',
+      notFound: 'No se emitiÃ³ ningÃºn certificado para ese nombre exacto. Prueba con el dominio principal (p. ej. example.com en lugar de www.example.com) — los certificados comodÃ­n se listan en el dominio principal.',
+      rateLimited: 'Demasiadas solicitudes en este momento. Espera un momento e inténtalo de nuevo.',
       placeholder: 'example.com',
       loading: 'Verificando...',
-      unknownIssuer: 'Desconocido (restricción CORS)',
       daysLeft: 'días restantes',
       subject: 'Dominio',
       validFrom: 'Válido desde',
       validTo: 'Válido hasta',
-      protocol: 'Protocolo',
+      covers: 'Dominios cubiertos',
+      ctNote: 'Estos datos provienen de los registros públicos de Certificate Transparency y muestran el certificado emitido más recientemente para el dominio. Casi siempre es el que usa el servidor, pero en casos raros el servidor puede usar otro.',
     },
     httpHeaders: {
       urlLabel: 'URL',
@@ -2139,6 +2054,7 @@ export const translations: Record<string, Translation> = {
       upload: 'Haz clic o arrastra archivos PDF aquí',
       files: 'archivos',
       merge: 'Fusionar archivos PDF',
+      mergeError: 'No se pudieron fusionar los archivos. Alguno puede estar daÃ±ado o protegido con contraseÃ±a.',
       merging: 'Fusionando...',
       download: 'Descargar PDF fusionado',
     },
@@ -2162,7 +2078,7 @@ export const translations: Record<string, Translation> = {
       'png-till-svg': { name: 'PNG a SVG', description: 'Convierte una imagen de píxeles normal (PNG) en gráficos vectoriales (SVG) que se amplían sin verse borrosos', hint: 'Convierte imágenes de píxeles a gráficos vectoriales escalables. Elige modo blanco y negro o color, ajusta el umbral y la resolución — todo ocurre localmente.' },
       'fargpalett': { name: 'Paleta de colores', description: 'Crear y gestionar paletas de colores', hint: 'Crea paletas de colores para tus proyectos. Elige colores con un selector, ve valores HEX/RGB/HSL y cópialos directamente.' },
       'filanalys': { name: 'Análisis de archivos', description: 'Analizar contenido y metadatos de archivos', hint: 'Arrastra cualquier archivo y ve nombre, tamaño, tipo MIME, extensión y última modificación. Las imágenes muestran dimensiones, los archivos de texto muestran contenido.' },
-      'qr-kod': { name: 'Código QR', description: 'Generar y escanear códigos QR', hint: 'Crea códigos QR para URLs, contraseñas Wi-Fi o cualquier texto. Elige colores y tamaño, descarga como PNG — todo ocurre localmente en tu navegador.' },
+      'qr-kod': { name: 'Código QR', description: 'Crea códigos QR — de uno en uno o muchos a la vez', hint: 'Crea códigos QR para URL, contraseñas de Wi-Fi o cualquier texto. Elige colores y tamaño. La pestaña \'Varios códigos\' genera una lista entera de una vez, desde texto pegado o un archivo .txt/.csv. Todo ocurre localmente en tu navegador.' },
       'base64-kodare': { name: 'Codificador Base64', description: 'Codifica texto y datos a Base64 y de vuelta — un formato de texto para enviar datos en enlaces, correos y código', hint: 'Base64 convierte cualquier dato (imágenes, archivos, texto) en una larga cadena de letras y números, como "SGVqIQ==" — no es secreto, solo una forma de enviar datos por sitios donde solo pasa texto plano. Si alguien te envió una cadena en Base64 y quieres ver qué dice, pégala y elige "Decodificar".' },
       'linjal': { name: 'Regla', description: 'Medir distancias en la pantalla', hint: 'Mide distancias directamente en tu pantalla en cm o pulgadas. Calibra con una tarjeta de crédito para medidas exactas.' },
       'enhetsomvandlare': { name: 'Conversor de unidades', description: 'Convertir entre diferentes unidades de medida', hint: 'Convierte rápidamente entre unidades métricas e imperiales — longitud, peso, temperatura, velocidad y tamaño de datos.' },
@@ -2172,7 +2088,6 @@ export const translations: Record<string, Translation> = {
       'bandbreddstest': { name: 'Test de ancho de banda', description: 'Probar la velocidad de tu conexión a Internet', hint: 'Mide tu velocidad de descarga y latencia con un solo clic. Resultados en Mbps con indicador visual e historial.' },
       'json-formaterare': { name: 'Formateador JSON', description: 'Ordena y comprueba JSON — el formato de datos que apps y servicios web usan para intercambiar información', hint: 'JSON es una forma de estructurar información con llaves y dos puntos — algo como {"nombre": "Ana", "edad": 28}. Si te han dado un montón de JSON apelmazado (por ejemplo, de un desarrollador o una exportación) y quieres verlo bien ordenado, pégalo aquí.' },
       'text-till-tal': { name: 'Texto a voz', description: 'Convertir texto escrito en audio hablado' },
-      'motestranskribering': { name: 'Transcriptor de reuniones', description: 'Graba o sube una reunión y obtenla por escrito — todo en tu dispositivo', hint: 'Ideal para actas de reuniones, entrevistas y clases. El audio nunca se sube. Consejo: graba la reunión con la app de notas de voz del móvil y sube el archivo aquí en el ordenador.', screenReason: 'La transcripción se ejecuta totalmente en local en tu navegador y necesita más memoria y potencia de las que un móvil puede ofrecer. Además, los móviles pausan el trabajo cuando se apaga la pantalla.' },
       'regex-testare': { name: 'Probador de regex', description: 'Prueba patrones de búsqueda (regex) que encuentran y coinciden con texto — ve las coincidencias resaltadas al instante', hint: 'Un patrón regex (abreviatura de "expresión regular") describe cómo debería verse un texto, para poder encontrarlo o comprobarlo — por ejemplo, "¿es esto una dirección de correo válida?". Lo usan sobre todo desarrolladores. Escribe un patrón y mira cómo se resaltan las coincidencias en vivo, con grupos de captura e índice.' },
       'bildkomprimering': { name: 'Compresión de imágenes', description: 'Comprimir imágenes sin perder calidad', hint: 'Reduce el tamaño de archivo de imágenes sin perder demasiada calidad. Elige nivel de compresión y ancho máximo — todo ocurre localmente.' },
       'markdown-forhandsgranskning': { name: 'Vista previa de Markdown', description: 'Escribe texto con Markdown (formato simple con símbolos como * y #) y ve la página terminada al instante', hint: 'Escribe Markdown y ve el resultado en vivo. Perfecto para archivos README, documentación o publicaciones de blog — con vista dividida y exportación HTML.' },
@@ -2183,7 +2098,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC a JPG', description: 'Convierte fotos de iPhone (HEIC) a JPG o PNG', hint: 'Los iPhone guardan las fotos como HEIC, que muchos ordenadores no pueden abrir. Conviértelas a JPG o PNG — todo localmente, sin subir nada.' },
       'metadata-tvatt': { name: 'Limpiador de metadatos', description: 'Ver y eliminar metadatos ocultos (GPS, fecha, cámara) de imágenes', hint: 'Las fotos suelen contener tu ubicación GPS exacta. Mira lo que se oculta en la imagen y elimínalo — localmente, sin subir nada.' },
       'passfoto': { name: 'Foto de pasaporte', description: 'Crea fotos de pasaporte y de identidad con las medidas exactas en mm', hint: 'Recorta, amplía e imprime varias copias en una hoja — todo localmente en tu navegador, sin subir nada.' },
-      'batch-qr': { name: 'QR por lotes', description: 'Genera muchos códigos QR a la vez desde una lista o archivo CSV', hint: 'Descarga todos como PNG. Todo funciona localmente — nada se sube.' },
       'svg-optimering': { name: 'Optimizador SVG', description: 'Reduce y limpia archivos SVG directamente en tu navegador: elimina metadatos, comentarios y código redundante', hint: 'Pega o sube un SVG y descarga una versión más pequeña. Todo funciona localmente.' },
       'video-till-gif': { name: 'Vídeo a GIF', description: 'Convierte un clip de vídeo en un GIF animado: elige inicio, fin, fotogramas y tamaño', hint: 'Todo funciona localmente en tu navegador — el vídeo nunca se sube.' },
       'srt-redigerare': { name: 'Editor de SRT', description: 'Edita subtítulos SRT: cambia el texto, ajusta los tiempos y desplaza todo el archivo', hint: 'Sube o pega un archivo .srt. Todo funciona localmente en tu navegador.' },
@@ -2223,43 +2137,18 @@ export const translations: Record<string, Translation> = {
     newBadge: 'Nouveau',
     categoriesHeading: 'Catégories',
     showAll: 'Afficher tous les outils',
-    meetingTranscriber: {
-      localTitle: 'Tout se passe sur votre appareil',
-      localBody: 'L\'audio ne quitte jamais votre appareil. La première fois, un modèle de langue est téléchargé (environ 150 à 500 Mo selon le choix) et stocké dans votre navigateur — ensuite la transcription fonctionne même sans internet. L\'enregistrement lui-même n\'est jamais sauvegardé sur le disque — il n\'existe qu\'en mémoire tant que la page est ouverte, et disparaît quand vous quittez la page ou fermez l\'onglet.',
-      scenariosTitle: 'Trois façons d\'enregistrer',
-      scenarioRoomLabel: 'Tout le monde dans la même pièce (idéal)',
-      scenarioRoomText: 'Cliquez sur « Nouvelle réunion » ci-dessous — le micro de l\'appareil capte tout le monde dans la pièce.',
-      scenarioDigitalLabel: 'Réunion en ligne (Teams, Zoom, etc.)',
-      scenarioDigitalText: 'Le micro ne capte que vous, pas les autres participants. Enregistrez plutôt la réunion dans le service de réunion, puis importez le fichier ici.',
-      scenarioUploadLabel: 'Déjà enregistré, par ex. sur votre téléphone',
-      scenarioUploadText: 'Importez le fichier audio directement — ça fonctionne aussi bien qu\'enregistrer ici.',
-      consentReminder: 'Informez toujours toutes les personnes concernées — dans la pièce ou en réunion — que ça enregistre.',
-      repetitionCleaned: 'Nous avons détecté et supprimé des blocs de texte répétés dans la transcription. Cela arrive surtout sur des passages silencieux ou difficiles à entendre — par exemple si une réunion en ligne a été enregistrée via le micro et n\'a capté que votre propre voix.',
-      silenceTrimmed: 'Nous avons retiré les longs passages silencieux de l\'audio avant la transcription — la cause la plus fréquente d\'une mauvaise détection de langue ou d\'un texte inventé par le modèle.',
-      qualityHint: 'Enregistrements longs ou peu clairs : choisissez Grand et indiquez la langue directement plutôt que Détection automatique — bien plus fiable, tant pour la langue que pour le contenu.',
-      uploadHint: 'Vous pouvez choisir plusieurs fichiers à la fois — ils sont transcrits les uns après les autres et ajoutés à la même transcription.',
-      queueStatus: 'Fichier {n} sur {m} : {name}',
-      recordingName: 'Enregistrement',
-      modelLabel: 'Qualité',
-      modelStandard: 'Standard — bon équilibre entre rapidité et qualité',
-      modelLarge: 'Grand — meilleure qualité, téléchargement plus lourd et plus lent',
-      languageLabel: 'Langue',
-      languageAuto: 'Détecter automatiquement',
-      record: 'Nouvelle réunion',
-      stop: 'Arrêter',
-      upload: 'Importer un fichier audio',
-      downloading: 'Téléchargement du modèle de langue',
-      transcribing: 'Transcription…',
-      transcript: 'Transcription',
-      copy: 'Copier',
-      copied: 'Copié !',
-      clear: 'Effacer',
-      empty: 'La transcription apparaîtra ici…',
-      error: 'Une erreur s\'est produite. Réessayez ou choisissez un modèle plus petit.',
-      micDenied: 'Impossible d\'accéder au microphone. Autorisez le navigateur et réessayez.',
+    common: {
+      imageLoadError: 'Impossible de lire le fichier image. Il est peut-être endommagé ou dans un format non pris en charge par le navigateur.',
     },
     privacy: {
       externalIntro: 'Cet outil communique avec un service externe :',
+      sendsLabel: 'Ce qui est envoyé :',
+      sendsIp: 'Votre adresse IP. C’est en soi une donnée personnelle — l’outil ne peut pas l’afficher sans interroger le service. Rien de ce que vous saisissez n’est envoyé.',
+      sendsSsl: 'Uniquement le nom de domaine que vous saisissez. Les informations du certificat affichées sont déjà publiques.',
+      sendsDns: 'Uniquement le nom de domaine que vous recherchez.',
+      sendsHeaders: 'L’adresse complète que vous collez, y compris tout ce qui suit le point d’interrogation.',
+      sendsBandwidth: 'Aucun texte. Le test se contente de télécharger et d’envoyer des données de test.',
+      headersWarning: 'L’adresse transite par un proxy gratuit ouvert (AllOrigins) avec lequel nous n’avons aucun accord. Ne collez jamais de liens contenant des jetons de connexion, des clés ou des liens à usage unique — la personne qui gère le proxy peut les lire.',
       externalOutro: 'Bytebox ne stocke rien lui-même. Évitez d’envoyer des données personnelles sensibles.',
       translatorWarning: 'Le texte est envoyé à MyMemory, qui peut le stocker et le réutiliser dans une mémoire de traduction publique. Ne collez pas de noms, de numéros d’identité ou d’autres informations sensibles.',
       speechService: 'le service vocal de votre navigateur',
@@ -2304,6 +2193,7 @@ export const translations: Record<string, Translation> = {
       heading: 'Journal',
       description: 'Ce que nous avons construit et mis à jour dans chaque version.',
       mission: 'Nous croyons que les ordinateurs peuvent faire des choses incroyables — et que tout le monde devrait y avoir accès. La technologie ne devrait pas être quelque chose pour lequel on paie simplement parce que quelqu\'un d\'autre l\'a créée. C\'est pourquoi nous créons ces outils, libres et ouverts, pour tous.',
+      direction: 'Nous resserrons actuellement le périmètre. ByteBox a grandi jusqu’à un grand nombre d’outils, dont plusieurs résolvent des problèmes déjà résolus mille fois ailleurs. Nous les passons donc en revue un par un et gardons ce qui relève de la création numérique — et ce qui se comprend sans connaissances préalables. L’objectif : moins d’outils, mieux expliqués, utilisables par tous — au lecteur d’écran, au clavier seul, en plusieurs langues. La sécurité et la confidentialité ne s’ajoutent pas après coup : c’est une exigence que chaque outil doit remplir pour avoir sa place ici.',
       added: 'Ajouté',
       changed: 'Modifié',
       fixed: 'Corrigé',
@@ -2365,6 +2255,9 @@ export const translations: Record<string, Translation> = {
       copied: 'Copié !',
     },
     qrCode: {
+      tabSingle: 'Un code',
+      tabBatch: 'Plusieurs codes',
+      privacyNote: 'Tout se passe localement dans votre navigateur. Aucun texte n’est envoyé.',
       input: 'Texte ou URL',
       placeholder: 'Tapez du texte ou collez une URL...',
       size: 'Taille',
@@ -2609,22 +2502,22 @@ export const translations: Record<string, Translation> = {
       loading: 'Recherche...',
     },
     sslCheck: {
-      domainLabel: 'Nom de domaine',
       check: 'Vérifier',
-      checking: 'Vérification...',
       valid: 'Le certificat SSL est valide',
-      invalid: 'Le certificat SSL n\'est pas valide',
+      expired: 'Le certificat a expiré',
+      revoked: 'Le certificat a été révoqué',
       issuer: 'Émetteur',
-      expires: 'Expire',
-      error: 'Impossible de vérifier SSL',
+      error: 'Impossible de vérifier le certificat. Vérifiez le nom de domaine.',
+      notFound: 'Aucun certificat n’a Ã©tÃ© Ã©mis pour ce nom exact. Essayez le domaine principal (par ex. example.com au lieu de www.example.com) — les certificats gÃ©nÃ©riques sont listÃ©s sur le domaine principal.',
+      rateLimited: 'Trop de requêtes pour le moment. Patientez un instant et réessayez.',
       placeholder: 'example.com',
       loading: 'Vérification...',
-      unknownIssuer: 'Inconnu (restriction CORS)',
       daysLeft: 'jours restants',
       subject: 'Domaine',
       validFrom: 'Valide à partir du',
-      validTo: 'Valide jusqu\'au',
-      protocol: 'Protocole',
+      validTo: 'Valide jusqu’au',
+      covers: 'Domaines couverts',
+      ctNote: 'Ces données proviennent des journaux publics Certificate Transparency et montrent le certificat le plus récemment émis pour le domaine. C’est presque toujours celui utilisé par le serveur, mais dans de rares cas le serveur peut en utiliser un autre.',
     },
     httpHeaders: {
       urlLabel: 'URL',
@@ -2699,6 +2592,7 @@ export const translations: Record<string, Translation> = {
       upload: 'Cliquez ou glissez des fichiers PDF ici',
       files: 'fichiers',
       merge: 'Fusionner les fichiers PDF',
+      mergeError: 'Impossible de fusionner les fichiers. L’un d’eux est peut-Ãªtre endommagÃ© ou protÃ©gÃ© par mot de passe.',
       merging: 'Fusion...',
       download: 'Télécharger le PDF fusionné',
     },
@@ -2722,7 +2616,7 @@ export const translations: Record<string, Translation> = {
       'png-till-svg': { name: 'PNG vers SVG', description: 'Transformez une image pixel ordinaire (PNG) en graphiques vectoriels (SVG) qui s\'agrandissent sans devenir flous', hint: 'Convertissez des images pixelisées en graphiques vectoriels. Choisissez le mode noir et blanc ou couleur, ajustez le seuil et la résolution — tout se passe localement.' },
       'fargpalett': { name: 'Palette de couleurs', description: 'Créer et gérer des palettes de couleurs', hint: 'Créez des palettes de couleurs pour vos projets. Choisissez des couleurs, voyez les valeurs HEX/RGB/HSL et copiez-les directement.' },
       'filanalys': { name: 'Analyse de fichiers', description: 'Analyser le contenu et les métadonnées des fichiers', hint: 'Déposez n\'importe quel fichier et voyez le nom, la taille, le type MIME, l\'extension et la dernière modification. Les images affichent les dimensions, les fichiers texte affichent le contenu.' },
-      'qr-kod': { name: 'Code QR', description: 'Générer et scanner des codes QR', hint: 'Créez des codes QR pour des URLs, mots de passe Wi-Fi ou tout texte. Choisissez couleurs et taille, téléchargez en PNG — tout se passe localement dans votre navigateur.' },
+      'qr-kod': { name: 'Code QR', description: 'Créez des codes QR — un par un ou plusieurs à la fois', hint: 'Créez des codes QR pour des URL, des mots de passe Wi-Fi ou n’importe quel texte. Choisissez les couleurs et la taille. L’onglet \'Plusieurs codes\' en génère toute une liste d’un coup, à partir de texte collé ou d’un fichier .txt/.csv. Tout se passe localement dans votre navigateur.' },
       'base64-kodare': { name: 'Encodeur Base64', description: 'Encodez du texte et des données en Base64 et inversement — un format texte pour envoyer des données dans les liens, e-mails et le code', hint: 'Base64 transforme n\'importe quelle donnée (images, fichiers, texte) en une longue chaîne de lettres et de chiffres, comme « SGVqIQ== » — rien de secret, juste un moyen d\'envoyer des données là où seul du texte brut passe. Si quelqu\'un vous a envoyé une chaîne en Base64, collez-la et choisissez « Décoder » pour voir ce qu\'elle dit vraiment.' },
       'linjal': { name: 'Règle', description: "Mesurer les distances à l'écran", hint: "Mesurez les distances directement sur votre écran en cm ou pouces. Calibrez avec une carte bancaire pour des mesures précises." },
       'enhetsomvandlare': { name: 'Convertisseur d\'unités', description: 'Convertir entre différentes unités de mesure', hint: 'Convertissez rapidement entre unités métriques et impériales — longueur, poids, température, vitesse et taille des données.' },
@@ -2732,7 +2626,6 @@ export const translations: Record<string, Translation> = {
       'bandbreddstest': { name: 'Test de bande passante', description: 'Tester la vitesse de votre connexion Internet', hint: 'Mesurez votre vitesse de téléchargement et latence en un clic. Résultats en Mbps avec jauge visuelle et historique.' },
       'json-formaterare': { name: 'Formateur JSON', description: 'Mettez de l\'ordre et vérifiez du JSON — le format de données que les applis et services web utilisent pour échanger des informations', hint: 'JSON est une façon de structurer l\'information avec des accolades et des deux-points — comme {"nom": "Anna", "âge": 28}. Si on vous a donné un bloc de JSON compact (par un développeur ou un export, par exemple) et que vous voulez le voir bien présenté, collez-le ici.' },
       'text-till-tal': { name: 'Texte en parole', description: 'Convertir du texte écrit en audio parlé' },
-      'motestranskribering': { name: 'Transcripteur de réunions', description: 'Enregistrez ou importez une réunion et obtenez-la à l\'écrit — entièrement sur votre appareil', hint: 'Parfait pour les comptes rendus, entretiens et cours. L\'audio n\'est jamais envoyé. Astuce : enregistrez la réunion avec l\'app dictaphone de votre téléphone et importez le fichier ici sur votre ordinateur.', screenReason: 'La transcription s\'exécute entièrement en local dans votre navigateur et demande plus de mémoire et de puissance qu\'un téléphone ne peut fournir. De plus, les téléphones mettent le travail en pause quand l\'écran s\'éteint.' },
       'regex-testare': { name: 'Testeur de regex', description: 'Testez des motifs de recherche (regex) qui trouvent et correspondent au texte — voyez les correspondances surlignées en direct', hint: 'Un motif regex (abréviation d\'« expression régulière ») décrit à quoi doit ressembler un texte, pour le trouver ou le vérifier — par exemple « est-ce une adresse e-mail valide ? ». Surtout utilisé par les développeurs. Écrivez un motif et voyez les correspondances se surligner en direct, avec groupes de capture et index.' },
       'bildkomprimering': { name: "Compression d'images", description: 'Compresser des images sans perte de qualité', hint: 'Réduisez la taille des fichiers image sans perdre trop de qualité. Choisissez le niveau de compression et la largeur max — tout se passe localement.' },
       'markdown-forhandsgranskning': { name: 'Aperçu Markdown', description: 'Écrivez du texte avec Markdown (mise en forme simple avec des symboles comme * et #) et voyez la page finie aussitôt', hint: 'Écrivez du Markdown et voyez le résultat en direct. Parfait pour les fichiers README, la documentation ou les articles de blog — avec vue partagée et export HTML.' },
@@ -2743,7 +2636,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC vers JPG', description: 'Convertir des photos iPhone (HEIC) en JPG ou PNG', hint: 'Les iPhone enregistrent les photos en HEIC, que beaucoup d\'ordinateurs ne peuvent pas ouvrir. Convertissez en JPG ou PNG — tout en local, rien n\'est envoyé.' },
       'metadata-tvatt': { name: 'Nettoyeur de métadonnées', description: 'Voir et supprimer les métadonnées cachées (GPS, date, appareil) des images', hint: 'Les photos contiennent souvent votre position GPS exacte. Voyez ce qui est caché dans l\'image et supprimez-le — en local, rien n\'est envoyé.' },
       'passfoto': { name: 'Photo d\'identité', description: 'Créez des photos de passeport et d\'identité aux dimensions exactes en mm', hint: 'Recadrez, zoomez et imprimez plusieurs copies sur une feuille — tout en local dans votre navigateur, rien n\'est envoyé.' },
-      'batch-qr': { name: 'QR par lot', description: 'Générez de nombreux codes QR à la fois depuis une liste ou un fichier CSV', hint: 'Téléchargez tout en PNG. Tout fonctionne en local — rien n\'est envoyé.' },
       'svg-optimering': { name: 'Optimiseur SVG', description: 'Réduisez et nettoyez les fichiers SVG directement dans votre navigateur : supprimez métadonnées, commentaires et code inutile', hint: 'Collez ou importez un SVG et téléchargez une version plus petite. Tout fonctionne en local.' },
       'video-till-gif': { name: 'Vidéo en GIF', description: 'Transformez un clip vidéo en GIF animé : choisissez début, fin, images par seconde et taille', hint: 'Tout fonctionne en local dans votre navigateur — la vidéo n\'est jamais envoyée.' },
       'srt-redigerare': { name: 'Éditeur SRT', description: 'Modifiez des sous-titres SRT : changez le texte, ajustez les temps et décalez tout le fichier', hint: 'Importez ou collez un fichier .srt. Tout fonctionne en local dans votre navigateur.' },
@@ -2783,43 +2675,18 @@ export const translations: Record<string, Translation> = {
     newBadge: 'Neu',
     categoriesHeading: 'Kategorien',
     showAll: 'Alle Werkzeuge anzeigen',
-    meetingTranscriber: {
-      localTitle: 'Alles geschieht auf deinem Gerät',
-      localBody: 'Das Audio verlässt dein Gerät nie. Beim ersten Mal wird ein Sprachmodell heruntergeladen (je nach Auswahl ca. 150–500 MB) und im Browser gespeichert — danach funktioniert die Transkription auch ohne Internet. Die Aufnahme selbst wird nie auf der Festplatte gespeichert — sie existiert nur im Arbeitsspeicher, solange die Seite geöffnet ist, und verschwindet, wenn du die Seite verlässt oder den Tab schließt.',
-      scenariosTitle: 'Drei Wege zum Aufnehmen',
-      scenarioRoomLabel: 'Alle im selben Raum (am besten)',
-      scenarioRoomText: 'Klicke unten auf „Neue Besprechung" — das Mikrofon des Geräts hört alle, die im Raum sprechen.',
-      scenarioDigitalLabel: 'Digitales Meeting (Teams, Zoom usw.)',
-      scenarioDigitalText: 'Das Mikrofon hört nur dich, nicht die anderen Teilnehmer. Nimm die Besprechung stattdessen im Meeting-Dienst auf und lade die Datei danach hier hoch.',
-      scenarioUploadLabel: 'Schon aufgenommen, z. B. auf dem Handy',
-      scenarioUploadText: 'Lade die Audiodatei direkt hoch — funktioniert genauso gut wie hier aufzunehmen.',
-      consentReminder: 'Informiere immer alle Beteiligten — im Raum oder im Meeting —, dass aufgenommen wird.',
-      repetitionCleaned: 'Wir haben wiederholte Textblöcke in der Transkription erkannt und entfernt. Das passiert meist bei leisen oder schwer verständlichen Abschnitten — zum Beispiel, wenn ein digitales Meeting über das Mikrofon aufgenommen wurde und nur deine eigene Stimme erfasst hat.',
-      silenceTrimmed: 'Wir haben lange stille Abschnitte aus der Audiodatei vor der Transkription entfernt — der häufigste Grund dafür, dass das Modell die falsche Sprache errät oder Text erfindet.',
-      qualityHint: 'Längere oder unklare Aufnahmen: wähle Groß und gib die Sprache direkt an statt Automatisch erkennen — deutlich zuverlässiger bei Sprache und Inhalt.',
-      uploadHint: 'Du kannst mehrere Dateien auf einmal auswählen — sie werden nacheinander transkribiert und der gleichen Transkription hinzugefügt.',
-      queueStatus: 'Datei {n} von {m}: {name}',
-      recordingName: 'Aufnahme',
-      modelLabel: 'Qualität',
-      modelStandard: 'Standard — gute Balance aus Geschwindigkeit und Qualität',
-      modelLarge: 'Groß — beste Qualität, größerer Download und langsamer',
-      languageLabel: 'Sprache',
-      languageAuto: 'Automatisch erkennen',
-      record: 'Neue Besprechung',
-      stop: 'Stoppen',
-      upload: 'Audiodatei hochladen',
-      downloading: 'Sprachmodell wird heruntergeladen',
-      transcribing: 'Transkribiert…',
-      transcript: 'Transkription',
-      copy: 'Kopieren',
-      copied: 'Kopiert!',
-      clear: 'Löschen',
-      empty: 'Die Transkription erscheint hier…',
-      error: 'Etwas ist schiefgelaufen. Versuche es erneut oder wähle ein kleineres Modell.',
-      micDenied: 'Kein Zugriff auf das Mikrofon. Erteile dem Browser die Erlaubnis und versuche es erneut.',
+    common: {
+      imageLoadError: 'Die Bilddatei konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder in einem Format, das der Browser nicht unterstützt.',
     },
     privacy: {
       externalIntro: 'Dieses Werkzeug kommuniziert mit einem externen Dienst:',
+      sendsLabel: 'Was gesendet wird:',
+      sendsIp: 'Ihre IP-Adresse. Sie ist selbst ein personenbezogenes Datum — das Werkzeug kann sie nicht anzeigen, ohne den Dienst zu fragen. Nichts, was Sie eingeben, wird gesendet.',
+      sendsSsl: 'Nur der Domainname, den Sie eingeben. Die angezeigten Zertifikatsdaten sind bereits öffentlich.',
+      sendsDns: 'Nur der Domainname, den Sie abfragen.',
+      sendsHeaders: 'Die vollständige Adresse, die Sie einfügen — einschließlich allem nach dem Fragezeichen.',
+      sendsBandwidth: 'Kein Text. Der Test lädt nur Testdaten herunter und hoch.',
+      headersWarning: 'Die Adresse läuft über einen offenen Gratis-Proxy (AllOrigins), mit dem wir keine Vereinbarung haben. Fügen Sie niemals Links mit Login-Tokens, Schlüsseln oder Einmal-Links ein — wer den Proxy betreibt, kann sie lesen.',
       externalOutro: 'Bytebox selbst speichert nichts. Sende keine sensiblen personenbezogenen Daten.',
       translatorWarning: 'Der Text wird an MyMemory gesendet, das ihn in einem öffentlichen Übersetzungsspeicher speichern und wiederverwenden kann. Füge keine Namen, Ausweisnummern oder andere sensible Informationen ein.',
       speechService: 'der Sprachdienst deines Browsers',
@@ -2864,6 +2731,7 @@ export const translations: Record<string, Translation> = {
       heading: 'Journal',
       description: 'Was wir in jeder Version gebaut und aktualisiert haben.',
       mission: 'Wir glauben, dass Computer erstaunliche Dinge tun können — und dass alle Zugang dazu haben sollten. Technologie sollte nicht etwas sein, wofür man bezahlt, nur weil jemand anderes sie gebaut hat. Deshalb schaffen wir diese Werkzeuge, frei und offen, für alle.',
+      direction: 'Derzeit verschlanken wir. ByteBox ist auf eine große Zahl von Werkzeugen angewachsen, von denen mehrere Probleme lösen, die anderswo längst tausendfach gelöst sind. Wir gehen sie deshalb einzeln durch und behalten, was zum digitalen Gestalten gehört — und was sich ohne Vorkenntnisse verstehen lässt. Das Ziel: weniger Werkzeuge, klarer erklärt und für alle nutzbar — mit Screenreader, allein mit der Tastatur, in mehreren Sprachen. Sicherheit und Datenschutz werden nicht nachträglich ergänzt, sondern sind eine Anforderung, die jedes Werkzeug erfüllen muss, bevor es hier Platz hat.',
       added: 'Hinzugefügt',
       changed: 'Geändert',
       fixed: 'Behoben',
@@ -2925,6 +2793,9 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopiert!',
     },
     qrCode: {
+      tabSingle: 'Ein Code',
+      tabBatch: 'Mehrere Codes',
+      privacyNote: 'Alles passiert lokal in Ihrem Browser. Es wird kein Text hochgeladen.',
       input: 'Text oder URL',
       placeholder: 'Text eingeben oder URL einfügen...',
       size: 'Größe',
@@ -3169,22 +3040,22 @@ export const translations: Record<string, Translation> = {
       loading: 'Suche...',
     },
     sslCheck: {
-      domainLabel: 'Domainname',
       check: 'Prüfen',
-      checking: 'Prüfe...',
       valid: 'SSL-Zertifikat ist gültig',
-      invalid: 'SSL-Zertifikat ist ungültig',
+      expired: 'Das Zertifikat ist abgelaufen',
+      revoked: 'Das Zertifikat wurde widerrufen',
       issuer: 'Aussteller',
-      expires: 'Läuft ab',
-      error: 'SSL konnte nicht geprüft werden',
+      error: 'Zertifikat konnte nicht geprüft werden. Prüfen Sie den Domainnamen.',
+      notFound: 'FÃ¼r genau diesen Namen wurde kein Zertifikat ausgestellt. Versuchen Sie die Hauptdomain (z. B. example.com statt www.example.com) — Wildcard-Zertifikate sind unter der Hauptdomain gelistet.',
+      rateLimited: 'Zu viele Anfragen im Moment. Warten Sie kurz und versuchen Sie es erneut.',
       placeholder: 'example.com',
       loading: 'Prüfe...',
-      unknownIssuer: 'Unbekannt (CORS-Einschränkung)',
       daysLeft: 'Tage verbleibend',
       subject: 'Domain',
       validFrom: 'Gültig ab',
       validTo: 'Gültig bis',
-      protocol: 'Protokoll',
+      covers: 'Abgedeckte Domains',
+      ctNote: 'Diese Daten stammen aus öffentlichen Certificate-Transparency-Logs und zeigen das zuletzt ausgestellte Zertifikat der Domain. Fast immer ist das auch das vom Server verwendete, in seltenen Fällen kann der Server jedoch ein anderes ausliefern.',
     },
     httpHeaders: {
       urlLabel: 'URL',
@@ -3259,6 +3130,7 @@ export const translations: Record<string, Translation> = {
       upload: 'Klicken oder PDF-Dateien hierher ziehen',
       files: 'Dateien',
       merge: 'PDF-Dateien zusammenführen',
+      mergeError: 'Die Dateien konnten nicht zusammengefÃ¼hrt werden. Eine davon ist mÃ¶glicherweise beschÃ¤digt oder passwortgeschÃ¼tzt.',
       merging: 'Zusammenführen...',
       download: 'Zusammengeführte PDF herunterladen',
     },
@@ -3282,7 +3154,7 @@ export const translations: Record<string, Translation> = {
       'png-till-svg': { name: 'PNG zu SVG', description: 'Wandle ein normales Pixelbild (PNG) in skalierbare Vektorgrafik (SVG) um, die sich ohne Unschärfe vergrößern lässt', hint: 'Konvertieren Sie Pixelbilder in skalierbare Vektorgrafiken. Wählen Sie Schwarz-Weiß oder Farbmodus, passen Sie Schwellenwert und Auflösung an — alles geschieht lokal.' },
       'fargpalett': { name: 'Farbpalette', description: 'Farbpaletten erstellen und verwalten', hint: 'Erstellen Sie Farbpaletten für Ihre Projekte. Wählen Sie Farben, sehen Sie HEX/RGB/HSL-Werte und kopieren Sie sie direkt.' },
       'filanalys': { name: 'Dateianalyse', description: 'Dateiinhalte und Metadaten analysieren', hint: 'Ziehen Sie eine beliebige Datei hinein und sehen Sie Name, Größe, MIME-Typ, Erweiterung und letzte Änderung. Bilder zeigen Dimensionen, Textdateien zeigen den Inhalt.' },
-      'qr-kod': { name: 'QR-Code', description: 'QR-Codes generieren und scannen', hint: 'Erstellen Sie QR-Codes für URLs, WLAN-Passwörter oder beliebigen Text. Wählen Sie Farben und Größe, laden Sie als PNG herunter — alles geschieht lokal in Ihrem Browser.' },
+      'qr-kod': { name: 'QR-Code', description: 'QR-Codes erstellen — einzeln oder viele auf einmal', hint: 'Erstellen Sie QR-Codes für URLs, WLAN-Passwörter oder beliebigen Text. Farben und Größe frei wählbar. Der Tab \'Mehrere Codes\' erzeugt eine ganze Liste auf einmal, aus eingefügtem Text oder einer .txt/.csv-Datei. Alles passiert lokal im Browser.' },
       'base64-kodare': { name: 'Base64-Kodierer', description: 'Kodiere Text und Daten in Base64 und zurück — ein Textformat, um Daten in Links, E-Mails und Code zu senden', hint: 'Base64 wandelt beliebige Daten (Bilder, Dateien, Text) in eine lange Zeichenfolge aus Buchstaben und Zahlen um, etwa „SGVqIQ==" — nichts Geheimes, nur ein Weg, Daten dorthin zu schicken, wo nur reiner Text durchkommt. Wenn Ihnen jemand eine Base64-Zeichenfolge geschickt hat, fügen Sie sie ein und wählen Sie „Dekodieren", um zu sehen, was tatsächlich drinsteht.' },
       'linjal': { name: 'Lineal', description: 'Abstände auf dem Bildschirm messen', hint: 'Messen Sie Abstände direkt auf Ihrem Bildschirm in cm oder Zoll. Kalibrieren Sie mit einer Kreditkarte für genaue Messungen.' },
       'enhetsomvandlare': { name: 'Einheitenumrechner', description: 'Zwischen verschiedenen Maßeinheiten umrechnen', hint: 'Schnell zwischen metrischen und imperialen Einheiten umrechnen — Länge, Gewicht, Temperatur, Geschwindigkeit und Datengröße.' },
@@ -3292,7 +3164,6 @@ export const translations: Record<string, Translation> = {
       'bandbreddstest': { name: 'Bandbreitentest', description: 'Ihre Internetverbindungsgeschwindigkeit testen', hint: 'Messen Sie Ihre Download-Geschwindigkeit und Latenz mit einem Klick. Ergebnisse in Mbps mit visueller Anzeige und Verlauf.' },
       'json-formaterare': { name: 'JSON-Formatierer', description: 'Räume JSON auf und prüfe es — das Datenformat, mit dem Apps und Webdienste Informationen austauschen', hint: 'JSON ist eine Art, Informationen mit geschweiften Klammern und Doppelpunkten zu strukturieren — etwa {"name": "Anna", "alter": 28}. Wenn Sie einen zusammengequetschten JSON-Klumpen erhalten haben (z. B. von einem Entwickler oder einem Export) und ihn übersichtlich sehen möchten, fügen Sie ihn hier ein.' },
       'text-till-tal': { name: 'Text zu Sprache', description: 'Geschriebenen Text in gesprochenes Audio umwandeln' },
-      'motestranskribering': { name: 'Besprechungs-Transkription', description: 'Nimm eine Besprechung auf oder lade sie hoch und erhalte sie als Text — komplett auf deinem Gerät', hint: 'Ideal für Protokolle, Interviews und Vorlesungen. Das Audio wird nie hochgeladen. Tipp: Nimm die Besprechung mit der Sprachmemo-App deines Handys auf und lade die Datei hier am Computer hoch.', screenReason: 'Die Transkription läuft komplett lokal im Browser und braucht mehr Speicher und Rechenleistung, als ein Handy leisten kann. Handys pausieren die Arbeit außerdem, wenn der Bildschirm ausgeht.' },
       'regex-testare': { name: 'Regex-Tester', description: 'Teste Suchmuster (Regex), die Text finden und abgleichen — sieh die Treffer live hervorgehoben', hint: 'Ein Regex-Muster (kurz für „regulärer Ausdruck") beschreibt, wie ein Text aussehen soll, um ihn zu finden oder zu prüfen — z. B. „ist das eine gültige E-Mail-Adresse?". Wird meist von Entwicklern genutzt. Schreiben Sie ein Muster und sehen Sie Treffer live markiert, mit Erfassungsgruppen und Index.' },
       'bildkomprimering': { name: 'Bildkomprimierung', description: 'Bilder ohne Qualitätsverlust komprimieren', hint: 'Reduzieren Sie die Dateigröße von Bildern ohne zu viel Qualitätsverlust. Wählen Sie Komprimierungsstufe und maximale Breite — alles geschieht lokal.' },
       'markdown-forhandsgranskning': { name: 'Markdown-Vorschau', description: 'Schreibe Text mit Markdown (einfache Formatierung mit Zeichen wie * und #) und sieh die fertige Seite sofort', hint: 'Schreiben Sie Markdown und sehen Sie das Ergebnis live. Perfekt für README-Dateien, Dokumentation oder Blog-Posts — mit geteilter Ansicht und HTML-Export.' },
@@ -3303,7 +3174,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC zu JPG', description: 'iPhone-Fotos (HEIC) in JPG oder PNG umwandeln', hint: 'iPhones speichern Fotos als HEIC, das viele Computer nicht öffnen können. In JPG oder PNG umwandeln — alles lokal, nichts wird hochgeladen.' },
       'metadata-tvatt': { name: 'Metadaten-Reiniger', description: 'Versteckte Metadaten (GPS, Datum, Kamera) aus Bildern anzeigen und entfernen', hint: 'Fotos enthalten oft deinen genauen GPS-Standort. Sieh, was im Bild versteckt ist, und entferne es — lokal, nichts wird hochgeladen.' },
       'passfoto': { name: 'Passfoto', description: 'Erstelle Pass- und Ausweisfotos in exakten mm-Maßen', hint: 'Zuschneiden, zoomen und mehrere Kopien auf einem Blatt drucken — alles lokal im Browser, nichts wird hochgeladen.' },
-      'batch-qr': { name: 'Batch-QR', description: 'Erzeuge viele QR-Codes auf einmal aus einer Liste oder CSV-Datei', hint: 'Lade alle als PNG herunter. Alles läuft lokal — nichts wird hochgeladen.' },
       'svg-optimering': { name: 'SVG-Optimierer', description: 'Verkleinere und bereinige SVG-Dateien direkt im Browser – entferne Metadaten, Kommentare und überflüssigen Code', hint: 'Füge ein SVG ein oder lade es hoch und lade eine kleinere Version herunter. Alles läuft lokal.' },
       'video-till-gif': { name: 'Video zu GIF', description: 'Verwandle ein Videoclip in ein animiertes GIF – wähle Anfang, Ende, Bildrate und Größe', hint: 'Alles läuft lokal im Browser — das Video wird nie hochgeladen.' },
       'srt-redigerare': { name: 'SRT-Editor', description: 'Bearbeite SRT-Untertitel – ändere Text, passe Zeiten an und verschiebe die ganze Datei', hint: 'Lade eine .srt-Datei hoch oder füge sie ein. Alles läuft lokal im Browser.' },
@@ -3343,43 +3213,18 @@ export const translations: Record<string, Translation> = {
     newBadge: 'Novo',
     categoriesHeading: 'Categorias',
     showAll: 'Mostrar todas as ferramentas',
-    meetingTranscriber: {
-      localTitle: 'Tudo acontece no seu dispositivo',
-      localBody: 'O áudio nunca sai do seu dispositivo. Na primeira vez, é descarregado um modelo de linguagem (cerca de 150–500 MB conforme a opção) e guardado no navegador — depois a transcrição funciona mesmo sem internet. A gravação em si nunca é guardada no disco — só existe na memória enquanto a página está aberta, e desaparece quando sai da página ou fecha o separador.',
-      scenariosTitle: 'Três formas de gravar',
-      scenarioRoomLabel: 'Todos na mesma sala (o ideal)',
-      scenarioRoomText: 'Clique em "Nova reunião" abaixo — o microfone do dispositivo ouve todos que falam na sala.',
-      scenarioDigitalLabel: 'Reunião digital (Teams, Zoom, etc.)',
-      scenarioDigitalText: 'O microfone só capta você, não os outros participantes. Grave a reunião no próprio serviço de reuniões e carregue o arquivo aqui depois.',
-      scenarioUploadLabel: 'Já gravado, por exemplo no celular',
-      scenarioUploadText: 'Carregue o arquivo de áudio diretamente — funciona tão bem quanto gravar aqui.',
-      consentReminder: 'Avise sempre todos os envolvidos — na sala ou na reunião — de que está sendo gravado.',
-      repetitionCleaned: 'Detectámos e removemos blocos de texto repetidos na transcrição. Isto costuma acontecer em trechos silenciosos ou difíceis de ouvir — por exemplo, se uma reunião digital foi gravada através do microfone e só captou a sua própria voz.',
-      silenceTrimmed: 'Cortámos longos trechos de silêncio do áudio antes de transcrever — a causa mais comum de o modelo adivinhar o idioma errado ou inventar texto.',
-      qualityHint: 'Gravações longas ou pouco claras: escolha Grande e indique o idioma diretamente em vez de Deteção automática — muito mais fiável tanto no idioma como no conteúdo.',
-      uploadHint: 'Pode escolher vários ficheiros de uma vez — são transcritos um a seguir ao outro e adicionados à mesma transcrição.',
-      queueStatus: 'Ficheiro {n} de {m}: {name}',
-      recordingName: 'Gravação',
-      modelLabel: 'Qualidade',
-      modelStandard: 'Padrão — bom equilíbrio entre velocidade e qualidade',
-      modelLarge: 'Grande — melhor qualidade, download maior e mais lento',
-      languageLabel: 'Idioma',
-      languageAuto: 'Detetar automaticamente',
-      record: 'Nova reunião',
-      stop: 'Parar',
-      upload: 'Carregar ficheiro de áudio',
-      downloading: 'A descarregar modelo de linguagem',
-      transcribing: 'A transcrever…',
-      transcript: 'Transcrição',
-      copy: 'Copiar',
-      copied: 'Copiado!',
-      clear: 'Limpar',
-      empty: 'A transcrição aparecerá aqui…',
-      error: 'Algo correu mal. Tente novamente ou escolha um modelo mais pequeno.',
-      micDenied: 'Não foi possível aceder ao microfone. Dê permissão ao navegador e tente novamente.',
+    common: {
+      imageLoadError: 'Não foi possível ler o ficheiro de imagem. Pode estar danificado ou num formato que o navegador não suporta.',
     },
     privacy: {
       externalIntro: 'Esta ferramenta comunica com um serviço externo:',
+      sendsLabel: 'O que é enviado:',
+      sendsIp: 'O seu endereço IP. É em si um dado pessoal — a ferramenta não o consegue mostrar sem perguntar ao serviço. Nada do que escreve é enviado.',
+      sendsSsl: 'Apenas o nome de domínio que introduz. Os dados do certificado mostrados já são públicos.',
+      sendsDns: 'Apenas o nome de domínio que consulta.',
+      sendsHeaders: 'O endereço completo que cola — incluindo tudo o que vem depois do ponto de interrogação.',
+      sendsBandwidth: 'Nenhum texto. O teste apenas descarrega e envia dados de teste.',
+      headersWarning: 'O endereço passa por um proxy gratuito aberto (AllOrigins) com o qual não temos qualquer acordo. Nunca cole ligações que contenham tokens de sessão, chaves ou ligações de utilização única — quem gere o proxy consegue lê-las.',
       externalOutro: 'O Bytebox não guarda nada. Evite enviar dados pessoais sensíveis.',
       translatorWarning: 'O texto é enviado para o MyMemory, que pode guardá-lo e reutilizá-lo numa memória de tradução pública. Não cole nomes, números de identificação ou outras informações sensíveis.',
       speechService: 'o serviço de voz do seu navegador',
@@ -3424,6 +3269,7 @@ export const translations: Record<string, Translation> = {
       heading: 'Diário',
       description: 'O que construímos e atualizamos em cada versão.',
       mission: 'Acreditamos que os computadores podem fazer coisas incríveis — e que todos devem ter acesso a elas. A tecnologia não deveria ser algo pelo qual se paga apenas porque alguém a construiu. Por isso criamos estas ferramentas, livres e abertas, para todos.',
+      direction: 'Neste momento estamos a reduzir. O ByteBox cresceu até um grande número de ferramentas, várias das quais resolvem problemas já resolvidos em mil outros sítios. Por isso analisamo-las uma a uma e mantemos o que pertence à criação digital — e o que se percebe sem conhecimentos prévios. O objetivo é menos ferramentas, mais bem explicadas e utilizáveis por todos: com leitor de ecrã, apenas com o teclado, em várias línguas. A segurança e a privacidade não são acrescentadas depois, mas um requisito que cada ferramenta tem de cumprir antes de ter lugar aqui.',
       added: 'Adicionado',
       changed: 'Alterado',
       fixed: 'Corrigido',
@@ -3485,6 +3331,9 @@ export const translations: Record<string, Translation> = {
       copied: 'Copiado!',
     },
     qrCode: {
+      tabSingle: 'Um código',
+      tabBatch: 'Vários códigos',
+      privacyNote: 'Tudo acontece localmente no seu navegador. Nenhum texto é enviado.',
       input: 'Texto ou URL',
       placeholder: 'Digite texto ou cole uma URL...',
       size: 'Tamanho',
@@ -3729,22 +3578,22 @@ export const translations: Record<string, Translation> = {
       loading: 'Pesquisando...',
     },
     sslCheck: {
-      domainLabel: 'Nome de domínio',
       check: 'Verificar',
-      checking: 'Verificando...',
       valid: 'O certificado SSL é válido',
-      invalid: 'O certificado SSL não é válido',
+      expired: 'O certificado expirou',
+      revoked: 'O certificado foi revogado',
       issuer: 'Emissor',
-      expires: 'Expira',
-      error: 'Não foi possível verificar SSL',
+      error: 'Não foi possível verificar o certificado. Verifique o nome de domínio.',
+      notFound: 'NÃ£o foi emitido nenhum certificado para esse nome exato. Experimente o domÃ­nio principal (p. ex. example.com em vez de www.example.com) — os certificados wildcard sÃ£o listados no domÃ­nio principal.',
+      rateLimited: 'Demasiados pedidos neste momento. Aguarde um pouco e tente novamente.',
       placeholder: 'example.com',
       loading: 'Verificando...',
-      unknownIssuer: 'Desconhecido (restrição CORS)',
       daysLeft: 'dias restantes',
       subject: 'Domínio',
       validFrom: 'Válido desde',
       validTo: 'Válido até',
-      protocol: 'Protocolo',
+      covers: 'Domínios abrangidos',
+      ctNote: 'Estes dados provêm dos registos públicos de Certificate Transparency e mostram o certificado emitido mais recentemente para o domínio. É quase sempre o que o servidor utiliza, mas em casos raros o servidor pode usar outro.',
     },
     httpHeaders: {
       urlLabel: 'URL',
@@ -3819,6 +3668,7 @@ export const translations: Record<string, Translation> = {
       upload: 'Clique ou arraste arquivos PDF aqui',
       files: 'arquivos',
       merge: 'Mesclar arquivos PDF',
+      mergeError: 'NÃ£o foi possÃ­vel juntar os ficheiros. Algum deles pode estar danificado ou protegido por palavra-passe.',
       merging: 'Mesclando...',
       download: 'Baixar PDF mesclado',
     },
@@ -3842,7 +3692,7 @@ export const translations: Record<string, Translation> = {
       'png-till-svg': { name: 'PNG para SVG', description: 'Converta uma imagem de pixels normal (PNG) em gráficos vetoriais (SVG) que aumentam sem ficar desfocados', hint: 'Converta imagens de pixels para gráficos vetoriais escaláveis. Escolha modo preto e branco ou cor, ajuste o limiar e a resolução — tudo acontece localmente.' },
       'fargpalett': { name: 'Paleta de cores', description: 'Criar e gerenciar paletas de cores', hint: 'Crie paletas de cores para seus projetos. Escolha cores com um seletor, veja valores HEX/RGB/HSL e copie-os diretamente.' },
       'filanalys': { name: 'Análise de arquivos', description: 'Analisar conteúdo e metadados de arquivos', hint: 'Arraste qualquer arquivo e veja nome, tamanho, tipo MIME, extensão e última modificação. Imagens mostram dimensões, arquivos de texto mostram o conteúdo.' },
-      'qr-kod': { name: 'Código QR', description: 'Gerar e escanear códigos QR', hint: 'Crie códigos QR para URLs, senhas Wi-Fi ou qualquer texto. Escolha cores e tamanho, baixe como PNG — tudo acontece localmente no seu navegador.' },
+      'qr-kod': { name: 'Código QR', description: 'Crie códigos QR — um de cada vez ou muitos ao mesmo tempo', hint: 'Crie códigos QR para URLs, palavras-passe de Wi-Fi ou qualquer texto. Escolha cores e tamanho. O separador \'Vários códigos\' gera uma lista inteira de uma vez, a partir de texto colado ou de um ficheiro .txt/.csv. Tudo acontece localmente no navegador.' },
       'base64-kodare': { name: 'Codificador Base64', description: 'Codifique texto e dados para Base64 e de volta — um formato de texto para enviar dados em links, e-mails e código', hint: 'Base64 transforma qualquer dado (imagens, ficheiros, texto) numa longa sequência de letras e números, tipo "SGVqIQ==" — nada secreto, apenas uma forma de enviar dados por sítios onde só passa texto simples. Se alguém te enviou uma sequência em Base64, cola-a e escolhe "Descodificar" para ver o que realmente diz.' },
       'linjal': { name: 'Régua', description: 'Medir distâncias na tela', hint: 'Meça distâncias diretamente na sua tela em cm ou polegadas. Calibre com um cartão de crédito para medidas exatas.' },
       'enhetsomvandlare': { name: 'Conversor de unidades', description: 'Converter entre diferentes unidades de medida', hint: 'Converta rapidamente entre unidades métricas e imperiais — comprimento, peso, temperatura, velocidade e tamanho de dados.' },
@@ -3852,7 +3702,6 @@ export const translations: Record<string, Translation> = {
       'bandbreddstest': { name: 'Teste de largura de banda', description: 'Testar a velocidade da sua conexão com a Internet', hint: 'Meça sua velocidade de download e latência com um clique. Resultados em Mbps com indicador visual e histórico.' },
       'json-formaterare': { name: 'Formatador JSON', description: 'Organize e verifique JSON — o formato de dados que apps e serviços web usam para trocar informação', hint: 'JSON é uma forma de estruturar informação com chavetas e dois pontos — algo como {"nome": "Ana", "idade": 28}. Se te deram um bloco de JSON todo amontoado (por exemplo, de um programador ou uma exportação) e queres vê-lo bem organizado, cola-o aqui.' },
       'text-till-tal': { name: 'Texto para fala', description: 'Converter texto escrito em áudio falado' },
-      'motestranskribering': { name: 'Transcritor de reuniões', description: 'Grave ou carregue uma reunião e receba-a por escrito — tudo no seu dispositivo', hint: 'Ótimo para atas, entrevistas e aulas. O áudio nunca é enviado. Dica: grave a reunião com o app de notas de voz do celular e carregue o arquivo aqui no computador.', screenReason: 'A transcrição é executada totalmente no seu navegador e exige mais memória e capacidade de processamento do que um celular consegue oferecer. Além disso, os celulares pausam o trabalho quando a tela se apaga.' },
       'regex-testare': { name: 'Testador de regex', description: 'Teste padrões de busca (regex) que encontram e correspondem a texto — veja as correspondências destacadas ao vivo', hint: 'Um padrão regex (abreviatura de "expressão regular") descreve como um texto deve ser, para o encontrar ou verificar — por exemplo, "isto é um endereço de e-mail válido?". Usado sobretudo por programadores. Escreve um padrão e vê as correspondências a serem destacadas ao vivo, com grupos de captura e índice.' },
       'bildkomprimering': { name: 'Compressão de imagens', description: 'Comprimir imagens sem perder qualidade', hint: 'Reduza o tamanho de arquivos de imagem sem perder muita qualidade. Escolha nível de compressão e largura máxima — tudo acontece localmente.' },
       'markdown-forhandsgranskning': { name: 'Pré-visualização Markdown', description: 'Escreva texto com Markdown (formatação simples com símbolos como * e #) e veja a página final na hora', hint: 'Escreva Markdown e veja o resultado ao vivo. Perfeito para arquivos README, documentação ou posts de blog — com vista dividida e exportação HTML.' },
@@ -3863,7 +3712,6 @@ export const translations: Record<string, Translation> = {
       'heic-till-jpg': { name: 'HEIC para JPG', description: 'Converter fotos de iPhone (HEIC) para JPG ou PNG', hint: 'Os iPhones guardam fotos como HEIC, que muitos computadores não conseguem abrir. Converta para JPG ou PNG — tudo localmente, nada é enviado.' },
       'metadata-tvatt': { name: 'Limpador de metadados', description: 'Ver e remover metadados ocultos (GPS, data, câmara) de imagens', hint: 'As fotos contêm frequentemente a sua localização GPS exata. Veja o que está oculto na imagem e remova tudo — localmente, nada é enviado.' },
       'passfoto': { name: 'Foto de passaporte', description: 'Crie fotos de passaporte e de identificação com as medidas exatas em mm', hint: 'Recorte, aproxime e imprima várias cópias numa folha — tudo localmente no seu navegador, nada é enviado.' },
-      'batch-qr': { name: 'QR em lote', description: 'Crie muitos códigos QR de uma vez a partir de uma lista ou ficheiro CSV', hint: 'Descarregue todos como PNG. Tudo funciona localmente — nada é enviado.' },
       'svg-optimering': { name: 'Otimizador SVG', description: 'Reduza e limpe ficheiros SVG diretamente no navegador – remova metadados, comentários e código desnecessário', hint: 'Cole ou carregue um SVG e descarregue uma versão mais pequena. Tudo funciona localmente.' },
       'video-till-gif': { name: 'Vídeo para GIF', description: 'Transforme um clipe de vídeo num GIF animado – escolha início, fim, fotogramas e tamanho', hint: 'Tudo funciona localmente no navegador — o vídeo nunca é enviado.' },
       'srt-redigerare': { name: 'Editor de SRT', description: 'Edite legendas SRT – altere o texto, ajuste os tempos e desloque o ficheiro inteiro', hint: 'Carregue ou cole um ficheiro .srt. Tudo funciona localmente no navegador.' },

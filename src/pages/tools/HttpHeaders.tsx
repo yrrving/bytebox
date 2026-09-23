@@ -68,7 +68,11 @@ export default function HttpHeaders() {
         <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
       </div>
 
-      <ExternalNotice service="AllOrigins (api.allorigins.win)" />
+      <ExternalNotice
+        service="AllOrigins (api.allorigins.win)"
+        sends={t.privacy?.sendsHeaders}
+        warning={t.privacy?.headersWarning}
+      />
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
         <div className="flex gap-2">

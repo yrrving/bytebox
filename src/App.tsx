@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Placeholder from './pages/Placeholder'
@@ -18,7 +18,6 @@ const ImageCompressor = lazy(() => import('./pages/tools/ImageCompressor'))
 const FileAnalyzer = lazy(() => import('./pages/tools/FileAnalyzer'))
 const IpInfo = lazy(() => import('./pages/tools/IpInfo'))
 const TextToSpeech = lazy(() => import('./pages/tools/TextToSpeech'))
-const MeetingTranscriber = lazy(() => import('./pages/tools/MeetingTranscriber'))
 const PngToSvg = lazy(() => import('./pages/tools/PngToSvg'))
 const RulerTool = lazy(() => import('./pages/tools/RulerTool'))
 const Translator = lazy(() => import('./pages/tools/Translator'))
@@ -50,7 +49,6 @@ const BackgroundRemover = lazy(() => import('./pages/tools/BackgroundRemover'))
 const HeicConverter = lazy(() => import('./pages/tools/HeicConverter'))
 const MetadataCleaner = lazy(() => import('./pages/tools/MetadataCleaner'))
 const PassportPhoto = lazy(() => import('./pages/tools/PassportPhoto'))
-const BatchQr = lazy(() => import('./pages/tools/BatchQr'))
 const SvgOptimizer = lazy(() => import('./pages/tools/SvgOptimizer'))
 const SrtEditor = lazy(() => import('./pages/tools/SrtEditor'))
 const UuidGenerator = lazy(() => import('./pages/tools/UuidGenerator'))
@@ -90,7 +88,6 @@ export default function App() {
           <Route path="/filanalys" element={<FileAnalyzer />} />
           <Route path="/ip-info" element={<IpInfo />} />
           <Route path="/text-till-tal" element={<TextToSpeech />} />
-          <Route path="/motestranskribering" element={<MeetingTranscriber />} />
           <Route path="/png-till-svg" element={<PngToSvg />} />
           <Route path="/linjal" element={<RulerTool />} />
           <Route path="/oversattare" element={<Translator />} />
@@ -122,7 +119,8 @@ export default function App() {
           <Route path="/heic-till-jpg" element={<HeicConverter />} />
           <Route path="/metadata-tvatt" element={<MetadataCleaner />} />
           <Route path="/passfoto" element={<PassportPhoto />} />
-          <Route path="/batch-qr" element={<BatchQr />} />
+          {/* Batch-QR är numera en flik i QR-verktyget — gamla länkar ska inte dö */}
+          <Route path="/batch-qr" element={<Navigate to="/qr-kod" replace />} />
           <Route path="/svg-optimering" element={<SvgOptimizer />} />
           <Route path="/srt-redigerare" element={<SrtEditor />} />
           <Route path="/uuid-generator" element={<UuidGenerator />} />

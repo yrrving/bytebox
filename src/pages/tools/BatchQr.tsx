@@ -1,8 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
-import { Download, Loader2, ShieldCheck, Upload, QrCode as QrCodeIcon } from 'lucide-react'
+import { Download, Loader2, Upload, QrCode as QrCodeIcon } from 'lucide-react'
 import QRCode from 'qrcode'
-import { useLanguage } from '../../context/LanguageContext'
-import BackLink from '../../components/BackLink'
+import { parseLines, safeFileName, MAX_BATCH } from '../../utils/qr'
 
 interface QrItem {
   content: string
@@ -10,41 +9,16 @@ interface QrItem {
   url: string
 }
 
-// Gör en text säker att använda som filnamn
-function safeFileName(name: string, fallback: string): string {
-  const cleaned = name
-    .trim()
-    .replace(/[/\\?%*:|"<>]/g, '-')
-    .replace(/\s+/g, '_')
-    .slice(0, 60)
-  return cleaned || fallback
+
+interface BatchQrViewProps {
+  size: number
+  fgColor: string
+  bgColor: string
 }
 
-// Enkel parser: en rad per QR. Om raden innehåller kommatecken tolkas
-// första kolumnen som innehåll och andra kolumnen som etikett/filnamn.
-function parseLines(text: string): { content: string; label: string }[] {
-  return text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0)
-    .map((line) => {
-      const commaIndex = line.indexOf(',')
-      if (commaIndex === -1) {
-        return { content: line, label: '' }
-      }
-      const content = line.slice(0, commaIndex).trim()
-      const label = line.slice(commaIndex + 1).trim()
-      return { content, label }
-    })
-    .filter((row) => row.content.length > 0)
-}
-
-export default function BatchQr() {
-  const { t } = useLanguage()
-  const translation = t.tools['batch-qr']
-
+/** Fliken "Flera koder" i QR-verktyget. Delar storlek och färger med enkelläget. */
+export default function BatchQrView({ size, fgColor, bgColor }: BatchQrViewProps) {
   const [input, setInput] = useState('')
-  const [size, setSize] = useState(256)
   const [showLabels, setShowLabels] = useState(true)
   const [items, setItems] = useState<QrItem[]>([])
   const [generating, setGenerating] = useState(false)
@@ -58,8 +32,8 @@ export default function BatchQr() {
       setItems([])
       return
     }
-    if (rows.length > 500) {
-      setError('Max 500 QR-koder åt gången. Korta ner listan.')
+    if (rows.length > MAX_BATCH) {
+      setError(`Max ${MAX_BATCH} QR-koder åt gången. Korta ner listan.`)
       return
     }
     setError('')
@@ -70,13 +44,9 @@ export default function BatchQr() {
         const url = await QRCode.toDataURL(row.content, {
           width: size,
           margin: 2,
-          color: { dark: '#000000', light: '#ffffff' },
+          color: { dark: fgColor, light: bgColor },
         })
-        generated.push({
-          content: row.content,
-          label: row.label,
-          url,
-        })
+        generated.push({ content: row.content, label: row.label, url })
       }
       setItems(generated)
     } catch {
@@ -84,7 +54,7 @@ export default function BatchQr() {
     } finally {
       setGenerating(false)
     }
-  }, [input, size])
+  }, [input, size, fgColor, bgColor])
 
   const handleFile = (file: File) => {
     const reader = new FileReader()
@@ -92,6 +62,7 @@ export default function BatchQr() {
       setInput(typeof reader.result === 'string' ? reader.result : '')
       setError('')
     }
+    reader.onerror = () => setError('Kunde inte läsa filen.')
     reader.readAsText(file)
   }
 
@@ -112,24 +83,7 @@ export default function BatchQr() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6 py-10">
-      <BackLink />
-
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
-        )}
-      </div>
-
-      {/* Privacy note */}
-      <div className="flex items-start gap-2 rounded-lg border border-green-200 dark:border-green-900 hc:border-white bg-green-50 dark:bg-green-950/30 hc:bg-black p-3 text-sm text-green-800 dark:text-green-300 hc:text-white">
-        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
-        <span>Allt sker lokalt i din webbläsare. Ingen text laddas upp någonstans.</span>
-      </div>
-
-      {/* Input */}
+    <div className="space-y-6">
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4 space-y-3">
         <div className="flex items-center justify-between gap-2">
           <label className="block text-sm font-medium text-gray-900 dark:text-white">
@@ -167,40 +121,24 @@ export default function BatchQr() {
         </p>
       </div>
 
-      {/* Options */}
-      <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4">
-        <div className="flex flex-wrap items-end gap-4">
-          <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Storlek</label>
-            <select
-              value={size}
-              onChange={(e) => setSize(Number(e.target.value))}
-              className="rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white"
-            >
-              <option value={128}>128px</option>
-              <option value={256}>256px</option>
-              <option value={512}>512px</option>
-              <option value={1024}>1024px</option>
-            </select>
-          </div>
-          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hc:text-white">
-            <input
-              type="checkbox"
-              checked={showLabels}
-              onChange={(e) => setShowLabels(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 dark:border-gray-600"
-            />
-            Visa etikett under varje QR-kod
-          </label>
-          <button
-            onClick={generate}
-            disabled={generating}
-            className="ml-auto inline-flex items-center gap-2 rounded-lg bg-blue-600 hc:bg-white hc:text-black px-4 py-2.5 font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-40"
-          >
-            {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <QrCodeIcon className="h-4 w-4" />}
-            {generating ? 'Skapar…' : 'Skapa QR-koder'}
-          </button>
-        </div>
+      <div className="flex flex-wrap items-center gap-4">
+        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hc:text-white">
+          <input
+            type="checkbox"
+            checked={showLabels}
+            onChange={(e) => setShowLabels(e.target.checked)}
+            className="h-4 w-4 rounded border-gray-300 dark:border-gray-600"
+          />
+          Visa etikett under varje QR-kod
+        </label>
+        <button
+          onClick={generate}
+          disabled={generating}
+          className="ml-auto inline-flex items-center gap-2 rounded-lg bg-blue-600 hc:bg-white hc:text-black px-4 py-2.5 font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-40"
+        >
+          {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <QrCodeIcon className="h-4 w-4" />}
+          {generating ? 'Skapar…' : 'Skapa QR-koder'}
+        </button>
       </div>
 
       {error && (
@@ -209,7 +147,6 @@ export default function BatchQr() {
         </p>
       )}
 
-      {/* Output */}
       {items.length > 0 && (
         <div className="space-y-4">
           <div className="flex items-center justify-between gap-2">

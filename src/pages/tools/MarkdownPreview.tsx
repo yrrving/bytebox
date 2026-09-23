@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useCallback } from 'react'
 import { Copy, Check, Trash2, Eye, Edit3, Bold, Italic, Strikethrough, Heading2, Quote, Code, Link2, List, ListOrdered, Table2 } from 'lucide-react'
 import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
@@ -124,7 +125,10 @@ export default function MarkdownPreview() {
 
   const html = useMemo(() => {
     try {
-      return marked.parse(input, { async: false }) as string
+      // marked sanerar inte — markdown får innehålla rå HTML. Utan DOMPurify
+      // kör t.ex. <img src=x onerror=...> godtycklig kod i Bytebox origin och
+      // kommer åt det andra verktyg sparat i localStorage.
+      return DOMPurify.sanitize(marked.parse(input, { async: false }) as string)
     } catch {
       return ''
     }

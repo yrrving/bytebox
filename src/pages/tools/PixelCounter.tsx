@@ -1,11 +1,14 @@
 import { useState, useRef, useCallback } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ErrorNotice from '../../components/ErrorNotice'
+import { loadImageFromFile } from '../../utils/image'
 
 interface Point { x: number; y: number }
 
 export default function PixelCounter() {
   const { t } = useLanguage()
+  const [imageError, setImageError] = useState('')
   const translation = t.tools['pixelraknare']
   const pt = t.pixelCounter
 
@@ -20,18 +23,22 @@ export default function PixelCounter() {
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleImage = (file: File) => {
-    const img = new Image()
-    img.onload = () => {
-      setImage(img)
-      setImgSize({ w: img.width, h: img.height })
-      const canvas = canvasRef.current!
-      canvas.width = img.width
-      canvas.height = img.height
-      const ctx = canvas.getContext('2d')!
-      ctx.drawImage(img, 0, 0)
+  const handleImage = async (file: File) => {
+    setImageError('')
+    let img: HTMLImageElement
+    try {
+      img = await loadImageFromFile(file)
+    } catch {
+      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+      return
     }
-    img.src = URL.createObjectURL(file)
+    setImage(img)
+    setImgSize({ w: img.width, h: img.height })
+    const canvas = canvasRef.current!
+    canvas.width = img.width
+    canvas.height = img.height
+    const ctx = canvas.getContext('2d')!
+    ctx.drawImage(img, 0, 0)
   }
 
   const getImageCoords = useCallback((e: React.MouseEvent): Point | null => {
@@ -72,6 +79,8 @@ export default function PixelCounter() {
   return (
     <div className="mx-auto max-w-3xl space-y-6 py-10">
       <BackLink />
+
+      <ErrorNotice message={imageError} />
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>

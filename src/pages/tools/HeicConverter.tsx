@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Download, Loader2, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 type OutFormat = 'image/jpeg' | 'image/png'
 
@@ -19,6 +20,7 @@ function formatBytes(bytes: number): string {
 
 export default function HeicConverter() {
   const { t } = useLanguage()
+  const { createUrl } = useObjectUrls()
   const translation = t.tools['heic-till-jpg']
   const h = t.heicConverter
 
@@ -53,7 +55,7 @@ export default function HeicConverter() {
         const blob = Array.isArray(out) ? out[0] : out
         converted.push({
           name: file.name.replace(/\.hei[cf]$/i, '') + '.' + ext,
-          url: URL.createObjectURL(blob),
+          url: createUrl(blob),
           size: blob.size,
         })
       }

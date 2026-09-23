@@ -2,6 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Låser fast vad sidan får ladda och prata med. Viktigast är connect-src:
+      även om ett beroende skulle bli komprometterat kan det inte skicka
+      användarens data vidare till en annan server än de som listas här.
+
+      'unsafe-eval' krävs tyvärr av heic2any och pdf.js, som båda bygger
+      funktioner med new Function() i sin Emscripten-kod. Utan den slutar
+      HEIC-till-JPG och delar av PDF-verktyget att fungera.
+      'wasm-unsafe-eval' krävs av pdf.js WebAssembly-moduler.
+
+      connect-src listar varje extern tjänst ett verktyg använder — lägg till
+      här när ett nytt verktyg ringer ut, annars blockeras anropet.
+        api.certspotter.com  — SSL-kontroll (Certificate Transparency)
+        ipwho.is             — IP-info
+        api.mymemory...      — Översättare
+        api.allorigins.win   — HTTP Headers (CORS-proxy)
+        dns.google           — DNS-uppslagning
+        *.cloudflare.com     — Bandbreddstest
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: blob:;
+        media-src 'self' blob:;
+        font-src 'self';
+        worker-src 'self' blob:;
+        child-src 'self' blob:;
+        frame-src 'self';
+        connect-src 'self' blob: data:
+          https://api.certspotter.com
+          https://ipwho.is
+          https://api.mymemory.translated.net
+          https://api.allorigins.win
+          https://dns.google
+          https://cloudflare.com
+          https://speed.cloudflare.com;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+      "
+    />
     <link rel="icon" type="image/svg+xml" href="/bytebox/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/bytebox/manifest.webmanifest" />
@@ -11,22 +55,7 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/javascript">
-      // Restore path from 404.html redirect
-      ;(function (l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function (s) {
-            return s.replace(/~and~/g, '&')
-          })
-          window.history.replaceState(
-            null, null,
-            l.pathname.slice(0, -1) + decoded[0] +
-            (decoded[1] ? '&' + decoded[1].slice(1) : '') +
-            l.hash
-          )
-        }
-      }(window.location))
-    </script>
+    <script src="/bytebox/spa-redirect.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

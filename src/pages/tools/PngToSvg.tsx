@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 import { Upload, Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + ' B'
@@ -91,6 +92,7 @@ function generateSvg(
 
 export default function PngToSvg() {
   const { t } = useLanguage()
+  const { createUrl } = useObjectUrls()
   const translation = t.tools['png-till-svg']
 
   const fileRef = useRef<HTMLInputElement>(null)
@@ -105,7 +107,7 @@ export default function PngToSvg() {
   const [scale, setScale] = useState(1)
 
   const loadImage = (file: File) => {
-    const url = URL.createObjectURL(file)
+    const url = createUrl(file)
     const img = new Image()
     img.onload = () => {
       setOriginal({ url, size: file.size, width: img.width, height: img.height, name: file.name })
@@ -138,11 +140,11 @@ export default function PngToSvg() {
       const svg = generateSvg(canvas, colors, threshold, mode)
       setSvgOutput(svg)
       const blob = new Blob([svg], { type: 'image/svg+xml' })
-      setSvgPreviewUrl(URL.createObjectURL(blob))
+      setSvgPreviewUrl(createUrl(blob))
       setProcessing(false)
     }
     img.src = original.url
-  }, [original, scale, colors, threshold, mode])
+  }, [original, scale, colors, threshold, mode, createUrl])
 
   const downloadSvg = () => {
     if (!svgOutput || !original) return

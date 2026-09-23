@@ -136,7 +136,7 @@ export default function BandwidthTest() {
         )}
       </div>
 
-      <ExternalNotice service="Cloudflare (speed.cloudflare.com)" />
+      <ExternalNotice service="Cloudflare (speed.cloudflare.com)" sends={t.privacy?.sendsBandwidth} />
 
       {/* Speed gauge / result */}
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center">

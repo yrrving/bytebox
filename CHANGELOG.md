@@ -2,6 +2,32 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.29.0 — 2026-09-23 — Säkerhetsgenomgång: fyra trasiga verktyg lagade
+
+En genomgång av hela verktygslådan med fokus på säkerhet och integritet. Fyra
+verktyg visade sig vara trasiga på sätt som inte syntes utifrån — de sa aldrig
+ifrån, de gav bara fel svar.
+
+### Fixat
+
+- **PDF-verktyget tappade sidor när filer slogs ihop.** "Slå ihop" klistrade ihop filernas rådata i stället för att bygga ett riktigt PDF-dokument. Resultatet blev en fil som såg giltig ut men där bara en del av sidorna fanns kvar — i ett test blev fem sidor till tre, utan felmeddelande. Sammanslagningen bygger nu dokumentet ordentligt, och går något fel sägs det rakt ut i stället för att en trasig fil laddas ner.
+- **Markdown-förhandsgranskningen kunde köra kod från inklistrad text.** Markdown får innehålla HTML, och den släpptes igenom orörd. Text från en okänd källa kunde därför köra kod i Bytebox och läsa det som andra verktyg sparat i webbläsaren, till exempel dokument från Ordbehandlaren. All HTML rensas nu innan den visas. Vanlig formatering, länkar, bilder och kodblock fungerar som förut.
+- **SSL-kontrollen godkände alla domäner.** Tjänsten verktyget hämtade certifikatuppgifter från (ssl-checker.io) har lagts ner. Verktyget föll då tillbaka på en kontroll som alltid visade "certifikatet är giltigt" med tomma fält, oavsett vad man skrev in. Uppgifterna hämtas nu från de offentliga Certificate Transparency-loggarna och visar utfärdare, giltighetstid, dagar kvar, om certifikatet är återkallat och hur många domännamn det täcker. Finns inget certifikat för namnet sägs det nu, i stället för ett falskt godkänt.
+- **IP-info kunde inte hämta någon information.** Leverantören (ipapi.co) hade infört ett kvottak på gratisnivån och svarade med ett fel i stället för data. Verktyget använder nu ipwho.is.
+- **Sju bildverktyg stod tysta när en fil inte gick att läsa.** ASCII-konst, Bakgrundsborttagare, Favicon-generator, Bildbeskärare, OCR, Pixelräknare och Passfoto gjorde ingenting alls vid en skadad eller okänd bildfil. Nu visas ett meddelande.
+- **Tretton verktyg läckte minne.** Bilder och filer som lästes in släpptes aldrig, utan låg kvar så länge fliken var öppen. Märktes mest efter att ha kört många filer i rad.
+
+### Nytt
+
+- **Ett skyddsnät mot skadligt innehåll.** Sidan får nu bara ladda kod och kontakta tjänster från en fast lista. Skulle någon del av appen bli komprometterad kan den inte skicka vidare det du arbetar med till en okänd server.
+- **Verktygen som kommunicerar utåt säger nu exakt vad som skickas.** I stället för en allmän varning står det konkret — "bara domännamnet du skriver in", "din IP-adress", "hela adressen du klistrar in". HTTP Headers har fått en skarpare varning: adressen passerar en öppen gratisproxy, så klistra aldrig in länkar med inloggningstokens eller nycklar i.
+
+### Ändrat
+
+- **QR-kod och Batch-QR är nu ett verktyg med två flikar.** De gjorde nästan samma sak men hade olika funktioner av en slump — enkelläget kunde välja färger men bara göra en kod i taget, batchläget kunde göra hundra men bara i svartvitt. Nu gäller storlek och färgval i båda lägena. Gamla länkar till Batch-QR leder vidare till rätt ställe.
+- **Mötestranskriberingen är borttagen.** Den blev aldrig tillräckligt tillförlitlig, och med den försvinner också det tyngsta beroendet i appen.
+- Appens underliggande komponenter är uppdaterade till senaste versionerna.
+
 ## 0.28.1 — 2026-09-15 — Tydligare Kod & Data-verktyg + mobilanpassning för PadGrid
 
 ### Ändrat

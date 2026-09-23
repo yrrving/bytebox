@@ -2,6 +2,8 @@ import { useState, useRef, useCallback } from 'react'
 import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ErrorNotice from '../../components/ErrorNotice'
+import { loadImageFromFile } from '../../utils/image'
 
 interface CropArea {
   x: number
@@ -20,6 +22,7 @@ const RATIOS = [
 
 export default function ImageCropper() {
   const { t } = useLanguage()
+  const [imageError, setImageError] = useState('')
   const translation = t.tools['bildbeskärare']
   const ct = t.imageCropper
 
@@ -33,15 +36,19 @@ export default function ImageCropper() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleImage = (file: File) => {
-    const img = new Image()
-    img.onload = () => {
-      setImage(img)
-      const w = 80, h = ratio > 0 ? 80 / ratio : 80
-      setCrop({ x: 10, y: 10, w: Math.min(w, 80), h: Math.min(h, 80) })
-      setResult('')
+  const handleImage = async (file: File) => {
+    setImageError('')
+    let img: HTMLImageElement
+    try {
+      img = await loadImageFromFile(file)
+    } catch {
+      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+      return
     }
-    img.src = URL.createObjectURL(file)
+    setImage(img)
+    const w = 80, h = ratio > 0 ? 80 / ratio : 80
+    setCrop({ x: 10, y: 10, w: Math.min(w, 80), h: Math.min(h, 80) })
+    setResult('')
   }
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
@@ -102,6 +109,8 @@ export default function ImageCropper() {
   return (
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
+
+      <ErrorNotice message={imageError} />
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>

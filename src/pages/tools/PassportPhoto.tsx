@@ -2,6 +2,8 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { Download, ShieldCheck, ImageIcon, ZoomIn } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ErrorNotice from '../../components/ErrorNotice'
+import { loadImageFromFile } from '../../utils/image'
 
 const DPI = 300
 const mmToPx = (mm: number) => Math.round((mm / 25.4) * DPI)
@@ -96,6 +98,7 @@ function renderPhoto(
 
 export default function PassportPhoto() {
   const { t } = useLanguage()
+  const [imageError, setImageError] = useState('')
   const translation = t.tools['passfoto']
 
   const [image, setImage] = useState<HTMLImageElement | null>(null)
@@ -132,15 +135,22 @@ export default function PassportPhoto() {
   dispW = Math.round(dispW)
   dispH = Math.round(dispH)
 
-  const handleImage = (file: File) => {
-    if (!file.type.startsWith('image/')) return
-    const img = new Image()
-    img.onload = () => {
-      setImage(img)
-      setZoom(1)
-      setOffset({ x: 0, y: 0 })
+  const handleImage = async (file: File) => {
+    setImageError('')
+    if (!file.type.startsWith('image/')) {
+      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+      return
     }
-    img.src = URL.createObjectURL(file)
+    let img: HTMLImageElement
+    try {
+      img = await loadImageFromFile(file)
+    } catch {
+      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+      return
+    }
+    setImage(img)
+    setZoom(1)
+    setOffset({ x: 0, y: 0 })
   }
 
   // Rita om förhandsvisningen
@@ -265,6 +275,8 @@ export default function PassportPhoto() {
   return (
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
+
+      <ErrorNotice message={imageError} />
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>

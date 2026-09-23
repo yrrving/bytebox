@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Download, Loader2, ShieldCheck, MapPin, Calendar, Camera, Trash2 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 interface MetaSummary {
   gps: { lat: number; lon: number } | null
@@ -12,6 +13,7 @@ interface MetaSummary {
 
 export default function MetadataCleaner() {
   const { t } = useLanguage()
+  const { createUrl } = useObjectUrls()
   const translation = t.tools['metadata-tvatt']
   const m = t.metadataCleaner
 
@@ -30,7 +32,7 @@ export default function MetadataCleaner() {
     setCleanedUrl('')
     setFileName(file.name)
     setImgType(file.type)
-    setImgUrl(URL.createObjectURL(file))
+    setImgUrl(createUrl(file))
     try {
       const exifr = (await import('exifr')).default
       const gps = await exifr.gps(file).catch(() => null)
@@ -65,7 +67,7 @@ export default function MetadataCleaner() {
       // Re-encoding through canvas drops all EXIF/metadata
       const outType = imgType === 'image/png' ? 'image/png' : 'image/jpeg'
       canvas.toBlob(
-        (blob) => { if (blob) setCleanedUrl(URL.createObjectURL(blob)) },
+        (blob) => { if (blob) setCleanedUrl(createUrl(blob)) },
         outType,
         outType === 'image/jpeg' ? 0.95 : undefined,
       )

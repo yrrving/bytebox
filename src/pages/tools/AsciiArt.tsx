@@ -2,6 +2,8 @@ import { useState, useRef } from 'react'
 import { Copy, Check } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ErrorNotice from '../../components/ErrorNotice'
+import { loadImageFromFile } from '../../utils/image'
 
 const CHAR_RAMPS = {
   standard: ' .:-=+*#%@',
@@ -13,6 +15,7 @@ type RampType = keyof typeof CHAR_RAMPS
 
 export default function AsciiArt() {
   const { t } = useLanguage()
+  const [imageError, setImageError] = useState('')
   const translation = t.tools['ascii-konst']
   const at = t.asciiArt
 
@@ -23,36 +26,40 @@ export default function AsciiArt() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleImage = (file: File) => {
-    const img = new Image()
-    img.onload = () => {
-      const canvas = canvasRef.current!
-      const aspectRatio = img.height / img.width
-      const cols = width
-      const rows = Math.round(cols * aspectRatio * 0.5) // chars are ~2x tall
-      canvas.width = cols
-      canvas.height = rows
-      const ctx = canvas.getContext('2d')!
-      ctx.drawImage(img, 0, 0, cols, rows)
-      const imageData = ctx.getImageData(0, 0, cols, rows)
-      const ramp = CHAR_RAMPS[rampType]
-
-      let result = ''
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          const i = (y * cols + x) * 4
-          const r = imageData.data[i]
-          const g = imageData.data[i + 1]
-          const b = imageData.data[i + 2]
-          const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-          const charIndex = Math.floor(brightness * (ramp.length - 1))
-          result += ramp[charIndex]
-        }
-        result += '\n'
-      }
-      setAscii(result)
+  const handleImage = async (file: File) => {
+    setImageError('')
+    let img: HTMLImageElement
+    try {
+      img = await loadImageFromFile(file)
+    } catch {
+      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+      return
     }
-    img.src = URL.createObjectURL(file)
+    const canvas = canvasRef.current!
+    const aspectRatio = img.height / img.width
+    const cols = width
+    const rows = Math.round(cols * aspectRatio * 0.5) // chars are ~2x tall
+    canvas.width = cols
+    canvas.height = rows
+    const ctx = canvas.getContext('2d')!
+    ctx.drawImage(img, 0, 0, cols, rows)
+    const imageData = ctx.getImageData(0, 0, cols, rows)
+    const ramp = CHAR_RAMPS[rampType]
+
+    let result = ''
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        const i = (y * cols + x) * 4
+        const r = imageData.data[i]
+        const g = imageData.data[i + 1]
+        const b = imageData.data[i + 2]
+        const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+        const charIndex = Math.floor(brightness * (ramp.length - 1))
+        result += ramp[charIndex]
+      }
+      result += '\n'
+    }
+    setAscii(result)
   }
 
   const handleDrop = (e: React.DragEvent) => {
@@ -76,6 +83,8 @@ export default function AsciiArt() {
   return (
     <div className="mx-auto max-w-4xl space-y-6 py-10">
       <BackLink />
+
+      <ErrorNotice message={imageError} />
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>

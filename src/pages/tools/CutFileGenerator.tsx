@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react
 import { Download, Square, Circle, Pencil, Undo2, Trash2, Upload, Hand } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { downloadBlob } from '../../utils/download'
 
 type Shape =
   | { type: 'rect'; x: number; y: number; w: number; h: number; rx: number }
@@ -389,11 +390,7 @@ ${shapeSvg}
   </g>
 </svg>`
 
-    const blob = new Blob([svg], { type: 'image/svg+xml' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = 'cut-file.svg'
-    a.click()
+    downloadBlob(new Blob([svg], { type: 'image/svg+xml' }), 'cut-file.svg')
   }
 
   const toolList: { id: Tool; icon: typeof Square; label: string }[] = [

@@ -26,9 +26,12 @@ export default function Journal() {
         <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{t.journal.description}</p>
       </div>
 
-      <div className="mb-8 rounded-xl border border-blue-200 dark:border-blue-800 hc:border-white bg-blue-50 dark:bg-blue-950/30 hc:bg-black p-6">
+      <div className="mb-8 space-y-4 rounded-xl border border-blue-200 dark:border-blue-800 hc:border-white bg-blue-50 dark:bg-blue-950/30 hc:bg-black p-6">
         <p className="text-sm leading-relaxed text-blue-900 dark:text-blue-200 hc:text-white italic">
           {t.journal.mission}
+        </p>
+        <p className="border-t border-blue-200/70 dark:border-blue-800/70 hc:border-white pt-4 text-sm leading-relaxed text-blue-900 dark:text-blue-200 hc:text-white">
+          {t.journal.direction}
         </p>
       </div>
 

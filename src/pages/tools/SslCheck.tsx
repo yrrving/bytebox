@@ -4,68 +4,86 @@ import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ExternalNotice from '../../components/ExternalNotice'
 
-interface SslInfo {
+interface Issuance {
+  issuer?: { friendly_name?: string; name?: string }
+  not_before?: string
+  not_after?: string
+  revoked?: boolean
+  dns_names?: string[]
+}
+
+interface CertInfo {
   subject: string
   issuer: string
   validFrom: string
   validTo: string
   daysLeft: number
-  protocol: string
-  valid: boolean
+  names: number
+  revoked: boolean
+}
+
+const DAY = 1000 * 60 * 60 * 24
+
+function formatDate(iso: string, locale: string): string {
+  const d = new Date(iso)
+  return isNaN(d.getTime()) ? '—' : d.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 export default function SslCheck() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const translation = t.tools['ssl-kontroll']
   const st = t.sslCheck
 
   const [domain, setDomain] = useState('')
-  const [info, setInfo] = useState<SslInfo | null>(null)
+  const [info, setInfo] = useState<CertInfo | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   const check = async () => {
-    const clean = domain.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '')
+    const clean = domain.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '')
     if (!clean) return
     setLoading(true)
     setError('')
     setInfo(null)
     try {
-      // Use a public SSL check API
-      const res = await fetch(`https://ssl-checker.io/api/v1/check/${encodeURIComponent(clean)}`)
+      const res = await fetch(
+        `https://api.certspotter.com/v1/issuances?domain=${encodeURIComponent(clean)}&include_subdomains=false&expand=issuer&expand=dns_names`,
+      )
+      if (res.status === 429) {
+        setError(st?.rateLimited ?? 'För många förfrågningar just nu. Vänta en stund och försök igen.')
+        return
+      }
       if (!res.ok) throw new Error('API error')
-      const data = await res.json()
-      const validTo = new Date(data.result?.valid_till || data.valid_till || '')
-      const daysLeft = Math.ceil((validTo.getTime() - Date.now()) / (1000 * 60 * 60 * 24))
+
+      const list: Issuance[] = await res.json()
+      // CT-loggarna listar alla utfärdade certifikat — det som gäller nu är det
+      // med senaste utgångsdatum.
+      const latest = list
+        .filter((c) => c.not_after)
+        .sort((a, b) => Date.parse(b.not_after!) - Date.parse(a.not_after!))[0]
+
+      if (!latest) {
+        setError(st?.notFound ?? 'Hittade inget certifikat för den domänen i Certificate Transparency-loggarna.')
+        return
+      }
+
       setInfo({
-        subject: data.result?.subject || data.subject || clean,
-        issuer: data.result?.issuer || data.issuer || '—',
-        validFrom: data.result?.valid_from || data.valid_from || '—',
-        validTo: data.result?.valid_till || data.valid_till || '—',
-        daysLeft: isNaN(daysLeft) ? 0 : daysLeft,
-        protocol: data.result?.protocol || data.protocol || 'TLS',
-        valid: daysLeft > 0,
+        subject: clean,
+        issuer: latest.issuer?.friendly_name || latest.issuer?.name || '—',
+        validFrom: formatDate(latest.not_before ?? '', language),
+        validTo: formatDate(latest.not_after ?? '', language),
+        daysLeft: Math.ceil((Date.parse(latest.not_after!) - Date.now()) / DAY),
+        names: latest.dns_names?.length ?? 0,
+        revoked: latest.revoked === true,
       })
     } catch {
-      // Fallback: just try to fetch the site and check if HTTPS works
-      try {
-        await fetch(`https://${clean}`, { method: 'HEAD', mode: 'no-cors' })
-        setInfo({
-          subject: clean,
-          issuer: st?.unknownIssuer || 'Okänd (CORS-begränsning)',
-          validFrom: '—',
-          validTo: '—',
-          daysLeft: -1,
-          protocol: 'HTTPS',
-          valid: true,
-        })
-      } catch {
-        setError(st?.error || 'Kunde inte kontrollera SSL-certifikatet. Kontrollera domänen.')
-      }
+      setError(st?.error ?? 'Kunde inte kontrollera SSL-certifikatet. Kontrollera domänen.')
     } finally {
       setLoading(false)
     }
   }
+
+  const ok = info ? info.daysLeft > 0 && !info.revoked : false
 
   return (
     <div className="mx-auto max-w-xl space-y-6 py-10">
@@ -76,7 +94,7 @@ export default function SslCheck() {
         <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
       </div>
 
-      <ExternalNotice service="ssl-checker.io" />
+      <ExternalNotice service="Cert Spotter (SSLMate)" sends={t.privacy?.sendsSsl} />
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
         <div className="flex gap-2">
@@ -109,20 +127,24 @@ export default function SslCheck() {
         {info && (
           <div className="space-y-4">
             <div className={`flex items-center gap-3 rounded-lg p-4 ${
-              info.valid
+              ok
                 ? 'bg-green-50 dark:bg-green-900/20 hc:bg-green-900/40 hc:border hc:border-green-400'
                 : 'bg-red-50 dark:bg-red-900/20 hc:bg-red-900/40 hc:border hc:border-red-400'
             }`}>
-              {info.valid ? (
+              {ok ? (
                 <ShieldCheck className="h-8 w-8 text-green-600 dark:text-green-400 hc:text-green-300" />
               ) : (
                 <ShieldAlert className="h-8 w-8 text-red-600 dark:text-red-400 hc:text-red-300" />
               )}
               <div>
-                <div className={`font-medium ${info.valid ? 'text-green-800 dark:text-green-300 hc:text-green-200' : 'text-red-800 dark:text-red-300 hc:text-red-200'}`}>
-                  {info.valid ? (st?.valid || 'SSL-certifikatet är giltigt') : (st?.invalid || 'SSL-certifikatet är ogiltigt')}
+                <div className={`font-medium ${ok ? 'text-green-800 dark:text-green-300 hc:text-green-200' : 'text-red-800 dark:text-red-300 hc:text-red-200'}`}>
+                  {info.revoked
+                    ? (st?.revoked || 'Certifikatet är återkallat')
+                    : info.daysLeft > 0
+                      ? (st?.valid || 'SSL-certifikatet är giltigt')
+                      : (st?.expired || 'Certifikatet har gått ut')}
                 </div>
-                {info.daysLeft > 0 && (
+                {info.daysLeft > 0 && !info.revoked && (
                   <div className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">
                     {info.daysLeft} {st?.daysLeft || 'dagar kvar'}
                   </div>
@@ -136,7 +158,7 @@ export default function SslCheck() {
                 { label: st?.issuer || 'Utfärdare', value: info.issuer },
                 { label: st?.validFrom || 'Giltig från', value: info.validFrom },
                 { label: st?.validTo || 'Giltig till', value: info.validTo },
-                { label: st?.protocol || 'Protokoll', value: info.protocol },
+                { label: st?.covers || 'Täcker antal domäner', value: String(info.names) },
               ].map((row) => (
                 <div key={row.label} className="flex items-center justify-between py-2.5">
                   <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{row.label}</span>
@@ -144,6 +166,10 @@ export default function SslCheck() {
                 </div>
               ))}
             </div>
+
+            <p className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+              {st?.ctNote || 'Uppgifterna kommer från offentliga Certificate Transparency-loggar och visar det senast utfärdade certifikatet för domänen. Det är nästan alltid det som servern använder, men i sällsynta fall kan servern köra ett annat.'}
+            </p>
           </div>
         )}
       </div>

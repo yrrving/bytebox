@@ -12,7 +12,6 @@ import {
   Gauge,
   FileJson,
   Speech,
-  Mic,
   Binary,
   Regex,
   ImageDown,
@@ -81,7 +80,6 @@ export const latestToolIds: string[] = [
   'padgrid',
   'pdf-verktyg',
   'ordbehandlare',
-  'motestranskribering',
   'video-till-gif',
   'streckkod',
 ]
@@ -309,14 +307,6 @@ export const tools: Tool[] = [
     category: 'ljud',
   },
   {
-    id: 'motestranskribering',
-    route: '/motestranskribering',
-    minScreen: 'dator',
-    connection: 'online',
-    icon: Mic,
-    category: 'ljud',
-  },
-  {
     id: 'metronom',
     route: '/metronom',
     minScreen: 'mobil',
@@ -519,14 +509,6 @@ export const tools: Tool[] = [
   {
     id: 'qr-kod',
     route: '/qr-kod',
-    minScreen: 'mobil',
-    connection: 'offline',
-    icon: QrCode,
-    category: 'produktivitet',
-  },
-  {
-    id: 'batch-qr',
-    route: '/batch-qr',
     minScreen: 'mobil',
     connection: 'offline',
     icon: QrCode,

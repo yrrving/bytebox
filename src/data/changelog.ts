@@ -10,6 +10,119 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.29.0',
+    date: '2026-09-23',
+    title: {
+      sv: 'Säkerhetsgenomgång: fyra trasiga verktyg lagade',
+      en: 'Security review: four broken tools fixed',
+      es: 'Revisión de seguridad: cuatro herramientas rotas arregladas',
+      fr: 'Revue de sécurité : quatre outils cassés réparés',
+      de: 'Sicherheitsdurchsicht: vier defekte Werkzeuge repariert',
+      pt: 'Revisão de segurança: quatro ferramentas avariadas corrigidas',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'PDF-verktyget tappade sidor när filer slogs ihop. "Slå ihop" klistrade ihop filernas rådata i stället för att bygga ett riktigt PDF-dokument. Resultatet blev en fil som såg giltig ut men där bara en del av sidorna fanns kvar — i ett test blev fem sidor till tre, utan felmeddelande. Sammanslagningen bygger nu dokumentet ordentligt, och går något fel sägs det rakt ut i stället för att en trasig fil laddas ner.',
+          en: 'The PDF tool dropped pages when merging files. "Merge" pasted the files’ raw data together instead of building a real PDF document. The result looked like a valid file but only kept some of the pages — in one test five pages became three, with no error. Merging now builds the document properly, and if something goes wrong it says so instead of downloading a broken file.',
+          es: 'La herramienta PDF perdía páginas al fusionar archivos. "Fusionar" pegaba los datos en bruto de los archivos en lugar de construir un documento PDF real. El resultado parecía un archivo válido pero solo conservaba parte de las páginas — en una prueba cinco páginas se convirtieron en tres, sin ningún error. Ahora la fusión construye el documento correctamente y, si algo falla, lo dice en lugar de descargar un archivo roto.',
+          fr: 'L’outil PDF perdait des pages lors de la fusion. « Fusionner » collait les données brutes des fichiers au lieu de construire un vrai document PDF. Le résultat ressemblait à un fichier valide mais ne conservait qu’une partie des pages — lors d’un test, cinq pages sont devenues trois, sans message d’erreur. La fusion construit désormais le document correctement, et en cas de problème elle le dit au lieu de télécharger un fichier corrompu.',
+          de: 'Das PDF-Werkzeug verlor Seiten beim Zusammenführen. „Zusammenführen" klebte die Rohdaten der Dateien aneinander, statt ein echtes PDF-Dokument zu bauen. Das Ergebnis sah aus wie eine gültige Datei, enthielt aber nur einen Teil der Seiten — in einem Test wurden aus fünf Seiten drei, ohne Fehlermeldung. Das Zusammenführen baut das Dokument jetzt richtig auf, und wenn etwas schiefgeht, wird das gesagt, statt eine kaputte Datei herunterzuladen.',
+          pt: 'A ferramenta de PDF perdia páginas ao juntar ficheiros. "Juntar" colava os dados em bruto dos ficheiros em vez de construir um documento PDF verdadeiro. O resultado parecia um ficheiro válido mas só mantinha parte das páginas — num teste cinco páginas passaram a três, sem qualquer erro. A junção constrói agora o documento corretamente e, se algo correr mal, di-lo em vez de descarregar um ficheiro danificado.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Markdown-förhandsgranskningen kunde köra kod från inklistrad text. Markdown får innehålla HTML, och den släpptes igenom orörd. Text från en okänd källa kunde därför köra kod i Bytebox och läsa det som andra verktyg sparat i webbläsaren, till exempel dokument från Ordbehandlaren. All HTML rensas nu innan den visas — vanlig formatering, länkar, bilder och kodblock fungerar som förut.',
+          en: 'The markdown preview could run code from pasted text. Markdown may contain HTML, and it was passed through untouched. Text from an unknown source could therefore run code inside Bytebox and read what other tools had saved in the browser, such as documents from the Word Processor. All HTML is now cleaned before it is shown — normal formatting, links, images and code blocks work as before.',
+          es: 'La vista previa de markdown podía ejecutar código desde texto pegado. El markdown puede contener HTML, y se dejaba pasar sin tocar. Un texto de origen desconocido podía así ejecutar código dentro de Bytebox y leer lo que otras herramientas habían guardado en el navegador, como documentos del Procesador de textos. Ahora todo el HTML se limpia antes de mostrarse — el formato normal, los enlaces, las imágenes y los bloques de código funcionan igual que antes.',
+          fr: 'L’aperçu markdown pouvait exécuter du code provenant de texte collé. Le markdown peut contenir du HTML, et celui-ci passait tel quel. Un texte d’origine inconnue pouvait donc exécuter du code dans Bytebox et lire ce que d’autres outils avaient enregistré dans le navigateur, par exemple des documents du Traitement de texte. Tout le HTML est désormais nettoyé avant affichage — la mise en forme, les liens, les images et les blocs de code fonctionnent comme avant.',
+          de: 'Die Markdown-Vorschau konnte Code aus eingefügtem Text ausführen. Markdown darf HTML enthalten, und dieses wurde unverändert durchgereicht. Text aus unbekannter Quelle konnte so Code in Bytebox ausführen und lesen, was andere Werkzeuge im Browser gespeichert hatten, etwa Dokumente aus der Textverarbeitung. Alles HTML wird jetzt bereinigt, bevor es angezeigt wird — normale Formatierung, Links, Bilder und Codeblöcke funktionieren wie bisher.',
+          pt: 'A pré-visualização de markdown podia executar código a partir de texto colado. O markdown pode conter HTML, e este passava intacto. Texto de origem desconhecida podia assim executar código dentro do Bytebox e ler o que outras ferramentas tinham guardado no navegador, como documentos do Processador de texto. Todo o HTML é agora limpo antes de ser mostrado — a formatação normal, ligações, imagens e blocos de código funcionam como antes.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'SSL-kontrollen godkände alla domäner. Tjänsten den hämtade certifikatuppgifter från har lagts ner, och verktyget föll tillbaka på en kontroll som alltid visade "certifikatet är giltigt" med tomma fält, oavsett vad man skrev in. Uppgifterna hämtas nu från de offentliga Certificate Transparency-loggarna och visar utfärdare, giltighetstid, dagar kvar, om certifikatet är återkallat och hur många domännamn det täcker. Finns inget certifikat för namnet sägs det nu, i stället för ett falskt godkänt.',
+          en: 'SSL Check passed every domain. The service it pulled certificate data from has shut down, and the tool fell back on a check that always reported "certificate is valid" with empty fields, whatever you entered. It now reads the public Certificate Transparency logs and shows the issuer, validity period, days left, whether the certificate is revoked and how many domain names it covers. If there is no certificate for the name, it now says so instead of showing a false pass.',
+          es: 'La Verificación SSL aprobaba todos los dominios. El servicio del que obtenía los datos del certificado ha cerrado, y la herramienta recurría a una comprobación que siempre indicaba "el certificado es válido" con campos vacíos, fuera lo que fuera lo que escribieras. Ahora lee los registros públicos de Certificate Transparency y muestra el emisor, el periodo de validez, los días restantes, si está revocado y cuántos dominios cubre. Si no hay certificado para ese nombre, ahora se dice en lugar de mostrar un falso aprobado.',
+          fr: 'La Vérification SSL validait tous les domaines. Le service dont elle tirait les données de certificat a fermé, et l’outil se rabattait sur un contrôle qui annonçait toujours « le certificat est valide » avec des champs vides, quelle que soit la saisie. Il lit désormais les journaux publics Certificate Transparency et affiche l’émetteur, la période de validité, les jours restants, l’éventuelle révocation et le nombre de noms de domaine couverts. S’il n’existe aucun certificat pour ce nom, c’est maintenant dit au lieu d’afficher une fausse validation.',
+          de: 'Die SSL-Prüfung bestätigte jede Domain. Der Dienst, von dem sie die Zertifikatsdaten bezog, wurde eingestellt, und das Werkzeug fiel auf eine Prüfung zurück, die unabhängig von der Eingabe immer „Zertifikat ist gültig" mit leeren Feldern meldete. Jetzt werden die öffentlichen Certificate-Transparency-Logs gelesen und Aussteller, Gültigkeitsdauer, verbleibende Tage, ein eventueller Widerruf und die Anzahl abgedeckter Domainnamen angezeigt. Gibt es kein Zertifikat für den Namen, wird das jetzt gesagt statt ein falsches „gültig" anzuzeigen.',
+          pt: 'A Verificação SSL aprovava todos os domínios. O serviço de onde obtinha os dados do certificado encerrou, e a ferramenta recorria a uma verificação que indicava sempre "o certificado é válido" com campos vazios, fosse o que fosse que se escrevesse. Agora lê os registos públicos de Certificate Transparency e mostra o emissor, o período de validade, os dias restantes, se foi revogado e quantos nomes de domínio abrange. Se não existir certificado para esse nome, isso é agora dito em vez de mostrar uma falsa aprovação.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'IP-info kunde inte hämta någon information. Leverantören hade infört ett kvottak på gratisnivån och svarade med ett fel i stället för data. Verktyget använder nu en annan tjänst.',
+          en: 'IP Info could not fetch any information. The provider had introduced a quota cap on its free tier and returned an error instead of data. The tool now uses a different service.',
+          es: 'Info IP no podía obtener información. El proveedor había introducido un límite de cuota en su nivel gratuito y devolvía un error en lugar de datos. La herramienta ahora usa otro servicio.',
+          fr: 'Info IP ne parvenait plus à récupérer d’informations. Le fournisseur avait instauré un quota sur son offre gratuite et renvoyait une erreur au lieu des données. L’outil utilise désormais un autre service.',
+          de: 'IP-Info konnte keine Informationen abrufen. Der Anbieter hatte ein Kontingentlimit für die kostenlose Stufe eingeführt und lieferte statt Daten einen Fehler. Das Werkzeug nutzt jetzt einen anderen Dienst.',
+          pt: 'A Info IP não conseguia obter qualquer informação. O fornecedor tinha introduzido um limite de quota no nível gratuito e devolvia um erro em vez de dados. A ferramenta usa agora outro serviço.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Sju bildverktyg stod tysta när en fil inte gick att läsa. ASCII-konst, Bakgrundsborttagare, Favicon-generator, Bildbeskärare, OCR, Pixelräknare och Passfoto gjorde ingenting alls vid en skadad eller okänd bildfil. Nu visas ett meddelande. Samtidigt lagades en minnesläcka i tretton verktyg, där inlästa bilder och filer aldrig släpptes.',
+          en: 'Seven image tools stayed silent when a file could not be read. ASCII Art, Background Remover, Favicon Generator, Image Cropper, OCR, Pixel Counter and Passport Photo did nothing at all with a damaged or unknown image file. They now show a message. At the same time a memory leak was fixed in thirteen tools, where loaded images and files were never released.',
+          es: 'Siete herramientas de imagen se quedaban calladas cuando un archivo no se podía leer. Arte ASCII, Quitafondos, Generador de favicon, Recortador de imágenes, OCR, Contador de píxeles y Foto de pasaporte no hacían absolutamente nada con un archivo dañado o desconocido. Ahora muestran un mensaje. Al mismo tiempo se corrigió una fuga de memoria en trece herramientas, donde las imágenes y archivos cargados nunca se liberaban.',
+          fr: 'Sept outils d’image restaient muets lorsqu’un fichier ne pouvait pas être lu. Art ASCII, Suppression d’arrière-plan, Générateur de favicon, Recadrage d’image, OCR, Compteur de pixels et Photo d’identité ne faisaient absolument rien face à un fichier endommagé ou inconnu. Un message s’affiche désormais. En parallèle, une fuite de mémoire a été corrigée dans treize outils, où les images et fichiers chargés n’étaient jamais libérés.',
+          de: 'Sieben Bildwerkzeuge blieben stumm, wenn eine Datei nicht gelesen werden konnte. ASCII-Kunst, Hintergrundentferner, Favicon-Generator, Bildzuschnitt, OCR, Pixelzähler und Passfoto taten bei einer beschädigten oder unbekannten Bilddatei überhaupt nichts. Jetzt erscheint eine Meldung. Gleichzeitig wurde ein Speicherleck in dreizehn Werkzeugen behoben, bei dem geladene Bilder und Dateien nie freigegeben wurden.',
+          pt: 'Sete ferramentas de imagem ficavam caladas quando um ficheiro não podia ser lido. Arte ASCII, Removedor de fundo, Gerador de favicon, Recorte de imagem, OCR, Contador de pixels e Fotografia tipo passe não faziam absolutamente nada com um ficheiro danificado ou desconhecido. Agora mostram uma mensagem. Ao mesmo tempo corrigiu-se uma fuga de memória em treze ferramentas, onde as imagens e ficheiros carregados nunca eram libertados.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Ett skyddsnät mot skadligt innehåll. Sidan får nu bara ladda kod och kontakta tjänster från en fast lista. Skulle någon del av appen bli komprometterad kan den inte skicka vidare det du arbetar med till en okänd server.',
+          en: 'A safety net against malicious content. The page may now only load code from, and talk to, a fixed list of services. If some part of the app were compromised, it could not pass what you are working on to an unknown server.',
+          es: 'Una red de seguridad contra contenido malicioso. La página ahora solo puede cargar código y comunicarse con una lista fija de servicios. Si alguna parte de la app se viera comprometida, no podría enviar lo que estás haciendo a un servidor desconocido.',
+          fr: 'Un filet de sécurité contre les contenus malveillants. La page ne peut désormais charger du code et communiquer qu’avec une liste fixe de services. Si une partie de l’application était compromise, elle ne pourrait pas transmettre ce sur quoi vous travaillez à un serveur inconnu.',
+          de: 'Ein Sicherheitsnetz gegen schädliche Inhalte. Die Seite darf jetzt nur noch Code von einer festen Liste von Diensten laden und mit diesen kommunizieren. Würde ein Teil der App kompromittiert, könnte er das, woran Sie arbeiten, nicht an einen unbekannten Server weitergeben.',
+          pt: 'Uma rede de segurança contra conteúdo malicioso. A página só pode agora carregar código e comunicar com uma lista fixa de serviços. Se alguma parte da aplicação fosse comprometida, não poderia enviar aquilo em que está a trabalhar para um servidor desconhecido.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Verktygen som kommunicerar utåt säger nu exakt vad som skickas. I stället för en allmän varning står det konkret — "bara domännamnet du skriver in", "din IP-adress", "hela adressen du klistrar in". HTTP Headers har fått en skarpare varning: adressen passerar en öppen gratisproxy, så klistra aldrig in länkar med inloggningstokens eller nycklar i.',
+          en: 'Tools that talk to the outside now say exactly what gets sent. Instead of a generic warning it is concrete — "only the domain name you enter", "your IP address", "the full address you paste". HTTP Headers has a sharper warning: the address passes through an open free proxy, so never paste links containing login tokens or keys.',
+          es: 'Las herramientas que se comunican hacia fuera ahora dicen exactamente qué se envía. En lugar de una advertencia genérica, es concreto — "solo el nombre de dominio que introduces", "tu dirección IP", "la dirección completa que pegas". Cabeceras HTTP tiene una advertencia más dura: la dirección pasa por un proxy gratuito abierto, así que nunca pegues enlaces con tokens de sesión o claves.',
+          fr: 'Les outils qui communiquent vers l’extérieur indiquent désormais précisément ce qui est envoyé. Au lieu d’un avertissement générique, c’est concret — « uniquement le nom de domaine que vous saisissez », « votre adresse IP », « l’adresse complète que vous collez ». Cabeceras HTTP a reçu un avertissement plus net : l’adresse transite par un proxy gratuit ouvert, ne collez donc jamais de liens contenant des jetons de connexion ou des clés.',
+          de: 'Werkzeuge, die nach außen kommunizieren, sagen jetzt genau, was gesendet wird. Statt einer allgemeinen Warnung steht es konkret da — „nur der Domainname, den Sie eingeben", „Ihre IP-Adresse", „die vollständige Adresse, die Sie einfügen". HTTP Headers hat eine deutlichere Warnung bekommen: die Adresse läuft über einen offenen Gratis-Proxy, fügen Sie also niemals Links mit Login-Tokens oder Schlüsseln ein.',
+          pt: 'As ferramentas que comunicam para fora dizem agora exatamente o que é enviado. Em vez de um aviso genérico, é concreto — "apenas o nome de domínio que introduz", "o seu endereço IP", "o endereço completo que cola". O HTTP Headers tem um aviso mais firme: o endereço passa por um proxy gratuito aberto, por isso nunca cole ligações com tokens de sessão ou chaves.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'QR-kod och Batch-QR är nu ett verktyg med två flikar. De gjorde nästan samma sak men hade olika funktioner av en slump — enkelläget kunde välja färger men bara göra en kod i taget, batchläget kunde göra hundra men bara i svartvitt. Nu gäller storlek och färgval i båda lägena. Gamla länkar till Batch-QR leder vidare till rätt ställe.',
+          en: 'QR Code and Batch QR are now one tool with two tabs. They did almost the same thing but had different features by accident — single mode could pick colors but only made one code at a time, batch mode could make a hundred but only in black and white. Size and colors now apply in both modes. Old links to Batch QR lead to the right place.',
+          es: 'Código QR y QR por lotes son ahora una sola herramienta con dos pestañas. Hacían casi lo mismo pero tenían funciones distintas por casualidad — el modo simple podía elegir colores pero solo hacía un código a la vez, el modo por lotes podía hacer cien pero solo en blanco y negro. El tamaño y los colores se aplican ahora en ambos modos. Los enlaces antiguos a QR por lotes llevan al sitio correcto.',
+          fr: 'Code QR et QR par lots ne font plus qu’un outil à deux onglets. Ils faisaient presque la même chose mais avaient des fonctions différentes par hasard — le mode simple permettait de choisir les couleurs mais ne créait qu’un code à la fois, le mode par lots pouvait en créer cent mais uniquement en noir et blanc. La taille et les couleurs s’appliquent désormais aux deux modes. Les anciens liens vers QR par lots mènent au bon endroit.',
+          de: 'QR-Code und Batch-QR sind jetzt ein Werkzeug mit zwei Tabs. Sie taten fast dasselbe, hatten aber zufällig unterschiedliche Funktionen — der Einzelmodus konnte Farben wählen, aber nur einen Code auf einmal erzeugen, der Batch-Modus hundert, aber nur in Schwarzweiß. Größe und Farben gelten jetzt in beiden Modi. Alte Links zu Batch-QR führen an die richtige Stelle.',
+          pt: 'Código QR e QR em lote são agora uma ferramenta com dois separadores. Faziam quase o mesmo mas tinham funções diferentes por acaso — o modo simples podia escolher cores mas só fazia um código de cada vez, o modo em lote podia fazer cem mas só a preto e branco. O tamanho e as cores aplicam-se agora a ambos os modos. As ligações antigas para QR em lote levam ao sítio certo.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Mötestranskriberingen är borttagen. Den blev aldrig tillräckligt tillförlitlig, och med den försvinner också det tyngsta beroendet i appen.',
+          en: 'The Meeting Transcriber has been removed. It never became reliable enough, and with it goes the heaviest dependency in the app.',
+          es: 'El Transcriptor de reuniones se ha eliminado. Nunca llegó a ser lo bastante fiable, y con él desaparece la dependencia más pesada de la app.',
+          fr: 'Le Transcripteur de réunions a été supprimé. Il n’a jamais été assez fiable, et avec lui disparaît la dépendance la plus lourde de l’application.',
+          de: 'Die Besprechungs-Transkription wurde entfernt. Sie wurde nie zuverlässig genug, und mit ihr verschwindet die schwerste Abhängigkeit der App.',
+          pt: 'O Transcritor de reuniões foi removido. Nunca se tornou suficientemente fiável e, com ele, desaparece a dependência mais pesada da aplicação.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.28.1',
     date: '2026-09-15',
     title: {

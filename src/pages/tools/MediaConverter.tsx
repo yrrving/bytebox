@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Upload, Download, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + ' B'
@@ -66,6 +67,7 @@ function audioBufferToWav(buffer: AudioBuffer): ArrayBuffer {
 
 export default function MediaConverter() {
   const { t } = useLanguage()
+  const { createUrl } = useObjectUrls()
   const translation = t.tools['mediakonverterare']
 
   const fileRef = useRef<HTMLInputElement>(null)
@@ -83,7 +85,7 @@ export default function MediaConverter() {
     setError('')
 
     const isVideo = f.type.startsWith('video/')
-    const url = URL.createObjectURL(f)
+    const url = createUrl(f)
     const media = isVideo ? document.createElement('video') : new Audio()
     media.src = url
 
@@ -146,7 +148,7 @@ export default function MediaConverter() {
     if (!file) throw new Error('No file')
     setProgress('Laddar video...')
     const video = document.createElement('video')
-    video.src = URL.createObjectURL(file)
+    video.src = createUrl(file)
     video.muted = true
 
     await new Promise<void>((resolve) => { video.onloadeddata = () => resolve() })
@@ -243,7 +245,7 @@ export default function MediaConverter() {
 
       const baseName = file.name.replace(/\.[^.]+$/, '')
       setResult({
-        url: URL.createObjectURL(blob),
+        url: createUrl(blob),
         size: blob.size,
         name: `${baseName}.${ext}`,
       })

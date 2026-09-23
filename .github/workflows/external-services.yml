@@ -1,0 +1,73 @@
+name: Kontrollera externa tjänster
+
+# Verktygen under Nätverk & Säkerhet och Översättaren är beroende av gratis
+# tredjepartstjänster. De kan läggas ner eller införa kvotstopp utan förvarning
+# — det har hänt två gånger. Kollen körs varje måndag och öppnar ett issue när
+# något slutar svara, så att vi får veta det före användarna.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - id: check
+        run: |
+          set +e
+          node scripts/check-external-services.mjs > result.txt 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          cat result.txt
+
+      - if: steps.check.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs')
+            const report = fs.readFileSync('result.txt', 'utf8')
+            const title = 'Extern tjänst svarar inte'
+
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'extern-tjänst',
+            })
+
+            const body = [
+              'Den schemalagda kollen hittade en eller flera tjänster som inte svarar som väntat.',
+              '',
+              '```',
+              report.trim(),
+              '```',
+              '',
+              `Körning: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            ].join('\n')
+
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              })
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['extern-tjänst'],
+              })
+            }

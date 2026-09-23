@@ -4,11 +4,23 @@ import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ExternalNotice from '../../components/ExternalNotice'
 
+interface IpWhoResponse {
+  success?: boolean
+  ip: string
+  city: string
+  region: string
+  country: string
+  latitude: number
+  longitude: number
+  connection?: { isp?: string; org?: string }
+  timezone?: { id?: string }
+}
+
 interface IpData {
   ip: string
   city: string
   region: string
-  country_name: string
+  country: string
   org: string
   timezone: string
   latitude: number
@@ -30,10 +42,21 @@ export default function IpInfo() {
     setLoading(true)
     setFailed(false)
     try {
-      const res = await fetch('https://ipapi.co/json/')
+      const res = await fetch('https://ipwho.is/')
       if (!res.ok) throw new Error('Failed to fetch')
-      const json = await res.json()
-      setData(json)
+      const json: IpWhoResponse = await res.json()
+      // ipwho.is svarar 200 även vid fel (t.ex. kvot slut) och markerar det med success:false.
+      if (json.success === false) throw new Error('Lookup failed')
+      setData({
+        ip: json.ip,
+        city: json.city,
+        region: json.region,
+        country: json.country,
+        org: json.connection?.isp || json.connection?.org || '—',
+        timezone: json.timezone?.id || '—',
+        latitude: json.latitude,
+        longitude: json.longitude,
+      })
     } catch {
       setFailed(true)
     } finally {
@@ -42,6 +65,8 @@ export default function IpInfo() {
   }, [])
 
   useEffect(() => {
+    // Engångshämtning vid montering — resultatet måste hamna i state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchIp()
   }, [fetchIp])
 
@@ -56,7 +81,7 @@ export default function IpInfo() {
     { label: ip?.ipAddress ?? 'IP-adress', value: data.ip },
     { label: ip?.city ?? 'Stad', value: data.city },
     { label: ip?.region ?? 'Region', value: data.region },
-    { label: ip?.country ?? 'Land', value: data.country_name },
+    { label: ip?.country ?? 'Land', value: data.country },
     { label: ip?.isp ?? 'Operatör (ISP)', value: data.org },
     { label: ip?.timezone ?? 'Tidszon', value: data.timezone },
     { label: ip?.coordinates ?? 'Koordinater', value: `${data.latitude}, ${data.longitude}` },
@@ -74,7 +99,7 @@ export default function IpInfo() {
         )}
       </div>
 
-      <ExternalNotice service="ipapi.co" />
+      <ExternalNotice service="ipwho.is" sends={t.privacy?.sendsIp} />
 
       {loading && (
         <div className="flex items-center justify-center py-12">

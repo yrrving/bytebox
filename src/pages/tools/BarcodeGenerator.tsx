@@ -85,6 +85,9 @@ export default function BarcodeGenerator() {
   }, [value, format, displayValue, barWidth, height])
 
   useEffect(() => {
+    // Streckkoden ritas om när inställningarna ändras — att spegla resultatet
+    // tillbaka i state är hela poängen med effekten.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     render()
   }, [render])
 

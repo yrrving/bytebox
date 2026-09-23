@@ -5,6 +5,8 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ErrorNotice from '../../components/ErrorNotice'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 import type { PDFDocumentProxy } from 'pdfjs-dist'
 import type { Translation } from '../../data/translations'
 
@@ -148,7 +150,9 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
   const [files, setFiles] = useState<PdfFile[]>([])
   const [merging, setMerging] = useState(false)
   const [result, setResult] = useState<string | null>(null)
+  const [error, setError] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const { createUrl } = useObjectUrls()
 
   const addFiles = async (fileList: FileList) => {
     const newFiles: PdfFile[] = []
@@ -179,13 +183,20 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
   const mergePdfs = async () => {
     if (files.length < 2) return
     setMerging(true)
+    setError('')
+    setResult(null)
     try {
-      const buffers: ArrayBuffer[] = []
-      for (const f of files) buffers.push(await f.file.arrayBuffer())
-      const blob = new Blob(buffers, { type: 'application/pdf' })
-      setResult(URL.createObjectURL(blob))
+      const { PDFDocument } = await import('pdf-lib')
+      const merged = await PDFDocument.create()
+      for (const f of files) {
+        const doc = await PDFDocument.load(await f.file.arrayBuffer())
+        const pages = await merged.copyPages(doc, doc.getPageIndices())
+        pages.forEach((page) => merged.addPage(page))
+      }
+      const bytes = await merged.save()
+      setResult(createUrl(new Blob([bytes as BlobPart], { type: 'application/pdf' })))
     } catch {
-      setResult(URL.createObjectURL(files[0].file))
+      setError(pt?.mergeError || 'Kunde inte slå ihop filerna. Någon av dem kan vara skadad eller lösenordsskyddad.')
     } finally {
       setMerging(false)
     }
@@ -280,6 +291,8 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
           {merging ? (pt?.merging || 'Sammanfogar...') : (pt?.merge || 'Sammanfoga PDF-filer')}
         </button>
       )}
+
+      <ErrorNotice message={error} />
 
       {result && (
         <button

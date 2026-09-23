@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Upload } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + ' B'
@@ -25,6 +26,7 @@ interface FileInfo {
 
 export default function FileAnalyzer() {
   const { t } = useLanguage()
+  const { createUrl, releaseUrls } = useObjectUrls()
   const translation = t.tools['filanalys']
   const fa = t.fileAnalyzer
 
@@ -46,7 +48,9 @@ export default function FileAnalyzer() {
     }
 
     if (isImage) {
-      const url = URL.createObjectURL(file)
+      // Förhandsvisningen lever kvar i state, så URL:en släpps av hooken i stället.
+      releaseUrls()
+      const url = createUrl(file)
       const img = new Image()
       await new Promise<void>((resolve) => {
         img.onload = () => {

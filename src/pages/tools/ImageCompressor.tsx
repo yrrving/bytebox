@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Upload, Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + ' B'
@@ -11,6 +12,7 @@ function formatSize(bytes: number): string {
 
 export default function ImageCompressor() {
   const { t } = useLanguage()
+  const { createUrl } = useObjectUrls()
   const translation = t.tools['bildkomprimering']
   const ic = t.imageCompressor
 
@@ -22,7 +24,7 @@ export default function ImageCompressor() {
   const [processing, setProcessing] = useState(false)
 
   const loadImage = (file: File) => {
-    const url = URL.createObjectURL(file)
+    const url = createUrl(file)
     const img = new Image()
     img.onload = () => {
       setOriginal({ url, size: file.size, width: img.width, height: img.height, name: file.name })
@@ -56,7 +58,7 @@ export default function ImageCompressor() {
     canvas.toBlob(
       (blob) => {
         if (blob) {
-          const url = URL.createObjectURL(blob)
+          const url = createUrl(blob)
           setCompressed({ url, size: blob.size, width: w, height: h })
         }
         setProcessing(false)

@@ -2,6 +2,17 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 1.2.0 (2026-09-23). Länkar till enskilda verktyg fungerar nu överallt
+
+### Fixat
+
+- **Delade länkar till ett verktyg såg trasiga ut.** Servern svarade 404 på alla sidor utom startsidan. I en webbläsare märktes det inte, eftersom en omdirigering räddade situationen, men allt som inte kör kod såg en trasig sida: sökmotorer och länkförhandsvisningar i Slack, Discord och liknande. Varje sida byggs nu som en riktig fil och svarar 200.
+- **Delade länkar visar nu rätt titel och beskrivning** i stället för appens generella. Klistrar du in en länk till Beskär bild står det just det.
+
+### Nytt
+
+- **En sitemap och robots.txt**, så att sidorna går att hitta.
+
 ## 1.1.0 (2026-09-23). Under huven
 
 ### Nytt

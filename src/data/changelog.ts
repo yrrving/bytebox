@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.2.0',
+    date: '2026-09-23',
+    title: {
+      sv: 'Länkar till enskilda verktyg fungerar nu överallt',
+      en: 'Links to individual tools now work everywhere',
+      es: 'Los enlaces a herramientas concretas ya funcionan en todas partes',
+      fr: 'Les liens vers un outil précis fonctionnent désormais partout',
+      de: 'Links zu einzelnen Werkzeugen funktionieren jetzt überall',
+      pt: 'As ligações para ferramentas específicas funcionam agora em todo o lado',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Servern svarade 404 på alla sidor utom startsidan. I en webbläsare märktes det inte, eftersom en omdirigering räddade situationen, men allt som inte kör kod såg en trasig sida: sökmotorer och länkförhandsvisningar i Slack, Discord och liknande. Varje sida byggs nu som en riktig fil och svarar 200, med sin egen titel och beskrivning. Klistrar du in en länk till Beskär bild står det just det, i stället för appens generella text.',
+          en: 'The server answered 404 on every page except the start page. In a browser it went unnoticed, because a redirect saved the situation, but anything that does not run code saw a broken page: search engines and link previews in Slack, Discord and the like. Every page is now built as a real file and answers 200, with its own title and description. Paste a link to Crop an image and it says exactly that, instead of the app’s general text.',
+          es: 'El servidor respondía 404 en todas las páginas salvo la de inicio. En un navegador no se notaba, porque una redirección salvaba la situación, pero todo lo que no ejecuta código veía una página rota: buscadores y vistas previas de enlaces en Slack, Discord y similares. Ahora cada página se construye como un archivo real y responde 200, con su propio título y descripción. Si pegas un enlace a Recortar imagen, dirá justo eso en lugar del texto general de la app.',
+          fr: 'Le serveur répondait 404 sur toutes les pages sauf l’accueil. Dans un navigateur cela passait inaperçu, car une redirection rattrapait la situation, mais tout ce qui n’exécute pas de code voyait une page cassée : moteurs de recherche et aperçus de liens dans Slack, Discord et ailleurs. Chaque page est maintenant construite comme un vrai fichier et répond 200, avec son propre titre et sa description. Collez un lien vers Recadrer une image et c’est exactement ce qui s’affiche, au lieu du texte général de l’application.',
+          de: 'Der Server antwortete auf allen Seiten außer der Startseite mit 404. Im Browser fiel das nicht auf, weil eine Weiterleitung die Lage rettete, aber alles, was keinen Code ausführt, sah eine kaputte Seite: Suchmaschinen und Linkvorschauen in Slack, Discord und ähnlichem. Jede Seite wird nun als echte Datei gebaut und antwortet mit 200, mit eigenem Titel und eigener Beschreibung. Fügen Sie einen Link zu Bild zuschneiden ein, steht genau das da, statt des allgemeinen Texts der App.',
+          pt: 'O servidor respondia 404 em todas as páginas exceto a inicial. Num navegador não se notava, porque um reencaminhamento salvava a situação, mas tudo o que não executa código via uma página avariada: motores de busca e pré-visualizações de ligações no Slack, Discord e afins. Cada página é agora construída como um ficheiro real e responde 200, com o seu próprio título e descrição. Cole uma ligação para Recortar imagem e é isso que aparece, em vez do texto geral da aplicação.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.1.0',
     date: '2026-09-23',
     title: {

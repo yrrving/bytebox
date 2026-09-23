@@ -2,11 +2,11 @@
   "name": "bytebox",
   "private": true,
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",

@@ -28,6 +28,11 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      - run: npx playwright install --with-deps chromium
+      # Kör den byggda appen i en riktig webbläsare: varje sida laddar utan
+      # fel, ingen kontaktar en extern server, och tillgängligheten hålls mot
+      # WCAG 2.2 AA. Bygger själv via playwright.config.ts.
+      - run: npm run e2e
       - run: npm run build
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3

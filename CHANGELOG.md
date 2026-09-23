@@ -2,6 +2,26 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.30.0 — 2026-09-23 — 33 verktyg bort. ByteBox gör inga nätverksanrop alls.
+
+Den största förändringen sedan starten. Verktygslådan hade vuxit till 54 verktyg
+där en stor del varken hörde till digitalt skapande eller gick att förstå utan
+förkunskaper. Efter en genomgång av vartenda verktyg är 33 borttagna och 21 kvar.
+
+Hela listan med skäl finns i [BORTTAGNA-VERKTYG.md](BORTTAGNA-VERKTYG.md).
+
+### Ändrat
+
+- **33 verktyg borttagna.** 15 utvecklarverktyg, 6 nätverksverktyg, 4 som redan finns i telefonen, 2 smala, och 6 som föll utanför nischen. Kvar är 21 verktyg för bild och form, ljud och musik, text och dokument, samt spelbygge.
+- **Kategorierna Kod & Data, Nätverk & Säkerhet och Beräkning & Konvertering är borta** eftersom de tömdes helt. Fem kategorier kvar.
+- **ByteBox gör inga nätverksanrop.** Noll, från sex tidigare. Det som du arbetar med lämnar aldrig enheten, och det är inte längre ett löfte utan en egenskap som bevakas av ett test vid varje ändring. Säkerhetspolicyn tillåter numera ingen extern domän alls.
+- **Text till tal är undantaget och säger det nu rakt ut.** Verktyget använder webbläsarens egen röstmotor. Windows och macOS läser upp lokalt, men Chrome och Edge erbjuder även moln-röster — väljer du en sådan skickar webbläsaren din text till Google eller Microsoft. Det är webbläsaren som gör det, inte ByteBox, och listan visar inte vilka röster som är lokala. Verktyget förklarar detta innan du använder det.
+- **TrainCells hämtade typsnitt från Google.** Det innebar att Google fick din IP-adress varje gång verktyget öppnades. Typsnittet är borttaget; TrainCells använder nu samma systemtypsnitt som resten av ByteBox.
+
+### Fixat
+
+- Ett trettiotal översättningssektioner och en handfull beroenden som blivit oanvända är bortstädade.
+
 ## 0.29.2 — 2026-09-23 — Läsbarare text i alla tre teman
 
 ### Fixat

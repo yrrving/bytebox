@@ -10,6 +10,64 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.30.0',
+    date: '2026-09-23',
+    title: {
+      sv: '33 verktyg bort. ByteBox gör inga nätverksanrop alls.',
+      en: '33 tools removed. ByteBox makes no network requests at all.',
+      es: '33 herramientas eliminadas. ByteBox no hace ninguna petición de red.',
+      fr: '33 outils supprimés. ByteBox n’effectue aucune requête réseau.',
+      de: '33 Werkzeuge entfernt. ByteBox stellt keine Netzwerkanfragen.',
+      pt: '33 ferramentas removidas. O ByteBox não faz pedidos de rede.',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: '33 verktyg är borttagna och 21 är kvar. Verktygslådan hade vuxit till 54 verktyg där en stor del varken hörde till digitalt skapande eller gick att förstå utan förkunskaper: 15 utvecklarverktyg, 6 nätverksverktyg, 4 som redan finns i telefonen, 2 smala och 6 som föll utanför. Kvar är verktyg för bild och form, ljud och musik, text och dokument, samt spelbygge. Kategorierna Kod & Data, Nätverk & Säkerhet och Beräkning & Konvertering tömdes helt och är borta.',
+          en: '33 tools have been removed and 21 remain. The toolbox had grown to 54 tools, many of which neither belonged to digital creativity nor could be understood without prior knowledge: 15 developer tools, 6 network tools, 4 already built into your phone, 2 very narrow ones and 6 that fell outside the scope. What remains are tools for images and form, audio and music, text and documents, and game building. The Code & Data, Network & Security and Calculation categories emptied completely and are gone.',
+          es: 'Se han eliminado 33 herramientas y quedan 21. La caja había crecido hasta 54 herramientas, muchas de las cuales ni pertenecían a la creación digital ni se entendían sin conocimientos previos: 15 de desarrollo, 6 de red, 4 que ya trae el móvil, 2 muy específicas y 6 fuera del ámbito. Quedan herramientas para imagen y forma, audio y música, texto y documentos, y creación de juegos. Las categorías Código y Datos, Red y Seguridad y Cálculo se vaciaron por completo y han desaparecido.',
+          fr: '33 outils ont été supprimés et 21 subsistent. La boîte avait atteint 54 outils, dont beaucoup ne relevaient ni de la création numérique ni ne se comprenaient sans connaissances préalables : 15 outils de développement, 6 outils réseau, 4 déjà présents dans le téléphone, 2 très spécifiques et 6 hors périmètre. Restent les outils pour l’image et la forme, l’audio et la musique, le texte et les documents, et la création de jeux. Les catégories Code et Données, Réseau et Sécurité et Calcul se sont vidées et ont disparu.',
+          de: '33 Werkzeuge wurden entfernt, 21 bleiben. Der Werkzeugkasten war auf 54 angewachsen, von denen viele weder zum digitalen Gestalten gehörten noch ohne Vorkenntnisse verständlich waren: 15 Entwicklerwerkzeuge, 6 Netzwerkwerkzeuge, 4 bereits im Telefon vorhandene, 2 sehr schmale und 6 außerhalb des Fokus. Geblieben sind Werkzeuge für Bild und Form, Audio und Musik, Text und Dokumente sowie Spielebau. Die Kategorien Code & Daten, Netzwerk & Sicherheit und Berechnung leerten sich vollständig und sind verschwunden.',
+          pt: 'Foram removidas 33 ferramentas e restam 21. A caixa tinha crescido para 54 ferramentas, muitas das quais não pertenciam à criação digital nem se percebiam sem conhecimentos prévios: 15 de programação, 6 de rede, 4 que já existem no telemóvel, 2 muito específicas e 6 fora do âmbito. Restam ferramentas para imagem e forma, áudio e música, texto e documentos, e construção de jogos. As categorias Código e Dados, Rede e Segurança e Cálculo esvaziaram-se por completo e desapareceram.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'ByteBox gör inga nätverksanrop alls — noll, mot sex tidigare. Det du arbetar med lämnar aldrig enheten, och det är inte längre ett löfte utan en egenskap som kontrolleras automatiskt vid varje ändring. Säkerhetspolicyn tillåter numera ingen extern domän över huvud taget.',
+          en: 'ByteBox makes no network requests at all — zero, down from six. What you work on never leaves the device, and that is no longer a promise but a property checked automatically on every change. The security policy now permits no external domain whatsoever.',
+          es: 'ByteBox no hace ninguna petición de red — cero, frente a seis antes. Lo que trabajas nunca sale del dispositivo, y eso ya no es una promesa sino una propiedad que se comprueba automáticamente en cada cambio. La política de seguridad ya no permite ningún dominio externo.',
+          fr: 'ByteBox n’effectue plus aucune requête réseau — zéro, contre six auparavant. Ce sur quoi vous travaillez ne quitte jamais l’appareil, et ce n’est plus une promesse mais une propriété vérifiée automatiquement à chaque modification. La politique de sécurité n’autorise désormais aucun domaine externe.',
+          de: 'ByteBox stellt überhaupt keine Netzwerkanfragen mehr — null statt zuvor sechs. Woran Sie arbeiten, verlässt das Gerät nie, und das ist keine Zusage mehr, sondern eine Eigenschaft, die bei jeder Änderung automatisch geprüft wird. Die Sicherheitsrichtlinie erlaubt jetzt keinerlei externe Domain.',
+          pt: 'O ByteBox não faz quaisquer pedidos de rede — zero, contra seis anteriormente. Aquilo em que trabalha nunca sai do dispositivo, e isso já não é uma promessa mas uma propriedade verificada automaticamente a cada alteração. A política de segurança já não permite qualquer domínio externo.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Text till tal är det enda undantaget, och säger det nu rakt ut innan du använder det. Verktyget använder webbläsarens egen röstmotor. Windows och macOS läser upp lokalt, men Chrome och Edge erbjuder även moln-röster — väljer du en sådan skickar webbläsaren din text till Google eller Microsoft. Det är webbläsaren som gör det, inte ByteBox, och listan visar inte vilka röster som är lokala.',
+          en: 'Text to Speech is the single exception, and now says so plainly before you use it. The tool uses the browser’s own speech engine. Windows and macOS read aloud locally, but Chrome and Edge also offer cloud voices — choose one and the browser sends your text to Google or Microsoft. It is the browser doing it, not ByteBox, and the list does not show which voices are local.',
+          es: 'Texto a voz es la única excepción, y ahora lo dice claramente antes de usarlo. La herramienta usa el motor de voz del navegador. Windows y macOS leen en local, pero Chrome y Edge ofrecen además voces en la nube — si eliges una, el navegador envía tu texto a Google o Microsoft. Lo hace el navegador, no ByteBox, y la lista no indica qué voces son locales.',
+          fr: 'Texte en parole est la seule exception, et le dit désormais clairement avant utilisation. L’outil utilise le moteur vocal du navigateur. Windows et macOS lisent en local, mais Chrome et Edge proposent aussi des voix dans le cloud — si vous en choisissez une, le navigateur envoie votre texte à Google ou Microsoft. C’est le navigateur qui le fait, pas ByteBox, et la liste n’indique pas quelles voix sont locales.',
+          de: 'Text zu Sprache ist die einzige Ausnahme und sagt das nun klar, bevor Sie es nutzen. Das Werkzeug verwendet die Sprachausgabe des Browsers. Windows und macOS lesen lokal vor, Chrome und Edge bieten zusätzlich Cloud-Stimmen — wählen Sie eine, sendet der Browser Ihren Text an Google oder Microsoft. Das tut der Browser, nicht ByteBox, und die Liste zeigt nicht, welche Stimmen lokal sind.',
+          pt: 'Texto para voz é a única exceção e di-lo agora claramente antes de a usar. A ferramenta usa o motor de voz do próprio navegador. O Windows e o macOS leem localmente, mas o Chrome e o Edge oferecem também vozes na nuvem — se escolher uma, o navegador envia o seu texto para a Google ou a Microsoft. É o navegador que o faz, não o ByteBox, e a lista não mostra quais vozes são locais.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'TrainCells hämtade typsnitt från Google, vilket innebar att Google fick din IP-adress varje gång verktyget öppnades. Typsnittet är borttaget — TrainCells använder nu samma systemtypsnitt som resten av ByteBox.',
+          en: 'TrainCells loaded fonts from Google, which meant Google received your IP address every time the tool was opened. The font is gone — TrainCells now uses the same system font as the rest of ByteBox.',
+          es: 'TrainCells cargaba tipografías desde Google, lo que significaba que Google recibía tu dirección IP cada vez que se abría la herramienta. La tipografía se ha eliminado — TrainCells usa ahora la misma fuente del sistema que el resto de ByteBox.',
+          fr: 'TrainCells chargeait des polices depuis Google, ce qui signifiait que Google recevait votre adresse IP à chaque ouverture de l’outil. La police a été retirée — TrainCells utilise désormais la même police système que le reste de ByteBox.',
+          de: 'TrainCells lud Schriften von Google, wodurch Google bei jedem Öffnen des Werkzeugs Ihre IP-Adresse erhielt. Die Schrift wurde entfernt — TrainCells nutzt jetzt dieselbe Systemschrift wie der Rest von ByteBox.',
+          pt: 'O TrainCells carregava tipos de letra da Google, o que fazia com que a Google recebesse o seu endereço IP sempre que a ferramenta era aberta. O tipo de letra foi removido — o TrainCells usa agora o mesmo tipo de letra do sistema que o resto do ByteBox.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.29.2',
     date: '2026-09-23',
     title: {

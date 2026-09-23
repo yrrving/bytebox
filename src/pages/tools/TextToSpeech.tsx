@@ -81,7 +81,7 @@ export default function TextToSpeech() {
 
       <ExternalNotice
         service={t.privacy?.speechService ?? 'webbläsarens taltjänst'}
-        warning={t.privacy?.ttsNote}
+        warning={t.privacy?.ttsNote ?? 'Uppläsningen görs av din webbläsares röstmotor. I vissa webbläsare kan din text skickas till en molntjänst för vissa röster. Bytebox sparar ingenting själv.'}
       />
 
       {/* Text input */}

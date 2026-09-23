@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.29.1',
+    date: '2026-09-23',
+    title: {
+      sv: 'Skärmläsare kan läsa upp verktygen',
+      en: 'Screen readers can read the tools',
+      es: 'Los lectores de pantalla pueden leer las herramientas',
+      fr: 'Les lecteurs d’écran peuvent lire les outils',
+      de: 'Screenreader können die Werkzeuge vorlesen',
+      pt: 'Os leitores de ecrã conseguem ler as ferramentas',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Reglage, rullgardiner och ikonknappar saknade namn för skärmläsare. Den som använder ByteBox med skärmläsare fick höra "knapp" och "reglage" utan att få veta vad de gör. Åtgärdat i Färgpalett, HEIC till JPG, ASCII-konst, Text till tal och QR-kod — 24 kontroller har nu ett namn som läses upp. Arbetet fortsätter i övriga verktyg.',
+          en: 'Sliders, dropdowns and icon buttons had no name for screen readers. Anyone using ByteBox with a screen reader heard "button" and "slider" without being told what they do. Fixed in Colour Palette, HEIC to JPG, ASCII Art, Text to Speech and QR Code — 24 controls now have a name that is read out. The work continues in the remaining tools.',
+          es: 'Los deslizadores, desplegables y botones de icono no tenían nombre para los lectores de pantalla. Quien usa ByteBox con lector de pantalla oía "botón" y "deslizador" sin saber qué hacen. Corregido en Paleta de colores, HEIC a JPG, Arte ASCII, Texto a voz y Código QR — 24 controles tienen ahora un nombre que se lee en voz alta. El trabajo continúa en las demás herramientas.',
+          fr: 'Les curseurs, listes déroulantes et boutons d’icône n’avaient pas de nom pour les lecteurs d’écran. Les personnes utilisant ByteBox avec un lecteur d’écran entendaient « bouton » et « curseur » sans savoir à quoi ils servent. Corrigé dans Palette de couleurs, HEIC vers JPG, Art ASCII, Texte en parole et Code QR — 24 contrôles ont désormais un nom lu à voix haute. Le travail se poursuit dans les autres outils.',
+          de: 'Schieberegler, Auswahllisten und Symbolschaltflächen hatten keinen Namen für Screenreader. Wer ByteBox mit einem Screenreader nutzt, hörte „Schaltfläche" und „Schieberegler", ohne zu erfahren, wozu sie dienen. Behoben in Farbpalette, HEIC zu JPG, ASCII-Kunst, Text zu Sprache und QR-Code — 24 Bedienelemente haben jetzt einen Namen, der vorgelesen wird. Die Arbeit geht in den übrigen Werkzeugen weiter.',
+          pt: 'Os cursores, listas pendentes e botões de ícone não tinham nome para leitores de ecrã. Quem usa o ByteBox com leitor de ecrã ouvia "botão" e "cursor" sem saber o que fazem. Corrigido na Paleta de cores, HEIC para JPG, Arte ASCII, Texto para voz e Código QR — 24 controlos têm agora um nome que é lido em voz alta. O trabalho continua nas restantes ferramentas.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Tydligare beskrivning av vad ByteBox är och varför det finns, på startsidan och i appens information. Den gamla texten räknade upp vad som fanns; den nya säger vad det är till för.',
+          en: 'A clearer description of what ByteBox is and why it exists, on the home page and in the app’s details. The old text listed what was here; the new one says what it is for.',
+          es: 'Una descripción más clara de qué es ByteBox y por qué existe, en la página de inicio y en la información de la app. El texto anterior enumeraba lo que había; el nuevo dice para qué sirve.',
+          fr: 'Une description plus claire de ce qu’est ByteBox et de sa raison d’être, sur la page d’accueil et dans les informations de l’application. L’ancien texte énumérait ce qui existait ; le nouveau dit à quoi cela sert.',
+          de: 'Eine klarere Beschreibung dessen, was ByteBox ist und warum es existiert, auf der Startseite und in den App-Informationen. Der alte Text zählte auf, was es gibt; der neue sagt, wofür es da ist.',
+          pt: 'Uma descrição mais clara do que é o ByteBox e porque existe, na página inicial e na informação da aplicação. O texto antigo enumerava o que existia; o novo diz para que serve.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.29.0',
     date: '2026-09-23',
     title: {

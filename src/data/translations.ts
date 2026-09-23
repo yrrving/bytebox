@@ -150,6 +150,9 @@ export interface Translation {
   }
   colorPalette?: {
     addColor: string
+    pickColor: string
+    copyColor: string
+    removeColor: string
     randomize: string
     copyAll: string
     copied: string
@@ -519,7 +522,7 @@ export interface Translation {
 export const translations: Record<string, Translation> = {
   sv: {
     toolsHeading: 'Verktyg',
-    tagline: 'Bytebox är gratis webbverktyg för bild, text, ljud, kod och mer — de flesta körs helt lokalt i din webbläsare, inget laddas upp. Verktyg som kräver internet är tydligt märkta.',
+    tagline: 'ByteBox är gratis verktyg för digitalt skapande — bild, ljud, video, text och spel. De flesta körs helt på din enhet: det du arbetar med lämnar aldrig datorn. Inget konto, ingen spårning. Verktyg som behöver internet säger det, och berättar vad som skickas.',
     newBadge: 'Nytt',
     categoriesHeading: 'Kategorier',
     showAll: 'Visa alla verktyg',
@@ -661,6 +664,9 @@ export const translations: Record<string, Translation> = {
     },
     colorPalette: {
       addColor: 'Lägg till färg',
+      pickColor: 'Välj färg',
+      copyColor: 'Kopiera färgkoden',
+      removeColor: 'Ta bort färgen',
       randomize: 'Slumpa',
       copyAll: 'Kopiera alla',
       copied: 'Kopierat!',
@@ -1057,7 +1063,7 @@ export const translations: Record<string, Translation> = {
   },
   en: {
     toolsHeading: 'Tools',
-    tagline: 'Bytebox is free web tools for images, text, audio, code and more — most run fully locally in your browser, nothing uploaded. Tools that need the internet are clearly marked.',
+    tagline: 'ByteBox is free tools for making things — images, audio, video, text and games. Most run entirely on your device: what you work on never leaves your computer. No account, no tracking. Tools that need the internet say so, and tell you what gets sent.',
     newBadge: 'New',
     categoriesHeading: 'Categories',
     showAll: 'Show all tools',
@@ -1199,6 +1205,9 @@ export const translations: Record<string, Translation> = {
     },
     colorPalette: {
       addColor: 'Add color',
+      pickColor: 'Pick colour',
+      copyColor: 'Copy the colour code',
+      removeColor: 'Remove the colour',
       randomize: 'Randomize',
       copyAll: 'Copy all',
       copied: 'Copied!',
@@ -1595,7 +1604,7 @@ export const translations: Record<string, Translation> = {
   },
   es: {
     toolsHeading: 'Herramientas',
-    tagline: 'Bytebox son herramientas web gratuitas para imágenes, texto, audio, código y más — la mayoría funcionan totalmente en local en tu navegador, sin subir nada. Las que necesitan internet están claramente marcadas.',
+    tagline: 'ByteBox son herramientas gratuitas para crear — imágenes, audio, vídeo, texto y juegos. La mayoría se ejecutan íntegramente en tu dispositivo: lo que trabajas nunca sale de tu ordenador. Sin cuenta, sin seguimiento. Las herramientas que necesitan internet lo indican y explican qué se envía.',
     newBadge: 'Nuevo',
     categoriesHeading: 'Categorías',
     showAll: 'Mostrar todas las herramientas',
@@ -1737,6 +1746,9 @@ export const translations: Record<string, Translation> = {
     },
     colorPalette: {
       addColor: 'Añadir color',
+      pickColor: 'Elegir color',
+      copyColor: 'Copiar el código de color',
+      removeColor: 'Eliminar el color',
       randomize: 'Aleatorio',
       copyAll: 'Copiar todos',
       copied: '¡Copiado!',
@@ -2133,7 +2145,7 @@ export const translations: Record<string, Translation> = {
   },
   fr: {
     toolsHeading: 'Outils',
-    tagline: 'Bytebox, ce sont des outils web gratuits pour les images, le texte, l’audio, le code et plus — la plupart fonctionnent entièrement en local dans votre navigateur, rien n’est envoyé. Les outils qui nécessitent internet sont clairement indiqués.',
+    tagline: 'ByteBox, ce sont des outils gratuits pour créer — images, audio, vidéo, texte et jeux. La plupart fonctionnent entièrement sur votre appareil : ce sur quoi vous travaillez ne quitte jamais votre ordinateur. Sans compte, sans suivi. Les outils qui ont besoin d’internet le disent et précisent ce qui est envoyé.',
     newBadge: 'Nouveau',
     categoriesHeading: 'Catégories',
     showAll: 'Afficher tous les outils',
@@ -2275,6 +2287,9 @@ export const translations: Record<string, Translation> = {
     },
     colorPalette: {
       addColor: 'Ajouter une couleur',
+      pickColor: 'Choisir la couleur',
+      copyColor: 'Copier le code couleur',
+      removeColor: 'Supprimer la couleur',
       randomize: 'Aléatoire',
       copyAll: 'Tout copier',
       copied: 'Copié !',
@@ -2671,7 +2686,7 @@ export const translations: Record<string, Translation> = {
   },
   de: {
     toolsHeading: 'Werkzeuge',
-    tagline: 'Bytebox sind kostenlose Web-Werkzeuge für Bilder, Text, Audio, Code und mehr — die meisten laufen vollständig lokal in deinem Browser, nichts wird hochgeladen. Werkzeuge, die das Internet brauchen, sind klar gekennzeichnet.',
+    tagline: 'ByteBox sind kostenlose Werkzeuge zum Gestalten — Bilder, Audio, Video, Text und Spiele. Die meisten laufen vollständig auf Ihrem Gerät: Woran Sie arbeiten, verlässt Ihren Computer nie. Kein Konto, kein Tracking. Werkzeuge, die das Internet brauchen, sagen es und nennen, was gesendet wird.',
     newBadge: 'Neu',
     categoriesHeading: 'Kategorien',
     showAll: 'Alle Werkzeuge anzeigen',
@@ -2813,6 +2828,9 @@ export const translations: Record<string, Translation> = {
     },
     colorPalette: {
       addColor: 'Farbe hinzufügen',
+      pickColor: 'Farbe wählen',
+      copyColor: 'Farbcode kopieren',
+      removeColor: 'Farbe entfernen',
       randomize: 'Zufällig',
       copyAll: 'Alle kopieren',
       copied: 'Kopiert!',
@@ -3209,7 +3227,7 @@ export const translations: Record<string, Translation> = {
   },
   pt: {
     toolsHeading: 'Ferramentas',
-    tagline: 'O Bytebox são ferramentas web gratuitas para imagens, texto, áudio, código e mais — a maioria funciona totalmente local no seu navegador, nada é enviado. As que precisam de internet estão claramente assinaladas.',
+    tagline: 'O ByteBox são ferramentas gratuitas para criar — imagens, áudio, vídeo, texto e jogos. A maioria corre inteiramente no seu dispositivo: aquilo em que trabalha nunca sai do computador. Sem conta, sem rastreamento. As ferramentas que precisam de internet dizem-no e explicam o que é enviado.',
     newBadge: 'Novo',
     categoriesHeading: 'Categorias',
     showAll: 'Mostrar todas as ferramentas',
@@ -3351,6 +3369,9 @@ export const translations: Record<string, Translation> = {
     },
     colorPalette: {
       addColor: 'Adicionar cor',
+      pickColor: 'Escolher cor',
+      copyColor: 'Copiar o código da cor',
+      removeColor: 'Remover a cor',
       randomize: 'Aleatório',
       copyAll: 'Copiar todos',
       copied: 'Copiado!',

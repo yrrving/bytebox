@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# ByteBox
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gratis verktyg för digitalt skapande, som körs direkt i webbläsaren.
 
-Currently, two official plugins are available:
+**[Öppna ByteBox →](https://yrrving.github.io/bytebox/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Varför
 
-## React Compiler
+Mycket av det man behöver för att skapa något digitalt går att bygga själv, med
+tillräcklig kunskap. Men den som inte har den kunskapen får betala någon annan —
+en prenumeration för att slå ihop två PDF-filer, en uppladdning till en okänd
+server för att ta bort en bakgrund, ett konto för att göra om en bild.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ByteBox finns för att den kunskapen ska vara omsatt i något användbart, och
+gratis. Verktygen här löser vanliga problem i eget skapande — bilder, ljud,
+video, text, spel — utan att kosta något, kräva inloggning eller begära något i
+utbyte.
 
-## Expanding the ESLint configuration
+## Hur det fungerar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Allt körs på din enhet.** Bilden du beskär, ljudet du klipper och dokumentet du
+skriver lämnar aldrig datorn. Det är inte ett löfte om hur vi hanterar dina filer
+— de skickas helt enkelt aldrig någonstans.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Ingen spårning.** Inga analysverktyg, inga kakor för besöksmätning, ingen
+statistik om vad du gör här.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Inget konto.** Öppna sidan och använd verktyget.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Sex språk.** Svenska, engelska, spanska, franska, tyska och portugisiska.
+
+**Går att installera.** ByteBox kan läggas till på hemskärmen och fungerar sedan
+utan uppkoppling.
+
+Några få verktyg behöver internet för att fungera alls. De säger det tydligt
+innan du använder dem, och berättar exakt vad som skickas och vart.
+
+## Vad som finns
+
+Verktyg för bild och form, ljud och musik, text och dokument, samt spelbygge.
+Hela listan finns på [startsidan](https://yrrving.github.io/bytebox/), och
+[journalen](https://yrrving.github.io/bytebox/journal) visar vad som ändrats och
+varför.
+
+## Utveckling
+
+```bash
+npm install
+npm run dev      # utvecklingsserver
+npm run build    # produktionsbygge
+npm run lint     # kodgranskning
+npm test         # enhetstester
+npm run e2e      # webbläsartester + tillgänglighetsgranskning
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Byggt med React, TypeScript, Vite och Tailwind CSS.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Krav på nya verktyg
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Ett verktyg som läggs till ska gå att förstå utan förkunskaper, fungera med
+skärmläsare och tangentbord, och helst inte behöva någon extern tjänst. Behöver
+det en, ska det stå klart för användaren vad som skickas.
+
+Tillgänglighet granskas automatiskt mot WCAG 2.2 AA i `npm run e2e`.

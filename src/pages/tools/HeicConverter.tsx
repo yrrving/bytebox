@@ -100,6 +100,7 @@ export default function HeicConverter() {
           <div>
             <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">{h?.format ?? 'Format'}</label>
             <select
+              aria-label={h?.format ?? 'Format'}
               value={format}
               onChange={(e) => setFormat(e.target.value as OutFormat)}
               className="rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white"
@@ -114,6 +115,7 @@ export default function HeicConverter() {
                 {h?.quality ?? 'Kvalitet'}: {Math.round(quality * 100)}%
               </label>
               <input
+                aria-label={h?.quality ?? 'Kvalitet'}
                 type="range"
                 min={0.3}
                 max={1}

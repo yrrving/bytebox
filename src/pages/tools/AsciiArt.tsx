@@ -118,6 +118,7 @@ export default function AsciiArt() {
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{at?.widthLabel || 'Bredd'}</span>
             <input
+              aria-label={at?.widthLabel || 'Bredd'}
               type="number"
               min={20}
               max={200}

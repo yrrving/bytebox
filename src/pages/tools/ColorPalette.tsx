@@ -140,6 +140,7 @@ export default function ColorPalette() {
             <div className="flex items-center gap-4">
               <input
                 type="color"
+                aria-label={cp?.pickColor ?? 'Välj färg'}
                 value={color}
                 onChange={(e) => updateColor(i, e.target.value)}
                 className="h-12 w-12 cursor-pointer rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white"
@@ -151,6 +152,7 @@ export default function ColorPalette() {
                   </span>
                   <button
                     onClick={() => copyColor(color, i)}
+                    aria-label={`${cp?.copyColor ?? 'Kopiera färgkoden'} ${color.toUpperCase()}`}
                     className="rounded p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
                   >
                     {copiedIdx === i ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
@@ -172,6 +174,7 @@ export default function ColorPalette() {
               </div>
               <button
                 onClick={() => removeColor(i)}
+                aria-label={`${cp?.removeColor ?? 'Ta bort färgen'} ${color.toUpperCase()}`}
                 disabled={colors.length <= 1}
                 className="rounded-lg p-2 text-gray-400 hover:text-red-500 transition-colors disabled:opacity-30"
               >

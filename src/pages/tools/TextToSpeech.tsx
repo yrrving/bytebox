@@ -105,6 +105,7 @@ export default function TextToSpeech() {
             {tts?.voice ?? 'Röst'}
           </label>
           <select
+            aria-label={tts?.voice ?? 'Röst'}
             value={selectedVoice}
             onChange={(e) => setSelectedVoice(e.target.value)}
             className="w-full rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white"
@@ -124,6 +125,7 @@ export default function TextToSpeech() {
             </label>
           </div>
           <input
+            aria-label={tts?.speed ?? 'Hastighet'}
             type="range"
             min={0.5}
             max={2}
@@ -141,6 +143,7 @@ export default function TextToSpeech() {
             </label>
           </div>
           <input
+            aria-label={tts?.pitch ?? 'Tonhöjd'}
             type="range"
             min={0.5}
             max={2}

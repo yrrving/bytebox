@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.29.1 — 2026-09-23 — Skärmläsare kan läsa upp verktygen
+
+### Fixat
+
+- **Reglage, rullgardiner och ikonknappar saknade namn för skärmläsare.** Den som använder ByteBox med skärmläsare fick höra "knapp" och "reglage" utan att få veta vad de gör. Åtgärdat i Färgpalett, HEIC till JPG, ASCII-konst, Text till tal och QR-kod — 24 kontroller har nu ett namn som läses upp. Arbetet fortsätter i övriga verktyg.
+
+### Ändrat
+
+- **Tydligare beskrivning av vad ByteBox är och varför det finns**, på startsidan och i appens information. Den gamla texten räknade upp vad som fanns; den nya säger vad det är till för.
+
 ## 0.29.0 — 2026-09-23 — Säkerhetsgenomgång: fyra trasiga verktyg lagade
 
 En genomgång av hela verktygslådan med fokus på säkerhet och integritet. Fyra

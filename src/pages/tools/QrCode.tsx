@@ -70,6 +70,7 @@ export default function QrCodeTool() {
             <select
               value={size}
               onChange={(e) => setSize(Number(e.target.value))}
+              aria-label={q?.size ?? 'Storlek'}
               className="rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white"
             >
               <option value={128}>128px</option>
@@ -85,6 +86,7 @@ export default function QrCodeTool() {
                 type="color"
                 value={fgColor}
                 onChange={(e) => setFgColor(e.target.value)}
+                aria-label={q?.foreground ?? 'Förgrund'}
                 className="h-9 w-9 cursor-pointer rounded border border-gray-300 dark:border-gray-600 hc:border-white"
               />
               <span className="font-mono text-xs text-gray-500 dark:text-gray-400">{fgColor}</span>
@@ -97,6 +99,7 @@ export default function QrCodeTool() {
                 type="color"
                 value={bgColor}
                 onChange={(e) => setBgColor(e.target.value)}
+                aria-label={q?.background ?? 'Bakgrund'}
                 className="h-9 w-9 cursor-pointer rounded border border-gray-300 dark:border-gray-600 hc:border-white"
               />
               <span className="font-mono text-xs text-gray-500 dark:text-gray-400">{bgColor}</span>

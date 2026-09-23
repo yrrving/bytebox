@@ -1,6 +1,7 @@
 {
   "name": "bytebox",
   "private": true,
+  "license": "MIT",
   "version": "0.29.2",
   "type": "module",
   "scripts": {

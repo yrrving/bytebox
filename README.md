@@ -62,3 +62,9 @@ skärmläsare och tangentbord, och helst inte behöva någon extern tjänst. Beh
 det en, ska det stå klart för användaren vad som skickas.
 
 Tillgänglighet granskas automatiskt mot WCAG 2.2 AA i `npm run e2e`.
+
+## Licens
+
+[MIT](LICENSE) — använd, ändra och bygg vidare fritt, för vad du vill. Det enda
+som krävs är att upphovsrättsraden följer med. Det finns ingen garanti och inget
+supportåtagande.

@@ -93,9 +93,9 @@ export default function IpInfo() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -103,7 +103,7 @@ export default function IpInfo() {
 
       {loading && (
         <div className="flex items-center justify-center py-12">
-          <RefreshCw className="h-6 w-6 animate-spin text-gray-400" />
+          <RefreshCw className="h-6 w-6 animate-spin text-gray-600 dark:text-gray-300" />
         </div>
       )}
 
@@ -123,19 +123,19 @@ export default function IpInfo() {
         <>
           {/* Big IP display */}
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-6 text-center">
-            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{ip?.yourIp ?? 'Din IP-adress'}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-300 mb-1">{ip?.yourIp ?? 'Din IP-adress'}</p>
             <p className="text-3xl font-bold font-mono text-gray-900 dark:text-white">{data.ip}</p>
             <div className="mt-3 flex justify-center gap-2">
               <button
                 onClick={copyIp}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
               >
                 {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
                 {copied ? (ip?.copied ?? 'Kopierat!') : (ip?.copy ?? 'Kopiera')}
               </button>
               <button
                 onClick={fetchIp}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
                 {ip?.refresh ?? 'Uppdatera'}
@@ -152,7 +152,7 @@ export default function IpInfo() {
                   i > 0 ? 'border-t border-gray-200 dark:border-gray-700 hc:border-gray-600' : ''
                 }`}
               >
-                <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">{row.label}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{row.label}</span>
                 <span className="text-sm font-medium text-gray-900 dark:text-white font-mono">{row.value}</span>
               </div>
             ))}

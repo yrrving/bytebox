@@ -410,9 +410,9 @@ ${shapeSvg}
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -424,8 +424,8 @@ ${shapeSvg}
           onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f?.type.startsWith('image/')) handleImage(f) }}
           className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-12 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
         >
-          <Upload className="mx-auto h-8 w-8 text-gray-400 dark:text-gray-500 hc:text-white" />
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+          <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {ct?.upload || 'Klicka eller dra hit en bild'}
           </p>
         </div>
@@ -502,7 +502,7 @@ ${shapeSvg}
               <span className={`inline-flex items-center justify-center h-5 w-5 rounded text-xs font-bold ${
                 includeBackground
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 dark:bg-gray-600 text-gray-400 dark:text-gray-500'
+                  : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
               }`}>
                 {includeBackground ? '✓' : ''}
               </span>

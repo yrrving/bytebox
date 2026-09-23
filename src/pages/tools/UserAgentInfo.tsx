@@ -79,7 +79,7 @@ export default function UserAgentInfo() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
@@ -89,7 +89,7 @@ export default function UserAgentInfo() {
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hc:text-white">User Agent</span>
             <button
               onClick={copy}
-              className="flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 hc:border hc:border-white px-2.5 py-1 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
+              className="flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 hc:border hc:border-white px-2.5 py-1 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
             >
               {copied ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
               {copied ? (ut?.copied || 'Kopierat!') : (ut?.copy || 'Kopiera')}
@@ -104,7 +104,7 @@ export default function UserAgentInfo() {
         <div className="divide-y divide-gray-200 dark:divide-gray-600 hc:divide-white">
           {rows.map((row) => (
             <div key={row.label} className="flex items-center justify-between py-2.5">
-              <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{row.label}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{row.label}</span>
               <span className="text-sm font-medium text-gray-900 dark:text-white">{row.value}</span>
             </div>
           ))}

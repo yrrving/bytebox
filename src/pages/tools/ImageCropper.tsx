@@ -114,7 +114,7 @@ export default function ImageCropper() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <canvas ref={canvasRef} className="hidden" />
@@ -127,7 +127,7 @@ export default function ImageCropper() {
             onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f?.type.startsWith('image/')) handleImage(f) }}
             className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-12 text-center cursor-pointer transition-colors hover:border-blue-400"
           >
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{ct?.upload || 'Klicka eller dra hit en bild'}</p>
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{ct?.upload || 'Klicka eller dra hit en bild'}</p>
           </div>
         ) : (
           <>
@@ -140,7 +140,7 @@ export default function ImageCropper() {
                   className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                     ratio === r.value
                       ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                      : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                      : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
                   }`}
                 >
                   {r.label === 'Fri' ? (ct?.free || 'Fri') : r.label}

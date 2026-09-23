@@ -95,11 +95,11 @@ export default function RegexTester() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           {translation?.name}
         </h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {translation?.description}
         </p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -110,7 +110,7 @@ export default function RegexTester() {
         </label>
         <div className="flex gap-2">
           <div className="flex flex-1 items-center rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-3 font-mono text-sm">
-            <span className="text-gray-400">/</span>
+            <span className="text-gray-600 dark:text-gray-300">/</span>
             <input
               type="text"
               value={pattern}
@@ -119,12 +119,12 @@ export default function RegexTester() {
               spellCheck={false}
               className="flex-1 bg-transparent px-1 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none"
             />
-            <span className="text-gray-400">/{[...flags].sort().join('')}</span>
+            <span className="text-gray-600 dark:text-gray-300">/{[...flags].sort().join('')}</span>
           </div>
           <button
             onClick={copyRegex}
             disabled={!pattern}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
             {copied ? (r?.copied ?? 'Kopierat!') : (r?.copy ?? 'Kopiera')}
@@ -133,7 +133,7 @@ export default function RegexTester() {
 
         {/* Flags */}
         <div className="mt-3 flex items-center gap-2">
-          <span className="text-xs text-gray-500 dark:text-gray-400">{r?.flags ?? 'Flaggor'}:</span>
+          <span className="text-xs text-gray-600 dark:text-gray-300">{r?.flags ?? 'Flaggor'}:</span>
           {FLAG_OPTIONS.map((flag) => (
             <button
               key={flag}
@@ -141,7 +141,7 @@ export default function RegexTester() {
               className={`rounded-md px-2.5 py-1 text-xs font-mono font-medium transition-colors ${
                 flags.has(flag)
                   ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                  : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-500 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
               }`}
             >
               {flag}
@@ -199,15 +199,15 @@ export default function RegexTester() {
               >
                 <div className="flex items-center justify-between">
                   <span className="text-gray-900 dark:text-white">
-                    <span className="text-gray-400 dark:text-gray-500 text-xs mr-2">#{i + 1}</span>
+                    <span className="text-gray-600 dark:text-gray-300 text-xs mr-2">#{i + 1}</span>
                     &quot;{m.text}&quot;
                   </span>
-                  <span className="text-xs text-gray-400 dark:text-gray-500">
+                  <span className="text-xs text-gray-600 dark:text-gray-300">
                     {r?.index ?? 'index'}: {m.index}
                   </span>
                 </div>
                 {m.groups.length > 0 && (
-                  <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  <div className="mt-1 text-xs text-gray-600 dark:text-gray-300">
                     {r?.groups ?? 'Grupper'}: {m.groups.map((g, j) => (
                       <span key={j} className="mr-2">
                         ${j + 1}=&quot;{g}&quot;

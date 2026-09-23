@@ -150,9 +150,9 @@ export default function VideoToGif() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -171,8 +171,8 @@ export default function VideoToGif() {
             onDrop={(e) => { e.preventDefault(); loadFile(e.dataTransfer.files[0]) }}
             className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
           >
-            <Film className="h-6 w-6 text-gray-400" />
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">Klicka eller dra hit en videofil</p>
+            <Film className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">Klicka eller dra hit en videofil</p>
           </div>
         )}
         <input
@@ -198,7 +198,7 @@ export default function VideoToGif() {
             {/* Trim */}
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
                   Start: {start.toFixed(1)} s
                 </label>
                 <input
@@ -208,7 +208,7 @@ export default function VideoToGif() {
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
                   Slut: {end.toFixed(1)} s
                 </label>
                 <input
@@ -218,7 +218,7 @@ export default function VideoToGif() {
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
                   Bildrutor/sekund: {fps}
                 </label>
                 <input
@@ -228,7 +228,7 @@ export default function VideoToGif() {
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
                   Bredd: {width} px
                 </label>
                 <input
@@ -239,7 +239,7 @@ export default function VideoToGif() {
               </div>
             </div>
 
-            <p className={`text-xs ${tooManyFrames ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'}`}>
+            <p className={`text-xs ${tooManyFrames ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-300'}`}>
               {frameCount} bildrutor · {width}×{outHeight} px
               {tooManyFrames && ` — för många (max ${MAX_FRAMES})`}
             </p>

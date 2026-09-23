@@ -270,9 +270,9 @@ export default function AudioTrimmer() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -297,12 +297,12 @@ export default function AudioTrimmer() {
           {loading ? (
             <>
               <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
-              <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">Avkodar ljud…</p>
+              <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">Avkodar ljud…</p>
             </>
           ) : fileName ? (
             <p className="text-gray-700 dark:text-gray-300 hc:text-white font-medium truncate max-w-full">{fileName}</p>
           ) : (
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
               Klicka eller dra hit en ljudfil (mp3, wav, m4a, ogg …)
             </p>
           )}
@@ -339,7 +339,7 @@ export default function AudioTrimmer() {
             {/* Sliders */}
             <div className="space-y-3">
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 flex items-center justify-between text-xs text-gray-600 dark:text-gray-300">
                   <span>Start</span>
                   <span className="font-mono">{formatTime(start)}</span>
                 </label>
@@ -354,7 +354,7 @@ export default function AudioTrimmer() {
                 />
               </div>
               <div>
-                <label className="mb-1 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 flex items-center justify-between text-xs text-gray-600 dark:text-gray-300">
                   <span>Slut</span>
                   <span className="font-mono">{formatTime(end)}</span>
                 </label>

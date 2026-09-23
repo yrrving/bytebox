@@ -67,9 +67,9 @@ export default function CssGradient() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -90,7 +90,7 @@ export default function CssGradient() {
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   type === g
                     ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                    : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                    : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
                 }`}
               >
                 {g === 'linear' ? (gt?.linear || 'Linjär') : (gt?.radial || 'Radiell')}
@@ -99,7 +99,7 @@ export default function CssGradient() {
           </div>
           {type === 'linear' && (
             <div className="flex items-center gap-2 flex-1">
-              <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{gt?.angle || 'Vinkel'}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{gt?.angle || 'Vinkel'}</span>
               <input
                 type="range"
                 min={0}
@@ -120,7 +120,7 @@ export default function CssGradient() {
             <button
               onClick={addStop}
               disabled={stops.length >= 6}
-              className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hc:text-blue-300 hover:underline disabled:opacity-40"
+              className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-300 hc:text-blue-300 hover:underline disabled:opacity-40"
             >
               <Plus className="h-3 w-3" />
               {gt?.addColor || 'Lägg till'}
@@ -148,11 +148,11 @@ export default function CssGradient() {
                 onChange={(e) => updateStop(i, 'position', Number(e.target.value))}
                 className="flex-1 accent-blue-500"
               />
-              <span className="text-xs font-mono text-gray-500 dark:text-gray-400 w-8">{stop.position}%</span>
+              <span className="text-xs font-mono text-gray-600 dark:text-gray-300 w-8">{stop.position}%</span>
               {stops.length > 2 && (
                 <button
                   onClick={() => removeStop(i)}
-                  className="text-gray-400 hover:text-red-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -187,7 +187,7 @@ export default function CssGradient() {
             </code>
             <button
               onClick={copy}
-              className="shrink-0 rounded-lg bg-gray-200 dark:bg-gray-700 hc:bg-gray-800 hc:border hc:border-white p-1.5 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-300 dark:hover:bg-gray-600"
+              className="shrink-0 rounded-lg bg-gray-200 dark:bg-gray-700 hc:bg-gray-800 hc:border hc:border-white p-1.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-300 dark:hover:bg-gray-600"
             >
               {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
             </button>

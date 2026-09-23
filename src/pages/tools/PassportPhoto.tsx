@@ -270,7 +270,7 @@ export default function PassportPhoto() {
 
   const inputCls =
     'rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white'
-  const labelCls = 'mb-1 block text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300'
+  const labelCls = 'mb-1 block text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200'
 
   return (
     <div className="mx-auto max-w-2xl space-y-6 py-10">
@@ -280,9 +280,9 @@ export default function PassportPhoto() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -300,8 +300,8 @@ export default function PassportPhoto() {
           onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) handleImage(f) }}
           className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-6 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
         >
-          <ImageIcon className="h-6 w-6 text-gray-400" />
-          <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+          <ImageIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+          <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {image ? 'Klicka för att byta bild' : 'Klicka eller dra hit ett foto'}
           </p>
           <input
@@ -334,7 +334,7 @@ export default function PassportPhoto() {
                   className={`${inputCls} w-24`}
                 />
               </div>
-              <span className="pb-2 text-gray-400">×</span>
+              <span className="pb-2 text-gray-600 dark:text-gray-300">×</span>
               <div>
                 <label className={labelCls}>Höjd (mm)</label>
                 <input
@@ -375,25 +375,25 @@ export default function PassportPhoto() {
             className="rounded-lg shadow-sm touch-none"
             style={{ width: dispW, height: dispH, cursor: image ? 'grab' : 'default' }}
           />
-          <p className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+          <p className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {photoW}×{photoH} mm · 300 DPI · dra i bilden för att justera
           </p>
           <div className="flex w-full max-w-xs items-center gap-2">
-            <ZoomIn className="h-4 w-4 text-gray-400 shrink-0" />
+            <ZoomIn className="h-4 w-4 text-gray-600 dark:text-gray-300 shrink-0" />
             <input
               type="range" min={1} max={4} step={0.02} value={zoom}
               disabled={!image}
               onChange={(e) => setZoom(Number(e.target.value))}
               className="w-full"
             />
-            <span className="w-12 text-right text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+            <span className="w-12 text-right text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {zoom.toFixed(1)}×
             </span>
           </div>
         </div>
 
         {/* Layout info */}
-        <p className="text-center text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="text-center text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {totalCopies > 0
             ? `${totalCopies} kopior på arket (${layout.cols}×${layout.rows})`
             : 'Fotot är för stort för valt ark'}

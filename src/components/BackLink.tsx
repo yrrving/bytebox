@@ -17,7 +17,7 @@ export default function BackLink() {
   return (
     <button
       onClick={handleBack}
-      className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
+      className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
     >
       <ArrowLeft className="h-4 w-4" />
       {t.backToTools}

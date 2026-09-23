@@ -61,9 +61,9 @@ export default function JwtDecoder() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -91,7 +91,7 @@ export default function JwtDecoder() {
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hc:text-white">Header</span>
                 <button
                   onClick={() => copyText(decoded.header, 'header')}
-                  className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300 hover:text-gray-700 dark:hover:text-white"
+                  className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 hover:text-gray-700 dark:hover:text-white"
                 >
                   {copied === 'header' ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
                 </button>
@@ -107,7 +107,7 @@ export default function JwtDecoder() {
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hc:text-white">Payload</span>
                 <button
                   onClick={() => copyText(decoded.payload, 'payload')}
-                  className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300 hover:text-gray-700 dark:hover:text-white"
+                  className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 hover:text-gray-700 dark:hover:text-white"
                 >
                   {copied === 'payload' ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
                 </button>
@@ -122,7 +122,7 @@ export default function JwtDecoder() {
               <div className="rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 hc:border hc:border-white p-3 space-y-1">
                 {timestamps.map((ts) => (
                   <div key={ts.key} className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{ts.label} ({ts.key})</span>
+                    <span className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{ts.label} ({ts.key})</span>
                     <span className="font-mono text-gray-900 dark:text-white">{ts.value}</span>
                   </div>
                 ))}

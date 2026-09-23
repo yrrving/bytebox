@@ -80,7 +80,7 @@ export default function FaviconGenerator() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <canvas ref={canvasRef} className="hidden" />
@@ -96,7 +96,7 @@ export default function FaviconGenerator() {
           {image ? (
             <img src={image.src} className="h-24 w-24 rounded-lg object-cover" alt="" />
           ) : (
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {ft?.upload || 'Klicka eller dra hit en bild'}
             </p>
           )}
@@ -133,7 +133,7 @@ export default function FaviconGenerator() {
                     style={{ width: Math.min(p.size, 64), height: Math.min(p.size, 64), imageRendering: p.size <= 32 ? 'pixelated' : 'auto' }}
                     alt=""
                   />
-                  <span className="text-xs font-mono text-gray-600 dark:text-gray-400 hc:text-gray-300">{p.size}×{p.size}</span>
+                  <span className="text-xs font-mono text-gray-600 dark:text-gray-300 hc:text-gray-200">{p.size}×{p.size}</span>
                 </button>
               ))}
             </div>

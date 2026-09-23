@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '0.29.2',
+    date: '2026-09-23',
+    title: {
+      sv: 'Läsbarare text i alla tre teman',
+      en: 'More readable text in all three themes',
+      es: 'Texto más legible en los tres temas',
+      fr: 'Texte plus lisible dans les trois thèmes',
+      de: 'Besser lesbarer Text in allen drei Themen',
+      pt: 'Texto mais legível nos três temas',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Sekundärtext var för ljus för att uppfylla tillgänglighetskraven. Beskrivningar, etiketter och hjälptexter låg under den kontrast som krävs — på 50 av 56 sidor. Grånyanserna är justerade genomgående, ett trettiotal texter som helt saknade färg för mörkt läge har fått en, och länkar i mörkt läge är ljusare. Antalet kontrastfel gick från 197 till 10 per tema.',
+          en: 'Secondary text was too light to meet accessibility requirements. Descriptions, labels and help texts fell below the required contrast — on 50 of 56 pages. The greys are adjusted throughout, around thirty texts that had no colour for dark mode at all have been given one, and links in dark mode are lighter. Contrast failures went from 197 to 10 per theme.',
+          es: 'El texto secundario era demasiado claro para cumplir los requisitos de accesibilidad. Descripciones, etiquetas y textos de ayuda quedaban por debajo del contraste exigido — en 50 de 56 páginas. Los grises se han ajustado en todo el sitio, una treintena de textos que no tenían color para el modo oscuro ya lo tienen, y los enlaces en modo oscuro son más claros. Los fallos de contraste pasaron de 197 a 10 por tema.',
+          fr: 'Le texte secondaire était trop clair pour respecter les exigences d’accessibilité. Descriptions, étiquettes et textes d’aide passaient sous le contraste requis — sur 50 des 56 pages. Les gris ont été ajustés partout, une trentaine de textes qui n’avaient aucune couleur pour le mode sombre en ont reçu une, et les liens en mode sombre sont plus clairs. Les défauts de contraste sont passés de 197 à 10 par thème.',
+          de: 'Sekundärtext war zu hell für die Anforderungen an Barrierefreiheit. Beschreibungen, Beschriftungen und Hilfetexte lagen unter dem geforderten Kontrast — auf 50 von 56 Seiten. Die Grautöne wurden durchgehend angepasst, rund dreißig Texte ohne eigene Farbe für den Dunkelmodus haben eine bekommen, und Links im Dunkelmodus sind heller. Die Kontrastfehler sanken von 197 auf 10 pro Thema.',
+          pt: 'O texto secundário era demasiado claro para cumprir os requisitos de acessibilidade. Descrições, etiquetas e textos de ajuda ficavam abaixo do contraste exigido — em 50 das 56 páginas. Os cinzentos foram ajustados em todo o lado, cerca de trinta textos que não tinham cor para o modo escuro passaram a ter, e as ligações em modo escuro são mais claras. As falhas de contraste passaram de 197 para 10 por tema.',
+        },
+      },
+    ],
+  },
+  {
     version: '0.29.1',
     date: '2026-09-23',
     title: {

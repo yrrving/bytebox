@@ -62,9 +62,9 @@ export default function DiffCompare() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -122,7 +122,7 @@ export default function DiffCompare() {
                       : 'border-transparent text-gray-700 dark:text-gray-300 hc:text-gray-200'
                   }`}
                 >
-                  <span className="inline-block w-6 text-gray-400 dark:text-gray-500 select-none">
+                  <span className="inline-block w-6 text-gray-600 dark:text-gray-300 select-none">
                     {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : ' '}
                   </span>
                   {line.text || '\u00A0'}

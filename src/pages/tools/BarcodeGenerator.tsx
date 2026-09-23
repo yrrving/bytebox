@@ -143,9 +143,9 @@ export default function BarcodeGenerator() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -171,7 +171,7 @@ export default function BarcodeGenerator() {
 
         <div className="flex flex-wrap items-end gap-4">
           <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Format</label>
+            <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">Format</label>
             <select
               value={format}
               onChange={(e) => changeFormat(e.target.value as BarcodeFormat)}
@@ -186,7 +186,7 @@ export default function BarcodeGenerator() {
           </div>
 
           <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+            <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
               Streckbredd: {barWidth}
             </label>
             <input
@@ -201,7 +201,7 @@ export default function BarcodeGenerator() {
           </div>
 
           <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+            <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
               Höjd: {height}px
             </label>
             <input
@@ -226,7 +226,7 @@ export default function BarcodeGenerator() {
           </label>
         </div>
 
-        <p className="flex items-start gap-1.5 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+        <p className="flex items-start gap-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
           <BarcodeIcon className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           {FORMAT_HINTS[format]}
         </p>
@@ -243,7 +243,7 @@ export default function BarcodeGenerator() {
         <div className="flex items-center justify-center rounded-lg bg-white p-4">
           <canvas ref={canvasRef} className={rendered ? '' : 'hidden'} />
           {!rendered && (
-            <span className="py-8 text-sm text-gray-400">Streckkoden visas här</span>
+            <span className="py-8 text-sm text-gray-600 dark:text-gray-300">Streckkoden visas här</span>
           )}
         </div>
 

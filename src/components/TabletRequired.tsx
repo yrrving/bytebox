@@ -26,11 +26,11 @@ export default function TabletRequired({ variant = 'surfplatta', reason }: Table
       <h1 className="text-xl font-bold text-gray-900 dark:text-white hc:text-white">
         {title ?? 'Kräver större skärm'}
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 hc:text-gray-200">
+      <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
         {body ?? 'Det här verktyget behöver en större skärm.'}
       </p>
       {reason && (
-        <p className="text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300">{reason}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{reason}</p>
       )}
       <Link
         to="/"

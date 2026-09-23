@@ -120,9 +120,9 @@ export default function SvgOptimizer() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -136,7 +136,7 @@ export default function SvgOptimizer() {
         {/* Input */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="block text-xs text-gray-500 dark:text-gray-400">SVG-kod</label>
+            <label className="block text-xs text-gray-600 dark:text-gray-300">SVG-kod</label>
             <button
               onClick={() => inputRef.current?.click()}
               className="flex items-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-gray-900 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-200 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -192,7 +192,7 @@ export default function SvgOptimizer() {
 
         {/* Output */}
         <div className="space-y-2">
-          <label className="block text-xs text-gray-500 dark:text-gray-400">Optimerad SVG</label>
+          <label className="block text-xs text-gray-600 dark:text-gray-300">Optimerad SVG</label>
           <textarea
             value={output}
             readOnly

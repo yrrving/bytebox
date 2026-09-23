@@ -91,7 +91,7 @@ export default function SslCheck() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <ExternalNotice service="Cert Spotter (SSLMate)" sends={t.privacy?.sendsSsl} />
@@ -117,7 +117,7 @@ export default function SslCheck() {
         </div>
 
         {loading && (
-          <div className="text-center py-4 text-gray-500 dark:text-gray-400 hc:text-gray-300">{st?.loading || 'Kontrollerar...'}</div>
+          <div className="text-center py-4 text-gray-600 dark:text-gray-300 hc:text-gray-200">{st?.loading || 'Kontrollerar...'}</div>
         )}
 
         {error && (
@@ -145,7 +145,7 @@ export default function SslCheck() {
                       : (st?.expired || 'Certifikatet har gått ut')}
                 </div>
                 {info.daysLeft > 0 && !info.revoked && (
-                  <div className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">
+                  <div className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
                     {info.daysLeft} {st?.daysLeft || 'dagar kvar'}
                   </div>
                 )}
@@ -161,13 +161,13 @@ export default function SslCheck() {
                 { label: st?.covers || 'Täcker antal domäner', value: String(info.names) },
               ].map((row) => (
                 <div key={row.label} className="flex items-center justify-between py-2.5">
-                  <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{row.label}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{row.label}</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white text-right max-w-[60%] truncate">{row.value}</span>
                 </div>
               ))}
             </div>
 
-            <p className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+            <p className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {st?.ctNote || 'Uppgifterna kommer från offentliga Certificate Transparency-loggar och visar det senast utfärdade certifikatet för domänen. Det är nästan alltid det som servern använder, men i sällsynta fall kan servern köra ett annat.'}
             </p>
           </div>

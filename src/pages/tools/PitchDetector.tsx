@@ -133,7 +133,7 @@ export default function PitchDetector() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-6 space-y-6">
@@ -147,11 +147,11 @@ export default function PitchDetector() {
             <div className="text-center">
               {note ? (
                 <>
-                  <div className="text-8xl font-bold text-gray-900 dark:text-white">{note}<sub className="text-3xl text-gray-500 dark:text-gray-400">{octave}</sub></div>
-                  <div className="mt-2 text-2xl font-mono text-gray-600 dark:text-gray-400 hc:text-gray-300">{frequency} Hz</div>
+                  <div className="text-8xl font-bold text-gray-900 dark:text-white">{note}<sub className="text-3xl text-gray-600 dark:text-gray-300">{octave}</sub></div>
+                  <div className="mt-2 text-2xl font-mono text-gray-600 dark:text-gray-300 hc:text-gray-200">{frequency} Hz</div>
                   {/* Cents indicator */}
                   <div className="mt-4 flex items-center justify-center gap-2">
-                    <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">-50</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">-50</span>
                     <div className="relative h-3 w-48 rounded-full bg-gray-200 dark:bg-gray-800 hc:bg-gray-900">
                       <div className="absolute top-0 left-1/2 h-full w-0.5 bg-gray-400 dark:bg-gray-500" />
                       <div
@@ -159,14 +159,14 @@ export default function PitchDetector() {
                         style={{ left: `calc(50% + ${(cents / 50) * 50}%)` }}
                       />
                     </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">+50</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">+50</span>
                   </div>
-                  <div className="mt-1 text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+                  <div className="mt-1 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
                     {cents > 0 ? '+' : ''}{cents} cents
                   </div>
                 </>
               ) : (
-                <div className="text-xl text-gray-400 dark:text-gray-500 hc:text-gray-400 py-8">
+                <div className="text-xl text-gray-600 dark:text-gray-300 hc:text-gray-200 py-8">
                   {listening ? (pt?.detecting || 'Lyssnar...') : (pt?.pressStart || 'Tryck för att börja')}
                 </div>
               )}

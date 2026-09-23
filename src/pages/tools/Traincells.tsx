@@ -35,7 +35,7 @@ export default function Traincells() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleFullscreen}
-            className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
+            className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
           >
             {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             {isFullscreen ? 'Avsluta helskärm' : 'Helskärm'}
@@ -43,7 +43,7 @@ export default function Traincells() {
           <a
             href={TRAINCELLS_URL}
             title="Lämnar ByteBox helt och visar bara TrainCells på sin egen adress — bra att peka en iPad i skärmlåst kioskläge mot."
-            className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hc:text-white transition-colors hover:text-blue-700 dark:hover:text-blue-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-300 hc:text-white transition-colors hover:text-blue-700 dark:hover:text-blue-300"
           >
             <Expand className="h-4 w-4" />
             Fokusläge (för iPad/kiosk)
@@ -52,7 +52,7 @@ export default function Traincells() {
             href={TRAINCELLS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
+            className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
           >
             <ExternalLink className="h-4 w-4" />
             Öppna i ny flik
@@ -64,7 +64,7 @@ export default function Traincells() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white hc:text-white">
           {translation?.name}
         </h1>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {translation?.description}
         </p>
       </div>

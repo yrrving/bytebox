@@ -91,7 +91,7 @@ export default function BatchQrView({ size, fgColor, bgColor }: BatchQrViewProps
           </label>
           <button
             onClick={() => fileRef.current?.click()}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <Upload className="h-3.5 w-3.5" />
             Ladda upp .txt / .csv
@@ -116,7 +116,7 @@ export default function BatchQrView({ size, fgColor, bgColor }: BatchQrViewProps
           spellCheck={false}
           className="w-full resize-y rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-4 py-3 font-mono text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
         />
-        <p className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+        <p className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
           Tips: skriv <code className="font-mono">innehåll, etikett</code> med kommatecken för att ge varje QR-kod en egen etikett och filnamn.
         </p>
       </div>
@@ -150,7 +150,7 @@ export default function BatchQrView({ size, fgColor, bgColor }: BatchQrViewProps
       {items.length > 0 && (
         <div className="space-y-4">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+            <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {items.length} QR-koder skapade
             </span>
             <button
@@ -180,7 +180,7 @@ export default function BatchQrView({ size, fgColor, bgColor }: BatchQrViewProps
                     {item.label || item.content}
                   </span>
                 )}
-                <span className="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span className="inline-flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   <Download className="h-3 w-3" />
                   PNG
                 </span>

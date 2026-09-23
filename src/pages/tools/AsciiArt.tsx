@@ -88,7 +88,7 @@ export default function AsciiArt() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <canvas ref={canvasRef} className="hidden" />
@@ -101,7 +101,7 @@ export default function AsciiArt() {
           onClick={() => inputRef.current?.click()}
           className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
         >
-          <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {at?.upload || 'Klicka eller dra hit en bild'}
           </p>
           <input
@@ -116,7 +116,7 @@ export default function AsciiArt() {
         {/* Settings */}
         <div className="flex flex-wrap gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{at?.widthLabel || 'Bredd'}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{at?.widthLabel || 'Bredd'}</span>
             <input
               aria-label={at?.widthLabel || 'Bredd'}
               type="number"
@@ -135,7 +135,7 @@ export default function AsciiArt() {
                 className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                   rampType === r.key
                     ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                    : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                    : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
                 }`}
               >
                 {r.label}
@@ -150,7 +150,7 @@ export default function AsciiArt() {
             <div className="flex justify-end">
               <button
                 onClick={copy}
-                className="flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
+                className="flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
               >
                 {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
                 {copied ? (at?.copied || 'Kopierat!') : (at?.copy || 'Kopiera')}

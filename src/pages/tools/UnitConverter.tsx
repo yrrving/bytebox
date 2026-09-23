@@ -113,11 +113,11 @@ export default function UnitConverter() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           {translation?.name}
         </h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {translation?.description}
         </p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -130,7 +130,7 @@ export default function UnitConverter() {
             className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               catIdx === i
                 ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
             }`}
           >
             {categoryLabels[c.key]}
@@ -164,7 +164,7 @@ export default function UnitConverter() {
         <div className="flex justify-center">
           <button
             onClick={swap}
-            className="rounded-full bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white p-2.5 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="rounded-full bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white p-2.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <ArrowDownUp className="h-5 w-5" />
           </button>
@@ -173,7 +173,7 @@ export default function UnitConverter() {
         {/* To */}
         <div className="flex gap-3">
           <div className="flex-1 rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-4 py-3 text-lg font-mono text-gray-900 dark:text-white min-h-[3rem] flex items-center">
-            {result !== null ? formatResult(result) : <span className="text-gray-400 dark:text-gray-500">&mdash;</span>}
+            {result !== null ? formatResult(result) : <span className="text-gray-600 dark:text-gray-300">&mdash;</span>}
           </div>
           <select
             value={toUnit}
@@ -189,7 +189,7 @@ export default function UnitConverter() {
 
       {/* Formula hint */}
       {result !== null && (
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-center text-sm text-gray-600 dark:text-gray-300">
           {value} {from.label} = {formatResult(result)} {to.label}
         </p>
       )}

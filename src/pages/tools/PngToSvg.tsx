@@ -163,9 +163,9 @@ export default function PngToSvg() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -176,11 +176,11 @@ export default function PngToSvg() {
         onClick={() => fileRef.current?.click()}
         className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
       >
-        <Upload className="mx-auto h-8 w-8 text-gray-400 dark:text-gray-500 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           Klicka eller dra hit en PNG-bild
         </p>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">PNG, JPG, WebP</p>
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">PNG, JPG, WebP</p>
         <input
           ref={fileRef}
           type="file"
@@ -203,7 +203,7 @@ export default function PngToSvg() {
                   className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                     mode === 'bw'
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
+                      : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
                   Svartvitt
@@ -213,7 +213,7 @@ export default function PngToSvg() {
                   className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                     mode === 'color'
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
+                      : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
                   Färg
@@ -237,7 +237,7 @@ export default function PngToSvg() {
                   onChange={(e) => setThreshold(Number(e.target.value))}
                   className="w-full accent-blue-600"
                 />
-                <div className="flex justify-between text-xs text-gray-400 dark:text-gray-500">
+                <div className="flex justify-between text-xs text-gray-600 dark:text-gray-300">
                   <span>Mer svart</span>
                   <span>Mer vitt</span>
                 </div>
@@ -279,7 +279,7 @@ export default function PngToSvg() {
                 onChange={(e) => setScale(Number(e.target.value))}
                 className="w-full accent-blue-600"
               />
-              <div className="flex justify-between text-xs text-gray-400 dark:text-gray-500">
+              <div className="flex justify-between text-xs text-gray-600 dark:text-gray-300">
                 <span>Mindre fil</span>
                 <span>Mer detalj</span>
               </div>
@@ -301,7 +301,7 @@ export default function PngToSvg() {
               <div className="flex items-center justify-center rounded-lg bg-[repeating-conic-gradient(#e5e7eb_0%_25%,#fff_0%_50%)] dark:bg-[repeating-conic-gradient(#374151_0%_25%,#1f2937_0%_50%)] bg-[length:16px_16px] min-h-[120px]">
                 <img src={original.url} alt="Original" className="max-w-full max-h-64" />
               </div>
-              <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 space-y-0.5">
+              <div className="mt-2 text-xs text-gray-600 dark:text-gray-300 space-y-0.5">
                 <p>{original.width} x {original.height} px</p>
                 <p>{formatSize(original.size)}</p>
               </div>
@@ -320,7 +320,7 @@ export default function PngToSvg() {
                 </div>
                 <button
                   onClick={downloadSvg}
-                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
                 >
                   <Download className="h-4 w-4" />
                   Ladda ner SVG

@@ -123,9 +123,9 @@ export default function CronParser() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -149,17 +149,17 @@ export default function CronParser() {
           {fields.map((f, i) => (
             <div key={i} className="text-center">
               <div className="rounded-lg bg-blue-500/10 dark:bg-blue-500/20 hc:bg-gray-900 hc:border hc:border-blue-400 px-2 py-2">
-                <div className="font-mono text-lg font-bold text-blue-600 dark:text-blue-400 hc:text-blue-300">{f.symbol || '—'}</div>
+                <div className="font-mono text-lg font-bold text-blue-600 dark:text-blue-300 hc:text-blue-300">{f.symbol || '—'}</div>
               </div>
               <div className="mt-1 text-xs font-medium text-gray-700 dark:text-gray-300 hc:text-white">{f.label}</div>
-              <div className="text-xs text-gray-400 dark:text-gray-500 hc:text-gray-400">{f.range}</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">{f.range}</div>
             </div>
           ))}
         </div>
 
         {/* Description */}
         <div className="rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 hc:border hc:border-white p-4 text-center">
-          <div className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 mb-1">{ct?.meaning || 'Betydelse'}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 mb-1">{ct?.meaning || 'Betydelse'}</div>
           <div className="text-lg font-medium text-gray-900 dark:text-white">{description}</div>
         </div>
 
@@ -174,7 +174,7 @@ export default function CronParser() {
                 className="rounded-lg bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 hc:border hc:border-gray-600 px-3 py-2 text-left transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
               >
                 <div className="font-mono text-sm text-gray-900 dark:text-white">{ex.expr}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">{ex.label}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">{ex.label}</div>
               </button>
             ))}
           </div>

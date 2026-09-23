@@ -129,9 +129,9 @@ export default function RulerTool() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -141,7 +141,7 @@ export default function RulerTool() {
           <button
             onClick={() => setUnit('cm')}
             className={`px-4 py-2 text-sm font-medium transition-colors ${
-              unit === 'cm' ? 'bg-blue-600 text-white' : 'bg-gray-50 dark:bg-gray-800 hc:bg-black text-gray-600 dark:text-gray-400 hc:text-white'
+              unit === 'cm' ? 'bg-blue-600 text-white' : 'bg-gray-50 dark:bg-gray-800 hc:bg-black text-gray-600 dark:text-gray-300 hc:text-white'
             }`}
           >
             cm
@@ -149,7 +149,7 @@ export default function RulerTool() {
           <button
             onClick={() => setUnit('inch')}
             className={`px-4 py-2 text-sm font-medium transition-colors ${
-              unit === 'inch' ? 'bg-blue-600 text-white' : 'bg-gray-50 dark:bg-gray-800 hc:bg-black text-gray-600 dark:text-gray-400 hc:text-white'
+              unit === 'inch' ? 'bg-blue-600 text-white' : 'bg-gray-50 dark:bg-gray-800 hc:bg-black text-gray-600 dark:text-gray-300 hc:text-white'
             }`}
           >
             inch
@@ -158,7 +158,7 @@ export default function RulerTool() {
 
         <button
           onClick={() => setOrientation(orientation === 'horizontal' ? 'vertical' : 'horizontal')}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <RotateCcw className="h-4 w-4" />
           {orientation === 'horizontal' ? 'Vertikal' : 'Horisontell'}
@@ -166,7 +166,7 @@ export default function RulerTool() {
 
         <button
           onClick={() => setCalibrating(!calibrating)}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           Kalibrera
         </button>
@@ -205,7 +205,7 @@ export default function RulerTool() {
           <span className="text-3xl font-bold font-mono text-blue-700 dark:text-blue-300 hc:text-white">
             {measureValue.toFixed(2)} {unitLabel}
           </span>
-          <p className="mt-1 text-xs text-blue-500 dark:text-blue-400 hc:text-gray-300">
+          <p className="mt-1 text-xs text-blue-500 dark:text-blue-300 hc:text-gray-200">
             {measurePx.toFixed(0)} px
           </p>
         </div>
@@ -257,7 +257,7 @@ export default function RulerTool() {
         </div>
       </div>
 
-      <p className="text-xs text-gray-400 dark:text-gray-500 hc:text-gray-300 text-center">
+      <p className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 text-center">
         Klicka och dra p&aring; linjalen f&ouml;r att m&auml;ta. Kalibrera f&ouml;r exakta m&aring;tt.
       </p>
     </div>

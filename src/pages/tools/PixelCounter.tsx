@@ -84,7 +84,7 @@ export default function PixelCounter() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <canvas ref={canvasRef} className="hidden" />
@@ -97,31 +97,31 @@ export default function PixelCounter() {
             onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f?.type.startsWith('image/')) handleImage(f) }}
             className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-12 text-center cursor-pointer transition-colors hover:border-blue-400"
           >
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{pt?.upload || 'Klicka eller dra hit en bild'}</p>
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{pt?.upload || 'Klicka eller dra hit en bild'}</p>
           </div>
         ) : (
           <>
             {/* Info bar */}
             <div className="flex flex-wrap gap-4 text-sm">
-              <span className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+              <span className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
                 {pt?.dimensions || 'Dimensioner'}: <span className="font-medium text-gray-900 dark:text-white">{imgSize.w} × {imgSize.h}px</span>
               </span>
-              <span className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+              <span className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
                 {pt?.totalPixels || 'Totalt'}: <span className="font-medium text-gray-900 dark:text-white">{(imgSize.w * imgSize.h).toLocaleString()}px</span>
               </span>
               {pos && (
-                <span className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+                <span className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
                   XY: <span className="font-mono font-medium text-gray-900 dark:text-white">{pos.x}, {pos.y}</span>
                 </span>
               )}
               {color && (
-                <span className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hc:text-gray-300">
+                <span className="flex items-center gap-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
                   <span className="h-4 w-4 rounded border border-gray-300 dark:border-gray-600" style={{ background: color }} />
                   <span className="font-mono font-medium text-gray-900 dark:text-white">{color}</span>
                 </span>
               )}
               {distance !== null && distance > 0 && (
-                <span className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+                <span className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
                   {pt?.distance || 'Avstånd'}: <span className="font-medium text-gray-900 dark:text-white">{distance}px</span>
                 </span>
               )}

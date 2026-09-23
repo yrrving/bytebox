@@ -124,14 +124,14 @@ export default function Metronome() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-6 space-y-6">
         {/* BPM display */}
         <div className="text-center">
           <div className="text-6xl font-mono font-bold text-gray-900 dark:text-white">{bpm}</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 mt-1">BPM</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 mt-1">BPM</div>
         </div>
 
         {/* Beat indicators */}
@@ -160,7 +160,7 @@ export default function Metronome() {
             onChange={(e) => handleBpmChange(Number(e.target.value))}
             className="w-full accent-blue-500"
           />
-          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-500 hc:text-gray-400">
+          <div className="flex justify-between text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
             <span>40</span>
             <span>220</span>
           </div>

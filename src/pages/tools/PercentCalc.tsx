@@ -37,9 +37,9 @@ export default function PercentCalc() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -53,7 +53,7 @@ export default function PercentCalc() {
               className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 mode === m.key
                   ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                  : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
               }`}
             >
               {m.label}
@@ -87,7 +87,7 @@ export default function PercentCalc() {
 
         {/* Result */}
         <div className="rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 hc:border hc:border-white p-4 text-center">
-          <div className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">{pt?.result || 'Resultat'}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{pt?.result || 'Resultat'}</div>
           <div className="text-3xl font-bold font-mono text-gray-900 dark:text-white mt-1">{getResult()}</div>
         </div>
       </div>

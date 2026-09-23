@@ -60,7 +60,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
             </span>
           )}
         </h3>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
     </Link>
   )

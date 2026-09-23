@@ -103,7 +103,7 @@ export default function Home() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t.toolsHeading}</h1>
           {t.tagline && (
-            <p className="mt-1 max-w-xl text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+            <p className="mt-1 max-w-xl text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {t.tagline}
             </p>
           )}
@@ -111,7 +111,7 @@ export default function Home() {
         <TabNavigation active={category} onChange={handleTabChange} />
       </div>
       <div className="relative mb-6">
-        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500 hc:text-white" />
+        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-600 dark:text-gray-300 hc:text-white" />
         <input
           type="text"
           value={search}
@@ -153,7 +153,7 @@ export default function Home() {
                       <div className="font-semibold text-gray-900 dark:text-white hc:text-white">
                         {t.minScreenLabel?.[device] ?? device}
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+                      <div className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
                         {count} {t.toolsHeading.toLowerCase()}
                       </div>
                     </div>
@@ -166,7 +166,7 @@ export default function Home() {
           {newTools.length > 0 && (
             <div>
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
-                <Sparkles className="h-5 w-5 text-blue-500 dark:text-blue-400 hc:text-yellow-400" />
+                <Sparkles className="h-5 w-5 text-blue-500 dark:text-blue-300 hc:text-yellow-400" />
                 {t.newBadge ?? 'Nytt'}
               </h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -179,7 +179,7 @@ export default function Home() {
 
           <div>
             <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
-              <LayoutGrid className="h-5 w-5 text-blue-500 dark:text-blue-400 hc:text-yellow-400" />
+              <LayoutGrid className="h-5 w-5 text-blue-500 dark:text-blue-300 hc:text-yellow-400" />
               {t.categoriesHeading ?? 'Kategorier'}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -196,17 +196,17 @@ export default function Home() {
                   className="group flex flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-5 text-left transition-all hover:border-blue-400 dark:hover:border-blue-500 hc:hover:border-yellow-400 hover:shadow-md"
                 >
                   <div className="flex items-center gap-3">
-                    <CatIcon className="h-6 w-6 text-gray-500 dark:text-gray-400 hc:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors" />
+                    <CatIcon className="h-6 w-6 text-gray-600 dark:text-gray-300 hc:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors" />
                     <div>
                       <h2 className="font-semibold text-gray-900 dark:text-white hc:text-white">
                         {categoryNames[cat]}
                       </h2>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 hc:text-gray-300">
+                      <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
                         {catTools.length} {t.toolsHeading.toLowerCase()}
                       </span>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 line-clamp-1">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 line-clamp-1">
                     {previewNames.join(', ')}
                     {catTools.length > 4 ? ' ...' : ''}
                   </p>
@@ -230,13 +230,13 @@ export default function Home() {
         <div>
           <button
             onClick={() => setSearchParams({})}
-            className="mb-4 flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hc:text-yellow-400 hover:underline"
+            className="mb-4 flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-300 hc:text-yellow-400 hover:underline"
           >
             <ArrowLeft className="h-4 w-4" />
             {allCategoriesLabel}
           </button>
           <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
-            {(() => { const CatIcon = categoryIcons[selectedCategory as ToolCategory]; return <CatIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 hc:text-white" /> })()}
+            {(() => { const CatIcon = categoryIcons[selectedCategory as ToolCategory]; return <CatIcon className="h-5 w-5 text-gray-600 dark:text-gray-300 hc:text-white" /> })()}
             {categoryNames[selectedCategory as ToolCategory]}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -254,13 +254,13 @@ export default function Home() {
             <div className="mb-4 flex flex-wrap items-center gap-2">
               <button
                 onClick={resetToLanding}
-                className="flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hc:text-yellow-400 hover:underline"
+                className="flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-300 hc:text-yellow-400 hover:underline"
               >
                 <ArrowLeft className="h-4 w-4" />
                 {allCategoriesLabel}
               </button>
               <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-gray-200 hc:text-white">
-                {(() => { const DeviceIcon = deviceIcons[deviceFilter]; return <DeviceIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 hc:text-white" /> })()}
+                {(() => { const DeviceIcon = deviceIcons[deviceFilter]; return <DeviceIcon className="h-5 w-5 text-gray-600 dark:text-gray-300 hc:text-white" /> })()}
                 {t.minScreenLabel?.[deviceFilter] ?? deviceFilter}
               </h2>
             </div>
@@ -274,7 +274,7 @@ export default function Home() {
       )}
 
       {filtered.length === 0 && !showLanding && !showCategoryDrilldown && (
-        <p className="mt-8 text-center text-gray-500 hc:text-gray-300">{t.emptyState}</p>
+        <p className="mt-8 text-center text-gray-600 dark:text-gray-300 hc:text-gray-200">{t.emptyState}</p>
       )}
     </div>
   )

@@ -61,11 +61,11 @@ export default function HashGenerator() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           {translation?.name}
         </h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {translation?.description}
         </p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -98,7 +98,7 @@ export default function HashGenerator() {
               <button
                 onClick={() => copyHash(alg)}
                 disabled={!hashes[alg]}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
               >
                 {copiedAlg === alg
                   ? <Check className="h-3.5 w-3.5 text-green-500" />
@@ -107,7 +107,7 @@ export default function HashGenerator() {
               </button>
             </div>
             <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-700 hc:bg-gray-900 px-4 py-3 font-mono text-sm text-gray-900 dark:text-white break-all">
-              {hashes[alg] || <span className="text-gray-400 dark:text-gray-500">&mdash;</span>}
+              {hashes[alg] || <span className="text-gray-600 dark:text-gray-300">&mdash;</span>}
             </div>
           </div>
         ))}

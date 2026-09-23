@@ -2,6 +2,13 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 0.29.2 — 2026-09-23 — Läsbarare text i alla tre teman
+
+### Fixat
+
+- **Sekundärtext var för ljus för att uppfylla tillgänglighetskraven.** Beskrivningar, etiketter och hjälptexter låg under den kontrast WCAG kräver — på 50 av 56 sidor. Grånyanserna är justerade genomgående, och ett trettiotal texter som helt saknade färg för mörkt läge har fått en. Antalet kontrastfel gick från 197 till 10 per tema.
+- **Länkar i mörkt läge är ljusare** och når nu kravet.
+
 ## 0.29.1 — 2026-09-23 — Skärmläsare kan läsa upp verktygen
 
 ### Fixat

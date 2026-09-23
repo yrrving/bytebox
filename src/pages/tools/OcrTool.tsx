@@ -128,9 +128,9 @@ export default function OcrTool() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -147,7 +147,7 @@ export default function OcrTool() {
           {image ? (
             <img src={image.src} className="max-h-48 rounded-lg" alt="" />
           ) : (
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{ot?.upload || 'Klicka eller dra hit en bild'}</p>
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{ot?.upload || 'Klicka eller dra hit en bild'}</p>
           )}
         </div>
         <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImage(f) }} />
@@ -165,10 +165,10 @@ export default function OcrTool() {
         {text && (
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300">{ot?.result || 'Resultat'}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{ot?.result || 'Resultat'}</span>
               <button
                 onClick={copyText}
-                className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
                 {copied ? (ot?.copied || 'Kopierad!') : (ot?.copy || 'Kopiera')}

@@ -149,11 +149,11 @@ export default function MarkdownPreview() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           {translation?.name}
         </h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {translation?.description}
         </p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -171,7 +171,7 @@ export default function MarkdownPreview() {
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium transition-colors ${
                 viewMode === mode
                   ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                  : 'bg-gray-50 dark:bg-gray-800 hc:bg-black text-gray-600 dark:text-gray-400 hc:text-gray-400'
+                  : 'bg-gray-50 dark:bg-gray-800 hc:bg-black text-gray-600 dark:text-gray-300 hc:text-gray-200'
               }`}
             >
               <Icon className="h-3.5 w-3.5" />
@@ -182,7 +182,7 @@ export default function MarkdownPreview() {
         <button
           onClick={copyHtml}
           disabled={!html}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
         >
           {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
           {copied ? (md?.copied ?? 'Kopierat!') : (md?.copyHtml ?? 'Kopiera HTML')}
@@ -190,7 +190,7 @@ export default function MarkdownPreview() {
         <button
           onClick={() => setInput('')}
           disabled={!input}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
         >
           <Trash2 className="h-3.5 w-3.5" />
           {md?.clear ?? 'Rensa'}
@@ -202,7 +202,7 @@ export default function MarkdownPreview() {
         {/* Editor */}
         {viewMode !== 'preview' && (
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4">
-            <label className="mb-2 block text-xs font-medium text-gray-500 dark:text-gray-400">
+            <label className="mb-2 block text-xs font-medium text-gray-600 dark:text-gray-300">
               Markdown
             </label>
             <div className="mb-2 flex flex-wrap gap-1">
@@ -234,7 +234,7 @@ export default function MarkdownPreview() {
         {/* Preview */}
         {viewMode !== 'edit' && (
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-4">
-            <label className="mb-2 block text-xs font-medium text-gray-500 dark:text-gray-400">
+            <label className="mb-2 block text-xs font-medium text-gray-600 dark:text-gray-300">
               {md?.preview ?? 'Förhandsgranskning'}
             </label>
             <div

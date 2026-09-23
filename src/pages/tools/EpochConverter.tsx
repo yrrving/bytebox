@@ -84,9 +84,9 @@ export default function EpochConverter() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -100,7 +100,7 @@ export default function EpochConverter() {
         {/* Unit + now */}
         <div className="flex flex-wrap items-end gap-4">
           <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Enhet</label>
+            <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">Enhet</label>
             <select
               value={unit}
               onChange={(e) => setUnit(e.target.value as Unit)}
@@ -149,7 +149,7 @@ export default function EpochConverter() {
                 copied={copied === 'iso'}
                 onCopy={() => copy(fromTimestamp.toISOString(), 'iso')}
               />
-              <p className="text-gray-500 dark:text-gray-400 hc:text-gray-300 italic">{relative(fromTimestamp.getTime())}</p>
+              <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{relative(fromTimestamp.getTime())}</p>
             </div>
           )}
         </div>
@@ -200,12 +200,12 @@ function ResultRow({
 }) {
   return (
     <div className="flex items-center justify-between gap-3">
-      <span className="shrink-0 text-gray-500 dark:text-gray-400 hc:text-gray-300">{label}:</span>
+      <span className="shrink-0 text-gray-600 dark:text-gray-300 hc:text-gray-200">{label}:</span>
       <span className="flex min-w-0 items-center gap-2">
         <code className="truncate font-mono text-gray-900 dark:text-gray-100 hc:text-white">{value}</code>
         <button
           onClick={onCopy}
-          className="shrink-0 rounded-md p-1 text-gray-500 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
+          className="shrink-0 rounded-md p-1 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
           title="Kopiera"
         >
           {copied ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}

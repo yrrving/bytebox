@@ -45,13 +45,13 @@ export default function Layout() {
         <DeviceGate />
       </main>
       <footer className="border-t border-gray-200 dark:border-gray-700 hc:border-white print:hidden">
-        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 hc:text-white">
+        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300 hc:text-white">
           <span>Bytebox v{__APP_VERSION__} — by yrrving</span>
           <a
             href="https://github.com/yrrving/bytebox"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white no-underline"
+            className="flex items-center gap-1.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white no-underline"
           >
             <Github className="h-4 w-4" />
             GitHub

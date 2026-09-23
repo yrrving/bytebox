@@ -82,9 +82,9 @@ export default function HeicConverter() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -98,7 +98,7 @@ export default function HeicConverter() {
         {/* Options */}
         <div className="flex flex-wrap items-center gap-4">
           <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">{h?.format ?? 'Format'}</label>
+            <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">{h?.format ?? 'Format'}</label>
             <select
               aria-label={h?.format ?? 'Format'}
               value={format}
@@ -111,7 +111,7 @@ export default function HeicConverter() {
           </div>
           {format === 'image/jpeg' && (
             <div>
-              <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">
+              <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">
                 {h?.quality ?? 'Kvalitet'}: {Math.round(quality * 100)}%
               </label>
               <input
@@ -138,10 +138,10 @@ export default function HeicConverter() {
           {converting ? (
             <>
               <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
-              <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{h?.converting ?? 'Konverterar…'}</p>
+              <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{h?.converting ?? 'Konverterar…'}</p>
             </>
           ) : (
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {h?.upload ?? 'Klicka eller dra hit HEIC-bilder (från iPhone)'}
             </p>
           )}
@@ -180,7 +180,7 @@ export default function HeicConverter() {
                 >
                   <img src={r.url} className="aspect-square w-full rounded object-cover" alt={r.name} />
                   <span className="truncate text-xs font-mono text-gray-700 dark:text-gray-300 hc:text-white">{r.name}</span>
-                  <span className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                  <span className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-300">
                     <Download className="h-3 w-3" />{formatBytes(r.size)}
                   </span>
                 </button>

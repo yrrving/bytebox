@@ -167,9 +167,9 @@ export default function BackgroundRemover() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -186,7 +186,7 @@ export default function BackgroundRemover() {
           {image ? (
             <img src={image.src} className="max-h-48 rounded-lg" alt="" />
           ) : (
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{bt?.upload || 'Klicka eller dra hit en bild'}</p>
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{bt?.upload || 'Klicka eller dra hit en bild'}</p>
           )}
         </div>
         <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImage(f) }} />
@@ -196,7 +196,7 @@ export default function BackgroundRemover() {
             <div>
               <label className="block text-sm text-gray-700 dark:text-gray-300 hc:text-white mb-1">{bt?.tolerance || 'Tolerans'}</label>
               <input type="range" min={5} max={80} value={tolerance} onChange={(e) => setTolerance(Number(e.target.value))} className="w-full accent-blue-500" />
-              <div className="text-xs text-gray-500 text-right">{tolerance}</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 text-right">{tolerance}</div>
             </div>
 
             <button

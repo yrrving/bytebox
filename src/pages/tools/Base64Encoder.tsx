@@ -57,11 +57,11 @@ export default function Base64Encoder() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           {translation?.name}
         </h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {translation?.description}
         </p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -72,7 +72,7 @@ export default function Base64Encoder() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === 'encode'
               ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-              : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+              : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
           }`}
         >
           {b?.encode ?? 'Koda'}
@@ -82,7 +82,7 @@ export default function Base64Encoder() {
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             mode === 'decode'
               ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-              : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+              : 'bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
           }`}
         >
           {b?.decode ?? 'Avkoda'}
@@ -111,7 +111,7 @@ export default function Base64Encoder() {
         <button
           onClick={swap}
           disabled={!output}
-          className="rounded-full bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white p-2.5 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
+          className="rounded-full bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white p-2.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
           title={b?.swap ?? 'Byt'}
         >
           <ArrowDownUp className="h-5 w-5" />
@@ -134,7 +134,7 @@ export default function Base64Encoder() {
           <button
             onClick={copyToClipboard}
             disabled={!output}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-40"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
             {copied ? (b?.copied ?? 'Kopierat!') : (b?.copy ?? 'Kopiera')}

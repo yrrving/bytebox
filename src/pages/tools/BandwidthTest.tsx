@@ -130,9 +130,9 @@ export default function BandwidthTest() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -189,7 +189,7 @@ export default function BandwidthTest() {
         {testing ? (
           <div className="space-y-2">
             <RefreshCw className="mx-auto h-6 w-6 animate-spin text-blue-500" />
-            <p className="text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+            <p className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {phase === 'latency' ? 'Mäter latens...' : `Testar nedladdning... ${Math.round(progress)}%`}
             </p>
           </div>
@@ -198,13 +198,13 @@ export default function BandwidthTest() {
             <p className={`text-4xl font-bold font-mono ${getSpeedColor(currentResult.downloadMbps)}`}>
               {currentResult.downloadMbps.toFixed(1)}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Mbps nedladdning</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Mbps nedladdning</p>
             <p className={`text-xs font-medium ${getSpeedColor(currentResult.downloadMbps)}`}>
               {getSpeedRating(currentResult.downloadMbps)}
             </p>
           </div>
         ) : (
-          <p className="text-gray-400 dark:text-gray-500">Tryck på knappen för att starta testet</p>
+          <p className="text-gray-600 dark:text-gray-300">Tryck på knappen för att starta testet</p>
         )}
       </div>
 
@@ -212,13 +212,13 @@ export default function BandwidthTest() {
       {currentResult && (
         <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3">
-            <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Latens (ping)</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Latens (ping)</span>
             <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">
               {Math.round(currentResult.latencyMs)} ms
             </span>
           </div>
           <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-            <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Nedladdning</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Nedladdning</span>
             <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">
               {currentResult.downloadMbps.toFixed(2)} Mbps
             </span>
@@ -259,11 +259,11 @@ export default function BandwidthTest() {
                 i > 0 ? 'border-t border-gray-200 dark:border-gray-700 hc:border-gray-600' : ''
               }`}
             >
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+              <span className="text-xs text-gray-600 dark:text-gray-300">
                 {result.timestamp.toLocaleTimeString()}
               </span>
               <div className="flex gap-4 text-xs font-mono">
-                <span className="text-gray-500 dark:text-gray-400">{Math.round(result.latencyMs)} ms</span>
+                <span className="text-gray-600 dark:text-gray-300">{Math.round(result.latencyMs)} ms</span>
                 <span className={`font-medium ${getSpeedColor(result.downloadMbps)}`}>
                   {result.downloadMbps.toFixed(1)} Mbps
                 </span>

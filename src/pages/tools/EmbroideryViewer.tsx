@@ -107,9 +107,9 @@ export default function EmbroideryViewer() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -118,11 +118,11 @@ export default function EmbroideryViewer() {
         onClick={() => fileRef.current?.click()}
         className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
       >
-        <Upload className="mx-auto h-8 w-8 text-gray-400 dark:text-gray-500 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           Klicka eller dra hit en brodyrifil
         </p>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">PES, DST, JEF</p>
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">PES, DST, JEF</p>
         <input
           ref={fileRef}
           type="file"
@@ -142,26 +142,26 @@ export default function EmbroideryViewer() {
         <>
           {/* Controls */}
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-500 dark:text-gray-400 truncate">{fileName}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300 truncate">{fileName}</span>
             <div className="flex gap-2">
               <button
                 onClick={() => setZoom((z) => Math.max(0.25, z - 0.25))}
-                className="rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-2 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-2 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <ZoomOut className="h-4 w-4" />
               </button>
-              <span className="flex items-center px-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="flex items-center px-2 text-sm text-gray-600 dark:text-gray-300">
                 {Math.round(zoom * 100)}%
               </span>
               <button
                 onClick={() => setZoom((z) => Math.min(4, z + 0.25))}
-                className="rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-2 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-2 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <ZoomIn className="h-4 w-4" />
               </button>
               <button
                 onClick={() => setZoom(1)}
-                className="rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-2 text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="rounded-lg border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-2 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <RotateCcw className="h-4 w-4" />
               </button>
@@ -181,21 +181,21 @@ export default function EmbroideryViewer() {
           {/* Metadata */}
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Stygn</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Stygn</span>
               <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">{data.stitchCount.toLocaleString()}</span>
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Dimensioner</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Dimensioner</span>
               <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">
                 {(data.width / 10).toFixed(1)} x {(data.height / 10).toFixed(1)} mm
               </span>
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Färgbyten</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Färgbyten</span>
               <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">{data.colorChanges}</span>
             </div>
             <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 block mb-2">Trådfärger</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 block mb-2">Trådfärger</span>
               <div className="flex flex-wrap gap-2">
                 {data.colors.map((color, i) => (
                   <div key={i} className="flex items-center gap-1.5">
@@ -203,7 +203,7 @@ export default function EmbroideryViewer() {
                       className="h-5 w-5 rounded border border-gray-300 dark:border-gray-600"
                       style={{ backgroundColor: color }}
                     />
-                    <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{color}</span>
+                    <span className="text-xs font-mono text-gray-600 dark:text-gray-300">{color}</span>
                   </div>
                 ))}
               </div>

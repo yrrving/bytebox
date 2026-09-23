@@ -20,7 +20,7 @@ export default function TabNavigation({ active, onChange }: TabNavigationProps) 
           className={`flex-1 whitespace-nowrap rounded-md px-2 py-2 text-xs font-medium transition-colors sm:flex-none sm:px-4 sm:text-sm ${
             active === key
               ? 'bg-blue-600 text-white hc:bg-white hc:text-black hc:font-bold'
-              : 'text-gray-600 dark:text-gray-400 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 hc:hover:bg-gray-800'
+              : 'text-gray-600 dark:text-gray-300 hc:text-white hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 hc:hover:bg-gray-800'
           }`}
         >
           {t.tabs[key]}

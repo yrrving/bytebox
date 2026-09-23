@@ -184,9 +184,9 @@ export default function SrtEditor() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -204,8 +204,8 @@ export default function SrtEditor() {
           onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) handleFile(f) }}
           className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-6 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
         >
-          <Upload className="h-6 w-6 text-gray-400 dark:text-gray-500" />
-          <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+          <Upload className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+          <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
             Klicka eller dra hit en .srt-fil
           </p>
           <input
@@ -219,7 +219,7 @@ export default function SrtEditor() {
 
         {/* Or paste */}
         <div>
-          <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Eller klistra in SRT-text</label>
+          <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">Eller klistra in SRT-text</label>
           <textarea
             value={rawInput}
             onChange={(e) => setRawInput(e.target.value)}
@@ -247,7 +247,7 @@ export default function SrtEditor() {
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4">
             <div className="flex flex-wrap items-end gap-3">
               <div>
-                <label className="mb-1 flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+                <label className="mb-1 flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-300">
                   <Clock className="h-3.5 w-3.5" />
                   Förskjut alla tider (sekunder, kan vara negativt)
                 </label>
@@ -281,14 +281,14 @@ export default function SrtEditor() {
                 className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black p-3 space-y-2"
               >
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="w-6 shrink-0 text-xs font-mono text-gray-400 dark:text-gray-500">#{i + 1}</span>
+                  <span className="w-6 shrink-0 text-xs font-mono text-gray-600 dark:text-gray-300">#{i + 1}</span>
                   <input
                     type="text"
                     value={formatTimestamp(cue.start)}
                     onChange={(e) => updateCueTime(cue.id, 'start', e.target.value)}
                     className={tsInputClass}
                   />
-                  <span className="text-gray-400 dark:text-gray-500">→</span>
+                  <span className="text-gray-600 dark:text-gray-300">→</span>
                   <input
                     type="text"
                     value={formatTimestamp(cue.end)}

@@ -275,9 +275,9 @@ export default function MediaConverter() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -286,11 +286,11 @@ export default function MediaConverter() {
         onClick={() => fileRef.current?.click()}
         className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
       >
-        <Upload className="mx-auto h-8 w-8 text-gray-400 dark:text-gray-500 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           Klicka eller dra hit en ljud- eller videofil
         </p>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">MP4, WebM, MP3, WAV, OGG, m.fl.</p>
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">MP4, WebM, MP3, WAV, OGG, m.fl.</p>
         <input
           ref={fileRef}
           type="file"
@@ -305,20 +305,20 @@ export default function MediaConverter() {
           {/* File info */}
           <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Fil</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Fil</span>
               <span className="text-sm font-medium text-gray-900 dark:text-white truncate max-w-[60%]">{file.name}</span>
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Format</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Format</span>
               <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">{fileInfo.type || 'Okänt'}</span>
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-              <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Storlek</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Storlek</span>
               <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">{formatSize(file.size)}</span>
             </div>
             {fileInfo.duration > 0 && (
               <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700 hc:border-gray-600">
-                <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">Längd</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">Längd</span>
                 <span className="text-sm font-medium font-mono text-gray-900 dark:text-white">{formatDuration(fileInfo.duration)}</span>
               </div>
             )}
@@ -403,7 +403,7 @@ export default function MediaConverter() {
         </>
       )}
 
-      <p className="text-xs text-gray-400 dark:text-gray-500 hc:text-gray-300 text-center">
+      <p className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 text-center">
         Konvertering sker lokalt i webbl&auml;saren. Inga filer skickas till n&aring;gon server.
       </p>
     </div>

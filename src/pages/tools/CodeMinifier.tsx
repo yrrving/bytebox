@@ -71,9 +71,9 @@ export default function CodeMinifier() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -87,7 +87,7 @@ export default function CodeMinifier() {
               className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 lang === l.key
                   ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                  : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
               }`}
             >
               {l.label}
@@ -115,12 +115,12 @@ export default function CodeMinifier() {
         {output && (
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <div className="flex gap-3 text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+              <div className="flex gap-3 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
                 <span>{cm?.saved || 'Sparat'}: {savedBytes} bytes ({savedPercent}%)</span>
               </div>
               <button
                 onClick={copy}
-                className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300 hover:text-gray-700 dark:hover:text-white"
+                className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 hover:text-gray-700 dark:hover:text-white"
               >
                 {copied ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
                 {copied ? (cm?.copied || 'Kopierat!') : (cm?.copy || 'Kopiera')}

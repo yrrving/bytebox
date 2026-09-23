@@ -216,9 +216,9 @@ export default function WordProcessor() {
 
       <div className="print:hidden">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -263,21 +263,21 @@ export default function WordProcessor() {
         <div className="ml-auto flex flex-wrap gap-2">
           <button
             onClick={() => window.print()}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <Printer className="h-3.5 w-3.5" />
             {wp?.print ?? 'Skriv ut / Spara som PDF'}
           </button>
           <button
             onClick={() => downloadDocx(editor.getJSON(), 'dokument.docx')}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <FileDown className="h-3.5 w-3.5" />
             {wp?.downloadWord ?? 'Ladda ner Word (.docx)'}
           </button>
           <button
             onClick={() => editor.chain().focus().clearContent().run()}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <Trash2 className="h-3.5 w-3.5" />
             {wp?.clear ?? 'Rensa'}
@@ -304,7 +304,7 @@ export default function WordProcessor() {
         <EditorContent editor={editor} />
       </div>
 
-      <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300 print:hidden">
+      <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 print:hidden">
         <div className="flex gap-4">
           <span>{wp?.words ?? 'Ord'}: <span className="font-medium text-gray-900 dark:text-white">{wordCount}</span></span>
           <span>{wp?.characters ?? 'Tecken'}: <span className="font-medium text-gray-900 dark:text-white">{charCount}</span></span>

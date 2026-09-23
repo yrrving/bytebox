@@ -65,7 +65,7 @@ export default function HttpHeaders() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <ExternalNotice
@@ -95,7 +95,7 @@ export default function HttpHeaders() {
         </div>
 
         {loading && (
-          <div className="text-center py-4 text-gray-500 dark:text-gray-400 hc:text-gray-300">{ht?.loading || 'Hämtar...'}</div>
+          <div className="text-center py-4 text-gray-600 dark:text-gray-300 hc:text-gray-200">{ht?.loading || 'Hämtar...'}</div>
         )}
 
         {error && (
@@ -108,7 +108,7 @@ export default function HttpHeaders() {
               {status && (
                 <span className={`inline-block rounded-lg px-3 py-1 text-sm font-mono font-medium ${
                   status.startsWith('2') ? 'bg-green-500/20 text-green-600 dark:text-green-400 hc:text-green-300' :
-                  status.startsWith('3') ? 'bg-blue-500/20 text-blue-600 dark:text-blue-400 hc:text-blue-300' :
+                  status.startsWith('3') ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300 hc:text-blue-300' :
                   'bg-red-500/20 text-red-600 dark:text-red-400 hc:text-red-300'
                 }`}>
                   {status}
@@ -116,7 +116,7 @@ export default function HttpHeaders() {
               )}
               <button
                 onClick={copyAll}
-                className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300 hover:text-gray-700 dark:hover:text-white"
+                className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 hover:text-gray-700 dark:hover:text-white"
               >
                 {copied === 'all' ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
                 {copied === 'all' ? (ht?.copied || 'Kopierat!') : (ht?.copyAll || 'Kopiera alla')}
@@ -126,7 +126,7 @@ export default function HttpHeaders() {
             <div className="rounded-lg bg-gray-100 dark:bg-gray-800 hc:bg-gray-900 hc:border hc:border-white overflow-hidden max-h-96 overflow-y-auto">
               {headers.map(([key, value], i) => (
                 <div key={i} className="flex border-b border-gray-200 dark:border-gray-700 hc:border-gray-600 last:border-0">
-                  <div className="w-1/3 px-3 py-2 text-xs font-medium font-mono text-blue-600 dark:text-blue-400 hc:text-blue-300 truncate">
+                  <div className="w-1/3 px-3 py-2 text-xs font-medium font-mono text-blue-600 dark:text-blue-300 hc:text-blue-300 truncate">
                     {key}
                   </div>
                   <div className="flex-1 px-3 py-2 text-xs font-mono text-gray-700 dark:text-gray-300 hc:text-gray-200 break-all">

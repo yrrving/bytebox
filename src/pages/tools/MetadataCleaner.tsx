@@ -92,9 +92,9 @@ export default function MetadataCleaner() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -114,7 +114,7 @@ export default function MetadataCleaner() {
           {imgUrl ? (
             <img src={imgUrl} className="max-h-40 rounded-lg object-contain" alt="" />
           ) : (
-            <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
               {m?.upload ?? 'Klicka eller dra hit en bild (t.ex. ett foto)'}
             </p>
           )}
@@ -123,7 +123,7 @@ export default function MetadataCleaner() {
         </div>
 
         {reading && (
-          <div className="flex items-center justify-center gap-2 py-4 text-gray-500">
+          <div className="flex items-center justify-center gap-2 py-4 text-gray-600 dark:text-gray-300">
             <Loader2 className="h-5 w-5 animate-spin" /> {m?.reading ?? 'Läser metadata…'}
           </div>
         )}
@@ -155,7 +155,7 @@ export default function MetadataCleaner() {
                 </ul>
               </div>
             ) : (
-              <p className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 text-sm text-gray-600 dark:text-gray-400">
+              <p className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 text-sm text-gray-600 dark:text-gray-300">
                 {m?.none ?? 'Ingen metadata hittades i den här bilden — den är redan ren.'}
               </p>
             )}

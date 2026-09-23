@@ -89,9 +89,9 @@ export default function FileAnalyzer() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -100,11 +100,11 @@ export default function FileAnalyzer() {
         onClick={() => fileRef.current?.click()}
         className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
       >
-        <Upload className="mx-auto h-8 w-8 text-gray-400 dark:text-gray-500 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {fa?.upload ?? 'Klicka eller dra hit en fil'}
         </p>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{fa?.anyFile ?? 'Alla filtyper stöds'}</p>
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">{fa?.anyFile ?? 'Alla filtyper stöds'}</p>
         <input
           ref={fileRef}
           type="file"
@@ -124,7 +124,7 @@ export default function FileAnalyzer() {
                   i > 0 ? 'border-t border-gray-200 dark:border-gray-700 hc:border-gray-600' : ''
                 }`}
               >
-                <span className="text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">{row.label}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{row.label}</span>
                 <span className="text-sm font-medium text-gray-900 dark:text-white font-mono">{row.value}</span>
               </div>
             ))}

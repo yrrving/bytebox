@@ -87,9 +87,9 @@ export default function ImageCompressor() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -98,11 +98,11 @@ export default function ImageCompressor() {
         onClick={() => fileRef.current?.click()}
         className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
       >
-        <Upload className="mx-auto h-8 w-8 text-gray-400 dark:text-gray-500 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 hc:text-gray-200">
+        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {ic?.upload ?? 'Klicka eller dra hit en bild'}
         </p>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">PNG, JPG, WebP</p>
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">PNG, JPG, WebP</p>
         <input
           ref={fileRef}
           type="file"
@@ -131,7 +131,7 @@ export default function ImageCompressor() {
                 onChange={(e) => setQuality(Number(e.target.value))}
                 className="w-full accent-blue-600"
               />
-              <div className="flex justify-between text-xs text-gray-400 dark:text-gray-500">
+              <div className="flex justify-between text-xs text-gray-600 dark:text-gray-300">
                 <span>{ic?.smaller ?? 'Mindre fil'}</span>
                 <span>{ic?.better ?? 'Bättre kvalitet'}</span>
               </div>
@@ -166,7 +166,7 @@ export default function ImageCompressor() {
                 {ic?.original ?? 'Original'}
               </label>
               <img src={original.url} alt="Original" className="w-full rounded-lg" />
-              <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 space-y-0.5">
+              <div className="mt-2 text-xs text-gray-600 dark:text-gray-300 space-y-0.5">
                 <p>{original.width} x {original.height}px</p>
                 <p>{formatSize(original.size)}</p>
               </div>
@@ -183,13 +183,13 @@ export default function ImageCompressor() {
                   </span>
                 </div>
                 <img src={compressed.url} alt="Compressed" className="w-full rounded-lg" />
-                <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 space-y-0.5">
+                <div className="mt-2 text-xs text-gray-600 dark:text-gray-300 space-y-0.5">
                   <p>{compressed.width} x {compressed.height}px</p>
                   <p>{formatSize(compressed.size)}</p>
                 </div>
                 <button
                   onClick={download}
-                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
                 >
                   <Download className="h-4 w-4" />
                   {ic?.download ?? 'Ladda ner'}

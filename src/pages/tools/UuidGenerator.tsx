@@ -50,9 +50,9 @@ export default function UuidGenerator() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -66,7 +66,7 @@ export default function UuidGenerator() {
         {/* Options */}
         <div className="flex flex-wrap items-end gap-4">
           <div>
-            <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Antal (1–100)</label>
+            <label className="mb-1 block text-xs text-gray-600 dark:text-gray-300">Antal (1–100)</label>
             <input
               type="number"
               min={1}
@@ -116,7 +116,7 @@ export default function UuidGenerator() {
               <code className="truncate font-mono text-sm text-gray-900 dark:text-gray-100 hc:text-white">{id}</code>
               <button
                 onClick={() => copyOne(id, i)}
-                className="shrink-0 rounded-md p-1.5 text-gray-500 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
+                className="shrink-0 rounded-md p-1.5 text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
                 title="Kopiera"
               >
                 {copiedIndex === i ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}

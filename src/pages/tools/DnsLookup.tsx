@@ -62,7 +62,7 @@ export default function DnsLookup() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
       </div>
 
       <ExternalNotice service="Google DNS (dns.google)" sends={t.privacy?.sendsDns} />
@@ -95,7 +95,7 @@ export default function DnsLookup() {
               className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                 recordType === rt
                   ? 'bg-blue-600 text-white hc:bg-white hc:text-black'
-                  : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-400 hc:text-gray-400 hc:border hc:border-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-600 hc:bg-gray-900 text-gray-600 dark:text-gray-300 hc:text-gray-200 hc:border hc:border-gray-600'
               }`}
             >
               {rt}
@@ -104,7 +104,7 @@ export default function DnsLookup() {
         </div>
 
         {loading && (
-          <div className="text-center py-4 text-gray-500 dark:text-gray-400 hc:text-gray-300">{dt?.loading || 'Söker...'}</div>
+          <div className="text-center py-4 text-gray-600 dark:text-gray-300 hc:text-gray-200">{dt?.loading || 'Söker...'}</div>
         )}
 
         {error && (
@@ -120,13 +120,13 @@ export default function DnsLookup() {
               >
                 <div className="min-w-0 flex-1">
                   <div className="font-mono text-sm text-gray-900 dark:text-white truncate">{r.data}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300 mt-0.5">
+                  <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200 mt-0.5">
                     TTL: {r.TTL}s
                   </div>
                 </div>
                 <button
                   onClick={() => copyValue(r.data, `r${i}`)}
-                  className="shrink-0 ml-2 text-gray-400 hover:text-gray-700 dark:hover:text-white"
+                  className="shrink-0 ml-2 text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white"
                 >
                   {copied === `r${i}` ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
                 </button>

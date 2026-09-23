@@ -80,7 +80,7 @@ function formatSize(bytes: number) {
 
 const inputCls =
   'rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 hc:text-white'
-const labelCls = 'mb-1 block text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300'
+const labelCls = 'mb-1 block text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200'
 
 export default function PdfTools() {
   const { t } = useLanguage()
@@ -101,9 +101,9 @@ export default function PdfTools() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400 hc:text-gray-200">{translation?.description}</p>
+        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
         {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 hc:text-gray-300 italic">{translation.hint}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
         )}
       </div>
 
@@ -121,8 +121,8 @@ export default function PdfTools() {
               onClick={() => setTab(tb.id)}
               className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 tab === tb.id
-                  ? 'bg-white dark:bg-gray-700 hc:bg-white hc:text-black text-blue-600 dark:text-blue-400 shadow-sm'
-                  : 'text-gray-500 dark:text-gray-400 hc:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? 'bg-white dark:bg-gray-700 hc:bg-white hc:text-black text-blue-600 dark:text-blue-300 shadow-sm'
+                  : 'text-gray-600 dark:text-gray-300 hc:text-gray-200 hover:text-gray-700 dark:hover:text-gray-200'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -234,31 +234,31 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
                 <button
                   onClick={() => moveFile(i, i - 1)}
                   disabled={i === 0}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 disabled:opacity-30"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-200 disabled:opacity-30"
                 >
                   <GripVertical className="h-3 w-3" />
                 </button>
                 <button
                   onClick={() => moveFile(i, i + 1)}
                   disabled={i === files.length - 1}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 disabled:opacity-30"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-200 disabled:opacity-30"
                 >
                   <GripVertical className="h-3 w-3" />
                 </button>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-gray-900 dark:text-white truncate">{f.name}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">{formatSize(f.file.size)}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">{formatSize(f.file.size)}</div>
               </div>
-              <button onClick={() => downloadSingle(f)} className="text-gray-400 hover:text-blue-500 transition-colors">
+              <button onClick={() => downloadSingle(f)} className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors">
                 <Download className="h-4 w-4" />
               </button>
-              <button onClick={() => removeFile(i)} className="text-gray-400 hover:text-red-500 transition-colors">
+              <button onClick={() => removeFile(i)} className="text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors">
                 <X className="h-4 w-4" />
               </button>
             </div>
           ))}
-          <div className="text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+          <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {files.length} {pt?.files || 'filer'} — {formatSize(totalSize)}
           </div>
         </div>
@@ -270,8 +270,8 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
         onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files) }}
         className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400"
       >
-        <Plus className="h-6 w-6 text-gray-400" />
-        <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">{pt?.upload || 'Klicka eller dra hit PDF-filer'}</p>
+        <Plus className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+        <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{pt?.upload || 'Klicka eller dra hit PDF-filer'}</p>
       </div>
       <input
         ref={inputRef}
@@ -488,8 +488,8 @@ function SignView() {
         onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f && !busy) handlePdf(f) }}
         className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-6 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
       >
-        <FileSignature className="h-6 w-6 text-gray-400" />
-        <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+        <FileSignature className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+        <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
           {pdfBytes ? `Vald fil: ${pdfName}.pdf (${pageCount} sidor) – klicka för att byta` : 'Klicka eller dra hit en PDF'}
         </p>
         <input
@@ -521,7 +521,7 @@ function SignView() {
           className="w-full touch-none rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white"
           style={{ aspectRatio: `${SIG_W} / ${SIG_H}`, cursor: 'crosshair' }}
         />
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">
+        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
           Rita med musen eller fingret. Alternativt: skriv ett namn nedan.
         </p>
       </div>
@@ -559,7 +559,7 @@ function SignView() {
             onChange={(e) => { const v = Number(e.target.value) || 1; setPageNum(Math.min(Math.max(v, 1), Math.max(pageCount, 1))) }}
             className={`${inputCls} w-24`}
           />
-          {pageCount > 0 && <span className="ml-2 text-xs text-gray-500 dark:text-gray-400 hc:text-gray-300">av {pageCount}</span>}
+          {pageCount > 0 && <span className="ml-2 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">av {pageCount}</span>}
         </div>
 
         <div>
@@ -806,8 +806,8 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
           onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f && !loadingPdf) handlePdf(f) }}
           className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-12 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
         >
-          {loadingPdf ? <Loader2 className="h-8 w-8 animate-spin text-gray-400" /> : <Upload className="h-8 w-8 text-gray-400" />}
-          <p className="text-gray-600 dark:text-gray-400 hc:text-gray-300">
+          {loadingPdf ? <Loader2 className="h-8 w-8 animate-spin text-gray-600 dark:text-gray-300" /> : <Upload className="h-8 w-8 text-gray-600 dark:text-gray-300" />}
+          <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {loadingPdf ? (fp?.loading ?? 'Öppnar PDF…') : (fp?.upload ?? 'Klicka eller dra hit en PDF')}
           </p>
           <input
@@ -830,7 +830,7 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white">
               <FileUp className="h-4 w-4 shrink-0" />
               <span className="truncate max-w-[16rem]">{pdfName}.pdf</span>
-              <button onClick={() => { setPdfBytes(null); resetDoc() }} className="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+              <button onClick={() => { setPdfBytes(null); resetDoc() }} className="text-xs text-blue-600 dark:text-blue-300 hover:underline">
                 {fp?.changeFile ?? 'byt fil'}
               </button>
             </div>
@@ -853,14 +853,14 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
             </div>
           </div>
 
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400 hc:text-gray-300">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
             {fp?.hintClick ?? 'Klicka var som helst på sidan för att lägga till text.'}
           </p>
 
           <div className="space-y-6">
             {pageSizes.map((size, pageIndex) => (
               <div key={pageIndex} className="flex flex-col items-center gap-2">
-                <span className="text-xs text-gray-400 dark:text-gray-500 hc:text-gray-300">
+                <span className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
                   {(fp?.pageLabel ?? 'Sida {n} av {m}').replace('{n}', String(pageIndex + 1)).replace('{m}', String(pageSizes.length))}
                 </span>
                 <div
@@ -880,7 +880,7 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
                         >
                           <span
                             onPointerDown={(e) => onDragStart(e, item)}
-                            className="cursor-move rounded p-1 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                            className="cursor-move rounded p-1 text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200"
                             aria-label={fp?.drag ?? 'Flytta'}
                           >
                             <GripVertical className="h-3.5 w-3.5" />
@@ -888,15 +888,15 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
                           <button
                             onClick={() => updateItem(item.id, { fontSize: Math.max(MIN_FONT, item.fontSize - 2) })}
                             aria-label={fp?.smaller ?? 'Mindre text'}
-                            className="rounded p-1 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="rounded p-1 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                           >
                             <Minus className="h-3.5 w-3.5" />
                           </button>
-                          <span className="w-6 text-center text-[11px] text-gray-500 dark:text-gray-400">{item.fontSize}</span>
+                          <span className="w-6 text-center text-[11px] text-gray-600 dark:text-gray-300">{item.fontSize}</span>
                           <button
                             onClick={() => updateItem(item.id, { fontSize: Math.min(MAX_FONT, item.fontSize + 2) })}
                             aria-label={fp?.bigger ?? 'Större text'}
-                            className="rounded p-1 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="rounded p-1 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                           >
                             <Plus className="h-3.5 w-3.5" />
                           </button>
@@ -904,14 +904,14 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
                             onClick={() => updateItem(item.id, { bold: !item.bold })}
                             aria-label={fp?.boldToggle ?? 'Fet stil'}
                             aria-pressed={item.bold}
-                            className={`rounded p-1 ${item.bold ? 'bg-blue-600 text-white' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+                            className={`rounded p-1 ${item.bold ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
                           >
                             <Bold className="h-3.5 w-3.5" />
                           </button>
                           <button
                             onClick={() => deleteItem(item.id)}
                             aria-label={fp?.deleteText ?? 'Ta bort'}
-                            className="rounded p-1 text-gray-500 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/40"
+                            className="rounded p-1 text-gray-600 dark:text-gray-300 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/40"
                           >
                             <X className="h-3.5 w-3.5" />
                           </button>

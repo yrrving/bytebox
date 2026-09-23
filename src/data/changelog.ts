@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.0.1',
+    date: '2026-09-23',
+    title: {
+      sv: 'Menyn på telefon ligger rakt',
+      en: 'The menu on phones lines up',
+      es: 'El menú en el móvil está alineado',
+      fr: 'Le menu sur téléphone est aligné',
+      de: 'Das Menü auf dem Telefon steht gerade',
+      pt: 'O menu no telemóvel está alinhado',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Journal låg centrerat i menyn på telefon medan Installera app, språkvalet och temavalet låg vänsterställda. Skillnaden syntes bara där, eftersom menyvalen tvingas till full bredd på en liten skärm. Nu ligger de i linje.',
+          en: 'Journal sat centred in the phone menu while Install app, the language picker and the theme picker were left aligned. The difference only showed there, because the menu items are stretched to full width on a small screen. They now line up.',
+          es: 'Journal aparecía centrado en el menú del móvil mientras que Instalar app, el selector de idioma y el de tema estaban alineados a la izquierda. La diferencia solo se veía ahí, porque en una pantalla pequeña las opciones ocupan todo el ancho. Ahora están alineadas.',
+          fr: 'Journal était centré dans le menu du téléphone alors qu’Installer l’app, le choix de la langue et celui du thème étaient alignés à gauche. L’écart ne se voyait que là, car les entrées du menu occupent toute la largeur sur un petit écran. Elles sont désormais alignées.',
+          de: 'Journal stand im Telefonmenü zentriert, während App installieren, die Sprachauswahl und die Themenauswahl linksbündig waren. Der Unterschied zeigte sich nur dort, weil die Menüeinträge auf kleinem Bildschirm auf volle Breite gezogen werden. Jetzt stehen sie in einer Linie.',
+          pt: 'O Journal aparecia centrado no menu do telemóvel enquanto Instalar app, a escolha de idioma e a de tema estavam alinhadas à esquerda. A diferença só se via ali, porque num ecrã pequeno as opções ocupam toda a largura. Agora estão alinhadas.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.0.0',
     date: '2026-09-23',
     title: {

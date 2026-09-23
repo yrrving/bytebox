@@ -2,6 +2,12 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 1.0.1 (2026-09-23). Menyn på telefon ligger rakt
+
+### Fixat
+
+- **Journal låg centrerat i mobilmenyn** medan Installera app, språkvalet och temavalet låg vänsterställda. Skillnaden syntes bara på telefon, där alla val tvingas till full bredd. Nu ligger de i linje.
+
 ## 1.0.0 (2026-09-23). ByteBox står färdigt
 
 Den första versionen där allt hänger ihop. 21 verktyg för digitalt skapande, alla körda på din egen enhet, alla skrivna så att man förstår vad de är till för utan förkunskaper.

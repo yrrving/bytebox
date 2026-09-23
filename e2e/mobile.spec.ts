@@ -62,4 +62,26 @@ test.describe('på telefon', () => {
 
     expect(tooSmall, 'för små träffytor').toEqual([])
   })
+
+  test('menyvalen ligger i linje med varandra', async ({ page }) => {
+    await page.goto('./', { waitUntil: 'networkidle' })
+    await page.getByRole('button', { name: /meny|menu/i }).click()
+
+    // Alla menyval är lika breda i panelen, så rutornas kanter säger ingenting.
+    // Det som syns är var innehållet börjar: ett av dem hade justify-center
+    // kvar från skrivbordsläget och fick därför sin ikon centrerad medan de
+    // andra låg vänsterställda.
+    const ikoner = page.locator('header .md\\:hidden > div > * svg')
+    const antal = await ikoner.count()
+    expect(antal, 'hittade inga menyval').toBeGreaterThan(2)
+
+    const kanter: number[] = []
+    for (let i = 0; i < antal; i++) {
+      const box = await ikoner.nth(i).boundingBox()
+      if (box) kanter.push(Math.round(box.x))
+    }
+    // En pixel ifrån varandra är ramen på länken, inte ett feljusterat menyval.
+    const spann = Math.max(...kanter) - Math.min(...kanter)
+    expect(spann, `menyvalens innehåll börjar på olika x: ${kanter}`).toBeLessThanOrEqual(1)
+  })
 })

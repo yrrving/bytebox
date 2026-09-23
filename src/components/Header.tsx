@@ -38,7 +38,7 @@ export default function Header() {
     <Link
       to="/journal"
       onClick={() => setMenuOpen(false)}
-      className="flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hc:text-white no-underline transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"
+      className="flex items-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hc:text-white no-underline transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"
     >
       <BookOpen className="h-4 w-4" />
       {t.journal.heading}
@@ -47,7 +47,7 @@ export default function Header() {
 
   const languageSelect = (
     <div className="relative flex items-center">
-      <Globe className="pointer-events-none absolute left-2.5 h-4 w-4 text-gray-600 dark:text-gray-300 hc:text-white" />
+      <Globe className="pointer-events-none absolute left-3 h-4 w-4 text-gray-600 dark:text-gray-300 hc:text-white" />
       <select
         value={language}
         onChange={(e) => setLanguage(e.target.value as Language)}
@@ -65,7 +65,7 @@ export default function Header() {
 
   const themeSelect = (
     <div className="relative flex items-center">
-      <ThemeIcon className="pointer-events-none absolute left-2.5 h-4 w-4 text-gray-600 dark:text-gray-300 hc:text-white" />
+      <ThemeIcon className="pointer-events-none absolute left-3 h-4 w-4 text-gray-600 dark:text-gray-300 hc:text-white" />
       <select
         value={theme}
         onChange={(e) => setTheme(e.target.value as Theme)}

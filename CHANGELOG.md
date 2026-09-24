@@ -2,6 +2,16 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 1.3.0 (2026-09-24). Sidan börjar på ditt eget språk
+
+### Ändrat
+
+- **Språket följer nu din webbläsare vid första besöket.** Förut möttes alla av svenska, oavsett var de kom ifrån. Den som följde en länk utan att kunna svenska fick själv leta rätt på språkväljaren. Nu väljs det av ByteBox sex språk som din webbläsare ber om. Talar den inget av dem blir det engelska. Väljer du själv ett språk gäller det valet, som förut.
+
+### Fixat
+
+- **Sidan uppgav fel språk innan koden hunnit köra.** Den sa engelska medan innehållet var svenskt, vilket gav en skärmläsare fel uttal och sökmotorer fel bild av sidan.
+
 ## 1.2.0 (2026-09-23). Länkar till enskilda verktyg fungerar nu överallt
 
 ### Fixat

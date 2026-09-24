@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.3.0',
+    date: '2026-09-24',
+    title: {
+      sv: 'Sidan börjar på ditt eget språk',
+      en: 'The site starts in your own language',
+      es: 'El sitio empieza en tu propio idioma',
+      fr: 'Le site démarre dans votre langue',
+      de: 'Die Seite startet in Ihrer eigenen Sprache',
+      pt: 'O site começa na sua própria língua',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Språket följer nu din webbläsare vid första besöket. Förut möttes alla av svenska, oavsett var de kom ifrån, så den som följde en länk utan att kunna svenska fick själv leta rätt på språkväljaren. Nu väljs det av ByteBox sex språk som din webbläsare ber om, och talar den inget av dem blir det engelska. Väljer du själv ett språk gäller det valet, som förut. Sidan uppgav dessutom fel språk innan koden hunnit köra, vilket gav skärmläsare fel uttal.',
+          en: 'The language now follows your browser on the first visit. Everyone used to meet Swedish, wherever they came from, so anyone following a link without knowing Swedish had to find the language picker themselves. Now ByteBox picks whichever of its six languages your browser asks for, and English if it speaks none of them. Choose a language yourself and that choice stands, as before. The page also stated the wrong language before the code had run, which gave screen readers the wrong pronunciation.',
+          es: 'El idioma sigue ahora a tu navegador en la primera visita. Antes todo el mundo se encontraba con sueco, viniera de donde viniera, así que quien seguía un enlace sin saber sueco tenía que buscar el selector de idioma. Ahora ByteBox elige el que tu navegador pida de sus seis idiomas, y inglés si no habla ninguno. Si eliges un idioma, esa elección se mantiene, como antes. La página además declaraba el idioma equivocado antes de ejecutarse el código, lo que daba a los lectores de pantalla la pronunciación errónea.',
+          fr: 'La langue suit désormais votre navigateur lors de la première visite. Auparavant, tout le monde tombait sur du suédois, d’où qu’il vienne, si bien que celui qui suivait un lien sans connaître le suédois devait trouver lui-même le sélecteur de langue. ByteBox choisit maintenant celle de ses six langues que votre navigateur demande, et l’anglais s’il n’en parle aucune. Si vous choisissez une langue, ce choix demeure, comme avant. La page annonçait en outre la mauvaise langue avant l’exécution du code, ce qui donnait aux lecteurs d’écran une prononciation erronée.',
+          de: 'Die Sprache richtet sich beim ersten Besuch nun nach Ihrem Browser. Zuvor bekamen alle Schwedisch zu sehen, woher sie auch kamen, sodass jemand, der einem Link folgte ohne Schwedisch zu können, die Sprachauswahl selbst finden musste. Jetzt wählt ByteBox diejenige seiner sechs Sprachen, die Ihr Browser verlangt, und Englisch, wenn er keine davon spricht. Wählen Sie selbst eine Sprache, bleibt diese Wahl bestehen, wie bisher. Die Seite gab zudem vor dem Ausführen des Codes die falsche Sprache an, was Screenreadern die falsche Aussprache lieferte.',
+          pt: 'A língua segue agora o seu navegador na primeira visita. Antes toda a gente encontrava sueco, viesse de onde viesse, pelo que quem seguia uma ligação sem saber sueco tinha de procurar sozinho o seletor de idioma. Agora o ByteBox escolhe aquela das suas seis línguas que o seu navegador pedir, e inglês se não falar nenhuma. Se escolher uma língua, essa escolha mantém-se, como antes. A página indicava ainda a língua errada antes de o código correr, o que dava aos leitores de ecrã a pronúncia errada.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.2.0',
     date: '2026-09-23',
     title: {

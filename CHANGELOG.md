@@ -2,6 +2,13 @@
 
 Alla ändringar i Bytebox dokumenteras här.
 
+## 1.3.1 (2026-09-29). TrainCells och PadGrid fungerar igen
+
+### Fixat
+
+- **TrainCells och PadGrid visade ByteBox i stället för verktyget.** Rutan som skulle innehålla appen laddade ByteBox inuti ByteBox, så ingetdera gick att använda. Orsaken låg i förrenderingen som infördes i 1.2.0: den skrev en ByteBox-sida ovanpå varje inbäddad apps egen startfil. Båda fungerar nu igen.
+- **Testet som skulle fånga detta mätte fel sak.** Det kontrollerade att det fanns en fil med titel, beskrivning och rubrik på varje adress. Den överskrivna filen uppfyllde allt det, eftersom den var en ByteBox-sida, så testet blev grönt av samma fel som det skulle upptäcka. Det mäter nu att det verkligen är appen som ligger där, och listan över inbäddade appar läses ur projektet i stället för att skrivas för hand, så en ny app skyddas automatiskt.
+
 ## 1.3.0 (2026-09-24). Sidan börjar på ditt eget språk
 
 ### Ändrat

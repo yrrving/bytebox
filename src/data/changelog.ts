@@ -10,6 +10,31 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.3.1',
+    date: '2026-09-29',
+    title: {
+      sv: 'TrainCells och PadGrid fungerar igen',
+      en: 'TrainCells and PadGrid work again',
+      es: 'TrainCells y PadGrid vuelven a funcionar',
+      fr: 'TrainCells et PadGrid fonctionnent à nouveau',
+      de: 'TrainCells und PadGrid funktionieren wieder',
+      pt: 'TrainCells e PadGrid voltam a funcionar',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'TrainCells och PadGrid visade ByteBox i stället för verktyget. Rutan som skulle innehålla appen laddade ByteBox inuti ByteBox, så ingetdera gick att använda. Orsaken låg i förrenderingen som infördes i 1.2.0: den skrev en ByteBox-sida ovanpå varje inbäddad apps egen startfil. Testet som skulle fånga det mätte tyvärr fel sak, att det fanns en fil med titel och rubrik, vilket den överskrivna filen uppfyllde. Det mäter nu att det verkligen är appen som ligger där.',
+          en: 'TrainCells and PadGrid showed ByteBox instead of the tool. The frame meant to hold the app loaded ByteBox inside ByteBox, so neither could be used. The cause was the prerendering introduced in 1.2.0: it wrote a ByteBox page on top of each embedded app’s own start file. The test meant to catch this measured the wrong thing, that a file with a title and heading existed, which the overwritten file satisfied. It now measures that the app itself is really there.',
+          es: 'TrainCells y PadGrid mostraban ByteBox en lugar de la herramienta. El marco que debía contener la aplicación cargaba ByteBox dentro de ByteBox, así que ninguna se podía usar. La causa era el prerenderizado introducido en 1.2.0: escribía una página de ByteBox encima del archivo de inicio de cada aplicación incrustada. La prueba que debía detectarlo medía lo que no era, que existiera un archivo con título y encabezado, algo que el archivo sobrescrito cumplía. Ahora mide que la aplicación esté realmente ahí.',
+          fr: 'TrainCells et PadGrid affichaient ByteBox au lieu de l’outil. Le cadre censé contenir l’application chargeait ByteBox dans ByteBox, si bien qu’aucun des deux n’était utilisable. La cause venait du prérendu introduit en 1.2.0 : il écrivait une page ByteBox par-dessus le fichier de démarrage de chaque application intégrée. Le test censé le détecter mesurait la mauvaise chose, l’existence d’un fichier avec un titre, ce que le fichier écrasé remplissait. Il vérifie désormais que l’application est bien là.',
+          de: 'TrainCells und PadGrid zeigten ByteBox statt des Werkzeugs. Der Rahmen, der die App enthalten sollte, lud ByteBox in ByteBox, sodass beides unbrauchbar war. Ursache war das in 1.2.0 eingeführte Vorrendern: Es schrieb eine ByteBox-Seite über die eigene Startdatei jeder eingebetteten App. Der Test, der das hätte finden sollen, maß das Falsche, nämlich dass eine Datei mit Titel und Überschrift vorhanden war, was die überschriebene Datei erfüllte. Er misst nun, dass wirklich die App dort liegt.',
+          pt: 'O TrainCells e o PadGrid mostravam o ByteBox em vez da ferramenta. O quadro que devia conter a aplicação carregava o ByteBox dentro do ByteBox, pelo que nenhuma podia ser usada. A causa era a pré-renderização introduzida na 1.2.0: escrevia uma página do ByteBox por cima do ficheiro de arranque de cada aplicação incorporada. O teste que devia detetar isto media a coisa errada, que existisse um ficheiro com título e cabeçalho, o que o ficheiro sobrescrito cumpria. Agora mede que é mesmo a aplicação que lá está.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.3.0',
     date: '2026-09-24',
     title: {

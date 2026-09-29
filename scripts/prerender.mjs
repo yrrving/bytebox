@@ -101,8 +101,23 @@ function bygg({ route, title, description }) {
     .replace('<div id="root"></div>', `<div id="root">${fallback}</div>`)
 }
 
+/**
+ * En inbäddad app äger sin egen sökväg. TrainCells ligger som statiska filer i
+ * public/traincells/ och kopieras till dist/traincells/ av Vite. Skrev vi en
+ * förrenderad sida där skulle iframen ladda ByteBox inuti ByteBox i stället för
+ * appen, vilket är precis vad som hände i v1.2.0.
+ */
+function agsAvInbaddadApp(route) {
+  return route !== '/' && existsSync(join(root, 'public', route.slice(1), 'index.html'))
+}
+
 let n = 0
+const hoppade = []
 for (const sida of sidor) {
+  if (agsAvInbaddadApp(sida.route)) {
+    hoppade.push(sida.route)
+    continue
+  }
   const html = bygg(sida)
   if (sida.route === '/') {
     writeFileSync(join(DIST, 'index.html'), html)
@@ -115,9 +130,12 @@ for (const sida of sidor) {
 }
 
 // Sitemap, så att sidorna går att hitta.
+// Utan sidan vi lämnat till den inbäddade appen. Den sökvägen svarar med appen
+// själv, utan ByteBox rubrik och beskrivning, och hör därför inte hemma här.
 const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   sidor
+    .filter((s) => !agsAvInbaddadApp(s.route))
     .map((s) => `  <url><loc>${s.route === '/' ? SITE + '/' : SITE + s.route}</loc></url>`)
     .join('\n') +
   `\n</urlset>\n`
@@ -133,3 +151,6 @@ if (!existsSync(join(DIST, '404.html'))) {
 }
 
 console.log(`Förrenderade ${n} sidor, samt sitemap.xml och robots.txt`)
+if (hoppade.length) {
+  console.log(`Lämnade orörda, ägs av inbäddad app: ${hoppade.join(', ')}`)
+}

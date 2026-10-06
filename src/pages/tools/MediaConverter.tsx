@@ -3,6 +3,7 @@ import { Upload, Download, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
+import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return bytes + ' B'
@@ -80,11 +81,20 @@ export default function MediaConverter() {
   const [progress, setProgress] = useState('')
 
   const loadFile = (f: File) => {
+    const isVideo = f.type.startsWith('video/')
+    // Media avkodas i minnet, så en orimligt stor fil slår ut fliken. Kontrollen
+    // görs före setFile, annars står filen kvar som vald fast den avvisades.
+    try {
+      kontrolleraStorlek(f, isVideo ? GRANSER.video : GRANSER.ljud)
+    } catch (fel) {
+      setError(filfelText(fel, t.common))
+      return
+    }
+
     setFile(f)
     setResult(null)
     setError('')
 
-    const isVideo = f.type.startsWith('video/')
     const url = createUrl(f)
     const media = isVideo ? document.createElement('video') : new Audio()
     media.src = url

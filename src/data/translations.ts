@@ -14,6 +14,7 @@ export interface Translation {
   showAll?: string
   common?: {
     imageLoadError: string
+        fileTooLarge: string
   }
   tabletRequired?: {
     title: string
@@ -57,6 +58,7 @@ export interface Translation {
     added: string
     changed: string
     fixed: string
+    olderVersions: string
   }
   allCategories?: string
   installApp?: string
@@ -294,6 +296,7 @@ export const translations: Record<string, Translation> = {
     showAll: 'Visa alla verktyg',
     common: {
       imageLoadError: 'Kunde inte läsa bildfilen. Den kan vara skadad eller i ett format webbläsaren inte stöder.',
+      fileTooLarge: 'Filen är för stor ({storlek}). ByteBox arbetar i webbläsarens minne, så gränsen här är {max}. Prova en mindre fil.',
     },
     tabletRequired: {
       title: 'Kräver större skärm',
@@ -337,6 +340,7 @@ export const translations: Record<string, Translation> = {
       added: 'Nytt',
       changed: 'Ändrat',
       fixed: 'Fixat',
+      olderVersions: 'Äldre versioner, hela vägen tillbaka till den första, finns i projektets changelog på GitHub.',
     },
     allCategories: 'Alla kategorier',
     installApp: 'Installera app',
@@ -594,6 +598,7 @@ export const translations: Record<string, Translation> = {
     showAll: 'Show all tools',
     common: {
       imageLoadError: 'Could not read the image file. It may be damaged or in a format the browser does not support.',
+      fileTooLarge: 'The file is too large ({storlek}). ByteBox works in the browser memory, so the limit here is {max}. Try a smaller file.',
     },
     tabletRequired: {
       title: 'Needs a bigger screen',
@@ -637,6 +642,7 @@ export const translations: Record<string, Translation> = {
       added: 'Added',
       changed: 'Changed',
       fixed: 'Fixed',
+      olderVersions: 'Older versions, all the way back to the first, are in the project’s changelog on GitHub.',
     },
     allCategories: 'All categories',
     installApp: 'Install app',
@@ -894,6 +900,7 @@ export const translations: Record<string, Translation> = {
     showAll: 'Mostrar todas las herramientas',
     common: {
       imageLoadError: 'No se pudo leer el archivo de imagen. Puede estar dañado o en un formato que el navegador no admite.',
+      fileTooLarge: 'El archivo es demasiado grande ({storlek}). ByteBox trabaja en la memoria del navegador, por eso el límite aquí es {max}. Prueba con un archivo más pequeño.',
     },
     tabletRequired: {
       title: 'Requiere una pantalla más grande',
@@ -937,6 +944,7 @@ export const translations: Record<string, Translation> = {
       added: 'Añadido',
       changed: 'Cambiado',
       fixed: 'Corregido',
+      olderVersions: 'Las versiones anteriores, hasta la primera, están en el changelog del proyecto en GitHub.',
     },
     allCategories: 'Todas las categorías',
     installApp: 'Instalar app',
@@ -1194,6 +1202,7 @@ export const translations: Record<string, Translation> = {
     showAll: 'Afficher tous les outils',
     common: {
       imageLoadError: 'Impossible de lire le fichier image. Il est peut-être endommagé ou dans un format non pris en charge par le navigateur.',
+      fileTooLarge: 'Le fichier est trop volumineux ({storlek}). ByteBox travaille dans la mémoire du navigateur, la limite ici est donc {max}. Essayez un fichier plus petit.',
     },
     tabletRequired: {
       title: 'Nécessite un écran plus grand',
@@ -1237,6 +1246,7 @@ export const translations: Record<string, Translation> = {
       added: 'Ajouté',
       changed: 'Modifié',
       fixed: 'Corrigé',
+      olderVersions: 'Les versions plus anciennes, jusqu’à la toute première, se trouvent dans le changelog du projet sur GitHub.',
     },
     allCategories: 'Toutes les catégories',
     installApp: 'Installer l\'app',
@@ -1494,6 +1504,7 @@ export const translations: Record<string, Translation> = {
     showAll: 'Alle Werkzeuge anzeigen',
     common: {
       imageLoadError: 'Die Bilddatei konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder in einem Format, das der Browser nicht unterstützt.',
+      fileTooLarge: 'Die Datei ist zu groß ({storlek}). ByteBox arbeitet im Speicher des Browsers, deshalb liegt die Grenze hier bei {max}. Versuchen Sie eine kleinere Datei.',
     },
     tabletRequired: {
       title: 'Benötigt einen größeren Bildschirm',
@@ -1537,6 +1548,7 @@ export const translations: Record<string, Translation> = {
       added: 'Hinzugefügt',
       changed: 'Geändert',
       fixed: 'Behoben',
+      olderVersions: 'Ältere Versionen, bis zur ersten zurück, stehen im Changelog des Projekts auf GitHub.',
     },
     allCategories: 'Alle Kategorien',
     installApp: 'App installieren',
@@ -1794,6 +1806,7 @@ export const translations: Record<string, Translation> = {
     showAll: 'Mostrar todas as ferramentas',
     common: {
       imageLoadError: 'Não foi possível ler o ficheiro de imagem. Pode estar danificado ou num formato que o navegador não suporta.',
+      fileTooLarge: 'O ficheiro é demasiado grande ({storlek}). O ByteBox trabalha na memória do navegador, por isso o limite aqui é {max}. Experimente um ficheiro mais pequeno.',
     },
     tabletRequired: {
       title: 'Requer um ecrã maior',
@@ -1837,6 +1850,7 @@ export const translations: Record<string, Translation> = {
       added: 'Adicionado',
       changed: 'Alterado',
       fixed: 'Corrigido',
+      olderVersions: 'As versões mais antigas, até à primeira, estão no changelog do projeto no GitHub.',
     },
     allCategories: 'Todas as categorias',
     installApp: 'Instalar app',

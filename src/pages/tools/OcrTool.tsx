@@ -4,6 +4,7 @@ import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ErrorNotice from '../../components/ErrorNotice'
 import { loadImageFromFile } from '../../utils/image'
+import { filfelText } from '../../utils/filstorlek'
 
 export default function OcrTool() {
   const { t } = useLanguage()
@@ -23,8 +24,8 @@ export default function OcrTool() {
     let img: HTMLImageElement
     try {
       img = await loadImageFromFile(file)
-    } catch {
-      setImageError(t.common?.imageLoadError ?? 'Kunde inte läsa bildfilen.')
+    } catch (fel) {
+      setImageError(filfelText(fel, t.common))
       return
     }
     setImage(img)

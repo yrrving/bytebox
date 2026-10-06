@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Download, Loader2, ShieldCheck, Film } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 
 const MAX_FRAMES = 200
 
@@ -56,6 +57,14 @@ export default function VideoToGif() {
     if (!file) return
     if (!file.type.startsWith('video/')) {
       setError('Välj en videofil.')
+      return
+    }
+    // Varje bildruta avkodas i minnet. En tillräckligt stor film tar slut på
+    // det och fliken dör utan förklaring.
+    try {
+      kontrolleraStorlek(file, GRANSER.video)
+    } catch (fel) {
+      setError(filfelText(fel, t.common))
       return
     }
     setError('')

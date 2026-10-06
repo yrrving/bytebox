@@ -60,3 +60,46 @@ test('ingen källkod innehåller ett fetch-anrop till en extern adress', async (
   const offenders = files.filter((f) => /fetch\(\s*['"`]https?:\/\//.test(readFileSync(f, 'utf8')))
   expect(offenders, 'filer som anropar en extern adress').toEqual([])
 })
+
+/**
+ * De inbäddade apparna körs i varsin iframe, och en iframe lyder sin EGEN
+ * policy, inte föräldrasidans. ByteBox strikta CSP i index.html skyddar dem
+ * alltså inte. Utan en egen policy kör de oskyddade mitt i en låst sida.
+ *
+ * Apparna byggs i andra repon och kopieras hit som färdiga filer, vilket
+ * skriver över deras index.html. scripts/skydda-inbaddade.mjs lägger tillbaka
+ * policyn som ett steg i `npm run build`.
+ *
+ * VAD DET HÄR TESTET FAKTISKT BEVISAR: Playwright bygger innan testerna körs,
+ * och bygget kör skyddsskriptet. Tar man bort policyn för hand läggs den alltså
+ * tillbaka innan testet hinner läsa filen, och testet blir grönt ändå. Skriptet
+ * är det verkliga skyddet; det här är ett bakstopp som fäller om skriptet tas
+ * bort ur bygget eller slutar fungera. Logiken är kontrollerad separat mot en
+ * fil utan policy och mot en policy med extern domän, och fångar båda.
+ */
+test('de inbäddade apparna har en egen CSP utan extern domän', async () => {
+  const { readFileSync, existsSync } = await import('node:fs')
+
+  for (const app of ['traincells', 'padgrid']) {
+    const fil = `public/${app}/index.html`
+    expect(existsSync(fil), `${fil} saknas`).toBe(true)
+
+    const html = readFileSync(fil, 'utf8')
+    expect(html, `${app} saknar egen CSP, föräldrasidans gäller inte i en iframe`).toContain(
+      'Content-Security-Policy',
+    )
+
+    // Policyn läses ur meta-taggens content, inte ur hela filen. Första
+    // försöket sökte i filen rakt av och träffade ordet connect-src inne i
+    // kommentaren ovanför, alltså prosa i stället för direktivet.
+    const policy = html.match(/http-equiv="Content-Security-Policy"\s*\n?\s*content="([^"]*)"/)?.[1] ?? ''
+    expect(policy, `${app}: hittar ingen policy att läsa`).not.toBe('')
+
+    // Själva poängen: ingenting får skickas utanför det egna ursprunget.
+    const connect = policy.match(/connect-src([^;]*)/)?.[1] ?? ''
+    expect(connect, `${app} saknar connect-src`).not.toBe('')
+    expect(connect, `${app} tillåter en extern domän i connect-src`).not.toMatch(
+      /https?:|\*|[a-z0-9-]+\.[a-z]{2,}/i,
+    )
+  }
+})

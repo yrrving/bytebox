@@ -7,6 +7,7 @@ import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ErrorNotice from '../../components/ErrorNotice'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
+import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 import type { PDFDocumentProxy } from 'pdfjs-dist'
 import type { Translation } from '../../data/translations'
 
@@ -147,6 +148,7 @@ export default function PdfTools() {
 
 // ── Tab: Slå ihop (was PdfTools) ──────────────────────────────────────────
 function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
+  const { t } = useLanguage()
   const [files, setFiles] = useState<PdfFile[]>([])
   const [merging, setMerging] = useState(false)
   const [result, setResult] = useState<string | null>(null)
@@ -156,13 +158,23 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
 
   const addFiles = async (fileList: FileList) => {
     const newFiles: PdfFile[] = []
+    // Alla valda PDF:er ligger i minnet samtidigt när de slås ihop, så en
+    // orimligt stor fil tas inte emot. Övriga läggs till som vanligt.
+    let avvisad: unknown = null
     for (const file of Array.from(fileList)) {
       if (file.type !== 'application/pdf') continue
+      try {
+        kontrolleraStorlek(file, GRANSER.pdf)
+      } catch (fel) {
+        avvisad = fel
+        continue
+      }
       const pages = Math.max(1, Math.round(file.size / 50000))
       newFiles.push({ name: file.name, file, pages })
     }
     setFiles((prev) => [...prev, ...newFiles])
     setResult(null)
+    setError(avvisad ? filfelText(avvisad, t.common) : '')
   }
 
   const removeFile = (index: number) => {
@@ -309,6 +321,7 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
 
 // ── Tab: Signera (was PdfSign) ────────────────────────────────────────────
 function SignView() {
+  const { t } = useLanguage()
   const [pdfBytes, setPdfBytes] = useState<Uint8Array | null>(null)
   const [pdfName, setPdfName] = useState('')
   const [pageCount, setPageCount] = useState(0)
@@ -406,6 +419,13 @@ function SignView() {
     setDone(false)
     if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
       setError('Välj en PDF-fil.')
+      return
+    }
+    // Hela dokumentet läses in i minnet och ritas om sida för sida.
+    try {
+      kontrolleraStorlek(file, GRANSER.pdf)
+    } catch (fel) {
+      setError(filfelText(fel, t.common))
       return
     }
     try {
@@ -607,6 +627,7 @@ function SignView() {
 
 // ── Tab: Fyll i (was FillPdf) ──────────────────────────────────────────────
 function FillView({ fp }: { fp: Translation['fillPdf'] }) {
+  const { t } = useLanguage()
   const [pdfBytes, setPdfBytes] = useState<Uint8Array | null>(null)
   const [pdfName, setPdfName] = useState('')
   const [pageSizes, setPageSizes] = useState<PageSize[]>([])
@@ -641,6 +662,13 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
     resetDoc()
     if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
       setError(fp?.errorType ?? 'Välj en PDF-fil.')
+      return
+    }
+    // Hela dokumentet läses in i minnet och ritas om sida för sida.
+    try {
+      kontrolleraStorlek(file, GRANSER.pdf)
+    } catch (fel) {
+      setError(filfelText(fel, t.common))
       return
     }
     setLoadingPdf(true)

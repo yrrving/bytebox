@@ -2,6 +2,37 @@
 <html lang="sv">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Samma skydd som ByteBox huvudsida, men ännu stramare: den här appen
+      behöver varken eval eller WebAssembly.
+
+      Det MÅSTE stå här och inte bara i ByteBox index.html. En iframe lyder sin
+      egen policy, inte föräldrasidans, så utan den här raden kör appen helt
+      oskyddad trots att sidan runt omkring är låst.
+
+      connect-src har ingen extern domän: appen kan inte skicka användarens
+      data någonstans ens om ett beroende blir komprometterat.
+
+      OBS: filen skrivs över när appen byggs om och kopieras hit. Kör
+      `node scripts/skydda-inbaddade.mjs` efteråt, eller `npm run build` som
+      gör det automatiskt. e2e/no-external-requests.spec.ts fäller om den saknas.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: blob:;
+        media-src 'self' data: blob:;
+        font-src 'self' data:;
+        worker-src 'self' blob:;
+        connect-src 'self' blob: data:;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+      "
+    />
     <link rel="icon" type="image/svg+xml" href="/bytebox/traincells/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TrainCells</title>

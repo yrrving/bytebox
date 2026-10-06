@@ -65,9 +65,27 @@ export default function Journal() {
         ))}
       </div>
 
+      {/*
+        Journalen visar version 1.0.0 och framåt. Den som läser den här sidan
+        vill veta vad som hänt den senaste tiden, inte skrolla genom femtio
+        poster från innan ByteBox var färdigt. Hela protokollet finns kvar i
+        CHANGELOG.md, och raden nedan säger var, så inget är borttaget i tysthet.
+      */}
+      <p className="mt-8 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
+        {t.journal.olderVersions}{' '}
+        <a
+          href="https://github.com/yrrving/bytebox/blob/master/CHANGELOG.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline transition-colors hover:text-gray-900 dark:hover:text-white hc:text-white"
+        >
+          CHANGELOG.md
+        </a>
+      </p>
+
       <Link
         to="/"
-        className="mt-8 inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
+        className="mt-6 inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:text-gray-900 dark:hover:text-white"
       >
         <ArrowLeft className="h-4 w-4" />
         {t.backToTools}

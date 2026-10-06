@@ -1,6 +1,24 @@
 # Changelog
 
-Alla ändringar i Bytebox dokumenteras här.
+Alla ändringar i Bytebox dokumenteras här. Den här filen är det fullständiga
+protokollet och innehåller varje version sedan den första. Journalen inne i
+ByteBox visar 1.0.0 och framåt, eftersom besökaren oftast vill veta vad som
+hänt den senaste tiden.
+
+## 1.4.0 (2026-10-06). Hela sidan skyddas, även apparna inuti
+
+### Fixat
+
+- **De inbäddade apparna skyddades inte som resten av ByteBox.** TrainCells och PadGrid körs i en egen ruta inuti sidan, och en sådan ruta följer sina egna regler, inte sidans runt omkring. ByteBox spärr mot att skicka data vidare gällde därför inte dem. Nu har båda apparna en egen spärr, och bygget vägrar bli klart om den försvinner nästa gång en app byggs om.
+
+### Nytt
+
+- **En för stor fil säger till i stället för att fliken dör.** ByteBox arbetar i webbläsarens minne, så en tillräckligt stor fil fyller det och fliken stängs mitt i arbetet, ofta utan ett ord om varför. Nu får du i stället ett meddelande som säger hur stor filen är och var gränsen går. Gränserna är satta generöst: 60 MB för bilder, 250 MB för video, 150 MB för ljud och 100 MB för PDF.
+
+### Ändrat
+
+- **Journalen visar nu version 1.0.0 och framåt.** Den hade vuxit till 56 poster, hela vägen tillbaka till den första veckan, och den som öppnar sidan vill oftast veta vad som hänt den senaste tiden. Hela protokollet ligger kvar i den här filen, och en rad längst ner på journalsidan säger var.
+- **Tillgänglighetskontrollen täcker nu alla tre teman.** Varje sida kontrolleras automatiskt mot WCAG 2.2 AA innan en ändring får publiceras, men kontrollen körde bara i det mörka temat. Det ljusa och det högkontrasta var alltså aldrig mätta, trots att det är där kontraster brukar fallera. Nu körs alla tre, 74 kontroller i stället för 26. Alla var rena redan, men nu kan de inte sluta vara det i tysthet.
 
 ## 1.3.1 (2026-09-29). TrainCells och PadGrid fungerar igen
 

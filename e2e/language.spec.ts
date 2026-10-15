@@ -9,12 +9,12 @@ import { test, expect } from '@playwright/test'
  */
 
 const FÖRVÄNTAT: Record<string, { lang: string; text: RegExp }> = {
-  'sv-SE': { lang: 'sv', text: /Verktyg/ },
-  'en-GB': { lang: 'en', text: /Tools/ },
-  'es-ES': { lang: 'es', text: /Herramientas/ },
-  'de-DE': { lang: 'de', text: /Werkzeuge/ },
+  'sv-SE': { lang: 'sv', text: /Vad vill du göra/ },
+  'en-GB': { lang: 'en', text: /What do you want to do/ },
+  'es-ES': { lang: 'es', text: /Qué quieres hacer/ },
+  'de-DE': { lang: 'de', text: /Was willst du machen/ },
   // Ett språk vi inte har. Ska landa på engelska, inte på svenska.
-  'fi-FI': { lang: 'en', text: /Tools/ },
+  'fi-FI': { lang: 'en', text: /What do you want to do/ },
 }
 
 for (const [webbläsarspråk, { lang, text }] of Object.entries(FÖRVÄNTAT)) {

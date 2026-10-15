@@ -22,6 +22,7 @@ import {
   FileEdit,
   type LucideIcon,
 } from 'lucide-react'
+import type { FileKind } from '../utils/filsort'
 
 // Minsta skärm som verktyget behöver för att fungera bra.
 // mobil = funkar på telefon, surfplatta = kräver minst en surfplatta,
@@ -38,6 +39,8 @@ export interface Tool {
   connection: ConnectionType
   icon: LucideIcon
   category: ToolCategory
+  /** Filsorter verktyget tar emot. Tom lista = börjar från noll, ingen fil behövs. */
+  inputs: FileKind[]
 }
 
 /**
@@ -72,6 +75,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileImage,
     category: 'bild',
+    inputs: ['heic'],
   },
   {
     id: 'metadata-tvatt',
@@ -80,6 +84,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: ImageOff,
     category: 'bild',
+    inputs: ['bild'],
   },
   {
     id: 'png-till-svg',
@@ -88,6 +93,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Image,
     category: 'form',
+    inputs: ['bild'],
   },
   {
     id: 'bildkomprimering',
@@ -96,6 +102,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: ImageDown,
     category: 'bild',
+    inputs: ['bild'],
   },
   {
     id: 'fargpalett',
@@ -104,6 +111,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Palette,
     category: 'form',
+    inputs: [],
   },
   {
     id: 'mediakonverterare',
@@ -112,6 +120,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileVideo,
     category: 'ljud',
+    inputs: ['video', 'ljud'],
   },
   {
     id: 'brodyrkortsvisare',
@@ -120,6 +129,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Scissors,
     category: 'form',
+    inputs: ['broderi'],
   },
   {
     id: 'bildbeskärare',
@@ -128,6 +138,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Crop,
     category: 'bild',
+    inputs: ['bild'],
   },
   {
     id: 'bakgrundsborttagare',
@@ -136,6 +147,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Eraser,
     category: 'bild',
+    inputs: ['bild'],
   },
   {
     id: 'ascii-konst',
@@ -144,6 +156,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Terminal,
     category: 'bild',
+    inputs: ['bild'],
   },
   {
     id: 'skarfilsgenerator',
@@ -152,6 +165,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Crosshair,
     category: 'form',
+    inputs: ['bild'],
   },
   {
     id: 'video-till-gif',
@@ -160,6 +174,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Film,
     category: 'bild',
+    inputs: ['video'],
   },
 
   // ── Text & Dokument ───────────────────────────────────────
@@ -170,6 +185,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: FileEdit,
     category: 'text',
+    inputs: [],
   },
   {
     id: 'pdf-verktyg',
@@ -178,6 +194,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Files,
     category: 'text',
+    inputs: ['pdf'],
   },
   {
     id: 'ocr',
@@ -186,6 +203,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Scan,
     category: 'text',
+    inputs: ['bild'],
   },
   {
     id: 'srt-redigerare',
@@ -194,6 +212,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Captions,
     category: 'text',
+    inputs: ['undertext'],
   },
 
   // ── Ljud & Tal ────────────────────────────────────────────
@@ -204,6 +223,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Speech,
     category: 'ljud',
+    inputs: [],
   },
   {
     id: 'ljudklipp',
@@ -212,6 +232,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: AudioLines,
     category: 'ljud',
+    inputs: ['ljud'],
   },
   {
     id: 'padgrid',
@@ -220,6 +241,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Grid3X3,
     category: 'ljud',
+    inputs: [],
   },
 
   // ── Kod & Data ────────────────────────────────────────────
@@ -236,6 +258,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: QrCode,
     category: 'form',
+    inputs: [],
   },
 
   // ── Spelutveckling ────────────────────────────────────────
@@ -246,6 +269,7 @@ export const tools: Tool[] = [
     connection: 'offline',
     icon: Gamepad2,
     category: 'spel',
+    inputs: [],
   },
 ]
 
@@ -260,4 +284,9 @@ export const screenRank: Record<MinScreen, number> = {
 /** Kan ett verktyg köras på en enhet av given nivå? */
 export function runsOn(tool: Tool, device: MinScreen): boolean {
   return screenRank[tool.minScreen] <= screenRank[device]
+}
+
+/** Tar verktyget emot någon av de här filsorterna? */
+export function acceptsAny(tool: Tool, kinds: FileKind[]): boolean {
+  return tool.inputs.some((kind) => kinds.includes(kind))
 }

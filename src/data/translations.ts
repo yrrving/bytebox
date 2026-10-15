@@ -26,6 +26,31 @@ export interface Translation {
   }
   menu?: string
   devicePrompt?: string
+  home?: {
+    heading: string
+    lead: string
+    chooseFile: string
+    dragHint: string
+    privacy: string
+    orPick: string
+    youHave: string
+    unknownFile: string
+    changeFile: string
+    clear: string
+    matchCount: string
+    worksOn: string
+    allDevices: string
+    kinds: {
+      bild: string
+      heic: string
+      video: string
+      ljud: string
+      pdf: string
+      undertext: string
+      broderi: string
+      ingen: string
+    }
+  }
   minScreenLabel?: {
     mobil: string
     surfplatta: string
@@ -308,6 +333,31 @@ export const translations: Record<string, Translation> = {
     },
     menu: 'Meny',
     devicePrompt: 'Vad kan du göra på din enhet?',
+    home: {
+      heading: 'Vad vill du göra?',
+      lead: 'Här är alla verktyg. Vart och ett gör en sak.',
+      chooseFile: 'Har du redan en fil? Släpp den här',
+      dragHint: 'så väljer ByteBox rätt sort åt dig',
+      privacy: 'Filen öppnas inte och skickas ingenstans. ByteBox tittar bara på vilken sorts fil det är.',
+      orPick: 'Visa bara det som funkar med:',
+      youHave: 'Du har',
+      unknownFile: 'ByteBox känner inte igen den här filen. Välj vad den är här nedanför, eller sök efter ett verktyg.',
+      changeFile: 'Byt fil',
+      clear: 'Visa alla verktyg',
+      matchCount: '{n} verktyg passar',
+      worksOn: 'Funkar på',
+      allDevices: 'Alla enheter',
+      kinds: {
+        bild: 'En bild',
+        heic: 'En HEIC-bild från iPhone',
+        video: 'En video',
+        ljud: 'Ett ljud',
+        pdf: 'En PDF',
+        undertext: 'Undertexter',
+        broderi: 'En broderifil',
+        ingen: 'Ingen fil än',
+      },
+    },
     minScreenLabel: {
       mobil: 'Mobil',
       surfplatta: 'Surfplatta',
@@ -610,6 +660,31 @@ export const translations: Record<string, Translation> = {
     },
     menu: 'Menu',
     devicePrompt: 'What can you do on your device?',
+    home: {
+      heading: 'What do you want to do?',
+      lead: 'Here are all the tools. Each one does one thing.',
+      chooseFile: 'Already have a file? Drop it here',
+      dragHint: 'and ByteBox picks the right kind for you',
+      privacy: 'The file is not opened and is not sent anywhere. ByteBox only looks at what kind of file it is.',
+      orPick: 'Only show what works with:',
+      youHave: 'You have',
+      unknownFile: 'ByteBox does not recognise this file. Pick what it is below, or search for a tool.',
+      changeFile: 'Change file',
+      clear: 'Show all tools',
+      matchCount: '{n} tools fit',
+      worksOn: 'Works on',
+      allDevices: 'All devices',
+      kinds: {
+        bild: 'An image',
+        heic: 'A HEIC photo from an iPhone',
+        video: 'A video',
+        ljud: 'A sound',
+        pdf: 'A PDF',
+        undertext: 'Subtitles',
+        broderi: 'An embroidery file',
+        ingen: 'No file yet',
+      },
+    },
     minScreenLabel: {
       mobil: 'Phone',
       surfplatta: 'Tablet',
@@ -912,6 +987,31 @@ export const translations: Record<string, Translation> = {
     },
     menu: 'Menú',
     devicePrompt: '¿Qué puedes hacer en tu dispositivo?',
+    home: {
+      heading: '¿Qué quieres hacer?',
+      lead: 'Aquí están todas las herramientas. Cada una hace una cosa.',
+      chooseFile: '¿Ya tienes un archivo? Suéltalo aquí',
+      dragHint: 'y ByteBox elige el tipo por ti',
+      privacy: 'El archivo no se abre ni se envía a ningún sitio. ByteBox solo mira qué tipo de archivo es.',
+      orPick: 'Mostrar solo lo que funciona con:',
+      youHave: 'Tienes',
+      unknownFile: 'ByteBox no reconoce este archivo. Elige qué es aquí abajo o busca una herramienta.',
+      changeFile: 'Cambiar archivo',
+      clear: 'Mostrar todas las herramientas',
+      matchCount: '{n} herramientas sirven',
+      worksOn: 'Funciona en',
+      allDevices: 'Todos los dispositivos',
+      kinds: {
+        bild: 'Una imagen',
+        heic: 'Una foto HEIC de iPhone',
+        video: 'Un vídeo',
+        ljud: 'Un sonido',
+        pdf: 'Un PDF',
+        undertext: 'Subtítulos',
+        broderi: 'Un archivo de bordado',
+        ingen: 'Aún no tengo archivo',
+      },
+    },
     minScreenLabel: {
       mobil: 'Móvil',
       surfplatta: 'Tableta',
@@ -1214,6 +1314,31 @@ export const translations: Record<string, Translation> = {
     },
     menu: 'Menu',
     devicePrompt: 'Que pouvez-vous faire sur votre appareil ?',
+    home: {
+      heading: 'Qu\'est-ce que tu veux faire ?',
+      lead: 'Voici tous les outils. Chacun fait une chose.',
+      chooseFile: 'Tu as déjà un fichier ? Dépose-le ici',
+      dragHint: 'et ByteBox choisit le bon type pour toi',
+      privacy: 'Le fichier n\'est pas ouvert et n\'est envoyé nulle part. ByteBox regarde seulement quel type de fichier c\'est.',
+      orPick: 'Afficher seulement ce qui marche avec :',
+      youHave: 'Tu as',
+      unknownFile: 'ByteBox ne reconnaît pas ce fichier. Choisis ce que c’est ci-dessous, ou cherche un outil.',
+      changeFile: 'Changer de fichier',
+      clear: 'Afficher tous les outils',
+      matchCount: '{n} outils conviennent',
+      worksOn: 'Fonctionne sur',
+      allDevices: 'Tous les appareils',
+      kinds: {
+        bild: 'Une image',
+        heic: 'Une photo HEIC d\'iPhone',
+        video: 'Une vidéo',
+        ljud: 'Un son',
+        pdf: 'Un PDF',
+        undertext: 'Des sous-titres',
+        broderi: 'Un fichier de broderie',
+        ingen: 'Pas encore de fichier',
+      },
+    },
     minScreenLabel: {
       mobil: 'Mobile',
       surfplatta: 'Tablette',
@@ -1516,6 +1641,31 @@ export const translations: Record<string, Translation> = {
     },
     menu: 'Menü',
     devicePrompt: 'Was kannst du auf deinem Gerät machen?',
+    home: {
+      heading: 'Was willst du machen?',
+      lead: 'Hier sind alle Werkzeuge. Jedes macht eine Sache.',
+      chooseFile: 'Schon eine Datei? Hier ablegen',
+      dragHint: 'und ByteBox wählt die richtige Art für dich',
+      privacy: 'Die Datei wird nicht geöffnet und nirgendwohin geschickt. ByteBox schaut nur, welche Art Datei es ist.',
+      orPick: 'Nur zeigen, was funktioniert mit:',
+      youHave: 'Du hast',
+      unknownFile: 'ByteBox kennt diese Datei nicht. Wähle unten, was sie ist, oder suche nach einem Werkzeug.',
+      changeFile: 'Datei wechseln',
+      clear: 'Alle Werkzeuge zeigen',
+      matchCount: '{n} Werkzeuge passen',
+      worksOn: 'Läuft auf',
+      allDevices: 'Alle Geräte',
+      kinds: {
+        bild: 'Ein Bild',
+        heic: 'Ein HEIC-Foto vom iPhone',
+        video: 'Ein Video',
+        ljud: 'Ein Ton',
+        pdf: 'Ein PDF',
+        undertext: 'Untertitel',
+        broderi: 'Eine Stickdatei',
+        ingen: 'Noch keine Datei',
+      },
+    },
     minScreenLabel: {
       mobil: 'Handy',
       surfplatta: 'Tablet',
@@ -1818,6 +1968,31 @@ export const translations: Record<string, Translation> = {
     },
     menu: 'Menu',
     devicePrompt: 'O que pode fazer no seu dispositivo?',
+    home: {
+      heading: 'O que você quer fazer?',
+      lead: 'Aqui estão todas as ferramentas. Cada uma faz uma coisa.',
+      chooseFile: 'Já tem um arquivo? Solte aqui',
+      dragHint: 'e o ByteBox escolhe o tipo certo para você',
+      privacy: 'O arquivo não é aberto nem enviado para lugar nenhum. O ByteBox só olha que tipo de arquivo é.',
+      orPick: 'Mostrar só o que funciona com:',
+      youHave: 'Você tem',
+      unknownFile: 'O ByteBox não reconhece este arquivo. Escolha o que ele é aqui embaixo ou procure uma ferramenta.',
+      changeFile: 'Trocar arquivo',
+      clear: 'Mostrar todas as ferramentas',
+      matchCount: '{n} ferramentas servem',
+      worksOn: 'Funciona em',
+      allDevices: 'Todos os aparelhos',
+      kinds: {
+        bild: 'Uma imagem',
+        heic: 'Uma foto HEIC do iPhone',
+        video: 'Um vídeo',
+        ljud: 'Um som',
+        pdf: 'Um PDF',
+        undertext: 'Legendas',
+        broderi: 'Um arquivo de bordado',
+        ingen: 'Ainda sem arquivo',
+      },
+    },
     minScreenLabel: {
       mobil: 'Telemóvel',
       surfplatta: 'Tablet',

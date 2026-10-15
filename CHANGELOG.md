@@ -5,6 +5,19 @@ protokollet och innehåller varje version sedan den första. Journalen inne i
 ByteBox visar 1.0.0 och framåt, eftersom besökaren oftast vill veta vad som
 hänt den senaste tiden.
 
+## 1.5.0 (2026-10-15). Startsidan visar alla verktyg direkt
+
+### Ändrat
+
+- **Alla verktyg syns direkt på startsidan.** Förut fick du först välja enhet eller kategori, och först därefter visades verktygen. Nu frågar sidan "Vad vill du göra?" och visar alla verktyg på en gång, ordnade efter kategori och med en rad om vad varje verktyg gör. Varje verktyg säger också vilka enheter det fungerar på.
+- **Startsidan har fått ett nytt utseende.** Rubriken är större, verktygen ligger i raka listor i stället för kort, och ytan överst har fått ett prickigt mönster som en hålplatta i en verkstad. Ljust, mörkt och högkontrast fungerar som förut. I högkontrast försvinner mönstret helt.
+- **Enhetsvalet ligger nu bredvid sökfältet.** Mobil, surfplatta och dator finns kvar som filter, men de är inte längre det första du möter.
+
+### Nytt
+
+- **Visa bara det som funkar med din fil.** Knapparna överst låter dig välja vad du har: en bild, en video, ett ljud, en PDF, undertexter, en broderifil eller ingen fil än. Då visas bara de verktyg som kan ta emot det.
+- **Har du redan en fil kan du släppa den på sidan,** så väljer ByteBox rätt knapp åt dig. Filen öppnas inte och skickas ingenstans. ByteBox tittar bara på filens namn och typ. Känner ByteBox inte igen filen säger sidan det och ber dig välja själv.
+
 ## 1.4.0 (2026-10-06). Hela sidan skyddas, även apparna inuti
 
 ### Fixat

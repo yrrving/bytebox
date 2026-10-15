@@ -10,6 +10,53 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.5.0',
+    date: '2026-10-15',
+    title: {
+      sv: 'Startsidan visar alla verktyg direkt',
+      en: 'The front page shows every tool straight away',
+      es: 'La página de inicio muestra todas las herramientas desde el principio',
+      fr: 'La page d’accueil montre tous les outils tout de suite',
+      de: 'Die Startseite zeigt alle Werkzeuge sofort',
+      pt: 'A página inicial mostra todas as ferramentas logo de início',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'Alla verktyg syns direkt på startsidan. Förut fick du först välja enhet eller kategori innan verktygen visades. Nu frågar sidan "Vad vill du göra?" och visar alla verktyg på en gång, ordnade efter kategori, med en rad om vad varje verktyg gör och vilka enheter det fungerar på.',
+          en: 'Every tool is visible straight away on the front page. Before, you first had to pick a device or a category before the tools appeared. Now the page asks "What do you want to do?" and shows all the tools at once, sorted by category, with a line on what each one does and which devices it works on.',
+          es: 'Todas las herramientas se ven desde el principio en la página de inicio. Antes tenías que elegir primero un dispositivo o una categoría para ver las herramientas. Ahora la página pregunta "¿Qué quieres hacer?" y muestra todas las herramientas a la vez, ordenadas por categoría, con una línea sobre lo que hace cada una y en qué dispositivos funciona.',
+          fr: 'Tous les outils sont visibles dès la page d’accueil. Avant, il fallait d’abord choisir un appareil ou une catégorie pour voir les outils. Maintenant la page demande « Qu’est-ce que tu veux faire ? » et montre tous les outils d’un coup, classés par catégorie, avec une ligne sur ce que fait chacun et sur quels appareils il fonctionne.',
+          de: 'Alle Werkzeuge sind sofort auf der Startseite zu sehen. Früher musstest du zuerst ein Gerät oder eine Kategorie wählen, bevor die Werkzeuge erschienen. Jetzt fragt die Seite „Was willst du machen?“ und zeigt alle Werkzeuge auf einmal, nach Kategorie sortiert, mit einer Zeile dazu, was jedes macht und auf welchen Geräten es läuft.',
+          pt: 'Todas as ferramentas aparecem logo na página inicial. Antes era preciso escolher primeiro um aparelho ou uma categoria para ver as ferramentas. Agora a página pergunta "O que você quer fazer?" e mostra todas as ferramentas de uma vez, ordenadas por categoria, com uma linha sobre o que cada uma faz e em que aparelhos funciona.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Startsidan har fått ett nytt utseende. Rubriken är större, verktygen ligger i raka listor i stället för kort, och ytan överst har ett prickigt mönster som en hålplatta i en verkstad. Ljust, mörkt och högkontrast fungerar som förut, och i högkontrast försvinner mönstret helt. Enhetsvalet ligger nu bredvid sökfältet.',
+          en: 'The front page has a new look. The heading is bigger, the tools sit in plain lists instead of cards, and the area at the top has a dotted pattern like a workshop pegboard. Light, dark and high contrast work as before, and in high contrast the pattern disappears entirely. The device choice now sits next to the search field.',
+          es: 'La página de inicio tiene un aspecto nuevo. El título es más grande, las herramientas están en listas sencillas en lugar de tarjetas, y la zona superior tiene un patrón de puntos como un tablero perforado de taller. Claro, oscuro y alto contraste funcionan como antes, y en alto contraste el patrón desaparece por completo. La elección de dispositivo está ahora junto al buscador.',
+          fr: 'La page d’accueil a un nouvel aspect. Le titre est plus grand, les outils sont présentés en listes simples au lieu de cartes, et la zone du haut porte un motif à points comme un panneau perforé d’atelier. Clair, sombre et contraste élevé fonctionnent comme avant, et en contraste élevé le motif disparaît complètement. Le choix de l’appareil se trouve maintenant à côté du champ de recherche.',
+          de: 'Die Startseite hat ein neues Aussehen. Die Überschrift ist größer, die Werkzeuge stehen in schlichten Listen statt in Karten, und der Bereich oben hat ein Punktmuster wie eine Lochwand in der Werkstatt. Hell, dunkel und hoher Kontrast funktionieren wie bisher, und bei hohem Kontrast verschwindet das Muster ganz. Die Geräteauswahl steht jetzt neben dem Suchfeld.',
+          pt: 'A página inicial tem um visual novo. O título é maior, as ferramentas ficam em listas simples em vez de cartões, e a área de cima tem um padrão de pontos como um painel perfurado de oficina. Claro, escuro e alto contraste funcionam como antes, e no alto contraste o padrão desaparece por completo. A escolha de aparelho fica agora ao lado do campo de busca.',
+        },
+      },
+      {
+        type: 'added',
+        text: {
+          sv: 'Visa bara det som funkar med din fil. Välj vad du har, till exempel en bild, en video, ett ljud eller ingen fil än, så visas bara de verktyg som kan ta emot det. Har du redan en fil kan du släppa den på sidan, så väljer ByteBox åt dig. Filen öppnas inte och skickas ingenstans. ByteBox tittar bara på filens namn och typ.',
+          en: 'Show only what works with your file. Pick what you have, such as an image, a video, a sound or no file yet, and only the tools that can take it are shown. If you already have a file you can drop it on the page and ByteBox picks for you. The file is not opened and is not sent anywhere. ByteBox only looks at the file’s name and type.',
+          es: 'Muestra solo lo que funciona con tu archivo. Elige lo que tienes, por ejemplo una imagen, un vídeo, un sonido o aún ningún archivo, y solo se muestran las herramientas que pueden usarlo. Si ya tienes un archivo, puedes soltarlo en la página y ByteBox elige por ti. El archivo no se abre ni se envía a ningún sitio. ByteBox solo mira el nombre y el tipo del archivo.',
+          fr: 'N’afficher que ce qui marche avec ton fichier. Choisis ce que tu as, par exemple une image, une vidéo, un son ou pas encore de fichier, et seuls les outils qui peuvent le prendre s’affichent. Si tu as déjà un fichier, tu peux le déposer sur la page et ByteBox choisit pour toi. Le fichier n’est pas ouvert et n’est envoyé nulle part. ByteBox regarde seulement le nom et le type du fichier.',
+          de: 'Nur zeigen, was mit deiner Datei funktioniert. Wähle, was du hast, zum Beispiel ein Bild, ein Video, einen Ton oder noch keine Datei, und es erscheinen nur die Werkzeuge, die damit umgehen können. Hast du schon eine Datei, kannst du sie auf der Seite ablegen, und ByteBox wählt für dich. Die Datei wird nicht geöffnet und nirgendwohin geschickt. ByteBox schaut nur auf Name und Typ der Datei.',
+          pt: 'Mostrar só o que funciona com o seu arquivo. Escolha o que você tem, por exemplo uma imagem, um vídeo, um som ou ainda nenhum arquivo, e só aparecem as ferramentas que podem usá-lo. Se já tiver um arquivo, pode soltá-lo na página e o ByteBox escolhe por você. O arquivo não é aberto nem enviado para lugar nenhum. O ByteBox só olha o nome e o tipo do arquivo.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.4.0',
     date: '2026-10-06',
     title: {

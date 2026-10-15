@@ -10,8 +10,6 @@ export interface Translation {
   toolsHeading: string
   tagline?: string
   newBadge?: string
-  categoriesHeading?: string
-  showAll?: string
   common?: {
     imageLoadError: string
         fileTooLarge: string
@@ -25,7 +23,6 @@ export interface Translation {
     back: string
   }
   menu?: string
-  devicePrompt?: string
   home?: {
     heading: string
     lead: string
@@ -85,7 +82,6 @@ export interface Translation {
     fixed: string
     olderVersions: string
   }
-  allCategories?: string
   installApp?: string
   close?: string
   iosStep1?: string
@@ -317,8 +313,6 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Verktyg',
     tagline: 'ByteBox är gratis verktyg för digitalt skapande med bild, ljud, video, text och spel. Allt körs på din egen enhet. Det du arbetar med lämnar aldrig datorn, och ByteBox skickar ingenting någonstans. Inget konto, ingen spårning.',
     newBadge: 'Nytt',
-    categoriesHeading: 'Kategorier',
-    showAll: 'Visa alla verktyg',
     common: {
       imageLoadError: 'Kunde inte läsa bildfilen. Den kan vara skadad eller i ett format webbläsaren inte stöder.',
       fileTooLarge: 'Filen är för stor ({storlek}). ByteBox arbetar i webbläsarens minne, så gränsen här är {max}. Prova en mindre fil.',
@@ -332,7 +326,6 @@ export const translations: Record<string, Translation> = {
       back: 'Tillbaka till verktygen',
     },
     menu: 'Meny',
-    devicePrompt: 'Vad kan du göra på din enhet?',
     home: {
       heading: 'Vad vill du göra?',
       lead: 'Här är alla verktyg. Vart och ett gör en sak.',
@@ -341,7 +334,7 @@ export const translations: Record<string, Translation> = {
       privacy: 'Filen öppnas inte och skickas ingenstans. ByteBox tittar bara på vilken sorts fil det är.',
       orPick: 'Visa bara det som funkar med:',
       youHave: 'Du har',
-      unknownFile: 'ByteBox känner inte igen den här filen. Välj vad den är här nedanför, eller sök efter ett verktyg.',
+      unknownFile: 'ByteBox känner inte igen den här filen. Välj vad den är här ovanför, eller sök efter ett verktyg.',
       changeFile: 'Byt fil',
       clear: 'Visa alla verktyg',
       matchCount: '{n} verktyg passar',
@@ -392,7 +385,6 @@ export const translations: Record<string, Translation> = {
       fixed: 'Fixat',
       olderVersions: 'Äldre versioner, hela vägen tillbaka till den första, finns i projektets changelog på GitHub.',
     },
-    allCategories: 'Alla kategorier',
     installApp: 'Installera app',
     close: 'Stäng',
     iosStep1: 'Tryck på Dela-knappen längst ner i Safari.',
@@ -644,8 +636,6 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Tools',
     tagline: 'ByteBox is free tools for making things with images, audio, video, text and games. Everything runs on your own device. What you work on never leaves your computer, and ByteBox sends nothing anywhere. No account, no tracking.',
     newBadge: 'New',
-    categoriesHeading: 'Categories',
-    showAll: 'Show all tools',
     common: {
       imageLoadError: 'Could not read the image file. It may be damaged or in a format the browser does not support.',
       fileTooLarge: 'The file is too large ({storlek}). ByteBox works in the browser memory, so the limit here is {max}. Try a smaller file.',
@@ -659,7 +649,6 @@ export const translations: Record<string, Translation> = {
       back: 'Back to the tools',
     },
     menu: 'Menu',
-    devicePrompt: 'What can you do on your device?',
     home: {
       heading: 'What do you want to do?',
       lead: 'Here are all the tools. Each one does one thing.',
@@ -668,7 +657,7 @@ export const translations: Record<string, Translation> = {
       privacy: 'The file is not opened and is not sent anywhere. ByteBox only looks at what kind of file it is.',
       orPick: 'Only show what works with:',
       youHave: 'You have',
-      unknownFile: 'ByteBox does not recognise this file. Pick what it is below, or search for a tool.',
+      unknownFile: 'ByteBox does not recognise this file. Pick what it is above, or search for a tool.',
       changeFile: 'Change file',
       clear: 'Show all tools',
       matchCount: '{n} tools fit',
@@ -719,7 +708,6 @@ export const translations: Record<string, Translation> = {
       fixed: 'Fixed',
       olderVersions: 'Older versions, all the way back to the first, are in the project’s changelog on GitHub.',
     },
-    allCategories: 'All categories',
     installApp: 'Install app',
     close: 'Close',
     iosStep1: 'Tap the Share button at the bottom of Safari.',
@@ -971,8 +959,6 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Herramientas',
     tagline: 'ByteBox son herramientas gratuitas para crear con imágenes, audio, vídeo, texto y juegos. Todo se ejecuta en tu propio dispositivo. Lo que trabajas nunca sale de tu ordenador y ByteBox no envía nada a ninguna parte. Sin cuenta, sin seguimiento.',
     newBadge: 'Nuevo',
-    categoriesHeading: 'Categorías',
-    showAll: 'Mostrar todas las herramientas',
     common: {
       imageLoadError: 'No se pudo leer el archivo de imagen. Puede estar dañado o en un formato que el navegador no admite.',
       fileTooLarge: 'El archivo es demasiado grande ({storlek}). ByteBox trabaja en la memoria del navegador, por eso el límite aquí es {max}. Prueba con un archivo más pequeño.',
@@ -986,7 +972,6 @@ export const translations: Record<string, Translation> = {
       back: 'Volver a las herramientas',
     },
     menu: 'Menú',
-    devicePrompt: '¿Qué puedes hacer en tu dispositivo?',
     home: {
       heading: '¿Qué quieres hacer?',
       lead: 'Aquí están todas las herramientas. Cada una hace una cosa.',
@@ -995,7 +980,7 @@ export const translations: Record<string, Translation> = {
       privacy: 'El archivo no se abre ni se envía a ningún sitio. ByteBox solo mira qué tipo de archivo es.',
       orPick: 'Mostrar solo lo que funciona con:',
       youHave: 'Tienes',
-      unknownFile: 'ByteBox no reconoce este archivo. Elige qué es aquí abajo o busca una herramienta.',
+      unknownFile: 'ByteBox no reconoce este archivo. Elige qué es aquí arriba o busca una herramienta.',
       changeFile: 'Cambiar archivo',
       clear: 'Mostrar todas las herramientas',
       matchCount: '{n} herramientas sirven',
@@ -1046,7 +1031,6 @@ export const translations: Record<string, Translation> = {
       fixed: 'Corregido',
       olderVersions: 'Las versiones anteriores, hasta la primera, están en el changelog del proyecto en GitHub.',
     },
-    allCategories: 'Todas las categorías',
     installApp: 'Instalar app',
     close: 'Cerrar',
     iosStep1: 'Toca el botón Compartir en la parte inferior de Safari.',
@@ -1298,8 +1282,6 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Outils',
     tagline: 'ByteBox, ce sont des outils gratuits pour créer avec des images, du son, de la vidéo, du texte et des jeux. Tout fonctionne sur votre propre appareil. Ce sur quoi vous travaillez ne quitte jamais votre ordinateur, et ByteBox n’envoie rien nulle part. Sans compte, sans suivi.',
     newBadge: 'Nouveau',
-    categoriesHeading: 'Catégories',
-    showAll: 'Afficher tous les outils',
     common: {
       imageLoadError: 'Impossible de lire le fichier image. Il est peut-être endommagé ou dans un format non pris en charge par le navigateur.',
       fileTooLarge: 'Le fichier est trop volumineux ({storlek}). ByteBox travaille dans la mémoire du navigateur, la limite ici est donc {max}. Essayez un fichier plus petit.',
@@ -1313,7 +1295,6 @@ export const translations: Record<string, Translation> = {
       back: 'Retour aux outils',
     },
     menu: 'Menu',
-    devicePrompt: 'Que pouvez-vous faire sur votre appareil ?',
     home: {
       heading: 'Qu\'est-ce que tu veux faire ?',
       lead: 'Voici tous les outils. Chacun fait une chose.',
@@ -1322,7 +1303,7 @@ export const translations: Record<string, Translation> = {
       privacy: 'Le fichier n\'est pas ouvert et n\'est envoyé nulle part. ByteBox regarde seulement quel type de fichier c\'est.',
       orPick: 'Afficher seulement ce qui marche avec :',
       youHave: 'Tu as',
-      unknownFile: 'ByteBox ne reconnaît pas ce fichier. Choisis ce que c’est ci-dessous, ou cherche un outil.',
+      unknownFile: 'ByteBox ne reconnaît pas ce fichier. Choisis ce que c’est ci-dessus, ou cherche un outil.',
       changeFile: 'Changer de fichier',
       clear: 'Afficher tous les outils',
       matchCount: '{n} outils conviennent',
@@ -1373,7 +1354,6 @@ export const translations: Record<string, Translation> = {
       fixed: 'Corrigé',
       olderVersions: 'Les versions plus anciennes, jusqu’à la toute première, se trouvent dans le changelog du projet sur GitHub.',
     },
-    allCategories: 'Toutes les catégories',
     installApp: 'Installer l\'app',
     close: 'Fermer',
     iosStep1: 'Touchez le bouton Partager en bas de Safari.',
@@ -1625,8 +1605,6 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Werkzeuge',
     tagline: 'ByteBox sind kostenlose Werkzeuge zum Gestalten mit Bild, Ton, Video, Text und Spielen. Alles läuft auf Ihrem eigenen Gerät. Woran Sie arbeiten, verlässt Ihren Computer nie, und ByteBox sendet nichts irgendwohin. Kein Konto, kein Tracking.',
     newBadge: 'Neu',
-    categoriesHeading: 'Kategorien',
-    showAll: 'Alle Werkzeuge anzeigen',
     common: {
       imageLoadError: 'Die Bilddatei konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder in einem Format, das der Browser nicht unterstützt.',
       fileTooLarge: 'Die Datei ist zu groß ({storlek}). ByteBox arbeitet im Speicher des Browsers, deshalb liegt die Grenze hier bei {max}. Versuchen Sie eine kleinere Datei.',
@@ -1640,7 +1618,6 @@ export const translations: Record<string, Translation> = {
       back: 'Zurück zu den Werkzeugen',
     },
     menu: 'Menü',
-    devicePrompt: 'Was kannst du auf deinem Gerät machen?',
     home: {
       heading: 'Was willst du machen?',
       lead: 'Hier sind alle Werkzeuge. Jedes macht eine Sache.',
@@ -1649,7 +1626,7 @@ export const translations: Record<string, Translation> = {
       privacy: 'Die Datei wird nicht geöffnet und nirgendwohin geschickt. ByteBox schaut nur, welche Art Datei es ist.',
       orPick: 'Nur zeigen, was funktioniert mit:',
       youHave: 'Du hast',
-      unknownFile: 'ByteBox kennt diese Datei nicht. Wähle unten, was sie ist, oder suche nach einem Werkzeug.',
+      unknownFile: 'ByteBox kennt diese Datei nicht. Wähle oben, was sie ist, oder suche nach einem Werkzeug.',
       changeFile: 'Datei wechseln',
       clear: 'Alle Werkzeuge zeigen',
       matchCount: '{n} Werkzeuge passen',
@@ -1700,7 +1677,6 @@ export const translations: Record<string, Translation> = {
       fixed: 'Behoben',
       olderVersions: 'Ältere Versionen, bis zur ersten zurück, stehen im Changelog des Projekts auf GitHub.',
     },
-    allCategories: 'Alle Kategorien',
     installApp: 'App installieren',
     close: 'Schließen',
     iosStep1: 'Tippen Sie unten in Safari auf die Teilen-Schaltfläche.',
@@ -1952,8 +1928,6 @@ export const translations: Record<string, Translation> = {
     toolsHeading: 'Ferramentas',
     tagline: 'O ByteBox são ferramentas gratuitas para criar com imagem, som, vídeo, texto e jogos. Tudo corre no seu próprio dispositivo. Aquilo em que trabalha nunca sai do computador e o ByteBox não envia nada para lado nenhum. Sem conta, sem rastreamento.',
     newBadge: 'Novo',
-    categoriesHeading: 'Categorias',
-    showAll: 'Mostrar todas as ferramentas',
     common: {
       imageLoadError: 'Não foi possível ler o ficheiro de imagem. Pode estar danificado ou num formato que o navegador não suporta.',
       fileTooLarge: 'O ficheiro é demasiado grande ({storlek}). O ByteBox trabalha na memória do navegador, por isso o limite aqui é {max}. Experimente um ficheiro mais pequeno.',
@@ -1967,7 +1941,6 @@ export const translations: Record<string, Translation> = {
       back: 'Voltar às ferramentas',
     },
     menu: 'Menu',
-    devicePrompt: 'O que pode fazer no seu dispositivo?',
     home: {
       heading: 'O que você quer fazer?',
       lead: 'Aqui estão todas as ferramentas. Cada uma faz uma coisa.',
@@ -1976,7 +1949,7 @@ export const translations: Record<string, Translation> = {
       privacy: 'O arquivo não é aberto nem enviado para lugar nenhum. O ByteBox só olha que tipo de arquivo é.',
       orPick: 'Mostrar só o que funciona com:',
       youHave: 'Você tem',
-      unknownFile: 'O ByteBox não reconhece este arquivo. Escolha o que ele é aqui embaixo ou procure uma ferramenta.',
+      unknownFile: 'O ByteBox não reconhece este arquivo. Escolha o que ele é aqui em cima ou procure uma ferramenta.',
       changeFile: 'Trocar arquivo',
       clear: 'Mostrar todas as ferramentas',
       matchCount: '{n} ferramentas servem',
@@ -2027,7 +2000,6 @@ export const translations: Record<string, Translation> = {
       fixed: 'Corrigido',
       olderVersions: 'As versões mais antigas, até à primeira, estão no changelog do projeto no GitHub.',
     },
-    allCategories: 'Todas as categorias',
     installApp: 'Instalar app',
     close: 'Fechar',
     iosStep1: 'Toque no botão Partilhar na parte inferior do Safari.',

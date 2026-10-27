@@ -82,6 +82,9 @@ testerna håller fast vid.
   i `CHANGELOG.md` och journalen i `src/data/changelog.ts`, på alla sex språk.
   `src/data/changelog.test.ts` fäller om någon av dem glöms.
 - **Node-versionen står i `.nvmrc`**, och CI läser samma fil.
+- **Paket får inte köra kod vid installation** (`ignore-scripts=true` i
+  `.npmrc`). Inget beroende behöver det, och det stänger en vanlig väg för
+  skadlig kod i npm-paket.
 
 ## Licens
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Github } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
+import GithubIcon from '../components/GithubIcon'
 import { useLanguage } from '../context/LanguageContext'
 import { tools } from '../data/tools'
 
@@ -111,7 +112,7 @@ export default function UnderTheHood() {
           rel="noopener noreferrer"
           className="mt-4 inline-flex min-h-9 items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white no-underline transition-colors hover:bg-blue-700 hc:bg-white hc:text-black"
         >
-          <Github className="h-4 w-4" />
+          <GithubIcon className="h-4 w-4" />
           {u?.codeLink ?? 'Läs koden på GitHub'}
         </a>
       </section>

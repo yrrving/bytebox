@@ -2,8 +2,11 @@
   "name": "bytebox",
   "private": true,
   "license": "MIT",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/skydda-inbaddade.mjs && node scripts/prerender.mjs",

@@ -32,8 +32,8 @@ statistik om vad du gör här.
 **Går att installera.** ByteBox kan läggas till på hemskärmen och fungerar sedan
 utan uppkoppling.
 
-Några få verktyg behöver internet för att fungera alls. De säger det tydligt
-innan du använder dem, och berättar exakt vad som skickas och vart.
+ByteBox gör inga nätverksanrop. Även text till tal använder bara röster som
+finns på din enhet.
 
 ## Vad som finns
 
@@ -58,10 +58,30 @@ Byggt med React, TypeScript, Vite och Tailwind CSS.
 ### Krav på nya verktyg
 
 Ett verktyg som läggs till ska gå att förstå utan förkunskaper, fungera med
-skärmläsare och tangentbord, och helst inte behöva någon extern tjänst. Behöver
-det en, ska det stå klart för användaren vad som skickas.
+skärmläsare och tangentbord, och klara sig helt utan nätverk.
 
 Tillgänglighet granskas automatiskt mot WCAG 2.2 AA i `npm run e2e`.
+
+### Medvetna val
+
+Saker som kan se ut att saknas men är valda bort med flit, och sådant som
+testerna håller fast vid.
+
+- **Inga nätverksanrop.** `connect-src` i `index.html` har ingen extern domän,
+  och `e2e/no-external-requests.spec.ts` fäller bygget om en sida eller ett
+  fetch-anrop i koden når en annan server.
+- **De inbäddade apparna har en egen CSP.** TrainCells och PadGrid körs i
+  iframes, och en iframe följer sin egen policy, inte sidans runt omkring.
+  `scripts/skydda-inbaddade.mjs` lägger in den i varje bygge.
+- **`'unsafe-eval'` i huvudsidans CSP.** heic2any och pdf.js kräver det. Det
+  gäller bara huvudsidan; apparna klarar sig utan.
+- **Ingen SRI.** Det finns inga skript från andra servrar att låsa.
+- **Ingen PWA-plugin.** Service workern är en liten handskriven fil,
+  `public/sw.js`, utan beroenden.
+- **En release är tre filer som följs åt:** versionen i `package.json`, posten
+  i `CHANGELOG.md` och journalen i `src/data/changelog.ts`, på alla sex språk.
+  `src/data/changelog.test.ts` fäller om någon av dem glöms.
+- **Node-versionen står i `.nvmrc`**, och CI läser samma fil.
 
 ## Licens
 

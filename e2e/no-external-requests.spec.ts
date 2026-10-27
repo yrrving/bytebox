@@ -12,9 +12,9 @@ import { allRoutes } from './routes'
  * togs bort i 0.30.0, och det här testet ser till att beroendet inte kryper
  * tillbaka.
  *
- * Text till tal är undantaget: webbläsarens SpeechSynthesis kan skicka text
- * till en molnröst, men det går inte via sidans egna anrop och syns inte här.
- * Verktyget förklarar det själv.
+ * Text till tal syns inte här: webbläsarens SpeechSynthesis går inte via
+ * sidans egna anrop. Verktyget visar därför bara röster med localService, så
+ * att texten aldrig lämnar enheten.
  */
 
 /** Hostar som hör till appen själv. Allt annat är ett externt anrop. */

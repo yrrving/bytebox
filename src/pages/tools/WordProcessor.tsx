@@ -15,6 +15,7 @@ import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
 const STORAGE_KEY = 'bytebox-wordprocessor'
+const EDITOR_CLASS = 'prose prose-sm dark:prose-invert max-w-none focus:outline-none min-h-[24rem] px-4 py-3'
 
 const HEADING_LEVEL: Record<number, (typeof HeadingLevel)[keyof typeof HeadingLevel]> = {
   1: HeadingLevel.HEADING_1,
@@ -135,10 +136,18 @@ export default function WordProcessor() {
     })(),
     editorProps: {
       attributes: {
-        class: 'prose prose-sm dark:prose-invert max-w-none focus:outline-none min-h-[24rem] px-4 py-3',
+        class: EDITOR_CLASS,
       },
     },
   })
+
+  // Tiptap marks the editor as a textbox, so it needs a name that follows the language.
+  useEffect(() => {
+    if (!editor) return
+    editor.setOptions({
+      editorProps: { attributes: { class: EDITOR_CLASS, 'aria-label': translation?.name ?? 'Skriva dokument' } },
+    })
+  }, [editor, translation?.name])
 
   // Debounced autosave of the editor's JSON document.
   useEffect(() => {

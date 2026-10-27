@@ -5,6 +5,19 @@ protokollet och innehåller varje version sedan den första. Journalen inne i
 ByteBox visar 1.0.0 och framåt, eftersom besökaren oftast vill veta vad som
 hänt den senaste tiden.
 
+## 1.5.1 (2026-10-27). Skärmläsare hittar skrivytan i Skriva dokument
+
+### Fixat
+
+- **Skrivytan i Skriva dokument hade inget namn.** Efter en uppdatering av textredigeraren läste skärmläsare upp ytan bara som "textfält", utan att säga vad den var till för. Nu heter den "Skriva dokument", på det språk du valt. Den automatiska tillgänglighetsgranskningen hittade felet innan det nådde sidan.
+
+### Ändrat
+
+- **Uppdaterade beroenden.** Alla paket är uppdaterade inom sina versioner. Sårbarheterna i utvecklingsverktygen gick från sju till två, och de två som är kvar finns bara i bygget, inte på sidan. Sidan själv har fortfarande inga kända sårbarheter.
+- **Bygget kör Node 22 i stället för Node 20,** som inte längre får säkerhetsuppdateringar. Versionen står i `.nvmrc`, så att datorn och bygget på GitHub alltid kör samma. GitHub Actions är uppdaterade till sina aktuella versioner.
+- **Nya tester.** Bygget stoppas om versionen, CHANGELOG och journalen inte följs åt, eller om en journalpost saknar något av de sex språken. Ett nytt test vakar också över storleksgränsen för bilder, som förut kunde försvinna utan att något test märkte det.
+- **README beskriver de medvetna valen** i bygget, och säger inte längre att några verktyg behöver internet. Det har inte stämt sedan 0.30.0.
+
 ## 1.5.0 (2026-10-15). Startsidan visar alla verktyg direkt
 
 ### Ändrat

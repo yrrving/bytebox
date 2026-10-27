@@ -10,6 +10,42 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.5.1',
+    date: '2026-10-27',
+    title: {
+      sv: 'Skärmläsare hittar skrivytan i Skriva dokument',
+      en: 'Screen readers can find the writing area in Write documents',
+      es: 'Los lectores de pantalla encuentran el área de escritura en Escribir documentos',
+      fr: 'Les lecteurs d’écran trouvent la zone d’écriture dans Écrire des documents',
+      de: 'Screenreader finden die Schreibfläche in Dokumente schreiben',
+      pt: 'Os leitores de tela encontram a área de escrita em Escrever documentos',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Skrivytan i Skriva dokument hade inget namn. Efter en uppdatering läste skärmläsare upp den bara som "textfält", utan att säga vad den var till för. Nu heter den "Skriva dokument", på det språk du valt.',
+          en: 'The writing area in Write documents had no name. After an update, screen readers announced it only as "text field", without saying what it was for. Now it is called "Write documents", in the language you have chosen.',
+          es: 'El área de escritura de Escribir documentos no tenía nombre. Tras una actualización, los lectores de pantalla la anunciaban solo como "campo de texto", sin decir para qué servía. Ahora se llama "Escribir documentos", en el idioma que hayas elegido.',
+          fr: 'La zone d’écriture d’Écrire des documents n’avait pas de nom. Après une mise à jour, les lecteurs d’écran l’annonçaient seulement comme « champ de texte », sans dire à quoi elle servait. Elle s’appelle maintenant « Écrire des documents », dans la langue que tu as choisie.',
+          de: 'Die Schreibfläche in Dokumente schreiben hatte keinen Namen. Nach einem Update haben Screenreader sie nur als „Textfeld“ angesagt, ohne zu sagen, wofür sie da ist. Jetzt heißt sie „Dokumente schreiben“, in der Sprache, die du gewählt hast.',
+          pt: 'A área de escrita de Escrever documentos não tinha nome. Depois de uma atualização, os leitores de tela a anunciavam só como "campo de texto", sem dizer para que servia. Agora ela se chama "Escrever documentos", no idioma que você escolheu.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Underhåll bakom kulisserna: uppdaterade beroenden, en nyare Node-version i bygget och nya tester som stoppar bygget om journalen saknar ett språk eller om storleksgränsen för bilder försvinner.',
+          en: 'Maintenance behind the scenes: updated dependencies, a newer Node version for the build, and new tests that stop the build if the journal is missing a language or if the size limit for images disappears.',
+          es: 'Mantenimiento interno: dependencias actualizadas, una versión más reciente de Node en la compilación y pruebas nuevas que detienen la compilación si al diario le falta un idioma o si desaparece el límite de tamaño de las imágenes.',
+          fr: 'Maintenance en coulisses : dépendances mises à jour, une version plus récente de Node pour la compilation, et de nouveaux tests qui arrêtent la compilation s’il manque une langue dans le journal ou si la limite de taille des images disparaît.',
+          de: 'Wartung im Hintergrund: aktualisierte Abhängigkeiten, eine neuere Node-Version im Build und neue Tests, die den Build stoppen, wenn im Journal eine Sprache fehlt oder die Größengrenze für Bilder verschwindet.',
+          pt: 'Manutenção nos bastidores: dependências atualizadas, uma versão mais nova do Node na compilação e testes novos que interrompem a compilação se faltar um idioma no diário ou se o limite de tamanho das imagens desaparecer.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.5.0',
     date: '2026-10-15',
     title: {

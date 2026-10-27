@@ -60,6 +60,10 @@ Byggt med React, TypeScript, Vite och Tailwind CSS.
 Ett verktyg som läggs till ska gå att förstå utan förkunskaper, fungera med
 skärmläsare och tangentbord, och klara sig helt utan nätverk.
 
+Varje verktyg hänger på startsidan med en egen bild, ritad i
+`src/data/pictograms.tsx`. Ett nytt verktyg behöver en där, annars fäller
+`src/data/pictograms.test.ts` bygget.
+
 Tillgänglighet granskas automatiskt mot WCAG 2.2 AA i `npm run e2e`.
 
 ### Medvetna val
@@ -81,6 +85,9 @@ testerna håller fast vid.
 - **En release är tre filer som följs åt:** versionen i `package.json`, posten
   i `CHANGELOG.md` och journalen i `src/data/changelog.ts`, på alla sex språk.
   `src/data/changelog.test.ts` fäller om någon av dem glöms.
+- **Egna verktygsbilder i stället för ett ikonpaket.** De är fyllda och
+  kraftiga för att synas som föremål på väggen. Lucide finns kvar för små
+  knappikoner.
 - **Node-versionen står i `.nvmrc`**, och CI läser samma fil.
 - **Paket får inte köra kod vid installation** (`ignore-scripts=true` i
   `.npmrc`). Inget beroende behöver det, och det stänger en vanlig väg för

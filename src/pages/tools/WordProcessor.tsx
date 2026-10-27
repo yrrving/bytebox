@@ -11,6 +11,7 @@ import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough, Heading1, Heading2, Heading3,
   List, ListOrdered, Quote, Link2, Undo2, Redo2, Printer, FileDown, Trash2, AlertTriangle,
 } from 'lucide-react'
+import ToolHeader from '../../components/ToolHeader'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 
@@ -224,11 +225,7 @@ export default function WordProcessor() {
       </div>
 
       <div className="print:hidden">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
+        <ToolHeader id="ordbehandlare" />
       </div>
 
       <div className="flex items-start gap-2.5 rounded-lg border border-amber-300 dark:border-amber-700/60 hc:border-white bg-amber-50 dark:bg-amber-900/20 hc:bg-black p-3 text-sm text-amber-800 dark:text-amber-200 hc:text-white">

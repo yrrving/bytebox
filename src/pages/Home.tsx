@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { Search, Upload, X } from 'lucide-react'
-import ToolRow from '../components/ToolRow'
+import ToolTile from '../components/ToolTile'
 import { tools, categoryOrder, runsOn, acceptsAny, type ToolCategory, type MinScreen } from '../data/tools'
 import { fileKinds, type FileKind } from '../utils/filsort'
 import { useLanguage } from '../context/LanguageContext'
@@ -67,8 +67,8 @@ export default function Home() {
   }
 
   return (
-    <div>
-      {/* ── Filytan på hålplattan ── */}
+    <div className="pt-4 sm:pt-8">
+      {/* ── Rubriken och "jag har en ..." ── */}
       <section
         aria-labelledby="home-heading"
         onDragOver={(e) => {
@@ -83,23 +83,25 @@ export default function Home() {
           setDragging(false)
           takeFile(e.dataTransfer.files[0])
         }}
-        className="pegboard -mx-4 px-4 py-8 sm:mx-0 sm:rounded-2xl sm:px-10 sm:py-10 hc:border-2 hc:border-white"
+        className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14"
       >
-        <h1
-          id="home-heading"
-          className="max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight text-gray-900 sm:text-5xl dark:text-white"
-        >
-          {h?.heading ?? 'Vad har du med dig?'}
-        </h1>
-        <p className="mt-3 max-w-xl text-lg leading-snug text-gray-700 dark:text-blue-100 hc:text-white">
-          {h?.lead}
-        </p>
+        <div>
+          <h1
+            id="home-heading"
+            className="text-5xl font-bold leading-[0.95] tracking-[-0.035em] text-gray-900 sm:text-7xl lg:text-8xl dark:text-white"
+          >
+            {h?.heading ?? 'Vad vill du göra?'}
+          </h1>
+          <p className="mt-5 max-w-[30ch] text-xl leading-snug text-gray-800 sm:text-2xl dark:text-gray-100 hc:text-white">
+            {h?.lead}
+          </p>
+        </div>
 
-        <div className="mt-8">
-          <p id="pick-label" className="text-base font-bold text-gray-900 dark:text-white">
+        <div>
+          <p id="pick-label" className="text-lg font-bold text-gray-900 dark:text-white">
             {h?.orPick}
           </p>
-          <div role="group" aria-labelledby="pick-label" className="mt-3 flex flex-wrap gap-2">
+          <div role="group" aria-labelledby="pick-label" className="mt-3 flex flex-wrap gap-2.5">
             {pickOrder.map((pick) => {
               // En släppt fil tänder sin sort, så man ser vad ByteBox läste ut.
               const pressed =
@@ -113,10 +115,10 @@ export default function Home() {
                     setHave(pressed ? null : { from: 'pick', pick })
                     if (inputRef.current) inputRef.current.value = ''
                   }}
-                  className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+                  className={`min-h-11 rounded-lg border-2 px-4 text-base font-bold transition-colors ${
                     pressed
-                      ? 'border-blue-700 bg-blue-700 font-bold text-white dark:border-blue-300 dark:bg-blue-300 dark:text-gray-950 hc:border-yellow-400 hc:bg-yellow-400 hc:text-black'
-                      : 'border-gray-400 bg-white text-gray-800 hover:border-blue-600 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 dark:hover:border-blue-300 hc:border-white hc:bg-black hc:text-white'
+                      ? 'border-gray-900 bg-gray-900 text-white dark:border-white dark:bg-white dark:text-gray-950 hc:border-yellow-400 hc:bg-yellow-400 hc:text-black'
+                      : 'border-gray-900 bg-[var(--board)] text-gray-900 hover:bg-[var(--paint)] dark:border-gray-100 dark:text-white hc:border-white hc:hover:bg-black hc:hover:text-yellow-400'
                   }`}
                 >
                   {kindLabel(pick)}
@@ -124,20 +126,20 @@ export default function Home() {
               )
             })}
           </div>
-          <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-700 dark:text-blue-100 hc:text-white">
+          <p className="mt-4 text-base leading-relaxed text-gray-800 dark:text-gray-100 hc:text-white">
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className={`inline-flex items-center gap-1.5 rounded-md border border-dashed px-2.5 py-1 font-bold transition-colors ${
+              className={`py-1 font-bold underline decoration-2 underline-offset-4 ${
                 dragging
-                  ? 'border-blue-600 bg-white text-blue-700 dark:border-blue-300 dark:bg-gray-900 dark:text-blue-200 hc:border-yellow-400 hc:text-yellow-400'
-                  : 'border-gray-500 text-gray-900 hover:border-blue-600 dark:border-blue-300/60 dark:text-white hc:border-white hc:text-white'
+                  ? 'text-blue-700 dark:text-blue-300 hc:text-yellow-400'
+                  : 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-300 hc:text-white hc:hover:text-yellow-400'
               }`}
             >
-              <Upload className="h-4 w-4" aria-hidden="true" />
+              <Upload className="mr-1.5 inline h-5 w-5 align-[-0.2em]" aria-hidden="true" />
               {h?.chooseFile}
             </button>
-            <span>{h?.dragHint}.</span>
+            , {h?.dragHint}.
           </p>
           <input
             ref={inputRef}
@@ -150,16 +152,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Det ByteBox lovar, en gång, lugnt */}
-      {t.tagline && (
-        <p className="mt-6 max-w-2xl text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">{t.tagline}</p>
-      )}
-
       {/* ── Sök och enhet ── */}
-      <div className="mt-8 flex flex-col gap-3 border-b border-gray-200 pb-4 dark:border-gray-700 hc:border-white md:flex-row md:items-center">
-        <div className="relative flex-1">
+      <div className="mt-14 flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
+        <div className="relative w-full md:max-w-md">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-600 dark:text-gray-300 hc:text-white"
+            className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-700 dark:text-gray-200 hc:text-white"
             aria-hidden="true"
           />
           <input
@@ -168,11 +165,11 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t.searchPlaceholder}
             aria-label={t.searchPlaceholder}
-            className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 hc:border-white hc:bg-black hc:text-white hc:placeholder-gray-300"
+            className="min-h-12 w-full rounded-lg border-2 border-gray-900 bg-white py-2 pl-12 pr-4 text-base text-gray-900 placeholder-gray-600 outline-none focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-gray-100 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-300 dark:focus-visible:outline-blue-300 hc:border-white hc:bg-black hc:text-white hc:placeholder-gray-300 hc:focus-visible:outline-yellow-400"
           />
         </div>
-        <div role="group" aria-label={h?.worksOn} className="flex flex-wrap items-center gap-1 text-sm">
-          <span className="mr-1 text-gray-600 dark:text-gray-300 hc:text-gray-200" aria-hidden="true">
+        <div role="group" aria-label={h?.worksOn} className="flex flex-wrap items-center gap-1 text-base">
+          <span className="mr-2 text-gray-700 dark:text-gray-200 hc:text-gray-200" aria-hidden="true">
             {h?.worksOn}
           </span>
           {[null, ...deviceOrder].map((d) => {
@@ -183,10 +180,10 @@ export default function Home() {
                 type="button"
                 aria-pressed={pressed}
                 onClick={() => setDevice(d)}
-                className={`rounded-md px-3 py-1.5 transition-colors ${
+                className={`min-h-11 border-b-[3px] px-2.5 transition-colors ${
                   pressed
-                    ? 'bg-gray-900 font-bold text-white dark:bg-white dark:text-gray-900 hc:bg-yellow-400 hc:text-black'
-                    : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800 hc:text-white hc:underline'
+                    ? 'border-blue-600 font-bold text-gray-900 dark:border-blue-300 dark:text-white hc:border-yellow-400 hc:text-yellow-400'
+                    : 'border-transparent text-gray-800 hover:border-gray-400 dark:text-gray-100 dark:hover:border-gray-500 hc:text-white hc:underline'
                 }`}
               >
                 {d ? (t.minScreenLabel?.[d] ?? d) : h?.allDevices}
@@ -196,12 +193,19 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Det ByteBox lovar, en gång, lugnt */}
+      {t.tagline && (
+        <p className="mt-6 max-w-[68ch] text-base leading-relaxed text-gray-700 dark:text-gray-200 hc:text-gray-200">
+          {t.tagline}
+        </p>
+      )}
+
       {/* ── Läget just nu, läses upp av skärmläsare ── */}
-      <div className="mt-4 flex min-h-8 flex-wrap items-center gap-3" aria-live="polite">
+      <div className="mt-6 flex min-h-11 flex-wrap items-center gap-3" aria-live="polite">
         {unknownFile ? (
-          <p className="text-sm text-gray-800 dark:text-gray-100 hc:text-white">{h?.unknownFile}</p>
+          <p className="text-base text-gray-900 dark:text-gray-100 hc:text-white">{h?.unknownFile}</p>
         ) : filtering ? (
-          <p className="text-sm font-bold text-gray-900 dark:text-white">
+          <p className="text-base font-bold text-gray-900 dark:text-white">
             {have?.from === 'file' && <span className="font-normal">{h?.youHave} {have.name}. </span>}
             {(h?.matchCount ?? '{n} verktyg passar').replace('{n}', String(matches.length))}
           </p>
@@ -210,16 +214,16 @@ export default function Home() {
           <button
             type="button"
             onClick={clearAll}
-            className="inline-flex items-center gap-1 text-sm text-blue-700 underline-offset-2 hover:underline dark:text-blue-300 hc:text-yellow-400"
+            className="inline-flex min-h-11 items-center gap-1 text-base font-bold text-blue-700 underline decoration-2 underline-offset-4 dark:text-blue-300 hc:text-yellow-400"
           >
-            <X className="h-4 w-4" aria-hidden="true" />
+            <X className="h-5 w-5" aria-hidden="true" />
             {h?.clear}
           </button>
         )}
       </div>
 
-      {/* ── Alla verktyg, i kategorier ── */}
-      <div className="mt-4 grid gap-x-12 gap-y-10 lg:grid-cols-2">
+      {/* ── Väggen: alla verktyg, kategori för kategori ── */}
+      <div className="mt-10 flex flex-col gap-20">
         {categoryOrder.map((cat) => {
           const catTools = matches.filter((tool) => tool.category === cat)
           if (catTools.length === 0) return null
@@ -227,16 +231,16 @@ export default function Home() {
             <section key={cat} aria-labelledby={`cat-${cat}`}>
               <h2
                 id={`cat-${cat}`}
-                className="mb-2 flex items-baseline gap-2 border-b-2 border-gray-900 pb-1 text-lg font-bold text-gray-900 dark:border-gray-100 dark:text-white hc:border-white"
+                className="mb-8 flex flex-wrap items-baseline gap-x-4 text-4xl font-bold leading-none tracking-[-0.025em] text-gray-900 sm:text-5xl dark:text-white"
               >
                 {categoryNames[cat]}
-                <span className="text-sm font-normal text-gray-500 dark:text-gray-400 hc:text-gray-200">
+                <span className="text-lg font-normal tracking-normal text-gray-700 dark:text-gray-200 hc:text-gray-200">
                   {catTools.length}
                 </span>
               </h2>
-              <div className="flex flex-col">
+              <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {catTools.map((tool) => (
-                  <ToolRow key={tool.route} tool={tool} />
+                  <ToolTile key={tool.route} tool={tool} />
                 ))}
               </div>
             </section>
@@ -245,7 +249,7 @@ export default function Home() {
       </div>
 
       {matches.length === 0 && !unknownFile && (
-        <p className="mt-8 text-gray-600 dark:text-gray-300 hc:text-gray-200">{t.emptyState}</p>
+        <p className="mt-8 text-lg text-gray-800 dark:text-gray-100 hc:text-gray-200">{t.emptyState}</p>
       )}
     </div>
   )

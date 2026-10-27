@@ -2,12 +2,12 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { Upload, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { parseEmbroidery, type EmbroideryData } from '../../utils/embroidery'
 
 
 export default function EmbroideryViewer() {
   const { t } = useLanguage()
-  const translation = t.tools['brodyrkortsvisare']
   const ev = t.embroideryViewer
 
   const fileRef = useRef<HTMLInputElement>(null)
@@ -106,13 +106,7 @@ export default function EmbroideryViewer() {
     <div className="mx-auto max-w-3xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="brodyrkortsvisare" />
 
       {/* Upload */}
       <div

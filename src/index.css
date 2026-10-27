@@ -66,31 +66,117 @@
   --color-blue-800: #184f6d;
   --color-blue-900: #134058;
   --color-blue-950: #0d2b3b;
+
+  /* Gråskalan har samma färgton som accenten, så att paneler och text hör
+     ihop med den blå väggen i stället för att se lånade ut. Ljusheten följer
+     Tailwinds egen skala, utom steg 500 som är ett snäpp mörkare: det är
+     vanligt som text och måste klara 4,5:1 även mot väggen, inte bara vitt. */
+  --color-gray-50: #f5f8fa;
+  --color-gray-100: #edf1f4;
+  --color-gray-200: #dde4e9;
+  --color-gray-300: #c6d1d8;
+  --color-gray-400: #94a5b0;
+  --color-gray-500: #586873;
+  --color-gray-600: #4b5b66;
+  --color-gray-700: #36444f;
+  --color-gray-800: #1c2c38;
+  --color-gray-900: #102230;
+  --color-gray-950: #06121b;
 }
 
 body {
-  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen;
+  @apply text-gray-900 dark:text-gray-100 min-h-screen;
+  background-color: var(--board);
   margin: 0;
   font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
 }
 
-/* Hålplattan bakom startsidans filyta, som väggen i en verkstad där verktygen
-   hänger. Det är sidans enda dekoration; resten av ByteBox ska vara lugnt.
-   Hålen är 4 px i ett 24 px-rutnät. I högkontrast försvinner mönstret helt. */
-.pegboard {
-  --peg-bg: #e3edf3;
-  --peg-hole: #b9cdd9;
-  background-color: var(--peg-bg);
-  background-image: radial-gradient(circle, var(--peg-hole) 2px, transparent 2.5px);
-  background-size: 24px 24px;
-  background-position: 12px 12px;
+/* Väggen. ByteBox är en skuggtavla, som väggen i en verkstad där varje verktyg
+   har sin målade kontur: man ser vad som finns och var det hänger.
+
+   --board  väggens färg, bakgrund på alla sidor
+   --hole   hålen i hålplattan, bara på startsidan (.wall-holes)
+   --paint  den målade konturen bakom varje verktyg
+   --cut    det som syns genom urskurna delar av en verktygsbild
+
+   Mörkt läge är en djup blå i accentens färgton, inte grått. I högkontrast
+   finns varken hål eller konturer: svart vägg, vita verktyg. */
+:root {
+  --board: #e8eef1;
+  --hole: #d3dde3;
+  --paint: #bcd9e8;
+  --cut: var(--board);
 }
-.dark .pegboard {
-  --peg-bg: #10324a;
-  --peg-hole: #071c2a;
+.dark {
+  --board: #0f2735;
+  --hole: #163647;
+  --paint: #1f5573;
 }
-.hc .pegboard {
-  background: #000;
+.hc {
+  --board: #000;
+}
+
+.wall {
+  background-color: var(--board);
+}
+.wall-holes {
+  background-image: radial-gradient(circle, var(--hole) 2.5px, transparent 3px);
+  background-size: 28px 28px;
+  background-position: 14px 14px;
+}
+.hc .wall-holes {
+  background-image: none;
+}
+
+/* Ett verktyg på sin plats: skuggan bakom och föremålet ovanpå, se
+   HangingTool i components/Pictogram.tsx. Skuggan är samma bild med en tjock
+   kontur, så den sticker ut runt föremålet som målarfärg på väggen. */
+.peg-slot {
+  position: relative;
+  display: block;
+  flex: none;
+}
+.peg-slot svg {
+  position: absolute;
+  inset: 12%;
+  width: 76%;
+  height: 76%;
+  overflow: visible;
+}
+.peg-sh {
+  --cut: var(--paint);
+  --line: 9px;
+  color: var(--paint);
+  fill: currentColor;
+  stroke: var(--paint);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+.peg-obj {
+  --line: 4px;
+  fill: currentColor;
+  transition: transform 0.2s cubic-bezier(0.3, 0.7, 0.4, 1.4);
+}
+.hc .peg-sh {
+  display: none;
+}
+
+/* Verktyget lyfts ur sin kontur när man pekar på det eller tabbar dit, och
+   på verktygets egen sida, där det redan är nedplockat. */
+.peg-tool:hover .peg-obj,
+.peg-tool:focus-visible .peg-obj,
+.peg-lifted .peg-obj {
+  transform: translate(-6%, -10%) rotate(-5deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .peg-obj {
+    transition: none;
+  }
+  .peg-tool:hover .peg-obj,
+  .peg-tool:focus-visible .peg-obj {
+    transform: none;
+    color: var(--color-blue-600);
+  }
 }
 
 /* High contrast: larger text, bolder, tighter layout */

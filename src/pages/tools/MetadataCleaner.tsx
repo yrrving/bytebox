@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Download, Loader2, ShieldCheck, MapPin, Calendar, Camera, Trash2 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 interface MetaSummary {
@@ -14,7 +15,6 @@ interface MetaSummary {
 export default function MetadataCleaner() {
   const { t } = useLanguage()
   const { createUrl } = useObjectUrls()
-  const translation = t.tools['metadata-tvatt']
   const m = t.metadataCleaner
 
   const [fileName, setFileName] = useState('')
@@ -90,13 +90,7 @@ export default function MetadataCleaner() {
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="metadata-tvatt" />
 
       <div className="flex items-start gap-2 rounded-lg border border-green-200 dark:border-green-900 hc:border-white bg-green-50 dark:bg-green-950/30 hc:bg-black p-3 text-sm text-green-800 dark:text-green-300 hc:text-white">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />

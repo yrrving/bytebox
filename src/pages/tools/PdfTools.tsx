@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import ErrorNotice from '../../components/ErrorNotice'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
@@ -85,7 +86,6 @@ const labelCls = 'mb-1 block text-xs text-gray-600 dark:text-gray-300 hc:text-gr
 
 export default function PdfTools() {
   const { t } = useLanguage()
-  const translation = t.tools['pdf-verktyg']
   const pt = t.pdfTools
 
   const [tab, setTab] = useState<Tab>('merge')
@@ -100,13 +100,7 @@ export default function PdfTools() {
     <div className="mx-auto max-w-4xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="pdf-verktyg" />
 
       <div className="flex items-start gap-2.5 rounded-xl border border-green-300 dark:border-green-800/60 hc:border-white bg-green-50 dark:bg-green-900/20 hc:bg-black p-4 text-sm text-green-800 dark:text-green-200 hc:text-white">
         <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0" />

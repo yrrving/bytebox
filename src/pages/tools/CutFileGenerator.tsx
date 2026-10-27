@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react
 import { Download, Square, Circle, Pencil, Undo2, Trash2, Upload, Hand } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { downloadBlob } from '../../utils/download'
 
 type Shape =
@@ -62,7 +63,6 @@ const hitTest = (pos: { x: number; y: number }, shape: Shape): boolean => {
 
 export default function CutFileGenerator() {
   const { t } = useLanguage()
-  const translation = t.tools['skarfilsgenerator']
   const ct = t.cutFileGenerator
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -408,13 +408,7 @@ ${shapeSvg}
     <div className="mx-auto max-w-3xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="skarfilsgenerator" />
 
       {/* Upload */}
       {!image && (

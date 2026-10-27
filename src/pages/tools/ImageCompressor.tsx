@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Upload, Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
@@ -13,7 +14,6 @@ function formatSize(bytes: number): string {
 export default function ImageCompressor() {
   const { t } = useLanguage()
   const { createUrl } = useObjectUrls()
-  const translation = t.tools['bildkomprimering']
   const ic = t.imageCompressor
 
   const fileRef = useRef<HTMLInputElement>(null)
@@ -85,13 +85,7 @@ export default function ImageCompressor() {
     <div className="mx-auto max-w-3xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="bildkomprimering" />
 
       {/* Upload */}
       <div

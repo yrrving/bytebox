@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 import { Upload, Download } from 'lucide-react'
-import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
@@ -91,9 +91,7 @@ function generateSvg(
 }
 
 export default function PngToSvg() {
-  const { t } = useLanguage()
   const { createUrl } = useObjectUrls()
-  const translation = t.tools['png-till-svg']
 
   const fileRef = useRef<HTMLInputElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -161,13 +159,7 @@ export default function PngToSvg() {
     <div className="mx-auto max-w-3xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="png-till-svg" />
 
       <canvas ref={canvasRef} className="hidden" />
 

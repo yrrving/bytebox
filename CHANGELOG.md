@@ -5,6 +5,18 @@ protokollet och innehåller varje version sedan den första. Journalen inne i
 ByteBox visar 1.0.0 och framåt, eftersom besökaren oftast vill veta vad som
 hänt den senaste tiden.
 
+## 1.6.0 (2026-10-27). Verktygen hänger på väggen
+
+### Ändrat
+
+- **ByteBox ser ut som en verktygsvägg.** I en verkstad har varje verktyg sin målade kontur på väggen, så att man ser vad som finns och var det hänger. Nu fungerar startsidan likadant: hela sidan är en hålplatta, och varje verktyg hänger i sin egen ljusblå kontur. Pekar du på ett verktyg, eller tabbar dit med tangentbordet, lyfts det ur konturen. Har du valt mindre rörelse i datorns inställningar byter verktyget färg i stället.
+- **Varje verktyg har en egen bild.** De tunna standardikonerna i likadana blå rutor är borta. I stället har alla 21 verktyg en egen, kraftig bild som är ritad för ByteBox.
+- **Större rubriker.** "Vad vill du göra?" och kategorinamnen är mycket större, och verktygen ligger i ett rutnät med plats för namnet, vad verktyget gör och var det funkar.
+- **Verktygssidorna börjar på samma sätt.** Överst står verktyget nedplockat ur sin kontur, bredvid ett stort namn. Då ser du direkt att du kommit rätt.
+- **Mörkt läge är djupblått** i samma ton som ByteBox blå färg, och de grå ytorna inne i verktygen har samma färgton. Ljust läge har en ljust gråblå vägg. Högkontrast är svart och vitt som förut, utan mönster och konturer.
+- **Sidhuvudet är lugnare.** Räknaren med antal verktyg är borta, och namnet stavas ByteBox, som i logotypen.
+- **Paket får inte köra kod när de installeras.** En rad i `.npmrc` stänger en vanlig väg för skadlig kod i npm-paket. ByteBox behöver inte det, så inget annat ändras.
+
 ## 1.5.1 (2026-10-27). Skärmläsare hittar skrivytan i Skriva dokument
 
 ### Fixat

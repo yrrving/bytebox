@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Download, Loader2, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 type OutFormat = 'image/jpeg' | 'image/png'
@@ -21,7 +22,6 @@ function formatBytes(bytes: number): string {
 export default function HeicConverter() {
   const { t } = useLanguage()
   const { createUrl } = useObjectUrls()
-  const translation = t.tools['heic-till-jpg']
   const h = t.heicConverter
 
   const [format, setFormat] = useState<OutFormat>('image/jpeg')
@@ -80,13 +80,7 @@ export default function HeicConverter() {
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="heic-till-jpg" />
 
       {/* Privacy note */}
       <div className="flex items-start gap-2 rounded-lg border border-green-200 dark:border-green-900 hc:border-white bg-green-50 dark:bg-green-950/30 hc:bg-black p-3 text-sm text-green-800 dark:text-green-300 hc:text-white">

@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef } from 'react'
 import { Download, Copy, Check, ShieldCheck, Upload, Clock } from 'lucide-react'
-import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 
 interface Cue {
   id: string
@@ -91,8 +91,6 @@ function serializeSrt(cues: Cue[]): string {
 }
 
 export default function SrtEditor() {
-  const { t } = useLanguage()
-  const translation = t.tools['srt-redigerare']
 
   const [cues, setCues] = useState<Cue[]>([])
   const [rawInput, setRawInput] = useState('')
@@ -182,13 +180,7 @@ export default function SrtEditor() {
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="srt-redigerare" />
 
       {/* Privacy note */}
       <div className="flex items-start gap-2 rounded-lg border border-green-200 dark:border-green-900 hc:border-white bg-green-50 dark:bg-green-950/30 hc:bg-black p-3 text-sm text-green-800 dark:text-green-300 hc:text-white">

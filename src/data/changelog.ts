@@ -10,6 +10,53 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.6.0',
+    date: '2026-10-27',
+    title: {
+      sv: 'Verktygen hänger på väggen',
+      en: 'The tools hang on the wall',
+      es: 'Las herramientas cuelgan de la pared',
+      fr: 'Les outils sont accrochés au mur',
+      de: 'Die Werkzeuge hängen an der Wand',
+      pt: 'As ferramentas ficam penduradas na parede',
+    },
+    changes: [
+      {
+        type: 'changed',
+        text: {
+          sv: 'ByteBox ser ut som en verktygsvägg. I en verkstad har varje verktyg sin målade kontur på väggen, så att man ser vad som finns och var det hänger. Nu hänger varje verktyg i ByteBox i sin egen kontur. Pekar du på ett verktyg, eller tabbar dit, lyfts det ur konturen.',
+          en: 'ByteBox looks like a tool wall. In a workshop every tool has its outline painted on the wall, so you can see what is there and where it hangs. Now every tool in ByteBox hangs in its own outline. Point at a tool, or tab to it, and it lifts out of the outline.',
+          es: 'ByteBox parece una pared de herramientas. En un taller, cada herramienta tiene su silueta pintada en la pared, así se ve qué hay y dónde va. Ahora cada herramienta de ByteBox cuelga en su propia silueta. Si señalas una herramienta, o llegas a ella con el tabulador, se levanta de la silueta.',
+          fr: 'ByteBox ressemble à un mur d’outils. Dans un atelier, chaque outil a sa silhouette peinte au mur, pour voir ce qu’il y a et où il se range. Maintenant chaque outil de ByteBox est accroché dans sa propre silhouette. Si tu pointes un outil, ou y arrives avec la touche Tab, il sort de sa silhouette.',
+          de: 'ByteBox sieht aus wie eine Werkzeugwand. In einer Werkstatt hat jedes Werkzeug seinen aufgemalten Umriss an der Wand, so sieht man, was da ist und wo es hingehört. Jetzt hängt jedes Werkzeug in ByteBox in seinem eigenen Umriss. Zeigst du auf ein Werkzeug oder springst mit der Tabulatortaste hin, hebt es sich aus dem Umriss.',
+          pt: 'O ByteBox parece uma parede de ferramentas. Numa oficina, cada ferramenta tem o seu contorno pintado na parede, para se ver o que existe e onde fica. Agora cada ferramenta do ByteBox fica pendurada no seu próprio contorno. Ao apontar para uma ferramenta, ou chegar a ela com a tecla Tab, ela sai do contorno.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Varje verktyg har en egen bild, ritad för ByteBox, i stället för små standardikoner. Rubrikerna är större, och varje verktygssida börjar med verktyget nedplockat bredvid sitt namn, så att du ser att du kommit rätt.',
+          en: 'Every tool has its own picture, drawn for ByteBox, instead of small standard icons. The headings are bigger, and every tool page starts with the tool taken down next to its name, so you can see you are in the right place.',
+          es: 'Cada herramienta tiene su propia imagen, dibujada para ByteBox, en lugar de pequeños iconos estándar. Los títulos son más grandes, y cada página de herramienta empieza con la herramienta descolgada junto a su nombre, para que veas que has llegado al sitio correcto.',
+          fr: 'Chaque outil a sa propre image, dessinée pour ByteBox, à la place de petites icônes standard. Les titres sont plus grands, et chaque page d’outil commence par l’outil décroché à côté de son nom, pour que tu voies que tu es au bon endroit.',
+          de: 'Jedes Werkzeug hat ein eigenes Bild, für ByteBox gezeichnet, statt kleiner Standardsymbole. Die Überschriften sind größer, und jede Werkzeugseite beginnt mit dem abgehängten Werkzeug neben seinem Namen, damit du siehst, dass du richtig bist.',
+          pt: 'Cada ferramenta tem a sua própria imagem, desenhada para o ByteBox, em vez de pequenos ícones padrão. Os títulos são maiores, e cada página de ferramenta começa com a ferramenta tirada da parede ao lado do nome, para você ver que chegou ao lugar certo.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Mörkt läge är djupblått i ByteBox egen färgton, och de grå ytorna inne i verktygen följer med. Högkontrast är svart och vitt som förut, utan mönster.',
+          en: 'Dark mode is a deep blue in ByteBox’s own colour, and the grey areas inside the tools follow along. High contrast is black and white as before, without patterns.',
+          es: 'El modo oscuro es un azul profundo en el color propio de ByteBox, y las zonas grises dentro de las herramientas lo siguen. El alto contraste es blanco y negro como antes, sin dibujos.',
+          fr: 'Le mode sombre est un bleu profond dans la couleur de ByteBox, et les zones grises dans les outils suivent. Le contraste élevé reste en noir et blanc, sans motif.',
+          de: 'Der dunkle Modus ist ein tiefes Blau in der eigenen Farbe von ByteBox, und die grauen Flächen in den Werkzeugen passen dazu. Hoher Kontrast ist wie bisher schwarz und weiß, ohne Muster.',
+          pt: 'O modo escuro é um azul profundo na cor do próprio ByteBox, e as áreas cinzentas dentro das ferramentas acompanham. O alto contraste continua preto e branco, sem padrões.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.5.1',
     date: '2026-10-27',
     title: {

@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import ErrorNotice from '../../components/ErrorNotice'
 import { loadImageFromFile } from '../../utils/image'
 import { filfelText } from '../../utils/filstorlek'
@@ -29,7 +30,6 @@ const RATIOS = [
 export default function ImageCropper() {
   const { t } = useLanguage()
   const [imageError, setImageError] = useState('')
-  const translation = t.tools['bildbeskärare']
   const ct = t.imageCropper
 
   const [image, setImage] = useState<HTMLImageElement | null>(null)
@@ -118,10 +118,7 @@ export default function ImageCropper() {
 
       <ErrorNotice message={imageError} />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-      </div>
+      <ToolHeader id="bildbeskärare" showHint={false} />
 
       <canvas ref={canvasRef} className="hidden" />
 

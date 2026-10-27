@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Maximize2, Minimize2, ExternalLink } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 
 // PadGrid är en fristående app (samma mönster som TrainCells) som byggs
 // separat och bäddas in via iframe. De statiska filerna ligger i
@@ -52,13 +53,8 @@ export default function Padgrid() {
         </div>
       </div>
 
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white hc:text-white">
-          {translation?.name}
-        </h1>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          {translation?.description}
-        </p>
+      <div className="mb-6">
+        <ToolHeader id="padgrid" showHint={false} />
       </div>
 
       <div

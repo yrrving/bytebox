@@ -36,17 +36,20 @@ function DeviceGate() {
 }
 
 export default function Layout() {
+  // Hålplattan syns bara på startsidan, där verktygen hänger. Inne i ett
+  // verktyg är väggen slät, så att inget stör det man arbetar med.
+  const onHome = useLocation().pathname === '/'
   return (
-    <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900 hc:bg-black">
+    <div className={`wall flex min-h-screen flex-col ${onHome ? 'wall-holes' : ''}`}>
       <div className="print:hidden">
         <Header />
       </div>
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 print:max-w-none print:p-0">
         <DeviceGate />
       </main>
-      <footer className="border-t border-gray-200 dark:border-gray-700 hc:border-white print:hidden">
+      <footer className="print:hidden hc:border-t hc:border-white">
         <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300 hc:text-white">
-          <span>Bytebox v{__APP_VERSION__}. By yrrving</span>
+          <span>ByteBox v{__APP_VERSION__}. By yrrving</span>
           <a
             href="https://github.com/yrrving/bytebox"
             target="_blank"

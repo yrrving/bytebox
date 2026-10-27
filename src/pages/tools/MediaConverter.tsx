@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Upload, Download, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 
@@ -69,7 +70,6 @@ function audioBufferToWav(buffer: AudioBuffer): ArrayBuffer {
 export default function MediaConverter() {
   const { t } = useLanguage()
   const { createUrl } = useObjectUrls()
-  const translation = t.tools['mediakonverterare']
 
   const fileRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
@@ -283,13 +283,7 @@ export default function MediaConverter() {
     <div className="mx-auto max-w-2xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="mediakonverterare" />
 
       {/* Upload */}
       <div

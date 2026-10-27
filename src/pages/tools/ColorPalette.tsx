@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Copy, Check, Plus, Trash2, Shuffle } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import ToolHeader from '../../components/ToolHeader'
 
 function randomColor(): string {
   return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
@@ -40,7 +41,6 @@ function luminance(hex: string): number {
 
 export default function ColorPalette() {
   const { t } = useLanguage()
-  const translation = t.tools['fargpalett']
   const cp = t.colorPalette
 
   const [colors, setColors] = useState<string[]>([
@@ -82,17 +82,7 @@ export default function ColorPalette() {
     <div className="mx-auto max-w-3xl space-y-6 py-10">
       <BackLink />
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-          {translation?.name}
-        </h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          {translation?.description}
-        </p>
-        {translation?.hint && (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200 italic">{translation.hint}</p>
-        )}
-      </div>
+      <ToolHeader id="fargpalett" />
 
       {/* Actions */}
       <div className="flex flex-wrap gap-2">

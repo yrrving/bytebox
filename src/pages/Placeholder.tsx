@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Construction } from 'lucide-react'
 import { tools } from '../data/tools'
 import { useLanguage } from '../context/LanguageContext'
+import { HangingTool } from '../components/Pictogram'
 
 export default function Placeholder() {
   const { slug } = useParams()
@@ -19,14 +20,11 @@ export default function Placeholder() {
     )
   }
 
-  const Icon = tool.icon
   const translation = t.tools[tool.id]
 
   return (
     <div className="flex flex-col items-center gap-6 py-20 text-center">
-      <div className="rounded-2xl bg-gray-50 dark:bg-gray-900 hc:bg-black hc:border-2 hc:border-white p-6">
-        <Icon className="h-12 w-12 text-blue-400 hc:text-white" />
-      </div>
+      <HangingTool id={tool.id} className="h-32 w-32 text-gray-900 dark:text-white hc:text-white" />
       <div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{translation?.name}</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300 hc:text-gray-200">{translation?.description}</p>

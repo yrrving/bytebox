@@ -228,7 +228,7 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
   const totalSize = files.reduce((sum, f) => sum + f.file.size, 0)
 
   return (
-    <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
+    <div className="space-y-4">
       {files.length > 0 && (
         <div className="space-y-2">
           {files.map((f, i) => (
@@ -478,7 +478,7 @@ function SignView() {
   }
 
   return (
-    <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
+    <div className="space-y-4">
       <Workbench
         kind="pdf"
         accept="application/pdf,.pdf"
@@ -488,8 +488,8 @@ function SignView() {
         }}
         preview={
           pdfBytes && (
-            <p className="pointer-events-none text-base text-gray-900 dark:text-white hc:text-white">
-              {`Vald fil: ${pdfName}.pdf (${pageCount} sidor)`}
+            <p className="pointer-events-none max-w-full truncate font-bold text-gray-900 dark:text-white hc:text-white">
+              {pdfName}.pdf
             </p>
           )
         }

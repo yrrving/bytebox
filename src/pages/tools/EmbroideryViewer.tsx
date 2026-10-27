@@ -111,9 +111,19 @@ export default function EmbroideryViewer() {
       <Workbench
         kind="embroidery"
         accept=".pes,.dst,.jef"
-        formats={ev?.formats ?? 'PES (Brother, Babylock, Bernina) · DST (Tajima, och de flesta industrimaskiner) · JEF (Janome, Elna)'}
+        formats="PES, DST, JEF"
         onFiles={([file]) => loadFile(file)}
       />
+
+      {/* Vilken maskin som använder vilket format. Översättningen håller de tre
+          formaten i en rad med · emellan; här blir de en lista, en per rad. */}
+      <ul className="space-y-1 text-base text-gray-800 dark:text-gray-100 hc:text-white">
+        {(ev?.formats ?? 'PES (Brother, Babylock, Bernina) · DST (Tajima och de flesta industrimaskiner) · JEF (Janome, Elna)')
+          .split(' · ')
+          .map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+      </ul>
 
       {error && (
         <div className="rounded-xl border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 text-sm text-red-700 dark:text-red-400">

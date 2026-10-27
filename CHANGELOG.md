@@ -5,6 +5,25 @@ protokollet och innehåller varje version sedan den första. Journalen inne i
 ByteBox visar 1.0.0 och framåt, eftersom besökaren oftast vill veta vad som
 hänt den senaste tiden.
 
+## 1.7.0 (2026-10-27). Verktygen syns direkt på mobilen
+
+### Nytt
+
+- **Arbetsbänken.** Där du lägger in din fil i ett verktyg finns nu en fast yta med ett svagt rutnät, som en skärmatta. Mitt på ytan sitter en tydlig knapp, till exempel "Välj en bild", och under den står vilka format som funkar. Du kan också dra filen dit. Den gamla streckade rutan är borta i 15 verktyg.
+
+### Ändrat
+
+- **Verktygen syns direkt på mobilen.** På en telefon kom det första verktyget långt ner, efter en och en halv skärm. Nu syns det på första skärmen. Knapparna för "Visa bara det som funkar med" ligger i en rad som du drar i sidled, och stycket om vad ByteBox lovar ligger efter verktygen. På större skärmar ser startsidan ut som förut.
+- **Väggen är enfärgad.** Prickarna från hålplattan är borta. De störde mer än de gav. Konturerna bakom verktygen är kvar.
+- **Skriva dokument öppnas snabbare.** Delen som gör Word-filer hämtas först när du trycker på "Ladda ner Word", inte när du öppnar verktyget.
+- **Underhåll bakom kulisserna.** Bygget kör Node 24, Vite 8 och ESLint 10, och ikonerna kommer från en ny version av ikonbiblioteket. Inget ser annorlunda ut.
+
+### Fixat
+
+- **Filrutorna gick inte att använda med tangentbord.** Nu nås knappen med Tab och öppnar filväljaren med Enter. Ett nytt test kollar att det fortsätter fungera.
+- **Fyra verktyg sa "dra hit" men tog inte emot filen.** Krymp en bild, Bild till vektor, Byt format på ljud och film och Brodyrmönster tar nu emot filer du drar dit.
+- **Skärmläsare får höra när en sida laddas.** Förut snurrade bara en ring utan att något lästes upp. Har du valt mindre rörelse står ringen still.
+
 ## 1.6.0 (2026-10-27). Verktygen hänger på väggen
 
 ### Ändrat

@@ -10,6 +10,64 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.7.0',
+    date: '2026-10-27',
+    title: {
+      sv: 'Verktygen syns direkt på mobilen',
+      en: 'The tools show up straight away on mobile',
+      es: 'Las herramientas se ven enseguida en el móvil',
+      fr: 'Les outils sont visibles tout de suite sur mobile',
+      de: 'Die Werkzeuge sind auf dem Handy sofort zu sehen',
+      pt: 'As ferramentas aparecem logo no celular',
+    },
+    changes: [
+      {
+        type: 'added',
+        text: {
+          sv: 'Arbetsbänken: där du lägger in din fil i ett verktyg finns nu en fast yta med ett svagt rutnät, en tydlig knapp som "Välj en bild" och en rad om vilka format som funkar. Du kan också dra filen dit.',
+          en: 'The workbench: where you put your file into a tool there is now a solid area with a faint grid, a clear button such as "Choose an image" and a line about which formats work. You can also drag the file there.',
+          es: 'El banco de trabajo: donde metes tu archivo en una herramienta hay ahora una zona fija con una cuadrícula suave, un botón claro como "Elige una imagen" y una línea con los formatos que funcionan. También puedes arrastrar el archivo allí.',
+          fr: 'L’établi : là où tu mets ton fichier dans un outil, il y a maintenant une zone fixe avec une grille légère, un bouton clair comme « Choisis une image » et une ligne qui dit quels formats marchent. Tu peux aussi y glisser le fichier.',
+          de: 'Die Werkbank: Wo du deine Datei in ein Werkzeug legst, gibt es jetzt eine feste Fläche mit einem feinen Raster, einen klaren Knopf wie „Wähle ein Bild“ und eine Zeile, welche Formate funktionieren. Du kannst die Datei auch dorthin ziehen.',
+          pt: 'A bancada: onde você coloca o arquivo numa ferramenta agora há uma área fixa com uma grade suave, um botão claro como "Escolha uma imagem" e uma linha com os formatos que funcionam. Você também pode arrastar o arquivo para lá.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'På en telefon syns det första verktyget nu på första skärmen. Filterknapparna ligger i en rad som du drar i sidled. Väggen är enfärgad, utan prickar.',
+          en: 'On a phone the first tool now shows on the first screen. The filter buttons sit in a row you swipe sideways. The wall is a single colour, without dots.',
+          es: 'En un teléfono, la primera herramienta se ve ahora en la primera pantalla. Los botones de filtro están en una fila que deslizas de lado. La pared es de un solo color, sin puntos.',
+          fr: 'Sur un téléphone, le premier outil apparaît maintenant dès le premier écran. Les boutons de filtre sont sur une ligne que tu fais glisser sur le côté. Le mur est d’une seule couleur, sans points.',
+          de: 'Auf dem Handy ist das erste Werkzeug jetzt auf dem ersten Bildschirm zu sehen. Die Filterknöpfe liegen in einer Reihe, die du zur Seite wischst. Die Wand ist einfarbig, ohne Punkte.',
+          pt: 'No celular, a primeira ferramenta agora aparece na primeira tela. Os botões de filtro ficam numa linha que você arrasta para o lado. A parede tem uma cor só, sem pontos.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Skriva dokument öppnas snabbare. Delen som gör Word-filer hämtas först när du trycker på "Ladda ner Word".',
+          en: 'Write documents opens faster. The part that makes Word files is only fetched when you press "Download Word".',
+          es: 'Escribir documentos se abre más rápido. La parte que crea archivos de Word solo se carga cuando pulsas el botón de descargar Word.',
+          fr: 'Écrire des documents s’ouvre plus vite. La partie qui crée les fichiers Word n’est chargée que quand tu appuies sur le bouton de téléchargement Word.',
+          de: 'Dokumente schreiben öffnet sich schneller. Der Teil, der Word-Dateien macht, wird erst geladen, wenn du auf den Knopf zum Herunterladen als Word drückst.',
+          pt: 'Escrever documentos abre mais rápido. A parte que cria arquivos do Word só é carregada quando você aperta o botão de baixar Word.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Filrutorna i verktygen går att använda med bara tangentbordet, och fyra verktyg som sa "dra hit" tar nu faktiskt emot filen. Skärmläsare får också höra när en sida laddas.',
+          en: 'The file areas in the tools now work with just the keyboard, and four tools that said "drag here" now actually take the file. Screen readers also hear when a page is loading.',
+          es: 'Las zonas de archivo de las herramientas ahora funcionan solo con el teclado, y cuatro herramientas que decían "arrastra aquí" ahora sí aceptan el archivo. Los lectores de pantalla también avisan cuando una página se está cargando.',
+          fr: 'Les zones de fichier des outils marchent maintenant avec le clavier seul, et quatre outils qui disaient « glisse ici » acceptent enfin le fichier. Les lecteurs d’écran annoncent aussi quand une page se charge.',
+          de: 'Die Dateiflächen in den Werkzeugen funktionieren jetzt nur mit der Tastatur, und vier Werkzeuge, auf denen „hierher ziehen“ stand, nehmen die Datei jetzt wirklich an. Screenreader sagen außerdem an, wenn eine Seite lädt.',
+          pt: 'As áreas de arquivo das ferramentas agora funcionam só com o teclado, e quatro ferramentas que diziam "arraste aqui" agora aceitam mesmo o arquivo. Os leitores de tela também avisam quando uma página está carregando.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.6.0',
     date: '2026-10-27',
     title: {

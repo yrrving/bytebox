@@ -54,7 +54,6 @@ function parsePes(buffer: ArrayBuffer): EmbroideryData | null {
   for (let i = 0; i < numColors; i++) {
     colorIndices.push(bytes[pos + i])
   }
-  pos += numColors
 
   // Skip to stitch data (look for 0x00 0x00 marker after color list, plus padding)
   // PEC stitch data starts after the thumbnail
@@ -79,8 +78,8 @@ function parsePes(buffer: ArrayBuffer): EmbroideryData | null {
       continue
     }
 
-    let dx = 0
-    let dy = 0
+    let dx: number
+    let dy: number
     let type: Stitch['type'] = 'normal'
 
     if (b0 & 0x80) {

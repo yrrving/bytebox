@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react'
-import { Upload, Download, RefreshCw } from 'lucide-react'
+import { useState } from 'react'
+import { Download, RefreshCw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 
@@ -71,7 +72,6 @@ export default function MediaConverter() {
   const { t } = useLanguage()
   const { createUrl } = useObjectUrls()
 
-  const fileRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
   const [fileInfo, setFileInfo] = useState<{ type: string; duration: number; isVideo: boolean } | null>(null)
   const [outputFormat, setOutputFormat] = useState<OutputFormat>('wav')
@@ -285,24 +285,7 @@ export default function MediaConverter() {
 
       <ToolHeader id="mediakonverterare" />
 
-      {/* Upload */}
-      <div
-        onClick={() => fileRef.current?.click()}
-        className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-      >
-        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          Klicka eller dra hit en ljud- eller videofil
-        </p>
-        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">MP4, WebM, MP3, WAV, OGG, m.fl.</p>
-        <input
-          ref={fileRef}
-          type="file"
-          accept="audio/*,video/*"
-          className="hidden"
-          onChange={(e) => e.target.files?.[0] && loadFile(e.target.files[0])}
-        />
-      </div>
+      <Workbench kind="media" accept="audio/*,video/*" formats="MP4, WebM, MP3, WAV, OGG" onFiles={([f]) => loadFile(f)} />
 
       {file && fileInfo && (
         <>

@@ -1,7 +1,8 @@
-import { useState, useMemo, useRef } from 'react'
-import { Download, Copy, Check, ShieldCheck, Upload, Clock } from 'lucide-react'
+import { useState, useMemo } from 'react'
+import { Download, Copy, Check, ShieldCheck, Clock } from 'lucide-react'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 
 interface Cue {
   id: string
@@ -98,7 +99,6 @@ export default function SrtEditor() {
   const [fileName, setFileName] = useState('undertext.srt')
   const [shiftSeconds, setShiftSeconds] = useState(0)
   const [copied, setCopied] = useState(false)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const output = useMemo(() => serializeSrt(cues), [cues])
 
@@ -189,25 +189,7 @@ export default function SrtEditor() {
       </div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
-        {/* Upload */}
-        <div
-          onClick={() => inputRef.current?.click()}
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) handleFile(f) }}
-          className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-6 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-        >
-          <Upload className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-          <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
-            Klicka eller dra hit en .srt-fil
-          </p>
-          <input
-            ref={inputRef}
-            type="file"
-            accept=".srt,text/plain"
-            className="hidden"
-            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f) }}
-          />
-        </div>
+        <Workbench kind="subtitle" accept=".srt,text/plain" formats="SRT" onFiles={([file]) => handleFile(file)} />
 
         {/* Or paste */}
         <div>

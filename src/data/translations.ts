@@ -14,6 +14,23 @@ export interface Translation {
     imageLoadError: string
         fileTooLarge: string
   }
+  /** Arbetsbänken i verktygen, se components/Workbench.tsx. */
+  workbench?: {
+    choose: {
+      image: string
+      images: string
+      video: string
+      audio: string
+      media: string
+      pdf: string
+      pdfs: string
+      subtitle: string
+      embroidery: string
+    }
+    dropOne: string
+    dropMany: string
+    formats: string
+  }
   tabletRequired?: {
     title: string
     body: string
@@ -116,7 +133,6 @@ export interface Translation {
     copied: string
   }
   imageCompressor?: {
-    upload: string
     quality: string
     smaller: string
     better: string
@@ -164,7 +180,6 @@ export interface Translation {
     placeholder: string
   }
   fillPdf?: {
-    upload: string
     loading: string
     changeFile: string
     privacyNote: string
@@ -186,7 +201,6 @@ export interface Translation {
     errorSave: string
   }
   asciiArt?: {
-    upload: string
     widthLabel: string
     standard: string
     detailed: string
@@ -195,7 +209,6 @@ export interface Translation {
     copied: string
   }
   heicConverter?: {
-    upload: string
     format: string
     quality: string
     converting: string
@@ -205,7 +218,6 @@ export interface Translation {
     failed: string
   }
   metadataCleaner?: {
-    upload: string
     privacy: string
     reading: string
     found: string
@@ -259,14 +271,12 @@ export interface Translation {
       photo: string
       screen: string
     }
-    upload: string
     free: string
     crop: string
     newImage: string
     download: string
   }
   cutFileGenerator?: {
-    upload: string
     rect: string
     circle: string
     freehand: string
@@ -282,7 +292,6 @@ export interface Translation {
     tabSign: string
     tabFill: string
     privacyNote: string
-    upload: string
     files: string
     merge: string
     mergeError: string
@@ -290,7 +299,6 @@ export interface Translation {
     download: string
   }
   ocrTool?: {
-    upload: string
     extract: string
     processing: string
     result: string
@@ -299,7 +307,6 @@ export interface Translation {
     copied: string
   }
   backgroundRemover?: {
-    upload: string
     tolerance: string
     remove: string
     processing: string
@@ -316,6 +323,22 @@ export const translations: Record<string, Translation> = {
     common: {
       imageLoadError: 'Kunde inte läsa bildfilen. Den kan vara skadad eller i ett format webbläsaren inte stöder.',
       fileTooLarge: 'Filen är för stor ({storlek}). ByteBox arbetar i webbläsarens minne, så gränsen här är {max}. Prova en mindre fil.',
+    },
+    workbench: {
+      choose: {
+        image: 'Välj en bild',
+        images: 'Välj bilder',
+        video: 'Välj en video',
+        audio: 'Välj en ljudfil',
+        media: 'Välj en video eller ljudfil',
+        pdf: 'Välj en PDF',
+        pdfs: 'Välj PDF-filer',
+        subtitle: 'Välj en undertextfil',
+        embroidery: 'Välj en broderifil',
+      },
+      dropOne: 'eller dra hit den',
+      dropMany: 'eller dra hit dem',
+      formats: 'Funkar med {formats}',
     },
     tabletRequired: {
       title: 'Kräver större skärm',
@@ -419,7 +442,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopierat!',
     },
     imageCompressor: {
-      upload: 'Klicka eller dra hit en bild',
       quality: 'Kvalitet',
       smaller: 'Mindre fil',
       better: 'Bättre kvalitet',
@@ -467,7 +489,6 @@ export const translations: Record<string, Translation> = {
       placeholder: 'Börja skriva ditt dokument här...',
     },
     fillPdf: {
-      upload: 'Klicka eller dra hit en PDF',
       loading: 'Öppnar PDF…',
       changeFile: 'byt fil',
       privacyNote: 'Din PDF behandlas helt lokalt i webbläsaren och laddas aldrig upp någonstans. Originalfilen skrivs aldrig över. Du laddar ner en ny, ifylld fil.',
@@ -489,7 +510,6 @@ export const translations: Record<string, Translation> = {
       errorSave: 'Något gick fel när PDF:en sparades. Prova igen.',
     },
     asciiArt: {
-      upload: 'Klicka eller dra hit en bild',
       widthLabel: 'Bredd',
       standard: 'Standard',
       detailed: 'Detaljerad',
@@ -498,7 +518,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopierat!',
     },
     heicConverter: {
-      upload: 'Klicka eller dra hit HEIC-bilder (från iPhone)',
       format: 'Format',
       quality: 'Kvalitet',
       converting: 'Konverterar…',
@@ -508,7 +527,6 @@ export const translations: Record<string, Translation> = {
       failed: 'Något gick fel vid konverteringen. Filen kanske inte är en giltig HEIC-bild.',
     },
     metadataCleaner: {
-      upload: 'Klicka eller dra hit en bild (t.ex. ett foto)',
       privacy: 'Allt sker lokalt i din webbläsare. Bilden laddas aldrig upp någonstans.',
       reading: 'Läser metadata…',
       found: 'Den här bilden innehåller dold metadata:',
@@ -562,14 +580,12 @@ export const translations: Record<string, Translation> = {
         photo: 'Fotokort',
         screen: 'Skärm',
       },
-      upload: 'Klicka eller dra hit en bild',
       free: 'Fri',
       crop: 'Beskär',
       newImage: 'Ny bild',
       download: 'Ladda ner',
     },
     cutFileGenerator: {
-      upload: 'Klicka eller dra hit en bild',
       rect: 'Rektangel',
       circle: 'Cirkel',
       freehand: 'Frihand',
@@ -585,7 +601,6 @@ export const translations: Record<string, Translation> = {
       tabSign: 'Signera',
       tabFill: 'Fyll i',
       privacyNote: 'Allt sker lokalt i din webbläsare. Dokumentet laddas aldrig upp någonstans.',
-      upload: 'Klicka eller dra hit PDF-filer',
       files: 'filer',
       merge: 'Sammanfoga PDF-filer',
       mergeError: 'Kunde inte slÃ¥ ihop filerna. NÃ¥gon av dem kan vara skadad eller lÃ¶senordsskyddad.',
@@ -593,7 +608,6 @@ export const translations: Record<string, Translation> = {
       download: 'Ladda ner sammanslagen PDF',
     },
     ocrTool: {
-      upload: 'Klicka eller dra hit en bild',
       extract: 'Extrahera text',
       processing: 'Analyserar...',
       result: 'Resultat',
@@ -602,7 +616,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopierad!',
     },
     backgroundRemover: {
-      upload: 'Klicka eller dra hit en bild',
       tolerance: 'Tolerans',
       remove: 'Ta bort bakgrund',
       processing: 'Bearbetar...',
@@ -639,6 +652,22 @@ export const translations: Record<string, Translation> = {
     common: {
       imageLoadError: 'Could not read the image file. It may be damaged or in a format the browser does not support.',
       fileTooLarge: 'The file is too large ({storlek}). ByteBox works in the browser memory, so the limit here is {max}. Try a smaller file.',
+    },
+    workbench: {
+      choose: {
+        image: 'Choose an image',
+        images: 'Choose images',
+        video: 'Choose a video',
+        audio: 'Choose an audio file',
+        media: 'Choose a video or audio file',
+        pdf: 'Choose a PDF',
+        pdfs: 'Choose PDF files',
+        subtitle: 'Choose a subtitle file',
+        embroidery: 'Choose an embroidery file',
+      },
+      dropOne: 'or drag it here',
+      dropMany: 'or drag them here',
+      formats: 'Works with {formats}',
     },
     tabletRequired: {
       title: 'Needs a bigger screen',
@@ -742,7 +771,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copied!',
     },
     imageCompressor: {
-      upload: 'Click or drag an image here',
       quality: 'Quality',
       smaller: 'Smaller file',
       better: 'Better quality',
@@ -790,7 +818,6 @@ export const translations: Record<string, Translation> = {
       placeholder: 'Start writing your document here...',
     },
     fillPdf: {
-      upload: 'Click or drop a PDF here',
       loading: 'Opening PDF…',
       changeFile: 'change file',
       privacyNote: 'Your PDF is processed entirely locally in your browser and is never uploaded anywhere. The original file is never overwritten. You download a new, filled-in file.',
@@ -812,7 +839,6 @@ export const translations: Record<string, Translation> = {
       errorSave: 'Something went wrong while saving the PDF. Please try again.',
     },
     asciiArt: {
-      upload: 'Click or drag an image here',
       widthLabel: 'Width',
       standard: 'Standard',
       detailed: 'Detailed',
@@ -821,7 +847,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copied!',
     },
     heicConverter: {
-      upload: 'Click or drop HEIC images (from iPhone) here',
       format: 'Format',
       quality: 'Quality',
       converting: 'Converting…',
@@ -831,7 +856,6 @@ export const translations: Record<string, Translation> = {
       failed: 'Something went wrong during conversion. The file may not be a valid HEIC image.',
     },
     metadataCleaner: {
-      upload: 'Click or drop an image (e.g. a photo) here',
       privacy: 'Everything runs locally in your browser. Your image is never uploaded anywhere.',
       reading: 'Reading metadata…',
       found: 'This image contains hidden metadata:',
@@ -885,14 +909,12 @@ export const translations: Record<string, Translation> = {
         photo: 'Photo print',
         screen: 'Screen',
       },
-      upload: 'Click or drag an image here',
       free: 'Free',
       crop: 'Crop',
       newImage: 'New image',
       download: 'Download',
     },
     cutFileGenerator: {
-      upload: 'Click or drag an image here',
       rect: 'Rectangle',
       circle: 'Circle',
       freehand: 'Freehand',
@@ -908,7 +930,6 @@ export const translations: Record<string, Translation> = {
       tabSign: 'Sign',
       tabFill: 'Fill in',
       privacyNote: 'Everything happens locally in your browser. The document is never uploaded anywhere.',
-      upload: 'Click or drag PDF files here',
       files: 'files',
       merge: 'Merge PDF files',
       mergeError: 'Could not merge the files. One of them may be damaged or password protected.',
@@ -916,7 +937,6 @@ export const translations: Record<string, Translation> = {
       download: 'Download merged PDF',
     },
     ocrTool: {
-      upload: 'Click or drag an image here',
       extract: 'Extract text',
       processing: 'Analyzing...',
       result: 'Result',
@@ -925,7 +945,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copied!',
     },
     backgroundRemover: {
-      upload: 'Click or drag an image here',
       tolerance: 'Tolerance',
       remove: 'Remove background',
       processing: 'Processing...',
@@ -962,6 +981,22 @@ export const translations: Record<string, Translation> = {
     common: {
       imageLoadError: 'No se pudo leer el archivo de imagen. Puede estar dañado o en un formato que el navegador no admite.',
       fileTooLarge: 'El archivo es demasiado grande ({storlek}). ByteBox trabaja en la memoria del navegador, por eso el límite aquí es {max}. Prueba con un archivo más pequeño.',
+    },
+    workbench: {
+      choose: {
+        image: 'Elige una imagen',
+        images: 'Elige imágenes',
+        video: 'Elige un vídeo',
+        audio: 'Elige un archivo de audio',
+        media: 'Elige un vídeo o un archivo de audio',
+        pdf: 'Elige un PDF',
+        pdfs: 'Elige archivos PDF',
+        subtitle: 'Elige un archivo de subtítulos',
+        embroidery: 'Elige un archivo de bordado',
+      },
+      dropOne: 'o arrastra el archivo aquí',
+      dropMany: 'o arrastra los archivos aquí',
+      formats: 'Funciona con {formats}',
     },
     tabletRequired: {
       title: 'Requiere una pantalla más grande',
@@ -1065,7 +1100,6 @@ export const translations: Record<string, Translation> = {
       copied: '¡Copiado!',
     },
     imageCompressor: {
-      upload: 'Haz clic o arrastra una imagen aquí',
       quality: 'Calidad',
       smaller: 'Archivo más pequeño',
       better: 'Mejor calidad',
@@ -1113,7 +1147,6 @@ export const translations: Record<string, Translation> = {
       placeholder: 'Empieza a escribir tu documento aquí...',
     },
     fillPdf: {
-      upload: 'Haz clic o arrastra un PDF aquí',
       loading: 'Abriendo PDF…',
       changeFile: 'cambiar archivo',
       privacyNote: 'Tu PDF se procesa totalmente en local en tu navegador y nunca se sube a ningún sitio. El archivo original nunca se sobrescribe. Descargas un archivo nuevo y rellenado.',
@@ -1135,7 +1168,6 @@ export const translations: Record<string, Translation> = {
       errorSave: 'Algo salió mal al guardar el PDF. Inténtalo de nuevo.',
     },
     asciiArt: {
-      upload: 'Haz clic o arrastra una imagen aquí',
       widthLabel: 'Ancho',
       standard: 'Estándar',
       detailed: 'Detallado',
@@ -1144,7 +1176,6 @@ export const translations: Record<string, Translation> = {
       copied: '¡Copiado!',
     },
     heicConverter: {
-      upload: 'Haz clic o arrastra aquí imágenes HEIC (de iPhone)',
       format: 'Formato',
       quality: 'Calidad',
       converting: 'Convirtiendo…',
@@ -1154,7 +1185,6 @@ export const translations: Record<string, Translation> = {
       failed: 'Algo salió mal durante la conversión. Puede que el archivo no sea una imagen HEIC válida.',
     },
     metadataCleaner: {
-      upload: 'Haz clic o arrastra una imagen (p. ej. una foto) aquí',
       privacy: 'Todo se ejecuta localmente en tu navegador. Tu imagen nunca se sube a ningún sitio.',
       reading: 'Leyendo metadatos…',
       found: 'Esta imagen contiene metadatos ocultos:',
@@ -1208,14 +1238,12 @@ export const translations: Record<string, Translation> = {
         photo: 'Foto impresa',
         screen: 'Pantalla',
       },
-      upload: 'Haz clic o arrastra una imagen aquí',
       free: 'Libre',
       crop: 'Recortar',
       newImage: 'Nueva imagen',
       download: 'Descargar',
     },
     cutFileGenerator: {
-      upload: 'Haz clic o arrastra una imagen aquí',
       rect: 'Rectángulo',
       circle: 'Círculo',
       freehand: 'Mano alzada',
@@ -1231,7 +1259,6 @@ export const translations: Record<string, Translation> = {
       tabSign: 'Firmar',
       tabFill: 'Rellenar',
       privacyNote: 'Todo ocurre localmente en tu navegador. El documento nunca se sube a ningún sitio.',
-      upload: 'Haz clic o arrastra archivos PDF aquí',
       files: 'archivos',
       merge: 'Fusionar archivos PDF',
       mergeError: 'No se pudieron fusionar los archivos. Alguno puede estar daÃ±ado o protegido con contraseÃ±a.',
@@ -1239,7 +1266,6 @@ export const translations: Record<string, Translation> = {
       download: 'Descargar PDF fusionado',
     },
     ocrTool: {
-      upload: 'Haz clic o arrastra una imagen aquí',
       extract: 'Extraer texto',
       processing: 'Analizando...',
       result: 'Resultado',
@@ -1248,7 +1274,6 @@ export const translations: Record<string, Translation> = {
       copied: '¡Copiado!',
     },
     backgroundRemover: {
-      upload: 'Haz clic o arrastra una imagen aquí',
       tolerance: 'Tolerancia',
       remove: 'Eliminar fondo',
       processing: 'Procesando...',
@@ -1285,6 +1310,22 @@ export const translations: Record<string, Translation> = {
     common: {
       imageLoadError: 'Impossible de lire le fichier image. Il est peut-être endommagé ou dans un format non pris en charge par le navigateur.',
       fileTooLarge: 'Le fichier est trop volumineux ({storlek}). ByteBox travaille dans la mémoire du navigateur, la limite ici est donc {max}. Essayez un fichier plus petit.',
+    },
+    workbench: {
+      choose: {
+        image: 'Choisis une image',
+        images: 'Choisis des images',
+        video: 'Choisis une vidéo',
+        audio: 'Choisis un fichier audio',
+        media: 'Choisis une vidéo ou un fichier audio',
+        pdf: 'Choisis un PDF',
+        pdfs: 'Choisis des fichiers PDF',
+        subtitle: 'Choisis un fichier de sous-titres',
+        embroidery: 'Choisis un fichier de broderie',
+      },
+      dropOne: 'ou glisse le fichier ici',
+      dropMany: 'ou glisse les fichiers ici',
+      formats: 'Fonctionne avec {formats}',
     },
     tabletRequired: {
       title: 'Nécessite un écran plus grand',
@@ -1388,7 +1429,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copié !',
     },
     imageCompressor: {
-      upload: 'Cliquez ou glissez une image ici',
       quality: 'Qualité',
       smaller: 'Fichier plus petit',
       better: 'Meilleure qualité',
@@ -1436,7 +1476,6 @@ export const translations: Record<string, Translation> = {
       placeholder: 'Commencez à écrire votre document ici...',
     },
     fillPdf: {
-      upload: 'Cliquez ou déposez un PDF ici',
       loading: 'Ouverture du PDF…',
       changeFile: 'changer de fichier',
       privacyNote: 'Votre PDF est traité entièrement en local dans votre navigateur et n\'est jamais envoyé nulle part. Le fichier original n\'est jamais écrasé. Vous téléchargez un nouveau fichier rempli.',
@@ -1458,7 +1497,6 @@ export const translations: Record<string, Translation> = {
       errorSave: 'Une erreur est survenue lors de l\'enregistrement du PDF. Réessayez.',
     },
     asciiArt: {
-      upload: 'Cliquez ou glissez une image ici',
       widthLabel: 'Largeur',
       standard: 'Standard',
       detailed: 'Détaillé',
@@ -1467,7 +1505,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copié !',
     },
     heicConverter: {
-      upload: 'Cliquez ou déposez ici des images HEIC (d\'iPhone)',
       format: 'Format',
       quality: 'Qualité',
       converting: 'Conversion…',
@@ -1477,7 +1514,6 @@ export const translations: Record<string, Translation> = {
       failed: 'Une erreur s\'est produite lors de la conversion. Le fichier n\'est peut-être pas une image HEIC valide.',
     },
     metadataCleaner: {
-      upload: 'Cliquez ou déposez une image (p. ex. une photo) ici',
       privacy: 'Tout s\'exécute localement dans votre navigateur. Votre image n\'est jamais envoyée nulle part.',
       reading: 'Lecture des métadonnées…',
       found: 'Cette image contient des métadonnées cachées :',
@@ -1531,14 +1567,12 @@ export const translations: Record<string, Translation> = {
         photo: 'Tirage photo',
         screen: 'Écran',
       },
-      upload: 'Cliquez ou glissez une image ici',
       free: 'Libre',
       crop: 'Rogner',
       newImage: 'Nouvelle image',
       download: 'Télécharger',
     },
     cutFileGenerator: {
-      upload: 'Cliquez ou glissez une image ici',
       rect: 'Rectangle',
       circle: 'Cercle',
       freehand: 'Main levée',
@@ -1554,7 +1588,6 @@ export const translations: Record<string, Translation> = {
       tabSign: 'Signer',
       tabFill: 'Remplir',
       privacyNote: 'Tout se passe localement dans votre navigateur. Le document n\'est jamais téléchargé nulle part.',
-      upload: 'Cliquez ou glissez des fichiers PDF ici',
       files: 'fichiers',
       merge: 'Fusionner les fichiers PDF',
       mergeError: 'Impossible de fusionner les fichiers. L’un d’eux est peut-Ãªtre endommagÃ© ou protÃ©gÃ© par mot de passe.',
@@ -1562,7 +1595,6 @@ export const translations: Record<string, Translation> = {
       download: 'Télécharger le PDF fusionné',
     },
     ocrTool: {
-      upload: 'Cliquez ou glissez une image ici',
       extract: 'Extraire le texte',
       processing: 'Analyse...',
       result: 'Résultat',
@@ -1571,7 +1603,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copié !',
     },
     backgroundRemover: {
-      upload: 'Cliquez ou glissez une image ici',
       tolerance: 'Tolérance',
       remove: 'Supprimer l\'arrière-plan',
       processing: 'Traitement...',
@@ -1608,6 +1639,22 @@ export const translations: Record<string, Translation> = {
     common: {
       imageLoadError: 'Die Bilddatei konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder in einem Format, das der Browser nicht unterstützt.',
       fileTooLarge: 'Die Datei ist zu groß ({storlek}). ByteBox arbeitet im Speicher des Browsers, deshalb liegt die Grenze hier bei {max}. Versuchen Sie eine kleinere Datei.',
+    },
+    workbench: {
+      choose: {
+        image: 'Wähle ein Bild',
+        images: 'Wähle Bilder',
+        video: 'Wähle ein Video',
+        audio: 'Wähle eine Audiodatei',
+        media: 'Wähle ein Video oder eine Audiodatei',
+        pdf: 'Wähle eine PDF',
+        pdfs: 'Wähle PDF-Dateien',
+        subtitle: 'Wähle eine Untertiteldatei',
+        embroidery: 'Wähle eine Stickdatei',
+      },
+      dropOne: 'oder zieh die Datei hierher',
+      dropMany: 'oder zieh die Dateien hierher',
+      formats: 'Funktioniert mit {formats}',
     },
     tabletRequired: {
       title: 'Benötigt einen größeren Bildschirm',
@@ -1711,7 +1758,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopiert!',
     },
     imageCompressor: {
-      upload: 'Klicken oder Bild hierher ziehen',
       quality: 'Qualität',
       smaller: 'Kleinere Datei',
       better: 'Bessere Qualität',
@@ -1759,7 +1805,6 @@ export const translations: Record<string, Translation> = {
       placeholder: 'Beginne hier mit deinem Dokument...',
     },
     fillPdf: {
-      upload: 'Klicke oder ziehe eine PDF hierher',
       loading: 'PDF wird geöffnet…',
       changeFile: 'Datei wechseln',
       privacyNote: 'Deine PDF wird komplett lokal in deinem Browser verarbeitet und nie irgendwohin hochgeladen. Die Originaldatei wird nie überschrieben. Du lädst eine neue, ausgefüllte Datei herunter.',
@@ -1781,7 +1826,6 @@ export const translations: Record<string, Translation> = {
       errorSave: 'Beim Speichern der PDF ist etwas schiefgelaufen. Versuche es erneut.',
     },
     asciiArt: {
-      upload: 'Klicken oder Bild hierher ziehen',
       widthLabel: 'Breite',
       standard: 'Standard',
       detailed: 'Detailliert',
@@ -1790,7 +1834,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopiert!',
     },
     heicConverter: {
-      upload: 'HEIC-Bilder (vom iPhone) hier klicken oder ablegen',
       format: 'Format',
       quality: 'Qualität',
       converting: 'Konvertiere…',
@@ -1800,7 +1843,6 @@ export const translations: Record<string, Translation> = {
       failed: 'Bei der Konvertierung ist etwas schiefgelaufen. Die Datei ist möglicherweise kein gültiges HEIC-Bild.',
     },
     metadataCleaner: {
-      upload: 'Bild (z. B. ein Foto) hier klicken oder ablegen',
       privacy: 'Alles läuft lokal in deinem Browser. Dein Bild wird nirgendwo hochgeladen.',
       reading: 'Metadaten werden gelesen…',
       found: 'Dieses Bild enthält versteckte Metadaten:',
@@ -1854,14 +1896,12 @@ export const translations: Record<string, Translation> = {
         photo: 'Fotoabzug',
         screen: 'Bildschirm',
       },
-      upload: 'Klicken oder Bild hierher ziehen',
       free: 'Frei',
       crop: 'Zuschneiden',
       newImage: 'Neues Bild',
       download: 'Herunterladen',
     },
     cutFileGenerator: {
-      upload: 'Klicken oder Bild hierher ziehen',
       rect: 'Rechteck',
       circle: 'Kreis',
       freehand: 'Freihand',
@@ -1877,7 +1917,6 @@ export const translations: Record<string, Translation> = {
       tabSign: 'Signieren',
       tabFill: 'Ausfüllen',
       privacyNote: 'Alles geschieht lokal in Ihrem Browser. Das Dokument wird nirgendwo hochgeladen.',
-      upload: 'Klicken oder PDF-Dateien hierher ziehen',
       files: 'Dateien',
       merge: 'PDF-Dateien zusammenführen',
       mergeError: 'Die Dateien konnten nicht zusammengefÃ¼hrt werden. Eine davon ist mÃ¶glicherweise beschÃ¤digt oder passwortgeschÃ¼tzt.',
@@ -1885,7 +1924,6 @@ export const translations: Record<string, Translation> = {
       download: 'Zusammengeführte PDF herunterladen',
     },
     ocrTool: {
-      upload: 'Klicken oder Bild hierher ziehen',
       extract: 'Text extrahieren',
       processing: 'Analysiere...',
       result: 'Ergebnis',
@@ -1894,7 +1932,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Kopiert!',
     },
     backgroundRemover: {
-      upload: 'Klicken oder Bild hierher ziehen',
       tolerance: 'Toleranz',
       remove: 'Hintergrund entfernen',
       processing: 'Verarbeite...',
@@ -1931,6 +1968,22 @@ export const translations: Record<string, Translation> = {
     common: {
       imageLoadError: 'Não foi possível ler o ficheiro de imagem. Pode estar danificado ou num formato que o navegador não suporta.',
       fileTooLarge: 'O ficheiro é demasiado grande ({storlek}). O ByteBox trabalha na memória do navegador, por isso o limite aqui é {max}. Experimente um ficheiro mais pequeno.',
+    },
+    workbench: {
+      choose: {
+        image: 'Escolha uma imagem',
+        images: 'Escolha imagens',
+        video: 'Escolha um vídeo',
+        audio: 'Escolha um arquivo de áudio',
+        media: 'Escolha um vídeo ou arquivo de áudio',
+        pdf: 'Escolha um PDF',
+        pdfs: 'Escolha arquivos PDF',
+        subtitle: 'Escolha um arquivo de legendas',
+        embroidery: 'Escolha um arquivo de bordado',
+      },
+      dropOne: 'ou arraste o arquivo para cá',
+      dropMany: 'ou arraste os arquivos para cá',
+      formats: 'Funciona com {formats}',
     },
     tabletRequired: {
       title: 'Requer um ecrã maior',
@@ -2034,7 +2087,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copiado!',
     },
     imageCompressor: {
-      upload: 'Clique ou arraste uma imagem aqui',
       quality: 'Qualidade',
       smaller: 'Arquivo menor',
       better: 'Melhor qualidade',
@@ -2082,7 +2134,6 @@ export const translations: Record<string, Translation> = {
       placeholder: 'Comece a escrever seu documento aqui...',
     },
     fillPdf: {
-      upload: 'Clique ou arraste um PDF aqui',
       loading: 'Abrindo PDF…',
       changeFile: 'trocar arquivo',
       privacyNote: 'O seu PDF é processado totalmente em local no seu navegador e nunca é enviado para lugar nenhum. O ficheiro original nunca é substituído. Você baixa um novo ficheiro preenchido.',
@@ -2104,7 +2155,6 @@ export const translations: Record<string, Translation> = {
       errorSave: 'Algo deu errado ao salvar o PDF. Tente novamente.',
     },
     asciiArt: {
-      upload: 'Clique ou arraste uma imagem aqui',
       widthLabel: 'Largura',
       standard: 'Padrão',
       detailed: 'Detalhado',
@@ -2113,7 +2163,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copiado!',
     },
     heicConverter: {
-      upload: 'Clique ou arraste imagens HEIC (do iPhone) para aqui',
       format: 'Formato',
       quality: 'Qualidade',
       converting: 'A converter…',
@@ -2123,7 +2172,6 @@ export const translations: Record<string, Translation> = {
       failed: 'Algo correu mal durante a conversão. O ficheiro pode não ser uma imagem HEIC válida.',
     },
     metadataCleaner: {
-      upload: 'Clique ou arraste uma imagem (p. ex. uma foto) para aqui',
       privacy: 'Tudo funciona localmente no seu navegador. A sua imagem nunca é enviada para lado nenhum.',
       reading: 'A ler metadados…',
       found: 'Esta imagem contém metadados ocultos:',
@@ -2177,14 +2225,12 @@ export const translations: Record<string, Translation> = {
         photo: 'Fotografia',
         screen: 'Ecrã',
       },
-      upload: 'Clique ou arraste uma imagem aqui',
       free: 'Livre',
       crop: 'Recortar',
       newImage: 'Nova imagem',
       download: 'Baixar',
     },
     cutFileGenerator: {
-      upload: 'Clique ou arraste uma imagem aqui',
       rect: 'Retângulo',
       circle: 'Círculo',
       freehand: 'Mão livre',
@@ -2200,7 +2246,6 @@ export const translations: Record<string, Translation> = {
       tabSign: 'Assinar',
       tabFill: 'Preencher',
       privacyNote: 'Tudo acontece localmente no seu navegador. O documento nunca é enviado para lugar nenhum.',
-      upload: 'Clique ou arraste arquivos PDF aqui',
       files: 'arquivos',
       merge: 'Mesclar arquivos PDF',
       mergeError: 'NÃ£o foi possÃ­vel juntar os ficheiros. Algum deles pode estar danificado ou protegido por palavra-passe.',
@@ -2208,7 +2253,6 @@ export const translations: Record<string, Translation> = {
       download: 'Baixar PDF mesclado',
     },
     ocrTool: {
-      upload: 'Clique ou arraste uma imagem aqui',
       extract: 'Extrair texto',
       processing: 'Analisando...',
       result: 'Resultado',
@@ -2217,7 +2261,6 @@ export const translations: Record<string, Translation> = {
       copied: 'Copiado!',
     },
     backgroundRemover: {
-      upload: 'Clique ou arraste uma imagem aqui',
       tolerance: 'Tolerância',
       remove: 'Remover fundo',
       processing: 'Processando...',

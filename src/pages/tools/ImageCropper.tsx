@@ -3,6 +3,7 @@ import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import ErrorNotice from '../../components/ErrorNotice'
 import { loadImageFromFile } from '../../utils/image'
 import { filfelText } from '../../utils/filstorlek'
@@ -40,7 +41,6 @@ export default function ImageCropper() {
   const [result, setResult] = useState('')
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const handleImage = async (file: File) => {
     setImageError('')
@@ -124,14 +124,15 @@ export default function ImageCropper() {
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
         {!image ? (
-          <div
-            onClick={() => inputRef.current?.click()}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f?.type.startsWith('image/')) handleImage(f) }}
-            className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-12 text-center cursor-pointer transition-colors hover:border-blue-400"
-          >
-            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{ct?.upload || 'Klicka eller dra hit en bild'}</p>
-          </div>
+          <Workbench
+            kind="image"
+            accept="image/*"
+            formats="PNG, JPG, WebP"
+            large
+            onFiles={([file]) => {
+              if (file?.type.startsWith('image/')) handleImage(file)
+            }}
+          />
         ) : (
           <>
             {/* Aspect ratio buttons */}
@@ -200,14 +201,6 @@ export default function ImageCropper() {
             </div>
           </>
         )}
-
-        <input
-          ref={inputRef}
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImage(f) }}
-        />
 
         {/* Result */}
         {result && (

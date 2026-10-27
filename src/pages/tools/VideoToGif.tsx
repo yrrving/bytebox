@@ -3,6 +3,7 @@ import { Download, Loader2, ShieldCheck, Film } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 
 const MAX_FRAMES = 200
@@ -43,7 +44,6 @@ export default function VideoToGif() {
   const [result, setResult] = useState<{ url: string; size: number } | null>(null)
 
   const videoRef = useRef<HTMLVideoElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     return () => {
@@ -166,25 +166,9 @@ export default function VideoToGif() {
       </div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
-        {/* Upload */}
         {!videoUrl && (
-          <div
-            onClick={() => inputRef.current?.click()}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => { e.preventDefault(); loadFile(e.dataTransfer.files[0]) }}
-            className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-          >
-            <Film className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">Klicka eller dra hit en videofil</p>
-          </div>
+          <Workbench kind="video" accept="video/*" formats="MP4, WebM, MOV" onFiles={([file]) => loadFile(file)} />
         )}
-        <input
-          ref={inputRef}
-          type="file"
-          accept="video/*"
-          className="hidden"
-          onChange={(e) => loadFile(e.target.files?.[0])}
-        />
 
         {videoUrl && (
           <>

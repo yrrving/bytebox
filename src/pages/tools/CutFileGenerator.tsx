@@ -1,8 +1,9 @@
 import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
-import { Download, Square, Circle, Pencil, Undo2, Trash2, Upload, Hand } from 'lucide-react'
+import { Download, Square, Circle, Pencil, Undo2, Trash2, Hand } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import { downloadBlob } from '../../utils/download'
 
 type Shape =
@@ -67,7 +68,6 @@ export default function CutFileGenerator() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
   const [image, setImage] = useState<HTMLImageElement | null>(null)
   const [imageDataUrl, setImageDataUrl] = useState('')
   const [imageRect, setImageRect] = useState<ImageRect>({ x: 0, y: 0, w: 0, h: 0 })
@@ -410,21 +410,17 @@ ${shapeSvg}
 
       <ToolHeader id="skarfilsgenerator" />
 
-      {/* Upload */}
       {!image && (
-        <div
-          onClick={() => inputRef.current?.click()}
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f?.type.startsWith('image/')) handleImage(f) }}
-          className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-12 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-        >
-          <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
-            {ct?.upload || 'Klicka eller dra hit en bild'}
-          </p>
-        </div>
+        <Workbench
+          kind="image"
+          accept="image/*"
+          formats="PNG, JPG, WebP"
+          large
+          onFiles={([file]) => {
+            if (file?.type.startsWith('image/')) handleImage(file)
+          }}
+        />
       )}
-      <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImage(f) }} />
 
       {image && (
         <>

@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { Upload, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
+import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import { parseEmbroidery, type EmbroideryData } from '../../utils/embroidery'
 
 
@@ -10,7 +11,6 @@ export default function EmbroideryViewer() {
   const { t } = useLanguage()
   const ev = t.embroideryViewer
 
-  const fileRef = useRef<HTMLInputElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [data, setData] = useState<EmbroideryData | null>(null)
   const [fileName, setFileName] = useState('')
@@ -108,26 +108,12 @@ export default function EmbroideryViewer() {
 
       <ToolHeader id="brodyrkortsvisare" />
 
-      {/* Upload */}
-      <div
-        onClick={() => fileRef.current?.click()}
-        className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-      >
-        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          Klicka eller dra hit en brodyrifil
-        </p>
-        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">
-          {ev?.formats ?? 'PES (Brother, Babylock, Bernina) · DST (Tajima, och de flesta industrimaskiner) · JEF (Janome, Elna)'}
-        </p>
-        <input
-          ref={fileRef}
-          type="file"
-          accept=".pes,.dst,.jef"
-          className="hidden"
-          onChange={(e) => e.target.files?.[0] && loadFile(e.target.files[0])}
-        />
-      </div>
+      <Workbench
+        kind="embroidery"
+        accept=".pes,.dst,.jef"
+        formats={ev?.formats ?? 'PES (Brother, Babylock, Bernina) · DST (Tajima, och de flesta industrimaskiner) · JEF (Janome, Elna)'}
+        onFiles={([file]) => loadFile(file)}
+      />
 
       {error && (
         <div className="rounded-xl border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 text-sm text-red-700 dark:text-red-400">

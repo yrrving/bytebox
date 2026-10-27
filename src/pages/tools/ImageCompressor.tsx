@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react'
-import { Upload, Download } from 'lucide-react'
+import { useState } from 'react'
+import { Download } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 function formatSize(bytes: number): string {
@@ -16,7 +17,6 @@ export default function ImageCompressor() {
   const { createUrl } = useObjectUrls()
   const ic = t.imageCompressor
 
-  const fileRef = useRef<HTMLInputElement>(null)
   const [original, setOriginal] = useState<{ url: string; size: number; width: number; height: number; name: string } | null>(null)
   const [compressed, setCompressed] = useState<{ url: string; size: number; width: number; height: number } | null>(null)
   const [quality, setQuality] = useState(0.7)
@@ -87,24 +87,7 @@ export default function ImageCompressor() {
 
       <ToolHeader id="bildkomprimering" />
 
-      {/* Upload */}
-      <div
-        onClick={() => fileRef.current?.click()}
-        className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white bg-gray-50 dark:bg-gray-800 hc:bg-black p-8 text-center transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-      >
-        <Upload className="mx-auto h-8 w-8 text-gray-600 dark:text-gray-300 hc:text-white" />
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          {ic?.upload ?? 'Klicka eller dra hit en bild'}
-        </p>
-        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300">PNG, JPG, WebP</p>
-        <input
-          ref={fileRef}
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={(e) => e.target.files?.[0] && loadImage(e.target.files[0])}
-        />
-      </div>
+      <Workbench kind="image" accept="image/*" formats="PNG, JPG, WebP" onFiles={([file]) => loadImage(file)} />
 
       {original && (
         <>

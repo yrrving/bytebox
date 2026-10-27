@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { Download, Loader2, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 
 type OutFormat = 'image/jpeg' | 'image/png'
@@ -29,7 +30,6 @@ export default function HeicConverter() {
   const [results, setResults] = useState<Result[]>([])
   const [converting, setConverting] = useState(false)
   const [error, setError] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const handleFiles = async (files: FileList | File[]) => {
     const list = Array.from(files).filter(
@@ -122,32 +122,21 @@ export default function HeicConverter() {
           )}
         </div>
 
-        {/* Upload */}
-        <div
-          onClick={() => !converting && inputRef.current?.click()}
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => { e.preventDefault(); if (!converting) handleFiles(e.dataTransfer.files) }}
-          className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-        >
-          {converting ? (
-            <>
-              <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
-              <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{h?.converting ?? 'Konverterar…'}</p>
-            </>
-          ) : (
-            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
-              {h?.upload ?? 'Klicka eller dra hit HEIC-bilder (från iPhone)'}
-            </p>
-          )}
-          <input
-            ref={inputRef}
-            type="file"
-            accept=".heic,.heif,image/heic,image/heif"
-            multiple
-            className="hidden"
-            onChange={(e) => { if (e.target.files) handleFiles(e.target.files) }}
-          />
-        </div>
+        <Workbench
+          kind="images"
+          accept=".heic,.heif,image/heic,image/heif"
+          multiple
+          formats="HEIC, HEIF"
+          onFiles={handleFiles}
+          busy={
+            converting && (
+              <>
+                <Loader2 className="h-6 w-6 animate-spin text-blue-600 dark:text-blue-300 hc:text-white" aria-hidden="true" />
+                <p>{h?.converting ?? 'Konverterar…'}</p>
+              </>
+            )
+          }
+        />
 
         {error && (
           <p className="rounded-lg border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-3 text-sm text-red-700 dark:text-red-400">{error}</p>

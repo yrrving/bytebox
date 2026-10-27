@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { Download, ShieldCheck, Play, Square, Scissors, Loader2 } from 'lucide-react'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 
 function formatTime(sec: number): string {
   if (!isFinite(sec) || sec < 0) sec = 0
@@ -74,7 +75,6 @@ export default function AudioTrimmer() {
   const [error, setError] = useState('')
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
   const audioCtxRef = useRef<AudioContext | null>(null)
   const sourceRef = useRef<AudioBufferSourceNode | null>(null)
   const draggingRef = useRef<'start' | 'end' | null>(null)
@@ -275,40 +275,25 @@ export default function AudioTrimmer() {
       </div>
 
       <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
-        {/* Upload */}
-        <div
-          onClick={() => !loading && inputRef.current?.click()}
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => {
-            e.preventDefault()
-            const f = e.dataTransfer.files[0]
-            if (f && !loading) handleFile(f)
-          }}
-          className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
-              <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">Avkodar ljud…</p>
-            </>
-          ) : fileName ? (
-            <p className="text-gray-700 dark:text-gray-300 hc:text-white font-medium truncate max-w-full">{fileName}</p>
-          ) : (
-            <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
-              Klicka eller dra hit en ljudfil (mp3, wav, m4a, ogg …)
-            </p>
-          )}
-          <input
-            ref={inputRef}
-            type="file"
-            accept="audio/*"
-            className="hidden"
-            onChange={(e) => {
-              const f = e.target.files?.[0]
-              if (f) handleFile(f)
-            }}
-          />
-        </div>
+        <Workbench
+          kind="audio"
+          accept="audio/*"
+          formats="MP3, WAV, M4A, OGG"
+          onFiles={([file]) => handleFile(file)}
+          preview={
+            fileName && (
+              <p className="pointer-events-none max-w-full truncate font-bold text-gray-900 dark:text-white hc:text-white">{fileName}</p>
+            )
+          }
+          busy={
+            loading && (
+              <>
+                <Loader2 className="h-6 w-6 animate-spin text-blue-600 dark:text-blue-300 hc:text-white" aria-hidden="true" />
+                <p>Avkodar ljud…</p>
+              </>
+            )
+          }
+        />
 
         {error && (
           <p className="rounded-lg border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-3 text-sm text-red-700 dark:text-red-400">{error}</p>

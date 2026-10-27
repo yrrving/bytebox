@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import {
-  Download, Plus, X, GripVertical, Loader2, ShieldCheck, FileSignature, Eraser,
-  Upload, ZoomIn, ZoomOut, Minus, Bold, FileUp, Layers, PenTool, PenLine,
+  Download, Plus, X, GripVertical, Loader2, ShieldCheck, Eraser,
+  ZoomIn, ZoomOut, Minus, Bold, FileUp, Layers, PenTool, PenLine,
 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
+import Workbench from '../../components/Workbench'
 import ErrorNotice from '../../components/ErrorNotice'
 import { useObjectUrls } from '../../hooks/useObjectUrls'
 import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
@@ -147,10 +148,9 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
   const [merging, setMerging] = useState(false)
   const [result, setResult] = useState<string | null>(null)
   const [error, setError] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
   const { createUrl } = useObjectUrls()
 
-  const addFiles = async (fileList: FileList) => {
+  const addFiles = async (fileList: FileList | File[]) => {
     const newFiles: PdfFile[] = []
     // Alla valda PDF:er ligger i minnet samtidigt när de slås ihop, så en
     // orimligt stor fil tas inte emot. Övriga läggs till som vanligt.
@@ -270,23 +270,7 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
         </div>
       )}
 
-      <div
-        onClick={() => inputRef.current?.click()}
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files) }}
-        className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-8 text-center cursor-pointer transition-colors hover:border-blue-400"
-      >
-        <Plus className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-        <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">{pt?.upload || 'Klicka eller dra hit PDF-filer'}</p>
-      </div>
-      <input
-        ref={inputRef}
-        type="file"
-        accept=".pdf,application/pdf"
-        multiple
-        className="hidden"
-        onChange={(e) => { if (e.target.files) addFiles(e.target.files) }}
-      />
+      <Workbench kind="pdfs" accept=".pdf,application/pdf" multiple formats="PDF" onFiles={addFiles} />
 
       {files.length >= 2 && (
         <button
@@ -328,7 +312,6 @@ function SignView() {
   const [done, setDone] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
   const hasDrawnRef = useRef(false)
   const drawRef = useRef<{ active: boolean; lastX: number; lastY: number }>({ active: false, lastX: 0, lastY: 0 })
 
@@ -496,24 +479,21 @@ function SignView() {
 
   return (
     <div className="rounded-xl border border-gray-200 dark:border-gray-700 hc:border-white bg-gray-50 dark:bg-gray-700 hc:bg-black p-4 space-y-4">
-      <div
-        onClick={() => !busy && inputRef.current?.click()}
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f && !busy) handlePdf(f) }}
-        className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-6 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-      >
-        <FileSignature className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-        <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          {pdfBytes ? `Vald fil: ${pdfName}.pdf (${pageCount} sidor) – klicka för att byta` : 'Klicka eller dra hit en PDF'}
-        </p>
-        <input
-          ref={inputRef}
-          type="file"
-          accept="application/pdf,.pdf"
-          className="hidden"
-          onChange={(e) => { const f = e.target.files?.[0]; if (f) handlePdf(f) }}
-        />
-      </div>
+      <Workbench
+        kind="pdf"
+        accept="application/pdf,.pdf"
+        formats="PDF"
+        onFiles={([f]) => {
+          if (!busy) handlePdf(f)
+        }}
+        preview={
+          pdfBytes && (
+            <p className="pointer-events-none text-base text-gray-900 dark:text-white hc:text-white">
+              {`Vald fil: ${pdfName}.pdf (${pageCount} sidor)`}
+            </p>
+          )
+        }
+      />
 
       <div>
         <div className="mb-1 flex items-center justify-between">
@@ -633,7 +613,6 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
 
-  const inputRef = useRef<HTMLInputElement>(null)
   const pdfDocRef = useRef<PDFDocumentProxy | null>(null)
   const canvasRefs = useRef<(HTMLCanvasElement | null)[]>([])
   const pageBoxRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -822,24 +801,21 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
   return (
     <div className="space-y-4">
       {!pdfBytes && (
-        <div
-          onClick={() => !loadingPdf && inputRef.current?.click()}
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f && !loadingPdf) handlePdf(f) }}
-          className="flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hc:border-white p-12 text-center cursor-pointer transition-colors hover:border-blue-400 dark:hover:border-blue-500"
-        >
-          {loadingPdf ? <Loader2 className="h-8 w-8 animate-spin text-gray-600 dark:text-gray-300" /> : <Upload className="h-8 w-8 text-gray-600 dark:text-gray-300" />}
-          <p className="text-gray-600 dark:text-gray-300 hc:text-gray-200">
-            {loadingPdf ? (fp?.loading ?? 'Öppnar PDF…') : (fp?.upload ?? 'Klicka eller dra hit en PDF')}
-          </p>
-          <input
-            ref={inputRef}
-            type="file"
-            accept="application/pdf,.pdf"
-            className="hidden"
-            onChange={(e) => { const f = e.target.files?.[0]; if (f) handlePdf(f); e.target.value = '' }}
-          />
-        </div>
+        <Workbench
+          kind="pdf"
+          accept="application/pdf,.pdf"
+          formats="PDF"
+          large
+          onFiles={([f]) => handlePdf(f)}
+          busy={
+            loadingPdf && (
+              <>
+                <Loader2 className="h-8 w-8 animate-spin text-blue-600 dark:text-blue-300 hc:text-white" aria-hidden="true" />
+                <p>{fp?.loading ?? 'Öppnar PDF…'}</p>
+              </>
+            )
+          }
+        />
       )}
 
       {error && (

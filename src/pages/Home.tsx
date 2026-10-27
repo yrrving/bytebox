@@ -67,7 +67,7 @@ export default function Home() {
   }
 
   return (
-    <div className="pt-4 sm:pt-8">
+    <div className="sm:pt-8">
       {/* ── Rubriken och "jag har en ..." ── */}
       <section
         aria-labelledby="home-heading"
@@ -83,25 +83,33 @@ export default function Home() {
           setDragging(false)
           takeFile(e.dataTransfer.files[0])
         }}
-        className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14"
+        className="grid items-end gap-6 sm:gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14"
       >
-        <div>
+        <div className="min-w-0">
           <h1
             id="home-heading"
-            className="text-5xl font-bold leading-[0.95] tracking-[-0.035em] text-gray-900 sm:text-7xl lg:text-8xl dark:text-white"
+            className="text-[2.75rem] font-bold leading-[0.95] tracking-[-0.035em] text-gray-900 sm:text-7xl lg:text-8xl dark:text-white"
           >
             {h?.heading ?? 'Vad vill du göra?'}
           </h1>
-          <p className="mt-5 max-w-[30ch] text-xl leading-snug text-gray-800 sm:text-2xl dark:text-gray-100 hc:text-white">
+          <p className="mt-3 max-w-[30ch] text-lg leading-snug sm:mt-5 text-gray-800 sm:text-2xl dark:text-gray-100 hc:text-white">
             {h?.lead}
           </p>
         </div>
 
-        <div>
+        {/* min-w-0: annars trycker den rullbara raden ut kolumnen på mobil */}
+        <div className="min-w-0">
           <p id="pick-label" className="text-lg font-bold text-gray-900 dark:text-white">
             {h?.orPick}
           </p>
-          <div role="group" aria-labelledby="pick-label" className="mt-3 flex flex-wrap gap-2.5">
+          {/* På smal skärm blir knapparna en rad man drar i sidled, så verktygen
+              kommer upp på första skärmen. Raden går ut till skärmkanten, så det
+              syns att det finns fler. */}
+          <div
+            role="group"
+            aria-labelledby="pick-label"
+            className="-mx-4 mt-2 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:mt-3 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:px-0 sm:pb-0"
+          >
             {pickOrder.map((pick) => {
               // En släppt fil tänder sin sort, så man ser vad ByteBox läste ut.
               const pressed =
@@ -115,7 +123,7 @@ export default function Home() {
                     setHave(pressed ? null : { from: 'pick', pick })
                     if (inputRef.current) inputRef.current.value = ''
                   }}
-                  className={`min-h-11 rounded-lg border-2 px-4 text-base font-bold transition-colors ${
+                  className={`min-h-11 shrink-0 whitespace-nowrap rounded-lg border-2 px-3 text-base font-bold transition-colors sm:px-4 ${
                     pressed
                       ? 'border-gray-900 bg-gray-900 text-white dark:border-white dark:bg-white dark:text-gray-950 hc:border-yellow-400 hc:bg-yellow-400 hc:text-black'
                       : 'border-gray-900 bg-[var(--board)] text-gray-900 hover:bg-[var(--paint)] dark:border-gray-100 dark:text-white hc:border-white hc:hover:bg-black hc:hover:text-yellow-400'
@@ -126,7 +134,7 @@ export default function Home() {
               )
             })}
           </div>
-          <p className="mt-4 text-base leading-relaxed text-gray-800 dark:text-gray-100 hc:text-white">
+          <p className="mt-3 text-base leading-relaxed text-gray-800 sm:mt-4 dark:text-gray-100 hc:text-white">
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
@@ -153,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* ── Sök och enhet ── */}
-      <div className="mt-14 flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
+      <div className="mt-6 flex flex-col gap-2 sm:mt-14 sm:gap-4 md:flex-row md:items-center md:gap-8">
         <div className="relative w-full md:max-w-md">
           <Search
             className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-700 dark:text-gray-200 hc:text-white"
@@ -168,8 +176,12 @@ export default function Home() {
             className="min-h-12 w-full rounded-lg border-2 border-gray-900 bg-white py-2 pl-12 pr-4 text-base text-gray-900 placeholder-gray-600 outline-none focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-gray-100 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-300 dark:focus-visible:outline-blue-300 hc:border-white hc:bg-black hc:text-white hc:placeholder-gray-300 hc:focus-visible:outline-yellow-400"
           />
         </div>
-        <div role="group" aria-label={h?.worksOn} className="flex flex-wrap items-center gap-1 text-base">
-          <span className="mr-2 text-gray-700 dark:text-gray-200 hc:text-gray-200" aria-hidden="true">
+        <div
+          role="group"
+          aria-label={h?.worksOn}
+          className="-mx-4 flex items-center gap-1 overflow-x-auto px-4 text-base sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+        >
+          <span className="mr-2 shrink-0 whitespace-nowrap text-gray-700 dark:text-gray-200 hc:text-gray-200" aria-hidden="true">
             {h?.worksOn}
           </span>
           {[null, ...deviceOrder].map((d) => {
@@ -180,7 +192,7 @@ export default function Home() {
                 type="button"
                 aria-pressed={pressed}
                 onClick={() => setDevice(d)}
-                className={`min-h-11 border-b-[3px] px-2.5 transition-colors ${
+                className={`min-h-11 shrink-0 whitespace-nowrap border-b-[3px] px-2.5 transition-colors ${
                   pressed
                     ? 'border-blue-600 font-bold text-gray-900 dark:border-blue-300 dark:text-white hc:border-yellow-400 hc:text-yellow-400'
                     : 'border-transparent text-gray-800 hover:border-gray-400 dark:text-gray-100 dark:hover:border-gray-500 hc:text-white hc:underline'
@@ -194,14 +206,15 @@ export default function Home() {
       </div>
 
       {/* Det ByteBox lovar, en gång, lugnt */}
+      {/* På mobil ligger det här stycket efter verktygen i stället, se längst ner. */}
       {t.tagline && (
-        <p className="mt-6 max-w-[68ch] text-base leading-relaxed text-gray-700 dark:text-gray-200 hc:text-gray-200">
+        <p className="mt-6 hidden max-w-[68ch] sm:block text-base leading-relaxed text-gray-700 dark:text-gray-200 hc:text-gray-200">
           {t.tagline}
         </p>
       )}
 
       {/* ── Läget just nu, läses upp av skärmläsare ── */}
-      <div className="mt-6 flex min-h-11 flex-wrap items-center gap-3" aria-live="polite">
+      <div className="mt-2 flex min-h-11 flex-wrap items-center gap-3 sm:mt-6" aria-live="polite">
         {unknownFile ? (
           <p className="text-base text-gray-900 dark:text-gray-100 hc:text-white">{h?.unknownFile}</p>
         ) : filtering ? (
@@ -223,7 +236,7 @@ export default function Home() {
       </div>
 
       {/* ── Väggen: alla verktyg, kategori för kategori ── */}
-      <div className="mt-10 flex flex-col gap-20">
+      <div className="mt-4 flex flex-col gap-14 sm:mt-10 sm:gap-20">
         {categoryOrder.map((cat) => {
           const catTools = matches.filter((tool) => tool.category === cat)
           if (catTools.length === 0) return null
@@ -231,7 +244,7 @@ export default function Home() {
             <section key={cat} aria-labelledby={`cat-${cat}`}>
               <h2
                 id={`cat-${cat}`}
-                className="mb-8 flex flex-wrap items-baseline gap-x-4 text-4xl font-bold leading-none tracking-[-0.025em] text-gray-900 sm:text-5xl dark:text-white"
+                className="mb-6 flex flex-wrap items-baseline gap-x-4 text-4xl sm:mb-8 font-bold leading-none tracking-[-0.025em] text-gray-900 sm:text-5xl dark:text-white"
               >
                 {categoryNames[cat]}
                 <span className="text-lg font-normal tracking-normal text-gray-700 dark:text-gray-200 hc:text-gray-200">
@@ -250,6 +263,12 @@ export default function Home() {
 
       {matches.length === 0 && !unknownFile && (
         <p className="mt-8 text-lg text-gray-800 dark:text-gray-100 hc:text-gray-200">{t.emptyState}</p>
+      )}
+
+      {t.tagline && (
+        <p className="mt-14 max-w-[68ch] text-base leading-relaxed text-gray-700 sm:hidden dark:text-gray-200 hc:text-gray-200">
+          {t.tagline}
+        </p>
       )}
     </div>
   )

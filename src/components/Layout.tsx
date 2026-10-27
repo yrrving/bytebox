@@ -36,11 +36,8 @@ function DeviceGate() {
 }
 
 export default function Layout() {
-  // Hålplattan syns bara på startsidan, där verktygen hänger. Inne i ett
-  // verktyg är väggen slät, så att inget stör det man arbetar med.
-  const onHome = useLocation().pathname === '/'
   return (
-    <div className={`wall flex min-h-screen flex-col ${onHome ? 'wall-holes' : ''}`}>
+    <div className="wall flex min-h-screen flex-col">
       <div className="print:hidden">
         <Header />
       </div>

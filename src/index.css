@@ -95,21 +95,19 @@ body {
    har sin målade kontur: man ser vad som finns och var det hänger.
 
    --board  väggens färg, bakgrund på alla sidor
-   --hole   hålen i hålplattan, bara på startsidan (.wall-holes)
    --paint  den målade konturen bakom varje verktyg
    --cut    det som syns genom urskurna delar av en verktygsbild
 
+   Väggen är enfärgad; hålplattan prövades i 1.6.0 men stör mer än den ger.
    Mörkt läge är en djup blå i accentens färgton, inte grått. I högkontrast
-   finns varken hål eller konturer: svart vägg, vita verktyg. */
+   finns inga konturer: svart vägg, vita verktyg. */
 :root {
   --board: #e8eef1;
-  --hole: #d3dde3;
   --paint: #bcd9e8;
   --cut: var(--board);
 }
 .dark {
   --board: #0f2735;
-  --hole: #163647;
   --paint: #1f5573;
 }
 .hc {
@@ -118,14 +116,6 @@ body {
 
 .wall {
   background-color: var(--board);
-}
-.wall-holes {
-  background-image: radial-gradient(circle, var(--hole) 2.5px, transparent 3px);
-  background-size: 28px 28px;
-  background-position: 14px 14px;
-}
-.hc .wall-holes {
-  background-image: none;
 }
 
 /* Ett verktyg på sin plats: skuggan bakom och föremålet ovanpå, se

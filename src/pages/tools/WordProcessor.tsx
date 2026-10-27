@@ -4,118 +4,21 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Link from '@tiptap/extension-link'
 import {
-  Document, Packer, Paragraph, TextRun, ExternalHyperlink, HeadingLevel, UnderlineType, BorderStyle,
-  type ParagraphChild,
-} from 'docx'
-import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough, Heading1, Heading2, Heading3,
   List, ListOrdered, Quote, Link2, Undo2, Redo2, Printer, FileDown, Trash2, AlertTriangle,
 } from 'lucide-react'
 import ToolHeader from '../../components/ToolHeader'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
+import { downloadBlob } from '../../utils/download'
 
 const STORAGE_KEY = 'bytebox-wordprocessor'
 const EDITOR_CLASS = 'prose prose-sm dark:prose-invert max-w-none focus:outline-none min-h-[24rem] px-4 py-3'
 
-const HEADING_LEVEL: Record<number, (typeof HeadingLevel)[keyof typeof HeadingLevel]> = {
-  1: HeadingLevel.HEADING_1,
-  2: HeadingLevel.HEADING_2,
-  3: HeadingLevel.HEADING_3,
-}
-
-// Marks -> a plain run, or a hyperlink wrapping a run (Word needs a distinct element for links).
-function buildInline(nodes: JSONContent[] = []): ParagraphChild[] {
-  const children: ParagraphChild[] = []
-  for (const node of nodes) {
-    if (node.type === 'hardBreak') {
-      children.push(new TextRun({ text: '', break: 1 }))
-      continue
-    }
-    if (node.type !== 'text') continue
-    const marks = node.marks ?? []
-    const bold = marks.some((m) => m.type === 'bold')
-    const italics = marks.some((m) => m.type === 'italic')
-    const strike = marks.some((m) => m.type === 'strike')
-    const underline = marks.some((m) => m.type === 'underline')
-    const linkMark = marks.find((m) => m.type === 'link')
-    const text = node.text ?? ''
-    if (linkMark) {
-      children.push(
-        new ExternalHyperlink({
-          link: linkMark.attrs?.href ?? '#',
-          children: [
-            new TextRun({ text, bold, italics, strike, color: '2563EB', underline: { type: UnderlineType.SINGLE } }),
-          ],
-        })
-      )
-    } else {
-      children.push(new TextRun({ text, bold, italics, strike, underline: underline ? { type: UnderlineType.SINGLE } : undefined }))
-    }
-  }
-  return children
-}
-
-// Walks Tiptap's document JSON and flattens it into docx Paragraphs.
-// Ordered lists are rendered as plain "1. " text prefixes rather than a real
-// docx numbering definition. Keeps the exporter dependency-free and is
-// visually identical for the single-level lists this editor produces.
-function buildBlocks(nodes: JSONContent[] = [], indent = 0): Paragraph[] {
-  const paragraphs: Paragraph[] = []
-  for (const node of nodes) {
-    const indentOpt = indent ? { left: indent } : undefined
-    switch (node.type) {
-      case 'paragraph':
-        paragraphs.push(new Paragraph({ children: buildInline(node.content), indent: indentOpt }))
-        break
-      case 'heading':
-        paragraphs.push(new Paragraph({ heading: HEADING_LEVEL[node.attrs?.level ?? 1], children: buildInline(node.content) }))
-        break
-      case 'bulletList':
-        for (const item of node.content ?? []) {
-          const inner = item.content ?? []
-          const first = inner[0]
-          paragraphs.push(new Paragraph({ bullet: { level: indent / 720 }, children: buildInline(first?.content) }))
-          paragraphs.push(...buildBlocks(inner.slice(1), indent + 720))
-        }
-        break
-      case 'orderedList': {
-        let n = node.attrs?.start ?? 1
-        for (const item of node.content ?? []) {
-          const inner = item.content ?? []
-          const first = inner[0]
-          const runs = buildInline(first?.content)
-          paragraphs.push(new Paragraph({ indent: indentOpt, children: [new TextRun({ text: `${n}. ` }), ...runs] }))
-          n += 1
-          paragraphs.push(...buildBlocks(inner.slice(1), indent + 720))
-        }
-        break
-      }
-      case 'blockquote':
-        paragraphs.push(...buildBlocks(node.content, indent + 720))
-        break
-      case 'codeBlock':
-        paragraphs.push(new Paragraph({ children: [new TextRun({ text: node.content?.[0]?.text ?? '', font: 'Consolas' })] }))
-        break
-      case 'horizontalRule':
-        paragraphs.push(new Paragraph({ border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: '999999' } } }))
-        break
-      default:
-        break
-    }
-  }
-  return paragraphs
-}
-
-async function downloadDocx(json: JSONContent, filename: string) {
-  const doc = new Document({ sections: [{ properties: {}, children: buildBlocks(json.content) }] })
-  const blob = await Packer.toBlob(doc)
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  a.click()
-  URL.revokeObjectURL(url)
+/** docx laddas först här, inte när sidan öppnas. */
+async function downloadWord(json: JSONContent) {
+  const { tiptapToDocx } = await import('../../utils/docx')
+  downloadBlob(await tiptapToDocx(json), 'dokument.docx')
 }
 
 export default function WordProcessor() {
@@ -280,7 +183,7 @@ export default function WordProcessor() {
             {wp?.print ?? 'Skriv ut / Spara som PDF'}
           </button>
           <button
-            onClick={() => downloadDocx(editor.getJSON(), 'dokument.docx')}
+            onClick={() => downloadWord(editor.getJSON())}
             className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hc:bg-gray-900 hc:border hc:border-white px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hc:text-white transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
           >
             <FileDown className="h-3.5 w-3.5" />

@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Placeholder from './pages/Placeholder'
+import { useLanguage } from './context/LanguageContext'
 
 const Journal = lazy(() => import('./pages/Journal'))
 const UnderTheHood = lazy(() => import('./pages/UnderTheHood'))
@@ -29,10 +30,16 @@ const VideoToGif = lazy(() => import('./pages/tools/VideoToGif'))
 const Traincells = lazy(() => import('./pages/tools/Traincells'))
 const Padgrid = lazy(() => import('./pages/tools/Padgrid'))
 
+/** Visas medan en sida laddas. Skärmläsare får höra att något händer. */
 function LoadingFallback() {
+  const { t } = useLanguage()
   return (
-    <div className="flex items-center justify-center py-24">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500" />
+    <div role="status" className="flex flex-col items-center justify-center gap-3 py-24">
+      <div
+        className="h-8 w-8 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600 motion-reduce:animate-none dark:border-gray-600 dark:border-t-blue-300 hc:border-white hc:border-t-yellow-400"
+        aria-hidden="true"
+      />
+      <span className="sr-only">{t.loading ?? 'Laddar…'}</span>
     </div>
   )
 }

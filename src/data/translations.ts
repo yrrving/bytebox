@@ -40,6 +40,8 @@ export interface Translation {
     back: string
   }
   menu?: string
+  /** Visas medan ett verktyg laddas, se LoadingFallback i App.tsx. */
+  loading?: string
   home?: {
     heading: string
     lead: string
@@ -349,6 +351,7 @@ export const translations: Record<string, Translation> = {
       back: 'Tillbaka till verktygen',
     },
     menu: 'Meny',
+    loading: 'Laddar…',
     home: {
       heading: 'Vad vill du göra?',
       lead: 'Här är alla verktyg. Vart och ett gör en sak.',
@@ -678,6 +681,7 @@ export const translations: Record<string, Translation> = {
       back: 'Back to the tools',
     },
     menu: 'Menu',
+    loading: 'Loading…',
     home: {
       heading: 'What do you want to do?',
       lead: 'Here are all the tools. Each one does one thing.',
@@ -1007,6 +1011,7 @@ export const translations: Record<string, Translation> = {
       back: 'Volver a las herramientas',
     },
     menu: 'Menú',
+    loading: 'Cargando…',
     home: {
       heading: '¿Qué quieres hacer?',
       lead: 'Aquí están todas las herramientas. Cada una hace una cosa.',
@@ -1336,6 +1341,7 @@ export const translations: Record<string, Translation> = {
       back: 'Retour aux outils',
     },
     menu: 'Menu',
+    loading: 'Chargement…',
     home: {
       heading: 'Qu\'est-ce que tu veux faire ?',
       lead: 'Voici tous les outils. Chacun fait une chose.',
@@ -1665,6 +1671,7 @@ export const translations: Record<string, Translation> = {
       back: 'Zurück zu den Werkzeugen',
     },
     menu: 'Menü',
+    loading: 'Wird geladen…',
     home: {
       heading: 'Was willst du machen?',
       lead: 'Hier sind alle Werkzeuge. Jedes macht eine Sache.',
@@ -1994,6 +2001,7 @@ export const translations: Record<string, Translation> = {
       back: 'Voltar às ferramentas',
     },
     menu: 'Menu',
+    loading: 'Carregando…',
     home: {
       heading: 'O que você quer fazer?',
       lead: 'Aqui estão todas as ferramentas. Cada uma faz uma coisa.',

@@ -64,3 +64,15 @@ describe('översättningar', () => {
     expect(empty).toEqual([])
   })
 })
+
+describe('teckenkodning', () => {
+  // UTF-8 som lästs som Latin-1 ger "Ã¥" i stället för "å". Det har hänt en
+  // gång och syntes bara för den som råkade få just det felmeddelandet.
+  it('har inga trasiga tecken i någon översättning', () => {
+    const trasigt = /Ã[\u0080-¿]|â€/
+    for (const lang of LANGS) {
+      const text = JSON.stringify(translations[lang as keyof typeof translations])
+      expect(text, lang).not.toMatch(trasigt)
+    }
+  })
+})

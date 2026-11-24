@@ -5,6 +5,22 @@ protokollet och innehåller varje version sedan den första. Journalen inne i
 ByteBox visar 1.0.0 och framåt, eftersom besökaren oftast vill veta vad som
 hänt den senaste tiden.
 
+## 1.7.1 (2026-11-24). Signeringen talar alla sex språk
+
+### Fixat
+
+- **Signera i PDF-verktyget fanns bara på svenska.** Rubriker, knappar, placeringar och felmeddelanden i signeringsfliken var inskrivna direkt i koden. Nu följer de språket du valt, och den signerade filen får ett filnamn på samma språk.
+- **Trasiga tecken i ett felmeddelande.** Meddelandet när PDF:er inte gick att slå ihop visade "slÃ¥" i stället för "slå" på svenska, spanska, franska, tyska och portugisiska. Rättat, och ett nytt test fäller om sådana tecken dyker upp i någon översättning igen.
+- **Knapparna i listan med PDF:er hade inga namn.** Flytta upp, flytta ner, ladda ner och ta bort var bara ikoner, så en skärmläsare sa "knapp". Nu säger de vad de gör och vilken fil det gäller. Flytta-knapparna har fått pilar i stället för två likadana greppikoner.
+- **Fälten i signeringsfliken är kopplade till sina rubriker**, så att en skärmläsare läser upp rätt rubrik för varje fält.
+- **Video till GIF släpper minnet.** Varje ny GIF lade sig ovanpå den förra i minnet tills du lämnade verktyget. Nu släpps den gamla när en ny görs.
+- **Offlinecachen sparar bara hela svar.** Om en fil tillfälligt gav fel kunde felet fastna och visas igen. Nu sparas bara svar som gick bra.
+
+### Ändrat
+
+- **Uppdaterade beroenden** inom sina versioner. Utvecklingsverktygen har inga kända sårbarheter längre (förut två till elva). Den sista rättades genom att låsa en nyare version av CSS-parsern som `@tailwindcss/typography` använder; den färdiga CSS:en är byte för byte densamma. Sidan själv har fortfarande inga kända sårbarheter.
+- **Nedladdningar i fem verktyg går genom samma hjälpfunktion** som resten av ByteBox, så att minnet alltid släpps efteråt.
+
 ## 1.7.0 (2026-10-27). Verktygen syns direkt på mobilen
 
 ### Nytt

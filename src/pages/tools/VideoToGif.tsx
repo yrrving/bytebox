@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
+import { downloadBlob } from '../../utils/download'
+import { useObjectUrls } from '../../hooks/useObjectUrls'
 import { Download, Loader2, ShieldCheck, Film } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
@@ -41,16 +43,18 @@ export default function VideoToGif() {
   const [working, setWorking] = useState(false)
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState('')
-  const [result, setResult] = useState<{ url: string; size: number } | null>(null)
+  const [result, setResult] = useState<{ url: string; size: number; blob: Blob } | null>(null)
+  // Varje GIF kan vara tiotals MB. Den förra släpps när en ny görs eller
+  // resultatet töms, inte först när man lämnar verktyget.
+  const { createUrl: createGifUrl, releaseUrls: releaseGifs } = useObjectUrls()
+  const clearResult = () => { releaseGifs(); setResult(null) }
 
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     return () => {
       if (videoUrl) URL.revokeObjectURL(videoUrl)
-      if (result) URL.revokeObjectURL(result.url)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoUrl])
 
   const loadFile = (file: File | undefined) => {
@@ -68,7 +72,7 @@ export default function VideoToGif() {
       return
     }
     setError('')
-    setResult(null)
+    clearResult()
     if (videoUrl) URL.revokeObjectURL(videoUrl)
     const url = URL.createObjectURL(file)
     setVideoUrl(url)
@@ -99,7 +103,7 @@ export default function VideoToGif() {
       return
     }
     setError('')
-    setResult(null)
+    clearResult()
     setWorking(true)
     setProgress(0)
 
@@ -137,7 +141,8 @@ export default function VideoToGif() {
       gif.finish()
       const bytes = gif.bytes()
       const blob = new Blob([bytes as BlobPart], { type: 'image/gif' })
-      setResult({ url: URL.createObjectURL(blob), size: blob.size })
+      releaseGifs()
+      setResult({ url: createGifUrl(blob), size: blob.size, blob })
     } catch {
       setError('Något gick fel vid konverteringen. Videon kanske har ett format som webbläsaren inte kan läsa.')
     } finally {
@@ -147,10 +152,7 @@ export default function VideoToGif() {
 
   const download = () => {
     if (!result) return
-    const a = document.createElement('a')
-    a.href = result.url
-    a.download = `${videoName || 'video'}.gif`
-    a.click()
+    downloadBlob(result.blob, `${videoName || 'video'}.gif`)
   }
 
   return (
@@ -241,7 +243,7 @@ export default function VideoToGif() {
                 {working ? `Skapar GIF… ${progress}%` : 'Skapa GIF'}
               </button>
               <button
-                onClick={() => { setVideoUrl(''); setResult(null); setError('') }}
+                onClick={() => { setVideoUrl(''); clearResult(); setError('') }}
                 className="rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-black px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hc:text-white transition-colors hover:border-gray-400"
               >
                 Byt video

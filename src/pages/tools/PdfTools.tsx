@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import {
   Download, Plus, X, GripVertical, Loader2, ShieldCheck, Eraser,
-  ZoomIn, ZoomOut, Minus, Bold, FileUp, Layers, PenTool, PenLine,
+  ZoomIn, ZoomOut, Minus, Bold, FileUp, Layers, PenTool, PenLine, ArrowUp, ArrowDown,
 } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
 import Workbench from '../../components/Workbench'
 import ErrorNotice from '../../components/ErrorNotice'
-import { useObjectUrls } from '../../hooks/useObjectUrls'
+import { downloadBlob } from '../../utils/download'
 import { GRANSER, kontrolleraStorlek, filfelText } from '../../utils/filstorlek'
 import type { PDFDocumentProxy } from 'pdfjs-dist'
 import type { Translation } from '../../data/translations'
@@ -24,13 +24,14 @@ type Tab = 'merge' | 'sign' | 'fill'
 // ── Shared: PdfSign ──────────────────────────────────────────────────────
 type Position = 'bottom-left' | 'bottom-center' | 'bottom-right' | 'top-left' | 'top-center' | 'top-right'
 
-const POSITIONS: { id: Position; label: string }[] = [
-  { id: 'bottom-left', label: 'Nedre vänster' },
-  { id: 'bottom-center', label: 'Nederkant mitten' },
-  { id: 'bottom-right', label: 'Nedre höger' },
-  { id: 'top-left', label: 'Övre vänster' },
-  { id: 'top-center', label: 'Överkant mitten' },
-  { id: 'top-right', label: 'Övre höger' },
+type PdfSignText = NonNullable<Translation['pdfSign']>
+const POSITIONS: { id: Position; key: keyof PdfSignText }[] = [
+  { id: 'bottom-left', key: 'posBottomLeft' },
+  { id: 'bottom-center', key: 'posBottomCenter' },
+  { id: 'bottom-right', key: 'posBottomRight' },
+  { id: 'top-left', key: 'posTopLeft' },
+  { id: 'top-center', key: 'posTopCenter' },
+  { id: 'top-right', key: 'posTopRight' },
 ]
 
 const SIG_W = 400
@@ -146,9 +147,8 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
   const { t } = useLanguage()
   const [files, setFiles] = useState<PdfFile[]>([])
   const [merging, setMerging] = useState(false)
-  const [result, setResult] = useState<string | null>(null)
+  const [result, setResult] = useState<Blob | null>(null)
   const [error, setError] = useState('')
-  const { createUrl } = useObjectUrls()
 
   const addFiles = async (fileList: FileList | File[]) => {
     const newFiles: PdfFile[] = []
@@ -200,7 +200,7 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
         pages.forEach((page) => merged.addPage(page))
       }
       const bytes = await merged.save()
-      setResult(createUrl(new Blob([bytes as BlobPart], { type: 'application/pdf' })))
+      setResult(new Blob([bytes as BlobPart], { type: 'application/pdf' }))
     } catch {
       setError(pt?.mergeError || 'Kunde inte slå ihop filerna. Någon av dem kan vara skadad eller lösenordsskyddad.')
     } finally {
@@ -209,21 +209,10 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
   }
 
   const downloadResult = () => {
-    if (!result) return
-    const a = document.createElement('a')
-    a.href = result
-    a.download = 'merged.pdf'
-    a.click()
+    if (result) downloadBlob(result, 'merged.pdf')
   }
 
-  const downloadSingle = (file: PdfFile) => {
-    const url = URL.createObjectURL(file.file)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = file.name
-    a.click()
-    URL.revokeObjectURL(url)
-  }
+  const downloadSingle = (file: PdfFile) => downloadBlob(file.file, file.name)
 
   const totalSize = files.reduce((sum, f) => sum + f.file.size, 0)
 
@@ -238,29 +227,43 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
             >
               <div className="flex flex-col gap-0.5">
                 <button
+                  type="button"
                   onClick={() => moveFile(i, i - 1)}
                   disabled={i === 0}
+                  aria-label={`${pt?.moveUp ?? 'Flytta upp'}: ${f.name}`}
                   className="text-gray-600 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-200 disabled:opacity-30"
                 >
-                  <GripVertical className="h-3 w-3" />
+                  <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
                 </button>
                 <button
+                  type="button"
                   onClick={() => moveFile(i, i + 1)}
                   disabled={i === files.length - 1}
+                  aria-label={`${pt?.moveDown ?? 'Flytta ner'}: ${f.name}`}
                   className="text-gray-600 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-200 disabled:opacity-30"
                 >
-                  <GripVertical className="h-3 w-3" />
+                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </button>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-gray-900 dark:text-white truncate">{f.name}</div>
                 <div className="text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">{formatSize(f.file.size)}</div>
               </div>
-              <button onClick={() => downloadSingle(f)} className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors">
-                <Download className="h-4 w-4" />
+              <button
+                type="button"
+                onClick={() => downloadSingle(f)}
+                aria-label={(pt?.downloadFile ?? 'Ladda ner {name}').replace('{name}', f.name)}
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
               </button>
-              <button onClick={() => removeFile(i)} className="text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors">
-                <X className="h-4 w-4" />
+              <button
+                type="button"
+                onClick={() => removeFile(i)}
+                aria-label={(pt?.removeFile ?? 'Ta bort {name}').replace('{name}', f.name)}
+                className="text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors"
+              >
+                <X className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
           ))}
@@ -300,6 +303,8 @@ function MergeView({ pt }: { pt: Translation['pdfTools'] }) {
 // ── Tab: Signera (was PdfSign) ────────────────────────────────────────────
 function SignView() {
   const { t } = useLanguage()
+  const ps = t.pdfSign
+  const tx = (key: keyof PdfSignText, fallback: string) => ps?.[key] ?? fallback
   const [pdfBytes, setPdfBytes] = useState<Uint8Array | null>(null)
   const [pdfName, setPdfName] = useState('')
   const [pageCount, setPageCount] = useState(0)
@@ -395,7 +400,7 @@ function SignView() {
     setError('')
     setDone(false)
     if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
-      setError('Välj en PDF-fil.')
+      setError(tx('errorType', 'Välj en PDF-fil.'))
       return
     }
     // Hela dokumentet läses in i minnet och ritas om sida för sida.
@@ -418,15 +423,15 @@ function SignView() {
     } catch {
       setPdfBytes(null)
       setPageCount(0)
-      setError('Kunde inte läsa PDF:en. Den kan vara skadad eller lösenordsskyddad/krypterad.')
+      setError(tx('errorLoad', 'Kunde inte läsa PDF:en. Den kan vara skadad eller lösenordsskyddad.'))
     }
   }
 
   const signAndDownload = async () => {
     setError('')
     setDone(false)
-    if (!pdfBytes) { setError('Ladda upp en PDF först.'); return }
-    if (!hasDrawnRef.current) { setError('Rita en signatur (eller skriv ett namn) först.'); return }
+    if (!pdfBytes) { setError(tx('errorNoPdf', 'Välj en PDF först.')); return }
+    if (!hasDrawnRef.current) { setError(tx('errorNoSignature', 'Rita en signatur eller skriv ditt namn först.')); return }
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -462,16 +467,13 @@ function SignView() {
       page.drawImage(pngImage, { x, y, width: sigW, height: sigH })
 
       const out = await doc.save()
-      const blob = new Blob([out as BlobPart], { type: 'application/pdf' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `${pdfName || 'dokument'}-signerad.pdf`
-      a.click()
-      URL.revokeObjectURL(url)
+      downloadBlob(
+        new Blob([out as BlobPart], { type: 'application/pdf' }),
+        `${pdfName || tx('defaultName', 'dokument')}-${tx('fileSuffix', 'signerad')}.pdf`,
+      )
       setDone(true)
     } catch {
-      setError('Något gick fel när PDF:en signerades. Filen kan vara krypterad eller skadad.')
+      setError(tx('errorSign', 'Något gick fel när PDF:en skulle signeras. Filen kan vara låst eller skadad.'))
     } finally {
       setBusy(false)
     }
@@ -497,17 +499,20 @@ function SignView() {
 
       <div>
         <div className="mb-1 flex items-center justify-between">
-          <label className={labelCls}>Rita din signatur</label>
+          <span id="sign-draw-label" className={labelCls}>{tx('drawLabel', 'Rita din signatur')}</span>
           <button
             onClick={clearCanvas}
             type="button"
             className="flex items-center gap-1 rounded-md border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-gray-900 px-2 py-1 text-xs text-gray-700 dark:text-gray-200 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <Eraser className="h-3 w-3" /> Rensa
+            <Eraser className="h-3 w-3" aria-hidden="true" /> {tx('clear', 'Rensa')}
           </button>
         </div>
         <canvas
           ref={canvasRef}
+          role="img"
+          aria-labelledby="sign-draw-label"
+          aria-describedby="sign-draw-hint"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -515,19 +520,20 @@ function SignView() {
           className="w-full touch-none rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white"
           style={{ aspectRatio: `${SIG_W} / ${SIG_H}`, cursor: 'crosshair' }}
         />
-        <p className="mt-1 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
-          Rita med musen eller fingret. Alternativt: skriv ett namn nedan.
+        <p id="sign-draw-hint" className="mt-1 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">
+          {tx('drawHint', 'Rita med musen eller fingret. Eller skriv ditt namn nedanför.')}
         </p>
       </div>
 
       <div className="flex items-end gap-2">
         <div className="flex-1">
-          <label className={labelCls}>Eller skriv ett namn (kursiv stil)</label>
+          <label htmlFor="sign-name" className={labelCls}>{tx('typeLabel', 'Eller skriv ditt namn (blir skrivstil)')}</label>
           <input
+            id="sign-name"
             type="text"
             value={typedName}
             onChange={(e) => setTypedName(e.target.value)}
-            placeholder="För- och efternamn"
+            placeholder={tx('typePlaceholder', 'För- och efternamn')}
             className={`${inputCls} w-full`}
           />
         </div>
@@ -537,14 +543,15 @@ function SignView() {
           disabled={!typedName.trim()}
           className="rounded-lg border border-gray-300 dark:border-gray-600 hc:border-white bg-white dark:bg-gray-800 hc:bg-gray-900 px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 hc:text-white transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          Använd namn
+          {tx('useName', 'Använd namnet')}
         </button>
       </div>
 
       <div className="flex flex-wrap items-end gap-4">
         <div>
-          <label className={labelCls}>Sida</label>
+          <label htmlFor="sign-page" className={labelCls}>{tx('page', 'Sida')}</label>
           <input
+            id="sign-page"
             type="number"
             min={1}
             max={Math.max(pageCount, 1)}
@@ -553,21 +560,24 @@ function SignView() {
             onChange={(e) => { const v = Number(e.target.value) || 1; setPageNum(Math.min(Math.max(v, 1), Math.max(pageCount, 1))) }}
             className={`${inputCls} w-24`}
           />
-          {pageCount > 0 && <span className="ml-2 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">av {pageCount}</span>}
+          {pageCount > 0 && <span className="ml-2 text-xs text-gray-600 dark:text-gray-300 hc:text-gray-200">{tx('of', 'av')} {pageCount}</span>}
         </div>
 
         <div>
-          <label className={labelCls}>Placering</label>
-          <select value={position} onChange={(e) => setPosition(e.target.value as Position)} className={inputCls}>
+          <label htmlFor="sign-position" className={labelCls}>{tx('position', 'Placering')}</label>
+          <select id="sign-position" value={position} onChange={(e) => setPosition(e.target.value as Position)} className={inputCls}>
             {POSITIONS.map((p) => (
-              <option key={p.id} value={p.id}>{p.label}</option>
+              <option key={p.id} value={p.id}>{tx(p.key, p.id)}</option>
             ))}
           </select>
         </div>
 
         <div>
-          <label className={labelCls}>Storlek: {sizePct}% av sidbredden</label>
+          <label htmlFor="sign-size" className={labelCls}>
+            {tx('size', 'Storlek: {pct} % av sidans bredd').replace('{pct}', String(sizePct))}
+          </label>
           <input
+            id="sign-size"
             type="range"
             min={10}
             max={60}
@@ -579,12 +589,10 @@ function SignView() {
         </div>
       </div>
 
-      {error && (
-        <p className="rounded-lg border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-3 text-sm text-red-700 dark:text-red-400">{error}</p>
-      )}
+      <ErrorNotice message={error} />
       {done && !error && (
-        <p className="rounded-lg border border-green-300 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-3 text-sm text-green-700 dark:text-green-400">
-          Klart! Den signerade PDF:en har laddats ner.
+        <p role="status" className="rounded-lg border border-green-300 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-3 text-sm text-green-700 dark:text-green-400">
+          {tx('done', 'Klart! Den signerade PDF:en har laddats ner.')}
         </p>
       )}
 
@@ -593,7 +601,9 @@ function SignView() {
         disabled={!pdfBytes || busy}
         className="w-full flex items-center justify-center gap-2 rounded-lg bg-blue-600 hc:bg-white hc:text-black px-4 py-2.5 font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        {busy ? (<><Loader2 className="h-4 w-4 animate-spin" /> Signerar…</>) : (<><Download className="h-4 w-4" /> Signera & ladda ner</>)}
+        {busy
+          ? (<><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> {tx('signing', 'Signerar…')}</>)
+          : (<><Download className="h-4 w-4" aria-hidden="true" /> {tx('signDownload', 'Signera och ladda ner')}</>)}
       </button>
     </div>
   )
@@ -781,13 +791,7 @@ function FillView({ fp }: { fp: Translation['fillPdf'] }) {
         })
       }
       const out = await doc.save()
-      const blob = new Blob([out as BlobPart], { type: 'application/pdf' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `${pdfName || 'dokument'}-ifylld.pdf`
-      a.click()
-      URL.revokeObjectURL(url)
+      downloadBlob(new Blob([out as BlobPart], { type: 'application/pdf' }), `${pdfName || 'dokument'}-ifylld.pdf`)
       setDone(true)
     } catch {
       setError(fp?.errorSave ?? 'Något gick fel när PDF:en sparades. Prova igen.')

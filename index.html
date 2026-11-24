@@ -15,9 +15,9 @@
       SpeechSynthesis. Det går inte via connect-src och kan därför inte styras
       härifrån; verktyget säger själv vad det innebär.
 
-      'unsafe-eval' krävs tyvärr av heic2any och pdf.js, som båda bygger
-      funktioner med new Function() i sin Emscripten-kod. Utan den slutar
-      HEIC-till-JPG och delar av PDF-verktyget att fungera.
+      'unsafe-eval' krävs tyvärr av heic2any, som bygger funktioner med
+      new Function() i sin Emscripten-kod. Utan den slutar HEIC-till-JPG att
+      fungera. (pdf.js behövde det också före version 6, men inte längre.)
       'wasm-unsafe-eval' krävs av pdf.js WebAssembly-moduler.
     -->
     <meta

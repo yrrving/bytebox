@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react'
+import { downloadBlob } from '../../utils/download'
 import { Download } from 'lucide-react'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
@@ -147,12 +148,7 @@ export default function PngToSvg() {
   const downloadSvg = () => {
     if (!svgOutput || !original) return
     const blob = new Blob([svgOutput], { type: 'image/svg+xml' })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.download = original.name.replace(/\.[^.]+$/, '') + '.svg'
-    link.href = url
-    link.click()
-    URL.revokeObjectURL(url)
+    downloadBlob(blob, original.name.replace(/\.[^.]+$/, '') + '.svg')
   }
 
   return (

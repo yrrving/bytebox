@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { downloadBlob } from '../../utils/download'
 import { Download, Copy, Check, ShieldCheck, Clock } from 'lucide-react'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
@@ -165,12 +166,7 @@ export default function SrtEditor() {
 
   const downloadSrt = () => {
     const blob = new Blob([output], { type: 'text/plain;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = fileName
-    a.click()
-    URL.revokeObjectURL(url)
+    downloadBlob(blob, fileName)
   }
 
   const tsInputClass =

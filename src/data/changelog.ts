@@ -10,6 +10,75 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: '1.7.1',
+    date: '2026-11-24',
+    title: {
+      sv: 'Signeringen talar alla sex språk',
+      en: 'Signing now speaks all six languages',
+      es: 'La firma ya habla los seis idiomas',
+      fr: 'La signature parle maintenant les six langues',
+      de: 'Das Unterschreiben spricht jetzt alle sechs Sprachen',
+      pt: 'A assinatura agora fala os seis idiomas',
+    },
+    changes: [
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Signera i PDF-verktyget fanns bara på svenska. Nu följer rubriker, knappar, placeringar och felmeddelanden språket du valt.',
+          en: 'Sign in the PDF tool was only in Swedish. Now headings, buttons, positions and error messages follow the language you chose.',
+          es: 'Firmar en la herramienta PDF solo estaba en sueco. Ahora los títulos, botones, posiciones y mensajes de error siguen el idioma que elegiste.',
+          fr: 'Signer dans l’outil PDF n’existait qu’en suédois. Maintenant, les titres, les boutons, les emplacements et les messages d’erreur suivent la langue que tu as choisie.',
+          de: 'Unterschreiben im PDF-Werkzeug gab es nur auf Schwedisch. Jetzt folgen Überschriften, Knöpfe, Positionen und Fehlermeldungen der Sprache, die du gewählt hast.',
+          pt: 'Assinar na ferramenta de PDF só existia em sueco. Agora títulos, botões, posições e mensagens de erro seguem o idioma que você escolheu.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Felmeddelandet när PDF:er inte gick att slå ihop visade trasiga tecken i fem språk. Rättat.',
+          en: 'The error message when PDFs could not be merged showed broken characters in five languages. Fixed.',
+          es: 'El mensaje de error cuando no se podían unir los PDF mostraba caracteres rotos en cinco idiomas. Corregido.',
+          fr: 'Le message d’erreur quand les PDF ne pouvaient pas être fusionnés affichait des caractères cassés dans cinq langues. Corrigé.',
+          de: 'Die Fehlermeldung, wenn PDFs nicht zusammengeführt werden konnten, zeigte in fünf Sprachen kaputte Zeichen. Behoben.',
+          pt: 'A mensagem de erro quando os PDFs não podiam ser juntados mostrava caracteres quebrados em cinco idiomas. Corrigido.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Knapparna i listan med PDF:er säger nu vad de gör för den som använder skärmläsare, och flytta-knapparna har fått pilar.',
+          en: 'The buttons in the list of PDFs now say what they do for people using a screen reader, and the move buttons have arrows.',
+          es: 'Los botones de la lista de PDF ahora dicen lo que hacen a quien usa un lector de pantalla, y los botones de mover tienen flechas.',
+          fr: 'Les boutons de la liste des PDF disent maintenant ce qu’ils font aux personnes qui utilisent un lecteur d’écran, et les boutons pour déplacer ont des flèches.',
+          de: 'Die Knöpfe in der PDF-Liste sagen jetzt Menschen mit Screenreader, was sie tun, und die Verschieben-Knöpfe haben Pfeile.',
+          pt: 'Os botões na lista de PDFs agora dizem o que fazem para quem usa leitor de tela, e os botões de mover ganharam setas.',
+        },
+      },
+      {
+        type: 'fixed',
+        text: {
+          sv: 'Video till GIF släpper minnet för den förra GIF:en när du gör en ny.',
+          en: 'Video to GIF now frees the memory of the previous GIF when you make a new one.',
+          es: 'Vídeo a GIF ahora libera la memoria del GIF anterior cuando haces uno nuevo.',
+          fr: 'Vidéo en GIF libère maintenant la mémoire du GIF précédent quand tu en fais un nouveau.',
+          de: 'Video zu GIF gibt jetzt den Speicher des vorherigen GIFs frei, wenn du ein neues machst.',
+          pt: 'Vídeo para GIF agora libera a memória do GIF anterior quando você faz um novo.',
+        },
+      },
+      {
+        type: 'changed',
+        text: {
+          sv: 'Uppdaterade beroenden. Varken sidan eller utvecklingsverktygen har några kända sårbarheter.',
+          en: 'Updated dependencies. Neither the site nor the development tools have any known vulnerabilities.',
+          es: 'Dependencias actualizadas. Ni el sitio ni las herramientas de desarrollo tienen vulnerabilidades conocidas.',
+          fr: 'Dépendances mises à jour. Ni le site ni les outils de développement n’ont de vulnérabilités connues.',
+          de: 'Abhängigkeiten aktualisiert. Weder die Seite noch die Entwicklungswerkzeuge haben bekannte Sicherheitslücken.',
+          pt: 'Dependências atualizadas. Nem o site nem as ferramentas de desenvolvimento têm vulnerabilidades conhecidas.',
+        },
+      },
+    ],
+  },
+  {
     version: '1.7.0',
     date: '2026-10-27',
     title: {

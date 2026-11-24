@@ -77,8 +77,8 @@ testerna håller fast vid.
 - **De inbäddade apparna har en egen CSP.** TrainCells och PadGrid körs i
   iframes, och en iframe följer sin egen policy, inte sidans runt omkring.
   `scripts/skydda-inbaddade.mjs` lägger in den i varje bygge.
-- **`'unsafe-eval'` i huvudsidans CSP.** heic2any och pdf.js kräver det. Det
-  gäller bara huvudsidan; apparna klarar sig utan.
+- **`'unsafe-eval'` i huvudsidans CSP.** heic2any kräver det (pdf.js gjorde
+  det före version 6). Det gäller bara huvudsidan; apparna klarar sig utan.
 - **Ingen SRI.** Det finns inga skript från andra servrar att låsa.
 - **Ingen PWA-plugin.** Service workern är en liten handskriven fil,
   `public/sw.js`, utan beroenden.

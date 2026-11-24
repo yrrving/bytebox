@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { downloadBlob } from '../../utils/download'
 import { Download, ShieldCheck, Play, Square, Scissors, Loader2 } from 'lucide-react'
 import BackLink from '../../components/BackLink'
 import ToolHeader from '../../components/ToolHeader'
@@ -251,13 +252,8 @@ export default function AudioTrimmer() {
     const startSample = Math.floor(start * buffer.sampleRate)
     const endSample = Math.floor(end * buffer.sampleRate)
     const blob = encodeWav(buffer, startSample, endSample)
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
     const base = fileName.replace(/\.[^/.]+$/, '') || 'ljud'
-    a.download = `${base}-klippt.wav`
-    a.click()
-    setTimeout(() => URL.revokeObjectURL(url), 1000)
+    downloadBlob(blob, `${base}-klippt.wav`)
   }
 
   const selectedDuration = Math.max(0, end - start)

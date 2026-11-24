@@ -2,7 +2,7 @@
   "name": "bytebox",
   "private": true,
   "license": "MIT",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "type": "module",
   "engines": {
     "node": ">=24"
@@ -57,5 +57,10 @@
     "typescript-eslint": "^8.46.4",
     "vite": "^8.3.4",
     "vitest": "^5.0.1"
+  },
+  "overrides": {
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "^6.1.5"
+    }
   }
 }
